@@ -1,6 +1,6 @@
 ---
 name: issueTemplate
-about: Describe this issue template's purpose here.
+about: "소프티 이슈 템플릿입니다\U0001F9F8"
 title: ''
 labels: ''
 assignees: ''
