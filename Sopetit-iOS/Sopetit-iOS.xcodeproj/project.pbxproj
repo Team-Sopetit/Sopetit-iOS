@@ -12,6 +12,11 @@
 		A42C32802B3DB8F400C4B477 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327F2B3DB8F400C4B477 /* ViewController.swift */; };
 		A42C32852B3DB8F500C4B477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A42C32842B3DB8F500C4B477 /* Assets.xcassets */; };
 		A42C32882B3DB8F500C4B477 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A42C32862B3DB8F500C4B477 /* LaunchScreen.storyboard */; };
+		A42C32912B3DBD6E00C4B477 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A42C32902B3DBD6E00C4B477 /* Kingfisher */; };
+		A42C32942B3DBD7C00C4B477 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A42C32932B3DBD7C00C4B477 /* Alamofire */; };
+		A42C32972B3DBD8600C4B477 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A42C32962B3DBD8600C4B477 /* SnapKit */; };
+		A42C329A2B3DBD9700C4B477 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A42C32992B3DBD9700C4B477 /* Lottie */; };
+		A42C329D2B3DC0D100C4B477 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = A42C329C2B3DC0D100C4B477 /* KakaoSDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A42C32972B3DBD8600C4B477 /* SnapKit in Frameworks */,
+				A42C329D2B3DC0D100C4B477 /* KakaoSDK in Frameworks */,
+				A42C32912B3DBD6E00C4B477 /* Kingfisher in Frameworks */,
+				A42C32942B3DBD7C00C4B477 /* Alamofire in Frameworks */,
+				A42C329A2B3DBD9700C4B477 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +90,13 @@
 			dependencies = (
 			);
 			name = "Sopetit-iOS";
+			packageProductDependencies = (
+				A42C32902B3DBD6E00C4B477 /* Kingfisher */,
+				A42C32932B3DBD7C00C4B477 /* Alamofire */,
+				A42C32962B3DBD8600C4B477 /* SnapKit */,
+				A42C32992B3DBD9700C4B477 /* Lottie */,
+				A42C329C2B3DC0D100C4B477 /* KakaoSDK */,
+			);
 			productName = "Sopetit-iOS";
 			productReference = A42C32782B3DB8F400C4B477 /* Sopetit-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +125,13 @@
 				Base,
 			);
 			mainGroup = A42C326F2B3DB8F400C4B477;
+			packageReferences = (
+				A42C328F2B3DBD6E00C4B477 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				A42C32922B3DBD7C00C4B477 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A42C32952B3DBD8600C4B477 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				A42C32982B3DBD9700C4B477 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				A42C329B2B3DC0D100C4B477 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+			);
 			productRefGroup = A42C32792B3DB8F400C4B477 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -344,6 +368,77 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A42C328F2B3DBD6E00C4B477 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		A42C32922B3DBD7C00C4B477 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		A42C32952B3DBD8600C4B477 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		A42C32982B3DBD9700C4B477 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		A42C329B2B3DC0D100C4B477 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A42C32902B3DBD6E00C4B477 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A42C328F2B3DBD6E00C4B477 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		A42C32932B3DBD7C00C4B477 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A42C32922B3DBD7C00C4B477 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		A42C32962B3DBD8600C4B477 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A42C32952B3DBD8600C4B477 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		A42C32992B3DBD9700C4B477 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A42C32982B3DBD9700C4B477 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		A42C329C2B3DC0D100C4B477 /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A42C329B2B3DC0D100C4B477 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A42C32702B3DB8F400C4B477 /* Project object */;
 }
