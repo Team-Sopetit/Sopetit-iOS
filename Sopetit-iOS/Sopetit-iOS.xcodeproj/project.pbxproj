@@ -69,6 +69,9 @@
 		A42C33372B3EB01200C4B477 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33362B3EB01200C4B477 /* LoginViewController.swift */; };
 		A42C333A2B3EB02A00C4B477 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33392B3EB02A00C4B477 /* TabBarController.swift */; };
 		A42C333F2B3EB08500C4B477 /* HappinessRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C333E2B3EB08500C4B477 /* HappinessRoutineCollectionViewCell.swift */; };
+		A42C33642B413F2100C4B477 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A42C33622B413F2100C4B477 /* Pretendard-SemiBold.otf */; };
+		A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */; };
+		A42C336C2B41EF2F00C4B477 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,8 +84,6 @@
 		A42C32892B3DB8F500C4B477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A42C32A42B3EA9A000C4B477 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		A42C32A62B3EA9BF00C4B477 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
-		A42C32B02B3EAA9E00C4B477 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
-		A42C32B12B3EAAA400C4B477 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		A42C32B22B3EAAB500C4B477 /* Lottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottie.swift; sourceTree = "<group>"; };
 		A42C32B42B3EAAD200C4B477 /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringLiterals.swift; path = ../../../../../../Downloads/StringLiterals.swift; sourceTree = "<group>"; };
 		A42C32B62B3EAAD800C4B477 /* ImageLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiterals.swift; sourceTree = "<group>"; };
@@ -133,6 +134,9 @@
 		A42C33362B3EB01200C4B477 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A42C33392B3EB02A00C4B477 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A42C333E2B3EB08500C4B477 /* HappinessRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessRoutineCollectionViewCell.swift; sourceTree = "<group>"; };
+		A42C33622B413F2100C4B477 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,7 @@
 				A42C329E2B3EA97100C4B477 /* Presentation */,
 				A42C32892B3DB8F500C4B477 /* Info.plist */,
 				A42C327F2B3DB8F400C4B477 /* ViewController.swift */,
+				A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */,
 			);
 			path = "Sopetit-iOS";
 			sourceTree = "<group>";
@@ -312,8 +317,8 @@
 		A42C32AE2B3EAA4800C4B477 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				A42C32B12B3EAAA400C4B477 /* Pretendard-Medium.otf */,
-				A42C32B02B3EAA9E00C4B477 /* Pretendard-SemiBold.otf */,
+				A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */,
+				A42C33622B413F2100C4B477 /* Pretendard-SemiBold.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -657,6 +662,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A42C328C2B3DB8F500C4B477 /* Build configuration list for PBXNativeTarget "Sopetit-iOS" */;
 			buildPhases = (
+				A42C336A2B41EE9700C4B477 /* SwiftLint Script */,
 				A42C32742B3DB8F400C4B477 /* Sources */,
 				A42C32752B3DB8F400C4B477 /* Frameworks */,
 				A42C32762B3DB8F400C4B477 /* Resources */,
@@ -722,12 +728,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A42C336C2B41EF2F00C4B477 /* .swiftlint.yml in Resources */,
+				A42C33642B413F2100C4B477 /* Pretendard-SemiBold.otf in Resources */,
 				A42C32882B3DB8F500C4B477 /* LaunchScreen.storyboard in Resources */,
 				A42C32852B3DB8F500C4B477 /* Assets.xcassets in Resources */,
+				A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A42C336A2B41EE9700C4B477 /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A42C32742B3DB8F400C4B477 /* Sources */ = {
