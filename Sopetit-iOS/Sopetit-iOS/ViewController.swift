@@ -15,7 +15,4 @@ class ViewController: UIViewController {
         view.backgroundColor = .brown
         // Do any additional setup after loading the view.
     }
-
-
 }
-
