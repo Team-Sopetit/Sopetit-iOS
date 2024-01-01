@@ -10,6 +10,7 @@ import UIKit
 enum FontName: String {
     case PretendardMedium = "Pretendard-Medium"
     case PretendardSemiBold = "Pretendard-SemiBold"
+    case OmyuPretty = "omyu-pretty"
 }
 
 enum FontLevel {

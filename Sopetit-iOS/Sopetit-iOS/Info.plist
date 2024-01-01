@@ -6,6 +6,7 @@
 	<array>
 		<string>Pretendard-Medium.otf</string>
 		<string>Pretendard-SemiBold.otf</string>
+		<string>omyu-pretty.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
