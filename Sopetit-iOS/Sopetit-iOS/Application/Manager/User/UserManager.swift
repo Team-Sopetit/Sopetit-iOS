@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+final class UserManager {
+    static let shared = UserManager()
+    
+    private init() {}
+}
+
+extension UserManager {
+    func clearAll() {
+        
+    }
+}
