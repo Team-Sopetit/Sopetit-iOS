@@ -9,6 +9,6 @@ import UIKit
 
 enum ImageLiterals {
     enum Common {
-        static var img_logo: UIImage { .load(name: "softieLogo") }
+        static var logo: UIImage { .load(name: "softieLogo") }
     }
 }
