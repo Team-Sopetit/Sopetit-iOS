@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "svg_speech_long.svg",
+      "filename" : "img_spotlight2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "svg_speech_long 1.svg",
+      "filename" : "img_spotlight2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "svg_speech_long 2.svg",
+      "filename" : "img_spotlight2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
