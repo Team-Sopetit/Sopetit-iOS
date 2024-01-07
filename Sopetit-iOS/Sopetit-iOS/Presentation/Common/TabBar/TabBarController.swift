@@ -48,6 +48,15 @@ private extension TabBarController {
             tabs[$0.rawValue].tabBarItem.tag = $0.rawValue
         }
         
+        let tabBarItemTitles: [String] = ["진행 중", "홈", "행복 루틴"]
+        
+        for (index, tabTitle) in tabBarItemTitles.enumerated() {
+            let tabBarItem = TabBarItemType(rawValue: index)?.setTabBarItem()
+            tabs[index].tabBarItem = tabBarItem
+            tabs[index].tabBarItem.tag = index
+            tabs[index].title = tabTitle // Set the title for the tab bar item
+        }
+        
         setViewControllers(tabs, animated: false)
 
     }
