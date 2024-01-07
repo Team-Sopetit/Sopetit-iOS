@@ -8,6 +8,10 @@
 import UIKit
 
 extension UIColor {
+    static var SoftieWhite: UIColor {
+        return UIColor(hex: "#FFFFFF")
+    }
+    
     static var SoftieMain1: UIColor {
         return UIColor(hex: "#4A4A4A")
     }
@@ -18,6 +22,10 @@ extension UIColor {
     
     static var SoftieRed: UIColor {
         return UIColor(hex: "#F76D6D")
+    }
+    
+    static var SoftieYellow: UIColor {
+        return UIColor(hex: "#FEE500")
     }
     
     static var SoftieBackHome: UIColor {
