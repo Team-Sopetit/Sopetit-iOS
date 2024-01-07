@@ -181,6 +181,8 @@ extension LoginView {
     @objc
     func kakaoLoginButtonTapped(_ sender: UITapGestureRecognizer) {
         print("카카오 로그인 버튼 탭함.")
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "KAKAO_NATIVE_APP_KEY") as? String else { return }
+        print(apiKey)
     }
     
     @objc
