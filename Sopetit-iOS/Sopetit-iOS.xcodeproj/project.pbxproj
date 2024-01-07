@@ -78,7 +78,7 @@
 /* Begin PBXFileReference section */
 		0084F19A2B4A895700F87860 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0084F19C2B4A896500F87860 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		0084F19E2B4AA3D000F87860 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		A42C32782B3DB8F400C4B477 /* Sopetit-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sopetit-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A42C327D2B3DB8F400C4B477 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,7 +161,6 @@
 		A42C326F2B3DB8F400C4B477 = {
 			isa = PBXGroup;
 			children = (
-				0084F19E2B4AA3D000F87860 /* Secrets.xcconfig */,
 				A42C327A2B3DB8F400C4B477 /* Sopetit-iOS */,
 				A42C32792B3DB8F400C4B477 /* Products */,
 			);
@@ -185,6 +184,7 @@
 				A42C32892B3DB8F500C4B477 /* Info.plist */,
 				A42C327F2B3DB8F400C4B477 /* ViewController.swift */,
 				A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */,
+				0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */,
 			);
 			path = "Sopetit-iOS";
 			sourceTree = "<group>";
@@ -853,7 +853,7 @@
 /* Begin XCBuildConfiguration section */
 		A42C328A2B3DB8F500C4B477 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0084F19E2B4AA3D000F87860 /* Secrets.xcconfig */;
+			baseConfigurationReference = 0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -914,7 +914,7 @@
 		};
 		A42C328B2B3DB8F500C4B477 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0084F19E2B4AA3D000F87860 /* Secrets.xcconfig */;
+			baseConfigurationReference = 0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -969,7 +969,7 @@
 		};
 		A42C328D2B3DB8F500C4B477 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0084F19E2B4AA3D000F87860 /* Secrets.xcconfig */;
+			baseConfigurationReference = 0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -997,7 +997,7 @@
 		};
 		A42C328E2B3DB8F500C4B477 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0084F19E2B4AA3D000F87860 /* Secrets.xcconfig */;
+			baseConfigurationReference = 0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
