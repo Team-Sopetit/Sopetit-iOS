@@ -18,12 +18,11 @@ final class HappyRoutineView: UIView {
     private let navigationBar: CustomNavigationBarView = {
         let navigationBar = CustomNavigationBarView()
         navigationBar.isLeftTitleViewIncluded = true
-        navigationBar.isLeftTitleLabelIncluded = "행복루틴"
-//        navigationBar.isTitleViewIncluded = true
-//        navigationBar.isTitleLabelIncluded = "행복루틴"
-        navigationBar.isEditButtonIncluded = true
+        navigationBar.isLeftTitleLabelIncluded = "행복 루틴"
         return navigationBar
     }()
+    
+    private let bearDescriptionView = BearDescriptionView()
     
     // MARK: - Life Cycles
     
@@ -48,16 +47,23 @@ final class HappyRoutineView: UIView {
 extension HappyRoutineView {
 
     func setUI() {
+        self.backgroundColor = .SoftieBack
     }
     
     func setHierarchy() {
-        self.addSubviews(navigationBar)
+        self.addSubviews(navigationBar, bearDescriptionView)
     }
     
     func setLayout() {
         navigationBar.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide)
             $0.horizontalEdges.equalToSuperview()
+        }
+        
+        bearDescriptionView.snp.makeConstraints {
+            $0.top.equalTo(navigationBar.snp.bottom)
+            $0.width.equalTo(315)
+            $0.centerX.equalToSuperview()
         }
     }
     

@@ -63,7 +63,7 @@ final class CustomNavigationBarView: UIView {
     private lazy var leftTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .fontGuide(.head3)
-        label.textColor = .black
+        label.textColor = .Gray600
         label.textAlignment = .left
         return label
     }()
@@ -77,7 +77,7 @@ final class CustomNavigationBarView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .fontGuide(.head3)
-        label.textColor = .black
+        label.textColor = .Gray700
         return label
     }()
     
@@ -127,7 +127,7 @@ final class CustomNavigationBarView: UIView {
 extension CustomNavigationBarView {
 
     func setUI() {
-        self.backgroundColor = .white
+        self.backgroundColor = .SoftieBack
     }
     
     func setHierarchy() {
