@@ -106,13 +106,13 @@ extension DollChoiceView {
         }
         
         dollCollectionView.snp.makeConstraints {
-            $0.top.equalTo(subTitleLabel.snp.bottom).offset(102)
+            $0.top.equalTo(subTitleLabel.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 102 / 812)
             $0.centerX.equalToSuperview().inset(20)
             $0.size.equalTo(335)
         }
         
         nextButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-17)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-SizeLiterals.Screen.screenHeight * 17 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
             $0.height.equalTo(56)
