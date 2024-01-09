@@ -40,7 +40,7 @@ private extension TabBarController {
 //        let happyVC = HappyRoutineViewController()
         let dailyVC = UINavigationController(rootViewController: ViewController())
         let homeVC = ViewController()
-        let happyVC = ViewController()
+        let happyVC = HappyRoutineViewController()
         
         tabs = [
             dailyVC,
@@ -70,12 +70,7 @@ private extension TabBarController {
     func setTabBarUI() {
 //        UITabBar.clearShadow()
         tabBar.backgroundColor = .white
-        tabBar.tintColor = .black
-        tabBar.layer.masksToBounds = false
-        tabBar.layer.shadowColor = UIColor.lightGray.cgColor
-        tabBar.layer.shadowOpacity = 1
-        tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
-        tabBar.layer.shadowRadius = 1
+        tabBar.tintColor = .SoftieMain1
     }
     
     func getSafeAreaBottomHeight() -> CGFloat {

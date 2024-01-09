@@ -11,9 +11,7 @@ final class StoryTellingViewController: UIViewController {
     
     // MARK: - Properties
     
-    
     // MARK: - UI Components
-    
     
     // MARK: - Life Cycles
     
