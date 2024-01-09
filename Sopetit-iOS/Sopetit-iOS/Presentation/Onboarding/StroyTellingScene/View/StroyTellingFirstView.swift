@@ -10,9 +10,6 @@ import UIKit
 import SnapKit
 
 final class StoryTellingFirstView: UIView {
-
-    // MARK: - Properties
-    
     
     // MARK: - UI Components
     
@@ -30,19 +27,20 @@ final class StoryTellingFirstView: UIView {
         return girl
     }()
     
-    private lazy var nextButton: UIButton = {
+    lazy var nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle("오늘도 고된 하루였어..", for: .normal)
+        button.setTitle(I18N.Onboarding.firtButtonTitle, for: .normal)
         button.setTitleColor(.Gray500, for: .normal)
         button.setBackgroundColor(.SoftieWhite, for: .normal)
         button.titleLabel?.font = .fontGuide(.bubble20)
+        button.layer.cornerRadius = 12
         return button
     }()
     
     private let arrowImage: UIImageView = {
         let arrow = UIImageView()
         arrow.image = ImageLiterals.Onboarding.icOnboardNext
-        
+        arrow.contentMode = .scaleAspectFit
         return arrow
     }()
     
@@ -54,8 +52,6 @@ final class StoryTellingFirstView: UIView {
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
-        setRegisterCell()
     }
     
     @available(*, unavailable)
@@ -66,34 +62,40 @@ final class StoryTellingFirstView: UIView {
 
 // MARK: - Extensions
 
-extension StoryTellingFirstView {
+private extension StoryTellingFirstView {
 
     func setUI() {
-        
+        backgroundColor = .SoftieBack
     }
     
     func setHierarchy() {
-
+        nextButton.addSubview(arrowImage)
+        addSubviews(girlImage, backgroundView, nextButton)
     }
     
     func setLayout() {
-
-    }
-    
-    func setAddTarget() {
-
-    }
-    
-    @objc
-    func buttonTapped() {
+        backgroundView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         
-    }
-    
-    func setRegisterCell() {
+        girlImage.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(SizeLiterals.Screen.screenHeight * 218 / 812)
+            $0.leading.equalToSuperview().inset(20)
+            $0.width.equalTo(210)
+            $0.height.equalTo(360)
+        }
         
-    }
-    
-    func setDataBind() {
+        nextButton.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(SizeLiterals.Screen.screenHeight * 107 / 812)
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
+            $0.height.equalTo(64)
+        }
         
+        arrowImage.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(23)
+            $0.size.equalTo(14)
+        }
     }
 }
