@@ -26,6 +26,7 @@ final class StoryTellingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUI()
         setAddTarget()
     }
 }
