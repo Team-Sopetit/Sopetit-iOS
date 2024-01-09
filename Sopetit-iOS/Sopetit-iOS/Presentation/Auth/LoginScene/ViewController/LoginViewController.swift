@@ -11,7 +11,6 @@ final class LoginViewController: UIViewController {
     
     // MARK: - Properties
     
-    
     // MARK: - UI Components
     
     private let loginView = LoginView()
