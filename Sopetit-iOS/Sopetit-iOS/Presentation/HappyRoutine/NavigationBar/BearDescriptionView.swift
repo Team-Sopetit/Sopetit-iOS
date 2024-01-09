@@ -13,7 +13,6 @@ final class BearDescriptionView: UIView {
     
     // MARK: - Properties
     
-    
     // MARK: - UI Components
     private let faceImageView: UIImageView = {
         let imageView = UIImageView()

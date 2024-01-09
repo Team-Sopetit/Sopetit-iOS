@@ -13,7 +13,6 @@ final class StoryTellingFirstView: UIView {
 
     // MARK: - Properties
     
-    
     // MARK: - UI Components
     
     private let backgroundView: UIImageView = {

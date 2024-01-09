@@ -23,6 +23,32 @@ final class HappyRoutineView: UIView {
     }()
     
     private let bearDescriptionView = BearDescriptionView()
+    private let emptyHappyRoutineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .SoftieWhite
+        view.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner])
+        view.layer.masksToBounds = true
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.Gray100.cgColor
+        return view
+    }()
+    
+    private let emptyTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "진행 중인 행복루틴이 없어요.\n루틴을 추가할까요?"
+        label.font = .fontGuide(.body2)
+        label.textColor = .Gray300
+        label.textAlignment = .center
+        label.setLineSpacing(lineSpacing: 4)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let bearPlusImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.HappyRoutine.imgHappyAdd
+        return imageView
+    }()
     
     // MARK: - Life Cycles
     
@@ -51,7 +77,8 @@ extension HappyRoutineView {
     }
     
     func setHierarchy() {
-        self.addSubviews(navigationBar, bearDescriptionView)
+        self.addSubviews(navigationBar, bearDescriptionView, emptyHappyRoutineView)
+        emptyHappyRoutineView.addSubviews(emptyTextLabel, bearPlusImageView)
     }
     
     func setLayout() {
@@ -63,6 +90,24 @@ extension HappyRoutineView {
         bearDescriptionView.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom)
             $0.width.equalTo(315)
+            $0.height.equalTo(76)
+            $0.centerX.equalToSuperview()
+        }
+        
+        emptyHappyRoutineView.snp.makeConstraints {
+            $0.top.equalTo(bearDescriptionView.snp.bottom).offset(52/812 * UIScreen.main.bounds.height)
+            $0.width.equalTo(280)
+            $0.height.equalTo(398)
+            $0.centerX.equalToSuperview()
+        }
+        
+        emptyTextLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(84)
+            $0.centerX.equalToSuperview()
+        }
+        
+        bearPlusImageView.snp.makeConstraints {
+            $0.top.equalTo(emptyTextLabel.snp.bottom).offset(64)
             $0.centerX.equalToSuperview()
         }
     }
