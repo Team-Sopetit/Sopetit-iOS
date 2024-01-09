@@ -7,7 +7,7 @@
 import UIKit
 import SnapKit
 
-final class RoutineCollectionViewCell: UICollectionViewCell, UICollectionViewRegisterable {
+final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionViewRegisterable {
     
     // MARK: - Properties
 
@@ -15,7 +15,7 @@ final class RoutineCollectionViewCell: UICollectionViewCell, UICollectionViewReg
     
     // MARK: - UI Components
     
-    let imageView: UIImageView = {
+    lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.image = ImageLiterals.DailyRoutine.icDaily1Filled
         return image
@@ -47,7 +47,7 @@ final class RoutineCollectionViewCell: UICollectionViewCell, UICollectionViewReg
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fontGuide(.body4)
         button.backgroundColor = .SoftieMain1
-        button.layer.cornerRadius = 10 // 테두리를 둥글게 만들기 위한 코너 반지름 설정
+        button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(onTapButton), for: .touchUpInside)
         return button
@@ -64,10 +64,25 @@ final class RoutineCollectionViewCell: UICollectionViewCell, UICollectionViewReg
             sender.backgroundColor = UIColor.SoftieMain1
         } else {
             sender.isSelected = true
-            sender.setTitle("달성 완료", for: .normal)
-            sender.setTitleColor(UIColor.Gray300, for: .normal)
+            sender.setTitle("달성 완료", for: .selected)
+            sender.setTitleColor(UIColor.Gray300, for: .selected)
             sender.backgroundColor = UIColor.Gray100
+            imageView.image = ImageLiterals.DailyRoutine.icDaily2Filled
         }
+    }
+    
+    lazy var checkBox: UIButton = {
+        let view = UIButton()
+        view.setImage(UIImage(named: "btn_radiobtn_none"), for: .normal)
+        view.setImage(UIImage(named: "btn_radiobtn_selected"), for: .selected)
+        view.addTarget(self, action: #selector(checkboxTapped), for: .touchUpInside)
+        view.isHidden = true
+        return view
+    }()
+    
+    @objc
+    func checkboxTapped(sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
     
     // MARK: - Life Cycles
@@ -87,7 +102,7 @@ final class RoutineCollectionViewCell: UICollectionViewCell, UICollectionViewReg
 
 // MARK: - Extensions
 
-extension RoutineCollectionViewCell {
+extension DailyRoutineCollectionViewCell {
 
     func setUI() {
         self.layer.cornerRadius = 20
@@ -97,7 +112,7 @@ extension RoutineCollectionViewCell {
     }
     
     func setHierarchy() {
-        self.addSubviews(imageView, dateLabel, routineLabel, achieveButton, flagImg)
+        self.addSubviews(imageView, dateLabel, routineLabel, achieveButton, flagImg, checkBox)
     }
     
     func setLayout() {
@@ -122,6 +137,10 @@ extension RoutineCollectionViewCell {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().inset(16)
             $0.height.equalTo(38)
+        }
+        checkBox.snp.makeConstraints {
+            $0.trailing.top.equalToSuperview().inset(20)
+            $0.size.equalTo(20)
         }
     }
     

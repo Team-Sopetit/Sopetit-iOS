@@ -66,7 +66,7 @@ extension DailyView {
     }
     
     func setRegisterCell() {
-        RoutineCollectionViewCell.register(target: collectionView)
+        DailyRoutineCollectionViewCell.register(target: collectionView)
     }
     
     func setDataBind() {

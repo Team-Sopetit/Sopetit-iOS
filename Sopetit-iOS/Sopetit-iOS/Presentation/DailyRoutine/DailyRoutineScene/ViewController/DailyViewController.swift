@@ -76,7 +76,7 @@ extension DailyViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = RoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
+        let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
         cell.setDatabind(model: dummy[indexPath.item])
         return cell
     }
