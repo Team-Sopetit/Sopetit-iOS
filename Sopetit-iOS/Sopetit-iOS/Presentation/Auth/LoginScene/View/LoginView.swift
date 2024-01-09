@@ -120,8 +120,8 @@ extension LoginView {
         softieImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().inset(SizeLiterals.Screen.screenHeight * 187 / 812)
-            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 173 / 375)
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 52 / 812)
+            $0.width.equalTo(173)
+            $0.height.equalTo(52)
         }
         
         bubbleImageView.snp.makeConstraints {
@@ -149,8 +149,7 @@ extension LoginView {
         kakaoImageView.snp.makeConstraints {
             $0.centerY.equalTo(kakaoLoginLabel)
             $0.leading.equalTo(kakaoLoginLabel.snp.leading).offset(22)
-            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 18 / 375)
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 18 / 812)
+            $0.size.equalTo(18)
         }
         
         appleLoginLabel.snp.makeConstraints {
@@ -163,8 +162,8 @@ extension LoginView {
         appleImageView.snp.makeConstraints {
             $0.centerY.equalTo(appleLoginLabel)
             $0.leading.equalTo(appleLoginLabel.snp.leading).offset(22)
-            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 20 / 375)
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 22 / 812)
+            $0.width.equalTo(20)
+            $0.height.equalTo(22)
         }
     }
     
@@ -188,33 +187,25 @@ extension LoginView {
     @objc
     func kakaoLoginButtonTapped(_ sender: UITapGestureRecognizer) {
         print("카카오 로그인 버튼 탭함.")
-//        if (UserApi.isKakaoTalkLoginAvailable()) {
-//            // 카카오톡 로그인. api 호출 결과를 클로저로 전달.
-//            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-//                if let _ = error { self.showKakaoLoginFailMessage() }
-//                else {
-//                    if let accessToken = oauthToken?.accessToken {
-//                        // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
-//                        print("TOKEN",accessToken)
-//                        self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
-//                        
-//                    }
-//                }
-//            }
-//        }
-//        else { // 웹으로 로그인해도 똑같이 처리되도록
-//            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
-//                if let _ = error { self.showKakaoLoginFailMessage() }
-//                else {
-//                    if let accessToken = oauthToken?.accessToken {
-//                        // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
-//                        print("TOKEN",accessToken)
-//                        self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
-//                    }
-//                    //성공해서 성공 VC로 이동
-//                }
-//            }
-//        }
+        if UserApi.isKakaoTalkLoginAvailable() {
+            // 카카오톡 로그인. api 호출 결과를 클로저로 전달.
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let accessToken = oauthToken?.accessToken {
+                    // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
+                    print("TOKEN", accessToken)
+                    self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
+                    
+                }
+            }
+        } else { // 웹으로 로그인해도 똑같이 처리되도록
+            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
+                if let accessToken = oauthToken?.accessToken {
+                    // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
+                    print("TOKEN", accessToken)
+                    self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
+                }
+            }
+        }
     }
     
     func showKakaoLoginFailMessage() {
