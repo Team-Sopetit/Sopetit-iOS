@@ -1,8 +1,82 @@
 //
-//  DailyView.swift
-//  Sopetit-iOS
+//  RoutineView.swift
 //
-//  Created by 고아라 on 2023/12/29.
+//  Created by Woo Jye Lee on 1/2/24.
 //
 
-import Foundation
+import UIKit
+import SnapKit
+
+final class DailyView: UIView {
+
+    // MARK: - Properties
+    
+    // MARK: - UI Components
+
+    let collectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 315, height: 136)
+        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        return view
+    }()
+    
+    // MARK: - Life Cycles
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setUI()
+        setHierarchy()
+        setLayout()
+        setAddTarget()
+        setRegisterCell()
+        
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - Extensions
+
+extension DailyView {
+
+    func setUI() {
+        self.backgroundColor = .white
+    }
+    
+    func setHierarchy() {
+        self.addSubviews(collectionView)
+    }
+    
+    func setLayout() {
+
+        collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+
+    }
+    
+    func setAddTarget() {
+
+    }
+    
+    @objc
+    func buttonTapped() {
+        
+    }
+    
+    func setRegisterCell() {
+        RoutineCollectionViewCell.register(target: collectionView)
+    }
+    
+    func setDataBind() {
+        
+    }
+    
+//    @objc private func didChangeValue(segment: UISegmentedControl) {
+//      self.shouldHideFirstView = segment.selectedSegmentIndex != 0
+//    }
+}

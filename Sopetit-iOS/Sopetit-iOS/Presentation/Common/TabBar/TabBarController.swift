@@ -38,6 +38,7 @@ private extension TabBarController {
 //        let dailyVC = UINavigationController(rootViewController: DailyViewController())
 //        let homeVC = HomeViewController()
 //        let happyVC = HappyRoutineViewController()
+        
         let dailyVC = UINavigationController(rootViewController: ViewController())
         let homeVC = ViewController()
         let happyVC = ViewController()
@@ -54,13 +55,13 @@ private extension TabBarController {
             tabs[$0.rawValue].tabBarItem.tag = $0.rawValue
         }
         
-        let tabBarItemTitles: [String] = ["데일리 루틴", "홈", "행복 루틴"]
+        let tabBarItemTitles: [String] = [I18N.TabBar.daily, I18N.TabBar.home, I18N.TabBar.happy]
         
         for (index, tabTitle) in tabBarItemTitles.enumerated() {
             let tabBarItem = TabBarItemType(rawValue: index)?.setTabBarItem()
             tabs[index].tabBarItem = tabBarItem
             tabs[index].tabBarItem.tag = index
-            tabs[index].title = tabTitle // Set the title for the tab bar item
+            tabs[index].title = tabTitle
         }
         
         setViewControllers(tabs, animated: false)
@@ -68,14 +69,13 @@ private extension TabBarController {
     }
     
     func setTabBarUI() {
-//        UITabBar.clearShadow()
         tabBar.backgroundColor = .white
         tabBar.tintColor = .black
         tabBar.layer.masksToBounds = false
-        tabBar.layer.shadowColor = UIColor.lightGray.cgColor
-        tabBar.layer.shadowOpacity = 1
-        tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
-        tabBar.layer.shadowRadius = 1
+//        tabBar.layer.shadowColor = UIColor.lightGray.cgColor
+//        tabBar.layer.shadowOpacity = 1
+//        tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        tabBar.layer.shadowRadius = 1
     }
     
     func getSafeAreaBottomHeight() -> CGFloat {

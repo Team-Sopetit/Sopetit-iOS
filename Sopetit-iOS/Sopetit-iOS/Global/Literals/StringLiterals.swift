@@ -22,4 +22,10 @@ enum I18N {
         static let delRightTitle = "삭제할래"
         static let logoutRightTitle = "로그아웃 할래"
     }
+    
+    enum TabBar {
+        static let daily = "데일리 루틴"
+        static let home = "홈"
+        static let happy = "행복 루틴"
+    }
 }
