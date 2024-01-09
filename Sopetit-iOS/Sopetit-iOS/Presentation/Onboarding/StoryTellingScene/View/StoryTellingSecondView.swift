@@ -1,5 +1,5 @@
 //
-//  StoryTellingFirstView.swift
+//  StoryTellingSecondView.swift
 //  Sopetit-iOS
 //
 //  Created by 고아라 on 2024/01/09.
@@ -9,27 +9,34 @@ import UIKit
 
 import SnapKit
 
-final class StoryTellingFirstView: UIView {
-    
+final class StoryTellingSecondView: UIView {
+
     // MARK: - UI Components
     
     private let backgroundView: UIImageView = {
         let back = UIImageView()
-        back.image = ImageLiterals.Onboarding.imgSpotlight1
+        back.image = ImageLiterals.Onboarding.imgSpotlight2
         back.contentMode = .scaleAspectFit
         return back
     }()
     
     private let girlImage: UIImageView = {
         let girl = UIImageView()
-        girl.image = ImageLiterals.Onboarding.imgGirl1
+        girl.image = ImageLiterals.Onboarding.imgGirl2
         girl.contentMode = .scaleAspectFit
         return girl
     }()
     
+    private let boxImage: UIImageView = {
+        let box = UIImageView()
+        box.image = ImageLiterals.Onboarding.imgBoxClosed
+        box.contentMode = .scaleAspectFit
+        return box
+    }()
+    
     lazy var nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle(I18N.Onboarding.firtButtonTitle, for: .normal)
+        button.setTitle(I18N.Onboarding.secondButtonTitle, for: .normal)
         button.setTitleColor(.Gray500, for: .normal)
         button.setBackgroundColor(.SoftieWhite, for: .normal)
         button.titleLabel?.font = .fontGuide(.bubble20)
@@ -62,7 +69,7 @@ final class StoryTellingFirstView: UIView {
 
 // MARK: - Extensions
 
-private extension StoryTellingFirstView {
+private extension StoryTellingSecondView {
 
     func setUI() {
         backgroundColor = .SoftieBack
@@ -70,7 +77,7 @@ private extension StoryTellingFirstView {
     
     func setHierarchy() {
         nextButton.addSubview(arrowImage)
-        addSubviews(girlImage, backgroundView, nextButton)
+        addSubviews(girlImage, boxImage, backgroundView, nextButton)
     }
     
     func setLayout() {
@@ -83,6 +90,13 @@ private extension StoryTellingFirstView {
             $0.leading.equalToSuperview().inset(20)
             $0.width.equalTo(210)
             $0.height.equalTo(360)
+        }
+        
+        boxImage.snp.makeConstraints {
+            $0.top.equalTo(girlImage.snp.top).offset(232)
+            $0.leading.equalTo(girlImage.snp.trailing).offset(53)
+            $0.width.equalTo(141)
+            $0.height.equalTo(120)
         }
         
         nextButton.snp.makeConstraints {

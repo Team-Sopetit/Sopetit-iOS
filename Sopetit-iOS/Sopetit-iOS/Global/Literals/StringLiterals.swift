@@ -22,4 +22,10 @@ enum I18N {
         static let delRightTitle = "삭제할래"
         static let logoutRightTitle = "로그아웃 할래"
     }
+    
+    enum Onboarding {
+        static let firtButtonTitle = "오늘도 고된 하루였어.."
+        static let secondButtonTitle = "어? 집 앞에 이건 뭐지?"
+        static let thirdButtonTitle = "한 번 열어볼까?"
+    }
 }

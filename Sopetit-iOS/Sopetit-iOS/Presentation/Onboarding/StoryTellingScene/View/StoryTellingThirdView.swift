@@ -1,5 +1,5 @@
 //
-//  StoryTellingFirstView.swift
+//  StoryTellingThirdView.swift
 //  Sopetit-iOS
 //
 //  Created by 고아라 on 2024/01/09.
@@ -9,27 +9,34 @@ import UIKit
 
 import SnapKit
 
-final class StoryTellingFirstView: UIView {
-    
+final class StoryTellingThirdView: UIView {
+
     // MARK: - UI Components
     
     private let backgroundView: UIImageView = {
         let back = UIImageView()
-        back.image = ImageLiterals.Onboarding.imgSpotlight1
+        back.image = ImageLiterals.Onboarding.imgSpotlight3
         back.contentMode = .scaleAspectFit
         return back
     }()
     
-    private let girlImage: UIImageView = {
+    private let doorImage: UIImageView = {
         let girl = UIImageView()
-        girl.image = ImageLiterals.Onboarding.imgGirl1
+        girl.image = ImageLiterals.Onboarding.imgDoor
         girl.contentMode = .scaleAspectFit
         return girl
     }()
     
+    private let boxImage: UIImageView = {
+        let box = UIImageView()
+        box.image = ImageLiterals.Onboarding.imgBoxClosed
+        box.contentMode = .scaleAspectFit
+        return box
+    }()
+    
     lazy var nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle(I18N.Onboarding.firtButtonTitle, for: .normal)
+        button.setTitle(I18N.Onboarding.thirdButtonTitle, for: .normal)
         button.setTitleColor(.Gray500, for: .normal)
         button.setBackgroundColor(.SoftieWhite, for: .normal)
         button.titleLabel?.font = .fontGuide(.bubble20)
@@ -62,15 +69,15 @@ final class StoryTellingFirstView: UIView {
 
 // MARK: - Extensions
 
-private extension StoryTellingFirstView {
-
+private extension StoryTellingThirdView {
+    
     func setUI() {
         backgroundColor = .SoftieBack
     }
     
     func setHierarchy() {
         nextButton.addSubview(arrowImage)
-        addSubviews(girlImage, backgroundView, nextButton)
+        addSubviews(doorImage, boxImage, backgroundView, nextButton)
     }
     
     func setLayout() {
@@ -78,11 +85,18 @@ private extension StoryTellingFirstView {
             $0.edges.equalToSuperview()
         }
         
-        girlImage.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(SizeLiterals.Screen.screenHeight * 218 / 812)
-            $0.leading.equalToSuperview().inset(20)
-            $0.width.equalTo(210)
-            $0.height.equalTo(360)
+        doorImage.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 104 / 812)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(211)
+            $0.height.equalTo(390)
+        }
+        
+        boxImage.snp.makeConstraints {
+            $0.bottom.equalTo(doorImage.snp.bottom).offset(32)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(141)
+            $0.height.equalTo(120)
         }
         
         nextButton.snp.makeConstraints {

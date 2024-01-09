@@ -78,6 +78,8 @@
 		A4832BAD2B4AF081007879FF /* BottomSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BAC2B4AF081007879FF /* BottomSheetType.swift */; };
 		A4832BB62B4D2560007879FF /* StoryTellingFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BB52B4D2560007879FF /* StoryTellingFirstView.swift */; };
 		A4832BB82B4D2573007879FF /* StoryTellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BB72B4D2573007879FF /* StoryTellingViewController.swift */; };
+		A4832BBD2B4D459B007879FF /* StoryTellingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BBC2B4D459B007879FF /* StoryTellingSecondView.swift */; };
+		A4832BBF2B4D48F0007879FF /* StoryTellingThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BBE2B4D48F0007879FF /* StoryTellingThirdView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +151,8 @@
 		A4832BAC2B4AF081007879FF /* BottomSheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetType.swift; sourceTree = "<group>"; };
 		A4832BB52B4D2560007879FF /* StoryTellingFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingFirstView.swift; sourceTree = "<group>"; };
 		A4832BB72B4D2573007879FF /* StoryTellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingViewController.swift; sourceTree = "<group>"; };
+		A4832BBC2B4D459B007879FF /* StoryTellingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingSecondView.swift; sourceTree = "<group>"; };
+		A4832BBE2B4D48F0007879FF /* StoryTellingThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingThirdView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -709,6 +713,8 @@
 			isa = PBXGroup;
 			children = (
 				A4832BB52B4D2560007879FF /* StoryTellingFirstView.swift */,
+				A4832BBC2B4D459B007879FF /* StoryTellingSecondView.swift */,
+				A4832BBE2B4D48F0007879FF /* StoryTellingThirdView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -853,6 +859,7 @@
 				A42C32D72B3EAC1300C4B477 /* MakeVibrate.swift in Sources */,
 				A42C32B92B3EAAE300C4B477 /* ColorLiterals.swift in Sources */,
 				A42C32A72B3EA9BF00C4B477 /* UserDefaultWrapper.swift in Sources */,
+				A4832BBD2B4D459B007879FF /* StoryTellingSecondView.swift in Sources */,
 				A42C33372B3EB01200C4B477 /* LoginViewController.swift in Sources */,
 				A42C32CB2B3EAB4B00C4B477 /* NSObject+.swift in Sources */,
 				A42C32CF2B3EAB7700C4B477 /* UIColor+.swift in Sources */,
@@ -869,6 +876,7 @@
 				A42C32C32B3EAB2400C4B477 /* UITextField+.swift in Sources */,
 				A42C32BF2B3EAB0E00C4B477 /* UIImage+.swift in Sources */,
 				A42C33002B3EAE3E00C4B477 /* HomeService.swift in Sources */,
+				A4832BBF2B4D48F0007879FF /* StoryTellingThirdView.swift in Sources */,
 				A42C32E52B3EAC8B00C4B477 /* GenericResponse.swift in Sources */,
 				A42C332F2B3EAFD500C4B477 /* OnboardingViewController.swift in Sources */,
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,
