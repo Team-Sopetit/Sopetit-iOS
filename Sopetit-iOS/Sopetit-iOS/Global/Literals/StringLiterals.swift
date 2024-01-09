@@ -27,6 +27,9 @@ enum I18N {
         static let firtButtonTitle = "오늘도 고된 하루였어.."
         static let secondButtonTitle = "어? 집 앞에 이건 뭐지?"
         static let thirdButtonTitle = "한 번 열어볼까?"
+        static let dollChoiceTitle = "어떤 친구와 함께 할까요?"
+        static let dollSubTitle = "한 번 선택한 인형은 바꿀 수 없어요"
+        static let buttonTitle = "이 친구와 함께 할래"
     }
     
     enum HappyRoutine {
