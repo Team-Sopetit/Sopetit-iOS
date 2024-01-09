@@ -32,6 +32,7 @@ enum FontLevel {
     case bubble14
     case bubble16
     case bubble18
+    case bubble20
 }
 
 extension FontLevel {
@@ -42,14 +43,14 @@ extension FontLevel {
             return FontName.PretendardSemiBold.rawValue
         case .head2, .head4, .body2, .body4, .caption2, .caption4:
             return FontName.PretendardMedium.rawValue
-        case .bubble14, .bubble16, .bubble18:
+        case .bubble14, .bubble16, .bubble18, .bubble20:
             return FontName.OmyuPretty.rawValue
         }
     }
     
     var fontSize: CGFloat {
         switch self {
-        case .head1, .head2:
+        case .head1, .head2, .bubble20:
             return 20
         case .head3, .head4, .bubble18:
             return 18
