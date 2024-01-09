@@ -30,9 +30,9 @@ final class LoginView: UIView {
     
     private let bubbleLabel: UILabel = {
         let label = UILabel()
-        label.text = "회원가입하고 봉인해제"
+        label.text = I18N.Login.bubbleTitle
         label.textColor = .Gray100
-        label.font = .fontGuide(.body3)
+        label.font = .fontGuide(.caption1)
         return label
     }()
     
@@ -50,7 +50,7 @@ final class LoginView: UIView {
     
     private let kakaoLoginLabel: UILabel = {
         let label = UILabel()
-        label.text = "카카오로 시작하기"
+        label.text = I18N.Login.kakaoLoginTitle
         label.textColor = .black
         label.font = .fontGuide(.body2)
         label.backgroundColor = .SoftieYellow
@@ -69,7 +69,7 @@ final class LoginView: UIView {
     
     private let appleLoginLabel: UILabel = {
         let label = UILabel()
-        label.text = "Apple로 시작하기"
+        label.text = I18N.Login.appleLoginTitle
         label.textColor = .black
         label.font = .fontGuide(.body2)
         label.backgroundColor = .SoftieWhite
@@ -131,7 +131,7 @@ extension LoginView {
         
         bubbleLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(8)
+            $0.top.equalToSuperview().offset(10)
         }
         
         boxImageView.snp.makeConstraints {
