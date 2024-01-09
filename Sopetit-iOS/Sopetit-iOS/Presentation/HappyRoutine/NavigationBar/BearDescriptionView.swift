@@ -38,11 +38,8 @@ final class BearDescriptionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
-        setRegisterCell()
     }
     
     @available(*, unavailable)
@@ -54,10 +51,6 @@ final class BearDescriptionView: UIView {
 // MARK: - Extensions
 
 extension BearDescriptionView {
-
-    func setUI() {
-        
-    }
     
     func setHierarchy() {
         self.addSubviews(faceImageView, speechImageView, speechLabel)
@@ -77,22 +70,5 @@ extension BearDescriptionView {
             $0.centerY.equalTo(speechImageView.snp.centerY)
             $0.trailing.equalTo(speechImageView.snp.trailing).offset(-28)
         }
-    }
-    
-    func setAddTarget() {
-
-    }
-    
-    @objc
-    func buttonTapped() {
-        
-    }
-    
-    func setRegisterCell() {
-        
-    }
-    
-    func setDataBind() {
-        
     }
 }

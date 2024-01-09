@@ -184,23 +184,22 @@ extension CustomNavigationBarView {
     }
     
     func setAddTarget() {
-        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-        cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
-        editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(isTapped), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(isTapped), for: .touchUpInside)
+        editButton.addTarget(self, action: #selector(isTapped), for: .touchUpInside)
     }
     
     @objc
-    func backButtonTapped() {
-        backButtonAction?()
-    }
-    
-    @objc
-    func cancelButtonTapped() {
-        cancelButtonAction?()
-    }
-    
-    @objc
-    func editButtonTapped() {
-        editButtonAction?()
+    func isTapped(_ sender: UIButton) {
+        switch sender {
+        case backButton:
+            backButtonAction?()
+        case cancelButton:
+            cancelButtonAction?()
+        case editButton:
+            editButtonAction?()
+        default:
+            break
+        }
     }
 }
