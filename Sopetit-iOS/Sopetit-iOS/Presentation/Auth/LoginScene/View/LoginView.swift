@@ -8,40 +8,43 @@
 import UIKit
 
 import SnapKit
+import KakaoSDKAuth
+import KakaoSDKUser
+import AuthenticationServices
 
 final class LoginView: UIView {
     
     // MARK: - Properties
     
-    private let softieLabel: UILabel = {
-        let label = UILabel()
-        label.text = "softie"
-        label.font = .fontGuide(.body1)
-        return label
+    private let softieImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.Login.icLogoLogin
+        return imageView
     }()
     
     private let bubbleImageView: UIImageView = {
         let imageView = UIImageView()
-         imageView.image = UIImage(systemName: "apple.logo")
-         return imageView
+        imageView.image = ImageLiterals.Login.imgSpeechDark
+        return imageView
+    }()
+    
+    private let bubbleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "회원가입하고 봉인해제"
+        label.textColor = .Gray100
+        label.font = .fontGuide(.body3)
+        return label
     }()
     
     private let boxImageView: UIImageView = {
         let imageView = UIImageView()
-         imageView.image = UIImage(systemName: "apple.logo")
-         return imageView
-    }()
-    
-    private let kakaoLoginButtonView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .yellow
-        view.layer.cornerRadius = 6
-        return view
+        imageView.image = ImageLiterals.Onboarding.bearBrownDown
+        return imageView
     }()
     
     private let kakaoImageView: UIImageView = {
-       let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "apple.logo")
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.Login.icKakao
         return imageView
     }()
     
@@ -50,21 +53,17 @@ final class LoginView: UIView {
         label.text = "카카오로 시작하기"
         label.textColor = .black
         label.font = .fontGuide(.body2)
+        label.backgroundColor = .yellow
+        label.textAlignment = .center
+        label.layer.cornerRadius = 6
+        label.clipsToBounds = true
+        label.isUserInteractionEnabled = true
         return label
     }()
     
-    private let appleLoginButtonView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .SoftieWhite
-        view.layer.cornerRadius = 6
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.borderWidth = 1
-        return view
-    }()
-    
     private let appleImageView: UIImageView = {
-       let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "apple.logo")
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.Login.icApple
         return imageView
     }()
     
@@ -73,11 +72,17 @@ final class LoginView: UIView {
         label.text = "Apple로 시작하기"
         label.textColor = .black
         label.font = .fontGuide(.body2)
+        label.backgroundColor = .SoftieWhite
+        label.textAlignment = .center
+        label.layer.cornerRadius = 6
+        label.layer.borderColor = UIColor.black.cgColor
+        label.layer.borderWidth = 1
+        label.clipsToBounds = true
+        label.isUserInteractionEnabled = true
         return label
     }()
     
     // MARK: - UI Components
-    
     
     // MARK: - Life Cycles
     
@@ -107,66 +112,68 @@ extension LoginView {
     }
     
     func setHierarchy() {
-        self.addSubviews(softieLabel, bubbleImageView, boxImageView, kakaoLoginButtonView, appleLoginButtonView)
-        kakaoLoginButtonView.addSubviews(kakaoImageView, kakaoLoginLabel)
-        appleLoginButtonView.addSubviews(appleImageView, appleLoginLabel)
+        self.addSubviews(softieImageView, bubbleImageView, boxImageView, kakaoLoginLabel, kakaoImageView, appleLoginLabel, appleImageView)
+        bubbleImageView.addSubview(bubbleLabel)
     }
     
     func setLayout() {
-        softieLabel.snp.makeConstraints {
+        softieImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().inset(187)
+            $0.top.equalToSuperview().inset(SizeLiterals.Screen.screenHeight * 187 / 812)
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 173 / 375)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 52 / 812)
         }
         
         bubbleImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(boxImageView.snp.top).offset(-10)
+            $0.bottom.equalTo(boxImageView.snp.top)
+        }
+        
+        bubbleLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(8)
         }
         
         boxImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(kakaoLoginButtonView.snp.top).offset(-44)
-        }
-        
-        kakaoLoginButtonView.snp.makeConstraints {
-            $0.leading.trailing.equalTo(appleLoginButtonView)
-            $0.bottom.equalTo(appleLoginButtonView.snp.top).offset(-16)
-            $0.height.equalTo(45)
-        }
-        
-        kakaoImageView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().inset(20)
-            $0.size.equalTo(18)
+            $0.bottom.equalTo(kakaoLoginLabel.snp.top).offset(-44)
         }
         
         kakaoLoginLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(appleLoginLabel.snp.top).offset(-16)
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 333 / 375)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 45 / 812)
         }
         
-        appleLoginButtonView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(75)
-            $0.height.equalTo(45)
-        }
-        
-        appleImageView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().inset(20)
-            $0.size.equalTo(18)
+        kakaoImageView.snp.makeConstraints {
+            $0.centerY.equalTo(kakaoLoginLabel)
+            $0.leading.equalTo(kakaoLoginLabel.snp.leading).offset(22)
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 18 / 375)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 18 / 812)
         }
         
         appleLoginLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(75)
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 333 / 375)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 45 / 812)
+        }
+        
+        appleImageView.snp.makeConstraints {
+            $0.centerY.equalTo(appleLoginLabel)
+            $0.leading.equalTo(appleLoginLabel.snp.leading).offset(22)
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 20 / 375)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 22 / 812)
         }
     }
     
     func setGestureRecognizers() {
         let kakaoLogintapGesture = UITapGestureRecognizer(target: self, action: #selector(kakaoLoginButtonTapped(_:)))
-        kakaoLoginButtonView.addGestureRecognizer(kakaoLogintapGesture)
+        kakaoLoginLabel.addGestureRecognizer(kakaoLogintapGesture)
         
         let appleLogintapGesture = UITapGestureRecognizer(target: self, action: #selector(appleLoginButtonTapped(_:)))
-        appleLoginButtonView.addGestureRecognizer(appleLogintapGesture)
+        appleLoginLabel.addGestureRecognizer(appleLogintapGesture)
     }
     
     func setAddTarget() {
@@ -181,8 +188,41 @@ extension LoginView {
     @objc
     func kakaoLoginButtonTapped(_ sender: UITapGestureRecognizer) {
         print("카카오 로그인 버튼 탭함.")
-        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "KAKAO_NATIVE_APP_KEY") as? String else { return }
-        print(apiKey)
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            // 카카오톡 로그인. api 호출 결과를 클로저로 전달.
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let _ = error { self.showKakaoLoginFailMessage() }
+                else {
+                    if let accessToken = oauthToken?.accessToken {
+                        // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
+                        print("TOKEN",accessToken)
+                        self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
+                        
+                    }
+                }
+            }
+        }
+        else { // 웹으로 로그인해도 똑같이 처리되도록
+            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
+                if let _ = error { self.showKakaoLoginFailMessage() }
+                else {
+                    if let accessToken = oauthToken?.accessToken {
+                        // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
+                        print("TOKEN",accessToken)
+                        self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
+                    }
+                    //성공해서 성공 VC로 이동
+                }
+            }
+        }
+    }
+    
+    func showKakaoLoginFailMessage() {
+        print("test")
+    }
+    
+    func postSocialLoginData(socialToken: String, socialType: String, email: String = "") {
+        print("test")
     }
     
     @objc
