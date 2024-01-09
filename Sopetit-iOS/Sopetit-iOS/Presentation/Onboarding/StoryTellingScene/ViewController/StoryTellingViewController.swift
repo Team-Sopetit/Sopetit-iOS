@@ -9,56 +9,53 @@ import UIKit
 
 final class StoryTellingViewController: UIViewController {
     
-    // MARK: - Properties
-    
-    
     // MARK: - UI Components
     
-    
+    private let firstView = StoryTellingFirstView()
+    private let secondView = StoryTellingSecondView()
+    private let thirdView = StoryTellingThirdView()
+
     // MARK: - Life Cycles
     
     override func loadView() {
         super.loadView()
         
+        view = firstView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAPI()
-        setUI()
-        setHierarchy()
-        setLayout()
-        setDelegate()
+        setAddTarget()
     }
 }
 
 // MARK: - Extensions
 
 extension StoryTellingViewController {
-
     func setUI() {
-        
+        self.navigationController?.navigationBar.isHidden = true
     }
     
-    func setHierarchy() {
-        
+    func setAddTarget() {
+        firstView.nextButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        secondView.nextButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        thirdView.nextButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
-    func setLayout() {
-        
-    }
-    
-    func setDelegate() {
-        
-    }
-}
-
-// MARK: - Network
-
-extension StoryTellingViewController {
-
-    func getAPI() {
-        
+    @objc
+    func buttonTapped(_ sender: UIButton) {
+        switch sender {
+        case firstView.nextButton:
+            self.view = secondView
+            self.viewWillLayoutSubviews()
+        case secondView.nextButton:
+            self.view = thirdView
+            self.viewWillLayoutSubviews()
+        case thirdView.nextButton:
+            print("3")
+        default:
+            break
+        }
     }
 }
