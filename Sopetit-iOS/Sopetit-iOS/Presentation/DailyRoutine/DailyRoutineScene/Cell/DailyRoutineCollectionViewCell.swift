@@ -14,6 +14,12 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
     static let isFromNib: Bool = false
     weak var delegate: MyCellDelegate?
     var status = 0
+    static var sharedVariable: Int = 0 {
+        didSet {
+            NotificationCenter.default.post(name: Notification.Name("SharedVariableDidChange"), object: nil)
+        }
+    }
+
     // MARK: - UI Components
     
     lazy var imageView: UIImageView = {
@@ -82,6 +88,11 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
     
     @objc
     func checkboxTapped(sender: UIButton) {
+        if sender.isSelected {
+            DailyRoutineCollectionViewCell.sharedVariable-=1
+        } else {
+            DailyRoutineCollectionViewCell.sharedVariable+=1
+        }
         sender.isSelected = !sender.isSelected
     }
     

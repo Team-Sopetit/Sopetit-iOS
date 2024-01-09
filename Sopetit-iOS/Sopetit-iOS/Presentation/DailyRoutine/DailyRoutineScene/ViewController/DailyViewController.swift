@@ -14,21 +14,62 @@ protocol MyCellDelegate: AnyObject {
 final class DailyViewController: UIViewController {
     
     // MARK: - Properties
-    
     let dummy = DailyEntity.routineDummy()
     var status: Int = 0
+    
+    override var isEditing: Bool {
+        didSet {
+            // isEditing 상태에 따라 셀들을 업데이트
+            updateCellsForEditing()
+        }
+    }
     
     // MARK: - UI Components
     private let routineView = DailyView()
     private lazy var collectionview = routineView.collectionView
     private let topView = DailyTopView()
+    private let customNavigationBar = CustomNavigationBarView()
     let exampleBottom = BottomSheetViewController(bottomStyle: .dailyCompleteBottom)
+    
+    func setupCustomNavigationBar() {
+        // 네비게이션 바의 제목 설정
+        customNavigationBar.isLeftTitleLabelIncluded = "데일리 루틴"
+        customNavigationBar.isLeftTitleViewIncluded = true
+
+        // 네비게이션 바의 뒤로 가기 버튼 설정
+        customNavigationBar.isBackButtonIncluded = false
+
+        // 네비게이션 바의 취소 버튼 설정
+        customNavigationBar.isCancelButtonIncluded = false
+
+        // 네비게이션 바의 편집 버튼 설정
+        customNavigationBar.isEditButtonIncluded = true
+        customNavigationBar.editButtonAction = {
+            // 편집 버튼이 눌렸을 때의 동작
+            print("Edit button tapped!")
+            self.isEditing.toggle()
+            self.deleteLabel.isHidden.toggle()
+        }
+
+    }
+    
+    lazy var deleteLabel: UIButton = {
+        let button = UIButton()
+        button.setTitle("0개 삭제", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .fontGuide(.body1)
+        button.backgroundColor = .SoftieRed
+        button.layer.cornerRadius = 12
+        button.isHidden = true
+        return button
+    }()
     
     // MARK: - Life Cycles
     
     override func loadView() {
         super.loadView()
         
+        setupCustomNavigationBar()
     }
     
     override func viewDidLoad() {
@@ -38,6 +79,9 @@ final class DailyViewController: UIViewController {
         setHierarchy()
         setLayout()
         setDelegate()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDeleteLabel), name: Notification.Name("SharedVariableDidChange"), object: nil)
+
     }
 }
 
@@ -51,18 +95,23 @@ extension DailyViewController {
     }
     
     func setHierarchy() {
-        self.view.addSubviews(topView, collectionview)
+        self.view.addSubviews(customNavigationBar, collectionview, deleteLabel)
     }
     
     func setLayout() {
-        topView.snp.makeConstraints {
+        customNavigationBar.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.height.equalTo(40)
         }
         collectionview.snp.makeConstraints {
-            $0.top.equalTo(topView.snp.bottom)
+            $0.top.equalTo(customNavigationBar.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
+        }
+        deleteLabel.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(17)
+            $0.height.equalTo(56)
         }
     }
     
@@ -70,6 +119,20 @@ extension DailyViewController {
         collectionview.delegate = self
         collectionview.dataSource = self
         exampleBottom.buttonDelegate = self
+    }
+    
+    private func updateCellsForEditing() {
+        for cell in collectionview.visibleCells {
+            if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                dailyCell.checkBox.isHidden = !isEditing
+            }
+        }
+    }
+    
+    @objc func updateDeleteLabel() {
+        let count = DailyRoutineCollectionViewCell.sharedVariable
+        let title = "\(count)개 삭제"
+        deleteLabel.setTitle(title, for: .normal)
     }
 }
 
@@ -90,7 +153,6 @@ extension DailyViewController: UICollectionViewDataSource, MyCellDelegate {
         let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
         cell.setDatabind(model: dummy[indexPath.item])
         cell.delegate = self
-//        print(indexPath)
         cell.tag = indexPath.item
         return cell
     }
