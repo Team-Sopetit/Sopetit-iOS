@@ -29,25 +29,46 @@ final class RoutineCollectionViewCell: UICollectionViewCell, UICollectionViewReg
     
     lazy var dateLabel: UILabel = {
         let label = UILabel()
+        label.font = .fontGuide(.caption1)
+        label.textColor = .Gray300
         return label
     }()
     
     lazy var routineLabel: UILabel = {
         let label = UILabel()
+        label.font = .fontGuide(.body1)
+        label.textColor = .Gray700
         return label
     }()
     
     lazy var achieveButton: UIButton = {
         let button = UIButton()
         button.setTitle("완료하기", for: .normal)
-        button.setTitle("달성 완료", for: .selected)
         button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.lightGray, for: .selected)
+        button.titleLabel?.font = .fontGuide(.body4)
         button.backgroundColor = .SoftieMain1
         button.layer.cornerRadius = 10 // 테두리를 둥글게 만들기 위한 코너 반지름 설정
         button.clipsToBounds = true
+        button.addTarget(self, action: #selector(onTapButton), for: .touchUpInside)
         return button
     }()
+    
+    @objc
+    func onTapButton(sender: UIButton) {
+        print("Button was tapped.")
+        
+        if sender.isSelected {
+            sender.isSelected = false
+            sender.setTitle("완료하기", for: .normal)
+            sender.setTitleColor(UIColor.white, for: .normal)
+            sender.backgroundColor = UIColor.SoftieMain1
+        } else {
+            sender.isSelected = true
+            sender.setTitle("달성 완료", for: .normal)
+            sender.setTitleColor(UIColor.Gray300, for: .normal)
+            sender.backgroundColor = UIColor.Gray100
+        }
+    }
     
     // MARK: - Life Cycles
     
@@ -100,11 +121,12 @@ extension RoutineCollectionViewCell {
         achieveButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().inset(16)
+            $0.height.equalTo(38)
         }
     }
     
     func setDatabind(model: DailyEntity) {
-        self.dateLabel.text = "\(model.dateLabel)일 달성중"
+        self.dateLabel.text = "\(model.dateLabel)일 달성 중"
         self.routineLabel.text = model.routineLabel
     }
 }

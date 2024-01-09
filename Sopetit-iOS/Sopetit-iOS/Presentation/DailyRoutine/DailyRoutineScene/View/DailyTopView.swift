@@ -13,18 +13,20 @@ final class DailyTopView: UIView {
 
     // MARK: - Properties
     
-    
     // MARK: - UI Components
     
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "데일리 루틴"
-        label.textColor = .black
+        label.textColor = .Gray700
+        label.font = .fontGuide(.head3)
         return label
     }()
     let editButton: UIButton = {
         let button = UIButton()
         button.setTitle("편집", for: .normal)
+        button.setTitleColor(.Gray400, for: .normal)
+        button.titleLabel?.font = .fontGuide(.body4)
         return button
     }()
     
@@ -59,11 +61,11 @@ extension DailyTopView {
     }
     
     func setLayout() {
-        self.snp.makeConstraints() {
-            $0.leading.trailing.equalToSuperview()
-            $0.top.equalToSuperview()
-            $0.height.equalTo(40)
-        }
+//        self.snp.makeConstraints() {
+//            $0.leading.trailing.equalToSuperview()
+//            $0.top.equalToSuperview()
+//            $0.height.equalTo(40)
+//        }
         titleLabel.snp.makeConstraints() {
             $0.leading.equalToSuperview().inset(20)
         }

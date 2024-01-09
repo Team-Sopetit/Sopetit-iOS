@@ -15,8 +15,9 @@ final class DailyView: UIView {
 
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 315, height: 136)
+        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 40), height: 136)
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        view.backgroundColor = .SoftieBack
         return view
     }()
     
@@ -53,10 +54,6 @@ extension DailyView {
     
     func setLayout() {
 
-        collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-
     }
     
     func setAddTarget() {
@@ -75,8 +72,5 @@ extension DailyView {
     func setDataBind() {
         
     }
-    
-//    @objc private func didChangeValue(segment: UISegmentedControl) {
-//      self.shouldHideFirstView = segment.selectedSegmentIndex != 0
-//    }
+
 }

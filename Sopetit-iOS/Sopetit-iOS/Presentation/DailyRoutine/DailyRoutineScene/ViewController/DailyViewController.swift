@@ -23,7 +23,7 @@ final class DailyViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        self.view = routineView
+        // self.view = routineView
     }
     
     override func viewDidLoad() {
@@ -41,14 +41,23 @@ final class DailyViewController: UIViewController {
 extension DailyViewController {
 
     func setUI() {
-        view.backgroundColor = .SoftieBack
+        self.view.backgroundColor = .SoftieBack
     }
     
     func setHierarchy() {
+        self.view.addSubviews(topView, collectionview)
     }
     
     func setLayout() {
-        
+        topView.snp.makeConstraints() {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
+            $0.height.equalTo(40)
+        }
+        collectionview.snp.makeConstraints() {
+            $0.top.equalTo(topView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
     }
     
     func setDelegate() {
