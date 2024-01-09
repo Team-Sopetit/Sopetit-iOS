@@ -15,12 +15,14 @@ final class BearDescriptionView: UIView {
     private let faceImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.Onboarding.imgFaceBrown
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     private let speechImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.Onboarding.svgSpeechLong
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     

@@ -46,6 +46,7 @@ final class HappyRoutineView: UIView {
     private let bearPlusImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.HappyRoutine.imgHappyAdd
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
