@@ -76,6 +76,8 @@
 		A4832BA42B4A5C37007879FF /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BA32B4A5C37007879FF /* BottomSheetViewController.swift */; };
 		A4832BAB2B4ACF09007879FF /* omyu-pretty.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4832BAA2B4ACF09007879FF /* omyu-pretty.ttf */; };
 		A4832BAD2B4AF081007879FF /* BottomSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BAC2B4AF081007879FF /* BottomSheetType.swift */; };
+		A4832BB62B4D2560007879FF /* StoryTellingFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BB52B4D2560007879FF /* StoryTellingFirstView.swift */; };
+		A4832BB82B4D2573007879FF /* StoryTellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BB72B4D2573007879FF /* StoryTellingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +148,8 @@
 		A4832BA32B4A5C37007879FF /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		A4832BAA2B4ACF09007879FF /* omyu-pretty.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "omyu-pretty.ttf"; sourceTree = "<group>"; };
 		A4832BAC2B4AF081007879FF /* BottomSheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetType.swift; sourceTree = "<group>"; };
+		A4832BB52B4D2560007879FF /* StoryTellingFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingFirstView.swift; sourceTree = "<group>"; };
+		A4832BB72B4D2573007879FF /* StoryTellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +449,7 @@
 		A42C33072B3EAE8900C4B477 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				A4832BB22B4D2520007879FF /* StoryTellingScene */,
 				A42C333C2B3EB05100C4B477 /* OnboardingScene */,
 			);
 			path = Onboarding;
@@ -685,6 +690,31 @@
 			path = BottomSheet;
 			sourceTree = "<group>";
 		};
+		A4832BB22B4D2520007879FF /* StoryTellingScene */ = {
+			isa = PBXGroup;
+			children = (
+				A4832BB42B4D2549007879FF /* View */,
+				A4832BB32B4D2540007879FF /* ViewController */,
+			);
+			path = StoryTellingScene;
+			sourceTree = "<group>";
+		};
+		A4832BB32B4D2540007879FF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4832BB72B4D2573007879FF /* StoryTellingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4832BB42B4D2549007879FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4832BB52B4D2560007879FF /* StoryTellingFirstView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -804,6 +834,7 @@
 				A42C32FC2B3EAE0000C4B477 /* HappinessEntity.swift in Sources */,
 				A42C33292B3EAFA800C4B477 /* HappyRoutineViewController.swift in Sources */,
 				A42C32D52B3EABAF00C4B477 /* UICollectionViewRegisterable.swift in Sources */,
+				A4832BB82B4D2573007879FF /* StoryTellingViewController.swift in Sources */,
 				A42C32BB2B3EAAEA00C4B477 /* FontLiterals.swift in Sources */,
 				A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */,
 				A42C33122B3EAF1A00C4B477 /* HomeViewController.swift in Sources */,
@@ -832,6 +863,7 @@
 				A42C32D32B3EABA300C4B477 /* UITableViewRegisterable.swift in Sources */,
 				A42C32A52B3EA9A000C4B477 /* UserManager.swift in Sources */,
 				A42C33702B42DAAB00C4B477 /* StringLiterals.swift in Sources */,
+				A4832BB62B4D2560007879FF /* StoryTellingFirstView.swift in Sources */,
 				A42C32C72B3EAB3B00C4B477 /* UIViewController+.swift in Sources */,
 				A4832BAD2B4AF081007879FF /* BottomSheetType.swift in Sources */,
 				A42C32C32B3EAB2400C4B477 /* UITextField+.swift in Sources */,
@@ -993,6 +1025,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1025,6 +1058,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
