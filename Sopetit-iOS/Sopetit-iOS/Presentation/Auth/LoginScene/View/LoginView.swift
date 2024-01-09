@@ -14,17 +14,19 @@ import AuthenticationServices
 
 final class LoginView: UIView {
     
-    // MARK: - Properties
+    // MARK: - UI Components
     
     private let softieImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.Login.icLogoLogin
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     private let bubbleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.Login.imgSpeechDark
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -39,12 +41,14 @@ final class LoginView: UIView {
     private let boxImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.Onboarding.bearBrownDown
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     private let kakaoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.Login.icKakao
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -64,6 +68,7 @@ final class LoginView: UIView {
     private let appleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.Login.icApple
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -82,8 +87,6 @@ final class LoginView: UIView {
         return label
     }()
     
-    // MARK: - UI Components
-    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -92,8 +95,6 @@ final class LoginView: UIView {
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
-        setRegisterCell()
         setGestureRecognizers()
     }
     
@@ -175,15 +176,6 @@ extension LoginView {
         appleLoginLabel.addGestureRecognizer(appleLogintapGesture)
     }
     
-    func setAddTarget() {
-        
-    }
-    
-    @objc
-    func buttonTapped() {
-        
-    }
-    
     @objc
     func kakaoLoginButtonTapped(_ sender: UITapGestureRecognizer) {
         print("카카오 로그인 버튼 탭함.")
@@ -219,13 +211,5 @@ extension LoginView {
     @objc
     func appleLoginButtonTapped(_ sender: UITapGestureRecognizer) {
         print("애플 로그인 버튼 탭함.")
-    }
-    
-    func setRegisterCell() {
-        
-    }
-    
-    func setDataBind() {
-        
     }
 }
