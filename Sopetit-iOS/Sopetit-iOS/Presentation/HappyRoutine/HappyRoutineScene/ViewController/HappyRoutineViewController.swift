@@ -10,9 +10,9 @@ import UIKit
 final class HappyRoutineViewController: UIViewController {
     
     // MARK: - Properties
-    private let happyRoutineView = HappyRoutineView()
     
-    // MARK: - UI Components
+    private let happyRoutineView = HappyRoutineView()
+    private let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCardView(_:)))
     
     // MARK: - Life Cycles
     
@@ -22,12 +22,8 @@ final class HappyRoutineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getAPI()
-        setUI()
-        setHierarchy()
-        setLayout()
-        setDelegate()
+
+        setTapGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,28 +35,15 @@ final class HappyRoutineViewController: UIViewController {
 
 extension HappyRoutineViewController {
 
-    func setUI() {
+    func setTapGesture() {
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCardView(_:)))
+        
+        happyRoutineView.emptyHappyRoutineView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    func setHierarchy() {
-        
-    }
-    
-    func setLayout() {
-        
-    }
-    
-    func setDelegate() {
-        
-    }
-}
-
-// MARK: - Network
-
-extension HappyRoutineViewController {
-
-    func getAPI() {
-        
+    @objc
+    func didTapCardView(_ sender: UITapGestureRecognizer) {
+        print("did tap card view")
     }
 }

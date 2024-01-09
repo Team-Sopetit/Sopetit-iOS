@@ -11,8 +11,6 @@ import SnapKit
 
 final class HappyRoutineView: UIView {
 
-    // MARK: - Properties
-    
     // MARK: - UI Components
     
     private let navigationBar: CustomNavigationBarView = {
@@ -23,13 +21,14 @@ final class HappyRoutineView: UIView {
     }()
     
     private let bearDescriptionView = BearDescriptionView()
-    private let emptyHappyRoutineView: UIView = {
+    lazy var emptyHappyRoutineView: UIView = {
         let view = UIView()
         view.backgroundColor = .SoftieWhite
         view.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner])
         view.layer.masksToBounds = true
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.Gray100.cgColor
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -39,7 +38,7 @@ final class HappyRoutineView: UIView {
         label.font = .fontGuide(.body2)
         label.textColor = .Gray300
         label.setLineSpacing(lineSpacing: 4)
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         label.textAlignment = .center
         return label
     }()
@@ -58,8 +57,6 @@ final class HappyRoutineView: UIView {
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
-        setRegisterCell()
     }
     
     @available(*, unavailable)
@@ -110,22 +107,5 @@ extension HappyRoutineView {
             $0.top.equalTo(emptyTextLabel.snp.bottom).offset(64)
             $0.centerX.equalToSuperview()
         }
-    }
-    
-    func setAddTarget() {
-
-    }
-    
-    @objc
-    func buttonTapped() {
-        
-    }
-    
-    func setRegisterCell() {
-        
-    }
-    
-    func setDataBind() {
-        
     }
 }

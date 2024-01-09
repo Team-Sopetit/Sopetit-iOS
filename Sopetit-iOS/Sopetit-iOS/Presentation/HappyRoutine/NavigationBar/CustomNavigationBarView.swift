@@ -90,7 +90,7 @@ final class CustomNavigationBarView: UIView {
     
     lazy var cancelButton: UIButton = {
         let button = UIButton()
-        button.setTitle("취소", for: .normal)
+        button.setTitle(I18N.CustomNavi.cancel, for: .normal)
         button.setTitleColor(.Gray400, for: .normal)
         button.titleLabel?.font = .fontGuide(.body4)
         button.isHidden = true
@@ -99,7 +99,7 @@ final class CustomNavigationBarView: UIView {
     
     lazy var editButton: UIButton = {
         let button = UIButton()
-        button.setTitle("편집", for: .normal)
+        button.setTitle(I18N.CustomNavi.edit, for: .normal)
         button.setTitleColor(.Gray400, for: .normal)
         button.titleLabel?.font = .fontGuide(.body4)
         button.isHidden = true
