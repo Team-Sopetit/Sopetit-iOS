@@ -4,6 +4,8 @@
 
 ## User settings
 xcuserdata/
+*.xcconfig
+.swp
 
 ### macOS ###
 # General

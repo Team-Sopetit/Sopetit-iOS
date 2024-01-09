@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0084F19B2B4A895700F87860 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19A2B4A895700F87860 /* LoginView.swift */; };
+		0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19C2B4A896500F87860 /* LoginViewController.swift */; };
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
 		A42C327C2B3DB8F400C4B477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */; };
 		A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327D2B3DB8F400C4B477 /* SceneDelegate.swift */; };
@@ -65,8 +67,6 @@
 		A42C33292B3EAFA800C4B477 /* HappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33282B3EAFA800C4B477 /* HappyRoutineViewController.swift */; };
 		A42C332D2B3EAFCC00C4B477 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C332C2B3EAFCC00C4B477 /* OnboardingView.swift */; };
 		A42C332F2B3EAFD500C4B477 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C332E2B3EAFD500C4B477 /* OnboardingViewController.swift */; };
-		A42C33342B3EB00200C4B477 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33332B3EB00200C4B477 /* LoginView.swift */; };
-		A42C33372B3EB01200C4B477 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33362B3EB01200C4B477 /* LoginViewController.swift */; };
 		A42C333A2B3EB02A00C4B477 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33392B3EB02A00C4B477 /* TabBarController.swift */; };
 		A42C333F2B3EB08500C4B477 /* HappyRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C333E2B3EB08500C4B477 /* HappyRoutineCollectionViewCell.swift */; };
 		A42C33642B413F2100C4B477 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A42C33622B413F2100C4B477 /* Pretendard-SemiBold.otf */; };
@@ -81,6 +81,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0084F19A2B4A895700F87860 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0084F19C2B4A896500F87860 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		A42C32782B3DB8F400C4B477 /* Sopetit-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sopetit-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,8 +139,6 @@
 		A42C33282B3EAFA800C4B477 /* HappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineViewController.swift; sourceTree = "<group>"; };
 		A42C332C2B3EAFCC00C4B477 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A42C332E2B3EAFD500C4B477 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		A42C33332B3EB00200C4B477 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		A42C33362B3EB01200C4B477 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A42C33392B3EB02A00C4B477 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A42C333E2B3EB08500C4B477 /* HappyRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		A42C33622B413F2100C4B477 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
@@ -193,6 +194,7 @@
 				A42C32892B3DB8F500C4B477 /* Info.plist */,
 				A42C327F2B3DB8F400C4B477 /* ViewController.swift */,
 				A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */,
+				0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */,
 			);
 			path = "Sopetit-iOS";
 			sourceTree = "<group>";
@@ -615,7 +617,7 @@
 		A42C33312B3EAFF100C4B477 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A42C33362B3EB01200C4B477 /* LoginViewController.swift */,
+				0084F19C2B4A896500F87860 /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -623,7 +625,7 @@
 		A42C33322B3EAFFA00C4B477 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A42C33332B3EB00200C4B477 /* LoginView.swift */,
+				0084F19A2B4A895700F87860 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -836,7 +838,6 @@
 				A42C32BB2B3EAAEA00C4B477 /* FontLiterals.swift in Sources */,
 				A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */,
 				A42C33122B3EAF1A00C4B477 /* HomeViewController.swift in Sources */,
-				A42C33342B3EB00200C4B477 /* LoginView.swift in Sources */,
 				A42C32802B3DB8F400C4B477 /* ViewController.swift in Sources */,
 				A42C32E32B3EAC8200C4B477 /* NetworkResult.swift in Sources */,
 				A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */,
@@ -853,7 +854,6 @@
 				A42C32D72B3EAC1300C4B477 /* MakeVibrate.swift in Sources */,
 				A42C32B92B3EAAE300C4B477 /* ColorLiterals.swift in Sources */,
 				A42C32A72B3EA9BF00C4B477 /* UserDefaultWrapper.swift in Sources */,
-				A42C33372B3EB01200C4B477 /* LoginViewController.swift in Sources */,
 				A42C32CB2B3EAB4B00C4B477 /* NSObject+.swift in Sources */,
 				A42C32CF2B3EAB7700C4B477 /* UIColor+.swift in Sources */,
 				A42C32B32B3EAAB500C4B477 /* Lottie.swift in Sources */,
@@ -873,12 +873,14 @@
 				A42C332F2B3EAFD500C4B477 /* OnboardingViewController.swift in Sources */,
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,
 				A42C32FA2B3EADF900C4B477 /* DailyEntity.swift in Sources */,
+				0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */,
 				A42C331F2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift in Sources */,
 				0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */,
 				A42C32EB2B3EACAC00C4B477 /* URLConstant.swift in Sources */,
 				A42C32C12B3EAB1A00C4B477 /* UIView+.swift in Sources */,
 				A42C32E72B3EAC9500C4B477 /* NetworkConstant.swift in Sources */,
 				A42C332D2B3EAFCC00C4B477 /* OnboardingView.swift in Sources */,
+				0084F19B2B4A895700F87860 /* LoginView.swift in Sources */,
 				A42C33022B3EAE4900C4B477 /* OnboardingService.swift in Sources */,
 				A42C32D92B3EAC1C00C4B477 /* MakeAlert.swift in Sources */,
 				A42C32C92B3EAB4500C4B477 /* UIStackView+.swift in Sources */,
@@ -903,6 +905,7 @@
 /* Begin XCBuildConfiguration section */
 		A42C328A2B3DB8F500C4B477 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -963,6 +966,7 @@
 		};
 		A42C328B2B3DB8F500C4B477 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1017,6 +1021,7 @@
 		};
 		A42C328D2B3DB8F500C4B477 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1049,6 +1054,7 @@
 		};
 		A42C328E2B3DB8F500C4B477 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
