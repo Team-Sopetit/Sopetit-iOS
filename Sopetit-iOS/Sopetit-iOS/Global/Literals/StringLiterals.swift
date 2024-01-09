@@ -33,4 +33,10 @@ enum I18N {
         static let cancel = "취소"
         static let edit = "편집"
     }
+    
+    enum Login {
+        static let bubbleTitle = "회원가입하고 봉인해제"
+        static let kakaoLoginTitle = "카카오로 시작하기"
+        static let appleLoginTitle = "Apple로 시작하기"
+    }
 }
