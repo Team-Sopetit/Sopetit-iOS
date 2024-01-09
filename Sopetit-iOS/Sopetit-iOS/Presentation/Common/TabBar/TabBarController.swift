@@ -71,11 +71,6 @@ private extension TabBarController {
 //        UITabBar.clearShadow()
         tabBar.backgroundColor = .white
         tabBar.tintColor = .SoftieMain1
-        tabBar.layer.masksToBounds = false
-        tabBar.layer.shadowColor = UIColor.Gray200.cgColor
-        tabBar.layer.shadowOpacity = 1
-        tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
-        tabBar.layer.shadowRadius = 0
     }
     
     func getSafeAreaBottomHeight() -> CGFloat {
