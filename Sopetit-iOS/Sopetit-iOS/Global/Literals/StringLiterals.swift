@@ -22,4 +22,10 @@ enum I18N {
         static let delRightTitle = "삭제할래"
         static let logoutRightTitle = "로그아웃 할래"
     }
+    
+    enum HappyRoutine {
+        static let happyRoutineTitle = "행복 루틴"
+        static let bearBubble = "행복루틴은 매일 조금씩 너에 대해\n알아갈 수 있는 특별한 루틴이야!"
+        static let addRoutine = "진행 중인 행복루틴이 없어요.\n루틴을 추가할까요?"
+    }
 }
