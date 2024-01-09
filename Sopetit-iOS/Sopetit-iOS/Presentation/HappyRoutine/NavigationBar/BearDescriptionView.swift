@@ -31,6 +31,7 @@ final class BearDescriptionView: UIView {
         let label = UILabel()
         label.text = "행복루틴은 매일 조금씩 너에 대해\n알아갈 수 있는 특별한 루틴이야!"
         label.font = .fontGuide(.bubble16)
+        label.numberOfLines = 0
         return label
     }()
     
@@ -61,7 +62,7 @@ extension BearDescriptionView {
     }
     
     func setHierarchy() {
-        self.addSubviews(faceImageView, speechImageView)
+        self.addSubviews(faceImageView, speechImageView, speechLabel)
     }
     
     func setLayout() {
@@ -72,6 +73,11 @@ extension BearDescriptionView {
         speechImageView.snp.makeConstraints {
             $0.leading.equalTo(faceImageView.snp.trailing).offset(14)
             $0.centerY.equalTo(faceImageView.snp.centerY)
+        }
+        
+        speechLabel.snp.makeConstraints {
+            $0.centerY.equalTo(speechImageView.snp.centerY)
+            $0.trailing.equalTo(speechImageView.snp.trailing).offset(-28)
         }
     }
     
