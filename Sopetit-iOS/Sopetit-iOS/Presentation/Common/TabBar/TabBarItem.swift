@@ -16,22 +16,22 @@ extension TabBarItemType {
     var unSelectedIcon: UIImage {
         switch self {
         case .home:
-            return UIImage(systemName: "house")!
+            return ImageLiterals.BottomNavi.icNavi1
         case .actionList:
-            return UIImage(systemName: "checkmark.seal.fill")!
+            return ImageLiterals.BottomNavi.icNavi2
         case .myPage:
-            return UIImage(systemName: "sparkles")!
+            return ImageLiterals.BottomNavi.icNavi3
         }
     }
     
     var selectedIcon: UIImage {
         switch self {
         case .home:
-            return UIImage(systemName: "house")!
+            return ImageLiterals.BottomNavi.icNavi1Filled
         case .actionList:
-            return UIImage(systemName: "checkmark.seal.fill")!
+            return ImageLiterals.BottomNavi.icNavi2Filled
         case .myPage:
-            return UIImage(systemName: "sparkles")!
+            return ImageLiterals.BottomNavi.icNavi3Filled
         }
     }
     

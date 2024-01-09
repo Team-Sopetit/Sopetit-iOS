@@ -34,12 +34,15 @@ private extension TabBarController {
     
     func setTabBarItems() {
         
-         let homeVC = UINavigationController(rootViewController: ViewController())
+        // 해당 viewcontroller들이 없을 경우 ViewController()로 모두 대체해서 빌드하십시오
+        let dailyVC = UINavigationController(rootViewController: DailyViewController())
+        let homeVC = HomeViewController()
+        let happyVC = HappyRoutineViewController()
         
         tabs = [
+            dailyVC,
             homeVC,
-            ViewController2(),
-            ViewController3()
+            happyVC
         ]
         
         TabBarItemType.allCases.forEach {
@@ -48,7 +51,7 @@ private extension TabBarController {
             tabs[$0.rawValue].tabBarItem.tag = $0.rawValue
         }
         
-        let tabBarItemTitles: [String] = ["진행 중", "홈", "행복 루틴"]
+        let tabBarItemTitles: [String] = ["데일리 루틴", "홈", "행복 루틴"]
         
         for (index, tabTitle) in tabBarItemTitles.enumerated() {
             let tabBarItem = TabBarItemType(rawValue: index)?.setTabBarItem()
