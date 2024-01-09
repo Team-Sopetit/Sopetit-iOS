@@ -21,6 +21,10 @@ enum ImageLiterals {
         static var icNavi3Filled: UIImage { .load(name: "ic_navi_3_filled") }
     }
     
+    enum Navi {
+        static var icChevronBack: UIImage { .load(name: "ic_chevron_back") }
+    }
+    
     enum Login {
         static var icLogoLogin: UIImage { .load(name: "ic_logo_login") }
         static var imgSpeechDark: UIImage { .load(name: "img_speech_dark") }
