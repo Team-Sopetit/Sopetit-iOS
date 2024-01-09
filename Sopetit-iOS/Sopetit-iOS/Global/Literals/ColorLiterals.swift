@@ -44,6 +44,10 @@ extension UIColor {
         return UIColor(hex: "#C4AC98")
     }
     
+    static var SoftieBrown: UIColor {
+        return UIColor(hex: "#C0804C")
+    }
+    
     static var Gray000: UIColor {
         return UIColor(hex: "#F4F4F4")
     }
