@@ -12,7 +12,6 @@ final class HappyRoutineViewController: UIViewController {
     // MARK: - Properties
     
     private let happyRoutineView = HappyRoutineView()
-    private let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCardView(_:)))
     
     // MARK: - Life Cycles
     
@@ -34,11 +33,8 @@ final class HappyRoutineViewController: UIViewController {
 // MARK: - Extensions
 
 extension HappyRoutineViewController {
-
     func setTapGesture() {
-        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCardView(_:)))
-        
         happyRoutineView.emptyHappyRoutineView.addGestureRecognizer(tapGestureRecognizer)
     }
     

@@ -77,10 +77,10 @@
 		A4832BA42B4A5C37007879FF /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BA32B4A5C37007879FF /* BottomSheetViewController.swift */; };
 		A4832BAB2B4ACF09007879FF /* omyu-pretty.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4832BAA2B4ACF09007879FF /* omyu-pretty.ttf */; };
 		A4832BAD2B4AF081007879FF /* BottomSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BAC2B4AF081007879FF /* BottomSheetType.swift */; };
-		A4832BB62B4D2560007879FF /* StoryTellingFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BB52B4D2560007879FF /* StoryTellingFirstView.swift */; };
-		A4832BB82B4D2573007879FF /* StoryTellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BB72B4D2573007879FF /* StoryTellingViewController.swift */; };
-		A4832BBD2B4D459B007879FF /* StoryTellingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BBC2B4D459B007879FF /* StoryTellingSecondView.swift */; };
-		A4832BBF2B4D48F0007879FF /* StoryTellingThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BBE2B4D48F0007879FF /* StoryTellingThirdView.swift */; };
+		A49BFDD52B4D5F0800035EB6 /* StroyTellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDD42B4D5F0800035EB6 /* StroyTellingViewController.swift */; };
+		A49BFDD72B4D5F2800035EB6 /* StroyTellingFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDD62B4D5F2800035EB6 /* StroyTellingFirstView.swift */; };
+		A49BFDDA2B4D5F4600035EB6 /* StoryTellingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDD92B4D5F4600035EB6 /* StoryTellingSecondView.swift */; };
+		A49BFDDC2B4D5F5E00035EB6 /* StoryTellingThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDDB2B4D5F5E00035EB6 /* StoryTellingThirdView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,10 +151,10 @@
 		A4832BA32B4A5C37007879FF /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		A4832BAA2B4ACF09007879FF /* omyu-pretty.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "omyu-pretty.ttf"; sourceTree = "<group>"; };
 		A4832BAC2B4AF081007879FF /* BottomSheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetType.swift; sourceTree = "<group>"; };
-		A4832BB52B4D2560007879FF /* StoryTellingFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingFirstView.swift; sourceTree = "<group>"; };
-		A4832BB72B4D2573007879FF /* StoryTellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingViewController.swift; sourceTree = "<group>"; };
-		A4832BBC2B4D459B007879FF /* StoryTellingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingSecondView.swift; sourceTree = "<group>"; };
-		A4832BBE2B4D48F0007879FF /* StoryTellingThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingThirdView.swift; sourceTree = "<group>"; };
+		A49BFDD42B4D5F0800035EB6 /* StroyTellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StroyTellingViewController.swift; sourceTree = "<group>"; };
+		A49BFDD62B4D5F2800035EB6 /* StroyTellingFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StroyTellingFirstView.swift; sourceTree = "<group>"; };
+		A49BFDD92B4D5F4600035EB6 /* StoryTellingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingSecondView.swift; sourceTree = "<group>"; };
+		A49BFDDB2B4D5F5E00035EB6 /* StoryTellingThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingThirdView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -461,6 +461,7 @@
 		A42C33072B3EAE8900C4B477 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				A49BFDD12B4D5EE800035EB6 /* StroyTellingScene */,
 				A42C333C2B3EB05100C4B477 /* OnboardingScene */,
 			);
 			path = Onboarding;
@@ -694,29 +695,29 @@
 			path = BottomSheet;
 			sourceTree = "<group>";
 		};
-		A4832BB22B4D2520007879FF /* StoryTellingScene */ = {
+		A49BFDD12B4D5EE800035EB6 /* StroyTellingScene */ = {
 			isa = PBXGroup;
 			children = (
-				A4832BB42B4D2549007879FF /* View */,
-				A4832BB32B4D2540007879FF /* ViewController */,
+				A49BFDD32B4D5EF600035EB6 /* View */,
+				A49BFDD22B4D5EEF00035EB6 /* ViewController */,
 			);
-			path = StoryTellingScene;
+			path = StroyTellingScene;
 			sourceTree = "<group>";
 		};
-		A4832BB32B4D2540007879FF /* ViewController */ = {
+		A49BFDD22B4D5EEF00035EB6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A4832BB72B4D2573007879FF /* StoryTellingViewController.swift */,
+				A49BFDD42B4D5F0800035EB6 /* StroyTellingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		A4832BB42B4D2549007879FF /* View */ = {
+		A49BFDD32B4D5EF600035EB6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A4832BB52B4D2560007879FF /* StoryTellingFirstView.swift */,
-				A4832BBC2B4D459B007879FF /* StoryTellingSecondView.swift */,
-				A4832BBE2B4D48F0007879FF /* StoryTellingThirdView.swift */,
+				A49BFDD62B4D5F2800035EB6 /* StroyTellingFirstView.swift */,
+				A49BFDD92B4D5F4600035EB6 /* StoryTellingSecondView.swift */,
+				A49BFDDB2B4D5F5E00035EB6 /* StoryTellingThirdView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -844,6 +845,7 @@
 				A42C33122B3EAF1A00C4B477 /* HomeViewController.swift in Sources */,
 				A42C32802B3DB8F400C4B477 /* ViewController.swift in Sources */,
 				A42C32E32B3EAC8200C4B477 /* NetworkResult.swift in Sources */,
+				A49BFDD72B4D5F2800035EB6 /* StroyTellingFirstView.swift in Sources */,
 				A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */,
 				A4832BA42B4A5C37007879FF /* BottomSheetViewController.swift in Sources */,
 				093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */,
@@ -851,6 +853,7 @@
 				A42C32B72B3EAAD800C4B477 /* ImageLiterals.swift in Sources */,
 				A42C32BD2B3EAAF200C4B477 /* SizeLiterals.swift in Sources */,
 				A42C32C52B3EAB2B00C4B477 /* UIButton+.swift in Sources */,
+				A49BFDDC2B4D5F5E00035EB6 /* StoryTellingThirdView.swift in Sources */,
 				A42C32CD2B3EAB5600C4B477 /* UILabel+.swift in Sources */,
 				A42C33102B3EAF0F00C4B477 /* HomeView.swift in Sources */,
 				A42C32F42B3EADDD00C4B477 /* OnboardingEntity.swift in Sources */,
@@ -858,10 +861,9 @@
 				A42C32D72B3EAC1300C4B477 /* MakeVibrate.swift in Sources */,
 				A42C32B92B3EAAE300C4B477 /* ColorLiterals.swift in Sources */,
 				A42C32A72B3EA9BF00C4B477 /* UserDefaultWrapper.swift in Sources */,
-				A4832BBD2B4D459B007879FF /* StoryTellingSecondView.swift in Sources */,
-				A42C33372B3EB01200C4B477 /* LoginViewController.swift in Sources */,
 				A42C32CB2B3EAB4B00C4B477 /* NSObject+.swift in Sources */,
 				A42C32CF2B3EAB7700C4B477 /* UIColor+.swift in Sources */,
+				A49BFDDA2B4D5F4600035EB6 /* StoryTellingSecondView.swift in Sources */,
 				A42C32B32B3EAAB500C4B477 /* Lottie.swift in Sources */,
 				A42C331A2B3EAF5200C4B477 /* SettingViewController.swift in Sources */,
 				A42C32F62B3EADE300C4B477 /* HomeEntity.swift in Sources */,
@@ -874,7 +876,6 @@
 				A42C32C32B3EAB2400C4B477 /* UITextField+.swift in Sources */,
 				A42C32BF2B3EAB0E00C4B477 /* UIImage+.swift in Sources */,
 				A42C33002B3EAE3E00C4B477 /* HomeService.swift in Sources */,
-				A4832BBF2B4D48F0007879FF /* StoryTellingThirdView.swift in Sources */,
 				A42C32E52B3EAC8B00C4B477 /* GenericResponse.swift in Sources */,
 				A42C332F2B3EAFD500C4B477 /* OnboardingViewController.swift in Sources */,
 				093C1E092B4D2C8200EF84AB /* BearDescriptionView.swift in Sources */,
@@ -893,6 +894,7 @@
 				A42C32D92B3EAC1C00C4B477 /* MakeAlert.swift in Sources */,
 				A42C32C92B3EAB4500C4B477 /* UIStackView+.swift in Sources */,
 				A42C32D12B3EAB7F00C4B477 /* String+.swift in Sources */,
+				A49BFDD52B4D5F0800035EB6 /* StroyTellingViewController.swift in Sources */,
 				A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
