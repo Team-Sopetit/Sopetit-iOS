@@ -65,10 +65,10 @@ extension DailyTopView {
 //            $0.top.equalToSuperview()
 //            $0.height.equalTo(40)
 //        }
-        titleLabel.snp.makeConstraints() {
+        titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
         }
-        editButton.snp.makeConstraints() {
+        editButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(20)
         }
     }

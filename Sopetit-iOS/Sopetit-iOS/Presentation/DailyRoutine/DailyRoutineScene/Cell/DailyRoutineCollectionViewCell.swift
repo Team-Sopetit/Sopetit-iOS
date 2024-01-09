@@ -12,7 +12,8 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
     // MARK: - Properties
 
     static let isFromNib: Bool = false
-    
+    weak var delegate: MyCellDelegate?
+    var status = 0
     // MARK: - UI Components
     
     lazy var imageView: UIImageView = {
@@ -46,9 +47,12 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
         button.setTitle("완료하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fontGuide(.body4)
-        button.backgroundColor = .SoftieMain1
+        button.setBackgroundColor(UIColor.SoftieMain1, for: .normal)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
+        button.setTitle("달성 완료", for: .disabled)
+        button.setTitleColor(UIColor.Gray300, for: .disabled)
+        button.setBackgroundColor(UIColor.Gray100, for: .disabled)
         button.addTarget(self, action: #selector(onTapButton), for: .touchUpInside)
         return button
     }()
@@ -59,15 +63,11 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
         
         if sender.isSelected {
             sender.isSelected = false
-            sender.setTitle("완료하기", for: .normal)
-            sender.setTitleColor(UIColor.white, for: .normal)
-            sender.backgroundColor = UIColor.SoftieMain1
         } else {
-            sender.isSelected = true
-            sender.setTitle("달성 완료", for: .selected)
-            sender.setTitleColor(UIColor.Gray300, for: .selected)
-            sender.backgroundColor = UIColor.Gray100
-            imageView.image = ImageLiterals.DailyRoutine.icDaily2Filled
+            delegate?.buttonTapped(in: self)
+            if status == 1 {
+                sender.isSelected = true
+            }
         }
     }
     
