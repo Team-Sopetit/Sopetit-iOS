@@ -11,8 +11,6 @@ import SnapKit
 
 final class BearDescriptionView: UIView {
     
-    // MARK: - Properties
-    
     // MARK: - UI Components
     private let faceImageView: UIImageView = {
         let imageView = UIImageView()
@@ -28,9 +26,10 @@ final class BearDescriptionView: UIView {
     
     private let speechLabel: UILabel = {
         let label = UILabel()
-        label.text = "행복루틴은 매일 조금씩 너에 대해\n알아갈 수 있는 특별한 루틴이야!"
+        label.text = I18N.HappyRoutine.bearBubble
         label.font = .fontGuide(.bubble16)
         label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
     
