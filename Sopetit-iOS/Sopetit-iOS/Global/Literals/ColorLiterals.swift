@@ -36,6 +36,14 @@ extension UIColor {
         return UIColor(hex: "#F8F8F8")
     }
     
+    static var SoftieHomeFill: UIColor {
+        return UIColor(hex: "#D4BBA5")
+    }
+    
+    static var SoftieHomeStroke: UIColor {
+        return UIColor(hex: "#C4AC98")
+    }
+    
     static var Gray000: UIColor {
         return UIColor(hex: "#F4F4F4")
     }
