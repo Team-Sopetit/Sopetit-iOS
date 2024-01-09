@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0084F19B2B4A895700F87860 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19A2B4A895700F87860 /* LoginView.swift */; };
+		0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19C2B4A896500F87860 /* LoginViewController.swift */; };
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
+		093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */; };
+		093C1E042B4CFD9E00EF84AB /* HappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E032B4CFD9E00EF84AB /* HappyRoutineView.swift */; };
+		093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */; };
+		093C1E092B4D2C8200EF84AB /* BearDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E082B4D2C8200EF84AB /* BearDescriptionView.swift */; };
 		A42C327C2B3DB8F400C4B477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */; };
 		A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327D2B3DB8F400C4B477 /* SceneDelegate.swift */; };
 		A42C32802B3DB8F400C4B477 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327F2B3DB8F400C4B477 /* ViewController.swift */; };
@@ -61,14 +67,9 @@
 		A42C331F2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C331E2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift */; };
 		A42C33212B3EAF7B00C4B477 /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33202B3EAF7B00C4B477 /* DailyView.swift */; };
 		A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33222B3EAF8400C4B477 /* DailyViewController.swift */; };
-		A42C33272B3EAF9C00C4B477 /* HappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33262B3EAF9C00C4B477 /* HappyRoutineView.swift */; };
-		A42C33292B3EAFA800C4B477 /* HappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33282B3EAFA800C4B477 /* HappyRoutineViewController.swift */; };
 		A42C332D2B3EAFCC00C4B477 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C332C2B3EAFCC00C4B477 /* OnboardingView.swift */; };
 		A42C332F2B3EAFD500C4B477 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C332E2B3EAFD500C4B477 /* OnboardingViewController.swift */; };
-		A42C33342B3EB00200C4B477 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33332B3EB00200C4B477 /* LoginView.swift */; };
-		A42C33372B3EB01200C4B477 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33362B3EB01200C4B477 /* LoginViewController.swift */; };
 		A42C333A2B3EB02A00C4B477 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33392B3EB02A00C4B477 /* TabBarController.swift */; };
-		A42C333F2B3EB08500C4B477 /* HappyRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C333E2B3EB08500C4B477 /* HappyRoutineCollectionViewCell.swift */; };
 		A42C33642B413F2100C4B477 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A42C33622B413F2100C4B477 /* Pretendard-SemiBold.otf */; };
 		A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */; };
 		A42C336C2B41EF2F00C4B477 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */; };
@@ -83,7 +84,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0084F19A2B4A895700F87860 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0084F19C2B4A896500F87860 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineViewController.swift; sourceTree = "<group>"; };
+		093C1E032B4CFD9E00EF84AB /* HappyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineView.swift; sourceTree = "<group>"; };
+		093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
+		093C1E082B4D2C8200EF84AB /* BearDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearDescriptionView.swift; sourceTree = "<group>"; };
 		A42C32782B3DB8F400C4B477 /* Sopetit-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sopetit-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A42C327D2B3DB8F400C4B477 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,14 +141,9 @@
 		A42C331E2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		A42C33202B3EAF7B00C4B477 /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		A42C33222B3EAF8400C4B477 /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
-		A42C33262B3EAF9C00C4B477 /* HappyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineView.swift; sourceTree = "<group>"; };
-		A42C33282B3EAFA800C4B477 /* HappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineViewController.swift; sourceTree = "<group>"; };
 		A42C332C2B3EAFCC00C4B477 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		A42C332E2B3EAFD500C4B477 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		A42C33332B3EB00200C4B477 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		A42C33362B3EB01200C4B477 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A42C33392B3EB02A00C4B477 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		A42C333E2B3EB08500C4B477 /* HappyRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		A42C33622B413F2100C4B477 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -171,6 +173,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		093C1E052B4CFDAF00EF84AB /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */,
+			);
+			path = NavigationBar;
+			sourceTree = "<group>";
+		};
 		A42C326F2B3DB8F400C4B477 = {
 			isa = PBXGroup;
 			children = (
@@ -451,7 +461,6 @@
 		A42C33072B3EAE8900C4B477 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				A4832BB22B4D2520007879FF /* StoryTellingScene */,
 				A42C333C2B3EB05100C4B477 /* OnboardingScene */,
 			);
 			path = Onboarding;
@@ -485,7 +494,6 @@
 		A42C330B2B3EAED700C4B477 /* HappyRoutineScene */ = {
 			isa = PBXGroup;
 			children = (
-				A42C333D2B3EB07800C4B477 /* Cell */,
 				A42C33252B3EAF9000C4B477 /* View */,
 				A42C33242B3EAF8A00C4B477 /* ViewController */,
 			);
@@ -578,7 +586,7 @@
 		A42C33242B3EAF8A00C4B477 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A42C33282B3EAFA800C4B477 /* HappyRoutineViewController.swift */,
+				093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -586,7 +594,8 @@
 		A42C33252B3EAF9000C4B477 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A42C33262B3EAF9C00C4B477 /* HappyRoutineView.swift */,
+				093C1E082B4D2C8200EF84AB /* BearDescriptionView.swift */,
+				093C1E032B4CFD9E00EF84AB /* HappyRoutineView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -619,7 +628,7 @@
 		A42C33312B3EAFF100C4B477 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A42C33362B3EB01200C4B477 /* LoginViewController.swift */,
+				0084F19C2B4A896500F87860 /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -627,7 +636,7 @@
 		A42C33322B3EAFFA00C4B477 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A42C33332B3EB00200C4B477 /* LoginView.swift */,
+				0084F19A2B4A895700F87860 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -659,14 +668,6 @@
 			path = OnboardingScene;
 			sourceTree = "<group>";
 		};
-		A42C333D2B3EB07800C4B477 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				A42C333E2B3EB08500C4B477 /* HappyRoutineCollectionViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		A4832B9C2B457C2B007879FF /* DailyRoutine */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +679,7 @@
 		A4832B9D2B457C35007879FF /* HappyRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				093C1E052B4CFDAF00EF84AB /* NavigationBar */,
 				A42C330B2B3EAED700C4B477 /* HappyRoutineScene */,
 			);
 			path = HappyRoutine;
@@ -831,25 +833,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				A42C32FE2B3EAE3400C4B477 /* RoutineService.swift in Sources */,
-				A42C33272B3EAF9C00C4B477 /* HappyRoutineView.swift in Sources */,
 				A42C33182B3EAF4B00C4B477 /* SettingView.swift in Sources */,
 				A42C333A2B3EB02A00C4B477 /* TabBarController.swift in Sources */,
 				A42C33212B3EAF7B00C4B477 /* DailyView.swift in Sources */,
 				A42C32FC2B3EAE0000C4B477 /* HappinessEntity.swift in Sources */,
-				A42C33292B3EAFA800C4B477 /* HappyRoutineViewController.swift in Sources */,
 				A42C32D52B3EABAF00C4B477 /* UICollectionViewRegisterable.swift in Sources */,
-				A4832BB82B4D2573007879FF /* StoryTellingViewController.swift in Sources */,
+				093C1E042B4CFD9E00EF84AB /* HappyRoutineView.swift in Sources */,
 				A42C32BB2B3EAAEA00C4B477 /* FontLiterals.swift in Sources */,
 				A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */,
 				A42C33122B3EAF1A00C4B477 /* HomeViewController.swift in Sources */,
-				A42C33342B3EB00200C4B477 /* LoginView.swift in Sources */,
 				A42C32802B3DB8F400C4B477 /* ViewController.swift in Sources */,
 				A42C32E32B3EAC8200C4B477 /* NetworkResult.swift in Sources */,
 				A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */,
 				A4832BA42B4A5C37007879FF /* BottomSheetViewController.swift in Sources */,
+				093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */,
 				A42C33042B3EAE4F00C4B477 /* AuthService.swift in Sources */,
 				A42C32B72B3EAAD800C4B477 /* ImageLiterals.swift in Sources */,
-				A42C333F2B3EB08500C4B477 /* HappyRoutineCollectionViewCell.swift in Sources */,
 				A42C32BD2B3EAAF200C4B477 /* SizeLiterals.swift in Sources */,
 				A42C32C52B3EAB2B00C4B477 /* UIButton+.swift in Sources */,
 				A42C32CD2B3EAB5600C4B477 /* UILabel+.swift in Sources */,
@@ -870,7 +869,6 @@
 				A42C32D32B3EABA300C4B477 /* UITableViewRegisterable.swift in Sources */,
 				A42C32A52B3EA9A000C4B477 /* UserManager.swift in Sources */,
 				A42C33702B42DAAB00C4B477 /* StringLiterals.swift in Sources */,
-				A4832BB62B4D2560007879FF /* StoryTellingFirstView.swift in Sources */,
 				A42C32C72B3EAB3B00C4B477 /* UIViewController+.swift in Sources */,
 				A4832BAD2B4AF081007879FF /* BottomSheetType.swift in Sources */,
 				A42C32C32B3EAB2400C4B477 /* UITextField+.swift in Sources */,
@@ -879,14 +877,18 @@
 				A4832BBF2B4D48F0007879FF /* StoryTellingThirdView.swift in Sources */,
 				A42C32E52B3EAC8B00C4B477 /* GenericResponse.swift in Sources */,
 				A42C332F2B3EAFD500C4B477 /* OnboardingViewController.swift in Sources */,
+				093C1E092B4D2C8200EF84AB /* BearDescriptionView.swift in Sources */,
+				093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */,
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,
 				A42C32FA2B3EADF900C4B477 /* DailyEntity.swift in Sources */,
+				0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */,
 				A42C331F2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift in Sources */,
 				0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */,
 				A42C32EB2B3EACAC00C4B477 /* URLConstant.swift in Sources */,
 				A42C32C12B3EAB1A00C4B477 /* UIView+.swift in Sources */,
 				A42C32E72B3EAC9500C4B477 /* NetworkConstant.swift in Sources */,
 				A42C332D2B3EAFCC00C4B477 /* OnboardingView.swift in Sources */,
+				0084F19B2B4A895700F87860 /* LoginView.swift in Sources */,
 				A42C33022B3EAE4900C4B477 /* OnboardingService.swift in Sources */,
 				A42C32D92B3EAC1C00C4B477 /* MakeAlert.swift in Sources */,
 				A42C32C92B3EAB4500C4B477 /* UIStackView+.swift in Sources */,

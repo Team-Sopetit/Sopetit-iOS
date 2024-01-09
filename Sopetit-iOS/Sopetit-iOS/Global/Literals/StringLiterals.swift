@@ -28,4 +28,21 @@ enum I18N {
         static let secondButtonTitle = "어? 집 앞에 이건 뭐지?"
         static let thirdButtonTitle = "한 번 열어볼까?"
     }
+    
+    enum HappyRoutine {
+        static let happyRoutineTitle = "행복 루틴"
+        static let bearBubble = "행복루틴은 매일 조금씩 너에 대해\n알아갈 수 있는 특별한 루틴이야!"
+        static let addRoutine = "진행 중인 행복루틴이 없어요.\n루틴을 추가할까요?"
+    }
+    
+    enum CustomNavi {
+        static let cancel = "취소"
+        static let edit = "편집"
+    }
+    
+    enum Login {
+        static let bubbleTitle = "회원가입하고 봉인해제"
+        static let kakaoLoginTitle = "카카오로 시작하기"
+        static let appleLoginTitle = "Apple로 시작하기"
+    }
 }
