@@ -18,7 +18,7 @@ final class HappyRoutineView: UIView {
     private let navigationBar: CustomNavigationBarView = {
         let navigationBar = CustomNavigationBarView()
         navigationBar.isLeftTitleViewIncluded = true
-        navigationBar.isLeftTitleLabelIncluded = "행복 루틴"
+        navigationBar.isLeftTitleLabelIncluded = I18N.HappyRoutine.happyRoutineTitle
         return navigationBar
     }()
     
@@ -35,12 +35,12 @@ final class HappyRoutineView: UIView {
     
     private let emptyTextLabel: UILabel = {
         let label = UILabel()
-        label.text = "진행 중인 행복루틴이 없어요.\n루틴을 추가할까요?"
+        label.text = I18N.HappyRoutine.addRoutine
         label.font = .fontGuide(.body2)
         label.textColor = .Gray300
-        label.textAlignment = .center
         label.setLineSpacing(lineSpacing: 4)
-        label.numberOfLines = 0
+        label.numberOfLines = 2
+        label.textAlignment = .center
         return label
     }()
     
