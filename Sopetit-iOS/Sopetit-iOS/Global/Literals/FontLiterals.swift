@@ -10,7 +10,7 @@ import UIKit
 enum FontName: String {
     case PretendardMedium = "Pretendard-Medium"
     case PretendardSemiBold = "Pretendard-SemiBold"
-    case OmyuPretty = "omyu-pretty"
+    case OmyuPretty = "omyu_pretty"
 }
 
 enum FontLevel {
@@ -28,6 +28,10 @@ enum FontLevel {
     case caption2
     case caption3
     case caption4
+    
+    case bubble14
+    case bubble16
+    case bubble18
 }
 
 extension FontLevel {
@@ -38,6 +42,8 @@ extension FontLevel {
             return FontName.PretendardSemiBold.rawValue
         case .head2, .head4, .body2, .body4, .caption2, .caption4:
             return FontName.PretendardMedium.rawValue
+        case .bubble14, .bubble16, .bubble18:
+            return FontName.OmyuPretty.rawValue
         }
     }
     
@@ -45,11 +51,11 @@ extension FontLevel {
         switch self {
         case .head1, .head2:
             return 20
-        case .head3, .head4:
+        case .head3, .head4, .bubble18:
             return 18
-        case .body1, .body2:
+        case .body1, .body2, .bubble16:
             return 16
-        case .body3, .body4:
+        case .body3, .body4, .bubble14:
             return 14
         case .caption1, .caption2:
             return 12
