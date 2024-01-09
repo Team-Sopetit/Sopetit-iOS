@@ -53,7 +53,7 @@ final class LoginView: UIView {
         label.text = "카카오로 시작하기"
         label.textColor = .black
         label.font = .fontGuide(.body2)
-        label.backgroundColor = .yellow
+        label.backgroundColor = .SoftieYellow
         label.textAlignment = .center
         label.layer.cornerRadius = 6
         label.clipsToBounds = true
