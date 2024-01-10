@@ -29,6 +29,19 @@ final class SelectHappyCategoryView: UIView {
         return view
     }()
     
+    let categoryCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 6
+        layout.sectionInset = UIEdgeInsets(top: 12, left: 20, bottom: 0, right: 20)
+        layout.scrollDirection = .vertical
+        collectionView.isScrollEnabled = true
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.collectionViewLayout = layout
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -56,7 +69,7 @@ extension SelectHappyCategoryView {
     }
     
     func setHierarchy() {
-        self.addSubviews(customNavigationBar, tagview, divideView)
+        self.addSubviews(customNavigationBar, tagview, divideView, categoryCollectionView)
 
     }
     
@@ -78,6 +91,11 @@ extension SelectHappyCategoryView {
             $0.height.equalTo(1)
         }
         
+        categoryCollectionView.snp.makeConstraints {
+            $0.top.equalTo(divideView.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
     }
     
     func setAddTarget() {

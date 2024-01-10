@@ -25,15 +25,14 @@ final class HappyRoutineCategoryCollectionViewCell: UICollectionViewCell, UIColl
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .fontGuide(.body4)
-        label.textColor = .Gray400
+        label.font = .fontGuide(.caption1)
         return label
     }()
     
     let contentLabel: UILabel = {
         let label = UILabel()
-        label.font = .fontGuide(.body4)
-        label.textColor = .Gray400
+        label.font = .fontGuide(.body2)
+        label.textColor = .Gray700
         return label
     }()
     
@@ -60,7 +59,6 @@ final class HappyRoutineCategoryCollectionViewCell: UICollectionViewCell, UIColl
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        bindNotSelected()
     }
 }
 
@@ -71,7 +69,7 @@ extension HappyRoutineCategoryCollectionViewCell {
     private func setUI() {
         contentView.backgroundColor = .SoftieWhite
         contentView.layer.masksToBounds = true
-        contentView.layer.cornerRadius = 37/2
+        contentView.layer.cornerRadius = 20
         contentView.layer.borderColor = UIColor.Gray100.cgColor
         contentView.layer.borderWidth = 1
     }
@@ -84,6 +82,7 @@ extension HappyRoutineCategoryCollectionViewCell {
         imageView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
             $0.centerY.equalToSuperview()
+            $0.size.equalTo(57)
         }
         
         titleLabel.snp.makeConstraints {
