@@ -101,6 +101,10 @@
 		A49BFE0B2B4DC54F00035EB6 /* panda_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE072B4DC54E00035EB6 /* panda_eating_daily.json */; };
 		A49BFE0C2B4DC54F00035EB6 /* brown_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE082B4DC54E00035EB6 /* brown_eating_daily.json */; };
 		A49BFE0D2B4DC54F00035EB6 /* gray_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */; };
+		A49BFE1D2B4E541C00035EB6 /* RoutineChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE1C2B4E541C00035EB6 /* RoutineChoiceViewController.swift */; };
+		A49BFE1F2B4E542B00035EB6 /* RoutineChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE1E2B4E542B00035EB6 /* RoutineChoiceView.swift */; };
+		A49BFE212B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE202B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift */; };
+		A49BFE232B4E565D00035EB6 /* RoutineChoiceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE222B4E565D00035EB6 /* RoutineChoiceEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -195,6 +199,10 @@
 		A49BFE072B4DC54E00035EB6 /* panda_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_eating_daily.json; sourceTree = "<group>"; };
 		A49BFE082B4DC54E00035EB6 /* brown_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_eating_daily.json; sourceTree = "<group>"; };
 		A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_eating_daily.json; sourceTree = "<group>"; };
+		A49BFE1C2B4E541C00035EB6 /* RoutineChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceViewController.swift; sourceTree = "<group>"; };
+		A49BFE1E2B4E542B00035EB6 /* RoutineChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceView.swift; sourceTree = "<group>"; };
+		A49BFE202B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceCollectionViewCell.swift; sourceTree = "<group>"; };
+		A49BFE222B4E565D00035EB6 /* RoutineChoiceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -475,6 +483,7 @@
 			children = (
 				A42C32F32B3EADDD00C4B477 /* OnboardingEntity.swift */,
 				A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */,
+				A49BFE222B4E565D00035EB6 /* RoutineChoiceEntity.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -514,6 +523,7 @@
 		A42C33072B3EAE8900C4B477 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				A49BFE182B4E53CE00035EB6 /* RoutineChoiceScene */,
 				A49BFDEA2B4DA3E000035EB6 /* ThemeSelectScene */,
 				A49BFDDD2B4D7A1E00035EB6 /* DollChoiceScene */,
 				A49BFDD12B4D5EE800035EB6 /* StroyTellingScene */,
@@ -854,6 +864,40 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		A49BFE182B4E53CE00035EB6 /* RoutineChoiceScene */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFE1B2B4E540F00035EB6 /* Cell */,
+				A49BFE1A2B4E540B00035EB6 /* View */,
+				A49BFE192B4E540400035EB6 /* ViewController */,
+			);
+			path = RoutineChoiceScene;
+			sourceTree = "<group>";
+		};
+		A49BFE192B4E540400035EB6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFE1C2B4E541C00035EB6 /* RoutineChoiceViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A49BFE1A2B4E540B00035EB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFE1E2B4E542B00035EB6 /* RoutineChoiceView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A49BFE1B2B4E540F00035EB6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFE202B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -992,6 +1036,7 @@
 				A49BFDD72B4D5F2800035EB6 /* StroyTellingFirstView.swift in Sources */,
 				A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */,
 				A49BFDE52B4D7EDF00035EB6 /* CustomProgressView.swift in Sources */,
+				A49BFE1F2B4E542B00035EB6 /* RoutineChoiceView.swift in Sources */,
 				A49BFDE12B4D7A5400035EB6 /* DollChoiceViewController.swift in Sources */,
 				A4832BA42B4A5C37007879FF /* BottomSheetViewController.swift in Sources */,
 				093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */,
@@ -1030,6 +1075,7 @@
 				093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */,
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,
 				A42C32FA2B3EADF900C4B477 /* DailyEntity.swift in Sources */,
+				A49BFE232B4E565D00035EB6 /* RoutineChoiceEntity.swift in Sources */,
 				A49BFDF52B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift in Sources */,
 				0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */,
 				A49BFDF22B4DA53A00035EB6 /* ThemeSelectEntity.swift in Sources */,
@@ -1037,12 +1083,14 @@
 				A42C331F2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift in Sources */,
 				0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */,
 				A42C32EB2B3EACAC00C4B477 /* URLConstant.swift in Sources */,
+				A49BFE1D2B4E541C00035EB6 /* RoutineChoiceViewController.swift in Sources */,
 				A42C32C12B3EAB1A00C4B477 /* UIView+.swift in Sources */,
 				A42C32E72B3EAC9500C4B477 /* NetworkConstant.swift in Sources */,
 				A42C332D2B3EAFCC00C4B477 /* OnboardingView.swift in Sources */,
 				0084F19B2B4A895700F87860 /* LoginView.swift in Sources */,
 				A42C33022B3EAE4900C4B477 /* OnboardingService.swift in Sources */,
 				A42C32D92B3EAC1C00C4B477 /* MakeAlert.swift in Sources */,
+				A49BFE212B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift in Sources */,
 				A42C32C92B3EAB4500C4B477 /* UIStackView+.swift in Sources */,
 				A42C32D12B3EAB7F00C4B477 /* String+.swift in Sources */,
 				A49BFDF02B4DA48200035EB6 /* ThemeSelectView.swift in Sources */,
