@@ -45,5 +45,7 @@ extension HappyRoutineViewController {
     @objc
     func didTapCardView(_ sender: UITapGestureRecognizer) {
         print("did tap card view")
+        let vc = SelectHappyCategoryViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
