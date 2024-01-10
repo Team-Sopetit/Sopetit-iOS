@@ -26,6 +26,7 @@ final class HappyRoutineTagCollectionViewCell: UICollectionViewCell, UICollectio
     }
     
     // MARK: - UI Components
+    
     let tagLabel: UILabel = {
         let label = UILabel()
         label.font = .fontGuide(.body4)
@@ -78,6 +79,7 @@ extension HappyRoutineTagCollectionViewCell {
 }
 
 extension HappyRoutineTagCollectionViewCell {
+    
     func bindText(text: String) {
         tagLabel.text = text
     }

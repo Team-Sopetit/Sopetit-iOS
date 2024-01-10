@@ -5,4 +5,113 @@
 //  Created by Minjoo Kim on 1/10/24.
 //
 
-import Foundation
+import UIKit
+
+import SnapKit
+
+final class HappyRoutineCategoryCollectionViewCell: UICollectionViewCell, UICollectionViewRegisterable {
+    
+    // MARK: - Properties
+
+    static let isFromNib: Bool = false
+    
+    // MARK: - UI Components
+    
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .fontGuide(.body4)
+        label.textColor = .Gray400
+        return label
+    }()
+    
+    let contentLabel: UILabel = {
+        let label = UILabel()
+        label.font = .fontGuide(.body4)
+        label.textColor = .Gray400
+        return label
+    }()
+    
+    let nextImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.HappyRoutine.icNext
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    // MARK: - Life Cycles
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    
+        setUI()
+        setHierarchy()
+        setLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bindNotSelected()
+    }
+}
+
+// MARK: - Extensions
+
+extension HappyRoutineCategoryCollectionViewCell {
+    
+    private func setUI() {
+        contentView.backgroundColor = .SoftieWhite
+        contentView.layer.masksToBounds = true
+        contentView.layer.cornerRadius = 37/2
+        contentView.layer.borderColor = UIColor.Gray100.cgColor
+        contentView.layer.borderWidth = 1
+    }
+    
+    private func setHierarchy() {
+        self.addSubviews(imageView, titleLabel, contentLabel, nextImageView)
+    }
+    
+    private func setLayout() {
+        imageView.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(20)
+            $0.centerY.equalToSuperview()
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(30)
+            $0.leading.equalTo(imageView.snp.trailing).offset(16)
+            $0.trailing.equalTo(nextImageView.snp.leading).offset(13)
+        }
+        
+        contentLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(8)
+            $0.leading.equalTo(imageView.snp.trailing).offset(13)
+            $0.trailing.equalTo(nextImageView.snp.leading).offset(13)
+        }
+        
+        nextImageView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(8)
+            $0.size.equalTo(24)
+        }
+    }
+}
+
+extension HappyRoutineCategoryCollectionViewCell {
+    func bindModel(model: HappyRoutineCategory) {
+        imageView.image = model.image
+        titleLabel.text = model.title
+        titleLabel.textColor = UIColor(hex: model.color)
+        contentLabel.text = model.content
+    }
+    
+}

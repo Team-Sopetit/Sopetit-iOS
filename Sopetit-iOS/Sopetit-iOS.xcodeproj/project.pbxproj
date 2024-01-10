@@ -20,6 +20,7 @@
 		09B253662B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253652B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift */; };
 		09B2536B2B4E2FDC005E7032 /* HappyRoutineCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2536A2B4E2FDC005E7032 /* HappyRoutineCategory.swift */; };
 		09B2536D2B4E3529005E7032 /* HappyRoutineTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2536C2B4E3529005E7032 /* HappyRoutineTag.swift */; };
+		09B2536F2B4E3640005E7032 /* HappyRoutineCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2536E2B4E3640005E7032 /* HappyRoutineCategoryCollectionViewCell.swift */; };
 		A42C327C2B3DB8F400C4B477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */; };
 		A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327D2B3DB8F400C4B477 /* SceneDelegate.swift */; };
 		A42C32802B3DB8F400C4B477 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327F2B3DB8F400C4B477 /* ViewController.swift */; };
@@ -107,6 +108,7 @@
 		09B253652B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		09B2536A2B4E2FDC005E7032 /* HappyRoutineCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCategory.swift; sourceTree = "<group>"; };
 		09B2536C2B4E3529005E7032 /* HappyRoutineTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineTag.swift; sourceTree = "<group>"; };
+		09B2536E2B4E3640005E7032 /* HappyRoutineCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		A42C32782B3DB8F400C4B477 /* Sopetit-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sopetit-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A42C327D2B3DB8F400C4B477 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				09B253652B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift */,
+				09B2536E2B4E3640005E7032 /* HappyRoutineCategoryCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -951,6 +954,7 @@
 				A42C33212B3EAF7B00C4B477 /* DailyView.swift in Sources */,
 				A42C32FC2B3EAE0000C4B477 /* HappinessEntity.swift in Sources */,
 				A42C32D52B3EABAF00C4B477 /* UICollectionViewRegisterable.swift in Sources */,
+				09B2536F2B4E3640005E7032 /* HappyRoutineCategoryCollectionViewCell.swift in Sources */,
 				093C1E042B4CFD9E00EF84AB /* HappyRoutineView.swift in Sources */,
 				A42C32BB2B3EAAEA00C4B477 /* FontLiterals.swift in Sources */,
 				A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */,
