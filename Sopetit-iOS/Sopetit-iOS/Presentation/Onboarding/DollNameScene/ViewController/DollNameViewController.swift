@@ -7,11 +7,14 @@
 
 import UIKit
 
+import Lottie
+
 final class DollNameViewController: UIViewController {
     
     // MARK: - Properties
     
     var userDollName: String = ""
+    var dollNum: Int = 0
     
     // MARK: - UI Components
     
@@ -32,7 +35,8 @@ final class DollNameViewController: UIViewController {
         setUI()
         setDelegate()
         setAddTarget()
-        playAnimation()
+        setDoll()
+//        playAnimation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,10 +54,10 @@ extension DollNameViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func playAnimation() {
-        dollNameView.lottieHello.loopMode = .loop
-        dollNameView.lottieHello.play()
-    }
+//    func playAnimation() {
+//        dollNameView.lottieHello.loopMode = .loop
+//        dollNameView.lottieHello.play()
+//    }
     
     func setDelegate() {
         textfield.delegate = self
@@ -71,6 +75,23 @@ extension DollNameViewController {
         let nav = ThemeSelectViewController()
         nav.doll = userDollName
         self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
+    func setDoll() {
+        switch dollNum {
+        case 0:
+            dollNameView.lottieHello = LottieAnimationView(name: "brown_hello")
+        case 1:
+            dollNameView.lottieHello = LottieAnimationView(name: "gray_hello")
+        case 2:
+            dollNameView.lottieHello = LottieAnimationView(name: "panda_hello")
+        case 3:
+            dollNameView.lottieHello = LottieAnimationView(name: "red_hello")
+        default:
+            break
+        }
+        dollNameView.lottieHello.loopMode = .loop
+        dollNameView.lottieHello.play()
     }
 }
 

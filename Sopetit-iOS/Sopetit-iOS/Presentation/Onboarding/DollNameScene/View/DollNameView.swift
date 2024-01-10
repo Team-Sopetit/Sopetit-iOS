@@ -35,7 +35,7 @@ final class DollNameView: UIView {
         return label
     }()
     
-    let lottieHello: LottieAnimationView = LottieAnimationView(name: "red_hello")
+    var lottieHello: LottieAnimationView = LottieAnimationView(name: "red_hello")
     
     let nameTextField: UITextField = {
         let textField = UITextField()

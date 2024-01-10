@@ -11,9 +11,6 @@ import SnapKit
 
 final class ThemeSelectView: UIView {
 
-    // MARK: - Properties
-
-    
     // MARK: - UI Components
     
     private let progressView = CustomProgressView(progressNum: 3)
