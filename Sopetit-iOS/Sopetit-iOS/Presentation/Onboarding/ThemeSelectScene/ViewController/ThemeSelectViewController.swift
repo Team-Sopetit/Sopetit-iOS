@@ -61,6 +61,7 @@ extension ThemeSelectViewController {
 }
 
 extension ThemeSelectViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         if let selectedCell = collectionView.cellForItem(at: indexPath) as? ThemeSelectCollectionViewCell {
             if !selectedCell.isSelected {
@@ -103,6 +104,7 @@ extension ThemeSelectViewController: UICollectionViewDelegate {
 }
 
 extension ThemeSelectViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = ThemeSelectCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
         cell.setDataBind(model: themeDummy.themes[indexPath.item])
