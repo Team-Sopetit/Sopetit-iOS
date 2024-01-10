@@ -85,6 +85,22 @@
 		A49BFDE32B4D7A6000035EB6 /* DollChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDE22B4D7A6000035EB6 /* DollChoiceView.swift */; };
 		A49BFDE52B4D7EDF00035EB6 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDE42B4D7EDF00035EB6 /* CustomProgressView.swift */; };
 		A49BFDE92B4D873400035EB6 /* DollChoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDE82B4D873400035EB6 /* DollChoiceCollectionViewCell.swift */; };
+		A49BFDEE2B4DA42600035EB6 /* ThemeSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDED2B4DA42600035EB6 /* ThemeSelectViewController.swift */; };
+		A49BFDF02B4DA48200035EB6 /* ThemeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDEF2B4DA48200035EB6 /* ThemeSelectView.swift */; };
+		A49BFDF22B4DA53A00035EB6 /* ThemeSelectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */; };
+		A49BFDF52B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDF42B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift */; };
+		A49BFDFA2B4DC52200035EB6 /* brown_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDF62B4DC52200035EB6 /* brown_hello.json */; };
+		A49BFDFB2B4DC52200035EB6 /* gray_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDF72B4DC52200035EB6 /* gray_hello.json */; };
+		A49BFDFC2B4DC52200035EB6 /* panda_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDF82B4DC52200035EB6 /* panda_hello.json */; };
+		A49BFDFD2B4DC52200035EB6 /* red_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDF92B4DC52200035EB6 /* red_hello.json */; };
+		A49BFE022B4DC54400035EB6 /* brown_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */; };
+		A49BFE032B4DC54400035EB6 /* panda_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */; };
+		A49BFE042B4DC54400035EB6 /* red_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE002B4DC54400035EB6 /* red_eating_happy.json */; };
+		A49BFE052B4DC54400035EB6 /* gray_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE012B4DC54400035EB6 /* gray_eating_happy.json */; };
+		A49BFE0A2B4DC54F00035EB6 /* red_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE062B4DC54E00035EB6 /* red_eating_daily.json */; };
+		A49BFE0B2B4DC54F00035EB6 /* panda_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE072B4DC54E00035EB6 /* panda_eating_daily.json */; };
+		A49BFE0C2B4DC54F00035EB6 /* brown_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE082B4DC54E00035EB6 /* brown_eating_daily.json */; };
+		A49BFE0D2B4DC54F00035EB6 /* gray_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,6 +179,22 @@
 		A49BFDE22B4D7A6000035EB6 /* DollChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollChoiceView.swift; sourceTree = "<group>"; };
 		A49BFDE42B4D7EDF00035EB6 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		A49BFDE82B4D873400035EB6 /* DollChoiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollChoiceCollectionViewCell.swift; sourceTree = "<group>"; };
+		A49BFDED2B4DA42600035EB6 /* ThemeSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectViewController.swift; sourceTree = "<group>"; };
+		A49BFDEF2B4DA48200035EB6 /* ThemeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectView.swift; sourceTree = "<group>"; };
+		A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectEntity.swift; sourceTree = "<group>"; };
+		A49BFDF42B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectCollectionViewCell.swift; sourceTree = "<group>"; };
+		A49BFDF62B4DC52200035EB6 /* brown_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_hello.json; sourceTree = "<group>"; };
+		A49BFDF72B4DC52200035EB6 /* gray_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_hello.json; sourceTree = "<group>"; };
+		A49BFDF82B4DC52200035EB6 /* panda_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_hello.json; sourceTree = "<group>"; };
+		A49BFDF92B4DC52200035EB6 /* red_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_hello.json; sourceTree = "<group>"; };
+		A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_eating_happy.json; sourceTree = "<group>"; };
+		A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_eating_happy.json; sourceTree = "<group>"; };
+		A49BFE002B4DC54400035EB6 /* red_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_eating_happy.json; sourceTree = "<group>"; };
+		A49BFE012B4DC54400035EB6 /* gray_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_eating_happy.json; sourceTree = "<group>"; };
+		A49BFE062B4DC54E00035EB6 /* red_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_eating_daily.json; sourceTree = "<group>"; };
+		A49BFE072B4DC54E00035EB6 /* panda_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_eating_daily.json; sourceTree = "<group>"; };
+		A49BFE082B4DC54E00035EB6 /* brown_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_eating_daily.json; sourceTree = "<group>"; };
+		A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_eating_daily.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +394,18 @@
 		A42C32AF2B3EAA5300C4B477 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				A49BFE082B4DC54E00035EB6 /* brown_eating_daily.json */,
+				A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */,
+				A49BFE072B4DC54E00035EB6 /* panda_eating_daily.json */,
+				A49BFE062B4DC54E00035EB6 /* red_eating_daily.json */,
+				A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */,
+				A49BFE012B4DC54400035EB6 /* gray_eating_happy.json */,
+				A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */,
+				A49BFE002B4DC54400035EB6 /* red_eating_happy.json */,
+				A49BFDF62B4DC52200035EB6 /* brown_hello.json */,
+				A49BFDF72B4DC52200035EB6 /* gray_hello.json */,
+				A49BFDF82B4DC52200035EB6 /* panda_hello.json */,
+				A49BFDF92B4DC52200035EB6 /* red_hello.json */,
 				A42C32B22B3EAAB500C4B477 /* Lottie.swift */,
 			);
 			path = Lottie;
@@ -430,6 +474,7 @@
 			isa = PBXGroup;
 			children = (
 				A42C32F32B3EADDD00C4B477 /* OnboardingEntity.swift */,
+				A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -469,6 +514,7 @@
 		A42C33072B3EAE8900C4B477 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				A49BFDEA2B4DA3E000035EB6 /* ThemeSelectScene */,
 				A49BFDDD2B4D7A1E00035EB6 /* DollChoiceScene */,
 				A49BFDD12B4D5EE800035EB6 /* StroyTellingScene */,
 				A42C333C2B3EB05100C4B477 /* OnboardingScene */,
@@ -774,6 +820,40 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		A49BFDEA2B4DA3E000035EB6 /* ThemeSelectScene */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFDF32B4DA83A00035EB6 /* Cell */,
+				A49BFDEC2B4DA40F00035EB6 /* View */,
+				A49BFDEB2B4DA40800035EB6 /* ViewController */,
+			);
+			path = ThemeSelectScene;
+			sourceTree = "<group>";
+		};
+		A49BFDEB2B4DA40800035EB6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFDED2B4DA42600035EB6 /* ThemeSelectViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A49BFDEC2B4DA40F00035EB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFDEF2B4DA48200035EB6 /* ThemeSelectView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A49BFDF32B4DA83A00035EB6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFDF42B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -847,12 +927,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A49BFE0C2B4DC54F00035EB6 /* brown_eating_daily.json in Resources */,
 				A4832BAB2B4ACF09007879FF /* omyu-pretty.ttf in Resources */,
 				A42C336C2B41EF2F00C4B477 /* .swiftlint.yml in Resources */,
 				A42C33642B413F2100C4B477 /* Pretendard-SemiBold.otf in Resources */,
 				A42C32882B3DB8F500C4B477 /* LaunchScreen.storyboard in Resources */,
+				A49BFE042B4DC54400035EB6 /* red_eating_happy.json in Resources */,
 				A42C32852B3DB8F500C4B477 /* Assets.xcassets in Resources */,
+				A49BFDFB2B4DC52200035EB6 /* gray_hello.json in Resources */,
+				A49BFDFD2B4DC52200035EB6 /* red_hello.json in Resources */,
+				A49BFDFA2B4DC52200035EB6 /* brown_hello.json in Resources */,
+				A49BFDFC2B4DC52200035EB6 /* panda_hello.json in Resources */,
+				A49BFE022B4DC54400035EB6 /* brown_eating_happy.json in Resources */,
 				A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */,
+				A49BFE0B2B4DC54F00035EB6 /* panda_eating_daily.json in Resources */,
+				A49BFE0D2B4DC54F00035EB6 /* gray_eating_daily.json in Resources */,
+				A49BFE0A2B4DC54F00035EB6 /* red_eating_daily.json in Resources */,
+				A49BFE032B4DC54400035EB6 /* panda_eating_happy.json in Resources */,
+				A49BFE052B4DC54400035EB6 /* gray_eating_happy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -913,6 +1005,7 @@
 				A42C32F42B3EADDD00C4B477 /* OnboardingEntity.swift in Sources */,
 				A42C32E92B3EAC9C00C4B477 /* BaseService.swift in Sources */,
 				A49BFDE32B4D7A6000035EB6 /* DollChoiceView.swift in Sources */,
+				A49BFDEE2B4DA42600035EB6 /* ThemeSelectViewController.swift in Sources */,
 				A42C32D72B3EAC1300C4B477 /* MakeVibrate.swift in Sources */,
 				A42C32B92B3EAAE300C4B477 /* ColorLiterals.swift in Sources */,
 				A42C32A72B3EA9BF00C4B477 /* UserDefaultWrapper.swift in Sources */,
@@ -937,7 +1030,9 @@
 				093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */,
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,
 				A42C32FA2B3EADF900C4B477 /* DailyEntity.swift in Sources */,
+				A49BFDF52B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift in Sources */,
 				0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */,
+				A49BFDF22B4DA53A00035EB6 /* ThemeSelectEntity.swift in Sources */,
 				A49BFDE92B4D873400035EB6 /* DollChoiceCollectionViewCell.swift in Sources */,
 				A42C331F2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift in Sources */,
 				0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */,
@@ -950,6 +1045,7 @@
 				A42C32D92B3EAC1C00C4B477 /* MakeAlert.swift in Sources */,
 				A42C32C92B3EAB4500C4B477 /* UIStackView+.swift in Sources */,
 				A42C32D12B3EAB7F00C4B477 /* String+.swift in Sources */,
+				A49BFDF02B4DA48200035EB6 /* ThemeSelectView.swift in Sources */,
 				A49BFDD52B4D5F0800035EB6 /* StroyTellingViewController.swift in Sources */,
 				A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */,
 			);
