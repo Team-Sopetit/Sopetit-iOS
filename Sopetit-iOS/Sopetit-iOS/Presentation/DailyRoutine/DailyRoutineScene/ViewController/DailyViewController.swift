@@ -99,6 +99,7 @@ extension DailyViewController {
         self.view.backgroundColor = .SoftieBack
         exampleBottom.modalPresentationStyle = .overFullScreen
         deleteBottom.modalPresentationStyle = .overFullScreen
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func setHierarchy() {
@@ -109,12 +110,14 @@ extension DailyViewController {
         customNavigationBar.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
-            $0.height.equalTo(40)
+            $0.height.equalTo(44)
         }
+        
         collectionview.snp.makeConstraints {
-            $0.top.equalTo(customNavigationBar.snp.bottom)
+            $0.top.equalTo(customNavigationBar.snp.bottom).offset(13)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+        
         deleteLabel.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(17)
