@@ -8,6 +8,15 @@
 import UIKit
 
 extension String {
+    var containsEmoji: Bool {
+        for scalar in unicodeScalars {
+            if scalar.properties.isEmoji {
+                return true
+            }
+        }
+        return false
+    }
+    
     func isOnlyKorean() -> Bool {
         let pattern = "^[가-힣]*$"
         guard self.range(of: pattern, options: .regularExpression) != nil else { return false }
