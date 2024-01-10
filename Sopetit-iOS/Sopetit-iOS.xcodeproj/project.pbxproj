@@ -81,6 +81,14 @@
 		A4832BA42B4A5C37007879FF /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BA32B4A5C37007879FF /* BottomSheetViewController.swift */; };
 		A4832BAB2B4ACF09007879FF /* omyu-pretty.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4832BAA2B4ACF09007879FF /* omyu-pretty.ttf */; };
 		A4832BAD2B4AF081007879FF /* BottomSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BAC2B4AF081007879FF /* BottomSheetType.swift */; };
+		A49BFDD52B4D5F0800035EB6 /* StroyTellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDD42B4D5F0800035EB6 /* StroyTellingViewController.swift */; };
+		A49BFDD72B4D5F2800035EB6 /* StroyTellingFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDD62B4D5F2800035EB6 /* StroyTellingFirstView.swift */; };
+		A49BFDDA2B4D5F4600035EB6 /* StoryTellingSecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDD92B4D5F4600035EB6 /* StoryTellingSecondView.swift */; };
+		A49BFDDC2B4D5F5E00035EB6 /* StoryTellingThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDDB2B4D5F5E00035EB6 /* StoryTellingThirdView.swift */; };
+		A49BFDE12B4D7A5400035EB6 /* DollChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDE02B4D7A5400035EB6 /* DollChoiceViewController.swift */; };
+		A49BFDE32B4D7A6000035EB6 /* DollChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDE22B4D7A6000035EB6 /* DollChoiceView.swift */; };
+		A49BFDE52B4D7EDF00035EB6 /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDE42B4D7EDF00035EB6 /* CustomProgressView.swift */; };
+		A49BFDE92B4D873400035EB6 /* DollChoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDE82B4D873400035EB6 /* DollChoiceCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,6 +163,14 @@
 		A4832BA32B4A5C37007879FF /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		A4832BAA2B4ACF09007879FF /* omyu-pretty.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "omyu-pretty.ttf"; sourceTree = "<group>"; };
 		A4832BAC2B4AF081007879FF /* BottomSheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetType.swift; sourceTree = "<group>"; };
+		A49BFDD42B4D5F0800035EB6 /* StroyTellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StroyTellingViewController.swift; sourceTree = "<group>"; };
+		A49BFDD62B4D5F2800035EB6 /* StroyTellingFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StroyTellingFirstView.swift; sourceTree = "<group>"; };
+		A49BFDD92B4D5F4600035EB6 /* StoryTellingSecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingSecondView.swift; sourceTree = "<group>"; };
+		A49BFDDB2B4D5F5E00035EB6 /* StoryTellingThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTellingThirdView.swift; sourceTree = "<group>"; };
+		A49BFDE02B4D7A5400035EB6 /* DollChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollChoiceViewController.swift; sourceTree = "<group>"; };
+		A49BFDE22B4D7A6000035EB6 /* DollChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollChoiceView.swift; sourceTree = "<group>"; };
+		A49BFDE42B4D7EDF00035EB6 /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
+		A49BFDE82B4D873400035EB6 /* DollChoiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollChoiceCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -496,6 +512,8 @@
 		A42C33072B3EAE8900C4B477 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				A49BFDDD2B4D7A1E00035EB6 /* DollChoiceScene */,
+				A49BFDD12B4D5EE800035EB6 /* StroyTellingScene */,
 				A42C333C2B3EB05100C4B477 /* OnboardingScene */,
 			);
 			path = Onboarding;
@@ -520,6 +538,7 @@
 		A42C330A2B3EAEC300C4B477 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A49BFDE62B4D7EEB00035EB6 /* CustomProgress */,
 				A4832BA22B4A5C1C007879FF /* BottomSheet */,
 				A42C33382B3EB01C00C4B477 /* TabBar */,
 			);
@@ -730,6 +749,75 @@
 			path = BottomSheet;
 			sourceTree = "<group>";
 		};
+		A49BFDD12B4D5EE800035EB6 /* StroyTellingScene */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFDD32B4D5EF600035EB6 /* View */,
+				A49BFDD22B4D5EEF00035EB6 /* ViewController */,
+			);
+			path = StroyTellingScene;
+			sourceTree = "<group>";
+		};
+		A49BFDD22B4D5EEF00035EB6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFDD42B4D5F0800035EB6 /* StroyTellingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A49BFDD32B4D5EF600035EB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFDD62B4D5F2800035EB6 /* StroyTellingFirstView.swift */,
+				A49BFDD92B4D5F4600035EB6 /* StoryTellingSecondView.swift */,
+				A49BFDDB2B4D5F5E00035EB6 /* StoryTellingThirdView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A49BFDDD2B4D7A1E00035EB6 /* DollChoiceScene */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFDE72B4D872500035EB6 /* Cell */,
+				A49BFDDF2B4D7A4600035EB6 /* View */,
+				A49BFDDE2B4D7A4200035EB6 /* ViewController */,
+			);
+			path = DollChoiceScene;
+			sourceTree = "<group>";
+		};
+		A49BFDDE2B4D7A4200035EB6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFDE02B4D7A5400035EB6 /* DollChoiceViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A49BFDDF2B4D7A4600035EB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFDE22B4D7A6000035EB6 /* DollChoiceView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A49BFDE62B4D7EEB00035EB6 /* CustomProgress */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFDE42B4D7EDF00035EB6 /* CustomProgressView.swift */,
+			);
+			path = CustomProgress;
+			sourceTree = "<group>";
+		};
+		A49BFDE72B4D872500035EB6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFDE82B4D873400035EB6 /* DollChoiceCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -854,22 +942,28 @@
 				A42C33122B3EAF1A00C4B477 /* HomeViewController.swift in Sources */,
 				A42C32802B3DB8F400C4B477 /* ViewController.swift in Sources */,
 				A42C32E32B3EAC8200C4B477 /* NetworkResult.swift in Sources */,
+				A49BFDD72B4D5F2800035EB6 /* StroyTellingFirstView.swift in Sources */,
 				A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */,
+				A49BFDE52B4D7EDF00035EB6 /* CustomProgressView.swift in Sources */,
+				A49BFDE12B4D7A5400035EB6 /* DollChoiceViewController.swift in Sources */,
 				A4832BA42B4A5C37007879FF /* BottomSheetViewController.swift in Sources */,
 				093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */,
 				A42C33042B3EAE4F00C4B477 /* AuthService.swift in Sources */,
 				A42C32B72B3EAAD800C4B477 /* ImageLiterals.swift in Sources */,
 				A42C32BD2B3EAAF200C4B477 /* SizeLiterals.swift in Sources */,
 				A42C32C52B3EAB2B00C4B477 /* UIButton+.swift in Sources */,
+				A49BFDDC2B4D5F5E00035EB6 /* StoryTellingThirdView.swift in Sources */,
 				A42C32CD2B3EAB5600C4B477 /* UILabel+.swift in Sources */,
 				A42C33102B3EAF0F00C4B477 /* HomeView.swift in Sources */,
 				A42C32F42B3EADDD00C4B477 /* OnboardingEntity.swift in Sources */,
 				A42C32E92B3EAC9C00C4B477 /* BaseService.swift in Sources */,
+				A49BFDE32B4D7A6000035EB6 /* DollChoiceView.swift in Sources */,
 				A42C32D72B3EAC1300C4B477 /* MakeVibrate.swift in Sources */,
 				A42C32B92B3EAAE300C4B477 /* ColorLiterals.swift in Sources */,
 				A42C32A72B3EA9BF00C4B477 /* UserDefaultWrapper.swift in Sources */,
 				A42C32CB2B3EAB4B00C4B477 /* NSObject+.swift in Sources */,
 				A42C32CF2B3EAB7700C4B477 /* UIColor+.swift in Sources */,
+				A49BFDDA2B4D5F4600035EB6 /* StoryTellingSecondView.swift in Sources */,
 				A42C32B32B3EAAB500C4B477 /* Lottie.swift in Sources */,
 				A42C331A2B3EAF5200C4B477 /* SettingViewController.swift in Sources */,
 				A42C32F62B3EADE300C4B477 /* HomeEntity.swift in Sources */,
@@ -889,6 +983,7 @@
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,
 				A42C32FA2B3EADF900C4B477 /* DailyEntity.swift in Sources */,
 				0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */,
+				A49BFDE92B4D873400035EB6 /* DollChoiceCollectionViewCell.swift in Sources */,
 				09B253662B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift in Sources */,
 				A42C331F2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift in Sources */,
 				0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */,
@@ -903,6 +998,7 @@
 				09B2535C2B4D538E005E7032 /* SelectHappyCategoryViewController.swift in Sources */,
 				09B253612B4D53E7005E7032 /* SelectHappyCategoryView.swift in Sources */,
 				A42C32D12B3EAB7F00C4B477 /* String+.swift in Sources */,
+				A49BFDD52B4D5F0800035EB6 /* StroyTellingViewController.swift in Sources */,
 				A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
