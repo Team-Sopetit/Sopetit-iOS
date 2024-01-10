@@ -16,6 +16,7 @@ final class DailyViewController: UIViewController {
     // MARK: - Properties
     let dummy = DailyEntity.routineDummy()
     var status: Int = 0
+    let deleteBottom = BottomSheetViewController(bottomStyle: .dailyDeleteBottom)
     
     override var isEditing: Bool {
         didSet {
@@ -27,7 +28,6 @@ final class DailyViewController: UIViewController {
     // MARK: - UI Components
     private let routineView = DailyView()
     private lazy var collectionview = routineView.collectionView
-    private let topView = DailyTopView()
     private let customNavigationBar = CustomNavigationBarView()
     let exampleBottom = BottomSheetViewController(bottomStyle: .dailyCompleteBottom)
     
@@ -49,6 +49,7 @@ final class DailyViewController: UIViewController {
             print("Edit button tapped!")
             self.isEditing.toggle()
             self.deleteLabel.isHidden.toggle()
+//            DailyRoutineCollectionViewCell.sharedVariable = 0
         }
 
     }
@@ -61,8 +62,13 @@ final class DailyViewController: UIViewController {
         button.backgroundColor = .SoftieRed
         button.layer.cornerRadius = 12
         button.isHidden = true
+        button.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
         return button
     }()
+    @objc
+    func deleteTapped() {
+        self.present(deleteBottom, animated: false)
+    }
     
     // MARK: - Life Cycles
     
@@ -92,6 +98,7 @@ extension DailyViewController {
     func setUI() {
         self.view.backgroundColor = .SoftieBack
         exampleBottom.modalPresentationStyle = .overFullScreen
+        deleteBottom.modalPresentationStyle = .overFullScreen
     }
     
     func setHierarchy() {
@@ -119,6 +126,7 @@ extension DailyViewController {
         collectionview.delegate = self
         collectionview.dataSource = self
         exampleBottom.buttonDelegate = self
+        deleteBottom.buttonDelegate = self
     }
     
     private func updateCellsForEditing() {
@@ -154,6 +162,8 @@ extension DailyViewController: UICollectionViewDataSource, MyCellDelegate {
         cell.setDatabind(model: dummy[indexPath.item])
         cell.delegate = self
         cell.tag = indexPath.item
+        print(indexPath)
+        print(indexPath.item)
         return cell
     }
 }

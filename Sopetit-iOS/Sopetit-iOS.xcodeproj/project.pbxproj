@@ -10,7 +10,6 @@
 		0084F19B2B4A895700F87860 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19A2B4A895700F87860 /* LoginView.swift */; };
 		0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19C2B4A896500F87860 /* LoginViewController.swift */; };
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
-		0463F89D2B4D165C0089B526 /* DailyTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89C2B4D165C0089B526 /* DailyTopView.swift */; };
 		093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */; };
 		093C1E042B4CFD9E00EF84AB /* HappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E032B4CFD9E00EF84AB /* HappyRoutineView.swift */; };
 		093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */; };
@@ -88,7 +87,6 @@
 		0084F19A2B4A895700F87860 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0084F19C2B4A896500F87860 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
-		0463F89C2B4D165C0089B526 /* DailyTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTopView.swift; sourceTree = "<group>"; };
 		093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineViewController.swift; sourceTree = "<group>"; };
 		093C1E032B4CFD9E00EF84AB /* HappyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineView.swift; sourceTree = "<group>"; };
 		093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
@@ -574,7 +572,6 @@
 			isa = PBXGroup;
 			children = (
 				A42C33202B3EAF7B00C4B477 /* DailyView.swift */,
-				0463F89C2B4D165C0089B526 /* DailyTopView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -864,8 +861,6 @@
 				A42C32D72B3EAC1300C4B477 /* MakeVibrate.swift in Sources */,
 				A42C32B92B3EAAE300C4B477 /* ColorLiterals.swift in Sources */,
 				A42C32A72B3EA9BF00C4B477 /* UserDefaultWrapper.swift in Sources */,
-				0463F89D2B4D165C0089B526 /* DailyTopView.swift in Sources */,
-				A42C33372B3EB01200C4B477 /* LoginViewController.swift in Sources */,
 				A42C32CB2B3EAB4B00C4B477 /* NSObject+.swift in Sources */,
 				A42C32CF2B3EAB7700C4B477 /* UIColor+.swift in Sources */,
 				A49BFDDA2B4D5F4600035EB6 /* StoryTellingSecondView.swift in Sources */,
