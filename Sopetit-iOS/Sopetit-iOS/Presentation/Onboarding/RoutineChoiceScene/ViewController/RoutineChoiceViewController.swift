@@ -99,7 +99,7 @@ extension RoutineChoiceViewController: UICollectionViewDelegate {
                     selectedRoutine.remove(at: index)
                 }
                 selectedCount -= 1
-                if selectedCount < 3 {
+                if selectedCount <= 3 {
                     routineChoiceView.infoLabel.isHidden = true
                 }
                 selectedCell.isSelected = false
