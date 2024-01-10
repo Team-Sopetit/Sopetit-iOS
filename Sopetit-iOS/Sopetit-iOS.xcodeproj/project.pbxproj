@@ -89,10 +89,6 @@
 		A49BFDF02B4DA48200035EB6 /* ThemeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDEF2B4DA48200035EB6 /* ThemeSelectView.swift */; };
 		A49BFDF22B4DA53A00035EB6 /* ThemeSelectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */; };
 		A49BFDF52B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDF42B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift */; };
-		A49BFDFA2B4DC52200035EB6 /* brown_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDF62B4DC52200035EB6 /* brown_hello.json */; };
-		A49BFDFB2B4DC52200035EB6 /* gray_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDF72B4DC52200035EB6 /* gray_hello.json */; };
-		A49BFDFC2B4DC52200035EB6 /* panda_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDF82B4DC52200035EB6 /* panda_hello.json */; };
-		A49BFDFD2B4DC52200035EB6 /* red_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDF92B4DC52200035EB6 /* red_hello.json */; };
 		A49BFE022B4DC54400035EB6 /* brown_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */; };
 		A49BFE032B4DC54400035EB6 /* panda_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */; };
 		A49BFE042B4DC54400035EB6 /* red_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE002B4DC54400035EB6 /* red_eating_happy.json */; };
@@ -105,6 +101,12 @@
 		A49BFE1F2B4E542B00035EB6 /* RoutineChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE1E2B4E542B00035EB6 /* RoutineChoiceView.swift */; };
 		A49BFE212B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE202B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift */; };
 		A49BFE232B4E565D00035EB6 /* RoutineChoiceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE222B4E565D00035EB6 /* RoutineChoiceEntity.swift */; };
+		A49BFE282B4E856600035EB6 /* DollNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE272B4E856600035EB6 /* DollNameViewController.swift */; };
+		A49BFE2A2B4E857300035EB6 /* DollNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE292B4E857300035EB6 /* DollNameView.swift */; };
+		A49BFE372B4E938700035EB6 /* gray_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE332B4E938600035EB6 /* gray_hello.json */; };
+		A49BFE382B4E938700035EB6 /* red_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE342B4E938600035EB6 /* red_hello.json */; };
+		A49BFE392B4E938700035EB6 /* panda_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE352B4E938600035EB6 /* panda_hello.json */; };
+		A49BFE3A2B4E938700035EB6 /* brown_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE362B4E938600035EB6 /* brown_hello.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -187,10 +189,6 @@
 		A49BFDEF2B4DA48200035EB6 /* ThemeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectView.swift; sourceTree = "<group>"; };
 		A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectEntity.swift; sourceTree = "<group>"; };
 		A49BFDF42B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectCollectionViewCell.swift; sourceTree = "<group>"; };
-		A49BFDF62B4DC52200035EB6 /* brown_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_hello.json; sourceTree = "<group>"; };
-		A49BFDF72B4DC52200035EB6 /* gray_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_hello.json; sourceTree = "<group>"; };
-		A49BFDF82B4DC52200035EB6 /* panda_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_hello.json; sourceTree = "<group>"; };
-		A49BFDF92B4DC52200035EB6 /* red_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_hello.json; sourceTree = "<group>"; };
 		A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_eating_happy.json; sourceTree = "<group>"; };
 		A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_eating_happy.json; sourceTree = "<group>"; };
 		A49BFE002B4DC54400035EB6 /* red_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_eating_happy.json; sourceTree = "<group>"; };
@@ -203,6 +201,12 @@
 		A49BFE1E2B4E542B00035EB6 /* RoutineChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceView.swift; sourceTree = "<group>"; };
 		A49BFE202B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		A49BFE222B4E565D00035EB6 /* RoutineChoiceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceEntity.swift; sourceTree = "<group>"; };
+		A49BFE272B4E856600035EB6 /* DollNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollNameViewController.swift; sourceTree = "<group>"; };
+		A49BFE292B4E857300035EB6 /* DollNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollNameView.swift; sourceTree = "<group>"; };
+		A49BFE332B4E938600035EB6 /* gray_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_hello.json; sourceTree = "<group>"; };
+		A49BFE342B4E938600035EB6 /* red_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_hello.json; sourceTree = "<group>"; };
+		A49BFE352B4E938600035EB6 /* panda_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_hello.json; sourceTree = "<group>"; };
+		A49BFE362B4E938600035EB6 /* brown_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_hello.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,10 +414,10 @@
 				A49BFE012B4DC54400035EB6 /* gray_eating_happy.json */,
 				A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */,
 				A49BFE002B4DC54400035EB6 /* red_eating_happy.json */,
-				A49BFDF62B4DC52200035EB6 /* brown_hello.json */,
-				A49BFDF72B4DC52200035EB6 /* gray_hello.json */,
-				A49BFDF82B4DC52200035EB6 /* panda_hello.json */,
-				A49BFDF92B4DC52200035EB6 /* red_hello.json */,
+				A49BFE362B4E938600035EB6 /* brown_hello.json */,
+				A49BFE332B4E938600035EB6 /* gray_hello.json */,
+				A49BFE352B4E938600035EB6 /* panda_hello.json */,
+				A49BFE342B4E938600035EB6 /* red_hello.json */,
 				A42C32B22B3EAAB500C4B477 /* Lottie.swift */,
 			);
 			path = Lottie;
@@ -523,6 +527,7 @@
 		A42C33072B3EAE8900C4B477 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				A49BFE252B4E853A00035EB6 /* DollNameScene */,
 				A49BFE182B4E53CE00035EB6 /* RoutineChoiceScene */,
 				A49BFDEA2B4DA3E000035EB6 /* ThemeSelectScene */,
 				A49BFDDD2B4D7A1E00035EB6 /* DollChoiceScene */,
@@ -898,6 +903,31 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		A49BFE252B4E853A00035EB6 /* DollNameScene */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFE3C2B4E95D500035EB6 /* View */,
+				A49BFE3B2B4E95CC00035EB6 /* ViewController */,
+			);
+			path = DollNameScene;
+			sourceTree = "<group>";
+		};
+		A49BFE3B2B4E95CC00035EB6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFE272B4E856600035EB6 /* DollNameViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A49BFE3C2B4E95D500035EB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFE292B4E857300035EB6 /* DollNameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -975,15 +1005,15 @@
 				A4832BAB2B4ACF09007879FF /* omyu-pretty.ttf in Resources */,
 				A42C336C2B41EF2F00C4B477 /* .swiftlint.yml in Resources */,
 				A42C33642B413F2100C4B477 /* Pretendard-SemiBold.otf in Resources */,
+				A49BFE382B4E938700035EB6 /* red_hello.json in Resources */,
+				A49BFE3A2B4E938700035EB6 /* brown_hello.json in Resources */,
 				A42C32882B3DB8F500C4B477 /* LaunchScreen.storyboard in Resources */,
 				A49BFE042B4DC54400035EB6 /* red_eating_happy.json in Resources */,
 				A42C32852B3DB8F500C4B477 /* Assets.xcassets in Resources */,
-				A49BFDFB2B4DC52200035EB6 /* gray_hello.json in Resources */,
-				A49BFDFD2B4DC52200035EB6 /* red_hello.json in Resources */,
-				A49BFDFA2B4DC52200035EB6 /* brown_hello.json in Resources */,
-				A49BFDFC2B4DC52200035EB6 /* panda_hello.json in Resources */,
 				A49BFE022B4DC54400035EB6 /* brown_eating_happy.json in Resources */,
+				A49BFE372B4E938700035EB6 /* gray_hello.json in Resources */,
 				A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */,
+				A49BFE392B4E938700035EB6 /* panda_hello.json in Resources */,
 				A49BFE0B2B4DC54F00035EB6 /* panda_eating_daily.json in Resources */,
 				A49BFE0D2B4DC54F00035EB6 /* gray_eating_daily.json in Resources */,
 				A49BFE0A2B4DC54F00035EB6 /* red_eating_daily.json in Resources */,
@@ -1041,12 +1071,14 @@
 				A4832BA42B4A5C37007879FF /* BottomSheetViewController.swift in Sources */,
 				093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */,
 				A42C33042B3EAE4F00C4B477 /* AuthService.swift in Sources */,
+				A49BFE2A2B4E857300035EB6 /* DollNameView.swift in Sources */,
 				A42C32B72B3EAAD800C4B477 /* ImageLiterals.swift in Sources */,
 				A42C32BD2B3EAAF200C4B477 /* SizeLiterals.swift in Sources */,
 				A42C32C52B3EAB2B00C4B477 /* UIButton+.swift in Sources */,
 				A49BFDDC2B4D5F5E00035EB6 /* StoryTellingThirdView.swift in Sources */,
 				A42C32CD2B3EAB5600C4B477 /* UILabel+.swift in Sources */,
 				A42C33102B3EAF0F00C4B477 /* HomeView.swift in Sources */,
+				A49BFE282B4E856600035EB6 /* DollNameViewController.swift in Sources */,
 				A42C32F42B3EADDD00C4B477 /* OnboardingEntity.swift in Sources */,
 				A42C32E92B3EAC9C00C4B477 /* BaseService.swift in Sources */,
 				A49BFDE32B4D7A6000035EB6 /* DollChoiceView.swift in Sources */,

@@ -12,8 +12,7 @@ import SnapKit
 final class ThemeSelectView: UIView {
 
     // MARK: - Properties
-    
-    var dollName: String = "애착이"
+
     
     // MARK: - UI Components
     
@@ -41,9 +40,8 @@ final class ThemeSelectView: UIView {
         return image
     }()
     
-    private lazy var bubbleLabel: UILabel = {
+    lazy var bubbleLabel: UILabel = {
         let label = UILabel()
-        label.text = "안녕 난 \(dollName)야!\n나와 함께 루틴을 만들어볼까?"
         label.textColor = .Gray700
         label.font = .fontGuide(.bubble16)
         label.textAlignment = .center
@@ -106,7 +104,6 @@ extension ThemeSelectView {
 
     func setUI() {
         backgroundColor = .SoftieBack
-        bubbleLabel.partColorChange(targetString: dollName, textColor: .SoftieBrown)
     }
     
     func setHierarchy() {

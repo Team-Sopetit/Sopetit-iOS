@@ -33,6 +33,7 @@ final class RoutineChoiceViewController: UIViewController {
         
         setUI()
         setDelegate()
+        setAddTarget()
     }
 }
 
