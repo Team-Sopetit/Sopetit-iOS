@@ -19,6 +19,7 @@
 		09B253632B4D561C005E7032 /* HappyRoutineTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253622B4D561C005E7032 /* HappyRoutineTagView.swift */; };
 		09B253662B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253652B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift */; };
 		09B2536B2B4E2FDC005E7032 /* HappyRoutineCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2536A2B4E2FDC005E7032 /* HappyRoutineCategory.swift */; };
+		09B2536D2B4E3529005E7032 /* HappyRoutineTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2536C2B4E3529005E7032 /* HappyRoutineTag.swift */; };
 		A42C327C2B3DB8F400C4B477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */; };
 		A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327D2B3DB8F400C4B477 /* SceneDelegate.swift */; };
 		A42C32802B3DB8F400C4B477 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327F2B3DB8F400C4B477 /* ViewController.swift */; };
@@ -105,6 +106,7 @@
 		09B253622B4D561C005E7032 /* HappyRoutineTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineTagView.swift; sourceTree = "<group>"; };
 		09B253652B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		09B2536A2B4E2FDC005E7032 /* HappyRoutineCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCategory.swift; sourceTree = "<group>"; };
+		09B2536C2B4E3529005E7032 /* HappyRoutineTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineTag.swift; sourceTree = "<group>"; };
 		A42C32782B3DB8F400C4B477 /* Sopetit-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sopetit-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A42C327D2B3DB8F400C4B477 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				09B2536A2B4E2FDC005E7032 /* HappyRoutineCategory.swift */,
+				09B2536C2B4E3529005E7032 /* HappyRoutineTag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1001,6 +1004,7 @@
 				0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */,
 				A42C32EB2B3EACAC00C4B477 /* URLConstant.swift in Sources */,
 				A42C32C12B3EAB1A00C4B477 /* UIView+.swift in Sources */,
+				09B2536D2B4E3529005E7032 /* HappyRoutineTag.swift in Sources */,
 				A42C32E72B3EAC9500C4B477 /* NetworkConstant.swift in Sources */,
 				A42C332D2B3EAFCC00C4B477 /* OnboardingView.swift in Sources */,
 				0084F19B2B4A895700F87860 /* LoginView.swift in Sources */,

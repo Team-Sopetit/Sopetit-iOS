@@ -11,12 +11,8 @@ final class SelectHappyCategoryViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let tagList: [String] = [I18N.HappyRoutineCategory.all,
-                             I18N.HappyRoutineCategory.relationship,
-                             I18N.HappyRoutineCategory.aStep,
-                             I18N.HappyRoutineCategory.rest,
-                             I18N.HappyRoutineCategory.new,
-                             I18N.HappyRoutineCategory.mind]
+    private let tagList = HappyRoutineTag.dummy()
+    private let categoryList = HappyRoutineCategory.dummy()
     
     private var selectedIndex = 0
     
@@ -82,38 +78,45 @@ extension SelectHappyCategoryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HappyRoutineTagCollectionViewCell", for: indexPath) as? HappyRoutineTagCollectionViewCell else { return HappyRoutineTagCollectionViewCell() }
-        
-        if indexPath.row == selectedIndex {
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
-            cell.isSelected = true
+        if collectionView == selectHappyCategoryView.tagview.collectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HappyRoutineTagCollectionViewCell", for: indexPath) as? HappyRoutineTagCollectionViewCell else { return HappyRoutineTagCollectionViewCell() }
+            
+            if indexPath.row == selectedIndex {
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+                cell.isSelected = true
+            }
+            cell.bindText(text: tagList[indexPath.item])
+            return cell
         }
-        cell.bindText(text: tagList[indexPath.item])
-        return cell
+        return UICollectionViewCell()
     }
 }
 
 extension SelectHappyCategoryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let label: UILabel = {
-            let label = UILabel()
-            label.font = .fontGuide(.body4)
-            label.text = tagList[indexPath.item]
-            label.sizeToFit()
-            return label
-        }()
-        
-        let size = label.intrinsicContentSize.width
-        print(size)
-        
-        return CGSize(width: size + 14 * 2, height: 37)
+        if collectionView == selectHappyCategoryView.tagview.collectionView {
+            let label: UILabel = {
+                let label = UILabel()
+                label.font = .fontGuide(.body4)
+                label.text = tagList[indexPath.item]
+                label.sizeToFit()
+                return label
+            }()
+            
+            let size = label.intrinsicContentSize.width
+            print(size)
+            
+            return CGSize(width: size + 14 * 2, height: 37)
+        }
+        return .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
-        selectedIndex = indexPath.row
-        print(selectedIndex)
+        if collectionView == selectHappyCategoryView.tagview.collectionView {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+            selectedIndex = indexPath.row
+            print(selectedIndex)
+        }
     }
 }
