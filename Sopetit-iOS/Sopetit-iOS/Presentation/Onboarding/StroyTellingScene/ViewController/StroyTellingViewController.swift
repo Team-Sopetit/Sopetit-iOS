@@ -54,7 +54,8 @@ extension StoryTellingViewController {
             self.view = thirdView
             self.viewWillLayoutSubviews()
         case thirdView.nextButton:
-            print("3")
+            let nav = DollChoiceViewController()
+            self.navigationController?.pushViewController(nav, animated: true)
         default:
             break
         }
