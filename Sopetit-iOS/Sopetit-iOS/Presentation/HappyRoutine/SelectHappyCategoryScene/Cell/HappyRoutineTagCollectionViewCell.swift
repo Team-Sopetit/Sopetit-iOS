@@ -80,7 +80,7 @@ private extension HappyRoutineTagCollectionViewCell {
 
 extension HappyRoutineTagCollectionViewCell {
     
-    func bindText(text: String) {
+    func setDataBind(text: String) {
         tagLabel.text = text
     }
     

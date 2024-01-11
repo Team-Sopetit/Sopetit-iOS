@@ -74,11 +74,11 @@ extension SelectHappyCategoryViewController: UICollectionViewDataSource {
                 collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
                 cell.isSelected = true
             }
-            cell.bindText(text: tagList[indexPath.item])
+            cell.setDataBind(text: tagList[indexPath.item])
             return cell
         } else if collectionView == selectHappyCategoryView.categoryCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HappyRoutineCategoryCollectionViewCell", for: indexPath) as? HappyRoutineCategoryCollectionViewCell else { return HappyRoutineCategoryCollectionViewCell() }
-            cell.bindModel(model: categoryList[indexPath.row])
+            cell.setDataBind(model: categoryList[indexPath.row])
             return cell
         }
         return UICollectionViewCell()

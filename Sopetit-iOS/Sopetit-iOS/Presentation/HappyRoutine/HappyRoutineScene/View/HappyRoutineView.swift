@@ -126,6 +126,6 @@ extension HappyRoutineView {
     func setDataBind(model: HappyRoutineCard) {
         subTitleLabel.text = model.title
         subTitleLabel.textAlignment = .center
-        happyRoutineCardView.bindModel(model: model)
+        happyRoutineCardView.setDataBind(model: model)
     }
 }

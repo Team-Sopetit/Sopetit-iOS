@@ -198,12 +198,22 @@ private extension HappyRoutineCardView {
     }
     
     func setAddTarget() {
-        magnifyButton.addTarget(self, action: #selector(tapMagnifyButton), for: .touchUpInside)
-        switchButton.addTarget(self, action: #selector(tapSwitchButton), for: .touchUpInside)
+        magnifyButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        switchButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
-    @objc func tapMagnifyButton() {
-        print("tap1")
+    @objc func buttonTapped(sender: UIButton) {
+        switch sender {
+        case magnifyButton:
+            cardToDetailCard()
+        case detailCardView:
+            detailCardToCard()
+        default:
+            break
+        }
+    }
+    
+    func cardToDetailCard() {
         self.detailCardView.isHidden.toggle()
         UIView.transition(with: self.detailCardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil)
 
@@ -212,8 +222,7 @@ private extension HappyRoutineCardView {
         })
     }
     
-    @objc func tapSwitchButton() {
-        print("tap2")
+    func detailCardToCard() {
         self.cardView.isHidden.toggle()
         UIView.transition(with: self.cardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil)
         UIView.transition(with: self.detailCardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
@@ -225,7 +234,7 @@ private extension HappyRoutineCardView {
 
 extension HappyRoutineCardView {
 
-    func bindModel(model: HappyRoutineCard) {
+    func setDataBind(model: HappyRoutineCard) {
         self.cardImageView.image = model.cardImage
         self.detailTitleLabel.text = model.detailTitle
         self.detailTitleLabel.setLineSpacing(lineSpacing: 4)
