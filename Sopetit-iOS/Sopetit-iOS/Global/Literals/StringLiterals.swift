@@ -36,6 +36,13 @@ enum I18N {
         static let routineBackButtonTitle = "테마 다시 고를래"
         static let routineNextButtonTitle = "친구 만날 준비 끝!"
         static let routineInfoTitle = "최대 3개 선택 가능합니다"
+        static let dollNameTitle = "좋은 선택이에요!\n친구 이름도 지어볼까요?"
+        static let dollNameSubTitle = "한 번 지은 이름은 평생 가요"
+        static let textfieldPlaceholder = "소프티"
+        static let dollNameInfoTitle = "*특수문자는 사용할 수 없어요"
+        static let dollNameInfoTitle2 = "*10글자 이내로 작성해 주세요."
+        static let dollNameButtonTitle = "이 이름이 좋겠어"
+        static let dollSpecialText = "!@#$%^&*()_+={}[]₩|\n;:'\",.<>?/~`"
     }
     
     enum HappyRoutine {
@@ -44,6 +51,8 @@ enum I18N {
         static let addRoutine = "진행 중인 행복루틴이 없어요.\n루틴을 추가할까요?"
         static let addHappyRoutineTitle = "행복 루틴 추가"
         static let addHappyRoutineButton = "이 루틴을 추가할래"
+        static let achieving = "달성 중..."
+        static let done = "완료하기"
     }
     
     enum HappyRoutineCategory {
@@ -58,6 +67,7 @@ enum I18N {
     enum CustomNavi {
         static let cancel = "취소"
         static let edit = "편집"
+        static let delete = "삭제"
     }
     
     enum Login {

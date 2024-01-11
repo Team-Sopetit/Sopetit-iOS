@@ -15,6 +15,10 @@
 		093C1E042B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E032B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift */; };
 		093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */; };
 		093C1E092B4D2C8200EF84AB /* BearDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E082B4D2C8200EF84AB /* BearDescriptionView.swift */; };
+		097224832B4F782D00CB7893 /* HappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224822B4F782D00CB7893 /* HappyRoutineView.swift */; };
+		097224852B4F7CE500CB7893 /* HappyRoutineCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224842B4F7CE500CB7893 /* HappyRoutineCardView.swift */; };
+		097224882B4F7E4900CB7893 /* HappyRoutineCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224872B4F7E4900CB7893 /* HappyRoutineCard.swift */; };
+		0972248B2B4F83B800CB7893 /* BottomCTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972248A2B4F83B800CB7893 /* BottomCTAButton.swift */; };
 		09B2535C2B4D538E005E7032 /* SelectHappyCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2535B2B4D538E005E7032 /* SelectHappyCategoryViewController.swift */; };
 		09B253612B4D53E7005E7032 /* SelectHappyCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253602B4D53E7005E7032 /* SelectHappyCategoryView.swift */; };
 		09B253632B4D561C005E7032 /* HappyRoutineTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253622B4D561C005E7032 /* HappyRoutineTagView.swift */; };
@@ -101,10 +105,6 @@
 		A49BFDF02B4DA48200035EB6 /* ThemeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDEF2B4DA48200035EB6 /* ThemeSelectView.swift */; };
 		A49BFDF22B4DA53A00035EB6 /* ThemeSelectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */; };
 		A49BFDF52B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDF42B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift */; };
-		A49BFDFA2B4DC52200035EB6 /* brown_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDF62B4DC52200035EB6 /* brown_hello.json */; };
-		A49BFDFB2B4DC52200035EB6 /* gray_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDF72B4DC52200035EB6 /* gray_hello.json */; };
-		A49BFDFC2B4DC52200035EB6 /* panda_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDF82B4DC52200035EB6 /* panda_hello.json */; };
-		A49BFDFD2B4DC52200035EB6 /* red_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDF92B4DC52200035EB6 /* red_hello.json */; };
 		A49BFE022B4DC54400035EB6 /* brown_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */; };
 		A49BFE032B4DC54400035EB6 /* panda_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */; };
 		A49BFE042B4DC54400035EB6 /* red_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE002B4DC54400035EB6 /* red_eating_happy.json */; };
@@ -117,6 +117,12 @@
 		A49BFE1F2B4E542B00035EB6 /* RoutineChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE1E2B4E542B00035EB6 /* RoutineChoiceView.swift */; };
 		A49BFE212B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE202B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift */; };
 		A49BFE232B4E565D00035EB6 /* RoutineChoiceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE222B4E565D00035EB6 /* RoutineChoiceEntity.swift */; };
+		A49BFE282B4E856600035EB6 /* DollNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE272B4E856600035EB6 /* DollNameViewController.swift */; };
+		A49BFE2A2B4E857300035EB6 /* DollNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE292B4E857300035EB6 /* DollNameView.swift */; };
+		A49BFE372B4E938700035EB6 /* gray_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE332B4E938600035EB6 /* gray_hello.json */; };
+		A49BFE382B4E938700035EB6 /* red_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE342B4E938600035EB6 /* red_hello.json */; };
+		A49BFE392B4E938700035EB6 /* panda_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE352B4E938600035EB6 /* panda_hello.json */; };
+		A49BFE3A2B4E938700035EB6 /* brown_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE362B4E938600035EB6 /* brown_hello.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +134,10 @@
 		093C1E032B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineEmptyView.swift; sourceTree = "<group>"; };
 		093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
 		093C1E082B4D2C8200EF84AB /* BearDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearDescriptionView.swift; sourceTree = "<group>"; };
+		097224822B4F782D00CB7893 /* HappyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineView.swift; sourceTree = "<group>"; };
+		097224842B4F7CE500CB7893 /* HappyRoutineCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCardView.swift; sourceTree = "<group>"; };
+		097224872B4F7E4900CB7893 /* HappyRoutineCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCard.swift; sourceTree = "<group>"; };
+		0972248A2B4F83B800CB7893 /* BottomCTAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCTAButton.swift; sourceTree = "<group>"; };
 		09B2535B2B4D538E005E7032 /* SelectHappyCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHappyCategoryViewController.swift; sourceTree = "<group>"; };
 		09B253602B4D53E7005E7032 /* SelectHappyCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHappyCategoryView.swift; sourceTree = "<group>"; };
 		09B253622B4D561C005E7032 /* HappyRoutineTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineTagView.swift; sourceTree = "<group>"; };
@@ -211,10 +221,6 @@
 		A49BFDEF2B4DA48200035EB6 /* ThemeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectView.swift; sourceTree = "<group>"; };
 		A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectEntity.swift; sourceTree = "<group>"; };
 		A49BFDF42B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectCollectionViewCell.swift; sourceTree = "<group>"; };
-		A49BFDF62B4DC52200035EB6 /* brown_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_hello.json; sourceTree = "<group>"; };
-		A49BFDF72B4DC52200035EB6 /* gray_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_hello.json; sourceTree = "<group>"; };
-		A49BFDF82B4DC52200035EB6 /* panda_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_hello.json; sourceTree = "<group>"; };
-		A49BFDF92B4DC52200035EB6 /* red_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_hello.json; sourceTree = "<group>"; };
 		A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_eating_happy.json; sourceTree = "<group>"; };
 		A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_eating_happy.json; sourceTree = "<group>"; };
 		A49BFE002B4DC54400035EB6 /* red_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_eating_happy.json; sourceTree = "<group>"; };
@@ -227,6 +233,12 @@
 		A49BFE1E2B4E542B00035EB6 /* RoutineChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceView.swift; sourceTree = "<group>"; };
 		A49BFE202B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		A49BFE222B4E565D00035EB6 /* RoutineChoiceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceEntity.swift; sourceTree = "<group>"; };
+		A49BFE272B4E856600035EB6 /* DollNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollNameViewController.swift; sourceTree = "<group>"; };
+		A49BFE292B4E857300035EB6 /* DollNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollNameView.swift; sourceTree = "<group>"; };
+		A49BFE332B4E938600035EB6 /* gray_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_hello.json; sourceTree = "<group>"; };
+		A49BFE342B4E938600035EB6 /* red_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_hello.json; sourceTree = "<group>"; };
+		A49BFE352B4E938600035EB6 /* panda_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_hello.json; sourceTree = "<group>"; };
+		A49BFE362B4E938600035EB6 /* brown_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_hello.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +263,22 @@
 				093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */,
 			);
 			path = NavigationBar;
+			sourceTree = "<group>";
+		};
+		097224862B4F7E3D00CB7893 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				097224872B4F7E4900CB7893 /* HappyRoutineCard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		097224892B4F837C00CB7893 /* BottomCTAButton */ = {
+			isa = PBXGroup;
+			children = (
+				0972248A2B4F83B800CB7893 /* BottomCTAButton.swift */,
+			);
+			path = BottomCTAButton;
 			sourceTree = "<group>";
 		};
 		09B2535D2B4D539A005E7032 /* SelectHappyCategoryScene */ = {
@@ -523,10 +551,10 @@
 				A49BFE012B4DC54400035EB6 /* gray_eating_happy.json */,
 				A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */,
 				A49BFE002B4DC54400035EB6 /* red_eating_happy.json */,
-				A49BFDF62B4DC52200035EB6 /* brown_hello.json */,
-				A49BFDF72B4DC52200035EB6 /* gray_hello.json */,
-				A49BFDF82B4DC52200035EB6 /* panda_hello.json */,
-				A49BFDF92B4DC52200035EB6 /* red_hello.json */,
+				A49BFE362B4E938600035EB6 /* brown_hello.json */,
+				A49BFE332B4E938600035EB6 /* gray_hello.json */,
+				A49BFE352B4E938600035EB6 /* panda_hello.json */,
+				A49BFE342B4E938600035EB6 /* red_hello.json */,
 				A42C32B22B3EAAB500C4B477 /* Lottie.swift */,
 			);
 			path = Lottie;
@@ -636,6 +664,7 @@
 		A42C33072B3EAE8900C4B477 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				A49BFE252B4E853A00035EB6 /* DollNameScene */,
 				A49BFE182B4E53CE00035EB6 /* RoutineChoiceScene */,
 				A49BFDEA2B4DA3E000035EB6 /* ThemeSelectScene */,
 				A49BFDDD2B4D7A1E00035EB6 /* DollChoiceScene */,
@@ -674,6 +703,7 @@
 		A42C330B2B3EAED700C4B477 /* HappyRoutineScene */ = {
 			isa = PBXGroup;
 			children = (
+				097224862B4F7E3D00CB7893 /* Model */,
 				A42C33252B3EAF9000C4B477 /* View */,
 				A42C33242B3EAF8A00C4B477 /* ViewController */,
 			);
@@ -777,6 +807,8 @@
 			children = (
 				093C1E082B4D2C8200EF84AB /* BearDescriptionView.swift */,
 				093C1E032B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift */,
+				097224822B4F782D00CB7893 /* HappyRoutineView.swift */,
+				097224842B4F7CE500CB7893 /* HappyRoutineCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -860,6 +892,7 @@
 		A4832B9D2B457C35007879FF /* HappyRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				097224892B4F837C00CB7893 /* BottomCTAButton */,
 				09B253712B4E4AE7005E7032 /* AddHappyRoutineScene */,
 				09B2535D2B4D539A005E7032 /* SelectHappyCategoryScene */,
 				093C1E052B4CFDAF00EF84AB /* NavigationBar */,
@@ -1014,6 +1047,31 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		A49BFE252B4E853A00035EB6 /* DollNameScene */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFE3C2B4E95D500035EB6 /* View */,
+				A49BFE3B2B4E95CC00035EB6 /* ViewController */,
+			);
+			path = DollNameScene;
+			sourceTree = "<group>";
+		};
+		A49BFE3B2B4E95CC00035EB6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFE272B4E856600035EB6 /* DollNameViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A49BFE3C2B4E95D500035EB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFE292B4E857300035EB6 /* DollNameView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1091,15 +1149,15 @@
 				A4832BAB2B4ACF09007879FF /* omyu-pretty.ttf in Resources */,
 				A42C336C2B41EF2F00C4B477 /* .swiftlint.yml in Resources */,
 				A42C33642B413F2100C4B477 /* Pretendard-SemiBold.otf in Resources */,
+				A49BFE382B4E938700035EB6 /* red_hello.json in Resources */,
+				A49BFE3A2B4E938700035EB6 /* brown_hello.json in Resources */,
 				A42C32882B3DB8F500C4B477 /* LaunchScreen.storyboard in Resources */,
 				A49BFE042B4DC54400035EB6 /* red_eating_happy.json in Resources */,
 				A42C32852B3DB8F500C4B477 /* Assets.xcassets in Resources */,
-				A49BFDFB2B4DC52200035EB6 /* gray_hello.json in Resources */,
-				A49BFDFD2B4DC52200035EB6 /* red_hello.json in Resources */,
-				A49BFDFA2B4DC52200035EB6 /* brown_hello.json in Resources */,
-				A49BFDFC2B4DC52200035EB6 /* panda_hello.json in Resources */,
 				A49BFE022B4DC54400035EB6 /* brown_eating_happy.json in Resources */,
+				A49BFE372B4E938700035EB6 /* gray_hello.json in Resources */,
 				A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */,
+				A49BFE392B4E938700035EB6 /* panda_hello.json in Resources */,
 				A49BFE0B2B4DC54F00035EB6 /* panda_eating_daily.json in Resources */,
 				A49BFE0D2B4DC54F00035EB6 /* gray_eating_daily.json in Resources */,
 				A49BFE0A2B4DC54F00035EB6 /* red_eating_daily.json in Resources */,
@@ -1156,11 +1214,13 @@
 				A49BFDD72B4D5F2800035EB6 /* StroyTellingFirstView.swift in Sources */,
 				A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */,
 				A49BFDE52B4D7EDF00035EB6 /* CustomProgressView.swift in Sources */,
+				0972248B2B4F83B800CB7893 /* BottomCTAButton.swift in Sources */,
 				A49BFE1F2B4E542B00035EB6 /* RoutineChoiceView.swift in Sources */,
 				A49BFDE12B4D7A5400035EB6 /* DollChoiceViewController.swift in Sources */,
 				A4832BA42B4A5C37007879FF /* BottomSheetViewController.swift in Sources */,
 				093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */,
 				A42C33042B3EAE4F00C4B477 /* AuthService.swift in Sources */,
+				A49BFE2A2B4E857300035EB6 /* DollNameView.swift in Sources */,
 				A42C32B72B3EAAD800C4B477 /* ImageLiterals.swift in Sources */,
 				A42C32BD2B3EAAF200C4B477 /* SizeLiterals.swift in Sources */,
 				09B2537A2B4E4E14005E7032 /* AddHappyRoutineView.swift in Sources */,
@@ -1168,6 +1228,7 @@
 				A49BFDDC2B4D5F5E00035EB6 /* StoryTellingThirdView.swift in Sources */,
 				A42C32CD2B3EAB5600C4B477 /* UILabel+.swift in Sources */,
 				A42C33102B3EAF0F00C4B477 /* HomeView.swift in Sources */,
+				A49BFE282B4E856600035EB6 /* DollNameViewController.swift in Sources */,
 				A42C32F42B3EADDD00C4B477 /* OnboardingEntity.swift in Sources */,
 				A42C32E92B3EAC9C00C4B477 /* BaseService.swift in Sources */,
 				A49BFDE32B4D7A6000035EB6 /* DollChoiceView.swift in Sources */,
@@ -1180,6 +1241,7 @@
 				A49BFDDA2B4D5F4600035EB6 /* StoryTellingSecondView.swift in Sources */,
 				A42C32B32B3EAAB500C4B477 /* Lottie.swift in Sources */,
 				A42C331A2B3EAF5200C4B477 /* SettingViewController.swift in Sources */,
+				097224832B4F782D00CB7893 /* HappyRoutineView.swift in Sources */,
 				A42C32F62B3EADE300C4B477 /* HomeEntity.swift in Sources */,
 				09B2537D2B4E5279005E7032 /* HappyRoutineCardCollectionViewCell.swift in Sources */,
 				A42C327C2B3DB8F400C4B477 /* AppDelegate.swift in Sources */,
@@ -1203,6 +1265,7 @@
 				0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */,
 				A49BFDF22B4DA53A00035EB6 /* ThemeSelectEntity.swift in Sources */,
 				A49BFDE92B4D873400035EB6 /* DollChoiceCollectionViewCell.swift in Sources */,
+				097224852B4F7CE500CB7893 /* HappyRoutineCardView.swift in Sources */,
 				09B253662B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift in Sources */,
 				A42C331F2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift in Sources */,
 				0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */,
@@ -1212,6 +1275,7 @@
 				09B2536D2B4E3529005E7032 /* HappyRoutineTag.swift in Sources */,
 				A42C32E72B3EAC9500C4B477 /* NetworkConstant.swift in Sources */,
 				A42C332D2B3EAFCC00C4B477 /* OnboardingView.swift in Sources */,
+				097224882B4F7E4900CB7893 /* HappyRoutineCard.swift in Sources */,
 				0084F19B2B4A895700F87860 /* LoginView.swift in Sources */,
 				A42C33022B3EAE4900C4B477 /* OnboardingService.swift in Sources */,
 				A42C32D92B3EAC1C00C4B477 /* MakeAlert.swift in Sources */,

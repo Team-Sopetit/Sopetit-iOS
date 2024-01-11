@@ -13,6 +13,7 @@ final class DollChoiceViewController: UIViewController {
     
     private let dollDownImage = [ImageLiterals.Onboarding.bearBrownDown, ImageLiterals.Onboarding.bearGrayDown, ImageLiterals.Onboarding.bearPandaDown, ImageLiterals.Onboarding.bearRedDown]
     private let dollUPImage = [ImageLiterals.Onboarding.bearBrownUp, ImageLiterals.Onboarding.bearGrayUp, ImageLiterals.Onboarding.bearPandaUp, ImageLiterals.Onboarding.bearRedUp]
+    private var selectDollNum: Int = 0
     
     // MARK: - UI Components
     
@@ -32,6 +33,7 @@ final class DollChoiceViewController: UIViewController {
         
         setUI()
         setDelegate()
+        setAddTarget()
     }
 }
 
@@ -46,6 +48,17 @@ extension DollChoiceViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
+    func setAddTarget() {
+        dollChoiceView.nextButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    func buttonTapped() {
+        let nav = DollNameViewController()
+        nav.dollNum = selectDollNum
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
 }
 
 extension DollChoiceViewController: UICollectionViewDelegate {
@@ -58,6 +71,7 @@ extension DollChoiceViewController: UICollectionViewDelegate {
         }
         if let selectedCell = collectionView.cellForItem(at: indexPath) as? DollChoiceCollectionViewCell {
             selectedCell.setDataBind(image: dollUPImage[indexPath.item])
+            selectDollNum = indexPath.item
         }
         dollChoiceView.nextButton.isEnabled = true
         return true
