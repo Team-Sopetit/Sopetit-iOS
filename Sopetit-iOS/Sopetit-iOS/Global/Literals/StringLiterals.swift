@@ -60,6 +60,7 @@ enum I18N {
     enum CustomNavi {
         static let cancel = "취소"
         static let edit = "편집"
+        static let delete = "편집"
     }
     
     enum Login {
