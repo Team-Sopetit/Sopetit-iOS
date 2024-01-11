@@ -35,8 +35,6 @@ final class DollNameViewController: UIViewController {
         setUI()
         setDelegate()
         setAddTarget()
-        setDoll()
-//        playAnimation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,14 +49,10 @@ final class DollNameViewController: UIViewController {
 extension DollNameViewController {
     
     func setUI() {
+        dollNameView.setDoll(num: dollNum)
         self.navigationController?.navigationBar.isHidden = true
     }
-    
-//    func playAnimation() {
-//        dollNameView.lottieHello.loopMode = .loop
-//        dollNameView.lottieHello.play()
-//    }
-    
+
     func setDelegate() {
         textfield.delegate = self
     }
@@ -76,23 +70,6 @@ extension DollNameViewController {
         nav.doll = userDollName
         self.navigationController?.pushViewController(nav, animated: true)
     }
-    
-    func setDoll() {
-        switch dollNum {
-        case 0:
-            dollNameView.lottieHello = LottieAnimationView(name: "brown_hello")
-        case 1:
-            dollNameView.lottieHello = LottieAnimationView(name: "gray_hello")
-        case 2:
-            dollNameView.lottieHello = LottieAnimationView(name: "panda_hello")
-        case 3:
-            dollNameView.lottieHello = LottieAnimationView(name: "red_hello")
-        default:
-            break
-        }
-        dollNameView.lottieHello.loopMode = .loop
-        dollNameView.lottieHello.play()
-    }
 }
 
 // MARK: - Network
@@ -104,9 +81,12 @@ extension DollNameViewController: UITextFieldDelegate {
         let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
         if (string.rangeOfCharacter(from: forbiddenCharacters) != nil) || string.containsEmoji {
             dollNameView.infoLabel.isHidden = false
+            dollNameView.infoLabel.text = I18N.Onboarding.dollNameInfoTitle
             return false
         }
         if newText.count > 10 {
+            dollNameView.infoLabel.isHidden = false
+            dollNameView.infoLabel.text = I18N.Onboarding.dollNameInfoTitle2
             return false
         }
         if !currentText.isEmpty {

@@ -12,6 +12,10 @@ import Lottie
 
 final class DollNameView: UIView {
     
+    // MARK: - Properties
+    
+    var dollNumber: Int = 0
+    
     // MARK: - UI Components
     
     private let progressView = CustomProgressView(progressNum: 2)
@@ -35,7 +39,7 @@ final class DollNameView: UIView {
         return label
     }()
     
-    var lottieHello: LottieAnimationView = LottieAnimationView(name: "red_hello")
+    var lottieHello = LottieAnimationView()
     
     let nameTextField: UITextField = {
         let textField = UITextField()
@@ -102,6 +106,7 @@ extension DollNameView {
         lottieHello.center = center
         lottieHello.contentMode = .scaleToFill
         lottieHello.backgroundColor = .clear
+        lottieHello.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setHierarchy() {
@@ -159,6 +164,41 @@ extension DollNameView {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
             $0.height.equalTo(56)
+        }
+    }
+    
+    func setDoll(num: Int) {
+        var animationName = ""
+        
+        switch num {
+        case 0:
+            animationName = "brown_hello"
+        case 1:
+            animationName = "gray_hello"
+        case 2:
+            animationName = "panda_hello"
+        case 3:
+            animationName = "red_hello"
+        default:
+            break
+        }
+        
+        lottieHello = LottieAnimationView(name: animationName)
+        lottieHello.loopMode = .loop
+        lottieHello.play()
+        
+        addSubview(lottieHello)
+        lottieHello.snp.makeConstraints {
+            $0.top.equalTo(subTitleLabel.snp.bottom).offset(-40)
+            $0.centerX.equalToSuperview()
+            
+            if SizeLiterals.Screen.deviceRatio > 0.5 {
+                $0.width.equalTo(250)
+                $0.height.equalTo(250)
+            } else {
+                $0.width.equalTo(302)
+                $0.height.equalTo(303)
+            }
         }
     }
 }
