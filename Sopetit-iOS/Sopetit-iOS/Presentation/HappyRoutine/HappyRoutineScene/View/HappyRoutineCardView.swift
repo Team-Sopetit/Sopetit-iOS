@@ -225,7 +225,7 @@ extension HappyRoutineCardView {
 
 extension HappyRoutineCardView {
 
-    func bindModel(model: HappyRoutineDetail) {
+    func bindModel(model: HappyRoutineCard) {
         self.cardImageView.image = model.cardImage
         self.detailTitleLabel.text = model.detailTitle
         self.detailTitleLabel.setLineSpacing(lineSpacing: 4)
