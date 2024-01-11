@@ -16,7 +16,7 @@ final class StoryTellingFirstView: UIView {
     private let backgroundView: UIImageView = {
         let back = UIImageView()
         back.image = ImageLiterals.Onboarding.imgSpotlight1
-        back.contentMode = .scaleAspectFit
+        back.contentMode = .scaleAspectFill
         return back
     }()
     
@@ -87,7 +87,7 @@ private extension StoryTellingFirstView {
         
         nextButton.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(SizeLiterals.Screen.screenHeight * 107 / 812)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-SizeLiterals.Screen.screenHeight * 73 / 812)
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
             $0.height.equalTo(64)
         }

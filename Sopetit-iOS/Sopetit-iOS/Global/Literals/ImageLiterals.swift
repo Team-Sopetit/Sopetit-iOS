@@ -94,6 +94,10 @@ enum ImageLiterals {
         static var imgHappycardText: UIImage { .load(name: "img_happycard_text") }
         static var imgHappyAdd: UIImage { .load(name: "img_happy_add") }
         static var icHappyRed: UIImage { .load(name: "ic_happy_red") }
+        static var icHappyOrange: UIImage { .load(name: "ic_happy_orange") }
+        static var icHappyGreen: UIImage { .load(name: "ic_happy_green") }
+        static var icHappyBlue: UIImage { .load(name: "ic_happy_blue") }
+        static var icHappyPurple: UIImage { .load(name: "ic_happy_purple") }
         static var icHappyBlingRed: UIImage { .load(name: "ic_happy_bling_red") }
         static var icMagnify: UIImage { .load(name: "ic_magnify") }
         static var icTransfer: UIImage { .load(name: "ic_transfer") }
