@@ -11,11 +11,6 @@ import SnapKit
 
 final class HomeView: UIView {
     
-    // MARK: - Properties
-    
-    private let name = "애착이"
-    private var dollNameWidth: CGFloat = 0.0
-    
     // MARK: - UI Components
     
     private let backgroundImageView: UIImageView = {
@@ -53,7 +48,6 @@ final class HomeView: UIView {
     
     private let bubbleLabel: UILabel = {
         let label = UILabel()
-        label.text = "오늘 하루는 어땠어?\n나한테 얘기해주라!"
         label.numberOfLines = 2
         label.font = .fontGuide(.bubble18)
         return label
@@ -67,9 +61,8 @@ final class HomeView: UIView {
         return imageView
     }()
     
-    private let dollNameLabel: UILabel = {
+    let dollNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "애착이"
         label.textColor = .Gray700
         label.font = .fontGuide(.bubble16)
         label.backgroundColor = UIColor.SoftieHomeFill
@@ -101,7 +94,6 @@ final class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
         setHierarchy()
         setLayout()
         setAddTarget()
@@ -117,10 +109,6 @@ final class HomeView: UIView {
 // MARK: - Extensions
 
 extension HomeView {
-    
-    func setUI() {
-        dollNameWidth = name.size(withAttributes: [NSAttributedString.Key.font: UIFont.fontGuide(.bubble16)]).width
-    }
     
     func setHierarchy() {
         self.addSubviews(backgroundImageView, softieImageView, moneyButton, settingButton, bubbleImageView, dollImageView, dollNameLabel, actionCollectionView)
@@ -171,7 +159,7 @@ extension HomeView {
         dollNameLabel.snp.makeConstraints {
             $0.top.equalTo(dollImageView.snp.bottom)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(dollNameWidth + 26)
+            $0.width.equalTo(63)
             $0.height.equalTo(34)
         }
         
@@ -192,16 +180,16 @@ extension HomeView {
     }
     
     @objc
-    func buttonTapped() {
-        
-    }
-    
-    @objc
     func dollTapped() {
         print("인형을 탭함.")
     }
     
     func setRegisterCell() {
         ActionCollectionViewCell.register(target: actionCollectionView)
+    }
+    
+    func setDataBind(model: HomeEntity) {
+        bubbleLabel.text = model.conversation
+        dollNameLabel.text = model.name
     }
 }

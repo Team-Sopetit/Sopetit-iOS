@@ -93,13 +93,15 @@ extension ActionCollectionViewCell {
         }
     }
     
-    func setDataBind(model: Action) {
-        actionLabel.text = model.action
-        numberLabel.text = "\(model.count)개"
-        switch actionLabel.text {
-        case "솜뭉치 주기":
+    func setDataBind(model: HomeEntity) {
+        switch tag {
+        case 0:
+            actionLabel.text = I18N.Home.actionTitle1
+            numberLabel.text = "\(model.cottonCount)개"
             iconImageView.image = ImageLiterals.Home.icSomWhite
-        case "행복 솜뭉치 주기":
+        case 1:
+            actionLabel.text = I18N.Home.actionTitle2
+            numberLabel.text = "\(model.happinessCottonCount)개"
             iconImageView.image = ImageLiterals.Home.icSomColor
         default:
             break

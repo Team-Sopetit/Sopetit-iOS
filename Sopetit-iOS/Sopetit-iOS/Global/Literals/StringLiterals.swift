@@ -28,4 +28,9 @@ enum I18N {
         static let kakaoLoginTitle = "카카오로 시작하기"
         static let appleLoginTitle = "Apple로 시작하기"
     }
+    
+    enum Home {
+        static let actionTitle1 = "솜뭉치 주기"
+        static let actionTitle2 = "행복 솜뭉치 주기"
+    }
 }
