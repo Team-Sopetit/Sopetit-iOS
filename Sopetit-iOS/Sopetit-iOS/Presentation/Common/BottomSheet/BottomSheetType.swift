@@ -21,7 +21,7 @@ extension BottomSheetType {
         case .dailyCompleteBottom, .happyCompleteBottom:
             return ImageLiterals.DailyRoutine.icDaily1Filled
         case .dailyDeleteBottom, .happyDeleteBottom, .logoutBottom:
-            return ImageLiterals.Onboarding.imgFaceBrown
+            return ImageLiterals.BottomNavi.icFaceCrying
         }
     }
     
