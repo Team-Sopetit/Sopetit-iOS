@@ -28,14 +28,12 @@ final class ActionCollectionViewCell: UICollectionViewCell, UICollectionViewRegi
     
     private let iconImageView: UIImageView = {
        let imageView = UIImageView()
-        imageView.image = ImageLiterals.Home.icSomWhite
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     private let numberLabel: UILabel = {
         let label = UILabel()
-        label.text = "99개"
         label.font = .fontGuide(.body4)
         label.textColor = UIColor.Gray300
         return label
@@ -43,7 +41,6 @@ final class ActionCollectionViewCell: UICollectionViewCell, UICollectionViewRegi
     
     private let actionLabel: UILabel = {
         let label = UILabel()
-        label.text = "솜뭉치 주기"
         label.font = .fontGuide(.body4)
         label.textColor = UIColor.Gray500
         return label
@@ -93,6 +90,19 @@ extension ActionCollectionViewCell {
         actionLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().inset(13)
+        }
+    }
+    
+    func setDataBind(model: Action) {
+        actionLabel.text = model.action
+        numberLabel.text = "\(model.count)개"
+        switch actionLabel.text {
+        case "솜뭉치 주기":
+            iconImageView.image = ImageLiterals.Home.icSomWhite
+        case "행복 솜뭉치 주기":
+            iconImageView.image = ImageLiterals.Home.icSomColor
+        default:
+            break
         }
     }
 }

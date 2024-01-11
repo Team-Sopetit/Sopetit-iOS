@@ -194,8 +194,4 @@ extension HomeView {
     func setRegisterCell() {
         ActionCollectionViewCell.register(target: actionCollectionView)
     }
-    
-    func setDataBind() {
-        
-    }
 }

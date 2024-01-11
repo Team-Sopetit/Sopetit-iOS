@@ -10,6 +10,7 @@ import UIKit
 final class HomeViewController: UIViewController {
     
     // MARK: - Properties
+    let actionDummy: [Action] = Action.dummy()
     
     // MARK: - UI Components
     
@@ -72,11 +73,12 @@ extension HomeViewController: UICollectionViewDelegate {
 extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return actionDummy.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = ActionCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
+        cell.setDataBind(model: actionDummy[indexPath.row])
         return cell
     }
 }
