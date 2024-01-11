@@ -206,7 +206,7 @@ private extension HappyRoutineCardView {
         switch sender {
         case magnifyButton:
             cardToDetailCard()
-        case detailCardView:
+        case switchButton:
             detailCardToCard()
         default:
             break

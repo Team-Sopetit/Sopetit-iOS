@@ -81,28 +81,49 @@ private extension HappyRoutineView {
             $0.horizontalEdges.equalToSuperview()
         }
         
-        bubbleImageView.snp.makeConstraints {
-            $0.top.equalTo(navigationBar.snp.bottom).offset(15)
-            $0.width.equalTo(88)
-            $0.height.equalTo(46)
-            $0.centerX.equalToSuperview()
+        if SizeLiterals.Screen.screenHeight < 812 {
+            bubbleImageView.snp.makeConstraints {
+                $0.top.equalTo(navigationBar.snp.bottom).offset(0)
+                $0.width.equalTo(88)
+                $0.height.equalTo(46)
+                $0.centerX.equalToSuperview()
+            }
+            
+            subTitleLabel.snp.makeConstraints {
+                $0.top.equalTo(bubbleImageView.snp.bottom).offset(10)
+                $0.horizontalEdges.equalToSuperview().inset(50)
+            }
+            
+            happyRoutineCardView.snp.makeConstraints {
+                $0.top.equalTo(subTitleLabel.snp.bottom).offset(10)
+                $0.centerX.equalToSuperview()
+                $0.width.equalTo(280)
+                $0.height.equalTo(398)
+            }
+        } else {
+            bubbleImageView.snp.makeConstraints {
+                $0.top.equalTo(navigationBar.snp.bottom).offset(15)
+                $0.width.equalTo(88)
+                $0.height.equalTo(46)
+                $0.centerX.equalToSuperview()
+            }
+            
+            subTitleLabel.snp.makeConstraints {
+                $0.top.equalTo(bubbleImageView.snp.bottom).offset(19)
+                $0.horizontalEdges.equalToSuperview().inset(50)
+            }
+            
+            happyRoutineCardView.snp.makeConstraints {
+                $0.top.equalTo(subTitleLabel.snp.bottom).offset(24)
+                $0.centerX.equalToSuperview()
+                $0.width.equalTo(280)
+                $0.height.equalTo(398)
+            }
         }
         
         bubbleLabel.snp.makeConstraints {
             $0.centerX.equalTo(bubbleImageView)
             $0.centerY.equalTo(bubbleImageView).offset(-2)
-        }
-        
-        subTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(bubbleImageView.snp.bottom).offset(19)
-            $0.horizontalEdges.equalToSuperview().inset(50)
-        }
-        
-        happyRoutineCardView.snp.makeConstraints {
-            $0.top.equalTo(subTitleLabel.snp.bottom).offset(24)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(280)
-            $0.height.equalTo(398)
         }
         
         doneButton.snp.makeConstraints {
