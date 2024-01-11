@@ -50,8 +50,6 @@ final class SelectHappyCategoryView: UIView {
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
-        setRegisterCell()
     }
     
     @available(*, unavailable)
@@ -62,7 +60,7 @@ final class SelectHappyCategoryView: UIView {
 
 // MARK: - Extensions
 
-extension SelectHappyCategoryView {
+private extension SelectHappyCategoryView {
 
     func setUI() {
         self.backgroundColor = .SoftieBack
@@ -96,22 +94,5 @@ extension SelectHappyCategoryView {
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
-    }
-    
-    func setAddTarget() {
-
-    }
-    
-    @objc
-    func buttonTapped() {
-        
-    }
-    
-    func setRegisterCell() {
-        
-    }
-    
-    func setDataBind() {
-        
     }
 }

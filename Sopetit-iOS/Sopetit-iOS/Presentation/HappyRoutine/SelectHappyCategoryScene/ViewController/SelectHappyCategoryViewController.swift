@@ -28,10 +28,6 @@ final class SelectHappyCategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAPI()
-        setUI()
-        setHierarchy()
-        setLayout()
         setDelegate()
         setRegister()
     }
@@ -44,18 +40,6 @@ final class SelectHappyCategoryViewController: UIViewController {
 // MARK: - Extensions
 
 extension SelectHappyCategoryViewController {
-    
-    func setUI() {
-        
-    }
-    
-    func setHierarchy() {
-        
-    }
-    
-    func setLayout() {
-        
-    }
     
     func setDelegate() {
         selectHappyCategoryView.tagview.collectionView.delegate = self
@@ -70,15 +54,6 @@ extension SelectHappyCategoryViewController {
     }
 }
 
-// MARK: - Network
-
-extension SelectHappyCategoryViewController {
-    
-    func getAPI() {
-        
-    }
-}
-
 extension SelectHappyCategoryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -87,7 +62,6 @@ extension SelectHappyCategoryViewController: UICollectionViewDataSource {
         } else if collectionView == selectHappyCategoryView.categoryCollectionView {
             return categoryList.count
         }
-        
         return 0
     }
     
@@ -137,6 +111,8 @@ extension SelectHappyCategoryViewController: UICollectionViewDelegateFlowLayout 
             print(selectedIndex)
         } else if collectionView == selectHappyCategoryView.categoryCollectionView {
             print(indexPath.row)
+            let vc = AddHappyRoutineViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

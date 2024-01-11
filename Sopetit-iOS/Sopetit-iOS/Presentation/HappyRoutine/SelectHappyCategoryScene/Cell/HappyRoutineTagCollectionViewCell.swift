@@ -50,16 +50,16 @@ final class HappyRoutineTagCollectionViewCell: UICollectionViewCell, UICollectio
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        tagLabel.text = ""
+        tagLabel.text = nil
         bindNotSelected()
     }
 }
 
 // MARK: - Extensions
 
-extension HappyRoutineTagCollectionViewCell {
+private extension HappyRoutineTagCollectionViewCell {
     
-    private func setUI() {
+    func setUI() {
         contentView.backgroundColor = .SoftieWhite
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = 37/2
@@ -67,11 +67,11 @@ extension HappyRoutineTagCollectionViewCell {
         contentView.layer.borderWidth = 1
     }
     
-    private func setHierarchy() {
+    func setHierarchy() {
         self.addSubviews(tagLabel)
     }
     
-    private func setLayout() {
+    func setLayout() {
         tagLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
         }

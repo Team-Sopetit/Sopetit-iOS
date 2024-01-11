@@ -33,10 +33,8 @@ final class HappyRoutineTagView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
         setRegisterCell()
     }
     
@@ -50,10 +48,6 @@ final class HappyRoutineTagView: UIView {
 
 extension HappyRoutineTagView {
     
-    func setUI() {
-        
-    }
-    
     func setHierarchy() {
         self.addSubviews(collectionView)
     }
@@ -65,20 +59,7 @@ extension HappyRoutineTagView {
         }
     }
     
-    func setAddTarget() {
-        
-    }
-    
-    @objc
-    func buttonTapped() {
-        
-    }
-    
     func setRegisterCell() {
         collectionView.register(HappyRoutineTagCollectionViewCell.self, forCellWithReuseIdentifier: "HappyRoutineTagCollectionViewCell")
-    }
-    
-    func setDataBind() {
-        
     }
 }

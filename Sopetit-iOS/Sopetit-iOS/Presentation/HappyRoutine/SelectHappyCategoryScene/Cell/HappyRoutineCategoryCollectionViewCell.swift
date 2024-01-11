@@ -17,26 +17,26 @@ final class HappyRoutineCategoryCollectionViewCell: UICollectionViewCell, UIColl
     
     // MARK: - UI Components
     
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .fontGuide(.caption1)
         return label
     }()
     
-    let contentLabel: UILabel = {
+    private let contentLabel: UILabel = {
         let label = UILabel()
         label.font = .fontGuide(.body2)
         label.textColor = .Gray700
         return label
     }()
     
-    let nextImageView: UIImageView = {
+    private let nextImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.HappyRoutine.icNext
         imageView.contentMode = .scaleAspectFit
@@ -64,9 +64,9 @@ final class HappyRoutineCategoryCollectionViewCell: UICollectionViewCell, UIColl
 
 // MARK: - Extensions
 
-extension HappyRoutineCategoryCollectionViewCell {
+private extension HappyRoutineCategoryCollectionViewCell {
     
-    private func setUI() {
+    func setUI() {
         contentView.backgroundColor = .SoftieWhite
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = 20
@@ -74,11 +74,11 @@ extension HappyRoutineCategoryCollectionViewCell {
         contentView.layer.borderWidth = 1
     }
     
-    private func setHierarchy() {
+    func setHierarchy() {
         self.addSubviews(imageView, titleLabel, contentLabel, nextImageView)
     }
     
-    private func setLayout() {
+    func setLayout() {
         imageView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
             $0.centerY.equalToSuperview()
@@ -106,11 +106,11 @@ extension HappyRoutineCategoryCollectionViewCell {
 }
 
 extension HappyRoutineCategoryCollectionViewCell {
+    
     func bindModel(model: HappyRoutineCategory) {
         imageView.image = model.image
         titleLabel.text = model.title
         titleLabel.textColor = UIColor(hex: model.color)
         contentLabel.text = model.content
     }
-    
 }
