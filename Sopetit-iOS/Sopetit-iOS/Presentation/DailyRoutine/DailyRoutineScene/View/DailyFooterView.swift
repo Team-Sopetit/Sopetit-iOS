@@ -19,7 +19,7 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
     
     let plusImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "plus")
+        image.image = UIImage(named: "ic_add")
         image.tintColor = .Gray200
         return image
     }()
