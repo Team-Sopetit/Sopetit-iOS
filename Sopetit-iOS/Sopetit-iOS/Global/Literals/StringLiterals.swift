@@ -30,6 +30,12 @@ enum I18N {
         static let dollChoiceTitle = "어떤 친구와 함께 할까요?"
         static let dollSubTitle = "한 번 선택한 인형은 바꿀 수 없어요"
         static let buttonTitle = "이 친구와 함께 할래"
+        static let themeButtonTitle = "다 선택했어"
+        static let themeTitle = "관심 있는 테마 3개 선택해볼래?"
+        static let routineChoiceTitle = "관심사를 바탕으로 루틴을 추천해줄게!\n하고 싶은 루틴 3개를 선택해봐!"
+        static let routineBackButtonTitle = "테마 다시 고를래"
+        static let routineNextButtonTitle = "친구 만날 준비 끝!"
+        static let routineInfoTitle = "최대 3개 선택 가능합니다"
     }
     
     enum HappyRoutine {
