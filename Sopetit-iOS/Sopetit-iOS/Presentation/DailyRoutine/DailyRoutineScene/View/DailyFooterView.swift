@@ -34,6 +34,7 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
         setUI()
         setLayout()
         layoutSubviews()
+        setAddTarget()
         
     }
     
@@ -58,7 +59,6 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
     }
     
     func setLayout() {
-        
         self.snp.makeConstraints {
             $0.height.equalTo(136)
         }
@@ -67,10 +67,20 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
             $0.centerX.centerY.equalToSuperview()
             $0.size.equalTo(24)
         }
-        
     }
     
     override func layoutSubviews() {
         layer.addSublayer(borderLayer)
+    }
+    
+    func setAddTarget() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleFooterTap))
+        self.addGestureRecognizer(tapGesture)
+        self.isUserInteractionEnabled = true
+    }
+    
+    @objc
+    func handleFooterTap() {
+        print("추가버튼 클릭됨")
     }
 }
