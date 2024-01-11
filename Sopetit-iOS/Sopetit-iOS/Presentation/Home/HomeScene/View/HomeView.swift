@@ -63,6 +63,7 @@ final class HomeView: UIView {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.Home.imgBearHomeGray
         imageView.contentMode = .scaleAspectFit
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -183,12 +184,21 @@ extension HomeView {
     }
     
     func setAddTarget() {
-        
+        let dollTapGesture: UIGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dollTapped)
+        )
+        dollImageView.addGestureRecognizer(dollTapGesture)
     }
     
     @objc
     func buttonTapped() {
         
+    }
+    
+    @objc
+    func dollTapped() {
+        print("인형을 탭함.")
     }
     
     func setRegisterCell() {
