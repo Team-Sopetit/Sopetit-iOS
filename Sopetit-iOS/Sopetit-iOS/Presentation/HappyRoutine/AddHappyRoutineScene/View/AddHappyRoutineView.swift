@@ -132,7 +132,11 @@ private extension AddHappyRoutineView {
     }
     
     func setHierarchy() {
-        self.addSubviews(customNavigationBar, titleLabel, blingImageView, subTitleLabel, collectionView, pageControl, addButton)
+        if SizeLiterals.Screen.screenHeight < 812 {
+            self.addSubviews(customNavigationBar, titleLabel, collectionView, subTitleLabel, pageControl, addButton)
+        } else {
+            self.addSubviews(customNavigationBar, titleLabel, blingImageView, collectionView, subTitleLabel, pageControl, addButton)
+        }
     }
     
     func setLayout() {
@@ -147,21 +151,28 @@ private extension AddHappyRoutineView {
             $0.horizontalEdges.equalToSuperview().inset(50)
         }
         
-        blingImageView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(16)
-            $0.width.equalTo(18)
-            $0.height.equalTo(22)
-            $0.centerX.equalToSuperview()
-        }
-        
-        subTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(blingImageView.snp.bottom).offset(16)
-            $0.centerX.equalToSuperview()
+        if SizeLiterals.Screen.screenHeight < 812 {
+            subTitleLabel.snp.makeConstraints {
+                $0.top.equalTo(titleLabel.snp.bottom).offset(16)
+                $0.centerX.equalToSuperview()
+            }
+        } else {
+            blingImageView.snp.makeConstraints {
+                $0.top.equalTo(titleLabel.snp.bottom).offset(16)
+                $0.width.equalTo(18)
+                $0.height.equalTo(22)
+                $0.centerX.equalToSuperview()
+            }
+            
+            subTitleLabel.snp.makeConstraints {
+                $0.top.equalTo(blingImageView.snp.bottom).offset(16)
+                $0.centerX.equalToSuperview()
+            }
         }
         
         collectionView.snp.makeConstraints {
+            $0.top.equalTo(subTitleLabel.snp.bottom).offset(24)
             $0.horizontalEdges.equalToSuperview()
-            $0.centerY.equalToSuperview()
             $0.height.equalTo(Const.itemSize.height)
         }
         
