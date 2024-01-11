@@ -17,6 +17,7 @@ final class SelectHappyCategoryViewController: UIViewController {
     private var selectedIndex = 0
     
     // MARK: - UI Components
+    
     private let selectHappyCategoryView = SelectHappyCategoryView()
     
     // MARK: - Life Cycles

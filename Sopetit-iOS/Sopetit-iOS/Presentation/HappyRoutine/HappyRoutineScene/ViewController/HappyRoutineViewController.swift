@@ -32,7 +32,7 @@ final class HappyRoutineViewController: UIViewController {
 
 // MARK: - Extensions
 
-extension HappyRoutineViewController {
+private extension HappyRoutineViewController {
     func setTapGesture() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCardView(_:)))
         happyRoutineEmptyView.emptyHappyRoutineView.addGestureRecognizer(tapGestureRecognizer)

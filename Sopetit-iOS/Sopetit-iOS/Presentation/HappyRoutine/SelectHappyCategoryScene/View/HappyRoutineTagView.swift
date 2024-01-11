@@ -11,8 +11,6 @@ import SnapKit
 
 final class HappyRoutineTagView: UIView {
     
-    // MARK: - Properties
-    
     // MARK: - UI Components
     
     let collectionView: UICollectionView = {
@@ -35,7 +33,6 @@ final class HappyRoutineTagView: UIView {
         
         setHierarchy()
         setLayout()
-        setRegisterCell()
     }
     
     @available(*, unavailable)
@@ -46,7 +43,7 @@ final class HappyRoutineTagView: UIView {
 
 // MARK: - Extensions
 
-extension HappyRoutineTagView {
+private extension HappyRoutineTagView {
     
     func setHierarchy() {
         self.addSubviews(collectionView)
@@ -57,9 +54,5 @@ extension HappyRoutineTagView {
             $0.width.equalToSuperview()
             $0.height.equalTo(61)
         }
-    }
-    
-    func setRegisterCell() {
-        collectionView.register(HappyRoutineTagCollectionViewCell.self, forCellWithReuseIdentifier: "HappyRoutineTagCollectionViewCell")
     }
 }

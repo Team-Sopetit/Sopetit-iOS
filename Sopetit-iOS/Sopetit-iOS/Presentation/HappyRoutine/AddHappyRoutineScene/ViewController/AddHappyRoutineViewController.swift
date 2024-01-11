@@ -10,6 +10,7 @@ import UIKit
 final class AddHappyRoutineViewController: UIViewController {
 
     // MARK: - Properties
+    
     private var happyRoutineList = HappyRoutine.dummy()
     
     private enum Const {
@@ -26,9 +27,11 @@ final class AddHappyRoutineViewController: UIViewController {
     }
     
     // MARK: - UI Components
+    
     private let addHappyRoutineView = AddHappyRoutineView()
     
     // MARK: - Life Cycles
+    
     override func loadView() {
         view = addHappyRoutineView
     }
@@ -36,9 +39,6 @@ final class AddHappyRoutineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
-        setHierarchy()
-        setLayout()
         setDelegate()
         setCarousel()
         setRegister()
@@ -54,18 +54,6 @@ final class AddHappyRoutineViewController: UIViewController {
 // MARK: - Extensions
 
 private extension AddHappyRoutineViewController {
-
-    func setUI() {
-        
-    }
-    
-    func setHierarchy() {
-        
-    }
-    
-    func setLayout() {
-        
-    }
     
     func setDelegate() {
         self.addHappyRoutineView.collectionView.dataSource = self
@@ -95,6 +83,7 @@ private extension AddHappyRoutineViewController {
 }
 
 extension AddHappyRoutineViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.happyRoutineList.routines.count
     }
@@ -108,6 +97,7 @@ extension AddHappyRoutineViewController: UICollectionViewDataSource {
 }
 
 extension AddHappyRoutineViewController: UICollectionViewDelegateFlowLayout {
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>
     ) {
         let scrolledOffsetX = targetContentOffset.pointee.x + scrollView.contentInset.left
@@ -118,6 +108,7 @@ extension AddHappyRoutineViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension AddHappyRoutineViewController: UICollectionViewDelegate {
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         addHappyRoutineView.pageControl.currentPage = Int((scrollView.contentOffset.x - Const.insetX) / (Const.itemSize.width + Const.itemSpacing)) - 1
         let count = happyRoutineList.routines.count

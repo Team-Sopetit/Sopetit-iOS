@@ -131,7 +131,7 @@ final class HappyRoutineCardCollectionViewCell: UICollectionViewCell, UICollecti
 
 // MARK: - Extensions
 
-extension HappyRoutineCardCollectionViewCell {
+private extension HappyRoutineCardCollectionViewCell {
     
     func setHierarchy() {
         self.contentView.addSubviews(cardView, detailCardView)
@@ -216,20 +216,19 @@ extension HappyRoutineCardCollectionViewCell {
         self.detailCardView.isHidden.toggle()
         UIView.transition(with: self.detailCardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil)
 
-            UIView.transition(with: self.cardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: {_ in
+        UIView.transition(with: self.cardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: {_ in
             self.cardView.isHidden.toggle()
         })
     }
     
     @objc func tapSwitchButton() {
         print("tap2")
-        UIView.transition(with: cardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: {_ in
+        self.cardView.isHidden.toggle()
+        UIView.transition(with: self.cardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil)
+        UIView.transition(with: self.detailCardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
             self.detailCardView.isHidden.toggle()
-        })
-        
-        UIView.transition(with: detailCardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: {_ in
-            self.cardView.isHidden.toggle()
-        })
+        }
     }
 }
 

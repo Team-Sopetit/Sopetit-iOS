@@ -16,6 +16,7 @@ struct HappyRoutineCategory {
 }
 
 extension HappyRoutineCategory {
+    
     static func dummy() -> [HappyRoutineCategory] {
         return [HappyRoutineCategory(routineID: 0,
                                      title: "관계 쌓기",

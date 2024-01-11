@@ -68,7 +68,7 @@ final class HappyRoutineEmptyView: UIView {
 
 // MARK: - Extensions
 
-extension HappyRoutineEmptyView {
+private extension HappyRoutineEmptyView {
 
     func setUI() {
         self.backgroundColor = .SoftieBack

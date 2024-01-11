@@ -12,6 +12,7 @@ import SnapKit
 final class BearDescriptionView: UIView {
     
     // MARK: - UI Components
+    
     private let faceImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.Onboarding.imgFaceBrown
@@ -52,7 +53,7 @@ final class BearDescriptionView: UIView {
 
 // MARK: - Extensions
 
-extension BearDescriptionView {
+private extension BearDescriptionView {
     
     func setHierarchy() {
         self.addSubviews(faceImageView, speechImageView, speechLabel)

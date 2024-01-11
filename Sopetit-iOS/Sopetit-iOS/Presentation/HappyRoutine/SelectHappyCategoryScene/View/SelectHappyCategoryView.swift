@@ -11,9 +11,8 @@ import SnapKit
 
 final class SelectHappyCategoryView: UIView {
 
-    // MARK: - Properties
-    
     // MARK: - UI Components
+    
     private let customNavigationBar: CustomNavigationBarView = {
         let view = CustomNavigationBarView()
         view.isTitleViewIncluded = true

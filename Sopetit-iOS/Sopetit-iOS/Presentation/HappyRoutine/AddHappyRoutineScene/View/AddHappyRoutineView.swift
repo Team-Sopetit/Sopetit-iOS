@@ -17,6 +17,7 @@ protocol HappyRoutineProtocol: AnyObject {
 final class AddHappyRoutineView: UIView {
 
     // MARK: - Properties
+    
     weak var delegate: HappyRoutineProtocol?
     
     private enum Const {
@@ -33,6 +34,7 @@ final class AddHappyRoutineView: UIView {
     }
     
     // MARK: - UI Components
+    
     private let customNavigationBar: CustomNavigationBarView = {
         let navigation = CustomNavigationBarView()
         navigation.isBackButtonIncluded = true
@@ -123,8 +125,8 @@ final class AddHappyRoutineView: UIView {
 
 // MARK: - Extensions
 
-extension AddHappyRoutineView {
-
+private extension AddHappyRoutineView {
+    
     func setUI() {
         self.backgroundColor = .SoftieBack
         pageControl.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
@@ -185,6 +187,9 @@ extension AddHappyRoutineView {
         print("AddButton Tapped")
         delegate?.tapAddButton()
     }
+}
+
+extension AddHappyRoutineView {
     
     func setDataBind(title: String, image: UIImage, subTitle: String, color: UIColor) {
         titleLabel.text = title

@@ -26,6 +26,7 @@ struct HappyRoutineDetail {
 }
 
 extension HappyRoutine {
+    
     static func dummy() -> HappyRoutine {
         return HappyRoutine(title: "관계 쌓기",
                             subTitle: "성숙한 사랑을 만나기 위한",
