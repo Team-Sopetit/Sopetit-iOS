@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class HappyRoutineView: UIView {
+final class HappyRoutineEmptyView: UIView {
 
     // MARK: - UI Components
     
@@ -68,7 +68,7 @@ final class HappyRoutineView: UIView {
 
 // MARK: - Extensions
 
-extension HappyRoutineView {
+private extension HappyRoutineEmptyView {
 
     func setUI() {
         self.backgroundColor = .SoftieBack

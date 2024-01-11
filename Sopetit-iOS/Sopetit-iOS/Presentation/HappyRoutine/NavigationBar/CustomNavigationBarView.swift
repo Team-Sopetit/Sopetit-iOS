@@ -124,7 +124,7 @@ final class CustomNavigationBarView: UIView {
 
 // MARK: - Extensions
 
-extension CustomNavigationBarView {
+private extension CustomNavigationBarView {
 
     func setUI() {
         self.backgroundColor = .SoftieBack
