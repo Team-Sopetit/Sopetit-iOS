@@ -46,6 +46,8 @@ final class HappyRoutineView: UIView {
     
     private let happyRoutineCardView = HappyRoutineCardView()
     
+    private let bottomCTAButton = BottomCTAButton(title: I18N.HappyRoutine.done)
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -73,7 +75,7 @@ private extension HappyRoutineView {
     }
     
     func setHierarchy() {
-        self.addSubviews(navigationBar, bubbleImageView, bubbleLabel, subTitleLabel, happyRoutineCardView)
+        self.addSubviews(navigationBar, bubbleImageView, bubbleLabel, subTitleLabel, happyRoutineCardView, bottomCTAButton)
     }
     
     func setLayout() {
@@ -105,6 +107,11 @@ private extension HappyRoutineView {
             $0.width.equalTo(280)
             $0.height.equalTo(398)
         }
+        
+        bottomCTAButton.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(12)
+            $0.centerX.equalToSuperview()
+        }
     }
     
     func setAddTarget() {
@@ -123,7 +130,9 @@ private extension HappyRoutineView {
 
 extension HappyRoutineView {
     
-    func setDataBind() {
-        
+    func setDataBind(model: HappyRoutineCard) {
+        subTitleLabel.text = model.title
+        subTitleLabel.textAlignment = .center
+        happyRoutineCardView.bindModel(model: model)
     }
 }
