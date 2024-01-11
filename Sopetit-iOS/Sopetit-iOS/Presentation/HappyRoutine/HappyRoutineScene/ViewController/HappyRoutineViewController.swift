@@ -11,7 +11,12 @@ final class HappyRoutineViewController: UIViewController {
     
     // MARK: - Properties
     
+    private let happyRoutineData = HappyRoutineCard.dummy()
+    
+    // MARK: - UI Components
+    
     private let happyRoutineView = HappyRoutineView()
+    private let happyRoutineEmptyView = HappyRoutineEmptyView()
     
     // MARK: - Life Cycles
     
@@ -23,6 +28,7 @@ final class HappyRoutineViewController: UIViewController {
         super.viewDidLoad()
 
         setTapGesture()
+        setUserCardData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,14 +38,19 @@ final class HappyRoutineViewController: UIViewController {
 
 // MARK: - Extensions
 
-extension HappyRoutineViewController {
+private extension HappyRoutineViewController {
     func setTapGesture() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCardView(_:)))
-        happyRoutineView.emptyHappyRoutineView.addGestureRecognizer(tapGestureRecognizer)
+        happyRoutineEmptyView.emptyHappyRoutineView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     @objc
     func didTapCardView(_ sender: UITapGestureRecognizer) {
-        print("did tap card view")
+        let vc = SelectHappyCategoryViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func setUserCardData() {
+        happyRoutineView.setDataBind(model: happyRoutineData)
     }
 }

@@ -2,7 +2,7 @@
 //  HappyRoutineView.swift
 //  Sopetit-iOS
 //
-//  Created by Minjoo Kim on 1/9/24.
+//  Created by Minjoo Kim on 1/11/24.
 //
 
 import UIKit
@@ -17,38 +17,34 @@ final class HappyRoutineView: UIView {
         let navigationBar = CustomNavigationBarView()
         navigationBar.isLeftTitleViewIncluded = true
         navigationBar.isLeftTitleLabelIncluded = I18N.HappyRoutine.happyRoutineTitle
+        navigationBar.isDeleteButtonIncluded = true
         return navigationBar
     }()
     
-    private let bearDescriptionView = BearDescriptionView()
-    lazy var emptyHappyRoutineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .SoftieWhite
-        view.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner])
-        view.layer.masksToBounds = true
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.Gray100.cgColor
-        view.isUserInteractionEnabled = true
-        return view
-    }()
-    
-    private let emptyTextLabel: UILabel = {
-        let label = UILabel()
-        label.text = I18N.HappyRoutine.addRoutine
-        label.font = .fontGuide(.body2)
-        label.textColor = .Gray300
-        label.setLineSpacing(lineSpacing: 4)
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        return label
-    }()
-    
-    private let bearPlusImageView: UIImageView = {
+    private let bubbleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = ImageLiterals.HappyRoutine.imgHappyAdd
+        imageView.image = ImageLiterals.HappyRoutine.imgSpeechHappy
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    private let bubbleLabel: UILabel = {
+        let label = UILabel()
+        label.text = I18N.HappyRoutine.achieving
+        label.font = .fontGuide(.bubble16)
+        label.textColor = .Gray700
+        return label
+    }()
+    
+    private let subTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .fontGuide(.head1)
+        label.textColor = .Gray500
+        return label
+    }()
+    
+    private let happyRoutineCardView = HappyRoutineCardView()
+    private let doneButton = BottomCTAButton(title: I18N.HappyRoutine.done)
     
     // MARK: - Life Cycles
     
@@ -58,6 +54,7 @@ final class HappyRoutineView: UIView {
         setUI()
         setHierarchy()
         setLayout()
+        setAddTarget()
     }
     
     @available(*, unavailable)
@@ -68,15 +65,14 @@ final class HappyRoutineView: UIView {
 
 // MARK: - Extensions
 
-extension HappyRoutineView {
-
+private extension HappyRoutineView {
+    
     func setUI() {
         self.backgroundColor = .SoftieBack
     }
     
     func setHierarchy() {
-        self.addSubviews(navigationBar, bearDescriptionView, emptyHappyRoutineView)
-        emptyHappyRoutineView.addSubviews(emptyTextLabel, bearPlusImageView)
+        self.addSubviews(navigationBar, bubbleImageView, bubbleLabel, subTitleLabel, happyRoutineCardView, doneButton)
     }
     
     func setLayout() {
@@ -85,28 +81,72 @@ extension HappyRoutineView {
             $0.horizontalEdges.equalToSuperview()
         }
         
-        bearDescriptionView.snp.makeConstraints {
-            $0.top.equalTo(navigationBar.snp.bottom)
-            $0.width.equalTo(315)
-            $0.height.equalTo(76)
-            $0.centerX.equalToSuperview()
+        if SizeLiterals.Screen.screenHeight < 812 {
+            bubbleImageView.snp.makeConstraints {
+                $0.top.equalTo(navigationBar.snp.bottom).offset(0)
+                $0.width.equalTo(88)
+                $0.height.equalTo(46)
+                $0.centerX.equalToSuperview()
+            }
+            
+            subTitleLabel.snp.makeConstraints {
+                $0.top.equalTo(bubbleImageView.snp.bottom).offset(10)
+                $0.horizontalEdges.equalToSuperview().inset(50)
+            }
+            
+            happyRoutineCardView.snp.makeConstraints {
+                $0.top.equalTo(subTitleLabel.snp.bottom).offset(10)
+                $0.centerX.equalToSuperview()
+                $0.width.equalTo(280)
+                $0.height.equalTo(398)
+            }
+        } else {
+            bubbleImageView.snp.makeConstraints {
+                $0.top.equalTo(navigationBar.snp.bottom).offset(15)
+                $0.width.equalTo(88)
+                $0.height.equalTo(46)
+                $0.centerX.equalToSuperview()
+            }
+            
+            subTitleLabel.snp.makeConstraints {
+                $0.top.equalTo(bubbleImageView.snp.bottom).offset(19)
+                $0.horizontalEdges.equalToSuperview().inset(50)
+            }
+            
+            happyRoutineCardView.snp.makeConstraints {
+                $0.top.equalTo(subTitleLabel.snp.bottom).offset(24)
+                $0.centerX.equalToSuperview()
+                $0.width.equalTo(280)
+                $0.height.equalTo(398)
+            }
         }
         
-        emptyHappyRoutineView.snp.makeConstraints {
-            $0.top.equalTo(bearDescriptionView.snp.bottom).offset(52/812 * UIScreen.main.bounds.height)
-            $0.width.equalTo(280)
-            $0.height.equalTo(398)
-            $0.centerX.equalToSuperview()
+        bubbleLabel.snp.makeConstraints {
+            $0.centerX.equalTo(bubbleImageView)
+            $0.centerY.equalTo(bubbleImageView).offset(-2)
         }
         
-        emptyTextLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(84)
+        doneButton.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(12)
             $0.centerX.equalToSuperview()
         }
-        
-        bearPlusImageView.snp.makeConstraints {
-            $0.top.equalTo(emptyTextLabel.snp.bottom).offset(64)
-            $0.centerX.equalToSuperview()
-        }
+    }
+    
+    func setAddTarget() {
+        doneButton.addTarget(self, action: #selector(tapDoneButton), for: .touchUpInside)
+    }
+    
+    @objc func tapDoneButton() {
+        print("tapDoneButton")
+        /// Show BottomSheet
+    }
+}
+
+extension HappyRoutineView {
+    
+    func setDataBind(model: HappyRoutineCard) {
+        subTitleLabel.text = model.title
+        subTitleLabel.textAlignment = .center
+        happyRoutineCardView.setDataBind(model: model)
     }
 }

@@ -48,9 +48,15 @@ final class CustomNavigationBarView: UIView {
         set { editButton.isHidden = !newValue }
     }
     
+    var isDeleteButtonIncluded: Bool {
+        get { !deleteButton.isHidden }
+        set { deleteButton.isHidden = !newValue }
+    }
+    
     var backButtonAction: (() -> Void)?
     var editButtonAction: (() -> Void)?
     var cancelButtonAction: (() -> Void)?
+    var deleteButtonAction: (() -> Void)?
     
     // MARK: - UI Components
     
@@ -106,6 +112,15 @@ final class CustomNavigationBarView: UIView {
         return button
     }()
     
+    lazy var deleteButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(I18N.CustomNavi.delete, for: .normal)
+        button.setTitleColor(.Gray400, for: .normal)
+        button.titleLabel?.font = .fontGuide(.body4)
+        button.isHidden = true
+        return button
+    }()
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -124,14 +139,14 @@ final class CustomNavigationBarView: UIView {
 
 // MARK: - Extensions
 
-extension CustomNavigationBarView {
+private extension CustomNavigationBarView {
 
     func setUI() {
         self.backgroundColor = .SoftieBack
     }
     
     func setHierarchy() {
-        self.addSubviews(backButton, cancelButton, editButton, titleView, leftTitleView)
+        self.addSubviews(backButton, cancelButton, editButton, deleteButton, titleView, leftTitleView)
         titleView.addSubview(titleLabel)
         leftTitleView.addSubview(leftTitleLabel)
     }
@@ -181,12 +196,20 @@ extension CustomNavigationBarView {
             $0.width.equalTo(53)
             $0.height.equalTo(41)
         }
+        
+        deleteButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(6)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(53)
+            $0.height.equalTo(41)
+        }
     }
     
     func setAddTarget() {
         backButton.addTarget(self, action: #selector(isTapped), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(isTapped), for: .touchUpInside)
         editButton.addTarget(self, action: #selector(isTapped), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(isTapped), for: .touchUpInside)
     }
     
     @objc
@@ -198,6 +221,8 @@ extension CustomNavigationBarView {
             cancelButtonAction?()
         case editButton:
             editButtonAction?()
+        case deleteButton:
+            deleteButtonAction?()
         default:
             break
         }
