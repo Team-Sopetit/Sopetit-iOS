@@ -204,7 +204,6 @@ extension DailyViewController {
             self.customNavigationBar.cancelButton.isHidden = true
             self.customNavigationBar.editButton.isHidden = false
             self.deleteButton.isHidden = true
-            self.tabBarController?.tabBar.isHidden = false
             self.isEditing.toggle()
             for cell in self.collectionview.visibleCells {
                 if let dailyCell = cell as? DailyRoutineCollectionViewCell {
@@ -223,7 +222,6 @@ extension DailyViewController {
         customNavigationBar.editButtonAction = {
             self.isEditing.toggle()
             self.deleteButton.isHidden = false
-            self.tabBarController?.tabBar.isHidden = true
             self.customNavigationBar.cancelButton.isHidden = false
             self.customNavigationBar.editButton.isHidden = true
             for cell in self.collectionview.visibleCells {
