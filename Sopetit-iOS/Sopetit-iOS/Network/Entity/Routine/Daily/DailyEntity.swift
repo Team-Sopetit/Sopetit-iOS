@@ -15,7 +15,6 @@ extension DailyEntity {
     static func routineDummy() -> [DailyEntity] {
         return [
             DailyEntity(dateLabel: "5", routineLabel: "이불 개기", imageName: "apple.logo"),
-            DailyEntity(dateLabel: "5", routineLabel: "이불 개기", imageName: "apple.logo"),
             DailyEntity(dateLabel: "5", routineLabel: "이불 개기", imageName: "apple.logo")
         ]
     }

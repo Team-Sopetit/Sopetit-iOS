@@ -14,6 +14,7 @@ protocol MyCellDelegate: AnyObject {
 final class DailyViewController: UIViewController {
     
     // MARK: - Properties
+    
     let dummy = DailyEntity.routineDummy()
     var status: Int = 0
     let deleteBottom = BottomSheetViewController(bottomStyle: .dailyDeleteBottom)
@@ -26,6 +27,7 @@ final class DailyViewController: UIViewController {
     }
     
     // MARK: - UI Components
+    
     private let routineView = DailyView()
     private lazy var collectionview = routineView.collectionView
     private let customNavigationBar = CustomNavigationBarView()
@@ -94,6 +96,7 @@ final class DailyViewController: UIViewController {
         super.loadView()
         
         setupCustomNavigationBar()
+        print(UIScreen.main.bounds.width)
     }
     
     override func viewDidLoad() {
@@ -201,11 +204,11 @@ extension DailyViewController: UICollectionViewDataSource, MyCellDelegate {
         }
         return UICollectionReusableView()
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        let width: CGFloat = (collectionView.frame.width-40)
-        let height: CGFloat = 136
-        return CGSize(width: width, height: height)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+//        let width: CGFloat = (collectionView.frame.width-40)
+//        let height: CGFloat = 136
+//        return CGSize(width: width, height: height)
+//    }
 }
 
 extension DailyViewController: BottomSheetButtonDelegate {

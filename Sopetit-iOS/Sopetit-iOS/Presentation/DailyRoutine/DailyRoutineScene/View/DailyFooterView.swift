@@ -13,8 +13,10 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
     // MARK: - Properties
     
     static var isFromNib: Bool = false
+    static let identifier: String = "DailyFooterView"
     
     // MARK: - UI Componenets
+    
     let plusImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "plus")
@@ -25,18 +27,19 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
     private let borderLayer = CAShapeLayer()
     
     // MARK: - Life Cycles
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setUI()
         setLayout()
-        borderLayer.strokeColor = UIColor.Gray200.cgColor
+        borderLayer.strokeColor = UIColor.Gray300.cgColor
         borderLayer.lineDashPattern = [3, 3]
         borderLayer.backgroundColor = UIColor.clear.cgColor
         borderLayer.fillColor = UIColor.clear.cgColor
         
         layer.addSublayer(borderLayer)
-        
+
     }
     
     required init?(coder: NSCoder) {
@@ -44,24 +47,27 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
     }
     
     override func draw(_ rect: CGRect) {
+        let customSize = CGSize(width: (UIScreen.main.bounds.width-40), height: 136)
+        let customRect = CGRect(origin: CGPoint(x: (rect.width - customSize.width) / 2, y: (rect.height - customSize.height) / 2),
+                                size: customSize)
         
-        borderLayer.path = UIBezierPath(roundedRect: rect, cornerRadius: 20).cgPath
+        borderLayer.path = UIBezierPath(roundedRect: customRect, cornerRadius: 20).cgPath
     }
     
     func setUI() {
         self.addSubview(plusImage)
-        self.backgroundColor = .red
     }
     
     func setLayout() {
         self.snp.makeConstraints {
             $0.height.equalTo(136)
-//            $0.leading.trailing.equalToSuperview().inset(20)
+//            $0.width.equalTo(UIScreen.main.bounds.width-40).priority(.high)
         }
         
         plusImage.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
             $0.size.equalTo(24)
         }
+        
     }
 }

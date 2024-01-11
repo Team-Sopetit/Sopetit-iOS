@@ -16,6 +16,9 @@ final class DailyView: UIView {
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 40), height: 136)
+        flowLayout.footerReferenceSize = CGSize(width: (UIScreen.main.bounds.width - 40), height: 136)
+        flowLayout.minimumLineSpacing = 12
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         view.backgroundColor = .SoftieBack
         return view
@@ -53,7 +56,6 @@ extension DailyView {
     }
     
     func setLayout() {
-
     }
     
     func setAddTarget() {
