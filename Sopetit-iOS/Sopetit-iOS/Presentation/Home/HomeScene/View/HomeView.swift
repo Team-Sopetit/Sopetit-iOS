@@ -14,7 +14,7 @@ final class HomeView: UIView {
     // MARK: - Properties
     
     private let name = "애착이"
-    private var dollWidth: CGFloat = 0.0
+    private var dollNameWidth: CGFloat = 0.0
     
     // MARK: - UI Components
     
@@ -119,7 +119,7 @@ final class HomeView: UIView {
 extension HomeView {
     
     func setUI() {
-        dollWidth = name.size(withAttributes: [NSAttributedString.Key.font: UIFont.fontGuide(.bubble16)]).width
+        dollNameWidth = name.size(withAttributes: [NSAttributedString.Key.font: UIFont.fontGuide(.bubble16)]).width
     }
     
     func setHierarchy() {
@@ -171,7 +171,7 @@ extension HomeView {
         dollNameLabel.snp.makeConstraints {
             $0.top.equalTo(dollImageView.snp.bottom)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(dollWidth + 26)
+            $0.width.equalTo(dollNameWidth + 26)
             $0.height.equalTo(34)
         }
         
