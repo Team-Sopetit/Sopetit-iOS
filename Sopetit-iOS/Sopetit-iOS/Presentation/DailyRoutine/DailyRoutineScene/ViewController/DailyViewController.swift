@@ -32,23 +32,36 @@ final class DailyViewController: UIViewController {
     let exampleBottom = BottomSheetViewController(bottomStyle: .dailyCompleteBottom)
     
     func setupCustomNavigationBar() {
-        // 네비게이션 바의 제목 설정
         customNavigationBar.isLeftTitleLabelIncluded = "데일리 루틴"
         customNavigationBar.isLeftTitleViewIncluded = true
-
-        // 네비게이션 바의 뒤로 가기 버튼 설정
         customNavigationBar.isBackButtonIncluded = false
-
-        // 네비게이션 바의 취소 버튼 설정
-        customNavigationBar.isCancelButtonIncluded = false
-
-        // 네비게이션 바의 편집 버튼 설정
+        
+        customNavigationBar.isCancelButtonIncluded = true
+        customNavigationBar.cancelButton.isHidden = true
+        customNavigationBar.cancelButtonAction = {
+            self.customNavigationBar.cancelButton.isHidden = true
+            self.customNavigationBar.editButton.isHidden = false
+            self.deleteLabel.isHidden = true
+            self.isEditing.toggle()
+            for cell in self.collectionview.visibleCells {
+                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                    dailyCell.achieveButton.isUserInteractionEnabled = true
+                }
+            }
+        }
+        
         customNavigationBar.isEditButtonIncluded = true
         customNavigationBar.editButtonAction = {
-            // 편집 버튼이 눌렸을 때의 동작
             print("Edit button tapped!")
             self.isEditing.toggle()
-            self.deleteLabel.isHidden.toggle()
+            self.deleteLabel.isHidden = false
+            self.customNavigationBar.cancelButton.isHidden = false
+            self.customNavigationBar.editButton.isHidden = true
+            for cell in self.collectionview.visibleCells {
+                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                    dailyCell.achieveButton.isUserInteractionEnabled = false
+                }
+            }
 //            DailyRoutineCollectionViewCell.sharedVariable = 0
         }
 
@@ -170,12 +183,18 @@ extension DailyViewController: UICollectionViewDataSource, MyCellDelegate {
         return cell
     }
     
+    // Footer configuration
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionFooter {
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DailyFooterView", for: indexPath) as! DailyFooterView
+            let footerView = DailyFooterView.dequeueReusableFooterView(collectionView: collectionView, indexPath: indexPath)
             return footerView
         }
         return UICollectionReusableView()
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        let width: CGFloat = (collectionView.frame.width-40)
+        let height: CGFloat = 136
+        return CGSize(width: width, height: height)
     }
 }
 

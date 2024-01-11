@@ -8,9 +8,11 @@
 import UIKit
 import SnapKit
 
-class DailyFooterView: UICollectionReusableView {
+class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegisterable {
     
     // MARK: - Properties
+    
+    static var isFromNib: Bool = false
     
     // MARK: - UI Componenets
     let plusImage: UIImageView = {
@@ -40,19 +42,23 @@ class DailyFooterView: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func draw(_ rect: CGRect) {
         
         borderLayer.path = UIBezierPath(roundedRect: rect, cornerRadius: 20).cgPath
     }
     
     func setUI() {
+        self.addSubview(plusImage)
+        self.backgroundColor = .red
     }
     
     func setLayout() {
         self.snp.makeConstraints {
             $0.height.equalTo(136)
-            $0.leading.trailing.equalToSuperview().inset(20)
+//            $0.leading.trailing.equalToSuperview().inset(20)
         }
+        
         plusImage.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
             $0.size.equalTo(24)
