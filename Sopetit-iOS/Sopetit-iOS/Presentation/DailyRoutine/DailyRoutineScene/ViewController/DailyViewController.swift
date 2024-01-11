@@ -18,11 +18,9 @@ final class DailyViewController: UIViewController {
     
     let dummy = DailyEntity.routineDummy()
     var status: Int = 0
-    let deleteBottom = BottomSheetViewController(bottomStyle: .dailyDeleteBottom)
     
     override var isEditing: Bool {
         didSet {
-            // isEditing 상태에 따라 셀들을 업데이트
             updateCellsForEditing()
         }
     }
@@ -32,7 +30,8 @@ final class DailyViewController: UIViewController {
     private let routineView = DailyView()
     private lazy var collectionview = routineView.collectionView
     private let customNavigationBar = CustomNavigationBarView()
-    let exampleBottom = BottomSheetViewController(bottomStyle: .dailyCompleteBottom)
+    private let dailyCompleteBottom = BottomSheetViewController(bottomStyle: .dailyCompleteBottom)
+    private let dailyDeleteBottom = BottomSheetViewController(bottomStyle: .dailyDeleteBottom)
     
     lazy var deleteButton: UIButton = {
         let button = UIButton()
@@ -68,11 +67,11 @@ final class DailyViewController: UIViewController {
 // MARK: - Extensions
 
 extension DailyViewController {
-
+    
     func setUI() {
         self.view.backgroundColor = .SoftieBack
-        exampleBottom.modalPresentationStyle = .overFullScreen
-        deleteBottom.modalPresentationStyle = .overFullScreen
+        dailyCompleteBottom.modalPresentationStyle = .overFullScreen
+        dailyDeleteBottom.modalPresentationStyle = .overFullScreen
         self.navigationController?.navigationBar.isHidden = true
         self.view.bringSubviewToFront(deleteButton)
     }
@@ -103,8 +102,8 @@ extension DailyViewController {
     func setDelegate() {
         collectionview.delegate = self
         collectionview.dataSource = self
-        exampleBottom.buttonDelegate = self
-        deleteBottom.buttonDelegate = self
+        dailyCompleteBottom.buttonDelegate = self
+        dailyDeleteBottom.buttonDelegate = self
     }
     
     func setAddTarget() {
@@ -114,7 +113,7 @@ extension DailyViewController {
     
     @objc
     func deleteTapped() {
-        self.present(deleteBottom, animated: false)
+        self.present(dailyDeleteBottom, animated: false)
     }
     
     private func updateCellsForEditing() {
@@ -126,7 +125,6 @@ extension DailyViewController {
     }
     
     @objc func updateDeleteLabel() {
-        
         let count = DailyRoutineCollectionViewCell.sharedVariable
         let title = "\(count)개 삭제"
         deleteButton.setTitle(title, for: .normal)
@@ -169,13 +167,21 @@ extension DailyViewController: UICollectionViewDataSource {
 }
 
 extension DailyViewController: BottomSheetButtonDelegate {
-    func leftButtonTapped() {
+    func bakcButtonTapped() {
         self.dismiss(animated: false)
     }
     
-    func rightButtonTapped() {
+    func completeButtonTapped() {
         let cell = collectionview.cellForItem(at: [0, status]) as? DailyRoutineCollectionViewCell
         cell?.achieveButton.isEnabled = false
+        self.dismiss(animated: false)
+    }
+    
+    func deleteButtonTapped() {
+        self.isEditing.toggle()
+        self.deleteButton.isHidden = true
+        customNavigationBar.cancelButton.isHidden = true
+        tabBarController?.tabBar.isHidden = false
         self.dismiss(animated: false)
     }
 }
@@ -183,7 +189,7 @@ extension DailyViewController: BottomSheetButtonDelegate {
 extension DailyViewController: PresentDelegate {
     func buttonTapped(in cell: UICollectionViewCell) {
         self.status = cell.tag
-        self.present(exampleBottom, animated: false)
+        self.present(dailyCompleteBottom, animated: false)
     }
 }
 
@@ -198,6 +204,7 @@ extension DailyViewController {
             self.customNavigationBar.cancelButton.isHidden = true
             self.customNavigationBar.editButton.isHidden = false
             self.deleteButton.isHidden = true
+            self.tabBarController?.tabBar.isHidden = false
             self.isEditing.toggle()
             for cell in self.collectionview.visibleCells {
                 if let dailyCell = cell as? DailyRoutineCollectionViewCell {
@@ -216,6 +223,7 @@ extension DailyViewController {
         customNavigationBar.editButtonAction = {
             self.isEditing.toggle()
             self.deleteButton.isHidden = false
+            self.tabBarController?.tabBar.isHidden = true
             self.customNavigationBar.cancelButton.isHidden = false
             self.customNavigationBar.editButton.isHidden = true
             for cell in self.collectionview.visibleCells {
@@ -224,6 +232,5 @@ extension DailyViewController {
                 }
             }
         }
-
     }
 }
