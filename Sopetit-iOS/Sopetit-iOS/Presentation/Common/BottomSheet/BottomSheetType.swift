@@ -40,7 +40,7 @@ extension BottomSheetType {
     
     var subTitle: String {
         switch self {
-        case .dailyCompleteBottom, .happyDeleteBottom:
+        case .dailyCompleteBottom, .happyCompleteBottom:
             return I18N.BottomSheet.delInfoTitle
         case .dailyDeleteBottom:
             return I18N.BottomSheet.delSubTitle
