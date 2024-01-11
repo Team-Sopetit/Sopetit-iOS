@@ -82,7 +82,7 @@ final class CustomNavigationBarView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .fontGuide(.head2)
+        label.font = .fontGuide(.head3)
         label.textColor = .Gray700
         return label
     }()

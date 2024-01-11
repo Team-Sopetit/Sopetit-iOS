@@ -75,4 +75,15 @@ enum I18N {
         static let kakaoLoginTitle = "카카오로 시작하기"
         static let appleLoginTitle = "Apple로 시작하기"
     }
+    
+    enum TabBar {
+        static let daily = "데일리 루틴"
+        static let home = "홈"
+        static let happy = "행복 루틴"
+    }
+    
+    enum DailyRoutine {
+        static let complete = "완료하기"
+        static let completed = "달성 완료"
+    }
 }
