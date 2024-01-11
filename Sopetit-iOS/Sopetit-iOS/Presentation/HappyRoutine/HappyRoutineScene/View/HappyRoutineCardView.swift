@@ -122,7 +122,7 @@ final class HappyRoutineCardView: UIView {
 
 // MARK: - Extensions
 
-extension HappyRoutineCardView {
+private extension HappyRoutineCardView {
     
     func setHierarchy() {
         self.addSubviews(cardView, detailCardView)

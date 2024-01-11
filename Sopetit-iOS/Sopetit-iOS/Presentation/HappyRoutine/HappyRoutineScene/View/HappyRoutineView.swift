@@ -11,9 +11,8 @@ import SnapKit
 
 final class HappyRoutineView: UIView {
 
-    // MARK: - Properties
-    
     // MARK: - UI Components
+    
     private let navigationBar: CustomNavigationBarView = {
         let navigationBar = CustomNavigationBarView()
         navigationBar.isLeftTitleViewIncluded = true
@@ -45,7 +44,6 @@ final class HappyRoutineView: UIView {
     }()
     
     private let happyRoutineCardView = HappyRoutineCardView()
-    
     private let bottomCTAButton = BottomCTAButton(title: I18N.HappyRoutine.done)
     
     // MARK: - Life Cycles
