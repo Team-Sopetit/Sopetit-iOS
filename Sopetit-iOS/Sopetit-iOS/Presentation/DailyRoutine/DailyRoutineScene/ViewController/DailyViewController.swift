@@ -5,9 +5,10 @@
 //
 
 import UIKit
+
 import SnapKit
 
-protocol MyCellDelegate: AnyObject {
+protocol PresentDelegate: AnyObject {
     func buttonTapped(in cell: UICollectionViewCell)
 }
 
@@ -34,7 +35,7 @@ final class DailyViewController: UIViewController {
     let exampleBottom = BottomSheetViewController(bottomStyle: .dailyCompleteBottom)
     
     func setupCustomNavigationBar() {
-        customNavigationBar.isLeftTitleLabelIncluded = "데일리 루틴"
+        customNavigationBar.isLeftTitleLabelIncluded = I18N.TabBar.daily
         customNavigationBar.isLeftTitleViewIncluded = true
         customNavigationBar.isBackButtonIncluded = false
         customNavigationBar.isCancelButtonIncluded = true
@@ -42,7 +43,7 @@ final class DailyViewController: UIViewController {
         customNavigationBar.cancelButtonAction = {
             self.customNavigationBar.cancelButton.isHidden = true
             self.customNavigationBar.editButton.isHidden = false
-            self.deleteLabel.isHidden = true
+            self.deleteButton.isHidden = true
             self.isEditing.toggle()
             for cell in self.collectionview.visibleCells {
                 if let dailyCell = cell as? DailyRoutineCollectionViewCell {
@@ -60,7 +61,7 @@ final class DailyViewController: UIViewController {
         customNavigationBar.isEditButtonIncluded = true
         customNavigationBar.editButtonAction = {
             self.isEditing.toggle()
-            self.deleteLabel.isHidden = false
+            self.deleteButton.isHidden = false
             self.customNavigationBar.cancelButton.isHidden = false
             self.customNavigationBar.editButton.isHidden = true
             for cell in self.collectionview.visibleCells {
@@ -72,7 +73,7 @@ final class DailyViewController: UIViewController {
 
     }
     
-    lazy var deleteLabel: UIButton = {
+    lazy var deleteButton: UIButton = {
         let button = UIButton()
         button.setTitle("0개 삭제", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -95,7 +96,7 @@ final class DailyViewController: UIViewController {
         super.loadView()
         
         setupCustomNavigationBar()
-        print(UIScreen.main.bounds.width)
+        
     }
     
     override func viewDidLoad() {
@@ -105,8 +106,7 @@ final class DailyViewController: UIViewController {
         setHierarchy()
         setLayout()
         setDelegate()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDeleteLabel), name: Notification.Name("SharedVariableDidChange"), object: nil)
+        setAddTarget()
 
     }
 }
@@ -123,26 +123,29 @@ extension DailyViewController {
     }
     
     func setHierarchy() {
-        self.view.addSubviews(customNavigationBar, collectionview, deleteLabel)
+        self.view.addSubviews(customNavigationBar, deleteButton, routineView)
     }
     
     func setLayout() {
+        
         customNavigationBar.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.height.equalTo(44)
         }
         
-        collectionview.snp.makeConstraints {
-            $0.top.equalTo(customNavigationBar.snp.bottom).offset(13)
+        routineView.snp.makeConstraints {
+            $0.top.equalTo(customNavigationBar.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
         
-        deleteLabel.snp.makeConstraints {
+        deleteButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(17)
             $0.height.equalTo(56)
         }
+        
+        self.view.bringSubviewToFront(deleteButton)
     }
     
     func setDelegate() {
@@ -150,6 +153,10 @@ extension DailyViewController {
         collectionview.dataSource = self
         exampleBottom.buttonDelegate = self
         deleteBottom.buttonDelegate = self
+    }
+    
+    func setAddTarget() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDeleteLabel), name: Notification.Name("SharedVariableDidChange"), object: nil)
     }
     
     private func updateCellsForEditing() {
@@ -161,27 +168,26 @@ extension DailyViewController {
     }
     
     @objc func updateDeleteLabel() {
+        
         let count = DailyRoutineCollectionViewCell.sharedVariable
         let title = "\(count)개 삭제"
-        deleteLabel.setTitle(title, for: .normal)
+        deleteButton.setTitle(title, for: .normal)
+        
         if DailyRoutineCollectionViewCell.sharedVariable == 0 {
-            self.deleteLabel.backgroundColor = .Gray200
-            self.deleteLabel.isUserInteractionEnabled = false
+            self.deleteButton.backgroundColor = .Gray200
+            self.deleteButton.isUserInteractionEnabled = false
         } else {
-            self.deleteLabel.backgroundColor = .SoftieRed
-            self.deleteLabel.isUserInteractionEnabled = true
+            self.deleteButton.backgroundColor = .SoftieRed
+            self.deleteButton.isUserInteractionEnabled = true
         }
+        
     }
 }
 
 extension DailyViewController: UICollectionViewDelegate {
 }
 
-extension DailyViewController: UICollectionViewDataSource, MyCellDelegate {
-    func buttonTapped(in cell: UICollectionViewCell) {
-        self.status = cell.tag
-        self.present(exampleBottom, animated: false)
-    }
+extension DailyViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dummy.count
@@ -192,8 +198,6 @@ extension DailyViewController: UICollectionViewDataSource, MyCellDelegate {
         cell.setDatabind(model: dummy[indexPath.item])
         cell.delegate = self
         cell.tag = indexPath.item
-        print(indexPath)
-        print(indexPath.item)
         return cell
     }
     
@@ -216,5 +220,12 @@ extension DailyViewController: BottomSheetButtonDelegate {
         let cell = collectionview.cellForItem(at: [0, status]) as? DailyRoutineCollectionViewCell
         cell?.achieveButton.isEnabled = false
         self.dismiss(animated: false)
+    }
+}
+
+extension DailyViewController: PresentDelegate {
+    func buttonTapped(in cell: UICollectionViewCell) {
+        self.status = cell.tag
+        self.present(exampleBottom, animated: false)
     }
 }

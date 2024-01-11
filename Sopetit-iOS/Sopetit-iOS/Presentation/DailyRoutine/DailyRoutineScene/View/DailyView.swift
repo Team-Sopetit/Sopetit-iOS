@@ -5,6 +5,7 @@
 //
 
 import UIKit
+
 import SnapKit
 
 final class DailyView: UIView {
@@ -15,8 +16,8 @@ final class DailyView: UIView {
 
     let collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 40), height: 136)
-        flowLayout.footerReferenceSize = CGSize(width: (UIScreen.main.bounds.width - 40), height: 136)
+        flowLayout.itemSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
+        flowLayout.footerReferenceSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
         flowLayout.minimumLineSpacing = 12
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -32,7 +33,6 @@ final class DailyView: UIView {
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
         setRegisterCell()
         
     }
@@ -48,22 +48,19 @@ final class DailyView: UIView {
 extension DailyView {
 
     func setUI() {
-        self.backgroundColor = .white
+        self.backgroundColor = .SoftieBack
     }
     
     func setHierarchy() {
-        self.addSubviews(collectionView)
+        self.addSubview(collectionView)
     }
     
     func setLayout() {
-    }
-    
-    func setAddTarget() {
-
-    }
-    
-    @objc
-    func buttonTapped() {
+        
+        collectionView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalToSuperview().offset(13)
+        }
         
     }
     

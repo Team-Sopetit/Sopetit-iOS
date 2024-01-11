@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 import SnapKit
 
 class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegisterable {
@@ -13,7 +14,6 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
     // MARK: - Properties
     
     static var isFromNib: Bool = false
-    static let identifier: String = "DailyFooterView"
     
     // MARK: - UI Componenets
     
@@ -33,13 +33,8 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
         
         setUI()
         setLayout()
-        borderLayer.strokeColor = UIColor.Gray300.cgColor
-        borderLayer.lineDashPattern = [3, 3]
-        borderLayer.backgroundColor = UIColor.clear.cgColor
-        borderLayer.fillColor = UIColor.clear.cgColor
+        layoutSubviews()
         
-        layer.addSublayer(borderLayer)
-
     }
     
     required init?(coder: NSCoder) {
@@ -47,7 +42,7 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
     }
     
     override func draw(_ rect: CGRect) {
-        let customSize = CGSize(width: (UIScreen.main.bounds.width-40), height: 136)
+        let customSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
         let customRect = CGRect(origin: CGPoint(x: (rect.width - customSize.width) / 2, y: (rect.height - customSize.height) / 2),
                                 size: customSize)
         
@@ -56,12 +51,16 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
     
     func setUI() {
         self.addSubview(plusImage)
+        borderLayer.strokeColor = UIColor.Gray300.cgColor
+        borderLayer.lineDashPattern = [3, 3]
+        borderLayer.backgroundColor = UIColor.clear.cgColor
+        borderLayer.fillColor = UIColor.clear.cgColor
     }
     
     func setLayout() {
+        
         self.snp.makeConstraints {
             $0.height.equalTo(136)
-//            $0.width.equalTo(UIScreen.main.bounds.width-40).priority(.high)
         }
         
         plusImage.snp.makeConstraints {
@@ -69,5 +68,9 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
             $0.size.equalTo(24)
         }
         
+    }
+    
+    override func layoutSubviews() {
+        layer.addSublayer(borderLayer)
     }
 }
