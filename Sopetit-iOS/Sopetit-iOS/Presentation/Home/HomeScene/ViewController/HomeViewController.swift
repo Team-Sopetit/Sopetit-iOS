@@ -8,6 +8,7 @@
 import UIKit
 
 import SnapKit
+import Lottie
 
 final class HomeViewController: UIViewController {
     
@@ -56,11 +57,37 @@ extension HomeViewController {
 
 extension HomeViewController {}
 
-
 // MARK: - CollectionView
 
 extension HomeViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.item {
+        case 0:
+            homeView.lottieHello.removeFromSuperview()
+            homeView.lottieHello = LottieAnimationView(name: "gray_eating_daily")
+            homeView.addSubview(homeView.lottieHello)
+            homeView.lottieHello.snp.makeConstraints {
+                $0.width.equalTo(414)
+                $0.height.equalTo(418)
+                $0.center.equalToSuperview()
+            }
+            homeView.lottieHello.loopMode = .playOnce
+            homeView.lottieHello.play()
+        case 1:
+            homeView.lottieHello.removeFromSuperview()
+            homeView.lottieHello = LottieAnimationView(name: "gray_eating_happy")
+            homeView.addSubview(homeView.lottieHello)
+            homeView.lottieHello.snp.makeConstraints {
+                $0.width.equalTo(414)
+                $0.height.equalTo(418)
+                $0.center.equalToSuperview()
+            }
+            homeView.lottieHello.loopMode = .playOnce
+            homeView.lottieHello.play()
+        default:
+            break
+        }
+    }
 }
 
 extension HomeViewController: UICollectionViewDataSource {

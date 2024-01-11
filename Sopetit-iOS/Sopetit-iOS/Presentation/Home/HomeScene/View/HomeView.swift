@@ -8,6 +8,7 @@
 import UIKit
 
 import SnapKit
+import Lottie
 
 final class HomeView: UIView {
     
@@ -46,19 +47,13 @@ final class HomeView: UIView {
         return imageView
     }()
     
+    var lottieHello = LottieAnimationView(name: "gray_hello")
+    
     private let bubbleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         label.font = .fontGuide(.bubble18)
         return label
-    }()
-    
-    private let dollImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = ImageLiterals.Home.imgBearHomeGray
-        imageView.contentMode = .scaleAspectFit
-        imageView.isUserInteractionEnabled = true
-        return imageView
     }()
     
     let dollNameLabel: UILabel = {
@@ -84,7 +79,7 @@ final class HomeView: UIView {
         collectionView.clipsToBounds = true
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.isUserInteractionEnabled = true
-        collectionView.allowsSelection = false
+        collectionView.allowsSelection = true
         collectionView.backgroundColor = .clear
         return collectionView
     }()
@@ -111,9 +106,10 @@ final class HomeView: UIView {
 extension HomeView {
     
     func setHierarchy() {
-        self.addSubviews(backgroundImageView, softieImageView, moneyButton, settingButton, bubbleImageView, dollImageView, dollNameLabel, actionCollectionView)
+        self.addSubviews(backgroundImageView, softieImageView, moneyButton, settingButton, bubbleImageView, dollNameLabel, actionCollectionView)
         
         bubbleImageView.addSubview(bubbleLabel)
+        addSubview(lottieHello)
     }
     
     func setLayout() {
@@ -142,7 +138,7 @@ extension HomeView {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(200)
             $0.height.equalTo(68)
-            $0.bottom.equalTo(dollImageView.snp.top)
+            $0.top.equalTo(lottieHello.snp.top).inset(22)
         }
         
         bubbleLabel.snp.makeConstraints {
@@ -150,14 +146,14 @@ extension HomeView {
             $0.centerY.equalToSuperview().offset(-4)
         }
         
-        dollImageView.snp.makeConstraints {
-            $0.width.equalTo(165)
-            $0.height.equalTo(182)
+        lottieHello.snp.makeConstraints {
+            $0.width.equalTo(414)
+            $0.height.equalTo(418)
             $0.center.equalToSuperview()
         }
         
         dollNameLabel.snp.makeConstraints {
-            $0.top.equalTo(dollImageView.snp.bottom)
+            $0.bottom.equalTo(lottieHello.snp.bottom).inset(54)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(63)
             $0.height.equalTo(34)
@@ -176,12 +172,15 @@ extension HomeView {
             target: self,
             action: #selector(dollTapped)
         )
-        dollImageView.addGestureRecognizer(dollTapGesture)
+        lottieHello.addGestureRecognizer(dollTapGesture)
     }
     
     @objc
     func dollTapped() {
         print("인형을 탭함.")
+        
+        lottieHello.loopMode = .playOnce
+        lottieHello.play()
     }
     
     func setRegisterCell() {
