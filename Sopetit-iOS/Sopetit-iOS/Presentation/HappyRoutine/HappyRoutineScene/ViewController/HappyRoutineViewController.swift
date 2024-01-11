@@ -11,12 +11,12 @@ final class HappyRoutineViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let happyRoutineView = HappyRoutineView()
+    private let happyRoutineEmptyView = HappyRoutineEmptyView()
     
     // MARK: - Life Cycles
     
     override func loadView() {
-        self.view = happyRoutineView
+        self.view = happyRoutineEmptyView
     }
     
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ final class HappyRoutineViewController: UIViewController {
 extension HappyRoutineViewController {
     func setTapGesture() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapCardView(_:)))
-        happyRoutineView.emptyHappyRoutineView.addGestureRecognizer(tapGestureRecognizer)
+        happyRoutineEmptyView.emptyHappyRoutineView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     @objc
