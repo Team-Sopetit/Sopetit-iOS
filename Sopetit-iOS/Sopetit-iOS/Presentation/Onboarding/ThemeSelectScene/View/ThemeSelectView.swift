@@ -139,7 +139,7 @@ extension ThemeSelectView {
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(bubbleLabel.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 37 / 812)
+            $0.top.equalTo(bubbleImage.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 37 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 282 / 375)
             $0.bottom.equalTo(nextButton.snp.top).offset(-SizeLiterals.Screen.screenHeight * 49 / 812)
