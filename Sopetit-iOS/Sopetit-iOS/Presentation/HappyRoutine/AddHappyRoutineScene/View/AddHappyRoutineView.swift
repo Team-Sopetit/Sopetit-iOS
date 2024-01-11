@@ -26,7 +26,7 @@ final class AddHappyRoutineView: UIView {
         static let sideItem = insetX - itemSpacing
         
         static var insetX: CGFloat {
-            (UIScreen.main.bounds.width - Self.itemSize.width) / 2.0
+            (SizeLiterals.Screen.screenWidth - Self.itemSize.width) / 2.0
         }
         static var collectionViewContentInset: UIEdgeInsets {
             UIEdgeInsets(top: 0, left: Self.insetX, bottom: 0, right: Self.insetX)
@@ -77,7 +77,6 @@ final class AddHappyRoutineView: UIView {
         view.showsVerticalScrollIndicator = true
         view.backgroundColor = .clear
         view.clipsToBounds = true
-        view.register(HappyRoutineCardCollectionViewCell.self, forCellWithReuseIdentifier: "HappyRoutineCardCollectionViewCell")
         view.isPagingEnabled = false
         view.contentInsetAdjustmentBehavior = .never
         view.contentInset = Const.collectionViewContentInset

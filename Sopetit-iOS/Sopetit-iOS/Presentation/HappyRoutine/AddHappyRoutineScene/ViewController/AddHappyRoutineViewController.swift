@@ -42,7 +42,7 @@ final class AddHappyRoutineViewController: UIViewController {
         setDelegate()
         setCarousel()
         setRegister()
-        bindModel()
+        setDataBind()
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,10 +70,10 @@ private extension AddHappyRoutineViewController {
     }
     
     func setRegister() {
-        addHappyRoutineView.collectionView.register(HappyRoutineCardCollectionViewCell.self, forCellWithReuseIdentifier: "HappyRoutineCardCollectionViewCell")
+        HappyRoutineCardCollectionViewCell.register(target: addHappyRoutineView.collectionView)
     }
     
-    func bindModel() {
+    func setDataBind() {
         let title = happyRoutineList.title
         let image = happyRoutineList.iconImage
         let subTitle = happyRoutineList.subTitle
@@ -89,9 +89,8 @@ extension AddHappyRoutineViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HappyRoutineCardCollectionViewCell", for: indexPath) as? HappyRoutineCardCollectionViewCell else { return HappyRoutineCardCollectionViewCell() }
-        
-        cell.bindModel(model: happyRoutineList.routines[indexPath.row])
+        let cell = HappyRoutineCardCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
+        cell.setDataBind(model: happyRoutineList.routines[indexPath.row])
         return cell
     }
 }
