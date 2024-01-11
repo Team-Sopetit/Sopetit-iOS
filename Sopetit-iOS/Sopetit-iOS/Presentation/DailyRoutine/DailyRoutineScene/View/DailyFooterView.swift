@@ -17,10 +17,11 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
     
     // MARK: - UI Componenets
     
-    let plusImage: UIImageView = {
+    private let plusImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "ic_add")
         image.tintColor = .Gray200
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
@@ -42,6 +43,17 @@ class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegistera
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func draw(_ rect: CGRect) {
+        let customSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
+        let customRect = CGRect(origin: CGPoint(x: (rect.width - customSize.width) / 2, y: (rect.height - customSize.height) / 2),
+                                size: customSize)
+        
+        borderLayer.path = UIBezierPath(roundedRect: customRect, cornerRadius: 20).cgPath
+    }
+    
+    override func layoutSubviews() {
+        layer.addSublayer(borderLayer)
+    }
 }
 
 extension DailyFooterView {
@@ -63,18 +75,6 @@ extension DailyFooterView {
             $0.centerX.centerY.equalToSuperview()
             $0.size.equalTo(24)
         }
-    }
-    
-    override func draw(_ rect: CGRect) {
-        let customSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
-        let customRect = CGRect(origin: CGPoint(x: (rect.width - customSize.width) / 2, y: (rect.height - customSize.height) / 2),
-                                size: customSize)
-        
-        borderLayer.path = UIBezierPath(roundedRect: customRect, cornerRadius: 20).cgPath
-    }
-    
-    override func layoutSubviews() {
-        layer.addSublayer(borderLayer)
     }
     
     func setAddTarget() {
