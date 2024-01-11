@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 final class HomeView: UIView {
-
+    
     // MARK: - Properties
     
     private let name = "애착이"
@@ -45,7 +45,7 @@ final class HomeView: UIView {
     }()
     
     private let bubbleImageView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.image = ImageLiterals.Home.pngSpeechHome
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -60,7 +60,7 @@ final class HomeView: UIView {
     }()
     
     private let dollImageView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.image = ImageLiterals.Home.imgBearHomeGray
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -81,19 +81,19 @@ final class HomeView: UIView {
     }()
     
     lazy var actionCollectionView: UICollectionView = {
-            let flowLayout = UICollectionViewFlowLayout()
-            flowLayout.scrollDirection = .horizontal
-            flowLayout.minimumInteritemSpacing = 15
-            flowLayout.itemSize = CGSize(width: 160, height: 80)
-            let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-            collectionView.showsHorizontalScrollIndicator = false
-            collectionView.clipsToBounds = true
-            collectionView.contentInsetAdjustmentBehavior = .never
-            collectionView.isUserInteractionEnabled = true
-            collectionView.allowsSelection = false
-            collectionView.backgroundColor = .clear
-            return collectionView
-        }()
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumInteritemSpacing = SizeLiterals.Screen.screenWidth * 4 / 375
+        flowLayout.itemSize = CGSize(width: SizeLiterals.Screen.screenWidth * 160 / 375, height: 80)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.clipsToBounds = true
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.isUserInteractionEnabled = true
+        collectionView.allowsSelection = false
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
     
     // MARK: - Life Cycles
     
@@ -116,7 +116,7 @@ final class HomeView: UIView {
 // MARK: - Extensions
 
 extension HomeView {
-
+    
     func setUI() {
         dollWidth = name.size(withAttributes: [NSAttributedString.Key.font: UIFont.fontGuide(.bubble16)]).width
     }
@@ -175,14 +175,15 @@ extension HomeView {
         }
         
         actionCollectionView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview().inset(106)
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 331 / 375)
             $0.height.equalTo(100)
         }
     }
     
     func setAddTarget() {
-
+        
     }
     
     @objc

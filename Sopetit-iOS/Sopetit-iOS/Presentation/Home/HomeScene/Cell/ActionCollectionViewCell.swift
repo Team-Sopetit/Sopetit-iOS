@@ -22,7 +22,7 @@ final class ActionCollectionViewCell: UICollectionViewCell, UICollectionViewRegi
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
-        stackView.spacing = 4
+        stackView.spacing = SizeLiterals.Screen.screenWidth * 4 / 375
         return stackView
     }()
     
