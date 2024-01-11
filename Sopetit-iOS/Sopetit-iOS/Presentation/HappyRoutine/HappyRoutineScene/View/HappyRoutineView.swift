@@ -44,7 +44,7 @@ final class HappyRoutineView: UIView {
     }()
     
     private let happyRoutineCardView = HappyRoutineCardView()
-    private let bottomCTAButton = BottomCTAButton(title: I18N.HappyRoutine.done)
+    private let doneButton = BottomCTAButton(title: I18N.HappyRoutine.done)
     
     // MARK: - Life Cycles
     
@@ -55,7 +55,6 @@ final class HappyRoutineView: UIView {
         setHierarchy()
         setLayout()
         setAddTarget()
-        setRegisterCell()
     }
     
     @available(*, unavailable)
@@ -73,7 +72,7 @@ private extension HappyRoutineView {
     }
     
     func setHierarchy() {
-        self.addSubviews(navigationBar, bubbleImageView, bubbleLabel, subTitleLabel, happyRoutineCardView, bottomCTAButton)
+        self.addSubviews(navigationBar, bubbleImageView, bubbleLabel, subTitleLabel, happyRoutineCardView, doneButton)
     }
     
     func setLayout() {
@@ -106,23 +105,19 @@ private extension HappyRoutineView {
             $0.height.equalTo(398)
         }
         
-        bottomCTAButton.snp.makeConstraints {
+        doneButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(12)
             $0.centerX.equalToSuperview()
         }
     }
     
     func setAddTarget() {
-        
+        doneButton.addTarget(self, action: #selector(tapDoneButton), for: .touchUpInside)
     }
     
-    @objc
-    func buttonTapped() {
-        
-    }
-    
-    func setRegisterCell() {
-        
+    @objc func tapDoneButton() {
+        print("tapDoneButton")
+        /// Show BottomSheet
     }
 }
 
