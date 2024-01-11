@@ -37,7 +37,6 @@ final class DailyViewController: UIViewController {
         customNavigationBar.isLeftTitleLabelIncluded = "데일리 루틴"
         customNavigationBar.isLeftTitleViewIncluded = true
         customNavigationBar.isBackButtonIncluded = false
-        
         customNavigationBar.isCancelButtonIncluded = true
         customNavigationBar.cancelButton.isHidden = true
         customNavigationBar.cancelButtonAction = {
@@ -60,7 +59,6 @@ final class DailyViewController: UIViewController {
         
         customNavigationBar.isEditButtonIncluded = true
         customNavigationBar.editButtonAction = {
-            print("Edit button tapped!")
             self.isEditing.toggle()
             self.deleteLabel.isHidden = false
             self.customNavigationBar.cancelButton.isHidden = false
@@ -83,6 +81,7 @@ final class DailyViewController: UIViewController {
         button.layer.cornerRadius = 12
         button.isHidden = true
         button.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
+        button.isUserInteractionEnabled = false
         return button
     }()
     @objc
@@ -167,8 +166,10 @@ extension DailyViewController {
         deleteLabel.setTitle(title, for: .normal)
         if DailyRoutineCollectionViewCell.sharedVariable == 0 {
             self.deleteLabel.backgroundColor = .Gray200
+            self.deleteLabel.isUserInteractionEnabled = false
         } else {
             self.deleteLabel.backgroundColor = .SoftieRed
+            self.deleteLabel.isUserInteractionEnabled = true
         }
     }
 }
@@ -204,11 +205,6 @@ extension DailyViewController: UICollectionViewDataSource, MyCellDelegate {
         }
         return UICollectionReusableView()
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-//        let width: CGFloat = (collectionView.frame.width-40)
-//        let height: CGFloat = 136
-//        return CGSize(width: width, height: height)
-//    }
 }
 
 extension DailyViewController: BottomSheetButtonDelegate {
