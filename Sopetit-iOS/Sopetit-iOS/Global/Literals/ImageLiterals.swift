@@ -104,6 +104,7 @@ enum ImageLiterals {
         static var icTime: UIImage { .load(name: "ic_time") }
         static var icPlace: UIImage { .load(name: "ic_place") }
         static var icNext: UIImage { .load(name: "ic_next") }
+        static var imgSpeechHappy: UIImage { .load(name: "img_speech_happy") }
     }
     
     enum Setting {
