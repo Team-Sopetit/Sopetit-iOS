@@ -114,6 +114,7 @@ extension HappyRoutineViewController: BottomSheetButtonDelegate {
     
     func deleteButtonTapped() {
         view = happyRoutineEmptyView
+        happyRoutineEmptyView.fromRoutineView = true
         self.viewWillLayoutSubviews()
         self.dismiss(animated: false)
     }

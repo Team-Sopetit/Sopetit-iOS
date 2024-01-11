@@ -54,6 +54,7 @@ enum I18N {
         static let addHappyRoutineButton = "이 루틴을 추가할래"
         static let achieving = "달성 중..."
         static let done = "완료하기"
+        static let delAlertTitle = "행복 루틴을 삭제했어요"
     }
     
     enum HappyRoutineCategory {
