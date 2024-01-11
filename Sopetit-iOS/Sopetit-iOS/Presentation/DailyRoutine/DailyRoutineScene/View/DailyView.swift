@@ -9,12 +9,10 @@ import UIKit
 import SnapKit
 
 final class DailyView: UIView {
-
-    // MARK: - Properties
     
     // MARK: - UI Components
 
-    let collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
         flowLayout.footerReferenceSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
@@ -68,9 +66,4 @@ extension DailyView {
         DailyRoutineCollectionViewCell.register(target: collectionView)
         DailyFooterView.register(target: collectionView)
     }
-    
-    func setDataBind() {
-        
-    }
-
 }

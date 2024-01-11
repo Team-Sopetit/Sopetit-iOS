@@ -71,4 +71,9 @@ enum I18N {
         static let home = "홈"
         static let happy = "행복 루틴"
     }
+    
+    enum DailyRoutine {
+        static let complete = "완료하기"
+        static let completed = "달성 완료"
+    }
 }

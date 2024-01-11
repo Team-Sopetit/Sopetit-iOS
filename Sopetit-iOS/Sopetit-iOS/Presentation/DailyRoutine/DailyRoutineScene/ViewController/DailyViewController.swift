@@ -34,45 +34,6 @@ final class DailyViewController: UIViewController {
     private let customNavigationBar = CustomNavigationBarView()
     let exampleBottom = BottomSheetViewController(bottomStyle: .dailyCompleteBottom)
     
-    func setupCustomNavigationBar() {
-        customNavigationBar.isLeftTitleLabelIncluded = I18N.TabBar.daily
-        customNavigationBar.isLeftTitleViewIncluded = true
-        customNavigationBar.isBackButtonIncluded = false
-        customNavigationBar.isCancelButtonIncluded = true
-        customNavigationBar.cancelButton.isHidden = true
-        customNavigationBar.cancelButtonAction = {
-            self.customNavigationBar.cancelButton.isHidden = true
-            self.customNavigationBar.editButton.isHidden = false
-            self.deleteButton.isHidden = true
-            self.isEditing.toggle()
-            for cell in self.collectionview.visibleCells {
-                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
-                    dailyCell.achieveButton.isUserInteractionEnabled = true
-                }
-            }
-            for cell in self.collectionview.visibleCells {
-                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
-                    dailyCell.checkBox.isSelected = false
-                }
-            }
-            DailyRoutineCollectionViewCell.sharedVariable = 0
-        }
-        
-        customNavigationBar.isEditButtonIncluded = true
-        customNavigationBar.editButtonAction = {
-            self.isEditing.toggle()
-            self.deleteButton.isHidden = false
-            self.customNavigationBar.cancelButton.isHidden = false
-            self.customNavigationBar.editButton.isHidden = true
-            for cell in self.collectionview.visibleCells {
-                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
-                    dailyCell.achieveButton.isUserInteractionEnabled = false
-                }
-            }
-        }
-
-    }
-    
     lazy var deleteButton: UIButton = {
         let button = UIButton()
         button.setTitle("0개 삭제", for: .normal)
@@ -81,14 +42,9 @@ final class DailyViewController: UIViewController {
         button.backgroundColor = .Gray200
         button.layer.cornerRadius = 12
         button.isHidden = true
-        button.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
         button.isUserInteractionEnabled = false
         return button
     }()
-    @objc
-    func deleteTapped() {
-        self.present(deleteBottom, animated: false)
-    }
     
     // MARK: - Life Cycles
     
@@ -96,18 +52,16 @@ final class DailyViewController: UIViewController {
         super.loadView()
         
         setupCustomNavigationBar()
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
         setHierarchy()
         setLayout()
+        setUI()
         setDelegate()
         setAddTarget()
-
     }
 }
 
@@ -120,6 +74,7 @@ extension DailyViewController {
         exampleBottom.modalPresentationStyle = .overFullScreen
         deleteBottom.modalPresentationStyle = .overFullScreen
         self.navigationController?.navigationBar.isHidden = true
+        self.view.bringSubviewToFront(deleteButton)
     }
     
     func setHierarchy() {
@@ -127,7 +82,6 @@ extension DailyViewController {
     }
     
     func setLayout() {
-        
         customNavigationBar.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview()
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
@@ -144,8 +98,6 @@ extension DailyViewController {
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(17)
             $0.height.equalTo(56)
         }
-        
-        self.view.bringSubviewToFront(deleteButton)
     }
     
     func setDelegate() {
@@ -157,6 +109,12 @@ extension DailyViewController {
     
     func setAddTarget() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateDeleteLabel), name: Notification.Name("SharedVariableDidChange"), object: nil)
+        self.deleteButton.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    func deleteTapped() {
+        self.present(deleteBottom, animated: false)
     }
     
     private func updateCellsForEditing() {
@@ -201,7 +159,6 @@ extension DailyViewController: UICollectionViewDataSource {
         return cell
     }
     
-    // Footer configuration
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionFooter {
             let footerView = DailyFooterView.dequeueReusableFooterView(collectionView: collectionView, indexPath: indexPath)
@@ -227,5 +184,46 @@ extension DailyViewController: PresentDelegate {
     func buttonTapped(in cell: UICollectionViewCell) {
         self.status = cell.tag
         self.present(exampleBottom, animated: false)
+    }
+}
+
+extension DailyViewController {
+    func setupCustomNavigationBar() {
+        customNavigationBar.isLeftTitleLabelIncluded = I18N.TabBar.daily
+        customNavigationBar.isLeftTitleViewIncluded = true
+        customNavigationBar.isBackButtonIncluded = false
+        customNavigationBar.isCancelButtonIncluded = true
+        customNavigationBar.cancelButton.isHidden = true
+        customNavigationBar.cancelButtonAction = {
+            self.customNavigationBar.cancelButton.isHidden = true
+            self.customNavigationBar.editButton.isHidden = false
+            self.deleteButton.isHidden = true
+            self.isEditing.toggle()
+            for cell in self.collectionview.visibleCells {
+                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                    dailyCell.achieveButton.isUserInteractionEnabled = true
+                }
+            }
+            for cell in self.collectionview.visibleCells {
+                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                    dailyCell.checkBox.isSelected = false
+                }
+            }
+            DailyRoutineCollectionViewCell.sharedVariable = 0
+        }
+        
+        customNavigationBar.isEditButtonIncluded = true
+        customNavigationBar.editButtonAction = {
+            self.isEditing.toggle()
+            self.deleteButton.isHidden = false
+            self.customNavigationBar.cancelButton.isHidden = false
+            self.customNavigationBar.editButton.isHidden = true
+            for cell in self.collectionview.visibleCells {
+                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                    dailyCell.achieveButton.isUserInteractionEnabled = false
+                }
+            }
+        }
+
     }
 }

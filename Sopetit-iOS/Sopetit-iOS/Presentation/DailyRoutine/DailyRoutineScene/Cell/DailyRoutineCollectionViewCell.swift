@@ -53,13 +53,13 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
     
     lazy var achieveButton: UIButton = {
         let button = UIButton()
-        button.setTitle("완료하기", for: .normal)
+        button.setTitle(I18N.DailyRoutine.complete, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fontGuide(.body4)
         button.setBackgroundColor(UIColor.SoftieMain1, for: .normal)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
-        button.setTitle("달성 완료", for: .disabled)
+        button.setTitle(I18N.DailyRoutine.completed, for: .disabled)
         button.setTitleColor(UIColor.Gray300, for: .disabled)
         button.setBackgroundColor(UIColor.Gray100, for: .disabled)
         return button
@@ -67,8 +67,8 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
     
     lazy var checkBox: UIButton = {
         let view = UIButton()
-        view.setImage(UIImage(named: "btn_radiobtn_none"), for: .normal)
-        view.setImage(UIImage(named: "btn_radiobtn_selected"), for: .selected)
+        view.setImage(ImageLiterals.DailyRoutine.btnRadiobtnNone, for: .normal)
+        view.setImage(ImageLiterals.DailyRoutine.btnRadiobtnSelected, for: .selected)
         view.isHidden = true
         return view
     }()
@@ -147,32 +147,32 @@ extension DailyRoutineCollectionViewCell {
     }
     
     func setAddTarget() {
-        self.achieveButton.addTarget(self, action: #selector(onTapButton), for: .touchUpInside)
-        self.checkBox.addTarget(self, action: #selector(checkboxTapped), for: .touchUpInside)
+        self.achieveButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        self.checkBox.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     @objc
-    func onTapButton(sender: UIButton) {
-        
-        if sender.isSelected {
-            sender.isSelected = false
-        } else {
-            delegate?.buttonTapped(in: self)
-            if status == 1 {
-                sender.isSelected = true
+    func buttonTapped(_ sender: UIButton) {
+        switch sender {
+        case achieveButton:
+            if sender.isSelected {
+                sender.isSelected = false
+            } else {
+                delegate?.buttonTapped(in: self)
+                if status == 1 {
+                    sender.isSelected = true
+                }
             }
+        case checkBox:
+            if sender.isSelected {
+                DailyRoutineCollectionViewCell.sharedVariable-=1
+            } else {
+                DailyRoutineCollectionViewCell.sharedVariable+=1
+            }
+            sender.isSelected = !sender.isSelected
+        default:
+            break
         }
-    }
-    
-    @objc
-    func checkboxTapped(sender: UIButton) {
-        
-        if sender.isSelected {
-            DailyRoutineCollectionViewCell.sharedVariable-=1
-        } else {
-            DailyRoutineCollectionViewCell.sharedVariable+=1
-        }
-        sender.isSelected = !sender.isSelected
     }
     
 }
