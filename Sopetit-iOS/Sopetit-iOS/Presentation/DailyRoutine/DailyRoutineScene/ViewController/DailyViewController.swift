@@ -169,6 +169,14 @@ extension DailyViewController: UICollectionViewDataSource, MyCellDelegate {
         print(indexPath.item)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionFooter {
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "DailyFooterView", for: indexPath) as! DailyFooterView
+            return footerView
+        }
+        return UICollectionReusableView()
+    }
 }
 
 extension DailyViewController: BottomSheetButtonDelegate {

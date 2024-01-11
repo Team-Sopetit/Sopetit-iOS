@@ -18,6 +18,7 @@ final class DailyView: UIView {
         flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width - 40), height: 136)
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         view.backgroundColor = .SoftieBack
+        view.register(DailyFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "DailyFooterView")
         return view
     }()
     
@@ -67,6 +68,7 @@ extension DailyView {
     
     func setRegisterCell() {
         DailyRoutineCollectionViewCell.register(target: collectionView)
+//        DailyRoutineCollectionViewCell.register(target: footer)
     }
     
     func setDataBind() {
