@@ -48,6 +48,12 @@ final class DailyViewController: UIViewController {
                     dailyCell.achieveButton.isUserInteractionEnabled = true
                 }
             }
+            for cell in self.collectionview.visibleCells {
+                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                    dailyCell.checkBox.isSelected = false
+                }
+            }
+            DailyRoutineCollectionViewCell.sharedVariable = 0
         }
         
         customNavigationBar.isEditButtonIncluded = true
@@ -62,7 +68,6 @@ final class DailyViewController: UIViewController {
                     dailyCell.achieveButton.isUserInteractionEnabled = false
                 }
             }
-//            DailyRoutineCollectionViewCell.sharedVariable = 0
         }
 
     }
@@ -72,7 +77,7 @@ final class DailyViewController: UIViewController {
         button.setTitle("0개 삭제", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fontGuide(.body1)
-        button.backgroundColor = .SoftieRed
+        button.backgroundColor = .Gray200
         button.layer.cornerRadius = 12
         button.isHidden = true
         button.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
@@ -157,6 +162,11 @@ extension DailyViewController {
         let count = DailyRoutineCollectionViewCell.sharedVariable
         let title = "\(count)개 삭제"
         deleteLabel.setTitle(title, for: .normal)
+        if DailyRoutineCollectionViewCell.sharedVariable == 0 {
+            self.deleteLabel.backgroundColor = .Gray200
+        } else {
+            self.deleteLabel.backgroundColor = .SoftieRed
+        }
     }
 }
 
