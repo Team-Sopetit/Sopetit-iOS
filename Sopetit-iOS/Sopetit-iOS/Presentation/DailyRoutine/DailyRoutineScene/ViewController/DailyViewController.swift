@@ -45,6 +45,8 @@ final class DailyViewController: UIViewController {
         return button
     }()
     
+    private var deleteAlertView = AlertMessageView(title: "데일리 루틴을 삭제했어요.")
+    
     // MARK: - Life Cycles
     
     override func loadView() {
@@ -74,10 +76,11 @@ extension DailyViewController {
         dailyDeleteBottom.modalPresentationStyle = .overFullScreen
         self.navigationController?.navigationBar.isHidden = true
         self.view.bringSubviewToFront(deleteButton)
+        deleteAlertView.isHidden = true
     }
     
     func setHierarchy() {
-        self.view.addSubviews(customNavigationBar, deleteButton, routineView)
+        self.view.addSubviews(customNavigationBar, deleteButton, routineView, deleteAlertView)
     }
     
     func setLayout() {
@@ -96,6 +99,13 @@ extension DailyViewController {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(17)
             $0.height.equalTo(56)
+        }
+        
+        deleteAlertView.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
+            $0.height.equalTo(51)
         }
     }
     
@@ -136,7 +146,6 @@ extension DailyViewController {
             self.deleteButton.backgroundColor = .SoftieRed
             self.deleteButton.isUserInteractionEnabled = true
         }
-        
     }
 }
 
@@ -181,7 +190,16 @@ extension DailyViewController: BottomSheetButtonDelegate {
         self.isEditing.toggle()
         self.deleteButton.isHidden = true
         customNavigationBar.cancelButton.isHidden = true
-        tabBarController?.tabBar.isHidden = false
+        customNavigationBar.editButton.isHidden = false
+        self.deleteAlertView.isHidden = false
+        
+        let count = DailyRoutineCollectionViewCell.sharedVariable
+        let title = "데일리 루틴을 \(count)개 삭제했어요"
+        deleteAlertView.titleLabel.text = title
+        UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+            self.deleteAlertView.alpha = 0.0
+        })
+        
         self.dismiss(animated: false)
     }
 }
