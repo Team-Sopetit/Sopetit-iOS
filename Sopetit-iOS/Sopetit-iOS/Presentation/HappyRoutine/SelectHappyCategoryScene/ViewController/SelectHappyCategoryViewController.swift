@@ -50,8 +50,8 @@ extension SelectHappyCategoryViewController {
     }
     
     func setRegister() {
-        selectHappyCategoryView.tagview.collectionView.register(HappyRoutineTagCollectionViewCell.self, forCellWithReuseIdentifier: "HappyRoutineTagCollectionViewCell")
-        selectHappyCategoryView.categoryCollectionView.register(HappyRoutineCategoryCollectionViewCell.self, forCellWithReuseIdentifier: "HappyRoutineCategoryCollectionViewCell")
+        HappyRoutineTagCollectionViewCell.register(target: selectHappyCategoryView.tagview.collectionView)
+        HappyRoutineCategoryCollectionViewCell.register(target: selectHappyCategoryView.categoryCollectionView)
     }
 }
 
@@ -68,8 +68,7 @@ extension SelectHappyCategoryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == selectHappyCategoryView.tagview.collectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HappyRoutineTagCollectionViewCell", for: indexPath) as? HappyRoutineTagCollectionViewCell else { return HappyRoutineTagCollectionViewCell() }
-            
+            let cell = HappyRoutineTagCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
             if indexPath.row == selectedIndex {
                 collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
                 cell.isSelected = true
@@ -77,7 +76,7 @@ extension SelectHappyCategoryViewController: UICollectionViewDataSource {
             cell.setDataBind(text: tagList[indexPath.item])
             return cell
         } else if collectionView == selectHappyCategoryView.categoryCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HappyRoutineCategoryCollectionViewCell", for: indexPath) as? HappyRoutineCategoryCollectionViewCell else { return HappyRoutineCategoryCollectionViewCell() }
+            let cell = HappyRoutineCategoryCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
             cell.setDataBind(model: categoryList[indexPath.row])
             return cell
         }
