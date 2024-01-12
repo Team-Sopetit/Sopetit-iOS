@@ -18,5 +18,26 @@ final class OnBoardingService: BaseService {
 }
 
 extension OnBoardingService {
-
+    func getOnboardingThemeAPI(completion: @escaping (NetworkResult<Any>) -> Void) {
+        let url = URLConstant.themeURL
+        let header: HTTPHeaders = NetworkConstant.noTokenHeader
+        let dataRequest = AF.request(url,
+                                     method: .get,
+                                     encoding: JSONEncoding.default,
+                                     headers: header)
+        
+        dataRequest.responseData { response in
+            switch response.result {
+            case .success:
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let data = response.data else { return }
+                let networkResult = self.judgeStatus(by: statusCode,
+                                                     data,
+                                                     ThemeSelectEntity.self)
+                completion(networkResult)
+            case .failure:
+                completion(.networkFail)
+            }
+        }
+    }
 }
