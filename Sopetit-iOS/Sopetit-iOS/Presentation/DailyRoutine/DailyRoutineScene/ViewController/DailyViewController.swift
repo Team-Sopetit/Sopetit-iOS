@@ -191,6 +191,11 @@ extension DailyViewController: BottomSheetButtonDelegate {
         self.deleteButton.isHidden = true
         customNavigationBar.cancelButton.isHidden = true
         customNavigationBar.editButton.isHidden = false
+        for cell in self.collectionview.visibleCells {
+            if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                dailyCell.achieveButton.isUserInteractionEnabled = true
+            }
+        }
         self.deleteAlertView.isHidden = false
         
         let count = DailyRoutineCollectionViewCell.sharedVariable
