@@ -10,8 +10,9 @@ import UIKit
 import SnapKit
 
 protocol BottomSheetButtonDelegate: AnyObject {
-    func leftButtonTapped()
-    func rightButtonTapped()
+    func bakcButtonTapped()
+    func completeButtonTapped()
+    func deleteButtonTapped()
 }
 
 final class BottomSheetViewController: UIViewController {
@@ -117,16 +118,15 @@ extension BottomSheetViewController {
         switch type {
         case .dailyCompleteBottom, .happyCompleteBottom:
             imageView.snp.makeConstraints {
-                $0.top.equalToSuperview().inset(46)
+                $0.top.equalToSuperview().inset(33)
                 $0.centerX.equalToSuperview()
                 $0.width.equalTo(68)
                 $0.height.equalTo(68)
             }
             titleLabel.snp.makeConstraints {
-                $0.top.equalTo(imageView.snp.bottom).offset(30)
+                $0.top.equalTo(imageView.snp.bottom).offset(19)
                 $0.centerX.equalToSuperview()
             }
-            subTitleLabel.isHidden = true
         case .happyDeleteBottom:
             imageView.snp.makeConstraints {
                 $0.top.equalToSuperview().inset(53)
@@ -196,10 +196,14 @@ extension BottomSheetViewController {
     func buttonTapped(_ sender: UIButton) {
         switch sender {
         case leftButton:
-            self.dismiss(animated: false)
-            buttonDelegate?.leftButtonTapped()
+            buttonDelegate?.bakcButtonTapped()
         case rightButton:
-            buttonDelegate?.rightButtonTapped()
+            switch bottomType {
+            case .dailyCompleteBottom, .happyCompleteBottom:
+                buttonDelegate?.completeButtonTapped()
+            case .dailyDeleteBottom, .happyDeleteBottom, .logoutBottom:
+                buttonDelegate?.deleteButtonTapped()
+            }
         default:
             break
         }

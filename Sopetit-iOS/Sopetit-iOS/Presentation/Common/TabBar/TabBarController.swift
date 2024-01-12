@@ -33,13 +33,7 @@ final class TabBarController: UITabBarController {
 private extension TabBarController {
     
     func setTabBarItems() {
-        
-        // 해당 viewcontroller들이 없을 경우 ViewController()로 모두 대체해서 빌드하십시오
-//        let dailyVC = UINavigationController(rootViewController: DailyViewController())
-//        let homeVC = HomeViewController()
-//        let happyVC = HappyRoutineViewController()
-        
-        let dailyVC = UINavigationController(rootViewController: ViewController())
+        let dailyVC = DailyViewController()
         let homeVC = ViewController()
         let happyVC = HappyRoutineViewController()
         

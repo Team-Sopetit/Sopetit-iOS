@@ -123,6 +123,9 @@
 		A49BFE382B4E938700035EB6 /* red_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE342B4E938600035EB6 /* red_hello.json */; };
 		A49BFE392B4E938700035EB6 /* panda_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE352B4E938600035EB6 /* panda_hello.json */; };
 		A49BFE3A2B4E938700035EB6 /* brown_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE362B4E938600035EB6 /* brown_hello.json */; };
+		A49BFE412B5065DE00035EB6 /* AlertMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE402B5065DE00035EB6 /* AlertMessageView.swift */; };
+		A49BFE452B50F3EB00035EB6 /* happy_complete_som.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE432B50F3EB00035EB6 /* happy_complete_som.json */; };
+		A49BFE462B50F3EB00035EB6 /* daily_complete_som.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE442B50F3EB00035EB6 /* daily_complete_som.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -239,6 +242,9 @@
 		A49BFE342B4E938600035EB6 /* red_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_hello.json; sourceTree = "<group>"; };
 		A49BFE352B4E938600035EB6 /* panda_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_hello.json; sourceTree = "<group>"; };
 		A49BFE362B4E938600035EB6 /* brown_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_hello.json; sourceTree = "<group>"; };
+		A49BFE402B5065DE00035EB6 /* AlertMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessageView.swift; sourceTree = "<group>"; };
+		A49BFE432B50F3EB00035EB6 /* happy_complete_som.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = happy_complete_som.json; sourceTree = "<group>"; };
+		A49BFE442B50F3EB00035EB6 /* daily_complete_som.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = daily_complete_som.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -543,6 +549,8 @@
 		A42C32AF2B3EAA5300C4B477 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				A49BFE442B50F3EB00035EB6 /* daily_complete_som.json */,
+				A49BFE432B50F3EB00035EB6 /* happy_complete_som.json */,
 				A49BFE082B4DC54E00035EB6 /* brown_eating_daily.json */,
 				A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */,
 				A49BFE072B4DC54E00035EB6 /* panda_eating_daily.json */,
@@ -693,6 +701,7 @@
 		A42C330A2B3EAEC300C4B477 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A49BFE422B5069CF00035EB6 /* AlertMessage */,
 				A49BFDE62B4D7EEB00035EB6 /* CustomProgress */,
 				A4832BA22B4A5C1C007879FF /* BottomSheet */,
 				A42C33382B3EB01C00C4B477 /* TabBar */,
@@ -1072,6 +1081,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A49BFE422B5069CF00035EB6 /* AlertMessage */ = {
+			isa = PBXGroup;
+			children = (
+				A49BFE402B5065DE00035EB6 /* AlertMessageView.swift */,
+			);
+			path = AlertMessage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1149,6 +1166,7 @@
 				A4832BAB2B4ACF09007879FF /* omyu-pretty.ttf in Resources */,
 				A42C336C2B41EF2F00C4B477 /* .swiftlint.yml in Resources */,
 				A42C33642B413F2100C4B477 /* Pretendard-SemiBold.otf in Resources */,
+				A49BFE462B50F3EB00035EB6 /* daily_complete_som.json in Resources */,
 				A49BFE382B4E938700035EB6 /* red_hello.json in Resources */,
 				A49BFE3A2B4E938700035EB6 /* brown_hello.json in Resources */,
 				A42C32882B3DB8F500C4B477 /* LaunchScreen.storyboard in Resources */,
@@ -1157,6 +1175,7 @@
 				A49BFE022B4DC54400035EB6 /* brown_eating_happy.json in Resources */,
 				A49BFE372B4E938700035EB6 /* gray_hello.json in Resources */,
 				A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */,
+				A49BFE452B50F3EB00035EB6 /* happy_complete_som.json in Resources */,
 				A49BFE392B4E938700035EB6 /* panda_hello.json in Resources */,
 				A49BFE0B2B4DC54F00035EB6 /* panda_eating_daily.json in Resources */,
 				A49BFE0D2B4DC54F00035EB6 /* gray_eating_daily.json in Resources */,
@@ -1256,6 +1275,7 @@
 				A42C32E52B3EAC8B00C4B477 /* GenericResponse.swift in Sources */,
 				A42C332F2B3EAFD500C4B477 /* OnboardingViewController.swift in Sources */,
 				04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */,
+				A49BFE412B5065DE00035EB6 /* AlertMessageView.swift in Sources */,
 				093C1E092B4D2C8200EF84AB /* BearDescriptionView.swift in Sources */,
 				093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */,
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,

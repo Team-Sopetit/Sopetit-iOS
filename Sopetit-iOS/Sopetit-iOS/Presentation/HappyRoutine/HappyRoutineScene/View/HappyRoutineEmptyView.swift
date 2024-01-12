@@ -10,8 +10,18 @@ import UIKit
 import SnapKit
 
 final class HappyRoutineEmptyView: UIView {
+    
+    // MARK: - Properties
+    
+    var fromRoutineView: Bool = false {
+        didSet {
+            setAlertMessage()
+        }
+    }
 
     // MARK: - UI Components
+    
+    private var deleteAlertView = AlertMessageView(title: I18N.HappyRoutine.delAlertTitle)
     
     private let navigationBar: CustomNavigationBarView = {
         let navigationBar = CustomNavigationBarView()
@@ -72,10 +82,11 @@ private extension HappyRoutineEmptyView {
 
     func setUI() {
         self.backgroundColor = .SoftieBack
+        deleteAlertView.isHidden = true
     }
     
     func setHierarchy() {
-        self.addSubviews(navigationBar, bearDescriptionView, emptyHappyRoutineView)
+        self.addSubviews(navigationBar, bearDescriptionView, emptyHappyRoutineView, deleteAlertView)
         emptyHappyRoutineView.addSubviews(emptyTextLabel, bearPlusImageView)
     }
     
@@ -108,5 +119,19 @@ private extension HappyRoutineEmptyView {
             $0.top.equalTo(emptyTextLabel.snp.bottom).offset(64)
             $0.centerX.equalToSuperview()
         }
+        
+        deleteAlertView.snp.makeConstraints {
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-12)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
+            $0.height.equalTo(51)
+        }
+    }
+    
+    func setAlertMessage() {
+        deleteAlertView.isHidden = false
+        UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+            self.deleteAlertView.alpha = 0.0
+        })
     }
 }
