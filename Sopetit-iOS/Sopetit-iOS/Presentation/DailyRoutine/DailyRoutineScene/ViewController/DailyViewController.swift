@@ -45,7 +45,7 @@ final class DailyViewController: UIViewController {
         return button
     }()
     
-    private var deleteAlertView = AlertMessageView(title: "데일리 루틴을 삭제했어요.")
+    private var deleteAlertView = AlertMessageView(title: "")
     
     // MARK: - Life Cycles
     
