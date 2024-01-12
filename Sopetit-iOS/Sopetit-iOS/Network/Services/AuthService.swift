@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+import Alamofire
+
+final class AuthService: BaseService {
+    
+    static let shared = AuthService()
+    
+    private override init() {}
+}
+
+extension AuthService {
+}

@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+import Alamofire
+
+final class HomeService: BaseService {
+    
+    static let shared = HomeService()
+    
+    private override init() {}
+}
+
+extension HomeService {
+}
