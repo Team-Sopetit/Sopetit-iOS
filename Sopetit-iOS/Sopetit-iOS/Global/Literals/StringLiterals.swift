@@ -78,6 +78,11 @@ enum I18N {
         static let appleLoginTitle = "Apple로 시작하기"
     }
     
+    enum Home {
+        static let actionTitle1 = "솜뭉치 주기"
+        static let actionTitle2 = "행복 솜뭉치 주기"
+    }
+    
     enum TabBar {
         static let daily = "데일리 루틴"
         static let home = "홈"
