@@ -12,6 +12,10 @@ import Lottie
 
 final class HomeView: UIView {
     
+    // MARK: - Properties
+    
+    var isAnimate: Bool = false
+    
     // MARK: - UI Components
     
     private let backgroundImageView: UIImageView = {
@@ -48,6 +52,8 @@ final class HomeView: UIView {
     }()
     
     var lottieHello = LottieAnimationView(name: "gray_hello")
+    var lottieEatingDaily = LottieAnimationView(name: "gray_eating_daily")
+    var lottieEatingHappy = LottieAnimationView(name: "gray_eating_happy")
     
     private let bubbleLabel: UILabel = {
         let label = UILabel()
@@ -89,6 +95,7 @@ final class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setUI()
         setHierarchy()
         setLayout()
         setAddTarget()
@@ -105,10 +112,19 @@ final class HomeView: UIView {
 
 extension HomeView {
     
+    func setUI() {
+        lottieHello.isHidden = false
+        lottieEatingDaily.isHidden = true
+        lottieEatingHappy.isHidden = true
+    }
+    
     func setHierarchy() {
         self.addSubviews(backgroundImageView, softieImageView, moneyButton, settingButton, bubbleImageView, dollNameLabel, actionCollectionView)
         
         bubbleImageView.addSubview(bubbleLabel)
+        
+        addSubview(lottieEatingDaily)
+        addSubview(lottieEatingHappy)
         addSubview(lottieHello)
     }
     
@@ -146,6 +162,18 @@ extension HomeView {
             $0.centerY.equalToSuperview().offset(-4)
         }
         
+        lottieEatingDaily.snp.makeConstraints {
+            $0.width.equalTo(414)
+            $0.height.equalTo(418)
+            $0.center.equalToSuperview()
+        }
+        
+        lottieEatingHappy.snp.makeConstraints {
+            $0.width.equalTo(414)
+            $0.height.equalTo(418)
+            $0.center.equalToSuperview()
+        }
+        
         lottieHello.snp.makeConstraints {
             $0.width.equalTo(414)
             $0.height.equalTo(418)
@@ -179,8 +207,17 @@ extension HomeView {
     func dollTapped() {
         print("인형을 탭함.")
         
-        lottieHello.loopMode = .playOnce
-        lottieHello.play()
+        if !(isAnimate) {
+            isAnimate = true
+            lottieHello.isHidden = false
+            lottieEatingDaily.isHidden = true
+            lottieEatingHappy.isHidden = true
+            lottieHello.loopMode = .playOnce
+            lottieHello.play()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+                self.isAnimate = false
+            }
+        }
     }
     
     func setRegisterCell() {
