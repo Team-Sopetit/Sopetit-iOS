@@ -26,6 +26,12 @@ enum ImageLiterals {
         static var icChevronBack: UIImage { .load(name: "ic_chevron_back") }
     }
     
+    enum Splash {
+        static var imgSplashBig: UIImage { .load(name: "img_splash_big") }
+        static var imgSplashManybear: UIImage { .load(name: "img_splash_manybear") }
+        static var splashBrownSleeping: UIImage { .load(name: "splash_brown_sleeping") }
+    }
+    
     enum Login {
         static var icLogoLogin: UIImage { .load(name: "ic_logo_login") }
         static var imgSpeechDark: UIImage { .load(name: "img_speech_dark") }
