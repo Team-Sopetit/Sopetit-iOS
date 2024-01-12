@@ -123,9 +123,7 @@ extension HomeView {
         
         bubbleImageView.addSubview(bubbleLabel)
         
-        addSubview(lottieEatingDaily)
-        addSubview(lottieEatingHappy)
-        addSubview(lottieHello)
+        addSubviews(lottieEatingDaily, lottieEatingHappy, lottieHello)
     }
     
     func setLayout() {
