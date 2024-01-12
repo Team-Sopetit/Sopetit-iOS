@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0084F19B2B4A895700F87860 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19A2B4A895700F87860 /* LoginView.swift */; };
 		0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19C2B4A896500F87860 /* LoginViewController.swift */; };
+		045DFE792B504E26005D69EA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE782B504E26005D69EA /* SettingView.swift */; };
+		045DFE7B2B504E38005D69EA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE7A2B504E38005D69EA /* SettingViewController.swift */; };
+		045DFE7E2B50F14C005D69EA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE7D2B50F14C005D69EA /* SettingTableViewCell.swift */; };
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
 		04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */; };
 		093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */; };
@@ -78,8 +81,6 @@
 		A42C33042B3EAE4F00C4B477 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33032B3EAE4F00C4B477 /* AuthService.swift */; };
 		A42C33102B3EAF0F00C4B477 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C330F2B3EAF0F00C4B477 /* HomeView.swift */; };
 		A42C33122B3EAF1A00C4B477 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33112B3EAF1A00C4B477 /* HomeViewController.swift */; };
-		A42C33182B3EAF4B00C4B477 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33172B3EAF4B00C4B477 /* SettingView.swift */; };
-		A42C331A2B3EAF5200C4B477 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33192B3EAF5200C4B477 /* SettingViewController.swift */; };
 		A42C331F2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C331E2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift */; };
 		A42C33212B3EAF7B00C4B477 /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33202B3EAF7B00C4B477 /* DailyView.swift */; };
 		A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33222B3EAF8400C4B477 /* DailyViewController.swift */; };
@@ -128,6 +129,9 @@
 /* Begin PBXFileReference section */
 		0084F19A2B4A895700F87860 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0084F19C2B4A896500F87860 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		045DFE782B504E26005D69EA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		045DFE7A2B504E38005D69EA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		045DFE7D2B50F14C005D69EA /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFooterView.swift; sourceTree = "<group>"; };
 		093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineViewController.swift; sourceTree = "<group>"; };
@@ -194,8 +198,6 @@
 		A42C33032B3EAE4F00C4B477 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A42C330F2B3EAF0F00C4B477 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A42C33112B3EAF1A00C4B477 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		A42C33172B3EAF4B00C4B477 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		A42C33192B3EAF5200C4B477 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A42C331E2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		A42C33202B3EAF7B00C4B477 /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		A42C33222B3EAF8400C4B477 /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		045DFE7C2B50F141005D69EA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				045DFE7D2B50F14C005D69EA /* SettingTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		093C1E052B4CFDAF00EF84AB /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -747,6 +757,7 @@
 		A42C33142B3EAF3400C4B477 /* SettingScene */ = {
 			isa = PBXGroup;
 			children = (
+				045DFE7C2B50F141005D69EA /* Cell */,
 				A42C33162B3EAF4300C4B477 /* View */,
 				A42C33152B3EAF3B00C4B477 /* ViewController */,
 			);
@@ -756,7 +767,7 @@
 		A42C33152B3EAF3B00C4B477 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A42C33192B3EAF5200C4B477 /* SettingViewController.swift */,
+				045DFE7A2B504E38005D69EA /* SettingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -764,7 +775,7 @@
 		A42C33162B3EAF4300C4B477 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A42C33172B3EAF4B00C4B477 /* SettingView.swift */,
+				045DFE782B504E26005D69EA /* SettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1198,7 +1209,6 @@
 				A42C32FE2B3EAE3400C4B477 /* RoutineService.swift in Sources */,
 				09B2536B2B4E2FDC005E7032 /* HappyRoutineCategory.swift in Sources */,
 				09B253632B4D561C005E7032 /* HappyRoutineTagView.swift in Sources */,
-				A42C33182B3EAF4B00C4B477 /* SettingView.swift in Sources */,
 				09B253742B4E4B05005E7032 /* AddHappyRoutineViewController.swift in Sources */,
 				A42C333A2B3EB02A00C4B477 /* TabBarController.swift in Sources */,
 				A42C33212B3EAF7B00C4B477 /* DailyView.swift in Sources */,
@@ -1222,9 +1232,11 @@
 				A42C33042B3EAE4F00C4B477 /* AuthService.swift in Sources */,
 				A49BFE2A2B4E857300035EB6 /* DollNameView.swift in Sources */,
 				A42C32B72B3EAAD800C4B477 /* ImageLiterals.swift in Sources */,
+				045DFE7B2B504E38005D69EA /* SettingViewController.swift in Sources */,
 				A42C32BD2B3EAAF200C4B477 /* SizeLiterals.swift in Sources */,
 				09B2537A2B4E4E14005E7032 /* AddHappyRoutineView.swift in Sources */,
 				A42C32C52B3EAB2B00C4B477 /* UIButton+.swift in Sources */,
+				045DFE7E2B50F14C005D69EA /* SettingTableViewCell.swift in Sources */,
 				A49BFDDC2B4D5F5E00035EB6 /* StoryTellingThirdView.swift in Sources */,
 				A42C32CD2B3EAB5600C4B477 /* UILabel+.swift in Sources */,
 				A42C33102B3EAF0F00C4B477 /* HomeView.swift in Sources */,
@@ -1240,7 +1252,6 @@
 				A42C32CF2B3EAB7700C4B477 /* UIColor+.swift in Sources */,
 				A49BFDDA2B4D5F4600035EB6 /* StoryTellingSecondView.swift in Sources */,
 				A42C32B32B3EAAB500C4B477 /* Lottie.swift in Sources */,
-				A42C331A2B3EAF5200C4B477 /* SettingViewController.swift in Sources */,
 				097224832B4F782D00CB7893 /* HappyRoutineView.swift in Sources */,
 				A42C32F62B3EADE300C4B477 /* HomeEntity.swift in Sources */,
 				09B2537D2B4E5279005E7032 /* HappyRoutineCardCollectionViewCell.swift in Sources */,
@@ -1270,6 +1281,7 @@
 				A42C331F2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift in Sources */,
 				0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */,
 				A42C32EB2B3EACAC00C4B477 /* URLConstant.swift in Sources */,
+				045DFE792B504E26005D69EA /* SettingView.swift in Sources */,
 				A49BFE1D2B4E541C00035EB6 /* RoutineChoiceViewController.swift in Sources */,
 				A42C32C12B3EAB1A00C4B477 /* UIView+.swift in Sources */,
 				09B2536D2B4E3529005E7032 /* HappyRoutineTag.swift in Sources */,
