@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum URLConstant {
+    
+    // MARK: - Base URL
+    
+    static let baseURL = Config.baseURL
+}

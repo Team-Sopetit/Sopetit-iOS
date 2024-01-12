@@ -10,10 +10,10 @@ import UIKit
 import SnapKit
 
 final class HappyRoutineView: UIView {
-
+    
     // MARK: - UI Components
     
-    private let navigationBar: CustomNavigationBarView = {
+    var navigationBar: CustomNavigationBarView = {
         let navigationBar = CustomNavigationBarView()
         navigationBar.isLeftTitleViewIncluded = true
         navigationBar.isLeftTitleLabelIncluded = I18N.HappyRoutine.happyRoutineTitle
@@ -44,7 +44,7 @@ final class HappyRoutineView: UIView {
     }()
     
     private let happyRoutineCardView = HappyRoutineCardView()
-    private let doneButton = BottomCTAButton(title: I18N.HappyRoutine.done)
+    let doneButton = BottomCTAButton(title: I18N.HappyRoutine.done)
     
     // MARK: - Life Cycles
     
@@ -54,7 +54,6 @@ final class HappyRoutineView: UIView {
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
     }
     
     @available(*, unavailable)
@@ -130,15 +129,6 @@ private extension HappyRoutineView {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(12)
             $0.centerX.equalToSuperview()
         }
-    }
-    
-    func setAddTarget() {
-        doneButton.addTarget(self, action: #selector(tapDoneButton), for: .touchUpInside)
-    }
-    
-    @objc func tapDoneButton() {
-        print("tapDoneButton")
-        /// Show BottomSheet
     }
 }
 

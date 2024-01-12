@@ -19,6 +19,7 @@ enum ImageLiterals {
         static var icNavi2Filled: UIImage { .load(name: "ic_navi_2_filled") }
         static var icNavi3: UIImage { .load(name: "ic_navi_3") }
         static var icNavi3Filled: UIImage { .load(name: "ic_navi_3_filled") }
+        static var icFaceCrying: UIImage { .load(name: "img_face_crying") }
     }
     
     enum Navi {

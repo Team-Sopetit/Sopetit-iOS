@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+import Alamofire
+
+final class OnBoardingService: BaseService {
+    
+    static let shared = OnBoardingService()
+    
+    private override init() {}
+}
+
+extension OnBoardingService {
+
+}
