@@ -17,6 +17,20 @@ final class DailyRoutineCardCollectionViewCell: UICollectionViewCell, UICollecti
     
     // MARK: - UI Components
     
+    private let cardImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .fontGuide(.head1)
+        label.textColor = .Gray700
+        label.numberOfLines = 0
+        label.setLineSpacing(lineSpacing: 4)
+        return label
+    }()
     
     // MARK: - Life Cycles
     
@@ -35,17 +49,33 @@ final class DailyRoutineCardCollectionViewCell: UICollectionViewCell, UICollecti
 
 // MARK: - Extensions
 
-extension DailyRoutineCardCollectionViewCell {
+private extension DailyRoutineCardCollectionViewCell {
 
     func setUI() {
         
     }
     
     func setHierarchy() {
-        
+        self.addSubviews(cardImageView, titleLabel)
     }
     
     func setLayout() {
+        cardImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(85)
+            $0.horizontalEdges.equalToSuperview().inset(50)
+        }
+    }
+}
+
+extension DailyRoutineCardCollectionViewCell {
+    
+    func setDataBind(model: DailyRoutineCard, image: UIImage) {
+        cardImageView.image = image
+        titleLabel.text = model.content
+        titleLabel.textAlignment = .center
     }
 }
