@@ -15,7 +15,8 @@ struct DailyRoutineTheme {
 }
 
 extension DailyRoutineTheme {
-    func dummy() -> [DailyRoutineTheme] {
+    
+    static func dummy() -> [DailyRoutineTheme] {
         return [DailyRoutineTheme(themeId: 0,
                                   name: "하루의 시작",
                                   iconImage: ImageLiterals.DailyRoutine.icDaily1Filled,

@@ -14,7 +14,7 @@ struct DailyRoutineCard {
 
 extension DailyRoutineCard {
     
-    func dummy() -> [DailyRoutineCard] {
+    static func dummy() -> [DailyRoutineCard] {
         return [DailyRoutineCard(routineId: 0, content: "일어나면\n5분 안에 이불 개기"),
                 DailyRoutineCard(routineId: 1, content: "일어나면\n5분 안에 이불 개기"),
                 DailyRoutineCard(routineId: 2, content: "일어나면\n5분 안에 이불 개기"),
