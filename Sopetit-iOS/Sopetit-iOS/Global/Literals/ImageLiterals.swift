@@ -72,6 +72,17 @@ enum ImageLiterals {
     
     enum DailyRoutine {
         static var imgDailycard1: UIImage { .load(name: "img_dailycard_1") }
+        static var imgDailycard2: UIImage { .load(name: "img_dailycard_2") }
+        static var imgDailycard3: UIImage { .load(name: "img_dailycard_3") }
+        static var imgDailycard4: UIImage { .load(name: "img_dailycard_4") }
+        static var imgDailycard5: UIImage { .load(name: "img_dailycard_5") }
+        static var imgDailycard6: UIImage { .load(name: "img_dailycard_6") }
+        static var imgDailycard7: UIImage { .load(name: "img_dailycard_7") }
+        static var imgDailycard8: UIImage { .load(name: "img_dailycard_8") }
+        static var imgDailycard9: UIImage { .load(name: "img_dailycard_9") }
+        static var imgDailycard10: UIImage { .load(name: "img_dailycard_10") }
+        static var imgDailycard11: UIImage { .load(name: "img_dailycard_11") }
+        static var imgDailycard12: UIImage { .load(name: "img_dailycard_12") }
         static var icDaily1Filled: UIImage { .load(name: "ic_daily_1_filled") }
         static var icDaily2Filled: UIImage { .load(name: "ic_daily_2_filled") }
         static var icDaily3Filled: UIImage { .load(name: "ic_daily_3_filled") }
