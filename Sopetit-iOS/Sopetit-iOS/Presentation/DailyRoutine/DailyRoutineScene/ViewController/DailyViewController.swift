@@ -18,6 +18,7 @@ final class DailyViewController: UIViewController {
     
     let dummy = DailyEntity.routineDummy()
     var status: Int = 0
+    var isFromAddDailyBottom: Bool = false
     
     override var isEditing: Bool {
         didSet {
@@ -47,6 +48,7 @@ final class DailyViewController: UIViewController {
     }()
     
     private var deleteAlertView = AlertMessageView(title: "")
+    private var addAlertView = AlertMessageView(title: "데일리 루틴을 1개 추가했어요")
     
     // MARK: - Life Cycles
     
@@ -64,6 +66,7 @@ final class DailyViewController: UIViewController {
         setUI()
         setDelegate()
         setAddTarget()
+        setAlertView()
     }
 }
 
@@ -78,10 +81,11 @@ extension DailyViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.view.bringSubviewToFront(deleteButton)
         deleteAlertView.isHidden = true
+        addAlertView.isHidden = true
     }
     
     func setHierarchy() {
-        self.view.addSubviews(customNavigationBar, deleteButton, routineView, deleteAlertView)
+        self.view.addSubviews(customNavigationBar, deleteButton, routineView, deleteAlertView, addAlertView)
     }
     
     func setLayout() {
@@ -103,6 +107,13 @@ extension DailyViewController {
         }
         
         deleteAlertView.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
+            $0.height.equalTo(51)
+        }
+        
+        addAlertView.snp.makeConstraints {
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
@@ -148,6 +159,15 @@ extension DailyViewController {
             self.deleteButton.isUserInteractionEnabled = true
         }
     }
+    
+    func setAlertView() {
+        if isFromAddDailyBottom {
+            addAlertView.isHidden = false
+            UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+                self.addAlertView.alpha = 0.0
+            })
+        }
+    }
 }
 
 extension DailyViewController: DailyAddDelegate {
@@ -185,7 +205,7 @@ extension DailyViewController: UICollectionViewDataSource {
 }
 
 extension DailyViewController: BottomSheetButtonDelegate {
-    func bakcButtonTapped() {
+    func backButtonTapped() {
         self.dismiss(animated: false)
     }
     
