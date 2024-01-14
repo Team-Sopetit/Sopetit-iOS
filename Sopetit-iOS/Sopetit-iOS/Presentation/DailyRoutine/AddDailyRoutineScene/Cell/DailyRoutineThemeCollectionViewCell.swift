@@ -52,7 +52,6 @@ final class DailyRoutineThemeCollectionViewCell: UICollectionViewCell, UICollect
     override init(frame: CGRect) {
         super.init(frame: frame)
     
-        setUI()
         setHierarchy()
         setLayout()
     }
@@ -72,10 +71,6 @@ final class DailyRoutineThemeCollectionViewCell: UICollectionViewCell, UICollect
 
 extension DailyRoutineThemeCollectionViewCell {
 
-    func setUI() {
-        
-    }
-    
     func setHierarchy() {
         self.addSubviews(containerView, titleLabel)
         containerView.addSubview(iconImageView)

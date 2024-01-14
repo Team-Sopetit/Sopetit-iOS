@@ -55,6 +55,8 @@ enum I18N {
         static let achieving = "달성 중..."
         static let done = "완료하기"
         static let delAlertTitle = "행복 루틴을 삭제했어요"
+        static let completeHappyRoutine = "행복 루틴을 완료했어요!"
+        static let getCotton = "행복 솜뭉치 1개 획득"
     }
     
     enum HappyRoutineCategory {
@@ -93,5 +95,7 @@ enum I18N {
         static let complete = "완료하기"
         static let completed = "달성 완료"
         static let addDailyRoutine = "데일리 루틴 추가"
+        static let completeDailyRoutine = "데일리 루틴을 완료했어요!"
+        static let getCotton = "솜뭉치 1개 획득"
     }
 }

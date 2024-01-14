@@ -41,9 +41,6 @@ final class AddDailyRoutineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
-        setHierarchy()
-        setLayout()
         setDelegate()
         setRegister()
         setCarousel() 
@@ -63,18 +60,6 @@ final class AddDailyRoutineViewController: UIViewController {
 // MARK: - Extensions
 
 private extension AddDailyRoutineViewController {
-
-    func setUI() {
-        
-    }
-    
-    func setHierarchy() {
-        
-    }
-    
-    func setLayout() {
-        
-    }
     
     func setDelegate() {
         addDailyRoutineView.dailyRoutineThemeView.collectionView.delegate = self

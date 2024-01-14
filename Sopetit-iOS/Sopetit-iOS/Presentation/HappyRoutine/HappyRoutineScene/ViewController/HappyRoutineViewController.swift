@@ -20,6 +20,7 @@ final class HappyRoutineViewController: UIViewController {
     private let happyRoutineEmptyView = HappyRoutineEmptyView()
     private let happyCompleteBottom = BottomSheetViewController(bottomStyle: .happyCompleteBottom)
     private let happyDeleteBottom = BottomSheetViewController(bottomStyle: .happyDeleteBottom)
+    private let completeHappyRoutineView = CompleteHappyRoutineView()
     
     // MARK: - Life Cycles
     
@@ -107,9 +108,14 @@ extension HappyRoutineViewController: BottomSheetButtonDelegate {
     }
     
     func completeButtonTapped() {
-        view = happyRoutineEmptyView
         self.viewWillLayoutSubviews()
         self.dismiss(animated: false)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.view = self.happyRoutineEmptyView
+        }
+        let vc = CompleteHappyRoutineViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false)
     }
     
     func deleteButtonTapped() {
