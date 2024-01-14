@@ -118,4 +118,8 @@ extension HappyRoutineViewController: BottomSheetButtonDelegate {
         self.viewWillLayoutSubviews()
         self.dismiss(animated: false)
     }
+    
+    func addButtonTapped() {
+        
+    }
 }

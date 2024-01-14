@@ -29,6 +29,7 @@ final class DailyViewController: UIViewController {
     
     private let routineView = DailyView()
     private lazy var collectionview = routineView.collectionView
+    private let dailyFooterView = DailyFooterView()
     private let customNavigationBar = CustomNavigationBarView()
     private let dailyCompleteBottom = BottomSheetViewController(bottomStyle: .dailyCompleteBottom)
     private let dailyDeleteBottom = BottomSheetViewController(bottomStyle: .dailyDeleteBottom)
@@ -149,6 +150,13 @@ extension DailyViewController {
     }
 }
 
+extension DailyViewController: DailyAddDelegate {
+    func addTapped() {
+        let nav = AddDailyRoutineViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+}
+
 extension DailyViewController: UICollectionViewDelegate {
 }
 
@@ -169,6 +177,7 @@ extension DailyViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionFooter {
             let footerView = DailyFooterView.dequeueReusableFooterView(collectionView: collectionView, indexPath: indexPath)
+            footerView.addDelegate = self
             return footerView
         }
         return UICollectionReusableView()
@@ -206,6 +215,10 @@ extension DailyViewController: BottomSheetButtonDelegate {
         })
         
         self.dismiss(animated: false)
+    }
+    
+    func addButtonTapped() {
+        
     }
 }
 
