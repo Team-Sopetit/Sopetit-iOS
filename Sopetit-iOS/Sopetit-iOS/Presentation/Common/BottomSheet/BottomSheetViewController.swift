@@ -13,6 +13,7 @@ protocol BottomSheetButtonDelegate: AnyObject {
     func bakcButtonTapped()
     func completeButtonTapped()
     func deleteButtonTapped()
+    func addButtonTapped()
 }
 
 final class BottomSheetViewController: UIViewController {
@@ -116,7 +117,7 @@ extension BottomSheetViewController {
         rightButton.setBackgroundColor(type.rightColor, for: .normal)
         
         switch type {
-        case .dailyCompleteBottom, .happyCompleteBottom:
+        case .dailyAddBottom, .happyAddBottom, .dailyCompleteBottom, .happyCompleteBottom:
             imageView.snp.makeConstraints {
                 $0.top.equalToSuperview().inset(33)
                 $0.centerX.equalToSuperview()
@@ -199,6 +200,8 @@ extension BottomSheetViewController {
             buttonDelegate?.bakcButtonTapped()
         case rightButton:
             switch bottomType {
+            case .dailyAddBottom, .happyAddBottom:
+                buttonDelegate?.addButtonTapped()
             case .dailyCompleteBottom, .happyCompleteBottom:
                 buttonDelegate?.completeButtonTapped()
             case .dailyDeleteBottom, .happyDeleteBottom, .logoutBottom:
