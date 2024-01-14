@@ -15,6 +15,8 @@
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
 		04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */; };
 		092AE2B82B53F25E00E9A20D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 092AE2B72B53F25E00E9A20D /* Config.xcconfig */; };
+		092AE2BF2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */; };
+		092AE2C12B540DC200E9A20D /* CompleteHappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AE2C02B540DC200E9A20D /* CompleteHappyRoutineView.swift */; };
 		093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */; };
 		093C1E042B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E032B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift */; };
 		093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */; };
@@ -147,6 +149,8 @@
 		0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFooterView.swift; sourceTree = "<group>"; };
 		092AE2B72B53F25E00E9A20D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteHappyRoutineViewController.swift; sourceTree = "<group>"; };
+		092AE2C02B540DC200E9A20D /* CompleteHappyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteHappyRoutineView.swift; sourceTree = "<group>"; };
 		093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineViewController.swift; sourceTree = "<group>"; };
 		093C1E032B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineEmptyView.swift; sourceTree = "<group>"; };
 		093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
@@ -289,6 +293,47 @@
 				004029052B4EDCF6002127BC /* ActionCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		092AE2B92B540B3400E9A20D /* DoneHappyRoutineScene */ = {
+			isa = PBXGroup;
+			children = (
+				092AE2BD2B540B6000E9A20D /* ViewController */,
+				092AE2BC2B540B5C00E9A20D /* View */,
+				092AE2BB2B540B5100E9A20D /* Model */,
+				092AE2BA2B540B4D00E9A20D /* Cell */,
+			);
+			path = DoneHappyRoutineScene;
+			sourceTree = "<group>";
+		};
+		092AE2BA2B540B4D00E9A20D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		092AE2BB2B540B5100E9A20D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		092AE2BC2B540B5C00E9A20D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				092AE2C02B540DC200E9A20D /* CompleteHappyRoutineView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		092AE2BD2B540B6000E9A20D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		093C1E052B4CFDAF00EF84AB /* NavigationBar */ = {
@@ -979,6 +1024,7 @@
 		A4832B9D2B457C35007879FF /* HappyRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				092AE2B92B540B3400E9A20D /* DoneHappyRoutineScene */,
 				097224892B4F837C00CB7893 /* BottomCTAButton */,
 				09B253712B4E4AE7005E7032 /* AddHappyRoutineScene */,
 				09B2535D2B4D539A005E7032 /* SelectHappyCategoryScene */,
@@ -1311,6 +1357,7 @@
 				A49BFDD72B4D5F2800035EB6 /* StroyTellingFirstView.swift in Sources */,
 				A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */,
 				A49BFDE52B4D7EDF00035EB6 /* CustomProgressView.swift in Sources */,
+				092AE2C12B540DC200E9A20D /* CompleteHappyRoutineView.swift in Sources */,
 				0972248B2B4F83B800CB7893 /* BottomCTAButton.swift in Sources */,
 				A49BFE1F2B4E542B00035EB6 /* RoutineChoiceView.swift in Sources */,
 				A49BFE4B2B50FC8300035EB6 /* HappyRoutineService.swift in Sources */,
@@ -1393,6 +1440,7 @@
 				09B253612B4D53E7005E7032 /* SelectHappyCategoryView.swift in Sources */,
 				A42C32D12B3EAB7F00C4B477 /* String+.swift in Sources */,
 				A49BFDF02B4DA48200035EB6 /* ThemeSelectView.swift in Sources */,
+				092AE2BF2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift in Sources */,
 				09B253782B4E4BC6005E7032 /* HappyRoutine.swift in Sources */,
 				A49BFDD52B4D5F0800035EB6 /* StroyTellingViewController.swift in Sources */,
 				A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */,
