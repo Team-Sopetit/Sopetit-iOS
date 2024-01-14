@@ -26,11 +26,7 @@ final class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 스플래시 뷰에서 표시할 내용 추가
-        // 예: 배경 이미지, 로고 등
-        
-        // 일정 시간 후에 다음 화면으로 전환
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // 2.0초 후에 다음 화면으로 전환
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
             self.navigateToNextScreen()
         }
     }
