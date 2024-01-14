@@ -64,11 +64,11 @@ enum ImageLiterals {
         static var icLogoHome: UIImage { .load(name: "ic_logo_home") }
         static var icHomeMoney: UIImage { .load(name: "ic_home_money") }
         static var icHomeSettings: UIImage { .load(name: "ic_home_settings") }
-        static var svgSpeechHome: UIImage { .load(name: "svg_speech_home") }
-        static var imgHomebackBrown: UIImage { .load(name: "img_homeback_brown") }
-        static var imgHomebackGray: UIImage { .load(name: "img_homeback_gray") }
-        static var imgHomebackPanda: UIImage { .load(name: "img_homeback_panda") }
-        static var imgHomebackRed: UIImage { .load(name: "img_homeback_red") }
+        static var pngSpeechHome: UIImage { .load(name: "png_speech_home") }
+        static var imgHomebackAllBrown: UIImage { .load(name: "img_homeback_all_brown") }
+        static var imgHomebackAllGray: UIImage { .load(name: "img_homeback_all_gray") }
+        static var imgHomebackAllPanda: UIImage { .load(name: "img_homeback_all_panda") }
+        static var imgHomebackAllRed: UIImage { .load(name: "img_homeback_all_red") }
     }
     
     enum DailyRoutine {
