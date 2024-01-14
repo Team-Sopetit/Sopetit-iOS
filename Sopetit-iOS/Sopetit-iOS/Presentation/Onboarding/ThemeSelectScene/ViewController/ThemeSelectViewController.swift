@@ -64,6 +64,7 @@ extension ThemeSelectViewController {
     @objc
     func buttonTapped() {
         let nav = RoutineChoiceViewController()
+        nav.selectedTheme = selectedCategory
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }
