@@ -66,7 +66,7 @@ extension SplashFourView {
     func setLayout() {
         softieImageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(safeAreaLayoutGuide).inset(187)
+            $0.top.equalTo(safeAreaLayoutGuide).inset(143)
         }
         
         mentLabel.snp.makeConstraints {
