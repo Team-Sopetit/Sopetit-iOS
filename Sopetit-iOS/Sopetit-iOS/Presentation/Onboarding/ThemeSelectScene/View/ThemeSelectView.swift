@@ -142,7 +142,7 @@ extension ThemeSelectView {
             $0.top.equalTo(bubbleImage.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 37 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 282 / 375)
-            $0.bottom.equalTo(nextButton.snp.top).offset(-SizeLiterals.Screen.screenHeight * 49 / 812)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 464 / 812)
         }
         
         nextButton.snp.makeConstraints {
