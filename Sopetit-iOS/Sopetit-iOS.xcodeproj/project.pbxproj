@@ -127,6 +127,7 @@
 		A49BFE462B50F3EB00035EB6 /* daily_complete_som.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE442B50F3EB00035EB6 /* daily_complete_som.json */; };
 		A49BFE492B50FC7A00035EB6 /* DailyRoutineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE482B50FC7A00035EB6 /* DailyRoutineService.swift */; };
 		A49BFE4B2B50FC8300035EB6 /* HappyRoutineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE4A2B50FC8300035EB6 /* HappyRoutineService.swift */; };
+		A49BFE4D2B51275C00035EB6 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE4C2B51275C00035EB6 /* UIImageView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -248,6 +249,7 @@
 		A49BFE472B50F9DA00035EB6 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A49BFE482B50FC7A00035EB6 /* DailyRoutineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineService.swift; sourceTree = "<group>"; };
 		A49BFE4A2B50FC8300035EB6 /* HappyRoutineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineService.swift; sourceTree = "<group>"; };
+		A49BFE4C2B51275C00035EB6 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -514,6 +516,7 @@
 				A42C32CC2B3EAB5600C4B477 /* UILabel+.swift */,
 				A42C32CE2B3EAB7700C4B477 /* UIColor+.swift */,
 				A42C32D02B3EAB7F00C4B477 /* String+.swift */,
+				A49BFE4C2B51275C00035EB6 /* UIImageView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1303,6 +1306,7 @@
 				A42C332D2B3EAFCC00C4B477 /* OnboardingView.swift in Sources */,
 				097224882B4F7E4900CB7893 /* HappyRoutineCard.swift in Sources */,
 				0084F19B2B4A895700F87860 /* LoginView.swift in Sources */,
+				A49BFE4D2B51275C00035EB6 /* UIImageView+.swift in Sources */,
 				A42C33022B3EAE4900C4B477 /* OnboardingService.swift in Sources */,
 				A42C32D92B3EAC1C00C4B477 /* MakeAlert.swift in Sources */,
 				A49BFE212B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift in Sources */,
