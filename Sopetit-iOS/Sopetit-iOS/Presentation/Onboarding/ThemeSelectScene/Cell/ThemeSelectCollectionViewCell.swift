@@ -8,6 +8,7 @@
 import UIKit
 
 import SnapKit
+import SVGKit
 
 final class ThemeSelectCollectionViewCell: UICollectionViewCell, UICollectionViewRegisterable {
     
@@ -26,14 +27,12 @@ final class ThemeSelectCollectionViewCell: UICollectionViewCell, UICollectionVie
     }()
     
     var themeIcon: UIImageView = {
-        let icon = UIImageView()
+        var icon = UIImageView()
         icon.backgroundColor = .SoftieWhite
         icon.clipsToBounds = true
         icon.layer.cornerRadius = 35
         icon.layer.borderColor = UIColor.Gray100.cgColor
         icon.layer.borderWidth = 1
-        icon.contentMode = .scaleAspectFit
-        icon.contentMode = .center
         return icon
     }()
     
@@ -85,6 +84,9 @@ extension ThemeSelectCollectionViewCell {
     
     func setDataBind(model: Theme) {
         themeTitle.text = model.name
-        themeIcon.kfSetImage(url: model.iconImageURL)
+        if let iconURL = URL(string: model.iconImageURL) {
+            themeIcon.downloadedsvg(from: iconURL)
+            themeIcon.contentMode = .center
+        }
     }
 }
