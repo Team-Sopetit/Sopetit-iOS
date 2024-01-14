@@ -14,6 +14,7 @@
 		00A8E39C2B4D8B20001461CE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A8E39B2B4D8B20001461CE /* HomeViewController.swift */; };
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
 		04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */; };
+		092AE2B82B53F25E00E9A20D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 092AE2B72B53F25E00E9A20D /* Config.xcconfig */; };
 		093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */; };
 		093C1E042B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E032B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift */; };
 		093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */; };
@@ -141,11 +142,11 @@
 		004029052B4EDCF6002127BC /* ActionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCollectionViewCell.swift; sourceTree = "<group>"; };
 		0084F19A2B4A895700F87860 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0084F19C2B4A896500F87860 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		0084F19F2B4B07DB00F87860 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		00A8E3992B4D8B0D001461CE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		00A8E39B2B4D8B20001461CE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFooterView.swift; sourceTree = "<group>"; };
+		092AE2B72B53F25E00E9A20D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineViewController.swift; sourceTree = "<group>"; };
 		093C1E032B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineEmptyView.swift; sourceTree = "<group>"; };
 		093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
@@ -262,7 +263,6 @@
 		A49BFE402B5065DE00035EB6 /* AlertMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessageView.swift; sourceTree = "<group>"; };
 		A49BFE432B50F3EB00035EB6 /* happy_complete_som.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = happy_complete_som.json; sourceTree = "<group>"; };
 		A49BFE442B50F3EB00035EB6 /* daily_complete_som.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = daily_complete_som.json; sourceTree = "<group>"; };
-		A49BFE472B50F9DA00035EB6 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A49BFE482B50FC7A00035EB6 /* DailyRoutineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineService.swift; sourceTree = "<group>"; };
 		A49BFE4A2B50FC8300035EB6 /* HappyRoutineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -283,6 +283,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		004029072B4EE87D002127BC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				004029052B4EDCF6002127BC /* ActionCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		093C1E052B4CFDAF00EF84AB /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,14 +404,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		004029072B4EE87D002127BC /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				004029052B4EDCF6002127BC /* ActionCollectionViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		09C1A64A2B52919200C1A57D /* AddDailyRoutineScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,7 +476,7 @@
 				A42C32892B3DB8F500C4B477 /* Info.plist */,
 				A42C327F2B3DB8F400C4B477 /* ViewController.swift */,
 				A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */,
-				A49BFE472B50F9DA00035EB6 /* Config.xcconfig */,
+				092AE2B72B53F25E00E9A20D /* Config.xcconfig */,
 			);
 			path = "Sopetit-iOS";
 			sourceTree = "<group>";
@@ -1259,6 +1259,7 @@
 				A49BFE0D2B4DC54F00035EB6 /* gray_eating_daily.json in Resources */,
 				A49BFE0A2B4DC54F00035EB6 /* red_eating_daily.json in Resources */,
 				A49BFE032B4DC54400035EB6 /* panda_eating_happy.json in Resources */,
+				092AE2B82B53F25E00E9A20D /* Config.xcconfig in Resources */,
 				A49BFE052B4DC54400035EB6 /* gray_eating_happy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1325,7 +1326,6 @@
 				A49BFDDC2B4D5F5E00035EB6 /* StoryTellingThirdView.swift in Sources */,
 				A42C32CD2B3EAB5600C4B477 /* UILabel+.swift in Sources */,
 				09C1A65A2B5297BC00C1A57D /* DailyRoutineCard.swift in Sources */,
-				A42C33102B3EAF0F00C4B477 /* HomeView.swift in Sources */,
 				A49BFE282B4E856600035EB6 /* DollNameViewController.swift in Sources */,
 				A42C32F42B3EADDD00C4B477 /* OnboardingEntity.swift in Sources */,
 				A42C32E92B3EAC9C00C4B477 /* BaseService.swift in Sources */,
@@ -1349,7 +1349,6 @@
 				00A8E39C2B4D8B20001461CE /* HomeViewController.swift in Sources */,
 				A42C33702B42DAAB00C4B477 /* StringLiterals.swift in Sources */,
 				004029062B4EDCF6002127BC /* ActionCollectionViewCell.swift in Sources */,
-				A4832BB62B4D2560007879FF /* StoryTellingFirstView.swift in Sources */,
 				A42C32C72B3EAB3B00C4B477 /* UIViewController+.swift in Sources */,
 				A4832BAD2B4AF081007879FF /* BottomSheetType.swift in Sources */,
 				A42C32C32B3EAB2400C4B477 /* UITextField+.swift in Sources */,
@@ -1416,7 +1415,7 @@
 /* Begin XCBuildConfiguration section */
 		A42C328A2B3DB8F500C4B477 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A49BFE472B50F9DA00035EB6 /* Config.xcconfig */;
+			baseConfigurationReference = 092AE2B72B53F25E00E9A20D /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1477,7 +1476,7 @@
 		};
 		A42C328B2B3DB8F500C4B477 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A49BFE472B50F9DA00035EB6 /* Config.xcconfig */;
+			baseConfigurationReference = 092AE2B72B53F25E00E9A20D /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

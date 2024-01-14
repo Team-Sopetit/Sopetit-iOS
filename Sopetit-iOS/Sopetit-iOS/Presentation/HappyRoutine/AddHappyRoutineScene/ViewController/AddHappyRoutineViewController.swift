@@ -45,6 +45,10 @@ final class AddHappyRoutineViewController: UIViewController {
         setDataBind()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         addHappyRoutineView.collectionView.setContentOffset(.init(x: 2 * (Const.itemSize.width + Const.itemSpacing) - Const.insetX, y: addHappyRoutineView.collectionView.contentOffset.y), animated: false)
