@@ -96,5 +96,6 @@ enum I18N {
     enum DailyRoutine {
         static let complete = "완료하기"
         static let completed = "달성 완료"
+        static let addDailyRoutine = "데일리 루틴 추가"
     }
 }
