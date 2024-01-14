@@ -24,6 +24,10 @@ enum I18N {
         static let logoutRightTitle = "로그아웃 할래"
     }
     
+    enum Splash {
+        static let mentTitle = "친구와 함께 하는 일상 속 작은 습관"
+    }
+    
     enum Onboarding {
         static let firtButtonTitle = "오늘도 고된 하루였어.."
         static let secondButtonTitle = "어? 집 앞에 이건 뭐지?"
