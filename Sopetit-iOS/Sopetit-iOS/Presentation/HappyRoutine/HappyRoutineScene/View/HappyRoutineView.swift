@@ -45,7 +45,7 @@ final class HappyRoutineView: UIView {
     
     private let happyRoutineCardView = HappyRoutineCardView()
     let doneButton = BottomCTAButton(title: I18N.HappyRoutine.done)
-    var addAlertView = AlertMessageView(title: "행복 루틴을 추가했어요")
+    var addAlertView = AlertMessageView(title: I18N.HappyRoutine.addHappyBottomTitle)
     
     // MARK: - Life Cycles
     

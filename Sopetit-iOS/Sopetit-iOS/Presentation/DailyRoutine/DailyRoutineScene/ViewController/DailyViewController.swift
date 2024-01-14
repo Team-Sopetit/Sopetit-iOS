@@ -48,7 +48,7 @@ final class DailyViewController: UIViewController {
     }()
     
     private var deleteAlertView = AlertMessageView(title: "")
-    private var addAlertView = AlertMessageView(title: "데일리 루틴을 1개 추가했어요")
+    private var addAlertView = AlertMessageView(title: I18N.DailyRoutine.addDailyBottomTitle)
     
     // MARK: - Life Cycles
     
