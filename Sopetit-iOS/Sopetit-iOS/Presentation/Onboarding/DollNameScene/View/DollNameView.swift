@@ -200,5 +200,6 @@ extension DollNameView {
                 $0.height.equalTo(303)
             }
         }
+        bringSubviewToFront(nameTextField)
     }
 }

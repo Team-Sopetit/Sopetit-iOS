@@ -18,4 +18,3 @@ final class HappyRoutineService: BaseService {
 
 extension HappyRoutineService {
 }
-

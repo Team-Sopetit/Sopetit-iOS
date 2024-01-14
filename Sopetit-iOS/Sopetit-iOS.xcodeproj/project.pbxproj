@@ -43,7 +43,6 @@
 		09C1A65C2B529D2E00C1A57D /* DailyRoutineThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A65B2B529D2E00C1A57D /* DailyRoutineThemeCollectionViewCell.swift */; };
 		A42C327C2B3DB8F400C4B477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */; };
 		A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327D2B3DB8F400C4B477 /* SceneDelegate.swift */; };
-		A42C32802B3DB8F400C4B477 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327F2B3DB8F400C4B477 /* ViewController.swift */; };
 		A42C32852B3DB8F500C4B477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A42C32842B3DB8F500C4B477 /* Assets.xcassets */; };
 		A42C32882B3DB8F500C4B477 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A42C32862B3DB8F500C4B477 /* LaunchScreen.storyboard */; };
 		A42C32912B3DBD6E00C4B477 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A42C32902B3DBD6E00C4B477 /* Kingfisher */; };
@@ -53,7 +52,6 @@
 		A42C329D2B3DC0D100C4B477 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = A42C329C2B3DC0D100C4B477 /* KakaoSDK */; };
 		A42C32A52B3EA9A000C4B477 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32A42B3EA9A000C4B477 /* UserManager.swift */; };
 		A42C32A72B3EA9BF00C4B477 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32A62B3EA9BF00C4B477 /* UserDefaultWrapper.swift */; };
-		A42C32B32B3EAAB500C4B477 /* Lottie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32B22B3EAAB500C4B477 /* Lottie.swift */; };
 		A42C32B72B3EAAD800C4B477 /* ImageLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32B62B3EAAD800C4B477 /* ImageLiterals.swift */; };
 		A42C32B92B3EAAE300C4B477 /* ColorLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32B82B3EAAE300C4B477 /* ColorLiterals.swift */; };
 		A42C32BB2B3EAAEA00C4B477 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32BA2B3EAAEA00C4B477 /* FontLiterals.swift */; };
@@ -91,8 +89,6 @@
 		A42C331F2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C331E2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift */; };
 		A42C33212B3EAF7B00C4B477 /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33202B3EAF7B00C4B477 /* DailyView.swift */; };
 		A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33222B3EAF8400C4B477 /* DailyViewController.swift */; };
-		A42C332D2B3EAFCC00C4B477 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C332C2B3EAFCC00C4B477 /* OnboardingView.swift */; };
-		A42C332F2B3EAFD500C4B477 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C332E2B3EAFD500C4B477 /* OnboardingViewController.swift */; };
 		A42C333A2B3EB02A00C4B477 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33392B3EB02A00C4B477 /* TabBarController.swift */; };
 		A42C33642B413F2100C4B477 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A42C33622B413F2100C4B477 /* Pretendard-SemiBold.otf */; };
 		A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */; };
@@ -136,6 +132,9 @@
 		A49BFE462B50F3EB00035EB6 /* daily_complete_som.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE442B50F3EB00035EB6 /* daily_complete_som.json */; };
 		A49BFE492B50FC7A00035EB6 /* DailyRoutineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE482B50FC7A00035EB6 /* DailyRoutineService.swift */; };
 		A49BFE4B2B50FC8300035EB6 /* HappyRoutineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE4A2B50FC8300035EB6 /* HappyRoutineService.swift */; };
+		A49BFE4D2B51275C00035EB6 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE4C2B51275C00035EB6 /* UIImageView+.swift */; };
+		A49BFE4F2B53CE7700035EB6 /* DollImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE4E2B53CE7700035EB6 /* DollImageEntity.swift */; };
+		A49BFE5A2B54273E00035EB6 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = A49BFE592B54273E00035EB6 /* SVGKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,13 +175,11 @@
 		A42C32782B3DB8F400C4B477 /* Sopetit-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sopetit-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A42C327D2B3DB8F400C4B477 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A42C327F2B3DB8F400C4B477 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A42C32842B3DB8F500C4B477 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A42C32872B3DB8F500C4B477 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A42C32892B3DB8F500C4B477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A42C32A42B3EA9A000C4B477 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		A42C32A62B3EA9BF00C4B477 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
-		A42C32B22B3EAAB500C4B477 /* Lottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottie.swift; sourceTree = "<group>"; };
 		A42C32B62B3EAAD800C4B477 /* ImageLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiterals.swift; sourceTree = "<group>"; };
 		A42C32B82B3EAAE300C4B477 /* ColorLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLiterals.swift; sourceTree = "<group>"; };
 		A42C32BA2B3EAAEA00C4B477 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
@@ -220,8 +217,6 @@
 		A42C331E2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		A42C33202B3EAF7B00C4B477 /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		A42C33222B3EAF8400C4B477 /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
-		A42C332C2B3EAFCC00C4B477 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		A42C332E2B3EAFD500C4B477 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		A42C33392B3EB02A00C4B477 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A42C33622B413F2100C4B477 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
@@ -265,6 +260,8 @@
 		A49BFE442B50F3EB00035EB6 /* daily_complete_som.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = daily_complete_som.json; sourceTree = "<group>"; };
 		A49BFE482B50FC7A00035EB6 /* DailyRoutineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineService.swift; sourceTree = "<group>"; };
 		A49BFE4A2B50FC8300035EB6 /* HappyRoutineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineService.swift; sourceTree = "<group>"; };
+		A49BFE4C2B51275C00035EB6 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		A49BFE4E2B53CE7700035EB6 /* DollImageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollImageEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +269,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A49BFE5A2B54273E00035EB6 /* SVGKit in Frameworks */,
 				A42C32972B3DBD8600C4B477 /* SnapKit in Frameworks */,
 				A42C329D2B3DC0D100C4B477 /* KakaoSDK in Frameworks */,
 				A42C32912B3DBD6E00C4B477 /* Kingfisher in Frameworks */,
@@ -474,7 +472,6 @@
 				A42C329F2B3EA97900C4B477 /* Network */,
 				A42C329E2B3EA97100C4B477 /* Presentation */,
 				A42C32892B3DB8F500C4B477 /* Info.plist */,
-				A42C327F2B3DB8F400C4B477 /* ViewController.swift */,
 				A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */,
 				092AE2B72B53F25E00E9A20D /* Config.xcconfig */,
 			);
@@ -585,6 +582,7 @@
 				A42C32CC2B3EAB5600C4B477 /* UILabel+.swift */,
 				A42C32CE2B3EAB7700C4B477 /* UIColor+.swift */,
 				A42C32D02B3EAB7F00C4B477 /* String+.swift */,
+				A49BFE4C2B51275C00035EB6 /* UIImageView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -638,7 +636,6 @@
 				A49BFE332B4E938600035EB6 /* gray_hello.json */,
 				A49BFE352B4E938600035EB6 /* panda_hello.json */,
 				A49BFE342B4E938600035EB6 /* red_hello.json */,
-				A42C32B22B3EAAB500C4B477 /* Lottie.swift */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -709,6 +706,7 @@
 				A42C32F32B3EADDD00C4B477 /* OnboardingEntity.swift */,
 				A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */,
 				A49BFE222B4E565D00035EB6 /* RoutineChoiceEntity.swift */,
+				A49BFE4E2B53CE7700035EB6 /* DollImageEntity.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -753,7 +751,6 @@
 				A49BFDEA2B4DA3E000035EB6 /* ThemeSelectScene */,
 				A49BFDDD2B4D7A1E00035EB6 /* DollChoiceScene */,
 				A49BFDD12B4D5EE800035EB6 /* StroyTellingScene */,
-				A42C333C2B3EB05100C4B477 /* OnboardingScene */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -898,22 +895,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		A42C332A2B3EAFB500C4B477 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				A42C332E2B3EAFD500C4B477 /* OnboardingViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		A42C332B2B3EAFC000C4B477 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A42C332C2B3EAFCC00C4B477 /* OnboardingView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		A42C33302B3EAFDB00C4B477 /* LoginScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -956,15 +937,6 @@
 				A42C330D2B3EAEF900C4B477 /* ViewController */,
 			);
 			path = HomeScene;
-			sourceTree = "<group>";
-		};
-		A42C333C2B3EB05100C4B477 /* OnboardingScene */ = {
-			isa = PBXGroup;
-			children = (
-				A42C332B2B3EAFC000C4B477 /* View */,
-				A42C332A2B3EAFB500C4B477 /* ViewController */,
-			);
-			path = OnboardingScene;
 			sourceTree = "<group>";
 		};
 		A4832B9C2B457C2B007879FF /* DailyRoutine */ = {
@@ -1190,6 +1162,7 @@
 				A42C32962B3DBD8600C4B477 /* SnapKit */,
 				A42C32992B3DBD9700C4B477 /* Lottie */,
 				A42C329C2B3DC0D100C4B477 /* KakaoSDK */,
+				A49BFE592B54273E00035EB6 /* SVGKit */,
 			);
 			productName = "Sopetit-iOS";
 			productReference = A42C32782B3DB8F400C4B477 /* Sopetit-iOS.app */;
@@ -1225,6 +1198,7 @@
 				A42C32952B3DBD8600C4B477 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				A42C32982B3DBD9700C4B477 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				A42C329B2B3DC0D100C4B477 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				A49BFE582B54273E00035EB6 /* XCRemoteSwiftPackageReference "SVGKit" */,
 			);
 			productRefGroup = A42C32792B3DB8F400C4B477 /* Products */;
 			projectDirPath = "";
@@ -1306,7 +1280,6 @@
 				09C1A65C2B529D2E00C1A57D /* DailyRoutineThemeCollectionViewCell.swift in Sources */,
 				A42C32BB2B3EAAEA00C4B477 /* FontLiterals.swift in Sources */,
 				A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */,
-				A42C32802B3DB8F400C4B477 /* ViewController.swift in Sources */,
 				A42C32E32B3EAC8200C4B477 /* NetworkResult.swift in Sources */,
 				A49BFDD72B4D5F2800035EB6 /* StroyTellingFirstView.swift in Sources */,
 				A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */,
@@ -1337,7 +1310,6 @@
 				A42C32CB2B3EAB4B00C4B477 /* NSObject+.swift in Sources */,
 				A42C32CF2B3EAB7700C4B477 /* UIColor+.swift in Sources */,
 				A49BFDDA2B4D5F4600035EB6 /* StoryTellingSecondView.swift in Sources */,
-				A42C32B32B3EAAB500C4B477 /* Lottie.swift in Sources */,
 				A42C331A2B3EAF5200C4B477 /* SettingViewController.swift in Sources */,
 				097224832B4F782D00CB7893 /* HappyRoutineView.swift in Sources */,
 				A42C32F62B3EADE300C4B477 /* HomeEntity.swift in Sources */,
@@ -1355,8 +1327,8 @@
 				A42C32BF2B3EAB0E00C4B477 /* UIImage+.swift in Sources */,
 				A42C33002B3EAE3E00C4B477 /* HomeService.swift in Sources */,
 				A42C32E52B3EAC8B00C4B477 /* GenericResponse.swift in Sources */,
-				A42C332F2B3EAFD500C4B477 /* OnboardingViewController.swift in Sources */,
 				04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */,
+				A49BFE4F2B53CE7700035EB6 /* DollImageEntity.swift in Sources */,
 				A49BFE412B5065DE00035EB6 /* AlertMessageView.swift in Sources */,
 				09C1A6542B52935C00C1A57D /* DailyRoutineThemeView.swift in Sources */,
 				093C1E092B4D2C8200EF84AB /* BearDescriptionView.swift in Sources */,
@@ -1380,10 +1352,10 @@
 				A42C32C12B3EAB1A00C4B477 /* UIView+.swift in Sources */,
 				09B2536D2B4E3529005E7032 /* HappyRoutineTag.swift in Sources */,
 				A42C32E72B3EAC9500C4B477 /* NetworkConstant.swift in Sources */,
-				A42C332D2B3EAFCC00C4B477 /* OnboardingView.swift in Sources */,
 				097224882B4F7E4900CB7893 /* HappyRoutineCard.swift in Sources */,
 				0084F19B2B4A895700F87860 /* LoginView.swift in Sources */,
 				09C1A6522B5291DE00C1A57D /* AddDailyRoutineView.swift in Sources */,
+				A49BFE4D2B51275C00035EB6 /* UIImageView+.swift in Sources */,
 				A42C33022B3EAE4900C4B477 /* OnboardingService.swift in Sources */,
 				A42C32D92B3EAC1C00C4B477 /* MakeAlert.swift in Sources */,
 				A49BFE212B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift in Sources */,
@@ -1657,6 +1629,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		A49BFE582B54273E00035EB6 /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVGKit/SVGKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1684,6 +1664,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A42C329B2B3DC0D100C4B477 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDK;
+		};
+		A49BFE592B54273E00035EB6 /* SVGKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A49BFE582B54273E00035EB6 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
