@@ -61,7 +61,7 @@ extension RoutineChoiceViewController {
         case routineChoiceView.backButton:
             self.navigationController?.popViewController(animated: true)
         case routineChoiceView.nextButton:
-            let nav = ViewController()
+            let nav = TabBarController()
             self.navigationController?.pushViewController(nav, animated: true)
         default:
             break

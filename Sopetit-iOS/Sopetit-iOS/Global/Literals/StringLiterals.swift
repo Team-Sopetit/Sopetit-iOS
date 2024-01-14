@@ -13,6 +13,7 @@ enum I18N {
         static let happyTitle = "행복 루틴을 완료했나요?"
         static let delTitle = "정말 삭제할까요?"
         static let logoutTitle = "정말 로그아웃 할까요?"
+        static let delInfoTitle = "한 번 완료하면 이전으로 되돌릴 수 없어요"
         static let emptyTitle = ""
         static let delSubTitle = "루틴을 삭제해도 달성 횟수는 저장돼요"
         static let logoutSubTitle = "\"잠시 안녕.. 다음에 또 봐!\""
@@ -53,6 +54,7 @@ enum I18N {
         static let addHappyRoutineButton = "이 루틴을 추가할래"
         static let achieving = "달성 중..."
         static let done = "완료하기"
+        static let delAlertTitle = "행복 루틴을 삭제했어요"
     }
     
     enum HappyRoutineCategory {
@@ -74,6 +76,11 @@ enum I18N {
         static let bubbleTitle = "회원가입하고 봉인해제"
         static let kakaoLoginTitle = "카카오로 시작하기"
         static let appleLoginTitle = "Apple로 시작하기"
+    }
+    
+    enum Home {
+        static let actionTitle1 = "솜뭉치 주기"
+        static let actionTitle2 = "행복 솜뭉치 주기"
     }
     
     enum TabBar {

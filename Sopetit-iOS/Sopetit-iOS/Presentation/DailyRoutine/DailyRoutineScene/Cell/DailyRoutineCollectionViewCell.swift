@@ -26,7 +26,7 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
     let imageView: UIImageView = {
         let image = UIImageView()
         image.image = ImageLiterals.DailyRoutine.icDaily1Filled
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
@@ -54,14 +54,14 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
     lazy var achieveButton: UIButton = {
         let button = UIButton()
         button.setTitle(I18N.DailyRoutine.complete, for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.SoftieWhite, for: .normal)
         button.titleLabel?.font = .fontGuide(.body4)
-        button.setBackgroundColor(UIColor.SoftieMain1, for: .normal)
+        button.setBackgroundColor(.SoftieMain1, for: .normal)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         button.setTitle(I18N.DailyRoutine.completed, for: .disabled)
-        button.setTitleColor(UIColor.Gray300, for: .disabled)
-        button.setBackgroundColor(UIColor.Gray100, for: .disabled)
+        button.setTitleColor(.Gray300, for: .disabled)
+        button.setBackgroundColor(.Gray100, for: .disabled)
         return button
     }()
     
@@ -97,7 +97,7 @@ extension DailyRoutineCollectionViewCell {
     func setUI() {
         self.layer.cornerRadius = 20
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderColor = UIColor.Gray100.cgColor
         self.backgroundColor = .white
     }
     

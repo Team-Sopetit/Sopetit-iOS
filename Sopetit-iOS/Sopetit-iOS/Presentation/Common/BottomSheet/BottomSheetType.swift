@@ -21,7 +21,7 @@ extension BottomSheetType {
         case .dailyCompleteBottom, .happyCompleteBottom:
             return ImageLiterals.DailyRoutine.icDaily1Filled
         case .dailyDeleteBottom, .happyDeleteBottom, .logoutBottom:
-            return ImageLiterals.Onboarding.imgFaceBrown
+            return ImageLiterals.BottomNavi.icFaceCrying
         }
     }
     
@@ -40,6 +40,8 @@ extension BottomSheetType {
     
     var subTitle: String {
         switch self {
+        case .dailyCompleteBottom, .happyCompleteBottom:
+            return I18N.BottomSheet.delInfoTitle
         case .dailyDeleteBottom:
             return I18N.BottomSheet.delSubTitle
         case .logoutBottom:
@@ -51,6 +53,8 @@ extension BottomSheetType {
     
     var subColor: UIColor {
         switch self {
+        case .dailyCompleteBottom, .happyCompleteBottom:
+            return .Gray400
         case .dailyDeleteBottom:
             return .SoftieRed
         case .logoutBottom:

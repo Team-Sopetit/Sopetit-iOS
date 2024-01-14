@@ -18,11 +18,9 @@ final class DailyViewController: UIViewController {
     
     let dummy = DailyEntity.routineDummy()
     var status: Int = 0
-    let deleteBottom = BottomSheetViewController(bottomStyle: .dailyDeleteBottom)
     
     override var isEditing: Bool {
         didSet {
-            // isEditing 상태에 따라 셀들을 업데이트
             updateCellsForEditing()
         }
     }
@@ -32,7 +30,8 @@ final class DailyViewController: UIViewController {
     private let routineView = DailyView()
     private lazy var collectionview = routineView.collectionView
     private let customNavigationBar = CustomNavigationBarView()
-    let exampleBottom = BottomSheetViewController(bottomStyle: .dailyCompleteBottom)
+    private let dailyCompleteBottom = BottomSheetViewController(bottomStyle: .dailyCompleteBottom)
+    private let dailyDeleteBottom = BottomSheetViewController(bottomStyle: .dailyDeleteBottom)
     
     lazy var deleteButton: UIButton = {
         let button = UIButton()
@@ -45,6 +44,8 @@ final class DailyViewController: UIViewController {
         button.isUserInteractionEnabled = false
         return button
     }()
+    
+    private var deleteAlertView = AlertMessageView(title: "")
     
     // MARK: - Life Cycles
     
@@ -68,17 +69,18 @@ final class DailyViewController: UIViewController {
 // MARK: - Extensions
 
 extension DailyViewController {
-
+    
     func setUI() {
         self.view.backgroundColor = .SoftieBack
-        exampleBottom.modalPresentationStyle = .overFullScreen
-        deleteBottom.modalPresentationStyle = .overFullScreen
+        dailyCompleteBottom.modalPresentationStyle = .overFullScreen
+        dailyDeleteBottom.modalPresentationStyle = .overFullScreen
         self.navigationController?.navigationBar.isHidden = true
         self.view.bringSubviewToFront(deleteButton)
+        deleteAlertView.isHidden = true
     }
     
     func setHierarchy() {
-        self.view.addSubviews(customNavigationBar, deleteButton, routineView)
+        self.view.addSubviews(customNavigationBar, deleteButton, routineView, deleteAlertView)
     }
     
     func setLayout() {
@@ -98,13 +100,20 @@ extension DailyViewController {
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(17)
             $0.height.equalTo(56)
         }
+        
+        deleteAlertView.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
+            $0.height.equalTo(51)
+        }
     }
     
     func setDelegate() {
         collectionview.delegate = self
         collectionview.dataSource = self
-        exampleBottom.buttonDelegate = self
-        deleteBottom.buttonDelegate = self
+        dailyCompleteBottom.buttonDelegate = self
+        dailyDeleteBottom.buttonDelegate = self
     }
     
     func setAddTarget() {
@@ -114,7 +123,7 @@ extension DailyViewController {
     
     @objc
     func deleteTapped() {
-        self.present(deleteBottom, animated: false)
+        self.present(dailyDeleteBottom, animated: false)
     }
     
     private func updateCellsForEditing() {
@@ -126,7 +135,6 @@ extension DailyViewController {
     }
     
     @objc func updateDeleteLabel() {
-        
         let count = DailyRoutineCollectionViewCell.sharedVariable
         let title = "\(count)개 삭제"
         deleteButton.setTitle(title, for: .normal)
@@ -138,7 +146,6 @@ extension DailyViewController {
             self.deleteButton.backgroundColor = .SoftieRed
             self.deleteButton.isUserInteractionEnabled = true
         }
-        
     }
 }
 
@@ -169,13 +176,35 @@ extension DailyViewController: UICollectionViewDataSource {
 }
 
 extension DailyViewController: BottomSheetButtonDelegate {
-    func leftButtonTapped() {
+    func bakcButtonTapped() {
         self.dismiss(animated: false)
     }
     
-    func rightButtonTapped() {
+    func completeButtonTapped() {
         let cell = collectionview.cellForItem(at: [0, status]) as? DailyRoutineCollectionViewCell
         cell?.achieveButton.isEnabled = false
+        self.dismiss(animated: false)
+    }
+    
+    func deleteButtonTapped() {
+        self.isEditing.toggle()
+        self.deleteButton.isHidden = true
+        customNavigationBar.cancelButton.isHidden = true
+        customNavigationBar.editButton.isHidden = false
+        for cell in self.collectionview.visibleCells {
+            if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                dailyCell.achieveButton.isUserInteractionEnabled = true
+            }
+        }
+        self.deleteAlertView.isHidden = false
+        
+        let count = DailyRoutineCollectionViewCell.sharedVariable
+        let title = "데일리 루틴을 \(count)개 삭제했어요"
+        deleteAlertView.titleLabel.text = title
+        UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+            self.deleteAlertView.alpha = 0.0
+        })
+        
         self.dismiss(animated: false)
     }
 }
@@ -183,7 +212,7 @@ extension DailyViewController: BottomSheetButtonDelegate {
 extension DailyViewController: PresentDelegate {
     func buttonTapped(in cell: UICollectionViewCell) {
         self.status = cell.tag
-        self.present(exampleBottom, animated: false)
+        self.present(dailyCompleteBottom, animated: false)
     }
 }
 
@@ -224,6 +253,5 @@ extension DailyViewController {
                 }
             }
         }
-
     }
 }
