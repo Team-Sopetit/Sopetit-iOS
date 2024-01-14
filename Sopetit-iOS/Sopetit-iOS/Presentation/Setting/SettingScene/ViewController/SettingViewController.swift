@@ -12,11 +12,13 @@ final class SettingViewController: UIViewController {
     // MARK: - Properties
     
     let sectionCellCounts = [3, 1, 1, 2]
+    let attributedString = NSAttributedString(string: "회원 탈퇴", attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
     
     // MARK: - UI Components
     
     let customNaviBar = CustomNavigationBarView()
     let settingView = SettingView()
+    private let logoutBottom = BottomSheetViewController(bottomStyle: .logoutBottom)
     
     // MARK: - Life Cycles
     
@@ -44,6 +46,7 @@ extension SettingViewController {
     func setUI() {
         self.view.backgroundColor = .SoftieBack
         self.navigationController?.navigationBar.isHidden = true
+        logoutBottom.modalPresentationStyle = .overFullScreen
     }
     
     func setHierarchy() {
@@ -66,12 +69,34 @@ extension SettingViewController {
     func setDelegate() {
         settingView.tableView.delegate = self
         settingView.tableView.dataSource = self
+        logoutBottom.buttonDelegate = self
     }
 }
 
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 51
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath {
+        case [3, 0]:
+            presentLogoutBottom()
+        case [3, 1]:
+            pushDropoutView()
+        default:
+            break
+        }
+    }
+
+    private func presentLogoutBottom() {
+        present(logoutBottom, animated: true, completion: nil)
+    }
+    
+    private func pushDropoutView() {
+        self.navigationController?.pushViewController(DropoutViewController(), animated: true)
     }
 }
 
@@ -85,8 +110,66 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
-        print(indexPath)
+        switch indexPath[0] {
+        case 2...3:
+            cell.nextButton.isHidden = true
+        default:
+            break
+        }
+        switch indexPath {
+        case [0, 0]:
+            cell.iconImage.image = ImageLiterals.Setting.icUserSecurity
+            cell.settingLabel.text = "개인정보 처리방침"
+        case [0, 1]:
+            cell.iconImage.image = ImageLiterals.Setting.icDocument
+            cell.settingLabel.text = "서비스 이용 약관"
+        case [0, 2]:
+            cell.iconImage.image = ImageLiterals.Setting.icGuide
+            cell.settingLabel.text = "서비스 이용 가이드"
+        case [1, 0]:
+            cell.iconImage.image = ImageLiterals.Setting.icFeedback
+            cell.settingLabel.text = "피드백"
+        case [2, 0]:
+            cell.settingLabel.text = "현재 버전 1.0.0"
+            cell.settingLabel.snp.makeConstraints {
+                $0.leading.equalToSuperview().inset(20)
+                $0.centerY.equalToSuperview()
+            }
+        case [3, 0]:
+            cell.settingLabel.text = "로그아웃"
+            cell.settingLabel.textColor = .Gray300
+            cell.settingLabel.font = .fontGuide(.body4)
+            cell.settingLabel.snp.makeConstraints {
+                $0.leading.equalToSuperview().inset(20)
+                $0.centerY.equalToSuperview()
+            }
+        case [3, 1]:
+            cell.settingLabel.text = "회원 탈퇴"
+            cell.settingLabel.textColor = .Gray300
+            cell.settingLabel.font = .fontGuide(.body4)
+            cell.settingLabel.attributedText = attributedString
+            cell.settingLabel.snp.makeConstraints {
+                $0.leading.equalToSuperview().inset(20)
+                $0.centerY.equalToSuperview()
+            }
+        default:
+            break
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let separatorView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 8))
+        separatorView.backgroundColor = .SoftieBack
+        return separatorView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
 }
 
@@ -105,4 +188,19 @@ extension SettingViewController {
         customNaviBar.isTitleViewIncluded = true
         customNaviBar.isTitleLabelIncluded = "설정"
     }
+}
+
+extension SettingViewController: BottomSheetButtonDelegate {
+    func deleteButtonTapped() {
+        self.dismiss(animated: true)
+    }
+    
+    func bakcButtonTapped() {
+        self.dismiss(animated: true)
+    }
+    
+    func completeButtonTapped() {
+        self.dismiss(animated: true)
+    }
+    
 }

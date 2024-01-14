@@ -54,12 +54,10 @@ extension DailyView {
     }
     
     func setLayout() {
-        
         collectionView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalToSuperview().offset(13)
         }
-        
     }
     
     func setRegisterCell() {

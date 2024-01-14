@@ -1,0 +1,91 @@
+//
+//  DropoutViewController.swift
+//  Sopetit-iOS
+//
+//  Created by Woo Jye Lee on 1/12/24.
+//
+
+import UIKit
+
+import SnapKit
+
+final class DropoutViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    // MARK: - UI Components
+    
+    let customNaviBar = CustomNavigationBarView()
+    let dropoutView = DropoutView()
+    
+    // MARK: - Life Cycles
+    
+    override func loadView() {
+        super.loadView()
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        getAPI()
+        setUI()
+        setHierarchy()
+        setLayout()
+        setDelegate()
+        setBarConfiguration()
+    }
+}
+
+// MARK: - Extensions
+
+extension DropoutViewController {
+
+    func setUI() {
+        self.view.backgroundColor = .SoftieBack
+    }
+    
+    func setHierarchy() {
+        self.view.addSubviews(dropoutView, customNaviBar)
+    }
+    
+    func setLayout() {
+        customNaviBar.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(self.view.safeAreaLayoutGuide)
+            $0.height.equalTo(44)
+        }
+        
+        dropoutView.snp.makeConstraints {
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(customNaviBar.snp.bottom)
+        }
+    }
+    
+    func setDelegate() {
+        
+    }
+}
+
+// MARK: - Network
+
+extension DropoutViewController {
+
+    func getAPI() {
+        
+    }
+}
+
+extension DropoutViewController {
+    func setBarConfiguration() {
+        self.customNaviBar.isBackButtonIncluded = true
+        self.customNaviBar.isTitleViewIncluded = true
+        self.customNaviBar.isTitleLabelIncluded = "회원탈퇴"
+        self.customNaviBar.backButton.addTarget(self, action: #selector(backbuttonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    func backbuttonTapped() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}

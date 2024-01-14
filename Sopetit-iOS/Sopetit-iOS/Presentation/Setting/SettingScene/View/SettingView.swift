@@ -17,6 +17,7 @@ final class SettingView: UIView {
     
     let tableView: UITableView = {
         let tableview = UITableView()
+        tableview.backgroundColor = .SoftieBack
         return tableview
     }()
     

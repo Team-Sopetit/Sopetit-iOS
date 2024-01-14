@@ -18,13 +18,13 @@ final class SettingTableViewCell: UITableViewCell, UITableViewRegisterable {
 
     // MARK: - UI Components
     
-    let iconImage: UIImageView = {
+    lazy var iconImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         return image
     }()
     
-    let settingLabel: UILabel = {
+    lazy var settingLabel: UILabel = {
         let label = UILabel()
         label.font = .fontGuide(.body2)
         label.textColor = .Gray600
@@ -58,7 +58,7 @@ final class SettingTableViewCell: UITableViewCell, UITableViewRegisterable {
 extension SettingTableViewCell {
 
     func setUI() {
-        
+        self.backgroundColor = .SoftieWhite
     }
     
     func setHierarchy() {
@@ -74,7 +74,7 @@ extension SettingTableViewCell {
         
         settingLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().inset(8)
+            $0.leading.equalTo(iconImage.snp.trailing).offset(8)
         }
         
         nextButton.snp.makeConstraints {
