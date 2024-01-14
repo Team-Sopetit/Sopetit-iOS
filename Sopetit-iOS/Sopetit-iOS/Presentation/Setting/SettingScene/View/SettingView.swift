@@ -21,8 +21,7 @@ final class SettingView: UIView {
         tableview.isScrollEnabled = false
         tableview.sectionFooterHeight = 0
         tableview.sectionHeaderTopPadding = 0
-        tableview.separatorStyle = .singleLine
-        tableview.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        tableview.separatorStyle = .none
         return tableview
     }()
     

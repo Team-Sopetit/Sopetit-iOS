@@ -160,7 +160,6 @@ extension SettingViewController: UITableViewDataSource {
             cell.settingLabel.text = "로그아웃"
             cell.settingLabel.textColor = .Gray300
             cell.settingLabel.font = .fontGuide(.body4)
-            tableView.separatorInset = UIEdgeInsets(top: 0, left: SizeLiterals.Screen.screenWidth/2, bottom: 0, right: SizeLiterals.Screen.screenWidth/2)
             cell.iconImage.snp.updateConstraints {
                 $0.size.equalTo(0)
             }
@@ -182,7 +181,14 @@ extension SettingViewController: UITableViewDataSource {
         }
         return cell
     }
-}
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath == [3, 0] || indexPath == [3, 1] || indexPath == [0, 2] || indexPath == [1, 0] || indexPath == [2, 0] {
+            if let settingCell = cell as? SettingTableViewCell {
+                settingCell.separateLine.isHidden = true
+            }
+        }
+    }}
 
 extension SettingViewController {
     func setBarConfiguration() {

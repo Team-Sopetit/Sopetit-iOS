@@ -36,6 +36,12 @@ final class SettingTableViewCell: UITableViewCell, UITableViewRegisterable {
         return button
     }()
     
+    let separateLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = .SoftieBack
+        return view
+    }()
+    
     // MARK: - Life Cycles
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -61,7 +67,7 @@ extension SettingTableViewCell {
     }
     
     func setHierarchy() {
-        self.addSubviews(iconImage, settingLabel, nextButton)
+        self.addSubviews(iconImage, settingLabel, nextButton, separateLine)
     }
     
     func setLayout() {
@@ -80,6 +86,12 @@ extension SettingTableViewCell {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(20)
             $0.size.equalTo(23)
+        }
+        
+        separateLine.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(2)
+            $0.bottom.equalToSuperview()
         }
     }
 }
