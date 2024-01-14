@@ -17,7 +17,11 @@ final class DailyRoutineThemeView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 16
-        layout.sectionInset = UIEdgeInsets(top: 15, left: 20, bottom: 12, right: 20)
+        if SizeLiterals.Screen.screenHeight < 812 {
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 12, right: 20)
+        } else {
+            layout.sectionInset = UIEdgeInsets(top: 15, left: 20, bottom: 12, right: 20)
+        }
         layout.scrollDirection = .horizontal
         collectionView.isScrollEnabled = true
         collectionView.showsHorizontalScrollIndicator = false

@@ -123,13 +123,13 @@ extension AddDailyRoutineView {
             $0.horizontalEdges.equalToSuperview()
         }
         
-        dailyRoutineThemeView.snp.makeConstraints {
-            $0.top.equalTo(customNavigationBar.snp.bottom)
-            $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(97)
-        }
-        
         if SizeLiterals.Screen.screenHeight < 812 {
+            dailyRoutineThemeView.snp.makeConstraints {
+                $0.top.equalTo(customNavigationBar.snp.bottom)
+                $0.horizontalEdges.equalToSuperview()
+                $0.height.equalTo(82)
+            }
+            
             divideView.snp.makeConstraints {
                 $0.top.equalTo(dailyRoutineThemeView.snp.bottom)
                 $0.horizontalEdges.equalToSuperview()
@@ -137,11 +137,17 @@ extension AddDailyRoutineView {
             }
             
             collectionView.snp.makeConstraints {
-                $0.top.equalTo(divideView.snp.bottom).offset(0)
+                $0.top.equalTo(divideView.snp.bottom).offset(20)
                 $0.horizontalEdges.equalToSuperview()
                 $0.height.equalTo(Const.itemSize.height)
             }
         } else {
+            dailyRoutineThemeView.snp.makeConstraints {
+                $0.top.equalTo(customNavigationBar.snp.bottom)
+                $0.horizontalEdges.equalToSuperview()
+                $0.height.equalTo(97)
+            }
+            
             divideView.snp.makeConstraints {
                 $0.top.equalTo(dailyRoutineThemeView.snp.bottom)
                 $0.horizontalEdges.equalToSuperview()
