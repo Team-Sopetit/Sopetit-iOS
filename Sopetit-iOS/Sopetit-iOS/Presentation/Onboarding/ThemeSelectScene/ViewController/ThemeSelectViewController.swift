@@ -11,8 +11,7 @@ final class ThemeSelectViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let themeDummy = ThemeSelectEntity.themeDummy()
-    private var themeEntity: ThemeSelectEntity?
+    private var themeEntity = ThemeSelectEntity(themes: [])
     var selectedCount = 0
     var selectedCategory: [Int] = []
     var doll: String = ""
@@ -113,12 +112,12 @@ extension ThemeSelectViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = ThemeSelectCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
-        cell.setDataBind(model: themeDummy.themes[indexPath.item])
+        cell.setDataBind(model: themeEntity.themes[indexPath.item])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return themeDummy.themes.count
+        return themeEntity.themes.count
     }
 }
 
@@ -134,9 +133,10 @@ private extension ThemeSelectViewController {
                         self.themeEntity = listData
                         dump(listData)
                     }
+                    self.collectionView.reloadData()
                 }
             case .requestErr, .serverErr:
-                self.makeAlert(title: "오류가 발생했습니다", message: "다시 시도해주세요")
+                break
             default:
                 break
             }
