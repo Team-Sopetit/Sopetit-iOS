@@ -9,8 +9,6 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     
-    // MARK: - Properties
-    
     // MARK: - UI Components
     
     private let loginView = LoginView()
@@ -25,11 +23,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAPI()
         setUI()
-        setHierarchy()
-        setLayout()
-        setDelegate()
     }
 }
 
@@ -38,27 +32,6 @@ final class LoginViewController: UIViewController {
 extension LoginViewController {
 
     func setUI() {
-        
-    }
-    
-    func setHierarchy() {
-        
-    }
-    
-    func setLayout() {
-        
-    }
-    
-    func setDelegate() {
-        
-    }
-}
-
-// MARK: - Network
-
-extension LoginViewController {
-
-    func getAPI() {
-        
+        self.navigationController?.navigationBar.isHidden = true
     }
 }

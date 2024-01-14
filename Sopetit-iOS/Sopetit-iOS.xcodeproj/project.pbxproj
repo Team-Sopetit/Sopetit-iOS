@@ -12,6 +12,11 @@
 		0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19C2B4A896500F87860 /* LoginViewController.swift */; };
 		00A8E39A2B4D8B0D001461CE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A8E3992B4D8B0D001461CE /* HomeView.swift */; };
 		00A8E39C2B4D8B20001461CE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A8E39B2B4D8B20001461CE /* HomeViewController.swift */; };
+		00CCDCC22B51B5AF007DD0E6 /* SplashOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CCDCC12B51B5AF007DD0E6 /* SplashOneView.swift */; };
+		00CCDCC42B51B5BD007DD0E6 /* SplashTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CCDCC32B51B5BD007DD0E6 /* SplashTwoView.swift */; };
+		00CCDCC62B51B5C8007DD0E6 /* SplashThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CCDCC52B51B5C8007DD0E6 /* SplashThreeView.swift */; };
+		00CCDCC82B51B5D8007DD0E6 /* SplashFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CCDCC72B51B5D8007DD0E6 /* SplashFourView.swift */; };
+		00CCDCD22B53CB40007DD0E6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CCDCD12B53CB40007DD0E6 /* SplashViewController.swift */; };
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
 		04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */; };
 		092AE2B82B53F25E00E9A20D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 092AE2B72B53F25E00E9A20D /* Config.xcconfig */; };
@@ -143,6 +148,11 @@
 		0084F19C2B4A896500F87860 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		00A8E3992B4D8B0D001461CE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		00A8E39B2B4D8B20001461CE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		00CCDCC12B51B5AF007DD0E6 /* SplashOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashOneView.swift; sourceTree = "<group>"; };
+		00CCDCC32B51B5BD007DD0E6 /* SplashTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashTwoView.swift; sourceTree = "<group>"; };
+		00CCDCC52B51B5C8007DD0E6 /* SplashThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashThreeView.swift; sourceTree = "<group>"; };
+		00CCDCC72B51B5D8007DD0E6 /* SplashFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashFourView.swift; sourceTree = "<group>"; };
+		00CCDCD12B53CB40007DD0E6 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFooterView.swift; sourceTree = "<group>"; };
 		092AE2B72B53F25E00E9A20D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -287,6 +297,42 @@
 				004029052B4EDCF6002127BC /* ActionCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		00CCDCBD2B51B388007DD0E6 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				00CCDCBE2B51B580007DD0E6 /* SplashScene */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		00CCDCBE2B51B580007DD0E6 /* SplashScene */ = {
+			isa = PBXGroup;
+			children = (
+				00CCDCC02B51B59A007DD0E6 /* View */,
+				00CCDCBF2B51B592007DD0E6 /* ViewController */,
+			);
+			path = SplashScene;
+			sourceTree = "<group>";
+		};
+		00CCDCBF2B51B592007DD0E6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				00CCDCD12B53CB40007DD0E6 /* SplashViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		00CCDCC02B51B59A007DD0E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				00CCDCC12B51B5AF007DD0E6 /* SplashOneView.swift */,
+				00CCDCC32B51B5BD007DD0E6 /* SplashTwoView.swift */,
+				00CCDCC52B51B5C8007DD0E6 /* SplashThreeView.swift */,
+				00CCDCC72B51B5D8007DD0E6 /* SplashFourView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		093C1E052B4CFDAF00EF84AB /* NavigationBar */ = {
@@ -482,6 +528,7 @@
 			isa = PBXGroup;
 			children = (
 				A42C330A2B3EAEC300C4B477 /* Common */,
+				00CCDCBD2B51B388007DD0E6 /* Splash */,
 				A42C33092B3EAEC000C4B477 /* Auth */,
 				A42C33072B3EAE8900C4B477 /* Onboarding */,
 				A42C33082B3EAEBB00C4B477 /* Home */,
@@ -1267,6 +1314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00CCDCD22B53CB40007DD0E6 /* SplashViewController.swift in Sources */,
 				09B2536B2B4E2FDC005E7032 /* HappyRoutineCategory.swift in Sources */,
 				09B253632B4D561C005E7032 /* HappyRoutineTagView.swift in Sources */,
 				A42C33182B3EAF4B00C4B477 /* SettingView.swift in Sources */,
@@ -1280,6 +1328,7 @@
 				09C1A65C2B529D2E00C1A57D /* DailyRoutineThemeCollectionViewCell.swift in Sources */,
 				A42C32BB2B3EAAEA00C4B477 /* FontLiterals.swift in Sources */,
 				A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */,
+				00CCDCC62B51B5C8007DD0E6 /* SplashThreeView.swift in Sources */,
 				A42C32E32B3EAC8200C4B477 /* NetworkResult.swift in Sources */,
 				A49BFDD72B4D5F2800035EB6 /* StroyTellingFirstView.swift in Sources */,
 				A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */,
@@ -1291,6 +1340,7 @@
 				A4832BA42B4A5C37007879FF /* BottomSheetViewController.swift in Sources */,
 				093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */,
 				A42C33042B3EAE4F00C4B477 /* AuthService.swift in Sources */,
+				00CCDCC82B51B5D8007DD0E6 /* SplashFourView.swift in Sources */,
 				A49BFE2A2B4E857300035EB6 /* DollNameView.swift in Sources */,
 				A42C32B72B3EAAD800C4B477 /* ImageLiterals.swift in Sources */,
 				A42C32BD2B3EAAF200C4B477 /* SizeLiterals.swift in Sources */,
@@ -1332,6 +1382,7 @@
 				A49BFE412B5065DE00035EB6 /* AlertMessageView.swift in Sources */,
 				09C1A6542B52935C00C1A57D /* DailyRoutineThemeView.swift in Sources */,
 				093C1E092B4D2C8200EF84AB /* BearDescriptionView.swift in Sources */,
+				00CCDCC42B51B5BD007DD0E6 /* SplashTwoView.swift in Sources */,
 				093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */,
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,
 				A42C32FA2B3EADF900C4B477 /* DailyEntity.swift in Sources */,
@@ -1341,6 +1392,7 @@
 				A49BFDF22B4DA53A00035EB6 /* ThemeSelectEntity.swift in Sources */,
 				A49BFDE92B4D873400035EB6 /* DollChoiceCollectionViewCell.swift in Sources */,
 				097224852B4F7CE500CB7893 /* HappyRoutineCardView.swift in Sources */,
+				00CCDCC22B51B5AF007DD0E6 /* SplashOneView.swift in Sources */,
 				09C1A6582B5297B200C1A57D /* DailyRoutineTheme.swift in Sources */,
 				09B253662B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift in Sources */,
 				A42C331F2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift in Sources */,
