@@ -57,10 +57,7 @@ final class RoutineChoiceCollectionViewCell: UICollectionViewCell, UICollectionV
 // MARK: - Extensions
 
 extension RoutineChoiceCollectionViewCell {
-    
-    func setUI() {
-    }
-    
+
     func setHierarchy() {
         addSubview(routineLabel)
     }
@@ -71,7 +68,7 @@ extension RoutineChoiceCollectionViewCell {
         }
     }
     
-    func setDataBind(model: RoutineTheme) {
+    func setDataBind(model: Routine) {
         routineLabel.text = model.content
         if model.content.contains("\n") {
             routineLabel.layer.cornerRadius = 35
