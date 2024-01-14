@@ -34,7 +34,7 @@ private extension TabBarController {
     
     func setTabBarItems() {
         let dailyVC = DailyViewController()
-        let homeVC = ViewController()
+        let homeVC = HomeViewController()
         let happyVC = HappyRoutineViewController()
         
         tabs = [
@@ -59,7 +59,7 @@ private extension TabBarController {
         }
         
         setViewControllers(tabs, animated: false)
-
+        selectedViewController = tabs[1]
     }
     
     func setTabBarUI() {

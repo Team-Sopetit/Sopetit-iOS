@@ -68,6 +68,18 @@ extension DollNameViewController {
         }
         let nav = ThemeSelectViewController()
         nav.doll = userDollName
+        switch dollNum {
+        case 0:
+            nav.dollType = "BROWN"
+        case 1:
+            nav.dollType = "GRAY"
+        case 2:
+            nav.dollType = "WHITE"
+        case 3:
+            nav.dollType = "RED"
+        default:
+            break
+        }
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }
