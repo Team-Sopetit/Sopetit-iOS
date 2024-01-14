@@ -64,7 +64,7 @@ extension DailyRoutineTheme {
                 DailyRoutineTheme(themeId: 11,
                                   name: "비워내기",
                                   iconImage: ImageLiterals.DailyRoutine.icDaily12Filled,
-                                  cardImage: ImageLiterals.DailyRoutine.imgDailycard12),
+                                  cardImage: ImageLiterals.DailyRoutine.imgDailycard12)
         ]
     }
 }

@@ -15,6 +15,15 @@ final class DailyRoutineThemeCollectionViewCell: UICollectionViewCell, UICollect
 
     static let isFromNib: Bool = false
     
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                bindSelected()
+            } else {
+                bindNotSelected()
+            }
+        }
+    }
     // MARK: - UI Components
     
     private let containerView: UIView = {
@@ -34,7 +43,7 @@ final class DailyRoutineThemeCollectionViewCell: UICollectionViewCell, UICollect
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .fontGuide(.caption1)
-        label.textColor = .Gray700
+        label.textColor = .Gray400
         return label
     }()
     
@@ -50,6 +59,12 @@ final class DailyRoutineThemeCollectionViewCell: UICollectionViewCell, UICollect
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
+        bindNotSelected()
     }
 }
 
@@ -84,8 +99,14 @@ extension DailyRoutineThemeCollectionViewCell {
         }
     }
     
-    func setSelected() {
-        
+    func bindSelected() {
+        containerView.layer.borderColor = UIColor.Gray400.cgColor
+        titleLabel.textColor = .Gray700
+    }
+    
+    func bindNotSelected() {
+        containerView.layer.borderColor = UIColor.Gray100.cgColor
+        titleLabel.textColor = .Gray400
     }
 }
 

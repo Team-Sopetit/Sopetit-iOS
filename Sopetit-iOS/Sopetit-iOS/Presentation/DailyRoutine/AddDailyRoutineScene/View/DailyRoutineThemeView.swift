@@ -10,23 +10,29 @@ import UIKit
 import SnapKit
 
 final class DailyRoutineThemeView: UIView {
-
-    // MARK: - Properties
-    
     
     // MARK: - UI Components
     
+    let collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = 16
+        layout.sectionInset = UIEdgeInsets(top: 15, left: 20, bottom: 12, right: 20)
+        layout.scrollDirection = .horizontal
+        collectionView.isScrollEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.collectionViewLayout = layout
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
     
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
-        setRegisterCell()
     }
     
     @available(*, unavailable)
@@ -37,34 +43,16 @@ final class DailyRoutineThemeView: UIView {
 
 // MARK: - Extensions
 
-extension DailyRoutineThemeView {
+private extension DailyRoutineThemeView {
 
-    func setUI() {
-        
-    }
-    
     func setHierarchy() {
-
+        self.addSubviews(collectionView)
     }
     
     func setLayout() {
-
-    }
-    
-    func setAddTarget() {
-
-    }
-    
-    @objc
-    func buttonTapped() {
-        
-    }
-    
-    func setRegisterCell() {
-        
-    }
-    
-    func setDataBind() {
-        
+        collectionView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalTo(97)
+        }
     }
 }
