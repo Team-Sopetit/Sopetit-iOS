@@ -75,7 +75,7 @@ extension ThemeSelectViewController: UICollectionViewDelegate {
             if !selectedCell.isSelected {
                 if selectedCount < 3 {
                     selectedCount += 1
-                    selectedCategory.append(indexPath.item)
+                    selectedCategory.append(themeEntity.themes[indexPath.item].themeID)
                     selectedCell.isSelected = true
                     selectedCell.themeIcon.backgroundColor = .Gray100
                     selectedCell.themeIcon.layer.borderColor = UIColor.Gray400.cgColor
@@ -95,7 +95,7 @@ extension ThemeSelectViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
         if let selectedCell = collectionView.cellForItem(at: indexPath) as? ThemeSelectCollectionViewCell {
             if selectedCell.isSelected {
-                if let index = selectedCategory.firstIndex(where: { num in num == indexPath.item }) {
+                if let index = selectedCategory.firstIndex(where: { num in num == themeEntity.themes[indexPath.item].themeID }) {
                     selectedCategory.remove(at: index)
                 }
                 selectedCount -= 1

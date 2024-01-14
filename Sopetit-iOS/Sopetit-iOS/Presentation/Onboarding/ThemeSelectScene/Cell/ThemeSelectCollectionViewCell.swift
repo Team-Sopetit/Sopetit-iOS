@@ -25,14 +25,15 @@ final class ThemeSelectCollectionViewCell: UICollectionViewCell, UICollectionVie
         return stackview
     }()
     
-    let themeIcon: UIImageView = {
+    var themeIcon: UIImageView = {
         let icon = UIImageView()
-        icon.contentMode = .scaleAspectFit
-        icon.contentMode = .center
         icon.backgroundColor = .SoftieWhite
+        icon.clipsToBounds = true
         icon.layer.cornerRadius = 35
         icon.layer.borderColor = UIColor.Gray100.cgColor
         icon.layer.borderWidth = 1
+        icon.contentMode = .scaleAspectFit
+        icon.contentMode = .center
         return icon
     }()
     
@@ -83,7 +84,7 @@ extension ThemeSelectCollectionViewCell {
     }
     
     func setDataBind(model: Theme) {
-        themeIcon.image = UIImage(named: model.iconImageURL)
         themeTitle.text = model.name
+        themeIcon.kfSetImage(url: model.iconImageURL)
     }
 }
