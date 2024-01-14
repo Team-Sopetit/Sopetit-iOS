@@ -15,10 +15,14 @@ final class SettingView: UIView {
     
     // MARK: - UI Components
     
-    let tableView: UITableView = {
-        let tableview = UITableView()
-        tableview.backgroundColor = .SoftieBack
+    lazy var tableView: UITableView = {
+        let tableview = UITableView(frame: .zero, style: .plain)
+        tableview.backgroundColor = .SoftieWhite
         tableview.isScrollEnabled = false
+        tableview.sectionFooterHeight = 0
+        tableview.sectionHeaderTopPadding = 0
+        tableview.separatorStyle = .singleLine
+        tableview.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         return tableview
     }()
     
@@ -54,7 +58,9 @@ extension SettingView {
     
     func setLayout() {
         tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalToSuperview().inset(16)
+            $0.leading.trailing.bottom.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth)
         }
     }
     

@@ -42,7 +42,7 @@ final class SettingViewController: UIViewController {
 extension SettingViewController {
 
     func setUI() {
-        self.view.backgroundColor = .SoftieBack
+        self.view.backgroundColor = .SoftieWhite
         self.navigationController?.navigationBar.isHidden = true
         logoutBottom.modalPresentationStyle = .overFullScreen
     }
@@ -60,7 +60,7 @@ extension SettingViewController {
         
         settingView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.top.equalTo(customNaviBar.snp.bottom).offset(16)
+            $0.top.equalTo(customNaviBar.snp.bottom)
         }
     }
     
@@ -74,6 +74,27 @@ extension SettingViewController {
 extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 51
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let separatorView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 1))
+        separatorView.backgroundColor = .SoftieBack
+        return separatorView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 0
+        case 1:
+            return 8
+        case 2:
+            return 8
+        case 3:
+            return 8
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -129,44 +150,37 @@ extension SettingViewController: UITableViewDataSource {
             cell.settingLabel.text = "피드백"
         case [2, 0]:
             cell.settingLabel.text = "현재 버전 1.0.0"
-            cell.settingLabel.snp.makeConstraints {
-                $0.leading.equalToSuperview().inset(20)
-                $0.centerY.equalToSuperview()
+            cell.iconImage.snp.updateConstraints {
+                $0.size.equalTo(0)
+            }
+            cell.settingLabel.snp.updateConstraints {
+                $0.leading.equalTo(cell.iconImage.snp.trailing)
             }
         case [3, 0]:
             cell.settingLabel.text = "로그아웃"
             cell.settingLabel.textColor = .Gray300
             cell.settingLabel.font = .fontGuide(.body4)
-            cell.settingLabel.snp.makeConstraints {
-                $0.leading.equalToSuperview().inset(20)
-                $0.centerY.equalToSuperview()
+            tableView.separatorInset = UIEdgeInsets(top: 0, left: SizeLiterals.Screen.screenWidth/2, bottom: 0, right: SizeLiterals.Screen.screenWidth/2)
+            cell.iconImage.snp.updateConstraints {
+                $0.size.equalTo(0)
+            }
+            cell.settingLabel.snp.updateConstraints {
+                $0.leading.equalTo(cell.iconImage.snp.trailing)
             }
         case [3, 1]:
             cell.settingLabel.text = "회원 탈퇴"
             cell.settingLabel.textColor = .Gray300
             cell.settingLabel.setUnderlinePartFontChange(targetString: "회원 탈퇴", font: .fontGuide(.body4))
-            cell.settingLabel.snp.makeConstraints {
-                $0.leading.equalToSuperview().inset(20)
-                $0.centerY.equalToSuperview()
+            cell.iconImage.snp.updateConstraints {
+                $0.size.equalTo(0)
+            }
+            cell.settingLabel.snp.updateConstraints {
+                $0.leading.equalTo(cell.iconImage.snp.trailing)
             }
         default:
             break
         }
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let separatorView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 8))
-        separatorView.backgroundColor = .SoftieBack
-        return separatorView
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
     }
 }
 
@@ -175,20 +189,21 @@ extension SettingViewController {
         customNaviBar.isBackButtonIncluded = true
         customNaviBar.isTitleViewIncluded = true
         customNaviBar.isTitleLabelIncluded = "설정"
+        customNaviBar.backgroundColor = .clear
     }
 }
 
 extension SettingViewController: BottomSheetButtonDelegate {
     func deleteButtonTapped() {
-        self.dismiss(animated: true)
+        self.dismiss(animated: false)
     }
     
     func bakcButtonTapped() {
-        self.dismiss(animated: true)
+        self.dismiss(animated: false)
     }
     
     func completeButtonTapped() {
-        self.dismiss(animated: true)
+        self.dismiss(animated: false)
     }
     
 }
