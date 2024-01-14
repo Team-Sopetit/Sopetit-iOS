@@ -12,9 +12,11 @@ final class ThemeSelectViewController: UIViewController {
     // MARK: - Properties
     
     private var themeEntity = ThemeSelectEntity(themes: [])
+    private var dollEntity = DollImageEntity(faceImageURL: "")
     var selectedCount = 0
     var selectedCategory: [Int] = []
     var doll: String = ""
+    var dollType: String = ""
     
     // MARK: - UI Components
     
@@ -36,6 +38,7 @@ final class ThemeSelectViewController: UIViewController {
         setDelegate()
         setAddTarget()
         getThemeAPI()
+        getDollAPI()
     }
 }
 
@@ -131,9 +134,26 @@ private extension ThemeSelectViewController {
                 if let data = data as? GenericResponse<ThemeSelectEntity> {
                     if let listData = data.data {
                         self.themeEntity = listData
-                        dump(listData)
                     }
                     self.collectionView.reloadData()
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func getDollAPI() {
+        OnBoardingService.shared.getOnboardingDollAPI(dollType: self.dollType) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<DollImageEntity> {
+                    if let listData = data.data {
+                        self.dollEntity = listData
+                    }
+                    self.themeSelectView.setDataBind(model: self.dollEntity)
                 }
             case .requestErr, .serverErr:
                 break
