@@ -65,7 +65,6 @@ private extension CompleteHappyRoutineView {
     func setUI() {
         self.backgroundColor = .SoftieBack
     
-        print(cottonLottieView.layer.bounds.size)
         cottonLottieView.loopMode = .loop
         cottonLottieView.contentMode = .scaleAspectFit
         cottonLottieView.frame = self.bounds

@@ -23,7 +23,7 @@
 		093C1E092B4D2C8200EF84AB /* BearDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E082B4D2C8200EF84AB /* BearDescriptionView.swift */; };
 		095903AA2B5458F100D0AF39 /* happy_complete_som.json in Resources */ = {isa = PBXBuildFile; fileRef = 095903A82B5458F100D0AF39 /* happy_complete_som.json */; };
 		095903AB2B5458F100D0AF39 /* daily_complete_som.json in Resources */ = {isa = PBXBuildFile; fileRef = 095903A92B5458F100D0AF39 /* daily_complete_som.json */; };
-		095903B02B54739000D0AF39 /* CompleteDatilyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095903AF2B54739000D0AF39 /* CompleteDatilyRoutineViewController.swift */; };
+		095903B02B54739000D0AF39 /* CompleteDailyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095903AF2B54739000D0AF39 /* CompleteDailyRoutineViewController.swift */; };
 		095903B22B54739D00D0AF39 /* CompleteDailyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095903B12B54739D00D0AF39 /* CompleteDailyRoutineView.swift */; };
 		097224832B4F782D00CB7893 /* HappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224822B4F782D00CB7893 /* HappyRoutineView.swift */; };
 		097224852B4F7CE500CB7893 /* HappyRoutineCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224842B4F7CE500CB7893 /* HappyRoutineCardView.swift */; };
@@ -159,7 +159,7 @@
 		093C1E082B4D2C8200EF84AB /* BearDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearDescriptionView.swift; sourceTree = "<group>"; };
 		095903A82B5458F100D0AF39 /* happy_complete_som.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = happy_complete_som.json; sourceTree = "<group>"; };
 		095903A92B5458F100D0AF39 /* daily_complete_som.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = daily_complete_som.json; sourceTree = "<group>"; };
-		095903AF2B54739000D0AF39 /* CompleteDatilyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDatilyRoutineViewController.swift; sourceTree = "<group>"; };
+		095903AF2B54739000D0AF39 /* CompleteDailyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDailyRoutineViewController.swift; sourceTree = "<group>"; };
 		095903B12B54739D00D0AF39 /* CompleteDailyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDailyRoutineView.swift; sourceTree = "<group>"; };
 		097224822B4F782D00CB7893 /* HappyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineView.swift; sourceTree = "<group>"; };
 		097224842B4F7CE500CB7893 /* HappyRoutineCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCardView.swift; sourceTree = "<group>"; };
@@ -344,7 +344,7 @@
 		095903AD2B54736F00D0AF39 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				095903AF2B54739000D0AF39 /* CompleteDatilyRoutineViewController.swift */,
+				095903AF2B54739000D0AF39 /* CompleteDailyRoutineViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1445,7 +1445,7 @@
 				A42C332D2B3EAFCC00C4B477 /* OnboardingView.swift in Sources */,
 				097224882B4F7E4900CB7893 /* HappyRoutineCard.swift in Sources */,
 				0084F19B2B4A895700F87860 /* LoginView.swift in Sources */,
-				095903B02B54739000D0AF39 /* CompleteDatilyRoutineViewController.swift in Sources */,
+				095903B02B54739000D0AF39 /* CompleteDailyRoutineViewController.swift in Sources */,
 				09C1A6522B5291DE00C1A57D /* AddDailyRoutineView.swift in Sources */,
 				A42C33022B3EAE4900C4B477 /* OnboardingService.swift in Sources */,
 				A42C32D92B3EAC1C00C4B477 /* MakeAlert.swift in Sources */,

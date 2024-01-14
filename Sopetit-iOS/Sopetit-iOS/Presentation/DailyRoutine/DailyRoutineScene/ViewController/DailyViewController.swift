@@ -184,6 +184,9 @@ extension DailyViewController: BottomSheetButtonDelegate {
         let cell = collectionview.cellForItem(at: [0, status]) as? DailyRoutineCollectionViewCell
         cell?.achieveButton.isEnabled = false
         self.dismiss(animated: false)
+        let vc = CompleteDailyRoutineViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     func deleteButtonTapped() {

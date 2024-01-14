@@ -35,7 +35,7 @@ final class AddHappyRoutineView: UIView {
     
     // MARK: - UI Components
     
-    private let customNavigationBar: CustomNavigationBarView = {
+    let customNavigationBar: CustomNavigationBarView = {
         let navigation = CustomNavigationBarView()
         navigation.isBackButtonIncluded = true
         return navigation

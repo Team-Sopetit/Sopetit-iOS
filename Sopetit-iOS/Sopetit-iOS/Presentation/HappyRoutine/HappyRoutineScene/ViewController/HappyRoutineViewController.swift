@@ -101,6 +101,7 @@ private extension HappyRoutineViewController {
 }
 
 extension HappyRoutineViewController: BottomSheetButtonDelegate {
+    
     func bakcButtonTapped() {
         self.happyRoutineNavigationBar.cancelButton.isHidden = true
         self.happyRoutineNavigationBar.deleteButton.isHidden = false

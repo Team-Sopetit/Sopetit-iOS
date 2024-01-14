@@ -9,8 +9,15 @@ import UIKit
 
 import SnapKit
 
+protocol BackButtonProtocol: AnyObject {
+    
+    func tapBackButton()
+}
+
 final class CustomNavigationBarView: UIView {
 
+    weak var delegate: BackButtonProtocol?
+    
     // MARK: - Properties
     
     var isLeftTitleViewIncluded: Bool {
@@ -216,7 +223,7 @@ private extension CustomNavigationBarView {
     func isTapped(_ sender: UIButton) {
         switch sender {
         case backButton:
-            backButtonAction?()
+            delegate?.tapBackButton()
         case cancelButton:
             cancelButtonAction?()
         case editButton:

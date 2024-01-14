@@ -1,5 +1,5 @@
 //
-//  CompleteDatilyRoutineViewController.swift
+//  CompleteDailyRoutineViewController.swift
 //  Sopetit-iOS
 //
 //  Created by Minjoo Kim on 1/15/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CompleteDatilyRoutineViewController: UIViewController {
+final class CompleteDailyRoutineViewController: UIViewController {
     
     // MARK: - UI Components
     
@@ -33,7 +33,7 @@ final class CompleteDatilyRoutineViewController: UIViewController {
 
 // MARK: - Extensions
 
-private extension CompleteDatilyRoutineViewController {
+private extension CompleteDailyRoutineViewController {
     
     func setAnimation() {
         UIView.animate(withDuration: 0.5, delay: 0.5, animations: {
