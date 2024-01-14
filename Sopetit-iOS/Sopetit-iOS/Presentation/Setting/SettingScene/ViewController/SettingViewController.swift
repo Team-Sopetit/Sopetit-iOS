@@ -12,7 +12,6 @@ final class SettingViewController: UIViewController {
     // MARK: - Properties
     
     let sectionCellCounts = [3, 1, 1, 2]
-    let attributedString = NSAttributedString(string: "회원 탈퇴", attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
     
     // MARK: - UI Components
     
@@ -146,8 +145,7 @@ extension SettingViewController: UITableViewDataSource {
         case [3, 1]:
             cell.settingLabel.text = "회원 탈퇴"
             cell.settingLabel.textColor = .Gray300
-            cell.settingLabel.font = .fontGuide(.body4)
-            cell.settingLabel.attributedText = attributedString
+            cell.settingLabel.setUnderlinePartFontChange(targetString: "회원 탈퇴", font: .fontGuide(.body4))
             cell.settingLabel.snp.makeConstraints {
                 $0.leading.equalToSuperview().inset(20)
                 $0.centerY.equalToSuperview()
