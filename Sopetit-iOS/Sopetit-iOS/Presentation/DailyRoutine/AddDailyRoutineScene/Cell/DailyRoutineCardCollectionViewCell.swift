@@ -37,7 +37,6 @@ final class DailyRoutineCardCollectionViewCell: UICollectionViewCell, UICollecti
     override init(frame: CGRect) {
         super.init(frame: frame)
     
-        setUI()
         setHierarchy()
         setLayout()
     }
@@ -50,10 +49,6 @@ final class DailyRoutineCardCollectionViewCell: UICollectionViewCell, UICollecti
 // MARK: - Extensions
 
 private extension DailyRoutineCardCollectionViewCell {
-
-    func setUI() {
-        
-    }
     
     func setHierarchy() {
         self.addSubviews(cardImageView, titleLabel)
