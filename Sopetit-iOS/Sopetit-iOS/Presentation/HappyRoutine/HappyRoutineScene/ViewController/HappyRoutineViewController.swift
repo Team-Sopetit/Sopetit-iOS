@@ -7,11 +7,14 @@
 
 import UIKit
 
+import SnapKit
+
 final class HappyRoutineViewController: UIViewController {
     
     // MARK: - Properties
     
     private let happyRoutineData = HappyRoutineCard.dummy()
+    var isFromAddHappyBottom: Bool = false
     
     // MARK: - UI Components
     
@@ -36,6 +39,7 @@ final class HappyRoutineViewController: UIViewController {
         setDelegate()
         setAddTarget()
         setNavigationBar()
+        setAlertView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,10 +101,19 @@ private extension HappyRoutineViewController {
             self.present(self.happyDeleteBottom, animated: false)
         }
     }
+    
+    func setAlertView() {
+        if isFromAddHappyBottom {
+            happyRoutineView.addAlertView.isHidden = false
+            UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+                self.happyRoutineView.addAlertView.alpha = 0.0
+            })
+        }
+    }
 }
 
 extension HappyRoutineViewController: BottomSheetButtonDelegate {
-    func bakcButtonTapped() {
+    func backButtonTapped() {
         self.happyRoutineNavigationBar.cancelButton.isHidden = true
         self.happyRoutineNavigationBar.deleteButton.isHidden = false
         self.dismiss(animated: false)
