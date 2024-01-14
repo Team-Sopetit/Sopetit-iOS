@@ -12,8 +12,8 @@
 		045DFE792B504E26005D69EA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE782B504E26005D69EA /* SettingView.swift */; };
 		045DFE7B2B504E38005D69EA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE7A2B504E38005D69EA /* SettingViewController.swift */; };
 		045DFE7E2B50F14C005D69EA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE7D2B50F14C005D69EA /* SettingTableViewCell.swift */; };
-		045DFE812B515FAE005D69EA /* DropoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE802B515FAE005D69EA /* DropoutViewController.swift */; };
-		045DFE862B539BC3005D69EA /* DropoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE852B539BC3005D69EA /* DropoutView.swift */; };
+		045DFE812B515FAE005D69EA /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE802B515FAE005D69EA /* WithdrawViewController.swift */; };
+		045DFE862B539BC3005D69EA /* WithdrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE852B539BC3005D69EA /* WithdrawView.swift */; };
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
 		04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */; };
 		093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */; };
@@ -139,8 +139,8 @@
 		045DFE7A2B504E38005D69EA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		045DFE7D2B50F14C005D69EA /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		045DFE7F2B512AA3005D69EA /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		045DFE802B515FAE005D69EA /* DropoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropoutViewController.swift; sourceTree = "<group>"; };
-		045DFE852B539BC3005D69EA /* DropoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropoutView.swift; sourceTree = "<group>"; };
+		045DFE802B515FAE005D69EA /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
+		045DFE852B539BC3005D69EA /* WithdrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawView.swift; sourceTree = "<group>"; };
 		0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFooterView.swift; sourceTree = "<group>"; };
 		093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineViewController.swift; sourceTree = "<group>"; };
@@ -810,7 +810,7 @@
 			isa = PBXGroup;
 			children = (
 				045DFE7A2B504E38005D69EA /* SettingViewController.swift */,
-				045DFE802B515FAE005D69EA /* DropoutViewController.swift */,
+				045DFE802B515FAE005D69EA /* WithdrawViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -819,7 +819,7 @@
 			isa = PBXGroup;
 			children = (
 				045DFE782B504E26005D69EA /* SettingView.swift */,
-				045DFE852B539BC3005D69EA /* DropoutView.swift */,
+				045DFE852B539BC3005D69EA /* WithdrawView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1338,7 +1338,7 @@
 				A42C32EB2B3EACAC00C4B477 /* URLConstant.swift in Sources */,
 				045DFE792B504E26005D69EA /* SettingView.swift in Sources */,
 				A49BFE1D2B4E541C00035EB6 /* RoutineChoiceViewController.swift in Sources */,
-				045DFE862B539BC3005D69EA /* DropoutView.swift in Sources */,
+				045DFE862B539BC3005D69EA /* WithdrawView.swift in Sources */,
 				A49BFE492B50FC7A00035EB6 /* DailyRoutineService.swift in Sources */,
 				A42C32C12B3EAB1A00C4B477 /* UIView+.swift in Sources */,
 				09B2536D2B4E3529005E7032 /* HappyRoutineTag.swift in Sources */,
@@ -1351,7 +1351,7 @@
 				A49BFE212B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift in Sources */,
 				A42C32C92B3EAB4500C4B477 /* UIStackView+.swift in Sources */,
 				09B2535C2B4D538E005E7032 /* SelectHappyCategoryViewController.swift in Sources */,
-				045DFE812B515FAE005D69EA /* DropoutViewController.swift in Sources */,
+				045DFE812B515FAE005D69EA /* WithdrawViewController.swift in Sources */,
 				09B253612B4D53E7005E7032 /* SelectHappyCategoryView.swift in Sources */,
 				A42C32D12B3EAB7F00C4B477 /* String+.swift in Sources */,
 				A49BFDF02B4DA48200035EB6 /* ThemeSelectView.swift in Sources */,

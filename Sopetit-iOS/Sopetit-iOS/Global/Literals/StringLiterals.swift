@@ -88,4 +88,8 @@ enum I18N {
         static let complete = "완료하기"
         static let completed = "달성 완료"
     }
+    
+    enum Setting {
+        static let withdraw = "정말 가는거야..? 나는 영영 사라져..."
+    }
 }

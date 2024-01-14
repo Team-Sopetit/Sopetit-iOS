@@ -22,6 +22,7 @@ final class WithdrawView: UIView {
         label.font = .fontGuide(.head1)
         return label
     }()
+    
     let bodyLabel: UILabel = {
         let label = UILabel()
         label.text = "탈퇴하면 계정이 삭제되고 모든 데이터가 사라집니다."
@@ -29,6 +30,7 @@ final class WithdrawView: UIView {
         label.textColor = .Gray300
         return label
     }()
+    
     let leftButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .Gray100
@@ -39,6 +41,7 @@ final class WithdrawView: UIView {
         button.clipsToBounds = true
         return button
     }()
+    
     let rightButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .SoftieRed
@@ -49,19 +52,22 @@ final class WithdrawView: UIView {
         button.clipsToBounds = true
         return button
     }()
+    
     let boxImage: UIImageView = {
         let image = UIImageView()
         image.image = ImageLiterals.Setting.imgBoxLogout
         return image
     }()
+    
     let bubbleImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "img_speech_happy")
         return image
     }()
+    
     let bubbleLabel: UILabel = {
         let label = UILabel()
-        label.text = "정말 가는거야..? 나는 영영 사라져..."
+        label.text = I18N.Setting.withdraw
         label.numberOfLines = 2
         label.font = .fontGuide(.bubble18)
         label.textColor = .Gray700

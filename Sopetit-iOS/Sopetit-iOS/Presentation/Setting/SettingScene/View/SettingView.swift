@@ -18,6 +18,7 @@ final class SettingView: UIView {
     let tableView: UITableView = {
         let tableview = UITableView()
         tableview.backgroundColor = .SoftieBack
+        tableview.isScrollEnabled = false
         return tableview
     }()
     

@@ -14,7 +14,6 @@ final class SettingTableViewCell: UITableViewCell, UITableViewRegisterable {
     // MARK: - Properties
     
     static let isFromNib: Bool = false    
-    static let identifier: String = "SettingTableViewCell"
 
     // MARK: - UI Components
     

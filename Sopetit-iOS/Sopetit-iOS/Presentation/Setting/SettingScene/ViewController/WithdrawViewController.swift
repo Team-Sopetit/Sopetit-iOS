@@ -16,7 +16,7 @@ final class WithdrawViewController: UIViewController {
     // MARK: - UI Components
     
     let customNaviBar = CustomNavigationBarView()
-    let dropoutView = DropoutView()
+    let withdrawView = WithdrawView()
     
     // MARK: - Life Cycles
     
@@ -46,7 +46,7 @@ extension WithdrawViewController {
     }
     
     func setHierarchy() {
-        self.view.addSubviews(dropoutView, customNaviBar)
+        self.view.addSubviews(withdrawView, customNaviBar)
     }
     
     func setLayout() {
@@ -56,7 +56,7 @@ extension WithdrawViewController {
             $0.height.equalTo(44)
         }
         
-        dropoutView.snp.makeConstraints {
+        withdrawView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalTo(customNaviBar.snp.bottom)
         }

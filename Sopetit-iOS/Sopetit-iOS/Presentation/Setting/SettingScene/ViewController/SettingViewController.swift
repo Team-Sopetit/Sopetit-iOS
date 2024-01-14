@@ -95,7 +95,7 @@ extension SettingViewController: UITableViewDelegate {
     }
     
     private func pushDropoutView() {
-        self.navigationController?.pushViewController(DropoutViewController(), animated: true)
+        self.navigationController?.pushViewController(WithdrawViewController(), animated: true)
     }
 }
 
