@@ -14,6 +14,7 @@
 		00A8E39C2B4D8B20001461CE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A8E39B2B4D8B20001461CE /* HomeViewController.swift */; };
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
 		04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */; };
+		092AE2B82B53F25E00E9A20D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 092AE2B72B53F25E00E9A20D /* Config.xcconfig */; };
 		093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */; };
 		093C1E042B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E032B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift */; };
 		093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */; };
@@ -33,6 +34,13 @@
 		09B253782B4E4BC6005E7032 /* HappyRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253772B4E4BC6005E7032 /* HappyRoutine.swift */; };
 		09B2537A2B4E4E14005E7032 /* AddHappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253792B4E4E14005E7032 /* AddHappyRoutineView.swift */; };
 		09B2537D2B4E5279005E7032 /* HappyRoutineCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2537C2B4E5279005E7032 /* HappyRoutineCardCollectionViewCell.swift */; };
+		09C1A6502B5291CC00C1A57D /* AddDailyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A64F2B5291CC00C1A57D /* AddDailyRoutineViewController.swift */; };
+		09C1A6522B5291DE00C1A57D /* AddDailyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A6512B5291DE00C1A57D /* AddDailyRoutineView.swift */; };
+		09C1A6542B52935C00C1A57D /* DailyRoutineThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A6532B52935C00C1A57D /* DailyRoutineThemeView.swift */; };
+		09C1A6562B52955500C1A57D /* DailyRoutineCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A6552B52955500C1A57D /* DailyRoutineCardCollectionViewCell.swift */; };
+		09C1A6582B5297B200C1A57D /* DailyRoutineTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A6572B5297B200C1A57D /* DailyRoutineTheme.swift */; };
+		09C1A65A2B5297BC00C1A57D /* DailyRoutineCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A6592B5297BC00C1A57D /* DailyRoutineCard.swift */; };
+		09C1A65C2B529D2E00C1A57D /* DailyRoutineThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A65B2B529D2E00C1A57D /* DailyRoutineThemeCollectionViewCell.swift */; };
 		A42C327C2B3DB8F400C4B477 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */; };
 		A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C327D2B3DB8F400C4B477 /* SceneDelegate.swift */; };
 		A42C32852B3DB8F500C4B477 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A42C32842B3DB8F500C4B477 /* Assets.xcassets */; };
@@ -137,6 +145,7 @@
 		00A8E39B2B4D8B20001461CE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFooterView.swift; sourceTree = "<group>"; };
+		092AE2B72B53F25E00E9A20D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineViewController.swift; sourceTree = "<group>"; };
 		093C1E032B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineEmptyView.swift; sourceTree = "<group>"; };
 		093C1E062B4CFDDF00EF84AB /* CustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarView.swift; sourceTree = "<group>"; };
@@ -156,6 +165,13 @@
 		09B253772B4E4BC6005E7032 /* HappyRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutine.swift; sourceTree = "<group>"; };
 		09B253792B4E4E14005E7032 /* AddHappyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHappyRoutineView.swift; sourceTree = "<group>"; };
 		09B2537C2B4E5279005E7032 /* HappyRoutineCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		09C1A64F2B5291CC00C1A57D /* AddDailyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDailyRoutineViewController.swift; sourceTree = "<group>"; };
+		09C1A6512B5291DE00C1A57D /* AddDailyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDailyRoutineView.swift; sourceTree = "<group>"; };
+		09C1A6532B52935C00C1A57D /* DailyRoutineThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineThemeView.swift; sourceTree = "<group>"; };
+		09C1A6552B52955500C1A57D /* DailyRoutineCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		09C1A6572B5297B200C1A57D /* DailyRoutineTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineTheme.swift; sourceTree = "<group>"; };
+		09C1A6592B5297BC00C1A57D /* DailyRoutineCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineCard.swift; sourceTree = "<group>"; };
+		09C1A65B2B529D2E00C1A57D /* DailyRoutineThemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineThemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A42C32782B3DB8F400C4B477 /* Sopetit-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sopetit-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42C327B2B3DB8F400C4B477 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A42C327D2B3DB8F400C4B477 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -242,7 +258,6 @@
 		A49BFE402B5065DE00035EB6 /* AlertMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessageView.swift; sourceTree = "<group>"; };
 		A49BFE432B50F3EB00035EB6 /* happy_complete_som.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = happy_complete_som.json; sourceTree = "<group>"; };
 		A49BFE442B50F3EB00035EB6 /* daily_complete_som.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = daily_complete_som.json; sourceTree = "<group>"; };
-		A49BFE472B50F9DA00035EB6 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A49BFE482B50FC7A00035EB6 /* DailyRoutineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineService.swift; sourceTree = "<group>"; };
 		A49BFE4A2B50FC8300035EB6 /* HappyRoutineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineService.swift; sourceTree = "<group>"; };
 		A49BFE4C2B51275C00035EB6 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
@@ -387,6 +402,52 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		09C1A64A2B52919200C1A57D /* AddDailyRoutineScene */ = {
+			isa = PBXGroup;
+			children = (
+				09C1A64E2B5291B700C1A57D /* View */,
+				09C1A64D2B5291B100C1A57D /* Model */,
+				09C1A64C2B5291AC00C1A57D /* Cell */,
+				09C1A64B2B5291A300C1A57D /* ViewController */,
+			);
+			path = AddDailyRoutineScene;
+			sourceTree = "<group>";
+		};
+		09C1A64B2B5291A300C1A57D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				09C1A64F2B5291CC00C1A57D /* AddDailyRoutineViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		09C1A64C2B5291AC00C1A57D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				09C1A6552B52955500C1A57D /* DailyRoutineCardCollectionViewCell.swift */,
+				09C1A65B2B529D2E00C1A57D /* DailyRoutineThemeCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		09C1A64D2B5291B100C1A57D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09C1A6572B5297B200C1A57D /* DailyRoutineTheme.swift */,
+				09C1A6592B5297BC00C1A57D /* DailyRoutineCard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09C1A64E2B5291B700C1A57D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09C1A6512B5291DE00C1A57D /* AddDailyRoutineView.swift */,
+				09C1A6532B52935C00C1A57D /* DailyRoutineThemeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A42C326F2B3DB8F400C4B477 = {
 			isa = PBXGroup;
 			children = (
@@ -412,7 +473,7 @@
 				A42C329E2B3EA97100C4B477 /* Presentation */,
 				A42C32892B3DB8F500C4B477 /* Info.plist */,
 				A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */,
-				A49BFE472B50F9DA00035EB6 /* Config.xcconfig */,
+				092AE2B72B53F25E00E9A20D /* Config.xcconfig */,
 			);
 			path = "Sopetit-iOS";
 			sourceTree = "<group>";
@@ -881,6 +942,7 @@
 		A4832B9C2B457C2B007879FF /* DailyRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				09C1A64A2B52919200C1A57D /* AddDailyRoutineScene */,
 				A42C330C2B3EAEE800C4B477 /* DailyRoutineScene */,
 			);
 			path = DailyRoutine;
@@ -1171,6 +1233,7 @@
 				A49BFE0D2B4DC54F00035EB6 /* gray_eating_daily.json in Resources */,
 				A49BFE0A2B4DC54F00035EB6 /* red_eating_daily.json in Resources */,
 				A49BFE032B4DC54400035EB6 /* panda_eating_happy.json in Resources */,
+				092AE2B82B53F25E00E9A20D /* Config.xcconfig in Resources */,
 				A49BFE052B4DC54400035EB6 /* gray_eating_happy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1214,6 +1277,7 @@
 				A42C32D52B3EABAF00C4B477 /* UICollectionViewRegisterable.swift in Sources */,
 				09B2536F2B4E3640005E7032 /* HappyRoutineCategoryCollectionViewCell.swift in Sources */,
 				093C1E042B4CFD9E00EF84AB /* HappyRoutineEmptyView.swift in Sources */,
+				09C1A65C2B529D2E00C1A57D /* DailyRoutineThemeCollectionViewCell.swift in Sources */,
 				A42C32BB2B3EAAEA00C4B477 /* FontLiterals.swift in Sources */,
 				A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */,
 				A42C32E32B3EAC8200C4B477 /* NetworkResult.swift in Sources */,
@@ -1234,6 +1298,7 @@
 				A42C32C52B3EAB2B00C4B477 /* UIButton+.swift in Sources */,
 				A49BFDDC2B4D5F5E00035EB6 /* StoryTellingThirdView.swift in Sources */,
 				A42C32CD2B3EAB5600C4B477 /* UILabel+.swift in Sources */,
+				09C1A65A2B5297BC00C1A57D /* DailyRoutineCard.swift in Sources */,
 				A49BFE282B4E856600035EB6 /* DollNameViewController.swift in Sources */,
 				A42C32F42B3EADDD00C4B477 /* OnboardingEntity.swift in Sources */,
 				A42C32E92B3EAC9C00C4B477 /* BaseService.swift in Sources */,
@@ -1265,6 +1330,7 @@
 				04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */,
 				A49BFE4F2B53CE7700035EB6 /* DollImageEntity.swift in Sources */,
 				A49BFE412B5065DE00035EB6 /* AlertMessageView.swift in Sources */,
+				09C1A6542B52935C00C1A57D /* DailyRoutineThemeView.swift in Sources */,
 				093C1E092B4D2C8200EF84AB /* BearDescriptionView.swift in Sources */,
 				093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */,
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,
@@ -1275,8 +1341,10 @@
 				A49BFDF22B4DA53A00035EB6 /* ThemeSelectEntity.swift in Sources */,
 				A49BFDE92B4D873400035EB6 /* DollChoiceCollectionViewCell.swift in Sources */,
 				097224852B4F7CE500CB7893 /* HappyRoutineCardView.swift in Sources */,
+				09C1A6582B5297B200C1A57D /* DailyRoutineTheme.swift in Sources */,
 				09B253662B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift in Sources */,
 				A42C331F2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift in Sources */,
+				09C1A6502B5291CC00C1A57D /* AddDailyRoutineViewController.swift in Sources */,
 				0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */,
 				A42C32EB2B3EACAC00C4B477 /* URLConstant.swift in Sources */,
 				A49BFE1D2B4E541C00035EB6 /* RoutineChoiceViewController.swift in Sources */,
@@ -1286,11 +1354,13 @@
 				A42C32E72B3EAC9500C4B477 /* NetworkConstant.swift in Sources */,
 				097224882B4F7E4900CB7893 /* HappyRoutineCard.swift in Sources */,
 				0084F19B2B4A895700F87860 /* LoginView.swift in Sources */,
+				09C1A6522B5291DE00C1A57D /* AddDailyRoutineView.swift in Sources */,
 				A49BFE4D2B51275C00035EB6 /* UIImageView+.swift in Sources */,
 				A42C33022B3EAE4900C4B477 /* OnboardingService.swift in Sources */,
 				A42C32D92B3EAC1C00C4B477 /* MakeAlert.swift in Sources */,
 				A49BFE212B4E544400035EB6 /* RoutineChoiceCollectionViewCell.swift in Sources */,
 				A42C32C92B3EAB4500C4B477 /* UIStackView+.swift in Sources */,
+				09C1A6562B52955500C1A57D /* DailyRoutineCardCollectionViewCell.swift in Sources */,
 				09B2535C2B4D538E005E7032 /* SelectHappyCategoryViewController.swift in Sources */,
 				09B253612B4D53E7005E7032 /* SelectHappyCategoryView.swift in Sources */,
 				A42C32D12B3EAB7F00C4B477 /* String+.swift in Sources */,
@@ -1317,7 +1387,7 @@
 /* Begin XCBuildConfiguration section */
 		A42C328A2B3DB8F500C4B477 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A49BFE472B50F9DA00035EB6 /* Config.xcconfig */;
+			baseConfigurationReference = 092AE2B72B53F25E00E9A20D /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1378,7 +1448,7 @@
 		};
 		A42C328B2B3DB8F500C4B477 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A49BFE472B50F9DA00035EB6 /* Config.xcconfig */;
+			baseConfigurationReference = 092AE2B72B53F25E00E9A20D /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
