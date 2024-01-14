@@ -10,12 +10,30 @@ import UIKit
 import SnapKit
 
 final class SplashThreeView: UIView {
-
-    // MARK: - Properties
-    
     
     // MARK: - UI Components
     
+    private let softieImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.Splash.icLogoSplash2
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    let mentLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .SoftieMain2
+        label.font = .fontGuide(.body2)
+        label.text = I18N.Splash.mentTitle
+        return label
+    }()
+    
+    private let dollImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.Splash.imgSplashManybearCut
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
     
     // MARK: - Life Cycles
     
@@ -25,8 +43,6 @@ final class SplashThreeView: UIView {
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
-        setRegisterCell()
     }
     
     @available(*, unavailable)
@@ -38,33 +54,30 @@ final class SplashThreeView: UIView {
 // MARK: - Extensions
 
 extension SplashThreeView {
-
+    
     func setUI() {
-        
+        backgroundColor = UIColor.SoftieMain1
     }
     
     func setHierarchy() {
-
+        addSubviews(softieImageView, mentLabel, dollImageView)
     }
     
     func setLayout() {
-
-    }
-    
-    func setAddTarget() {
-
-    }
-    
-    @objc
-    func buttonTapped() {
+        softieImageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().inset(187)
+        }
         
-    }
-    
-    func setRegisterCell() {
+        mentLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(softieImageView.snp.bottom).offset(11)
+        }
         
-    }
-    
-    func setDataBind() {
-        
+        dollImageView.snp.makeConstraints {
+            $0.bottom.leading.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 236 / 375)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 420 / 812)
+        }
     }
 }

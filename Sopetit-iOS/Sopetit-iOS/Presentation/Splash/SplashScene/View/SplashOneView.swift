@@ -10,12 +10,30 @@ import UIKit
 import SnapKit
 
 final class SplashOneView: UIView {
-
-    // MARK: - Properties
-    
     
     // MARK: - UI Components
     
+    private let softieImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.Splash.icLogoSplash1
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    let mentLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .Gray400
+        label.font = .fontGuide(.body2)
+        label.text = I18N.Splash.mentTitle
+        return label
+    }()
+    
+    private let dollImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.Splash.splashBrownSleeping
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
     
     // MARK: - Life Cycles
     
@@ -25,8 +43,6 @@ final class SplashOneView: UIView {
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
-        setRegisterCell()
     }
     
     @available(*, unavailable)
@@ -38,33 +54,30 @@ final class SplashOneView: UIView {
 // MARK: - Extensions
 
 extension SplashOneView {
-
+    
     func setUI() {
-        
+        backgroundColor = UIColor.SoftieMain2
     }
     
     func setHierarchy() {
-
+        addSubviews(softieImageView, mentLabel, dollImageView)
     }
     
     func setLayout() {
-
-    }
-    
-    func setAddTarget() {
-
-    }
-    
-    @objc
-    func buttonTapped() {
+        softieImageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().inset(187)
+        }
         
-    }
-    
-    func setRegisterCell() {
+        mentLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(softieImageView.snp.bottom).offset(11)
+        }
         
-    }
-    
-    func setDataBind() {
-        
+        dollImageView.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 486 / 812)
+        }
     }
 }

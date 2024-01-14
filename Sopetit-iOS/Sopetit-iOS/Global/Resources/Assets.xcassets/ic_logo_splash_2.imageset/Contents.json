@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "img_splash_big.png",
+      "filename" : "ic_logo_splash_2.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "img_splash_big@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "img_splash_big@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
