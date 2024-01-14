@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class DropoutView: UIView {
+final class WithdrawView: UIView {
 
     // MARK: - Properties
     
@@ -89,7 +89,7 @@ final class DropoutView: UIView {
 
 // MARK: - Extensions
 
-extension DropoutView {
+extension WithdrawView {
 
     func setUI() {
         self.backgroundColor = .SoftieBack

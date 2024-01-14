@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class DropoutViewController: UIViewController {
+final class WithdrawViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -39,7 +39,7 @@ final class DropoutViewController: UIViewController {
 
 // MARK: - Extensions
 
-extension DropoutViewController {
+extension WithdrawViewController {
 
     func setUI() {
         self.view.backgroundColor = .SoftieBack
@@ -69,14 +69,14 @@ extension DropoutViewController {
 
 // MARK: - Network
 
-extension DropoutViewController {
+extension WithdrawViewController {
 
     func getAPI() {
         
     }
 }
 
-extension DropoutViewController {
+extension WithdrawViewController {
     func setBarConfiguration() {
         self.customNaviBar.isBackButtonIncluded = true
         self.customNaviBar.isTitleViewIncluded = true
