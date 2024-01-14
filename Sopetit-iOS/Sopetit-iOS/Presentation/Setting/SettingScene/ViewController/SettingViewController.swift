@@ -29,7 +29,6 @@ final class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAPI()
         setUI()
         setHierarchy()
         setLayout()
@@ -168,15 +167,6 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
-    }
-}
-
-// MARK: - Network
-
-extension SettingViewController {
-
-    func getAPI() {
-        
     }
 }
 

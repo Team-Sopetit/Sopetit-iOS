@@ -28,7 +28,6 @@ final class WithdrawViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAPI()
         setUI()
         setHierarchy()
         setLayout()
@@ -63,15 +62,6 @@ extension WithdrawViewController {
     }
     
     func setDelegate() {
-        
-    }
-}
-
-// MARK: - Network
-
-extension WithdrawViewController {
-
-    func getAPI() {
         
     }
 }
