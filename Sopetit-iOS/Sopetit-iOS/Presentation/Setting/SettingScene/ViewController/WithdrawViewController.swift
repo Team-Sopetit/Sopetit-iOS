@@ -20,18 +20,12 @@ final class WithdrawViewController: UIViewController {
     
     // MARK: - Life Cycles
     
-    override func loadView() {
-        super.loadView()
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
         setHierarchy()
         setLayout()
-        setDelegate()
         setBarConfiguration()
     }
 }
@@ -61,9 +55,6 @@ extension WithdrawViewController {
         }
     }
     
-    func setDelegate() {
-        
-    }
 }
 
 extension WithdrawViewController {

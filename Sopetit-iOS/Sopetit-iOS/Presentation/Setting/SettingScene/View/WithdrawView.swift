@@ -25,7 +25,7 @@ final class WithdrawView: UIView {
     
     let bodyLabel: UILabel = {
         let label = UILabel()
-        label.text = "탈퇴하면 계정이 삭제되고 모든 데이터가 사라집니다."
+        label.text = I18N.Setting.withdraw_head
         label.font = .fontGuide(.body4)
         label.textColor = .Gray300
         return label
@@ -83,8 +83,6 @@ final class WithdrawView: UIView {
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
-        setRegisterCell()
     }
     
     @available(*, unavailable)
@@ -150,21 +148,5 @@ extension WithdrawView {
             $0.size.equalTo(208)
         }
     }
-    
-    func setAddTarget() {
 
-    }
-    
-    @objc
-    func buttonTapped() {
-        
-    }
-    
-    func setRegisterCell() {
-        
-    }
-    
-    func setDataBind() {
-        
-    }
 }

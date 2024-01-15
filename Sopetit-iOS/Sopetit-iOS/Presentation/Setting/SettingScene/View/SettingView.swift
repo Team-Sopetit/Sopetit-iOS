@@ -33,7 +33,6 @@ final class SettingView: UIView {
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
         setRegisterCell()
     }
     
@@ -63,20 +62,8 @@ extension SettingView {
         }
     }
     
-    func setAddTarget() {
-
-    }
-    
-    @objc
-    func buttonTapped() {
-        
-    }
-    
     func setRegisterCell() {
         SettingTableViewCell.register(target: tableView)
     }
-    
-    func setDataBind() {
-        
-    }
+
 }
