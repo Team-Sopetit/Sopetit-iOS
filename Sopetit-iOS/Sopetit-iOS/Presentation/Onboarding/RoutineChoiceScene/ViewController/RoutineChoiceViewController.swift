@@ -12,6 +12,8 @@ final class RoutineChoiceViewController: UIViewController {
     // MARK: - Properties
     
     var selectedTheme: [Int] = []
+    var userDollType: String = ""
+    var userDollName: String = ""
     private var selectedCount: Int = 0
     private var selectedRoutine: [Int] = []
     private var routineEntity: [Routine] = []
@@ -64,6 +66,7 @@ extension RoutineChoiceViewController {
             self.navigationController?.popViewController(animated: true)
         case routineChoiceView.nextButton:
             let nav = TabBarController()
+            postMemberAPI()
             self.navigationController?.pushViewController(nav, animated: true)
         default:
             break
@@ -90,6 +93,19 @@ extension RoutineChoiceViewController {
                 default:
                     break
                 }
+            }
+        }
+    }
+    
+    func postMemberAPI() {
+        OnBoardingService.shared.postOnboardingMemeberAPI(dollType: self.userDollType, dollName: self.userDollName, routineArray: selectedRoutine) { networkResult in
+            switch networkResult {
+            case .success:
+                print("success")
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
             }
         }
     }
