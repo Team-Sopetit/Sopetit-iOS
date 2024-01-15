@@ -65,6 +65,8 @@ extension ThemeSelectViewController {
     func buttonTapped() {
         let nav = RoutineChoiceViewController()
         nav.selectedTheme = selectedCategory
+        nav.userDollName = doll
+        nav.userDollType = dollType
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }
