@@ -10,9 +10,9 @@ import UIKit
 import SnapKit
 
 protocol BottomSheetButtonDelegate: AnyObject {
-    func bakcButtonTapped()
     func completeButtonTapped()
     func deleteButtonTapped()
+    func addButtonTapped()
 }
 
 final class BottomSheetViewController: UIViewController {
@@ -29,6 +29,7 @@ final class BottomSheetViewController: UIViewController {
     private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .Gray700.withAlphaComponent(0.6)
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -37,6 +38,7 @@ final class BottomSheetViewController: UIViewController {
         view.backgroundColor = .SoftieWhite
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.cornerRadius = 20
+        view.clipsToBounds = false
         return view
     }()
     
@@ -88,6 +90,8 @@ final class BottomSheetViewController: UIViewController {
         setHierarchy()
         setLayout()
         bottomSheetGuide(bottomType)
+        
+        bottomSheet.frame.origin.y = UIScreen.main.bounds.height
     }
     
     required init?(coder: NSCoder) {
@@ -96,10 +100,17 @@ final class BottomSheetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setHierarchy()
         setLayout()
         setDelegate()
+        setDismissAction()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        showBottomSheet()
     }
 }
 
@@ -116,7 +127,7 @@ extension BottomSheetViewController {
         rightButton.setBackgroundColor(type.rightColor, for: .normal)
         
         switch type {
-        case .dailyCompleteBottom, .happyCompleteBottom:
+        case .dailyAddBottom, .happyAddBottom, .dailyCompleteBottom, .happyCompleteBottom:
             imageView.snp.makeConstraints {
                 $0.top.equalToSuperview().inset(33)
                 $0.centerX.equalToSuperview()
@@ -129,7 +140,11 @@ extension BottomSheetViewController {
             }
         case .happyDeleteBottom:
             imageView.snp.makeConstraints {
-                $0.top.equalToSuperview().inset(53)
+                if SizeLiterals.Screen.deviceRatio > 0.5 {
+                    $0.top.equalToSuperview().inset(45)
+                } else {
+                    $0.top.equalToSuperview().inset(53)
+                }
                 $0.centerX.equalToSuperview()
                 $0.width.equalTo(66)
                 $0.height.equalTo(61)
@@ -151,7 +166,7 @@ extension BottomSheetViewController {
             }
         }
     }
-
+    
     func setHierarchy() {
         bottomSheet.addSubviews(imageView, titleLabel, subTitleLabel, leftButton, rightButton)
         view.addSubviews(backgroundView, bottomSheet)
@@ -164,7 +179,6 @@ extension BottomSheetViewController {
         
         bottomSheet.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(bottomHeight)
         }
         
         subTitleLabel.snp.makeConstraints {
@@ -173,17 +187,25 @@ extension BottomSheetViewController {
         }
         
         leftButton.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-17)
+            if SizeLiterals.Screen.deviceRatio > 0.5 {
+                $0.top.equalTo(subTitleLabel.snp.bottom).offset(20)
+            } else {
+                $0.top.equalTo(subTitleLabel.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 36 / 812)
+            }
             $0.leading.equalToSuperview().inset(21)
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 162 / 375)
-            $0.height.equalTo(58)
+            $0.height.equalTo(56)
         }
         
         rightButton.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-17)
+            if SizeLiterals.Screen.deviceRatio > 0.5 {
+                $0.top.equalTo(subTitleLabel.snp.bottom).offset(20)
+            } else {
+                $0.top.equalTo(subTitleLabel.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 36 / 812)
+            }
             $0.trailing.equalToSuperview().inset(21)
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 162 / 375)
-            $0.height.equalTo(58)
+            $0.height.equalTo(56)
         }
     }
     
@@ -196,9 +218,11 @@ extension BottomSheetViewController {
     func buttonTapped(_ sender: UIButton) {
         switch sender {
         case leftButton:
-            buttonDelegate?.bakcButtonTapped()
+            hideBottomSheet()
         case rightButton:
             switch bottomType {
+            case .dailyAddBottom, .happyAddBottom:
+                buttonDelegate?.addButtonTapped()
             case .dailyCompleteBottom, .happyCompleteBottom:
                 buttonDelegate?.completeButtonTapped()
             case .dailyDeleteBottom, .happyDeleteBottom, .logoutBottom:
@@ -207,5 +231,48 @@ extension BottomSheetViewController {
         default:
             break
         }
+    }
+    
+    func showBottomSheet() {
+        DispatchQueue.main.async {
+            self.bottomSheet.snp.remakeConstraints {
+                $0.leading.trailing.bottom.equalToSuperview()
+                $0.top.equalToSuperview().inset(SizeLiterals.Screen.screenHeight - self.bottomHeight)
+            }
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+                self.backgroundView.backgroundColor = .Gray700.withAlphaComponent(0.6)
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    func hideBottomSheet() {
+        DispatchQueue.main.async {
+            self.bottomSheet.snp.remakeConstraints {
+                $0.leading.trailing.bottom.equalToSuperview()
+            }
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+                self.backgroundView.backgroundColor = .clear
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                if self.presentingViewController != nil {
+                    self.dismiss(animated: false, completion: nil)
+                }
+            })
+        }
+    }
+    
+    func setDismissAction() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideBottomSheetAction))
+        backgroundView.addGestureRecognizer(tapGesture)
+        
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(hideBottomSheetAction))
+        swipeGesture.direction = .down
+        view.addGestureRecognizer(swipeGesture)
+    }
+    
+    @objc
+    func hideBottomSheetAction() {
+        hideBottomSheet()
     }
 }

@@ -9,6 +9,9 @@ import Foundation
 
 enum I18N {
     enum BottomSheet {
+        static let dailyAddTitle = "데일리 루틴을 추가할까요?"
+        static let happyAddTitle = "행복 루틴을 추가할까요?"
+        static let dailyAddSubTitle = "\'일어나면 5분 안에 이불 개기\'"
         static let dailyTitle = "데일리 루틴을 완료했나요?"
         static let happyTitle = "행복 루틴을 완료했나요?"
         static let delTitle = "정말 삭제할까요?"
@@ -22,6 +25,8 @@ enum I18N {
         static let dailyRightTitle = "완료했어"
         static let delRightTitle = "삭제할래"
         static let logoutRightTitle = "로그아웃 할래"
+        static let addLeftTitle = "아니, 더 고민할게"
+        static let addRightTitle = "추가할래"
     }
     
     enum Splash {
@@ -59,6 +64,7 @@ enum I18N {
         static let achieving = "달성 중..."
         static let done = "완료하기"
         static let delAlertTitle = "행복 루틴을 삭제했어요"
+        static let addHappyBottomTitle = "행복 루틴을 추가했어요"
     }
     
     enum HappyRoutineCategory {
@@ -97,5 +103,6 @@ enum I18N {
         static let complete = "완료하기"
         static let completed = "달성 완료"
         static let addDailyRoutine = "데일리 루틴 추가"
+        static let addDailyBottomTitle = "데일리 루틴을 1개 추가했어요"
     }
 }

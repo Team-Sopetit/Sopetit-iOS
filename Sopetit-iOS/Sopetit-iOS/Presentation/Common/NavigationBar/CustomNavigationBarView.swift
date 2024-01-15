@@ -48,15 +48,9 @@ final class CustomNavigationBarView: UIView {
         set { editButton.isHidden = !newValue }
     }
     
-    var isDeleteButtonIncluded: Bool {
-        get { !deleteButton.isHidden }
-        set { deleteButton.isHidden = !newValue }
-    }
-    
     var backButtonAction: (() -> Void)?
     var editButtonAction: (() -> Void)?
     var cancelButtonAction: (() -> Void)?
-    var deleteButtonAction: (() -> Void)?
     
     // MARK: - UI Components
     
@@ -82,7 +76,7 @@ final class CustomNavigationBarView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .fontGuide(.head3)
+        label.font = .fontGuide(.body3)
         label.textColor = .Gray700
         return label
     }()
@@ -106,15 +100,6 @@ final class CustomNavigationBarView: UIView {
     lazy var editButton: UIButton = {
         let button = UIButton()
         button.setTitle(I18N.CustomNavi.edit, for: .normal)
-        button.setTitleColor(.Gray400, for: .normal)
-        button.titleLabel?.font = .fontGuide(.body4)
-        button.isHidden = true
-        return button
-    }()
-    
-    lazy var deleteButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(I18N.CustomNavi.delete, for: .normal)
         button.setTitleColor(.Gray400, for: .normal)
         button.titleLabel?.font = .fontGuide(.body4)
         button.isHidden = true
@@ -146,7 +131,7 @@ private extension CustomNavigationBarView {
     }
     
     func setHierarchy() {
-        self.addSubviews(backButton, cancelButton, editButton, deleteButton, titleView, leftTitleView)
+        self.addSubviews(backButton, cancelButton, editButton, titleView, leftTitleView)
         titleView.addSubview(titleLabel)
         leftTitleView.addSubview(leftTitleLabel)
     }
@@ -196,20 +181,12 @@ private extension CustomNavigationBarView {
             $0.width.equalTo(53)
             $0.height.equalTo(41)
         }
-        
-        deleteButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(6)
-            $0.centerY.equalToSuperview()
-            $0.width.equalTo(53)
-            $0.height.equalTo(41)
-        }
     }
     
     func setAddTarget() {
         backButton.addTarget(self, action: #selector(isTapped), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(isTapped), for: .touchUpInside)
         editButton.addTarget(self, action: #selector(isTapped), for: .touchUpInside)
-        deleteButton.addTarget(self, action: #selector(isTapped), for: .touchUpInside)
     }
     
     @objc
@@ -221,8 +198,6 @@ private extension CustomNavigationBarView {
             cancelButtonAction?()
         case editButton:
             editButtonAction?()
-        case deleteButton:
-            deleteButtonAction?()
         default:
             break
         }

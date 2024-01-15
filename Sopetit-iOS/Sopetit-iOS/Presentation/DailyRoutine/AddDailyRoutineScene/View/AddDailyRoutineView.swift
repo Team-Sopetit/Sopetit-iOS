@@ -77,7 +77,7 @@ final class AddDailyRoutineView: UIView {
         return pageControl
     }()
     
-    private let addButton: UIButton = {
+    lazy var addButton: UIButton = {
         let button = UIButton()
         button.setTitle(I18N.HappyRoutine.addHappyRoutineButton, for: .normal)
         button.setTitleColor(.Gray000, for: .normal)
