@@ -183,17 +183,25 @@ extension BottomSheetViewController {
         }
         
         leftButton.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-17)
+            if SizeLiterals.Screen.deviceRatio > 0.5 {
+                $0.top.equalTo(subTitleLabel.snp.bottom).offset(20)
+            } else {
+                $0.top.equalTo(subTitleLabel.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 36 / 812)
+            }
             $0.leading.equalToSuperview().inset(21)
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 162 / 375)
-            $0.height.equalTo(58)
+            $0.height.equalTo(56)
         }
         
         rightButton.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-17)
+            if SizeLiterals.Screen.deviceRatio > 0.5 {
+                $0.top.equalTo(subTitleLabel.snp.bottom).offset(20)
+            } else {
+                $0.top.equalTo(subTitleLabel.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 36 / 812)
+            }
             $0.trailing.equalToSuperview().inset(21)
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 162 / 375)
-            $0.height.equalTo(58)
+            $0.height.equalTo(56)
         }
     }
     
@@ -225,7 +233,7 @@ extension BottomSheetViewController {
         DispatchQueue.main.async {
             self.bottomSheet.snp.remakeConstraints {
                 $0.leading.trailing.bottom.equalToSuperview()
-                $0.top.equalToSuperview().inset(self.view.frame.height - self.bottomHeight)
+                $0.top.equalToSuperview().inset(SizeLiterals.Screen.screenHeight - self.bottomHeight)
             }
             UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
                 self.backgroundView.backgroundColor = .Gray700.withAlphaComponent(0.6)
