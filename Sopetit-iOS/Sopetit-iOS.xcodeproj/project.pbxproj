@@ -230,7 +230,6 @@
 		A42C32FF2B3EAE3E00C4B477 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		A42C33012B3EAE4900C4B477 /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
 		A42C33032B3EAE4F00C4B477 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		A42C33192B3EAF5200C4B477 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A42C331E2B3EAF7400C4B477 /* DailyRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineCollectionViewCell.swift; sourceTree = "<group>"; };
 		A42C33202B3EAF7B00C4B477 /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		A42C33222B3EAF8400C4B477 /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
@@ -340,14 +339,6 @@
 				00CCDCC72B51B5D8007DD0E6 /* SplashFourView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		0414F3BE2B55487700EBBFED /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				A42C33192B3EAF5200C4B477 /* SettingViewController.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		045DFE7C2B50F141005D69EA /* Cell */ = {
@@ -545,7 +536,6 @@
 			children = (
 				A42C327A2B3DB8F400C4B477 /* Sopetit-iOS */,
 				A42C32792B3DB8F400C4B477 /* Products */,
-				0414F3BE2B55487700EBBFED /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
