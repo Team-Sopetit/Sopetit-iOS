@@ -141,9 +141,9 @@ extension DailyRoutineCollectionViewCell {
         
     }
     
-    func setDatabind(model: DailyEntity) {
-        self.dateLabel.text = "\(model.dateLabel)일 달성 중"
-        self.routineLabel.text = model.routineLabel
+    func setDatabind(model: Routine1) {
+        self.dateLabel.text = "\(model.achieveCount)일 달성 중"
+        self.routineLabel.text = model.content
     }
     
     func setAddTarget() {

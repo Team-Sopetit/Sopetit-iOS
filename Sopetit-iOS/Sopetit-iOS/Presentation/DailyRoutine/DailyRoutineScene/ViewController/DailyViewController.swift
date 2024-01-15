@@ -16,9 +16,10 @@ final class DailyViewController: UIViewController {
     
     // MARK: - Properties
     
-    let dummy = DailyEntity.routineDummy()
+//    let dummy = DailyEntity.routineDummy()
     var status: Int = 0
     var isFromAddDailyBottom: Bool = false
+    private var routineList: [DailyEntity] = []
     
     override var isEditing: Bool {
         didSet {
@@ -67,6 +68,7 @@ final class DailyViewController: UIViewController {
         setDelegate()
         setAddTarget()
         setAlertView()
+        getRoutineListAPI()
     }
 }
 
@@ -183,12 +185,13 @@ extension DailyViewController: UICollectionViewDelegate {
 extension DailyViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dummy.count
+        return routineList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
-        cell.setDatabind(model: dummy[indexPath.item])
+        let routine = routineList[indexPath.item].data.routines[indexPath.item]
+        cell.setDatabind(model: routine)
         cell.delegate = self
         cell.tag = indexPath.item
         return cell
@@ -281,6 +284,35 @@ extension DailyViewController {
                 if let dailyCell = cell as? DailyRoutineCollectionViewCell {
                     dailyCell.achieveButton.isUserInteractionEnabled = false
                 }
+            }
+        }
+    }
+}
+
+extension DailyViewController {
+    func getRoutineListAPI() {
+        DailyRoutineService.shared.getRoutineListAPI { networkResult in
+            print(networkResult)
+            switch networkResult {
+            case .success(let data):
+                dump(data)
+                if let data = data as? GenericResponse<[DailyEntity]> {
+                    dump(data)
+                    if let listData = data.data {
+                        self.routineList = listData
+                        self.collectionview.reloadData()
+                    }
+//                    DispatchQueue.main.async { [self] in
+//                        for i in 0..<self.routineList.count {
+//                            cardImages.append(routineList[i].data.routines.content)
+//                            self.collectionview.reloadData()
+//                        }
+//                    }
+                }
+            case .requestErr, .serverErr:
+                print("오류발생")
+            default:
+                break
             }
         }
     }
