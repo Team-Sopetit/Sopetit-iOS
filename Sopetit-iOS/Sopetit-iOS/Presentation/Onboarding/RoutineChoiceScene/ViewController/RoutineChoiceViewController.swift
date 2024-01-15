@@ -17,6 +17,7 @@ final class RoutineChoiceViewController: UIViewController {
     private var selectedCount: Int = 0
     private var selectedRoutine: [Int] = []
     private var routineEntity: [Routine] = []
+    private var dollEntity = DollImageEntity(faceImageURL: "")
     
     // MARK: - UI Components
     
@@ -38,6 +39,7 @@ final class RoutineChoiceViewController: UIViewController {
         setDelegate()
         setAddTarget()
         getRoutineAPI()
+        getDollAPI()
     }
 }
 
@@ -94,6 +96,24 @@ extension RoutineChoiceViewController {
                 default:
                     break
                 }
+            }
+        }
+    }
+    
+    func getDollAPI() {
+        OnBoardingService.shared.getOnboardingDollAPI(dollType: self.userDollType) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<DollImageEntity> {
+                    if let listData = data.data {
+                        self.dollEntity = listData
+                    }
+                    self.routineChoiceView.setDataBind(model: self.dollEntity)
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
             }
         }
     }

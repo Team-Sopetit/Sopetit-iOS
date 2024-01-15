@@ -192,4 +192,8 @@ extension RoutineChoiceView {
     func setRegisterCell() {
         RoutineChoiceCollectionViewCell.register(target: collectionView)
     }
+    
+    func setDataBind(model: DollImageEntity) {
+        bearImage.kfSetImage(url: model.faceImageURL)
+    }
 }
