@@ -100,10 +100,6 @@ private extension AddDailyRoutineViewController {
 }
 
 extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
-    func backButtonTapped() {
-        self.dismiss(animated: false)
-    }
-    
     func completeButtonTapped() {
         
     }

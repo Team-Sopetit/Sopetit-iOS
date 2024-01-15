@@ -96,9 +96,6 @@ private extension AddHappyRoutineViewController {
 }
 
 extension AddHappyRoutineViewController: BottomSheetButtonDelegate {
-    func backButtonTapped() {
-        self.dismiss(animated: false)
-    }
     
     func completeButtonTapped() {
         

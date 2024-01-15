@@ -163,7 +163,7 @@ extension DailyViewController {
     func setAlertView() {
         if isFromAddDailyBottom {
             addAlertView.isHidden = false
-            UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 2.5, delay: 0.0, options: .curveEaseOut, animations: {
                 self.addAlertView.alpha = 0.0
             })
         }
@@ -205,9 +205,6 @@ extension DailyViewController: UICollectionViewDataSource {
 }
 
 extension DailyViewController: BottomSheetButtonDelegate {
-    func backButtonTapped() {
-        self.dismiss(animated: false)
-    }
     
     func completeButtonTapped() {
         let cell = collectionview.cellForItem(at: [0, status]) as? DailyRoutineCollectionViewCell
