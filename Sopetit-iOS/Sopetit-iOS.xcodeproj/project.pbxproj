@@ -833,11 +833,11 @@
 		A42C33072B3EAE8900C4B477 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				A49BFE252B4E853A00035EB6 /* DollNameScene */,
-				A49BFE182B4E53CE00035EB6 /* RoutineChoiceScene */,
-				A49BFDEA2B4DA3E000035EB6 /* ThemeSelectScene */,
-				A49BFDDD2B4D7A1E00035EB6 /* DollChoiceScene */,
 				A49BFDD12B4D5EE800035EB6 /* StroyTellingScene */,
+				A49BFDDD2B4D7A1E00035EB6 /* DollChoiceScene */,
+				A49BFE252B4E853A00035EB6 /* DollNameScene */,
+				A49BFDEA2B4DA3E000035EB6 /* ThemeSelectScene */,
+				A49BFE182B4E53CE00035EB6 /* RoutineChoiceScene */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
