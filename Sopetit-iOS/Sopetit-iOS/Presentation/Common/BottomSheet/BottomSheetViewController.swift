@@ -30,6 +30,7 @@ final class BottomSheetViewController: UIViewController {
     private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .Gray700.withAlphaComponent(0.6)
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -38,6 +39,7 @@ final class BottomSheetViewController: UIViewController {
         view.backgroundColor = .SoftieWhite
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.layer.cornerRadius = 20
+        view.clipsToBounds = false
         return view
     }()
     
@@ -89,6 +91,8 @@ final class BottomSheetViewController: UIViewController {
         setHierarchy()
         setLayout()
         bottomSheetGuide(bottomType)
+        
+        bottomSheet.frame.origin.y = UIScreen.main.bounds.height
     }
     
     required init?(coder: NSCoder) {
@@ -97,10 +101,17 @@ final class BottomSheetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setHierarchy()
         setLayout()
         setDelegate()
+        setDismissAction()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        showBottomSheet()
     }
 }
 
@@ -152,7 +163,7 @@ extension BottomSheetViewController {
             }
         }
     }
-
+    
     func setHierarchy() {
         bottomSheet.addSubviews(imageView, titleLabel, subTitleLabel, leftButton, rightButton)
         view.addSubviews(backgroundView, bottomSheet)
@@ -165,7 +176,6 @@ extension BottomSheetViewController {
         
         bottomSheet.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(bottomHeight)
         }
         
         subTitleLabel.snp.makeConstraints {
@@ -210,5 +220,48 @@ extension BottomSheetViewController {
         default:
             break
         }
+    }
+    
+    func showBottomSheet() {
+        DispatchQueue.main.async {
+            self.bottomSheet.snp.remakeConstraints {
+                $0.leading.trailing.bottom.equalToSuperview()
+                $0.top.equalToSuperview().inset(self.view.frame.height - self.bottomHeight)
+            }
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+                self.backgroundView.backgroundColor = .Gray700.withAlphaComponent(0.6)
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    func hideBottomSheet() {
+        DispatchQueue.main.async {
+            self.bottomSheet.snp.remakeConstraints {
+                $0.leading.trailing.bottom.equalToSuperview()
+            }
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+                self.backgroundView.backgroundColor = .clear
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                if self.presentingViewController != nil {
+                    self.dismiss(animated: false, completion: nil)
+                }
+            })
+        }
+    }
+    
+    func setDismissAction() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideBottomSheetAction))
+        backgroundView.addGestureRecognizer(tapGesture)
+        
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(hideBottomSheetAction))
+        swipeGesture.direction = .down
+        view.addGestureRecognizer(swipeGesture)
+    }
+    
+    @objc
+    func hideBottomSheetAction() {
+        hideBottomSheet()
     }
 }
