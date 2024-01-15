@@ -140,7 +140,11 @@ extension BottomSheetViewController {
             }
         case .happyDeleteBottom:
             imageView.snp.makeConstraints {
-                $0.top.equalToSuperview().inset(53)
+                if SizeLiterals.Screen.deviceRatio > 0.5 {
+                    $0.top.equalToSuperview().inset(45)
+                } else {
+                    $0.top.equalToSuperview().inset(53)
+                }
                 $0.centerX.equalToSuperview()
                 $0.width.equalTo(66)
                 $0.height.equalTo(61)

@@ -17,7 +17,7 @@ final class HappyRoutineView: UIView {
         let navigationBar = CustomNavigationBarView()
         navigationBar.isLeftTitleViewIncluded = true
         navigationBar.isLeftTitleLabelIncluded = I18N.HappyRoutine.happyRoutineTitle
-        navigationBar.isDeleteButtonIncluded = true
+        navigationBar.isEditButtonIncluded = true
         return navigationBar
     }()
     
