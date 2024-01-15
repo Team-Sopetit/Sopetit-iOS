@@ -13,6 +13,10 @@ enum URLConstant {
     
     static let baseURL = Config.baseURL
     
+    // MARK: - Auth URL
+    
+    static let loginURL = baseURL + "api/v1/login"
+    
     // MARK: - OnBoarding URL
     
     static let themeURL = baseURL + "/api/v1/routines/daily/themes"

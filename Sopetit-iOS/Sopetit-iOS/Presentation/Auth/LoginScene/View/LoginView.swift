@@ -14,6 +14,9 @@ import AuthenticationServices
 
 final class LoginView: UIView {
     
+    private var kakaoEntity: LoginEntity?
+    private var appleEntity: LoginEntity?
+    
     // MARK: - UI Components
     
     private let softieImageView: UIImageView = {
@@ -185,7 +188,7 @@ extension LoginView {
                 if let accessToken = oauthToken?.accessToken {
                     // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
                     print("TOKEN", accessToken)
-                    self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
+                    self.postLoginAPI(socialAccessToken: accessToken, socialType: "KAKAO")
                     
                 }
             }
@@ -193,7 +196,7 @@ extension LoginView {
             UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
                 if let accessToken = oauthToken?.accessToken {
                     // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
-                    self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
+                    self.postLoginAPI(socialAccessToken: accessToken, socialType: "KAKAO")
                 }
             }
         }
@@ -218,9 +221,32 @@ extension LoginView {
         print("test")
     }
     
-    func postSocialLoginData(socialToken: String, socialType: String, email: String = "") {
-        print(socialToken, socialType, email)
-    }
+    func postLoginAPI(socialAccessToken: String, socialType: String) {
+            AuthService.shared.postLoginAPI(socialAccessToken: socialAccessToken, socialType: socialType) { networkResult in
+                switch networkResult {
+                case .success(let data):
+                    if let data = data as? GenericResponse<LoginEntity> {
+                        switch socialType {
+                        case "KAKAO":
+                            if let kakaoData = data.data {
+                                self.kakaoEntity = kakaoData
+                            }
+                        case "APPLE":
+                            if let appleData = data.data {
+                                self.appleEntity = appleData
+                            }
+                        default:
+                            break
+                        }
+                        
+                    }
+                case .requestErr, .serverErr:
+                    print("Error 발생")
+                default:
+                    break
+                }
+            }
+        }
 }
 
 extension LoginView: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
@@ -232,7 +258,7 @@ extension LoginView: ASAuthorizationControllerDelegate, ASAuthorizationControlle
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
             
-            postSocialLoginData(socialToken: userIdentifier, socialType: "APPLE", email: email ?? "")
+            postLoginAPI(socialAccessToken: userIdentifier, socialType: "APPLE")
         }
     }
     
