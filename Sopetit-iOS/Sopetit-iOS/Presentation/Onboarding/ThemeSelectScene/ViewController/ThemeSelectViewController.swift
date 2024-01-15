@@ -47,7 +47,7 @@ final class ThemeSelectViewController: UIViewController {
 extension ThemeSelectViewController {
 
     func setUI() {
-        themeSelectView.bubbleLabel.text = "안녕 난 \(doll)야!\n나와 함께 루틴을 만들어볼까?"
+        themeSelectView.bubbleLabel.text = "안녕 난 \(doll)!\n나와 함께 루틴을 만들어볼까?"
         themeSelectView.bubbleLabel.partColorChange(targetString: doll, textColor: .SoftieBrown)
         self.navigationController?.navigationBar.isHidden = true
     }
