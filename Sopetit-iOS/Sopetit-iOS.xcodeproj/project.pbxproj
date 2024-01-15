@@ -821,6 +821,7 @@
 		A42C330A2B3EAEC300C4B477 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				093C1E052B4CFDAF00EF84AB /* NavigationBar */,
 				A49BFE422B5069CF00035EB6 /* AlertMessage */,
 				A49BFDE62B4D7EEB00035EB6 /* CustomProgress */,
 				A4832BA22B4A5C1C007879FF /* BottomSheet */,
@@ -1001,7 +1002,6 @@
 				097224892B4F837C00CB7893 /* BottomCTAButton */,
 				09B253712B4E4AE7005E7032 /* AddHappyRoutineScene */,
 				09B2535D2B4D539A005E7032 /* SelectHappyCategoryScene */,
-				093C1E052B4CFDAF00EF84AB /* NavigationBar */,
 				A42C330B2B3EAED700C4B477 /* HappyRoutineScene */,
 			);
 			path = HappyRoutine;
