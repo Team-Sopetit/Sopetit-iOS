@@ -12,6 +12,8 @@ final class AddHappyRoutineViewController: UIViewController {
     // MARK: - Properties
     
     private var happyRoutineList = HappyRoutine.dummy()
+    private var happinessThemesEntity = HappinessThemesEntity(themes: [])
+    private var happinessEntity = HappinessEntity(themes: [])
     
     private enum Const {
         static let itemSize = CGSize(width: 280, height: 398)

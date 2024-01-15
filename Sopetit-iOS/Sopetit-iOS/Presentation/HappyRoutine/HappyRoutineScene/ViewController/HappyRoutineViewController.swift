@@ -25,7 +25,7 @@ final class HappyRoutineViewController: UIViewController {
     // MARK: - Life Cycles
     
     override func loadView() {
-        self.view = happyRoutineView
+        self.view = happyRoutineEmptyView
     }
     
     override func viewDidLoad() {

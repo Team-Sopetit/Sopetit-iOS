@@ -30,6 +30,7 @@
 		095903AB2B5458F100D0AF39 /* daily_complete_som.json in Resources */ = {isa = PBXBuildFile; fileRef = 095903A92B5458F100D0AF39 /* daily_complete_som.json */; };
 		095903B02B54739000D0AF39 /* CompleteDailyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095903AF2B54739000D0AF39 /* CompleteDailyRoutineViewController.swift */; };
 		095903B22B54739D00D0AF39 /* CompleteDailyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095903B12B54739D00D0AF39 /* CompleteDailyRoutineView.swift */; };
+		095903B62B5487E600D0AF39 /* HappinessThemesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095903B52B5487E600D0AF39 /* HappinessThemesEntity.swift */; };
 		097224832B4F782D00CB7893 /* HappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224822B4F782D00CB7893 /* HappyRoutineView.swift */; };
 		097224852B4F7CE500CB7893 /* HappyRoutineCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224842B4F7CE500CB7893 /* HappyRoutineCardView.swift */; };
 		097224882B4F7E4900CB7893 /* HappyRoutineCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224872B4F7E4900CB7893 /* HappyRoutineCard.swift */; };
@@ -170,6 +171,7 @@
 		095903A92B5458F100D0AF39 /* daily_complete_som.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = daily_complete_som.json; sourceTree = "<group>"; };
 		095903AF2B54739000D0AF39 /* CompleteDailyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDailyRoutineViewController.swift; sourceTree = "<group>"; };
 		095903B12B54739D00D0AF39 /* CompleteDailyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDailyRoutineView.swift; sourceTree = "<group>"; };
+		095903B52B5487E600D0AF39 /* HappinessThemesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessThemesEntity.swift; sourceTree = "<group>"; };
 		097224822B4F782D00CB7893 /* HappyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineView.swift; sourceTree = "<group>"; };
 		097224842B4F7CE500CB7893 /* HappyRoutineCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCardView.swift; sourceTree = "<group>"; };
 		097224872B4F7E4900CB7893 /* HappyRoutineCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCard.swift; sourceTree = "<group>"; };
@@ -836,6 +838,7 @@
 			isa = PBXGroup;
 			children = (
 				A42C32FB2B3EAE0000C4B477 /* HappinessEntity.swift */,
+				095903B52B5487E600D0AF39 /* HappinessThemesEntity.swift */,
 			);
 			path = Happiness;
 			sourceTree = "<group>";
@@ -1468,6 +1471,7 @@
 				A42C32E72B3EAC9500C4B477 /* NetworkConstant.swift in Sources */,
 				097224882B4F7E4900CB7893 /* HappyRoutineCard.swift in Sources */,
 				0084F19B2B4A895700F87860 /* LoginView.swift in Sources */,
+				095903B62B5487E600D0AF39 /* HappinessThemesEntity.swift in Sources */,
 				095903B02B54739000D0AF39 /* CompleteDailyRoutineViewController.swift in Sources */,
 				09C1A6522B5291DE00C1A57D /* AddDailyRoutineView.swift in Sources */,
 				A49BFE4D2B51275C00035EB6 /* UIImageView+.swift in Sources */,
