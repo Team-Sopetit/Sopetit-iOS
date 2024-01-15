@@ -20,7 +20,7 @@ final class TabBarController: UITabBarController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTabBarItems()
@@ -33,9 +33,9 @@ final class TabBarController: UITabBarController {
 private extension TabBarController {
     
     func setTabBarItems() {
-        let dailyVC = DailyViewController()
-        let homeVC = ViewController()
-        let happyVC = HappyRoutineViewController()
+        let dailyVC = UINavigationController(rootViewController: DailyViewController())
+        let homeVC = UINavigationController(rootViewController: HomeViewController())
+        let happyVC = UINavigationController(rootViewController: HappyRoutineViewController())
         
         tabs = [
             dailyVC,
@@ -59,7 +59,7 @@ private extension TabBarController {
         }
         
         setViewControllers(tabs, animated: false)
-
+        selectedViewController = tabs[1]
     }
     
     func setTabBarUI() {

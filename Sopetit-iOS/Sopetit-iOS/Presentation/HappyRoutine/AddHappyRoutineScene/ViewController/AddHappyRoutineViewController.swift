@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 final class AddHappyRoutineViewController: UIViewController {
 
     // MARK: - Properties
@@ -29,6 +31,7 @@ final class AddHappyRoutineViewController: UIViewController {
     // MARK: - UI Components
     
     private let addHappyRoutineView = AddHappyRoutineView()
+    private let happyAddBottom = BottomSheetViewController(bottomStyle: .happyAddBottom)
     
     // MARK: - Life Cycles
     
@@ -39,10 +42,15 @@ final class AddHappyRoutineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUI()
         setDelegate()
         setCarousel()
         setRegister()
         setDataBind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -55,10 +63,15 @@ final class AddHappyRoutineViewController: UIViewController {
 
 private extension AddHappyRoutineViewController {
     
+    func setUI() {
+        happyAddBottom.modalPresentationStyle = .overFullScreen
+    }
+    
     func setDelegate() {
         self.addHappyRoutineView.collectionView.dataSource = self
         self.addHappyRoutineView.collectionView.delegate = self
         self.addHappyRoutineView.delegate = self
+        self.happyAddBottom.buttonDelegate = self
     }
     
     func setCarousel() {
@@ -79,6 +92,32 @@ private extension AddHappyRoutineViewController {
         let subTitle = happyRoutineList.subTitle
         let color = UIColor(hex: happyRoutineList.color)
         addHappyRoutineView.setDataBind(title: title, image: image, subTitle: subTitle, color: color)
+    }
+}
+
+extension AddHappyRoutineViewController: BottomSheetButtonDelegate {
+    
+    func completeButtonTapped() {
+        
+    }
+    
+    func deleteButtonTapped() {
+        
+    }
+    
+    func addButtonTapped() {
+        self.dismiss(animated: false)
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        let nav = TabBarController()
+        nav.selectedIndex = 2
+        if let navController = nav.viewControllers?[2] as? UINavigationController,
+           let happyRoutineViewController = navController.viewControllers.last as? HappyRoutineViewController {
+            happyRoutineViewController.isFromAddHappyBottom = true
+        }
+        keyWindow.rootViewController = UINavigationController(rootViewController: nav)
     }
 }
 
@@ -124,6 +163,6 @@ extension AddHappyRoutineViewController: UICollectionViewDelegate {
 extension AddHappyRoutineViewController: HappyRoutineProtocol {
     
     func tapAddButton() {
-        print("\(addHappyRoutineView.pageControl.currentPage)")
+        self.present(happyAddBottom, animated: false)
     }
 }

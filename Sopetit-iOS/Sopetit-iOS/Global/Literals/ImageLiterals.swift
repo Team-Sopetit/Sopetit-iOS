@@ -26,6 +26,14 @@ enum ImageLiterals {
         static var icChevronBack: UIImage { .load(name: "ic_chevron_back") }
     }
     
+    enum Splash {
+        static var icLogoSplash1: UIImage { .load(name: "ic_logo_splash_1") }
+        static var icLogoSplash2: UIImage { .load(name: "ic_logo_splash_2") }
+        static var imgSplashManybearCut: UIImage { .load(name: "img_splash_manybear_cut") }
+        static var splashBrownSleeping: UIImage { .load(name: "splash_brown_sleeping") }
+        static var imgSplashBigCut: UIImage { .load(name: "img_splash_big_cut") }
+    }
+    
     enum Login {
         static var icLogoLogin: UIImage { .load(name: "ic_logo_login") }
         static var imgSpeechDark: UIImage { .load(name: "img_speech_dark") }
@@ -64,15 +72,26 @@ enum ImageLiterals {
         static var icLogoHome: UIImage { .load(name: "ic_logo_home") }
         static var icHomeMoney: UIImage { .load(name: "ic_home_money") }
         static var icHomeSettings: UIImage { .load(name: "ic_home_settings") }
-        static var svgSpeechHome: UIImage { .load(name: "svg_speech_home") }
-        static var imgHomebackBrown: UIImage { .load(name: "img_homeback_brown") }
-        static var imgHomebackGray: UIImage { .load(name: "img_homeback_gray") }
-        static var imgHomebackPanda: UIImage { .load(name: "img_homeback_panda") }
-        static var imgHomebackRed: UIImage { .load(name: "img_homeback_red") }
+        static var pngSpeechHome: UIImage { .load(name: "png_speech_home") }
+        static var imgHomebackAllBrown: UIImage { .load(name: "img_homeback_all_brown") }
+        static var imgHomebackAllGray: UIImage { .load(name: "img_homeback_all_gray") }
+        static var imgHomebackAllPanda: UIImage { .load(name: "img_homeback_all_panda") }
+        static var imgHomebackAllRed: UIImage { .load(name: "img_homeback_all_red") }
     }
     
     enum DailyRoutine {
         static var imgDailycard1: UIImage { .load(name: "img_dailycard_1") }
+        static var imgDailycard2: UIImage { .load(name: "img_dailycard_2") }
+        static var imgDailycard3: UIImage { .load(name: "img_dailycard_3") }
+        static var imgDailycard4: UIImage { .load(name: "img_dailycard_4") }
+        static var imgDailycard5: UIImage { .load(name: "img_dailycard_5") }
+        static var imgDailycard6: UIImage { .load(name: "img_dailycard_6") }
+        static var imgDailycard7: UIImage { .load(name: "img_dailycard_7") }
+        static var imgDailycard8: UIImage { .load(name: "img_dailycard_8") }
+        static var imgDailycard9: UIImage { .load(name: "img_dailycard_9") }
+        static var imgDailycard10: UIImage { .load(name: "img_dailycard_10") }
+        static var imgDailycard11: UIImage { .load(name: "img_dailycard_11") }
+        static var imgDailycard12: UIImage { .load(name: "img_dailycard_12") }
         static var icDaily1Filled: UIImage { .load(name: "ic_daily_1_filled") }
         static var icDaily2Filled: UIImage { .load(name: "ic_daily_2_filled") }
         static var icDaily3Filled: UIImage { .load(name: "ic_daily_3_filled") }

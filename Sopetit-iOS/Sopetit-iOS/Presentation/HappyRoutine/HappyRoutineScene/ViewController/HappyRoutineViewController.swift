@@ -7,11 +7,14 @@
 
 import UIKit
 
+import SnapKit
+
 final class HappyRoutineViewController: UIViewController {
     
     // MARK: - Properties
     
     private let happyRoutineData = HappyRoutineCard.dummy()
+    var isFromAddHappyBottom: Bool = false
     
     // MARK: - UI Components
     
@@ -36,6 +39,7 @@ final class HappyRoutineViewController: UIViewController {
         setDelegate()
         setAddTarget()
         setNavigationBar()
+        setAlertView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,26 +89,29 @@ private extension HappyRoutineViewController {
         happyRoutineNavigationBar.cancelButton.isHidden = true
         happyRoutineNavigationBar.cancelButtonAction = {
             self.happyRoutineNavigationBar.cancelButton.isHidden = true
-            self.happyRoutineNavigationBar.deleteButton.isHidden = false
+            self.happyRoutineNavigationBar.editButton.isHidden = false
             self.isEditing.toggle()
         }
-        
-        happyRoutineNavigationBar.isDeleteButtonIncluded = true
-        happyRoutineNavigationBar.deleteButtonAction = {
+        happyRoutineNavigationBar.isEditButtonIncluded = true
+        happyRoutineNavigationBar.editButtonAction = {
             self.happyRoutineNavigationBar.cancelButton.isHidden = false
-            self.happyRoutineNavigationBar.deleteButton.isHidden = true
+            self.happyRoutineNavigationBar.editButton.isHidden = true
             self.isEditing.toggle()
             self.present(self.happyDeleteBottom, animated: false)
+        }
+    }
+    
+    func setAlertView() {
+        if isFromAddHappyBottom {
+            happyRoutineView.addAlertView.isHidden = false
+            UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+                self.happyRoutineView.addAlertView.alpha = 0.0
+            })
         }
     }
 }
 
 extension HappyRoutineViewController: BottomSheetButtonDelegate {
-    func bakcButtonTapped() {
-        self.happyRoutineNavigationBar.cancelButton.isHidden = true
-        self.happyRoutineNavigationBar.deleteButton.isHidden = false
-        self.dismiss(animated: false)
-    }
     
     func completeButtonTapped() {
         view = happyRoutineEmptyView
@@ -117,5 +124,9 @@ extension HappyRoutineViewController: BottomSheetButtonDelegate {
         happyRoutineEmptyView.fromRoutineView = true
         self.viewWillLayoutSubviews()
         self.dismiss(animated: false)
+    }
+    
+    func addButtonTapped() {
+        
     }
 }
