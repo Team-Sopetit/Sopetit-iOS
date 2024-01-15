@@ -52,7 +52,7 @@ final class RoutineChoiceView: UIView {
         collectionView.isScrollEnabled = true
         collectionView.allowsMultipleSelection = true
         collectionView.backgroundColor = .SoftieBack
-        collectionView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 30, left: 22, bottom: 30, right: 22)
         return collectionView
     }()
     
@@ -79,14 +79,14 @@ final class RoutineChoiceView: UIView {
     private lazy var topLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.SoftieBack.withAlphaComponent(1).cgColor, UIColor.SoftieBack.withAlphaComponent(0.9).cgColor, UIColor.SoftieBack.withAlphaComponent(0).cgColor]
-        gradient.frame = CGRect(x: SizeLiterals.Screen.screenWidth * 20 / 375, y: SizeLiterals.Screen.screenHeight * 179 / 812, width: SizeLiterals.Screen.screenWidth * 335 / 375, height: 30)
+        gradient.frame = CGRect(x: SizeLiterals.Screen.screenWidth * 20 / 375, y: 155 + SizeLiterals.Screen.screenHeight * 24 / 812, width: SizeLiterals.Screen.screenWidth * 335 / 375, height: 30)
         return gradient
     }()
     
     private lazy var bottomLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.SoftieBack.withAlphaComponent(0).cgColor, UIColor.SoftieBack.withAlphaComponent(0.9).cgColor, UIColor.SoftieBack.withAlphaComponent(1).cgColor]
-        gradient.frame = CGRect(x: SizeLiterals.Screen.screenWidth * 20 / 375, y: SizeLiterals.Screen.screenHeight * 610 / 812, width: SizeLiterals.Screen.screenWidth * 335 / 375, height: 30)
+        gradient.frame = CGRect(x: SizeLiterals.Screen.screenWidth * 20 / 375, y: 129 + SizeLiterals.Screen.screenHeight * 464 / 812, width: SizeLiterals.Screen.screenWidth * 335 / 375, height: 30)
         return gradient
     }()
     
