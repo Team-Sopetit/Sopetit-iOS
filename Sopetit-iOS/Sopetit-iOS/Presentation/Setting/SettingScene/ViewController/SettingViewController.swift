@@ -200,6 +200,10 @@ extension SettingViewController {
 }
 
 extension SettingViewController: BottomSheetButtonDelegate {
+    func addButtonTapped() {
+        self.dismiss(animated: false)
+    }
+    
     func deleteButtonTapped() {
         self.dismiss(animated: false)
     }
