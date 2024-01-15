@@ -15,7 +15,7 @@ enum URLConstant {
     
     // MARK: - Auth URL
     
-    static let loginURL = baseURL + "api/v1/login"
+    static let loginURL = baseURL + "/api/v1/auth"
     
     // MARK: - OnBoarding URL
     

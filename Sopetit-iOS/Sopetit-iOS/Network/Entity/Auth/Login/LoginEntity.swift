@@ -6,11 +6,5 @@
 //
 
 struct LoginEntity: Codable {
-    let success: Bool
-    let message: String
-    let data: Token?
-}
-
-struct Token: Codable {
     let accessToken, refreshToken: String
 }

@@ -8,14 +8,17 @@
 import UIKit
 
 import SnapKit
-import KakaoSDKAuth
-import KakaoSDKUser
-import AuthenticationServices
+
+protocol LoginDelegate: AnyObject {
+    func kakaoLogin()
+    func appleLogin()
+}
 
 final class LoginView: UIView {
     
-    private var kakaoEntity: LoginEntity?
-    private var appleEntity: LoginEntity?
+    // MARK: - Properties
+        
+        weak var loginDelegate: LoginDelegate?
     
     // MARK: - UI Components
     
@@ -181,92 +184,11 @@ extension LoginView {
     
     @objc
     func kakaoLoginButtonTapped(_ sender: UITapGestureRecognizer) {
-        print("카카오 로그인 버튼 탭함.")
-        if UserApi.isKakaoTalkLoginAvailable() {
-            // 카카오톡 로그인. api 호출 결과를 클로저로 전달.
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let accessToken = oauthToken?.accessToken {
-                    // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
-                    print("TOKEN", accessToken)
-                    self.postLoginAPI(socialAccessToken: accessToken, socialType: "KAKAO")
-                    
-                }
-            }
-        } else { // 웹으로 로그인해도 똑같이 처리되도록
-            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
-                if let accessToken = oauthToken?.accessToken {
-                    // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
-                    self.postLoginAPI(socialAccessToken: accessToken, socialType: "KAKAO")
-                }
-            }
-        }
+        loginDelegate?.kakaoLogin()
     }
     
     @objc
     func appleLoginButtonTapped(_ sender: UITapGestureRecognizer) {
-        print("애플 로그인 버튼 탭함.")
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
-        
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        
-        authorizationController.performRequests()
-    }
-    
-    func showKakaoLoginFailMessage() {
-        print("test")
-    }
-    
-    func postLoginAPI(socialAccessToken: String, socialType: String) {
-            AuthService.shared.postLoginAPI(socialAccessToken: socialAccessToken, socialType: socialType) { networkResult in
-                switch networkResult {
-                case .success(let data):
-                    if let data = data as? GenericResponse<LoginEntity> {
-                        switch socialType {
-                        case "KAKAO":
-                            if let kakaoData = data.data {
-                                self.kakaoEntity = kakaoData
-                            }
-                        case "APPLE":
-                            if let appleData = data.data {
-                                self.appleEntity = appleData
-                            }
-                        default:
-                            break
-                        }
-                        
-                    }
-                case .requestErr, .serverErr:
-                    print("Error 발생")
-                default:
-                    break
-                }
-            }
-        }
-}
-
-extension LoginView: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            
-            let userIdentifier = appleIDCredential.user
-            let fullName = appleIDCredential.fullName
-            let email = appleIDCredential.email
-            
-            postLoginAPI(socialAccessToken: userIdentifier, socialType: "APPLE")
-        }
-    }
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("Apple Login failed with error: \(error.localizedDescription)")
-    }
-    
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.window ?? ASPresentationAnchor()
+        loginDelegate?.appleLogin()
     }
 }
