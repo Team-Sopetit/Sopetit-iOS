@@ -105,4 +105,9 @@ enum I18N {
         static let addDailyRoutine = "데일리 루틴 추가"
         static let addDailyBottomTitle = "데일리 루틴을 1개 추가했어요"
     }
+    
+    enum Setting {
+        static let withdraw = "정말 가는거야..? 나는 영영 사라져..."
+        static let withdraw_head = "탈퇴하면 계정이 삭제되고 모든 데이터가 사라집니다."
+    }
 }
