@@ -27,12 +27,30 @@ final class SplashViewController: UIViewController {
         super.viewDidLoad()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
-            self.navigateToNextScreen()
+            self.showNextPage()
+        }
+    }
+}
+
+private extension SplashViewController {
+    func showNextPage() {
+        if UserManager.shared.hasAccessToken {
+            presentToHomeView()
+        } else {
+            presentToOnboardingView()
         }
     }
     
-    private func navigateToNextScreen() {
-        let nav = LoginViewController()
-        self.navigationController?.pushViewController(nav, animated: false)
+    func presentToOnboardingView() {
+        let nav = StoryTellingViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
+    func presentToHomeView() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        keyWindow.rootViewController = TabBarController()
     }
 }

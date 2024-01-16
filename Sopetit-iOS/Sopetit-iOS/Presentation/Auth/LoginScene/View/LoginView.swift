@@ -8,11 +8,17 @@
 import UIKit
 
 import SnapKit
-import KakaoSDKAuth
-import KakaoSDKUser
-import AuthenticationServices
+
+protocol LoginDelegate: AnyObject {
+    func kakaoLogin()
+    func appleLogin()
+}
 
 final class LoginView: UIView {
+    
+    // MARK: - Properties
+        
+        weak var loginDelegate: LoginDelegate?
     
     // MARK: - UI Components
     
@@ -178,38 +184,11 @@ extension LoginView {
     
     @objc
     func kakaoLoginButtonTapped(_ sender: UITapGestureRecognizer) {
-        print("카카오 로그인 버튼 탭함.")
-        if UserApi.isKakaoTalkLoginAvailable() {
-            // 카카오톡 로그인. api 호출 결과를 클로저로 전달.
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
-                if let accessToken = oauthToken?.accessToken {
-                    // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
-                    print("TOKEN", accessToken)
-                    self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
-                    
-                }
-            }
-        } else { // 웹으로 로그인해도 똑같이 처리되도록
-            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
-                if let accessToken = oauthToken?.accessToken {
-                    // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
-                    print("TOKEN", accessToken)
-                    self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
-                }
-            }
-        }
-    }
-    
-    func showKakaoLoginFailMessage() {
-        print("test")
-    }
-    
-    func postSocialLoginData(socialToken: String, socialType: String, email: String = "") {
-        print("test")
+        loginDelegate?.kakaoLogin()
     }
     
     @objc
     func appleLoginButtonTapped(_ sender: UITapGestureRecognizer) {
-        print("애플 로그인 버튼 탭함.")
+        loginDelegate?.appleLogin()
     }
 }
