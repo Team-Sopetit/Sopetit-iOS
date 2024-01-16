@@ -84,7 +84,6 @@ extension LoginViewController {
 extension LoginViewController: LoginDelegate {
     
     func kakaoLogin() {
-        print("카카오 로그인 버튼 탭함.")
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 if error != nil {
