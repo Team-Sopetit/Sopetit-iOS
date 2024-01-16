@@ -5,20 +5,11 @@
 
 import Foundation
 
-// MARK: - DailyEntity
-struct DailyEntity: Codable {
-    let success: Bool
-    let message: String
-    let data: DataClass
+struct DailyRoutineEntity: Codable {
+    let routines: [DailyRoutines]
 }
 
-// MARK: - DataClass
-struct DataClass: Codable {
-    let routines: [Routine1]
-}
-
-// MARK: - Routine
-struct Routine1: Codable {
+struct DailyRoutines: Codable {
     let routineID: Int
     let content: String
     let iconImageURL: String

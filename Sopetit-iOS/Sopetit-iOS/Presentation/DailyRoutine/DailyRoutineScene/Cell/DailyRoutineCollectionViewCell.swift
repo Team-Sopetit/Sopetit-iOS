@@ -155,7 +155,7 @@ extension DailyRoutineCollectionViewCell {
                 
     }
     
-    func setDatabind(model: Routine1) {
+    func setDatabind(model: DailyRoutines) {
         self.dateLabel.text = "\(model.achieveCount)일 달성 중"
         self.routineLabel.text = model.content
         if let iconURL = URL(string: model.iconImageURL) {

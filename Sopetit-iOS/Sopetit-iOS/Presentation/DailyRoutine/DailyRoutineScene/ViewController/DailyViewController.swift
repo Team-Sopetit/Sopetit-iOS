@@ -19,7 +19,7 @@ final class DailyViewController: UIViewController {
     var status: Int = 0
     var isFromAddDailyBottom: Bool = false
     private var shouldShowFooterView: Bool = true
-    var routineList: DataClass = .init(routines: [.init(routineID: 0, content: "", iconImageURL: "", achieveCount: 0, isAchieve: true)])
+    var routineList: DailyRoutineEntity = .init(routines: [.init(routineID: 0, content: "", iconImageURL: "", achieveCount: 0, isAchieve: true)])
     
     override var isEditing: Bool {
         didSet {
@@ -306,24 +306,21 @@ extension DailyViewController {
     }
 }
 
+// MARK: - Network
+
 extension DailyViewController {
     func getRoutineListAPI() {
         DailyRoutineService.shared.getRoutineListAPI { networkResult in
-            print(networkResult)
             switch networkResult {
             case .success(let data):
-                print("Received data:", data)
-                if let data = data as? GenericResponse<DataClass> {
-                    dump(data)
+                if let data = data as? GenericResponse<DailyRoutineEntity> {
                     if let listData = data.data {
                         self.routineList = listData
-                        DispatchQueue.main.async {
-                            self.collectionview.reloadData()
-                        }
                     }
+                    self.collectionview.reloadData()
                 }
             case .requestErr, .serverErr:
-                print("오류발생")
+                break
             default:
                 break
             }
@@ -333,9 +330,7 @@ extension DailyViewController {
 
 extension DailyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath) as? DailyRoutineCollectionViewCell else {
-            return .zero
-        }
+        let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
 
         let data = routineList.routines[indexPath.item].content
         cell.routineLabel.text = data

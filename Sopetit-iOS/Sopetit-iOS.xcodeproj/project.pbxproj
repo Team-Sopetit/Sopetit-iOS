@@ -25,7 +25,6 @@
 		045DFE862B539BC3005D69EA /* WithdrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE852B539BC3005D69EA /* WithdrawView.swift */; };
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
 		04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */; };
-		092AE2B82B53F25E00E9A20D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 092AE2B72B53F25E00E9A20D /* Config.xcconfig */; };
 		092AE2BF2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */; };
 		092AE2C12B540DC200E9A20D /* CompleteHappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AE2C02B540DC200E9A20D /* CompleteHappyRoutineView.swift */; };
 		093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */; };
@@ -96,7 +95,7 @@
 		A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F12B3EADCD00C4B477 /* LoginEntity.swift */; };
 		A42C32F42B3EADDD00C4B477 /* OnboardingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F32B3EADDD00C4B477 /* OnboardingEntity.swift */; };
 		A42C32F62B3EADE300C4B477 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F52B3EADE300C4B477 /* HomeEntity.swift */; };
-		A42C32FA2B3EADF900C4B477 /* DailyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F92B3EADF900C4B477 /* DailyEntity.swift */; };
+		A42C32FA2B3EADF900C4B477 /* DailyRoutineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F92B3EADF900C4B477 /* DailyRoutineEntity.swift */; };
 		A42C32FC2B3EAE0000C4B477 /* HappinessEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32FB2B3EAE0000C4B477 /* HappinessEntity.swift */; };
 		A42C33002B3EAE3E00C4B477 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32FF2B3EAE3E00C4B477 /* HomeService.swift */; };
 		A42C33022B3EAE4900C4B477 /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33012B3EAE4900C4B477 /* OnboardingService.swift */; };
@@ -238,7 +237,7 @@
 		A42C32F12B3EADCD00C4B477 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
 		A42C32F32B3EADDD00C4B477 /* OnboardingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEntity.swift; sourceTree = "<group>"; };
 		A42C32F52B3EADE300C4B477 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
-		A42C32F92B3EADF900C4B477 /* DailyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyEntity.swift; sourceTree = "<group>"; };
+		A42C32F92B3EADF900C4B477 /* DailyRoutineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineEntity.swift; sourceTree = "<group>"; };
 		A42C32FB2B3EAE0000C4B477 /* HappinessEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessEntity.swift; sourceTree = "<group>"; };
 		A42C32FF2B3EAE3E00C4B477 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		A42C33012B3EAE4900C4B477 /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
@@ -353,31 +352,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		092AE2B92B540B3400E9A20D /* CompleteHappyRoutineScene */ = {
-			isa = PBXGroup;
-			children = (
-				092AE2BD2B540B6000E9A20D /* ViewController */,
-				092AE2BC2B540B5C00E9A20D /* View */,
-			);
-			path = CompleteHappyRoutineScene;
-			sourceTree = "<group>";
-		};
-		092AE2BC2B540B5C00E9A20D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				092AE2C02B540DC200E9A20D /* CompleteHappyRoutineView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		092AE2BD2B540B6000E9A20D /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		045DFE7C2B50F141005D69EA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +379,31 @@
 		045DFE842B53035D005D69EA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		092AE2B92B540B3400E9A20D /* CompleteHappyRoutineScene */ = {
+			isa = PBXGroup;
+			children = (
+				092AE2BD2B540B6000E9A20D /* ViewController */,
+				092AE2BC2B540B5C00E9A20D /* View */,
+			);
+			path = CompleteHappyRoutineScene;
+			sourceTree = "<group>";
+		};
+		092AE2BC2B540B5C00E9A20D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				092AE2C02B540DC200E9A20D /* CompleteHappyRoutineView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		092AE2BD2B540B6000E9A20D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -886,7 +885,7 @@
 		A42C32F82B3EADF000C4B477 /* Daily */ = {
 			isa = PBXGroup;
 			children = (
-				A42C32F92B3EADF900C4B477 /* DailyEntity.swift */,
+				A42C32F92B3EADF900C4B477 /* DailyRoutineEntity.swift */,
 			);
 			path = Daily;
 			sourceTree = "<group>";
@@ -1493,7 +1492,7 @@
 				00CCDCC42B51B5BD007DD0E6 /* SplashTwoView.swift in Sources */,
 				093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */,
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,
-				A42C32FA2B3EADF900C4B477 /* DailyEntity.swift in Sources */,
+				A42C32FA2B3EADF900C4B477 /* DailyRoutineEntity.swift in Sources */,
 				A49BFE232B4E565D00035EB6 /* RoutineChoiceEntity.swift in Sources */,
 				A49BFDF52B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift in Sources */,
 				0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */,

@@ -28,15 +28,10 @@ extension DailyRoutineService {
             switch response.result {
             case .success:
                 guard let statusCode = response.response?.statusCode else { return }
-                
-                guard let data = response.data else {
-                    completion(.networkFail)
-                    return
-                }
-
+                guard let data = response.data else { return }
                 let networkResult = self.judgeStatus(by: statusCode,
                                                      data,
-                                                     DataClass.self)
+                                                     DailyRoutineEntity.self)
                 completion(networkResult)
 
             case .failure:
