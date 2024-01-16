@@ -74,41 +74,48 @@ private extension HappyRoutineViewController {
     }
     
     func setAddTarget() {
-        happyRoutineView.doneButton.addTarget(self, action: #selector(tapDoneButton), for: .touchUpInside)
+        happyRoutineView.bottomButton.addTarget(self, action: #selector(tapDoneButton), for: .touchUpInside)
     }
     
     @objc
     func tapDoneButton() {
-        self.present(happyCompleteBottom, animated: false)
+        switch happyRoutineView.bottomButton.type {
+        case .normal:
+            self.present(happyCompleteBottom, animated: false)
+        case .red:
+            self.present(happyDeleteBottom, animated: false)
+        }
+        
     }
     
     func setNavigationBar() {
         happyRoutineNavigationBar.cancelButton.isHidden = true
         happyRoutineNavigationBar.cancelButtonAction = {
             self.happyRoutineNavigationBar.cancelButton.isHidden = true
-            self.happyRoutineNavigationBar.deleteButton.isHidden = false
+            self.happyRoutineNavigationBar.editButton.isHidden = false
             self.isEditing.toggle()
+            self.happyRoutineView.bottomButton.setNormalButton()
         }
         
-        happyRoutineNavigationBar.isDeleteButtonIncluded = true
-        happyRoutineNavigationBar.deleteButtonAction = {
+        happyRoutineNavigationBar.isEditButtonIncluded = true
+        happyRoutineNavigationBar.editButtonAction = {
             self.happyRoutineNavigationBar.cancelButton.isHidden = false
-            self.happyRoutineNavigationBar.deleteButton.isHidden = true
+            self.happyRoutineNavigationBar.editButton.isHidden = true
             self.isEditing.toggle()
-            self.present(self.happyDeleteBottom, animated: false)
+            self.happyRoutineView.bottomButton.setRedDeleteButton(title: I18N.HappyRoutine.deleteRoutine)
         }
     }
 }
 
 extension HappyRoutineViewController: BottomSheetButtonDelegate {
     
-    func bakcButtonTapped() {
+    func backButtonTapped() {
         self.happyRoutineNavigationBar.cancelButton.isHidden = true
-        self.happyRoutineNavigationBar.deleteButton.isHidden = false
+        self.happyRoutineNavigationBar.editButton.isHidden = false
         self.dismiss(animated: false)
     }
     
-    func completeButtonTapped() {
+    func doneButtonTapped() {
         self.viewWillLayoutSubviews()
         self.dismiss(animated: false)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {

@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 
 protocol BottomSheetButtonDelegate: AnyObject {
-    func bakcButtonTapped()
-    func completeButtonTapped()
+    func backButtonTapped()
+    func doneButtonTapped()
     func deleteButtonTapped()
 }
 
@@ -196,11 +196,11 @@ extension BottomSheetViewController {
     func buttonTapped(_ sender: UIButton) {
         switch sender {
         case leftButton:
-            buttonDelegate?.bakcButtonTapped()
+            buttonDelegate?.backButtonTapped()
         case rightButton:
             switch bottomType {
             case .dailyCompleteBottom, .happyCompleteBottom:
-                buttonDelegate?.completeButtonTapped()
+                buttonDelegate?.doneButtonTapped()
             case .dailyDeleteBottom, .happyDeleteBottom, .logoutBottom:
                 buttonDelegate?.deleteButtonTapped()
             }

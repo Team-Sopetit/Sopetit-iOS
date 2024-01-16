@@ -17,7 +17,7 @@ final class HappyRoutineView: UIView {
         let navigationBar = CustomNavigationBarView()
         navigationBar.isLeftTitleViewIncluded = true
         navigationBar.isLeftTitleLabelIncluded = I18N.HappyRoutine.happyRoutineTitle
-        navigationBar.isDeleteButtonIncluded = true
+        navigationBar.isEditButtonIncluded = true
         return navigationBar
     }()
     
@@ -44,7 +44,7 @@ final class HappyRoutineView: UIView {
     }()
     
     private let happyRoutineCardView = HappyRoutineCardView()
-    let doneButton = BottomCTAButton(title: I18N.HappyRoutine.done)
+    let bottomButton = BottomCTAButton(title: I18N.HappyRoutine.done)
     
     // MARK: - Life Cycles
     
@@ -71,7 +71,7 @@ private extension HappyRoutineView {
     }
     
     func setHierarchy() {
-        self.addSubviews(navigationBar, bubbleImageView, bubbleLabel, subTitleLabel, happyRoutineCardView, doneButton)
+        self.addSubviews(navigationBar, bubbleImageView, bubbleLabel, subTitleLabel, happyRoutineCardView, bottomButton)
     }
     
     func setLayout() {
@@ -125,7 +125,7 @@ private extension HappyRoutineView {
             $0.centerY.equalTo(bubbleImageView).offset(-2)
         }
         
-        doneButton.snp.makeConstraints {
+        bottomButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(12)
             $0.centerX.equalToSuperview()
         }

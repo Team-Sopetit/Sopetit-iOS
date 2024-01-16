@@ -61,6 +61,7 @@ enum I18N {
         static let delAlertTitle = "행복 루틴을 삭제했어요"
         static let completeHappyRoutine = "행복 루틴을 완료했어요!"
         static let getCotton = "행복 솜뭉치 1개 획득"
+        static let deleteRoutine = "달성 중인 루틴 삭제"
     }
     
     enum HappyRoutineCategory {

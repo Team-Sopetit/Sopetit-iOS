@@ -176,11 +176,11 @@ extension DailyViewController: UICollectionViewDataSource {
 }
 
 extension DailyViewController: BottomSheetButtonDelegate {
-    func bakcButtonTapped() {
+    func backButtonTapped() {
         self.dismiss(animated: false)
     }
     
-    func completeButtonTapped() {
+    func doneButtonTapped() {
         let cell = collectionview.cellForItem(at: [0, status]) as? DailyRoutineCollectionViewCell
         cell?.achieveButton.isEnabled = false
         self.dismiss(animated: false)
