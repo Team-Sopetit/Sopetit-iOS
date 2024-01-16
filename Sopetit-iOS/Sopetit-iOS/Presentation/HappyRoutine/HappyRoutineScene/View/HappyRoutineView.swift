@@ -44,7 +44,8 @@ final class HappyRoutineView: UIView {
     }()
     
     private let happyRoutineCardView = HappyRoutineCardView()
-    let bottomButton = BottomCTAButton(title: I18N.HappyRoutine.done)
+    let doneButton = BottomCTAButton(title: I18N.HappyRoutine.done)
+    var addAlertView = AlertMessageView(title: I18N.HappyRoutine.addHappyBottomTitle)
     
     // MARK: - Life Cycles
     
@@ -68,10 +69,11 @@ private extension HappyRoutineView {
     
     func setUI() {
         self.backgroundColor = .SoftieBack
+        addAlertView.isHidden = true
     }
     
     func setHierarchy() {
-        self.addSubviews(navigationBar, bubbleImageView, bubbleLabel, subTitleLabel, happyRoutineCardView, bottomButton)
+        self.addSubviews(navigationBar, bubbleImageView, bubbleLabel, subTitleLabel, happyRoutineCardView, doneButton, addAlertView)
     }
     
     func setLayout() {
@@ -128,6 +130,13 @@ private extension HappyRoutineView {
         bottomButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(12)
             $0.centerX.equalToSuperview()
+        }
+        
+        addAlertView.snp.makeConstraints {
+            $0.bottom.equalTo(doneButton.snp.top).offset(-16)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
+            $0.height.equalTo(51)
         }
     }
 }

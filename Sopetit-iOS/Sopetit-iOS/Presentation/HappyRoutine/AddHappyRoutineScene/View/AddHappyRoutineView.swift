@@ -194,7 +194,6 @@ private extension AddHappyRoutineView {
     
     @objc
     func buttonTapped() {
-        print("AddButton Tapped")
         delegate?.tapAddButton()
     }
 }

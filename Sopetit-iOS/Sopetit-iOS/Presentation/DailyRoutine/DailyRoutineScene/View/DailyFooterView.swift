@@ -9,11 +9,16 @@ import UIKit
 
 import SnapKit
 
-class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegisterable {
+protocol DailyAddDelegate: AnyObject {
+    func addTapped()
+}
+
+final class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegisterable {
     
     // MARK: - Properties
     
     static var isFromNib: Bool = false
+    weak var addDelegate: DailyAddDelegate?
     
     // MARK: - UI Componenets
     
@@ -64,6 +69,7 @@ extension DailyFooterView {
         borderLayer.lineDashPattern = [3, 3]
         borderLayer.backgroundColor = UIColor.clear.cgColor
         borderLayer.fillColor = UIColor.clear.cgColor
+        translatesAutoresizingMaskIntoConstraints = true
     }
     
     func setLayout() {
@@ -85,7 +91,6 @@ extension DailyFooterView {
     
     @objc
     func handleFooterTap() {
-        print("추가버튼 클릭됨")
-        
+        addDelegate?.addTapped()
     }
 }

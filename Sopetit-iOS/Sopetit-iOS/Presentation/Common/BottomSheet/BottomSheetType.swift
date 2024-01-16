@@ -8,6 +8,8 @@
 import UIKit
 
 enum BottomSheetType {
+    case dailyAddBottom
+    case happyAddBottom
     case dailyCompleteBottom
     case happyCompleteBottom
     case dailyDeleteBottom
@@ -18,7 +20,7 @@ enum BottomSheetType {
 extension BottomSheetType {
     var image: UIImage {
         switch self {
-        case .dailyCompleteBottom, .happyCompleteBottom:
+        case .dailyAddBottom, .happyAddBottom, .dailyCompleteBottom, .happyCompleteBottom:
             return ImageLiterals.DailyRoutine.icDaily1Filled
         case .dailyDeleteBottom, .happyDeleteBottom, .logoutBottom:
             return ImageLiterals.BottomNavi.icFaceCrying
@@ -27,6 +29,10 @@ extension BottomSheetType {
     
     var title: String {
         switch self {
+        case .dailyAddBottom:
+            return I18N.BottomSheet.dailyAddTitle
+        case .happyAddBottom:
+            return I18N.BottomSheet.happyAddTitle
         case .dailyCompleteBottom:
             return I18N.BottomSheet.dailyTitle
         case .happyCompleteBottom:
@@ -40,6 +46,8 @@ extension BottomSheetType {
     
     var subTitle: String {
         switch self {
+        case .dailyAddBottom:
+            return I18N.BottomSheet.dailyAddSubTitle
         case .dailyCompleteBottom, .happyCompleteBottom:
             return I18N.BottomSheet.delInfoTitle
         case .dailyDeleteBottom:
@@ -53,7 +61,7 @@ extension BottomSheetType {
     
     var subColor: UIColor {
         switch self {
-        case .dailyCompleteBottom, .happyCompleteBottom:
+        case .dailyAddBottom, .dailyCompleteBottom, .happyCompleteBottom:
             return .Gray400
         case .dailyDeleteBottom:
             return .SoftieRed
@@ -66,6 +74,8 @@ extension BottomSheetType {
     
     var leftTitle: String {
         switch self {
+        case .dailyAddBottom, .happyAddBottom:
+            return I18N.BottomSheet.addLeftTitle
         case .dailyCompleteBottom, .happyCompleteBottom:
             return I18N.BottomSheet.dailyLeftTitle
         case .dailyDeleteBottom, .happyDeleteBottom, .logoutBottom:
@@ -75,6 +85,8 @@ extension BottomSheetType {
     
     var rightTitle: String {
         switch self {
+        case .dailyAddBottom, .happyAddBottom:
+            return I18N.BottomSheet.addRightTitle
         case .dailyCompleteBottom, .happyCompleteBottom:
             return I18N.BottomSheet.dailyRightTitle
         case .dailyDeleteBottom, .happyDeleteBottom:
@@ -86,7 +98,7 @@ extension BottomSheetType {
     
     var rightColor: UIColor {
         switch self {
-        case .dailyCompleteBottom, .happyCompleteBottom:
+        case .dailyAddBottom, .happyAddBottom, .dailyCompleteBottom, .happyCompleteBottom:
             return .SoftieMain1
         case .dailyDeleteBottom, .happyDeleteBottom, .logoutBottom:
             return .SoftieRed
