@@ -9,4 +9,6 @@ struct LoginEntity: Codable {
     let accessToken, refreshToken: String
 }
 
+struct LogoutEntity: Codable {}
+
 struct ResignEntity: Codable {}
