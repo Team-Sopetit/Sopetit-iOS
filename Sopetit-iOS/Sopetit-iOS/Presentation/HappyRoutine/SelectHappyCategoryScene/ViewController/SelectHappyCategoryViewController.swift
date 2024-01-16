@@ -13,7 +13,7 @@ final class SelectHappyCategoryViewController: UIViewController {
     
 //    private let categoryList = HappyRoutineCategory.dummy()
     private var happinessThemesEntity = HappinessThemesEntity(themes: [])
-    private var happinessEntity = HappinessEntity(themes: [])
+    private var happinessEntity = HappinessEntity(routines: [])
     
     private var selectedIndex = 0
     
@@ -64,7 +64,7 @@ extension SelectHappyCategoryViewController: UICollectionViewDataSource {
         if collectionView == selectHappyCategoryView.tagview.collectionView {
             return happinessThemesEntity.themes.count + 1
         } else if collectionView == selectHappyCategoryView.categoryCollectionView {
-            return happinessEntity.themes.count
+            return happinessEntity.routines.count
         }
         return 0
     }
@@ -86,10 +86,7 @@ extension SelectHappyCategoryViewController: UICollectionViewDataSource {
             return cell
         } else if collectionView == selectHappyCategoryView.categoryCollectionView {
             let cell = HappyRoutineCategoryCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
-//            cell.setDataBind(model: happinessThemesEntity)
-            print(happinessEntity.themes, "PPPPP")
-            cell.setDataBind(model: happinessEntity.themes[indexPath.row])
-//            cell.setDataBind(model: categoryList[indexPath.row])
+            cell.setDataBind(model: happinessEntity.routines[indexPath.row])
             return cell
         }
         return UICollectionViewCell()
@@ -171,10 +168,11 @@ private extension SelectHappyCategoryViewController {
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<HappinessEntity> {
+                    print(data)
                     if let listData = data.data {
                         self.happinessEntity = listData
-                    }
-                    print("www")
+                    }                   
+                    self.happinessEntity.routines = self.happinessEntity.routines.sorted(by: { $0.routineId < $1.routineId })
                     self.selectHappyCategoryView.categoryCollectionView.reloadData()
                 }
             case .requestErr, .serverErr:

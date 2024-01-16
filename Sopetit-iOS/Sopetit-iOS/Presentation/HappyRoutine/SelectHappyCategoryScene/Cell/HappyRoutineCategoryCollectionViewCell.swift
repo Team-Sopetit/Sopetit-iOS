@@ -108,7 +108,6 @@ private extension HappyRoutineCategoryCollectionViewCell {
 extension HappyRoutineCategoryCollectionViewCell {
     
     func setDataBind(model: Happiness) {
-        print(model)
         imageView.kfSetImage(url: model.iconImageUrl)
         titleLabel.text = model.title
         titleLabel.textColor = UIColor(hex: model.nameColor)

@@ -8,7 +8,7 @@
 import Foundation
 
 struct HappinessEntity: Codable {
-    let themes: [Happiness]
+    var routines: [Happiness]
 }
 
 struct Happiness: Codable {
@@ -19,10 +19,10 @@ struct Happiness: Codable {
     let iconImageUrl: String
 
     enum CodingKeys: String, CodingKey {
-        case routineId = "routineId"
-        case name = "name"
-        case nameColor = "nameColor"
-        case title = "title"
-        case iconImageUrl = "iconImageUrl"
+        case routineId
+        case name
+        case nameColor
+        case title
+        case iconImageUrl
     }
 }

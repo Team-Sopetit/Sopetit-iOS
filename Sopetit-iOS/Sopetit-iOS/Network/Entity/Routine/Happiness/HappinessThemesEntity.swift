@@ -16,7 +16,7 @@ struct HappinessTheme: Codable {
     let name: String
 
     enum CodingKeys: String, CodingKey {
-        case themeId = "themeId"
-        case name = "name"
+        case themeId
+        case name
     }
 }
