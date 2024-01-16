@@ -90,4 +90,38 @@ extension OnBoardingService {
                 }
             }
         }
+    
+    func postOnboardingMemeberAPI(
+        dollType: String,
+        dollName: String,
+        routineArray: [Int],
+        completion: @escaping (NetworkResult<Any>) -> Void) {
+            let url = URLConstant.memberURL
+            let header: HTTPHeaders = NetworkConstant.hasTokenHeader
+            let body: Parameters = [
+                "dollType": dollType,
+                "name": dollName,
+                "routines": routineArray
+            ]
+            let dataRequest = AF.request(url,
+                                         method: .post,
+                                         parameters: body,
+                                         encoding: JSONEncoding.default,
+                                         headers: header)
+            
+            dataRequest.responseData { response in
+                switch response.result {
+                case .success:
+                    guard let statusCode = response.response?.statusCode else { return }
+                    print(statusCode)
+                    guard let data = response.data else { return }
+                    let networkResult = self.judgeStatus(by: statusCode,
+                                                         data,
+                                                         MemberEntity.self)
+                    completion(networkResult)
+                case .failure:
+                    completion(.networkFail)
+                }
+            }
+        }
 }

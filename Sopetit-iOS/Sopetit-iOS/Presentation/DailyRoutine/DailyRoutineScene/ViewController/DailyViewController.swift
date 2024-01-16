@@ -16,9 +16,10 @@ final class DailyViewController: UIViewController {
     
     // MARK: - Properties
     
-    let dummy = DailyEntity.routineDummy()
     var status: Int = 0
     var isFromAddDailyBottom: Bool = false
+    private var shouldShowFooterView: Bool = true
+    var routineList: DailyRoutineEntity = .init(routines: [.init(routineID: 0, content: "", iconImageURL: "", achieveCount: 0, isAchieve: true)])
     
     override var isEditing: Bool {
         didSet {
@@ -55,6 +56,7 @@ final class DailyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getRoutineListAPI()
         setHierarchy()
         setLayout()
         setUI()
@@ -179,17 +181,25 @@ extension DailyViewController: DailyAddDelegate {
 }
 
 extension DailyViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return shouldShowFooterView ? CGSize(width: collectionView.bounds.width, height: 51) : CGSize.zero
+    }
 }
 
 extension DailyViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dummy.count
+        let numberOfItems = routineList.routines.count
+        shouldShowFooterView = numberOfItems < 3
+        setLayout()
+        
+        return numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
-        cell.setDatabind(model: dummy[indexPath.item])
+        let routine = routineList.routines[indexPath.item]
+        cell.setDatabind(model: routine)
         cell.delegate = self
         cell.tag = indexPath.item
         return cell
@@ -199,6 +209,11 @@ extension DailyViewController: UICollectionViewDataSource {
         if kind == UICollectionView.elementKindSectionFooter {
             let footerView = DailyFooterView.dequeueReusableFooterView(collectionView: collectionView, indexPath: indexPath)
             footerView.addDelegate = self
+            if shouldShowFooterView == false {
+                footerView.isHidden = true
+            } else {
+                footerView.isHidden = false
+            }
             return footerView
         }
         return UICollectionReusableView()
@@ -238,7 +253,10 @@ extension DailyViewController: BottomSheetButtonDelegate {
         self.dismiss(animated: false)
     }
     
-    func addButtonTapped() { }
+    func addButtonTapped() {
+        shouldShowFooterView.toggle()
+        setLayout()
+    }
 }
 
 extension DailyViewController: PresentDelegate {
@@ -285,5 +303,44 @@ extension DailyViewController {
                 }
             }
         }
+    }
+}
+
+// MARK: - Network
+
+extension DailyViewController {
+    func getRoutineListAPI() {
+        DailyRoutineService.shared.getRoutineListAPI { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<DailyRoutineEntity> {
+                    if let listData = data.data {
+                        self.routineList = listData
+                    }
+                    self.collectionview.reloadData()
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+}
+
+extension DailyViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
+
+        let data = routineList.routines[indexPath.item].content
+        cell.routineLabel.text = data
+        cell.routineLabel.preferredMaxLayoutWidth = collectionView.bounds.width - 164
+        cell.layoutIfNeeded()
+
+        let cellHeight = cell.routineLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        let itemSizeWidth = collectionView.bounds.width - 40
+        let itemSizeHeight = cellHeight + 126
+
+        return CGSize(width: itemSizeWidth, height: itemSizeHeight)
     }
 }

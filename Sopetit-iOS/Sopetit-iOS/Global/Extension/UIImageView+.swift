@@ -45,18 +45,6 @@ extension UIImageView {
                 self.image = image?.uiImage
             }
         }
-//        KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
-//            //여기가 이제 이미지 로딩이 완료 된 이후
-//            guard let self else {return}
-//            switch result {
-//            case .success(let image):
-//                let receivedicon: SVGKImage = SVGKImage(data: image.image.pngData()!)
-//                self.image = receivedicon.uiImage
-//            case .failure(let error):
-//                print(error.errorDescription)
-//                return
-//            }
-//        }
     }
     
 }

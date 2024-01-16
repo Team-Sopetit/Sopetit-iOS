@@ -11,8 +11,6 @@ import SnapKit
 
 final class SettingView: UIView {
 
-    // MARK: - Properties
-    
     // MARK: - UI Components
     
     lazy var tableView: UITableView = {
@@ -65,5 +63,4 @@ extension SettingView {
     func setRegisterCell() {
         SettingTableViewCell.register(target: tableView)
     }
-
 }
