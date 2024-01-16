@@ -13,7 +13,6 @@ final class HappyRoutineViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let happyRoutineData = HappyRoutineCard.dummy()
     private var happinessMemberEntity: HappinessMemberEntity? = nil
     var isFromAddHappyBottom: Bool = false
     
@@ -37,7 +36,6 @@ final class HappyRoutineViewController: UIViewController {
 
         setUI()
         setTapGesture()
-        setUserCardData()
         setDelegate()
         setAddTarget()
         setNavigationBar()
@@ -73,7 +71,9 @@ private extension HappyRoutineViewController {
     }
     
     func setUserCardData() {
-        happyRoutineView.setDataBind(model: happyRoutineData)
+        if let happinessMemberEntity = self.happinessMemberEntity {
+            happyRoutineView.setDataBind(model: happinessMemberEntity)
+        }
     }
     
     func setDelegate() {
@@ -170,6 +170,7 @@ private extension HappyRoutineViewController {
                     }
                     if self.happinessMemberEntity != nil {
                         self.view = self.happyRoutineView
+                        self.setUserCardData()
                     }
                 }
             case .requestErr, .serverErr:

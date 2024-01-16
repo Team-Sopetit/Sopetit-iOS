@@ -143,8 +143,8 @@ private extension HappyRoutineView {
 
 extension HappyRoutineView {
     
-    func setDataBind(model: HappyRoutineCard) {
-        subTitleLabel.text = model.title
+    func setDataBind(model: HappinessMemberEntity) {
+        subTitleLabel.text = model.themeName
         subTitleLabel.textAlignment = .center
         happyRoutineCardView.setDataBind(model: model)
     }
