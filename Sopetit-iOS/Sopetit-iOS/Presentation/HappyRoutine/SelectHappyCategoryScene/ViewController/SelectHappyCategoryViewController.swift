@@ -11,7 +11,6 @@ final class SelectHappyCategoryViewController: UIViewController {
     
     // MARK: - Properties
     
-//    private let categoryList = HappyRoutineCategory.dummy()
     private var happinessThemesEntity = HappinessThemesEntity(themes: [])
     private var happinessEntity = HappinessEntity(routines: [])
     

@@ -14,6 +14,7 @@ final class HappyRoutineViewController: UIViewController {
     // MARK: - Properties
     
     private let happyRoutineData = HappyRoutineCard.dummy()
+    private var happinessMemberEntity: HappinessMemberEntity? = nil
     var isFromAddHappyBottom: Bool = false
     
     // MARK: - UI Components
@@ -41,6 +42,7 @@ final class HappyRoutineViewController: UIViewController {
         setAddTarget()
         setNavigationBar()
         setAlertView()
+        getHappinessMemberAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -150,5 +152,31 @@ extension HappyRoutineViewController: BottomSheetButtonDelegate {
     
     func addButtonTapped() {
         
+    }
+}
+
+// MARK: - Network
+
+private extension HappyRoutineViewController {
+    
+    func getHappinessMemberAPI() {
+        HappyRoutineService.shared.getHappinessMemberAPI() { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<HappinessMemberEntity> {
+                    print(data)
+                    if let listData = data.data {
+                        self.happinessMemberEntity = listData
+                    }
+                    if self.happinessMemberEntity != nil {
+                        self.view = self.happyRoutineView
+                    }
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
     }
 }
