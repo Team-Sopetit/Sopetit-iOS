@@ -25,10 +25,6 @@ final class CompleteDailyRoutineViewController: UIViewController {
         completeDailyRoutineView.cottonLottieView.play()
         setAnimation()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
 }
 
 // MARK: - Extensions
