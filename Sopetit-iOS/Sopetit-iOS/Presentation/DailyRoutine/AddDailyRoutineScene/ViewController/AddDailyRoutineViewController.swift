@@ -78,6 +78,7 @@ private extension AddDailyRoutineViewController {
     
     func setAddTarget() {
         addDailyRoutineView.addButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        addDailyRoutineView.customNavigationBar.delegate = self
     }
     
     @objc

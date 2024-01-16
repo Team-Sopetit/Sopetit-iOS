@@ -127,7 +127,7 @@ private extension HappyRoutineView {
             $0.centerY.equalTo(bubbleImageView).offset(-2)
         }
         
-        bottomButton.snp.makeConstraints {
+        doneButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).inset(12)
             $0.centerX.equalToSuperview()
         }

@@ -224,7 +224,7 @@ extension BottomSheetViewController {
             case .dailyAddBottom, .happyAddBottom:
                 buttonDelegate?.addButtonTapped()
             case .dailyCompleteBottom, .happyCompleteBottom:
-                buttonDelegate?.doneButtonTapped()
+                buttonDelegate?.completeButtonTapped()
             case .dailyDeleteBottom, .happyDeleteBottom, .logoutBottom:
                 buttonDelegate?.deleteButtonTapped()
             }

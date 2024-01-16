@@ -52,12 +52,6 @@ final class DailyViewController: UIViewController {
     
     // MARK: - Life Cycles
     
-    override func loadView() {
-        super.loadView()
-        
-        setupCustomNavigationBar()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +61,12 @@ final class DailyViewController: UIViewController {
         setDelegate()
         setAddTarget()
         setAlertView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupCustomNavigationBar()
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 
@@ -173,6 +173,7 @@ extension DailyViewController {
 extension DailyViewController: DailyAddDelegate {
     func addTapped() {
         let nav = AddDailyRoutineViewController()
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }
@@ -206,7 +207,7 @@ extension DailyViewController: UICollectionViewDataSource {
 
 extension DailyViewController: BottomSheetButtonDelegate {
     
-    func doneButtonTapped() {
+    func completeButtonTapped() {
         let cell = collectionview.cellForItem(at: [0, status]) as? DailyRoutineCollectionViewCell
         cell?.achieveButton.isEnabled = false
         self.dismiss(animated: false)
@@ -237,9 +238,7 @@ extension DailyViewController: BottomSheetButtonDelegate {
         self.dismiss(animated: false)
     }
     
-    func addButtonTapped() {
-        
-    }
+    func addButtonTapped() { }
 }
 
 extension DailyViewController: PresentDelegate {
