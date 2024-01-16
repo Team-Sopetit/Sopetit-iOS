@@ -86,5 +86,6 @@ extension DailyFooterView {
     @objc
     func handleFooterTap() {
         print("추가버튼 클릭됨")
+        
     }
 }

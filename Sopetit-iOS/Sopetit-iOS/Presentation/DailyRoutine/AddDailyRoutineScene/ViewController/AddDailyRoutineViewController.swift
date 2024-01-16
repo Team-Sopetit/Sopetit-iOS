@@ -63,9 +63,10 @@ private extension AddDailyRoutineViewController {
     
     func setDelegate() {
         addDailyRoutineView.dailyRoutineThemeView.collectionView.delegate = self
-            addDailyRoutineView.dailyRoutineThemeView.collectionView.dataSource = self
-            addDailyRoutineView.collectionView.delegate = self
-            addDailyRoutineView.collectionView.dataSource = self
+        addDailyRoutineView.dailyRoutineThemeView.collectionView.dataSource = self
+        addDailyRoutineView.collectionView.delegate = self
+        addDailyRoutineView.collectionView.dataSource = self
+        addDailyRoutineView.customNavigationBar.delegate = self
     }
     
     func setRegister() {
@@ -158,5 +159,12 @@ extension AddDailyRoutineViewController: UICollectionViewDelegate {
                 scrollView.setContentOffset(.init(x: 2 * (Const.itemSize.width + Const.itemSpacing) - Const.insetX, y: scrollView.contentOffset.y), animated: false)
             }
         }
+    }
+}
+
+extension AddDailyRoutineViewController: BackButtonProtocol {
+    
+    func tapBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
