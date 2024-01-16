@@ -33,20 +33,10 @@ extension DailyRoutineService {
                     completion(.networkFail)
                     return
                 }
-                
-//                do {
-//                    let decoder = JSONDecoder()
-//                    let dailyEntity = try decoder.decode(DailyEntity.self, from: data)
-//                    dump(dailyEntity)
-//                    let routines = dailyEntity.data.routines
-//                } catch {
-//                    print("Error decoding data: \(error)")
-//                    completion(.networkFail)
-//                }
 
                 let networkResult = self.judgeStatus(by: statusCode,
                                                      data,
-                                                     DailyEntity.self)
+                                                     DataClass.self)
                 completion(networkResult)
 
             case .failure:

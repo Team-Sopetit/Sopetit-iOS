@@ -16,10 +16,10 @@ final class DailyViewController: UIViewController {
     
     // MARK: - Properties
     
-//    let dummy = DailyEntity.routineDummy()
     var status: Int = 0
     var isFromAddDailyBottom: Bool = false
-    private var routineList: [DailyEntity] = []
+    private var shouldShowFooterView: Bool = true
+    private var routineList: DataClass = .init(routines: [.init(routineID: 0, content: "", iconImageURL: "", achieveCount: 0, isAchieve: true)])
     
     override var isEditing: Bool {
         didSet {
@@ -180,17 +180,24 @@ extension DailyViewController: DailyAddDelegate {
 }
 
 extension DailyViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return shouldShowFooterView ? CGSize(width: collectionView.bounds.width, height: 51) : CGSize.zero
+    }
 }
 
 extension DailyViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return routineList.count
+        let numberOfItems = routineList.routines.count
+        shouldShowFooterView = numberOfItems < 3
+        setLayout()
+        
+        return numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
-        let routine = routineList[0].data.routines[indexPath.item]
+        let routine = routineList.routines[indexPath.item]
         cell.setDatabind(model: routine)
         cell.delegate = self
         cell.tag = indexPath.item
@@ -201,6 +208,11 @@ extension DailyViewController: UICollectionViewDataSource {
         if kind == UICollectionView.elementKindSectionFooter {
             let footerView = DailyFooterView.dequeueReusableFooterView(collectionView: collectionView, indexPath: indexPath)
             footerView.addDelegate = self
+            if shouldShowFooterView == false {
+                footerView.isHidden = true
+            } else {
+                footerView.isHidden = false
+            }
             return footerView
         }
         return UICollectionReusableView()
@@ -238,7 +250,8 @@ extension DailyViewController: BottomSheetButtonDelegate {
     }
     
     func addButtonTapped() {
-        
+        shouldShowFooterView.toggle()
+        setLayout()
     }
 }
 
@@ -296,10 +309,10 @@ extension DailyViewController {
             switch networkResult {
             case .success(let data): // 여기서 data가 networkResult..?
                 print("Received data:", data)
-                if let data = data as? GenericResponse<DailyEntity> {
+                if let data = data as? GenericResponse<DataClass> {
                     dump(data)
                     if let listData = data.data {
-                        self.routineList[0] = listData
+                        self.routineList = listData
                         DispatchQueue.main.async {
                             self.collectionview.reloadData()
                         }
