@@ -25,7 +25,6 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
     
     let imageView: UIImageView = {
         let image = UIImageView()
-        image.image = ImageLiterals.DailyRoutine.icDaily1Filled
         image.contentMode = .scaleAspectFit
         return image
     }()
@@ -48,6 +47,7 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
         let label = UILabel()
         label.font = .fontGuide(.body1)
         label.textColor = .Gray700
+        label.numberOfLines = 0
         return label
     }()
     
@@ -73,6 +73,12 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
         return view
     }()
     
+    let labelBox: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -82,7 +88,6 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
         setHierarchy()
         setLayout()
         setAddTarget()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -102,35 +107,44 @@ extension DailyRoutineCollectionViewCell {
     }
     
     func setHierarchy() {
-        self.addSubviews(imageView, dateLabel, routineLabel, achieveButton, flagImg, checkBox)
+        self.addSubviews(imageView, achieveButton, checkBox, labelBox)
+        labelBox.addSubviews(flagImg, dateLabel, routineLabel)
     }
     
     func setLayout() {
         
+        labelBox.snp.makeConstraints {
+            $0.leading.equalTo(imageView.snp.trailing).offset(12)
+            $0.top.equalToSuperview().inset(23)
+            $0.bottom.equalTo(achieveButton.snp.top).offset(-20)
+            $0.trailing.equalToSuperview().inset(52)
+        }
+        
         imageView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
-            $0.top.equalToSuperview().inset(22)
             $0.size.equalTo(40)
+            $0.centerY.equalTo(labelBox.snp.centerY)
         }
         
         flagImg.snp.makeConstraints {
-            $0.leading.equalTo(imageView.snp.trailing).offset(12)
-            $0.bottom.equalTo(imageView.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.top.equalTo(routineLabel.snp.bottom).offset(8)
         }
         
         dateLabel.snp.makeConstraints {
             $0.leading.equalTo(flagImg.snp.trailing).offset(4)
-            $0.bottom.equalTo(imageView.snp.bottom)
+            $0.top.equalTo(routineLabel.snp.bottom).offset(8)
         }
         
         routineLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(22)
+            $0.top.equalToSuperview()
             $0.leading.equalTo(flagImg)
+            $0.trailing.equalToSuperview()
         }
         
         achieveButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(23)
             $0.height.equalTo(38)
         }
         
@@ -138,12 +152,16 @@ extension DailyRoutineCollectionViewCell {
             $0.trailing.top.equalToSuperview().inset(20)
             $0.size.equalTo(20)
         }
-        
+                
     }
     
-    func setDatabind(model: DailyEntity) {
-        self.dateLabel.text = "\(model.dateLabel)일 달성 중"
-        self.routineLabel.text = model.routineLabel
+    func setDatabind(model: DailyRoutines) {
+        self.dateLabel.text = "\(model.achieveCount)일 달성 중"
+        self.routineLabel.text = model.content
+        if let iconURL = URL(string: model.iconImageURL) {
+            self.imageView.downloadedsvg(from: iconURL)
+            print(model.iconImageURL)
+        }
     }
     
     func setAddTarget() {
