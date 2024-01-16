@@ -307,7 +307,7 @@ extension DailyViewController {
         DailyRoutineService.shared.getRoutineListAPI { networkResult in
             print(networkResult)
             switch networkResult {
-            case .success(let data): // 여기서 data가 networkResult..?
+            case .success(let data):
                 print("Received data:", data)
                 if let data = data as? GenericResponse<DataClass> {
                     dump(data)
