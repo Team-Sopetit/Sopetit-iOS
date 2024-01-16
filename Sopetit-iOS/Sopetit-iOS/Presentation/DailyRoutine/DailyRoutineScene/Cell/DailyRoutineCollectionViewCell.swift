@@ -117,6 +117,7 @@ extension DailyRoutineCollectionViewCell {
         labelBox.snp.makeConstraints {
             $0.leading.equalTo(imageView.snp.trailing).offset(12)
             $0.top.equalToSuperview().inset(23)
+            $0.bottom.equalTo(achieveButton.snp.top).offset(-20)
             $0.trailing.equalToSuperview().inset(52)
         }
         

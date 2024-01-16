@@ -344,10 +344,8 @@ extension DailyViewController: UICollectionViewDelegateFlowLayout {
         cell.layoutIfNeeded()
 
         // Calculate the height of the cell based on the label's height
-//        let cellHeight = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         let cellHeight = cell.routineLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         
-        // Adjust the itemSize width to routineLabel height + 32
         let itemSizeWidth = collectionView.bounds.width - 40
         let itemSizeHeight = cellHeight + 126
 
