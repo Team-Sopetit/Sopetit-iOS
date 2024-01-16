@@ -85,7 +85,6 @@ extension RoutineChoiceViewController {
                 switch networkResult {
                 case .success(let data):
                     if let data = data as? GenericResponse<RoutineChoiceEntity> {
-                        dump(data)
                         if let listData = data.data {
                             self.routineEntity.append(contentsOf: listData.routines)
                         }
