@@ -97,7 +97,7 @@ extension ActionCollectionViewCell {
         switch tag {
         case 0:
             actionLabel.text = I18N.Home.actionTitle1
-            numberLabel.text = "\(model.cottonCount)개"
+            numberLabel.text = "\(model.dailyCottonCount)개"
             iconImageView.image = ImageLiterals.Home.icSomWhite
         case 1:
             actionLabel.text = I18N.Home.actionTitle2

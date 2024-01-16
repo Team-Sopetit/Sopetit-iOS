@@ -38,6 +38,19 @@ enum BearType {
             return ImageLiterals.HappyRoutineComplete.imgHappyBearGray
         }
     }
+    
+    var homeBear: String {
+        switch self {
+        case .brown:
+            "brown"
+        case .red:
+            "red"
+        case .panda:
+            "panda"
+        case .gray:
+            "gray"
+        }
+    }
 }
 
 final class CompleteDailyRoutineView: UIView {
