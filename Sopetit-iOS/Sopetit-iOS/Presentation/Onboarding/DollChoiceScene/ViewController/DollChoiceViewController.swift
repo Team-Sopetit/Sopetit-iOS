@@ -74,6 +74,7 @@ extension DollChoiceViewController: UICollectionViewDelegate {
             selectDollNum = indexPath.item
         }
         dollChoiceView.nextButton.isEnabled = true
+        makeVibrate()
         return true
     }
     

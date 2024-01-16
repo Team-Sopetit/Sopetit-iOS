@@ -23,6 +23,7 @@ final class HappyRoutineViewController: UIViewController {
     private let happyRoutineEmptyView = HappyRoutineEmptyView()
     private let happyCompleteBottom = BottomSheetViewController(bottomStyle: .happyCompleteBottom)
     private let happyDeleteBottom = BottomSheetViewController(bottomStyle: .happyDeleteBottom)
+    private let completeHappyRoutineView = CompleteHappyRoutineView()
     
     // MARK: - Life Cycles
     
@@ -44,6 +45,7 @@ final class HappyRoutineViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 
@@ -64,6 +66,7 @@ private extension HappyRoutineViewController {
     @objc
     func didTapCardView(_ sender: UITapGestureRecognizer) {
         let vc = SelectHappyCategoryViewController()
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -82,7 +85,13 @@ private extension HappyRoutineViewController {
     
     @objc
     func tapDoneButton() {
-        self.present(happyCompleteBottom, animated: false)
+        switch happyRoutineView.doneButton.type {
+        case .normal:
+            self.present(happyCompleteBottom, animated: false)
+        case .red:
+            self.present(happyDeleteBottom, animated: false)
+        }
+        
     }
     
     func setNavigationBar() {
@@ -91,13 +100,15 @@ private extension HappyRoutineViewController {
             self.happyRoutineNavigationBar.cancelButton.isHidden = true
             self.happyRoutineNavigationBar.editButton.isHidden = false
             self.isEditing.toggle()
+            self.happyRoutineView.doneButton.setNormalButton()
         }
+        
         happyRoutineNavigationBar.isEditButtonIncluded = true
         happyRoutineNavigationBar.editButtonAction = {
             self.happyRoutineNavigationBar.cancelButton.isHidden = false
             self.happyRoutineNavigationBar.editButton.isHidden = true
             self.isEditing.toggle()
-            self.present(self.happyDeleteBottom, animated: false)
+            self.happyRoutineView.doneButton.setRedDeleteButton(title: I18N.HappyRoutine.deleteRoutine)
         }
     }
     
@@ -114,8 +125,20 @@ private extension HappyRoutineViewController {
 extension HappyRoutineViewController: BottomSheetButtonDelegate {
     
     func completeButtonTapped() {
-        view = happyRoutineEmptyView
         self.viewWillLayoutSubviews()
+        self.dismiss(animated: false)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            self.view = self.happyRoutineEmptyView
+        }
+        let vc = CompleteHappyRoutineViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: false)
+    }
+    
+    
+    func backButtonTapped() {
+        self.happyRoutineNavigationBar.cancelButton.isHidden = true
+        self.happyRoutineNavigationBar.editButton.isHidden = false
         self.dismiss(animated: false)
     }
     
