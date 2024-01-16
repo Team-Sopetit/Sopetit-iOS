@@ -13,7 +13,7 @@ final class SelectHappyCategoryView: UIView {
 
     // MARK: - UI Components
     
-    private let customNavigationBar: CustomNavigationBarView = {
+    let customNavigationBar: CustomNavigationBarView = {
         let view = CustomNavigationBarView()
         view.isTitleViewIncluded = true
         view.isTitleLabelIncluded = I18N.HappyRoutine.addHappyRoutineTitle

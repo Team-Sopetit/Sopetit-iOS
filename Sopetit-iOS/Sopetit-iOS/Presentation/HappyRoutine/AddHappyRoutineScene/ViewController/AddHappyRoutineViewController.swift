@@ -72,6 +72,7 @@ private extension AddHappyRoutineViewController {
         self.addHappyRoutineView.collectionView.delegate = self
         self.addHappyRoutineView.delegate = self
         self.happyAddBottom.buttonDelegate = self
+        self.addHappyRoutineView.customNavigationBar.delegate = self
     }
     
     func setCarousel() {
@@ -164,5 +165,12 @@ extension AddHappyRoutineViewController: HappyRoutineProtocol {
     
     func tapAddButton() {
         self.present(happyAddBottom, animated: false)
+    }
+}
+
+extension AddHappyRoutineViewController: BackButtonProtocol {
+    
+    func tapBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

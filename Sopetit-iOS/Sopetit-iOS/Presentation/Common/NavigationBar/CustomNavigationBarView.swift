@@ -9,8 +9,15 @@ import UIKit
 
 import SnapKit
 
+protocol BackButtonProtocol: AnyObject {
+    
+    func tapBackButton()
+}
+
 final class CustomNavigationBarView: UIView {
 
+    weak var delegate: BackButtonProtocol?
+    
     // MARK: - Properties
     
     var isLeftTitleViewIncluded: Bool {
@@ -76,7 +83,7 @@ final class CustomNavigationBarView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .fontGuide(.body3)
+        label.font = .fontGuide(.head2)
         label.textColor = .Gray700
         return label
     }()
@@ -193,7 +200,7 @@ private extension CustomNavigationBarView {
     func isTapped(_ sender: UIButton) {
         switch sender {
         case backButton:
-            backButtonAction?()
+            delegate?.tapBackButton()
         case cancelButton:
             cancelButtonAction?()
         case editButton:
