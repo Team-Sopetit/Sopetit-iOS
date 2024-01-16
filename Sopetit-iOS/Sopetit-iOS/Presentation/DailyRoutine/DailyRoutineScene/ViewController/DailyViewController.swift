@@ -69,6 +69,8 @@ final class DailyViewController: UIViewController {
         super.viewWillAppear(animated)
         setupCustomNavigationBar()
         self.tabBarController?.tabBar.isHidden = false
+        
+        self.deleteButton.isHidden = true
     }
 }
 
@@ -354,6 +356,24 @@ extension DailyViewController {
         }
     }
 }
+
+//extension DailyViewController {
+//    func patchRoutineAPI(routineId: Int) {
+//        DailyRoutineService.shared.patchRoutineAPI(routineId: routineId) { _ in
+//            for cell in self.collectionview.visibleCells {
+//                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+//                    if dailyCell.checkBox.isSelected {
+//                        self.routineList.routines = self.routineList.routines.filter { $0.routineID != dailyCell.tag }
+//                    }
+//                    if dailyCell.tag == routineId {
+//                        dailyCell.
+//                    }
+//                }
+//                self.collectionview.reloadData()
+//            }
+//        }
+//    }
+//}
 
 // MARK: - Extension
 
