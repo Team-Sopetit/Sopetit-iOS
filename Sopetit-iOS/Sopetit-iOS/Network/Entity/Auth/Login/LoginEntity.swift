@@ -8,3 +8,5 @@
 struct LoginEntity: Codable {
     let accessToken, refreshToken: String
 }
+
+struct ResignEntity: Codable {}
