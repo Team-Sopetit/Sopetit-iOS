@@ -32,6 +32,7 @@ final class StoryTellingFirstView: UIView {
         button.setTitle(I18N.Onboarding.firtButtonTitle, for: .normal)
         button.setTitleColor(.Gray500, for: .normal)
         button.setBackgroundColor(.SoftieWhite, for: .normal)
+        button.setBackgroundColor(.SoftieWhite, for: .highlighted)
         button.titleLabel?.font = .fontGuide(.bubble20)
         button.layer.cornerRadius = 12
         return button
