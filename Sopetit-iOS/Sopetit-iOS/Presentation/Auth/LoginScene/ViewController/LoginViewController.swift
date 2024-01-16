@@ -114,12 +114,6 @@ extension LoginViewController: LoginDelegate {
     func checkKakaoUser() {
         guard let kakaoEntity = kakaoEntity else { return }
         UserManager.shared.updateToken(kakaoEntity.accessToken, kakaoEntity.refreshToken)
-        
-        if UserManager.shared.hasAccessToken {
-            presentToHomeView()
-        } else {
-            presentToOnboardingView()
-        }
     }
     
     func appleLogin() {
@@ -134,18 +128,6 @@ extension LoginViewController: LoginDelegate {
         authorizationController.presentationContextProvider = self
         
         authorizationController.performRequests()
-    }
-    
-    func presentToOnboardingView() {
-        self.navigationController?.pushViewController(StoryTellingViewController(), animated: false)
-    }
-    
-    func presentToHomeView() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let keyWindow = windowScene.windows.first else {
-            return
-        }
-        keyWindow.rootViewController = TabBarController()
     }
 }
 
