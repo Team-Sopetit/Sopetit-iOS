@@ -25,7 +25,6 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
     
     let imageView: UIImageView = {
         let image = UIImageView()
-        image.image = ImageLiterals.DailyRoutine.icDaily1Filled
         image.contentMode = .scaleAspectFit
         return image
     }()
@@ -140,6 +139,7 @@ extension DailyRoutineCollectionViewCell {
         routineLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalTo(flagImg)
+            $0.trailing.equalToSuperview()
         }
         
         achieveButton.snp.makeConstraints {
@@ -160,6 +160,7 @@ extension DailyRoutineCollectionViewCell {
         self.routineLabel.text = model.content
         if let iconURL = URL(string: model.iconImageURL) {
             self.imageView.downloadedsvg(from: iconURL)
+            print(model.iconImageURL)
         }
     }
     

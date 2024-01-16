@@ -333,19 +333,12 @@ extension DailyViewController: UICollectionViewDelegateFlowLayout {
             return .zero
         }
 
-        // Set your routineLabel text based on your data
         let data = routineList.routines[indexPath.item].content
         cell.routineLabel.text = data
-
-        // Adjust the width of the label to match the cell's width
-        cell.routineLabel.preferredMaxLayoutWidth = collectionView.bounds.width - 40
-
-        // Force layout to get the correct label height
+        cell.routineLabel.preferredMaxLayoutWidth = collectionView.bounds.width - 164
         cell.layoutIfNeeded()
 
-        // Calculate the height of the cell based on the label's height
         let cellHeight = cell.routineLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-        
         let itemSizeWidth = collectionView.bounds.width - 40
         let itemSizeHeight = cellHeight + 126
 
