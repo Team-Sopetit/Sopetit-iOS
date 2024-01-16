@@ -22,7 +22,7 @@ final class HomeView: UIView {
     
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = ImageLiterals.Home.imgHomebackAllGray
+        imageView.image = ImageLiterals.Home.imgHomebackAll
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -113,7 +113,7 @@ final class HomeView: UIView {
         setAddTarget()
         setRegisterCell()
     }
-
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -123,15 +123,14 @@ final class HomeView: UIView {
 // MARK: - Extensions
 
 extension HomeView {
-    func setHomeBear(bearType: BearType) {
+    func setDoll(dollType: String) {
         DispatchQueue.main.async {
-            let helloAnimation = LottieAnimation.named("\(bearType.homeBear)_hello")
+            let helloAnimation = LottieAnimation.named("\(dollType.lowercased())_hello")
             self.lottieHello.animation = helloAnimation
-            let eatingDailyAnimation = LottieAnimation.named("\(bearType.homeBear)_eating_daily")
+            let eatingDailyAnimation = LottieAnimation.named("\(dollType.lowercased())_eating_daily")
             self.lottieEatingDaily.animation = eatingDailyAnimation
-            let eatingHappyAnimation = LottieAnimation.named("\(bearType.homeBear)_eating_happy")
+            let eatingHappyAnimation = LottieAnimation.named("\(dollType.lowercased())_eating_happy")
             self.lottieEatingHappy.animation = eatingHappyAnimation
-            
         }
     }
 }
@@ -266,7 +265,6 @@ extension HomeView {
         dollNameLabel.text = model.name
         guard let url = URL(string: model.frameImageURL) else {return}
         KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
-            //여기가 이제 이미지 로딩이 완료 된 이후
             guard let self else {return}
             switch result {
             case .success(let image):

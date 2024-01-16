@@ -14,9 +14,7 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
-//    var homeEntity: HomeEntity?
     var homeEntity = HomeEntity(name: "", dollType: "", frameImageURL: "", dailyCottonCount: 0, happinessCottonCount: 0, conversations: [])
-    var bearType = BearType.brown
     
     // MARK: - UI Components
     
@@ -70,14 +68,7 @@ extension HomeViewController {
                         }
                         self.collectionView.reloadData()
                         self.setDataBind(model: self.homeEntity)
-                        switch self.homeEntity.dollType {
-                        case "BROWN": self.bearType = .brown
-                        case "RED": self.bearType = .red
-                        case "GRAY": self.bearType = .gray
-                        case "PANDA": self.bearType = .panda
-                        default: break
-                        }
-                        self.homeView.setHomeBear(bearType: self.bearType)
+                        self.homeView.setDoll(dollType: self.homeEntity.dollType)
                         self.collectionView.reloadData()
                     }
                 case .requestErr, .serverErr:

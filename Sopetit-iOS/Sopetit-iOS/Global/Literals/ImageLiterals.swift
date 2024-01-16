@@ -73,6 +73,7 @@ enum ImageLiterals {
         static var icHomeMoney: UIImage { .load(name: "ic_home_money") }
         static var icHomeSettings: UIImage { .load(name: "ic_home_settings") }
         static var pngSpeechHome: UIImage { .load(name: "png_speech_home") }
+        static var imgHomebackAll: UIImage { .load(name: "img_homeback_all") }
         static var imgHomebackAllBrown: UIImage { .load(name: "img_homeback_all_brown") }
         static var imgHomebackAllGray: UIImage { .load(name: "img_homeback_all_gray") }
         static var imgHomebackAllPanda: UIImage { .load(name: "img_homeback_all_panda") }
