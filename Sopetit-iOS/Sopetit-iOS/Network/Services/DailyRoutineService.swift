@@ -24,16 +24,31 @@ extension DailyRoutineService {
                                      method: .get,
                                      encoding: JSONEncoding.default,
                                      headers: header)
-        
         dataRequest.responseData { response in
             switch response.result {
             case .success:
                 guard let statusCode = response.response?.statusCode else { return }
-                guard let data = response.data else { return }
+                
+                guard let data = response.data else {
+                    completion(.networkFail)
+                    return
+                }
+                
+//                do {
+//                    let decoder = JSONDecoder()
+//                    let dailyEntity = try decoder.decode(DailyEntity.self, from: data)
+//                    dump(dailyEntity)
+//                    let routines = dailyEntity.data.routines
+//                } catch {
+//                    print("Error decoding data: \(error)")
+//                    completion(.networkFail)
+//                }
+
                 let networkResult = self.judgeStatus(by: statusCode,
                                                      data,
-                                                     [DailyEntity].self)
+                                                     DailyEntity.self)
                 completion(networkResult)
+
             case .failure:
                 completion(.networkFail)
             }

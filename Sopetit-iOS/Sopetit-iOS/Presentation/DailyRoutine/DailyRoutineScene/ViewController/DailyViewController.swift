@@ -62,13 +62,13 @@ final class DailyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getRoutineListAPI()
         setHierarchy()
         setLayout()
         setUI()
         setDelegate()
         setAddTarget()
         setAlertView()
-        getRoutineListAPI()
     }
 }
 
@@ -190,7 +190,7 @@ extension DailyViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
-        let routine = routineList[indexPath.item].data.routines[indexPath.item]
+        let routine = routineList[0].data.routines[indexPath.item]
         cell.setDatabind(model: routine)
         cell.delegate = self
         cell.tag = indexPath.item
@@ -294,20 +294,16 @@ extension DailyViewController {
         DailyRoutineService.shared.getRoutineListAPI { networkResult in
             print(networkResult)
             switch networkResult {
-            case .success(let data):
-                dump(data)
-                if let data = data as? GenericResponse<[DailyEntity]> {
+            case .success(let data): // 여기서 data가 networkResult..?
+                print("Received data:", data)
+                if let data = data as? GenericResponse<DailyEntity> {
                     dump(data)
                     if let listData = data.data {
-                        self.routineList = listData
-                        self.collectionview.reloadData()
+                        self.routineList[0] = listData
+                        DispatchQueue.main.async {
+                            self.collectionview.reloadData()
+                        }
                     }
-//                    DispatchQueue.main.async { [self] in
-//                        for i in 0..<self.routineList.count {
-//                            cardImages.append(routineList[i].data.routines.content)
-//                            self.collectionview.reloadData()
-//                        }
-//                    }
                 }
             case .requestErr, .serverErr:
                 print("오류발생")
