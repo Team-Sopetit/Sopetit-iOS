@@ -6,7 +6,7 @@
 import Foundation
 
 struct DailyRoutineEntity: Codable {
-    let routines: [DailyRoutines]
+    var routines: [DailyRoutines]
 }
 
 struct DailyRoutines: Codable {

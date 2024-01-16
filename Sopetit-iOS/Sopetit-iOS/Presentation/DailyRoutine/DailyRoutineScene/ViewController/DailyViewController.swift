@@ -246,6 +246,7 @@ extension DailyViewController: BottomSheetButtonDelegate {
         for cell in self.collectionview.visibleCells {
             if let dailyCell = cell as? DailyRoutineCollectionViewCell {
                 if dailyCell.checkBox.isSelected {
+                    routineList.routines = routineList.routines.filter { $0.routineID != dailyCell.tag }
                     deleteRoutineListAPI(routineId: dailyCell.tag)
                 }
             }
