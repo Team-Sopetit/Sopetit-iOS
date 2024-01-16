@@ -201,7 +201,7 @@ extension DailyViewController: UICollectionViewDataSource {
         let routine = routineList.routines[indexPath.item]
         cell.setDatabind(model: routine)
         cell.delegate = self
-        cell.tag = indexPath.item
+        cell.tag = routine.routineID
         return cell
     }
     
@@ -242,6 +242,15 @@ extension DailyViewController: BottomSheetButtonDelegate {
             }
         }
         self.deleteAlertView.isHidden = false
+        
+        for cell in self.collectionview.visibleCells {
+            if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                if dailyCell.checkBox.isSelected {
+                    deleteRoutineListAPI(routineId: dailyCell.tag)
+                }
+            }
+            self.collectionview.reloadData()
+        }
         
         let count = DailyRoutineCollectionViewCell.sharedVariable
         let title = "데일리 루틴을 \(count)개 삭제했어요"
@@ -327,6 +336,25 @@ extension DailyViewController {
         }
     }
 }
+
+extension DailyViewController {
+    func deleteRoutineListAPI(routineId: Int) {
+        DailyRoutineService.shared.deleteRoutineListAPI(routineId: routineId) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<DailyRoutineEntity> {
+                    self.collectionview.reloadData()
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+}
+
+// MARK: - Extension
 
 extension DailyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
