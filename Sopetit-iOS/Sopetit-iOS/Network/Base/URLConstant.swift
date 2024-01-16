@@ -18,4 +18,8 @@ enum URLConstant {
     static let themeURL = baseURL + "/api/v1/routines/daily/themes"
     static let dollImageURL = baseURL + "/api/v1/dolls/image/"
     static let routineURL = baseURL + "/api/v1/routines/daily/theme/"
+    
+    // MARK: - Home URL
+    
+    static let homeURL = baseURL + "/api/v1/members"
 }

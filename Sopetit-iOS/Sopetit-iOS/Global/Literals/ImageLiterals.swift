@@ -77,6 +77,7 @@ enum ImageLiterals {
         static var imgHomebackAllGray: UIImage { .load(name: "img_homeback_all_gray") }
         static var imgHomebackAllPanda: UIImage { .load(name: "img_homeback_all_panda") }
         static var imgHomebackAllRed: UIImage { .load(name: "img_homeback_all_red") }
+        static var imgShadow: UIImage { .load(name: "img_shadow") }
     }
     
     enum DailyRoutine {
