@@ -125,11 +125,11 @@
 		A49BFDF22B4DA53A00035EB6 /* ThemeSelectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */; };
 		A49BFDF52B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDF42B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift */; };
 		A49BFE022B4DC54400035EB6 /* brown_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */; };
-		A49BFE032B4DC54400035EB6 /* panda_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */; };
+		A49BFE032B4DC54400035EB6 /* white_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDFF2B4DC54400035EB6 /* white_eating_happy.json */; };
 		A49BFE042B4DC54400035EB6 /* red_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE002B4DC54400035EB6 /* red_eating_happy.json */; };
 		A49BFE052B4DC54400035EB6 /* gray_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE012B4DC54400035EB6 /* gray_eating_happy.json */; };
 		A49BFE0A2B4DC54F00035EB6 /* red_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE062B4DC54E00035EB6 /* red_eating_daily.json */; };
-		A49BFE0B2B4DC54F00035EB6 /* panda_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE072B4DC54E00035EB6 /* panda_eating_daily.json */; };
+		A49BFE0B2B4DC54F00035EB6 /* white_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE072B4DC54E00035EB6 /* white_eating_daily.json */; };
 		A49BFE0D2B4DC54F00035EB6 /* gray_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */; };
 		A49BFE1D2B4E541C00035EB6 /* RoutineChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE1C2B4E541C00035EB6 /* RoutineChoiceViewController.swift */; };
 		A49BFE1F2B4E542B00035EB6 /* RoutineChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE1E2B4E542B00035EB6 /* RoutineChoiceView.swift */; };
@@ -139,7 +139,7 @@
 		A49BFE2A2B4E857300035EB6 /* DollNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE292B4E857300035EB6 /* DollNameView.swift */; };
 		A49BFE372B4E938700035EB6 /* gray_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE332B4E938600035EB6 /* gray_hello.json */; };
 		A49BFE382B4E938700035EB6 /* red_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE342B4E938600035EB6 /* red_hello.json */; };
-		A49BFE392B4E938700035EB6 /* panda_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE352B4E938600035EB6 /* panda_hello.json */; };
+		A49BFE392B4E938700035EB6 /* white_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE352B4E938600035EB6 /* white_hello.json */; };
 		A49BFE3A2B4E938700035EB6 /* brown_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE362B4E938600035EB6 /* brown_hello.json */; };
 		A49BFE412B5065DE00035EB6 /* AlertMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE402B5065DE00035EB6 /* AlertMessageView.swift */; };
 		A49BFE492B50FC7A00035EB6 /* DailyRoutineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE482B50FC7A00035EB6 /* DailyRoutineService.swift */; };
@@ -267,11 +267,11 @@
 		A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectEntity.swift; sourceTree = "<group>"; };
 		A49BFDF42B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_eating_happy.json; sourceTree = "<group>"; };
-		A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_eating_happy.json; sourceTree = "<group>"; };
+		A49BFDFF2B4DC54400035EB6 /* white_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = white_eating_happy.json; sourceTree = "<group>"; };
 		A49BFE002B4DC54400035EB6 /* red_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_eating_happy.json; sourceTree = "<group>"; };
 		A49BFE012B4DC54400035EB6 /* gray_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_eating_happy.json; sourceTree = "<group>"; };
 		A49BFE062B4DC54E00035EB6 /* red_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_eating_daily.json; sourceTree = "<group>"; };
-		A49BFE072B4DC54E00035EB6 /* panda_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_eating_daily.json; sourceTree = "<group>"; };
+		A49BFE072B4DC54E00035EB6 /* white_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = white_eating_daily.json; sourceTree = "<group>"; };
 		A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_eating_daily.json; sourceTree = "<group>"; };
 		A49BFE1C2B4E541C00035EB6 /* RoutineChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceViewController.swift; sourceTree = "<group>"; };
 		A49BFE1E2B4E542B00035EB6 /* RoutineChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceView.swift; sourceTree = "<group>"; };
@@ -281,7 +281,7 @@
 		A49BFE292B4E857300035EB6 /* DollNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollNameView.swift; sourceTree = "<group>"; };
 		A49BFE332B4E938600035EB6 /* gray_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_hello.json; sourceTree = "<group>"; };
 		A49BFE342B4E938600035EB6 /* red_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_hello.json; sourceTree = "<group>"; };
-		A49BFE352B4E938600035EB6 /* panda_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_hello.json; sourceTree = "<group>"; };
+		A49BFE352B4E938600035EB6 /* white_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = white_hello.json; sourceTree = "<group>"; };
 		A49BFE362B4E938600035EB6 /* brown_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_hello.json; sourceTree = "<group>"; };
 		A49BFE402B5065DE00035EB6 /* AlertMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessageView.swift; sourceTree = "<group>"; };
 		A49BFE482B50FC7A00035EB6 /* DailyRoutineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineService.swift; sourceTree = "<group>"; };
@@ -358,37 +358,6 @@
 				045DFE7D2B50F14C005D69EA /* SettingTableViewCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		092AE2B92B540B3400E9A20D /* CompleteHappyRoutineScene */ = {
-			isa = PBXGroup;
-			children = (
-				045DFE7D2B50F14C005D69EA /* SettingTableViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		045DFE822B53034D005D69EA /* LogoutScene */ = {
-			isa = PBXGroup;
-			children = (
-				045DFE842B53035D005D69EA /* ViewController */,
-				045DFE832B530359005D69EA /* View */,
-			);
-			path = LogoutScene;
-			sourceTree = "<group>";
-		};
-		045DFE832B530359005D69EA /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		045DFE842B53035D005D69EA /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		092AE2B92B540B3400E9A20D /* CompleteHappyRoutineScene */ = {
@@ -780,15 +749,15 @@
 				095903A82B5458F100D0AF39 /* happy_complete_som.json */,
 				A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */,
 				0014568C2B56D1C10044782C /* brown_eating_daily.json */,
-				A49BFE072B4DC54E00035EB6 /* panda_eating_daily.json */,
+				A49BFE072B4DC54E00035EB6 /* white_eating_daily.json */,
 				A49BFE062B4DC54E00035EB6 /* red_eating_daily.json */,
 				A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */,
 				A49BFE012B4DC54400035EB6 /* gray_eating_happy.json */,
-				A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */,
+				A49BFDFF2B4DC54400035EB6 /* white_eating_happy.json */,
 				A49BFE002B4DC54400035EB6 /* red_eating_happy.json */,
 				A49BFE362B4E938600035EB6 /* brown_hello.json */,
 				A49BFE332B4E938600035EB6 /* gray_hello.json */,
-				A49BFE352B4E938600035EB6 /* panda_hello.json */,
+				A49BFE352B4E938600035EB6 /* white_hello.json */,
 				A49BFE342B4E938600035EB6 /* red_hello.json */,
 			);
 			path = Lottie;
@@ -1389,11 +1358,11 @@
 				A49BFE372B4E938700035EB6 /* gray_hello.json in Resources */,
 				095903AA2B5458F100D0AF39 /* happy_complete_som.json in Resources */,
 				A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */,
-				A49BFE392B4E938700035EB6 /* panda_hello.json in Resources */,
-				A49BFE0B2B4DC54F00035EB6 /* panda_eating_daily.json in Resources */,
+				A49BFE392B4E938700035EB6 /* white_hello.json in Resources */,
+				A49BFE0B2B4DC54F00035EB6 /* white_eating_daily.json in Resources */,
 				A49BFE0D2B4DC54F00035EB6 /* gray_eating_daily.json in Resources */,
 				A49BFE0A2B4DC54F00035EB6 /* red_eating_daily.json in Resources */,
-				A49BFE032B4DC54400035EB6 /* panda_eating_happy.json in Resources */,
+				A49BFE032B4DC54400035EB6 /* white_eating_happy.json in Resources */,
 				A49BFE052B4DC54400035EB6 /* gray_eating_happy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

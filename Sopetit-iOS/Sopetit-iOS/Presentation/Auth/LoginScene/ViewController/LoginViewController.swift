@@ -63,6 +63,8 @@ extension LoginViewController {
                         if let kakaoData = data.data {
                             self.kakaoEntity = kakaoData
                             self.checkKakaoUser()
+                            let nav = StoryTellingViewController()
+                            self.navigationController?.pushViewController(nav, animated: true)
                         }
                     case "APPLE":
                         if let appleData = data.data {
@@ -139,7 +141,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             let userIdentifier = appleIDCredential.user
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
-            
+            let identityToken = appleIDCredential.identityToken
+            let tokenString = String(data: identityToken!, encoding: .utf8)
             postLoginAPI(socialAccessToken: userIdentifier, socialType: "APPLE")
         }
     }
