@@ -69,6 +69,7 @@ extension RoutineChoiceViewController {
         case routineChoiceView.nextButton:
             let nav = TabBarController()
             postMemberAPI()
+            UserManager.shared.hasPostMember()
             self.navigationController?.pushViewController(nav, animated: true)
         default:
             break
@@ -85,6 +86,7 @@ extension RoutineChoiceViewController {
                 switch networkResult {
                 case .success(let data):
                     if let data = data as? GenericResponse<RoutineChoiceEntity> {
+                        dump(data)
                         if let listData = data.data {
                             self.routineEntity.append(contentsOf: listData.routines)
                         }

@@ -35,7 +35,11 @@ final class SplashViewController: UIViewController {
 private extension SplashViewController {
     func showNextPage() {
         if UserManager.shared.hasAccessToken {
-            presentToHomeView()
+            if UserManager.shared.isPostMemeber {
+                presentToHomeView()
+            } else {
+                presentToOnboardingView()
+            }
         } else {
             presentToLoginView()
         }
