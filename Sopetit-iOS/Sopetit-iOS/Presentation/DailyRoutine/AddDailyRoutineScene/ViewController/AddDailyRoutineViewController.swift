@@ -78,6 +78,7 @@ private extension AddDailyRoutineViewController {
     
     func setAddTarget() {
         addDailyRoutineView.addButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        addDailyRoutineView.customNavigationBar.delegate = self
     }
     
     @objc
@@ -200,5 +201,12 @@ extension AddDailyRoutineViewController: UICollectionViewDelegate {
                 scrollView.setContentOffset(.init(x: 2 * (Const.itemSize.width + Const.itemSpacing) - Const.insetX, y: scrollView.contentOffset.y), animated: false)
             }
         }
+    }
+}
+
+extension AddDailyRoutineViewController: BackButtonProtocol {
+    
+    func tapBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

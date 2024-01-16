@@ -47,6 +47,7 @@ extension SelectHappyCategoryViewController {
         selectHappyCategoryView.tagview.collectionView.dataSource = self
         selectHappyCategoryView.categoryCollectionView.delegate = self
         selectHappyCategoryView.categoryCollectionView.dataSource = self
+        selectHappyCategoryView.customNavigationBar.delegate = self
     }
     
     func setRegister() {
@@ -114,5 +115,12 @@ extension SelectHappyCategoryViewController: UICollectionViewDelegateFlowLayout 
             let vc = AddHappyRoutineViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+}
+
+extension SelectHappyCategoryViewController: BackButtonProtocol {
+    
+    func tapBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

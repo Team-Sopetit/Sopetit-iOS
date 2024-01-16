@@ -127,6 +127,20 @@ enum ImageLiterals {
         static var imgSpeechHappy: UIImage { .load(name: "img_speech_happy") }
     }
     
+    enum HappyRoutineComplete {
+        static var imgHappyBearBrown: UIImage { .load(name: "img_happy_bear_brown") }
+        static var imgHappyBearGray: UIImage { .load(name: "img_happy_bear_gray") }
+        static var imgHappyBearPanda: UIImage { .load(name: "img_happy_bear_panda") }
+        static var imgHappyBearRed: UIImage { .load(name: "img_happy_bear_red") }
+    }
+    
+    enum DailyRoutineComplete {
+        static var imgBearDailyCompleteGray: UIImage { .load(name: "img_bear_daily_complete_gray") }
+        static var imgBearDailyCompleteBrown: UIImage { .load(name: "img_bear_daily_complete_brown") }
+        static var imgBearDailyCompletePanda: UIImage { .load(name: "img_bear_daily_complete_panda") }
+        static var imgBearDailyCompleteRed: UIImage { .load(name: "img_bear_daily_complete_red") }
+    }
+    
     enum Setting {
         static var imgBoxLogout: UIImage { .load(name: "img_box_logout") }
         static var icUserSecurity: UIImage { .load(name: "ic_user_security") }
