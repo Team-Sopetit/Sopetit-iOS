@@ -135,7 +135,6 @@ extension HappyRoutineViewController: BottomSheetButtonDelegate {
         self.present(vc, animated: false)
     }
     
-    
     func backButtonTapped() {
         self.happyRoutineNavigationBar.cancelButton.isHidden = true
         self.happyRoutineNavigationBar.editButton.isHidden = false
