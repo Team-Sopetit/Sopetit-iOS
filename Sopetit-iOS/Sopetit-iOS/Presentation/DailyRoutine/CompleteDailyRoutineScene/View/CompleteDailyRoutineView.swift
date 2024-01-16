@@ -42,13 +42,13 @@ enum BearType {
     var homeBear: String {
         switch self {
         case .brown:
-            "brown"
+            return "brown"
         case .red:
-            "red"
+            return "red"
         case .panda:
-            "panda"
+            return "panda"
         case .gray:
-            "gray"
+            return "gray"
         }
     }
 }
