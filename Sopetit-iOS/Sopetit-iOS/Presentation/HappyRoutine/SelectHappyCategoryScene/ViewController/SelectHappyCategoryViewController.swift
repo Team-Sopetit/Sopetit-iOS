@@ -128,6 +128,8 @@ extension SelectHappyCategoryViewController: UICollectionViewDelegateFlowLayout 
             getRoutinesHappinessAPI(themeId: selectedIndex)
         } else if collectionView == selectHappyCategoryView.categoryCollectionView {
             let vc = AddHappyRoutineViewController()
+            let routineId = happinessEntity.routines[indexPath.item].routineId
+            vc.routineId = routineId
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -143,7 +145,7 @@ extension SelectHappyCategoryViewController: BackButtonProtocol {
 private extension SelectHappyCategoryViewController {
     
     func gethappinessThemesAPI() {
-        HappyRoutineService.shared.getRoutinesHappinessThemesAPI { networkResult in
+        HappyRoutineService.shared.getHappinessThemesAPI { networkResult in
             switch networkResult {
             case .success(let data):
                 print(data)
@@ -164,14 +166,14 @@ private extension SelectHappyCategoryViewController {
     }
     
     func getRoutinesHappinessAPI(themeId: Int) {
-        HappyRoutineService.shared.getRoutinesHappinessAPI(themeId: themeId) { networkResult in
+        HappyRoutineService.shared.getHappinessAPI(themeId: themeId) { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<HappinessEntity> {
                     print(data)
                     if let listData = data.data {
                         self.happinessEntity = listData
-                    }                   
+                    }
                     self.happinessEntity.routines = self.happinessEntity.routines.sorted(by: { $0.routineId < $1.routineId })
                     self.selectHappyCategoryView.categoryCollectionView.reloadData()
                 }

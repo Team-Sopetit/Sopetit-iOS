@@ -19,6 +19,7 @@ enum URLConstant {
     static let dollImageURL = baseURL + "/api/v1/dolls/image/"
     static let routineURL = baseURL + "/api/v1/routines/daily/theme/"
     
-    static let routinesHappinessThemesURL = baseURL + "/api/v1/routines/happiness/themes"
-    static let routinesHappinessURL = baseURL + "/api/v1/routines/happiness"
+    static let happinessThemesURL = baseURL + "/api/v1/routines/happiness/themes"
+    static let happinessURL = baseURL + "/api/v1/routines/happiness"
+    static let happinessRoutineURL = baseURL + "/api/v1/routines/happiness/routine/"
 }

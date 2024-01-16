@@ -25,7 +25,6 @@
 		045DFE862B539BC3005D69EA /* WithdrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE852B539BC3005D69EA /* WithdrawView.swift */; };
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
 		04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */; };
-		092AE2B82B53F25E00E9A20D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 092AE2B72B53F25E00E9A20D /* Config.xcconfig */; };
 		092AE2BF2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */; };
 		092AE2C12B540DC200E9A20D /* CompleteHappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AE2C02B540DC200E9A20D /* CompleteHappyRoutineView.swift */; };
 		093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */; };
@@ -41,6 +40,7 @@
 		097224852B4F7CE500CB7893 /* HappyRoutineCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224842B4F7CE500CB7893 /* HappyRoutineCardView.swift */; };
 		097224882B4F7E4900CB7893 /* HappyRoutineCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224872B4F7E4900CB7893 /* HappyRoutineCard.swift */; };
 		0972248B2B4F83B800CB7893 /* BottomCTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972248A2B4F83B800CB7893 /* BottomCTAButton.swift */; };
+		098DFCA12B5662F00099063D /* HappinessRoutineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DFCA02B5662F00099063D /* HappinessRoutineEntity.swift */; };
 		09B2535C2B4D538E005E7032 /* SelectHappyCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2535B2B4D538E005E7032 /* SelectHappyCategoryViewController.swift */; };
 		09B253612B4D53E7005E7032 /* SelectHappyCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253602B4D53E7005E7032 /* SelectHappyCategoryView.swift */; };
 		09B253632B4D561C005E7032 /* HappyRoutineTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253622B4D561C005E7032 /* HappyRoutineTagView.swift */; };
@@ -185,6 +185,7 @@
 		097224842B4F7CE500CB7893 /* HappyRoutineCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCardView.swift; sourceTree = "<group>"; };
 		097224872B4F7E4900CB7893 /* HappyRoutineCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCard.swift; sourceTree = "<group>"; };
 		0972248A2B4F83B800CB7893 /* BottomCTAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCTAButton.swift; sourceTree = "<group>"; };
+		098DFCA02B5662F00099063D /* HappinessRoutineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessRoutineEntity.swift; sourceTree = "<group>"; };
 		09B2535B2B4D538E005E7032 /* SelectHappyCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHappyCategoryViewController.swift; sourceTree = "<group>"; };
 		09B253602B4D53E7005E7032 /* SelectHappyCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHappyCategoryView.swift; sourceTree = "<group>"; };
 		09B253622B4D561C005E7032 /* HappyRoutineTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineTagView.swift; sourceTree = "<group>"; };
@@ -352,31 +353,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		092AE2B92B540B3400E9A20D /* CompleteHappyRoutineScene */ = {
-			isa = PBXGroup;
-			children = (
-				092AE2BD2B540B6000E9A20D /* ViewController */,
-				092AE2BC2B540B5C00E9A20D /* View */,
-			);
-			path = CompleteHappyRoutineScene;
-			sourceTree = "<group>";
-		};
-		092AE2BC2B540B5C00E9A20D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				092AE2C02B540DC200E9A20D /* CompleteHappyRoutineView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		092AE2BD2B540B6000E9A20D /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		045DFE7C2B50F141005D69EA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +380,31 @@
 		045DFE842B53035D005D69EA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		092AE2B92B540B3400E9A20D /* CompleteHappyRoutineScene */ = {
+			isa = PBXGroup;
+			children = (
+				092AE2BD2B540B6000E9A20D /* ViewController */,
+				092AE2BC2B540B5C00E9A20D /* View */,
+			);
+			path = CompleteHappyRoutineScene;
+			sourceTree = "<group>";
+		};
+		092AE2BC2B540B5C00E9A20D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				092AE2C02B540DC200E9A20D /* CompleteHappyRoutineView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		092AE2BD2B540B6000E9A20D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -877,6 +878,7 @@
 			children = (
 				A42C32FB2B3EAE0000C4B477 /* HappinessEntity.swift */,
 				095903B52B5487E600D0AF39 /* HappinessThemesEntity.swift */,
+				098DFCA02B5662F00099063D /* HappinessRoutineEntity.swift */,
 			);
 			path = Happiness;
 			sourceTree = "<group>";
@@ -1483,6 +1485,7 @@
 				A42C32BF2B3EAB0E00C4B477 /* UIImage+.swift in Sources */,
 				A42C33002B3EAE3E00C4B477 /* HomeService.swift in Sources */,
 				A42C32E52B3EAC8B00C4B477 /* GenericResponse.swift in Sources */,
+				098DFCA12B5662F00099063D /* HappinessRoutineEntity.swift in Sources */,
 				04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */,
 				A49BFE4F2B53CE7700035EB6 /* DollImageEntity.swift in Sources */,
 				A49BFE412B5065DE00035EB6 /* AlertMessageView.swift in Sources */,

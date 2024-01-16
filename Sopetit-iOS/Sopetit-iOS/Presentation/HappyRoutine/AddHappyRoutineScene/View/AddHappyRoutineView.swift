@@ -200,9 +200,9 @@ private extension AddHappyRoutineView {
 
 extension AddHappyRoutineView {
     
-    func setDataBind(title: String, image: UIImage, subTitle: String, color: UIColor) {
+    func setDataBind(title: String, imageUrl: String, subTitle: String, color: UIColor) {
         titleLabel.text = title
-        blingImageView.image = image
+        blingImageView.kfSetImage(url: imageUrl)
         subTitleLabel.text = subTitle
         titleLabel.textColor = color
     }
