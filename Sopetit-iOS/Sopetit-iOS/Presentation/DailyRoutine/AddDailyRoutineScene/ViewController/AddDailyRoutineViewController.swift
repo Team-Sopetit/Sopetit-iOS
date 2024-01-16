@@ -31,6 +31,7 @@ final class AddDailyRoutineViewController: UIViewController {
     // MARK: - UI Components
     
     private let addDailyRoutineView = AddDailyRoutineView()
+    private let dailyAddBottom = BottomSheetViewController(bottomStyle: .dailyAddBottom)
     
     // MARK: - Life Cycles
     
@@ -42,11 +43,10 @@ final class AddDailyRoutineViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
-        setHierarchy()
-        setLayout()
         setDelegate()
         setRegister()
-        setCarousel() 
+        setAddTarget()
+        setCarousel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,24 +63,27 @@ final class AddDailyRoutineViewController: UIViewController {
 // MARK: - Extensions
 
 private extension AddDailyRoutineViewController {
-
+    
     func setUI() {
-        
-    }
-    
-    func setHierarchy() {
-        
-    }
-    
-    func setLayout() {
-        
+        dailyAddBottom.modalPresentationStyle = .overFullScreen
     }
     
     func setDelegate() {
         addDailyRoutineView.dailyRoutineThemeView.collectionView.delegate = self
-            addDailyRoutineView.dailyRoutineThemeView.collectionView.dataSource = self
-            addDailyRoutineView.collectionView.delegate = self
-            addDailyRoutineView.collectionView.dataSource = self
+        addDailyRoutineView.dailyRoutineThemeView.collectionView.dataSource = self
+        addDailyRoutineView.collectionView.delegate = self
+        addDailyRoutineView.collectionView.dataSource = self
+        dailyAddBottom.buttonDelegate = self
+    }
+    
+    func setAddTarget() {
+        addDailyRoutineView.addButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        addDailyRoutineView.customNavigationBar.delegate = self
+    }
+    
+    @objc
+    func buttonTapped() {
+        self.present(dailyAddBottom, animated: false)
     }
     
     func setRegister() {
@@ -94,6 +97,31 @@ private extension AddDailyRoutineViewController {
         dailyRoutineCard.insert(dailyRoutineCard[dailyRoutineCard.count-2], at: 0)
         dailyRoutineCard.append(dailyRoutineCard[2])
         dailyRoutineCard.append(dailyRoutineCard[3])
+    }
+}
+
+extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
+    func completeButtonTapped() {
+        
+    }
+    
+    func deleteButtonTapped() {
+        
+    }
+    
+    func addButtonTapped() {
+        self.dismiss(animated: false)
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        let nav = TabBarController()
+        nav.selectedIndex = 0
+        if let navController = nav.viewControllers?[0] as? UINavigationController,
+           let dailyViewController = navController.viewControllers.first as? DailyViewController {
+            dailyViewController.isFromAddDailyBottom = true
+        }
+        keyWindow.rootViewController = UINavigationController(rootViewController: nav)
     }
 }
 
@@ -173,5 +201,12 @@ extension AddDailyRoutineViewController: UICollectionViewDelegate {
                 scrollView.setContentOffset(.init(x: 2 * (Const.itemSize.width + Const.itemSpacing) - Const.insetX, y: scrollView.contentOffset.y), animated: false)
             }
         }
+    }
+}
+
+extension AddDailyRoutineViewController: BackButtonProtocol {
+    
+    func tapBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

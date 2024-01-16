@@ -18,6 +18,7 @@ final class DailyViewController: UIViewController {
     
     let dummy = DailyEntity.routineDummy()
     var status: Int = 0
+    var isFromAddDailyBottom: Bool = false
     
     override var isEditing: Bool {
         didSet {
@@ -29,6 +30,7 @@ final class DailyViewController: UIViewController {
     
     private let routineView = DailyView()
     private lazy var collectionview = routineView.collectionView
+    private let dailyFooterView = DailyFooterView()
     private let customNavigationBar = CustomNavigationBarView()
     private let dailyCompleteBottom = BottomSheetViewController(bottomStyle: .dailyCompleteBottom)
     private let dailyDeleteBottom = BottomSheetViewController(bottomStyle: .dailyDeleteBottom)
@@ -46,14 +48,9 @@ final class DailyViewController: UIViewController {
     }()
     
     private var deleteAlertView = AlertMessageView(title: "")
+    private var addAlertView = AlertMessageView(title: I18N.DailyRoutine.addDailyBottomTitle)
     
     // MARK: - Life Cycles
-    
-    override func loadView() {
-        super.loadView()
-        
-        setupCustomNavigationBar()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +60,13 @@ final class DailyViewController: UIViewController {
         setUI()
         setDelegate()
         setAddTarget()
+        setAlertView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupCustomNavigationBar()
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 
@@ -77,10 +81,11 @@ extension DailyViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.view.bringSubviewToFront(deleteButton)
         deleteAlertView.isHidden = true
+        addAlertView.isHidden = true
     }
     
     func setHierarchy() {
-        self.view.addSubviews(customNavigationBar, deleteButton, routineView, deleteAlertView)
+        self.view.addSubviews(customNavigationBar, deleteButton, routineView, deleteAlertView, addAlertView)
     }
     
     func setLayout() {
@@ -102,6 +107,13 @@ extension DailyViewController {
         }
         
         deleteAlertView.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
+            $0.height.equalTo(51)
+        }
+        
+        addAlertView.snp.makeConstraints {
             $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
@@ -147,6 +159,23 @@ extension DailyViewController {
             self.deleteButton.isUserInteractionEnabled = true
         }
     }
+    
+    func setAlertView() {
+        if isFromAddDailyBottom {
+            addAlertView.isHidden = false
+            UIView.animate(withDuration: 2.5, delay: 0.0, options: .curveEaseOut, animations: {
+                self.addAlertView.alpha = 0.0
+            })
+        }
+    }
+}
+
+extension DailyViewController: DailyAddDelegate {
+    func addTapped() {
+        let nav = AddDailyRoutineViewController()
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
 }
 
 extension DailyViewController: UICollectionViewDelegate {
@@ -169,6 +198,7 @@ extension DailyViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionFooter {
             let footerView = DailyFooterView.dequeueReusableFooterView(collectionView: collectionView, indexPath: indexPath)
+            footerView.addDelegate = self
             return footerView
         }
         return UICollectionReusableView()
@@ -176,14 +206,14 @@ extension DailyViewController: UICollectionViewDataSource {
 }
 
 extension DailyViewController: BottomSheetButtonDelegate {
-    func bakcButtonTapped() {
-        self.dismiss(animated: false)
-    }
     
     func completeButtonTapped() {
         let cell = collectionview.cellForItem(at: [0, status]) as? DailyRoutineCollectionViewCell
         cell?.achieveButton.isEnabled = false
         self.dismiss(animated: false)
+        let vc = CompleteDailyRoutineViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     func deleteButtonTapped() {
@@ -207,6 +237,8 @@ extension DailyViewController: BottomSheetButtonDelegate {
         
         self.dismiss(animated: false)
     }
+    
+    func addButtonTapped() { }
 }
 
 extension DailyViewController: PresentDelegate {
