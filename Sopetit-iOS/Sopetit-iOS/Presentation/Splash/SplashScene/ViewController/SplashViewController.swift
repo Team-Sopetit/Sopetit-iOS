@@ -37,12 +37,17 @@ private extension SplashViewController {
         if UserManager.shared.hasAccessToken {
             presentToHomeView()
         } else {
-            presentToOnboardingView()
+            presentToLoginView()
         }
     }
     
     func presentToOnboardingView() {
         let nav = StoryTellingViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
+    func presentToLoginView() {
+        let nav = LoginViewController()
         self.navigationController?.pushViewController(nav, animated: true)
     }
     

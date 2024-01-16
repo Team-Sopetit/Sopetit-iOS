@@ -9,18 +9,20 @@ import UIKit
 
 import SnapKit
 import Lottie
+import Kingfisher
 
 final class HomeView: UIView {
     
     // MARK: - Properties
     
     var isAnimate: Bool = false
+    private var bubbleLabelList: [String] = []
     
     // MARK: - UI Components
     
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = ImageLiterals.Home.imgHomebackAllGray
+        imageView.image = ImageLiterals.Home.imgHomebackAll
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -51,15 +53,23 @@ final class HomeView: UIView {
         return imageView
     }()
     
-    var lottieHello = LottieAnimationView(name: "gray_hello")
-    var lottieEatingDaily = LottieAnimationView(name: "gray_eating_daily")
-    var lottieEatingHappy = LottieAnimationView(name: "gray_eating_happy")
+    var lottieHello: LottieAnimationView
+    var lottieEatingDaily: LottieAnimationView
+    var lottieEatingHappy: LottieAnimationView
     
-    private let bubbleLabel: UILabel = {
+    let bubbleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         label.font = .fontGuide(.bubble18)
+        label.textAlignment = .center
         return label
+    }()
+    
+    private let shadowImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.Home.imgShadow
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
     let dollNameLabel: UILabel = {
@@ -92,8 +102,11 @@ final class HomeView: UIView {
     
     // MARK: - Life Cycles
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        lottieHello = LottieAnimationView()
+        lottieEatingDaily = LottieAnimationView()
+        lottieEatingHappy = LottieAnimationView()
+        super.init(frame: .zero)
         
         setUI()
         setHierarchy()
@@ -111,6 +124,19 @@ final class HomeView: UIView {
 // MARK: - Extensions
 
 extension HomeView {
+    func setDoll(dollType: String) {
+        DispatchQueue.main.async {
+            let helloAnimation = LottieAnimation.named("\(dollType.lowercased())_hello")
+            self.lottieHello.animation = helloAnimation
+            let eatingDailyAnimation = LottieAnimation.named("\(dollType.lowercased())_eating_daily")
+            self.lottieEatingDaily.animation = eatingDailyAnimation
+            let eatingHappyAnimation = LottieAnimation.named("\(dollType.lowercased())_eating_happy")
+            self.lottieEatingHappy.animation = eatingHappyAnimation
+        }
+    }
+}
+
+extension HomeView {
     
     func setUI() {
         lottieHello.isHidden = false
@@ -119,7 +145,7 @@ extension HomeView {
     }
     
     func setHierarchy() {
-        self.addSubviews(backgroundImageView, softieImageView, moneyButton, settingButton, bubbleImageView, dollNameLabel, actionCollectionView)
+        self.addSubviews(backgroundImageView, softieImageView, moneyButton, settingButton, bubbleImageView, shadowImageView, dollNameLabel, actionCollectionView)
         
         bubbleImageView.addSubview(bubbleLabel)
         
@@ -178,6 +204,13 @@ extension HomeView {
             $0.center.equalToSuperview()
         }
         
+        shadowImageView.snp.makeConstraints {
+            $0.width.equalTo(123)
+            $0.height.equalTo(23)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(lottieHello.snp.bottom).offset(-105)
+        }
+        
         dollNameLabel.snp.makeConstraints {
             $0.bottom.equalTo(lottieHello.snp.bottom).inset(54)
             $0.centerX.equalToSuperview()
@@ -212,6 +245,7 @@ extension HomeView {
             lottieEatingHappy.isHidden = true
             lottieHello.loopMode = .playOnce
             lottieHello.play()
+            refreshBubbleLabel()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
                 self.isAnimate = false
             }
@@ -222,8 +256,24 @@ extension HomeView {
         ActionCollectionViewCell.register(target: actionCollectionView)
     }
     
+    func refreshBubbleLabel() {
+        bubbleLabel.text = bubbleLabelList[Int.random(in: (0 ..< bubbleLabelList.count))]
+    }
+    
     func setDataBind(model: HomeEntity) {
-        bubbleLabel.text = model.conversation
+        bubbleLabelList = model.conversations
+        refreshBubbleLabel()
         dollNameLabel.text = model.name
+        guard let url = URL(string: model.frameImageURL) else {return}
+        KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
+            guard let self else {return}
+            switch result {
+            case .success(let image):
+                self.backgroundImageView.image = image.image
+            case .failure(let error):
+                print(error.errorDescription)
+                return
+            }
+        }
     }
 }
