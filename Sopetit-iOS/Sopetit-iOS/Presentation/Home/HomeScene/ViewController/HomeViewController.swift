@@ -31,7 +31,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setDelegate()
-        getHomeAPI(socialAccessToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJtZW1iZXJJZCI6MywiaWF0IjoxNzA0OTQ5Mzg5LCJleHAiOjE3MDYxNTkzODl9.OnsKaJ9NagxGQx4i0T6_GFdIIn6ZtAph2XHD1zAsDtUbomVToXE3SSgsKvQi32yP8FaZxiCnKzRPn0I2Tb5bDw")
+        getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
     }
 }
 
@@ -51,6 +51,7 @@ extension HomeViewController {
         homeView.dollNameLabel.snp.updateConstraints {
                 $0.width.equalTo(nameWidth + 26)
         }
+        homeView.layoutIfNeeded()
     }
 }
 
