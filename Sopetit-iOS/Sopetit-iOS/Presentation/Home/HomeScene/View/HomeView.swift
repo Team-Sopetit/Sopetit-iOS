@@ -61,6 +61,7 @@ final class HomeView: UIView {
         let label = UILabel()
         label.numberOfLines = 2
         label.font = .fontGuide(.bubble18)
+        label.textAlignment = .center
         return label
     }()
     
