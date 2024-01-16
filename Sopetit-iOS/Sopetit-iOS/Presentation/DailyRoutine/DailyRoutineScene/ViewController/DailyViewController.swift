@@ -19,7 +19,7 @@ final class DailyViewController: UIViewController {
     var status: Int = 0
     var isFromAddDailyBottom: Bool = false
     private var shouldShowFooterView: Bool = true
-    private var routineList: DataClass = .init(routines: [.init(routineID: 0, content: "", iconImageURL: "", achieveCount: 0, isAchieve: true)])
+    var routineList: DataClass = .init(routines: [.init(routineID: 0, content: "", iconImageURL: "", achieveCount: 0, isAchieve: true)])
     
     override var isEditing: Bool {
         didSet {
@@ -324,5 +324,33 @@ extension DailyViewController {
                 break
             }
         }
+    }
+}
+
+extension DailyViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath) as? DailyRoutineCollectionViewCell else {
+            return .zero
+        }
+
+        // Set your routineLabel text based on your data
+        let data = routineList.routines[indexPath.item].content
+        cell.routineLabel.text = data
+
+        // Adjust the width of the label to match the cell's width
+        cell.routineLabel.preferredMaxLayoutWidth = collectionView.bounds.width - 40
+
+        // Force layout to get the correct label height
+        cell.layoutIfNeeded()
+
+        // Calculate the height of the cell based on the label's height
+//        let cellHeight = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        let cellHeight = cell.routineLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        
+        // Adjust the itemSize width to routineLabel height + 32
+        let itemSizeWidth = collectionView.bounds.width - 40
+        let itemSizeHeight = cellHeight + 126
+
+        return CGSize(width: itemSizeWidth, height: itemSizeHeight)
     }
 }
