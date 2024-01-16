@@ -182,7 +182,7 @@ extension DailyViewController: DailyAddDelegate {
 
 extension DailyViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return shouldShowFooterView ? CGSize(width: collectionView.bounds.width, height: 51) : CGSize.zero
+        return shouldShowFooterView ? CGSize(width: collectionView.bounds.width, height: 136) : CGSize.zero
     }
 }
 
