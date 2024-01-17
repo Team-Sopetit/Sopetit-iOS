@@ -32,7 +32,7 @@ final class ActionCollectionViewCell: UICollectionViewCell, UICollectionViewRegi
         return imageView
     }()
     
-    private let numberLabel: UILabel = {
+    var numberLabel: UILabel = {
         let label = UILabel()
         label.font = .fontGuide(.body4)
         label.textColor = UIColor.Gray300
