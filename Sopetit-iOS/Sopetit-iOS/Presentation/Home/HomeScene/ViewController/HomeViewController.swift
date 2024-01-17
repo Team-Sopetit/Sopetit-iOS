@@ -35,6 +35,7 @@ final class HomeViewController: UIViewController {
         setUI()
         setDelegate()
         setAddTarget()
+        sleep(1)
         getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
     }
 }
@@ -161,7 +162,7 @@ extension HomeViewController: UICollectionViewDelegate {
         case 1:
             if !(homeView.isAnimate) {
                 self.homeView.isAnimate = true
-                patchCottonAPI(cottonType: "HAPPY", indexPath: indexPath)
+                patchCottonAPI(cottonType: "HAPPINESS", indexPath: indexPath)
                 homeView.lottieEatingHappy.isHidden = false
                 homeView.lottieHello.isHidden = true
                 homeView.lottieEatingDaily.isHidden = true
