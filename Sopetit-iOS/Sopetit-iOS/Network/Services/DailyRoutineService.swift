@@ -70,12 +70,8 @@ extension DailyRoutineService {
         completion: @escaping (NetworkResult<Any>) -> Void) {
             let url = URLConstant.patchRoutineURL + "\(routineId)"
             let header: HTTPHeaders = NetworkConstant.hasTokenHeader
-            let body: Parameters = [
-                "routineId": routineId
-            ]
             let dataRequest = AF.request(url,
                                          method: .patch,
-                                         parameters: body,
                                          encoding: JSONEncoding.default,
                                          headers: header)
             
