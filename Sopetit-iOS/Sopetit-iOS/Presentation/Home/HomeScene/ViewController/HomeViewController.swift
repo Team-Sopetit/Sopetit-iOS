@@ -31,6 +31,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         print(UserManager.shared.getAccessToken)
         setDelegate()
+        sleep(1)
         getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
     }
 }
@@ -51,7 +52,6 @@ extension HomeViewController {
         homeView.dollNameLabel.snp.updateConstraints {
                 $0.width.equalTo(nameWidth + 26)
         }
-        homeView.layoutIfNeeded()
     }
 }
 
