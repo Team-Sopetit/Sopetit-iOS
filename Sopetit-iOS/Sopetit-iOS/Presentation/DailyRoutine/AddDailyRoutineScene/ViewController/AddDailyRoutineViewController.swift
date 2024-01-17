@@ -211,6 +211,8 @@ extension AddDailyRoutineViewController: BackButtonProtocol {
     }
 }
 
+// MARK: - Network
+
 extension AddDailyRoutineViewController {
     
     func getDailyThemes() {

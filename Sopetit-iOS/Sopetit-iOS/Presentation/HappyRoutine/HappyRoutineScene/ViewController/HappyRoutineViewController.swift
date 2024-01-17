@@ -59,6 +59,7 @@ final class HappyRoutineViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         getHappinessMemberAPI()
         self.happyRoutineView.happyRoutineCardView.fadeIn()
         self.navigationController?.isNavigationBarHidden = true

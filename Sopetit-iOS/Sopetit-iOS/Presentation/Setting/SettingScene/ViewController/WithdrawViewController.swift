@@ -74,7 +74,6 @@ extension WithdrawViewController {
                           let keyWindow = windowScene.windows.first else {
                         return
                     }
-                    UserManager.shared.resign()
                     let nav = SplashViewController()
                     keyWindow.rootViewController = UINavigationController(rootViewController: nav)
                 }

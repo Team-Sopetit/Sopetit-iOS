@@ -327,6 +327,7 @@ extension DailyViewController {
 // MARK: - Network
 
 extension DailyViewController {
+    
     func getRoutineListAPI() {
         DailyRoutineService.shared.getRoutineListAPI { networkResult in
             switch networkResult {
@@ -344,9 +345,7 @@ extension DailyViewController {
             }
         }
     }
-}
-
-extension DailyViewController {
+    
     func deleteRoutineListAPI(routineId: Int) {
         DailyRoutineService.shared.deleteRoutineListAPI(routineId: routineId) { networkResult in
             switch networkResult {
@@ -359,9 +358,7 @@ extension DailyViewController {
             }
         }
     }
-}
-
-extension DailyViewController {
+    
     func patchRoutineAPI(routineId: Int) {
         DailyRoutineService.shared.patchRoutineAPI(routineId: routineId) { _ in
             for cell in self.collectionview.visibleCells {
@@ -388,11 +385,6 @@ extension DailyViewController: UICollectionViewDelegateFlowLayout {
         cell.routineLabel.text = data
         cell.routineLabel.preferredMaxLayoutWidth = collectionView.bounds.width - 164
         cell.layoutIfNeeded()
-        
-//        let paragraphStyle = NSMutableParagraphStyle()
-//        paragraphStyle.lineSpacing = 4
-//        let attributedString = NSAttributedString(string: data, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
-//        cell.routineLabel.attributedText = attributedString
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.5
