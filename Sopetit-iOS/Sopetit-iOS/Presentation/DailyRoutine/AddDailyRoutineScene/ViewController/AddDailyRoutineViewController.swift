@@ -214,7 +214,7 @@ extension AddDailyRoutineViewController: BackButtonProtocol {
 extension AddDailyRoutineViewController {
     
     func getDailyThemes() {
-        RoutinesDailyService.shared.getDailyThemesAPI { networkResult in
+        AddDailyRoutineService.shared.getDailyThemesAPI { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyThemesEntity> {
@@ -235,7 +235,7 @@ extension AddDailyRoutineViewController {
     }
     
     func getDailyRoutinesAPI() {
-        RoutinesDailyService.shared.getDailyRoutinesAPI(themes: self.themeId) { networkResult in
+        AddDailyRoutineService.shared.getDailyRoutinesAPI(themes: self.themeId) { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyRoutinesEntity> {
@@ -255,7 +255,7 @@ extension AddDailyRoutineViewController {
     }
     
     func postDailyMember(routineId: Int) {
-        RoutinesDailyService.shared.postDailyMember(routineId: routineId) { networkResult in
+        AddDailyRoutineService.shared.postDailyMember(routineId: routineId) { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyRoutineIdEntity> {

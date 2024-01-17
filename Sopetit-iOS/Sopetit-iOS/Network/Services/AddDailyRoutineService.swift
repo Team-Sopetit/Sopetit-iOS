@@ -9,14 +9,14 @@ import Foundation
 
 import Alamofire
 
-final class RoutinesDailyService: BaseService {
+final class AddDailyRoutineService: BaseService {
     
-    static let shared = RoutinesDailyService()
+    static let shared = AddDailyRoutineService()
     
     private override init() {}
 }
 
-extension RoutinesDailyService {
+extension AddDailyRoutineService {
     
     func getDailyThemesAPI(completion: @escaping (NetworkResult<Any>) -> Void) {
         let url = URLConstant.dailyThemesURL
