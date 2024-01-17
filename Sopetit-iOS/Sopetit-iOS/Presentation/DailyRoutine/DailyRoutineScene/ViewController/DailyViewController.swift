@@ -349,7 +349,7 @@ extension DailyViewController {
     func deleteRoutineListAPI(routineId: Int) {
         DailyRoutineService.shared.deleteRoutineListAPI(routineId: routineId) { networkResult in
             switch networkResult {
-            case .success(let data):
+            case .success:
                 self.collectionview.reloadData()
             case .requestErr, .serverErr:
                 break
