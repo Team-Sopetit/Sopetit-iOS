@@ -69,6 +69,7 @@ extension RoutineChoiceViewController {
         case routineChoiceView.nextButton:
             let nav = TabBarController()
             postMemberAPI()
+            UserManager.shared.hasPostMember()
             self.navigationController?.pushViewController(nav, animated: true)
         default:
             break

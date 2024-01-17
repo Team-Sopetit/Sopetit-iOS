@@ -77,6 +77,7 @@ extension ThemeSelectViewController: UICollectionViewDelegate {
         if let selectedCell = collectionView.cellForItem(at: indexPath) as? ThemeSelectCollectionViewCell {
             if !selectedCell.isSelected {
                 if selectedCount < 3 {
+                    makeVibrate()
                     selectedCount += 1
                     selectedCategory.append(themeEntity.themes[indexPath.item].themeID)
                     selectedCell.isSelected = true

@@ -79,14 +79,12 @@ final class RoutineChoiceView: UIView {
     private lazy var topLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.SoftieBack.withAlphaComponent(1).cgColor, UIColor.SoftieBack.withAlphaComponent(0.9).cgColor, UIColor.SoftieBack.withAlphaComponent(0).cgColor]
-        gradient.frame = CGRect(x: SizeLiterals.Screen.screenWidth * 20 / 375, y: 155 + SizeLiterals.Screen.screenHeight * 24 / 812, width: SizeLiterals.Screen.screenWidth * 335 / 375, height: 30)
         return gradient
     }()
     
     private lazy var bottomLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.SoftieBack.withAlphaComponent(0).cgColor, UIColor.SoftieBack.withAlphaComponent(0.9).cgColor, UIColor.SoftieBack.withAlphaComponent(1).cgColor]
-        gradient.frame = CGRect(x: SizeLiterals.Screen.screenWidth * 20 / 375, y: 129 + SizeLiterals.Screen.screenHeight * 464 / 812, width: SizeLiterals.Screen.screenWidth * 335 / 375, height: 30)
         return gradient
     }()
     
@@ -112,8 +110,17 @@ final class RoutineChoiceView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
+        topLayer.frame = CGRect(x: SizeLiterals.Screen.screenWidth * 20 / 375,
+                                    y: collectionView.frame.origin.y,
+                                    width: SizeLiterals.Screen.screenWidth * 335 / 375,
+                                    height: 30)
         self.layer.addSublayer(topLayer)
+        let collectionViewBottomY = collectionView.frame.origin.y + collectionView.frame.size.height
+        bottomLayer.frame = CGRect(x: SizeLiterals.Screen.screenWidth * 20 / 375,
+                                   y: collectionViewBottomY - 30,
+                                   width: SizeLiterals.Screen.screenWidth * 335 / 375,
+                                   height: 30)
         self.layer.addSublayer(bottomLayer)
     }
     
