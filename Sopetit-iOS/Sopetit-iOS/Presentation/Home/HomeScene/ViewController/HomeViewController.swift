@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import Lottie
+import SafariServices
 
 final class HomeViewController: UIViewController {
     
@@ -30,7 +31,9 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUI()
         setDelegate()
+        setAddTarget()
         getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
     }
 }
@@ -38,6 +41,10 @@ final class HomeViewController: UIViewController {
 // MARK: - Extensions
 
 extension HomeViewController {
+    
+    func setUI() {
+        self.navigationController?.navigationBar.isHidden = true
+    }
     
     func setDelegate() {
         collectionView.delegate = self
@@ -52,6 +59,29 @@ extension HomeViewController {
                 $0.width.equalTo(nameWidth + 26)
         }
         homeView.layoutIfNeeded()
+    }
+    
+    func setAddTarget() {
+        homeView.moneyButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        homeView.settingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    func buttonTapped(_ sender: UIButton) {
+        switch sender {
+        case homeView.moneyButton:
+            print("sss")
+            if let url = URL(string: I18N.Home.moneyNotion) {
+                let safariViewController = SFSafariViewController(url: url)
+                present(safariViewController, animated: true, completion: nil)
+            }
+        case homeView.settingButton:
+            print("sss")
+            let nav = SettingViewController()
+            self.navigationController?.pushViewController(nav, animated: true)
+        default:
+            break
+        }
     }
 }
 
