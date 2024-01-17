@@ -68,8 +68,8 @@ private extension DailyRoutineCardCollectionViewCell {
 
 extension DailyRoutineCardCollectionViewCell {
     
-    func setDataBind(model: DailyRoutineCard, image: UIImage) {
-        cardImageView.image = image
+    func setDataBind(model: DailyRoutine, imageURL: String) {
+        cardImageView.kfSetImage(url: imageURL)
         titleLabel.text = model.content
         titleLabel.textAlignment = .center
     }

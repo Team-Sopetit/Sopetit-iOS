@@ -69,7 +69,7 @@ final class AddDailyRoutineView: UIView {
     
     lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl(frame: CGRect(x: 0, y: self.frame.maxY - 100, width: self.frame.maxX, height: 50))
-        pageControl.numberOfPages = 7
+        pageControl.numberOfPages = 3
         pageControl.currentPage = 0
         pageControl.isUserInteractionEnabled = false
         pageControl.pageIndicatorTintColor = .Gray200

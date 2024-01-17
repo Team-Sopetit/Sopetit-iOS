@@ -43,6 +43,10 @@
 		098DFCA12B5662F00099063D /* HappinessRoutineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DFCA02B5662F00099063D /* HappinessRoutineEntity.swift */; };
 		098DFCA32B567E500099063D /* HappinessMemberEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DFCA22B567E500099063D /* HappinessMemberEntity.swift */; };
 		098DFCA52B568A010099063D /* HappinessRoutineIdEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DFCA42B568A010099063D /* HappinessRoutineIdEntity.swift */; };
+		098DFCA72B57EA770099063D /* RoutinesDailyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DFCA62B57EA770099063D /* RoutinesDailyService.swift */; };
+		098DFCA92B57EAE40099063D /* DailyThemesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DFCA82B57EAE40099063D /* DailyThemesEntity.swift */; };
+		098DFCAB2B580A1A0099063D /* DailyRoutinesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DFCAA2B580A1A0099063D /* DailyRoutinesEntity.swift */; };
+		098DFCAD2B58418B0099063D /* DailyRoutineIdEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DFCAC2B58418B0099063D /* DailyRoutineIdEntity.swift */; };
 		09B2535C2B4D538E005E7032 /* SelectHappyCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2535B2B4D538E005E7032 /* SelectHappyCategoryViewController.swift */; };
 		09B253612B4D53E7005E7032 /* SelectHappyCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253602B4D53E7005E7032 /* SelectHappyCategoryView.swift */; };
 		09B253632B4D561C005E7032 /* HappyRoutineTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253622B4D561C005E7032 /* HappyRoutineTagView.swift */; };
@@ -188,6 +192,10 @@
 		098DFCA02B5662F00099063D /* HappinessRoutineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessRoutineEntity.swift; sourceTree = "<group>"; };
 		098DFCA22B567E500099063D /* HappinessMemberEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessMemberEntity.swift; sourceTree = "<group>"; };
 		098DFCA42B568A010099063D /* HappinessRoutineIdEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessRoutineIdEntity.swift; sourceTree = "<group>"; };
+		098DFCA62B57EA770099063D /* RoutinesDailyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesDailyService.swift; sourceTree = "<group>"; };
+		098DFCA82B57EAE40099063D /* DailyThemesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyThemesEntity.swift; sourceTree = "<group>"; };
+		098DFCAA2B580A1A0099063D /* DailyRoutinesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutinesEntity.swift; sourceTree = "<group>"; };
+		098DFCAC2B58418B0099063D /* DailyRoutineIdEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineIdEntity.swift; sourceTree = "<group>"; };
 		09B2535B2B4D538E005E7032 /* SelectHappyCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHappyCategoryViewController.swift; sourceTree = "<group>"; };
 		09B253602B4D53E7005E7032 /* SelectHappyCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHappyCategoryView.swift; sourceTree = "<group>"; };
 		09B253622B4D561C005E7032 /* HappyRoutineTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineTagView.swift; sourceTree = "<group>"; };
@@ -744,6 +752,7 @@
 				A42C32FF2B3EAE3E00C4B477 /* HomeService.swift */,
 				A49BFE482B50FC7A00035EB6 /* DailyRoutineService.swift */,
 				A49BFE4A2B50FC8300035EB6 /* HappyRoutineService.swift */,
+				098DFCA62B57EA770099063D /* RoutinesDailyService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -840,6 +849,9 @@
 			isa = PBXGroup;
 			children = (
 				A42C32F92B3EADF900C4B477 /* DailyRoutineEntity.swift */,
+				098DFCA82B57EAE40099063D /* DailyThemesEntity.swift */,
+				098DFCAA2B580A1A0099063D /* DailyRoutinesEntity.swift */,
+				098DFCAC2B58418B0099063D /* DailyRoutineIdEntity.swift */,
 			);
 			path = Daily;
 			sourceTree = "<group>";
@@ -1385,6 +1397,7 @@
 				A42C32BB2B3EAAEA00C4B477 /* FontLiterals.swift in Sources */,
 				A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */,
 				00CCDCC62B51B5C8007DD0E6 /* SplashThreeView.swift in Sources */,
+				098DFCA92B57EAE40099063D /* DailyThemesEntity.swift in Sources */,
 				A42C32E32B3EAC8200C4B477 /* NetworkResult.swift in Sources */,
 				A49BFDD72B4D5F2800035EB6 /* StroyTellingFirstView.swift in Sources */,
 				A42C33232B3EAF8400C4B477 /* DailyViewController.swift in Sources */,
@@ -1401,6 +1414,7 @@
 				A49BFE2A2B4E857300035EB6 /* DollNameView.swift in Sources */,
 				A42C32B72B3EAAD800C4B477 /* ImageLiterals.swift in Sources */,
 				045DFE7B2B504E38005D69EA /* SettingViewController.swift in Sources */,
+				098DFCAD2B58418B0099063D /* DailyRoutineIdEntity.swift in Sources */,
 				A42C32BD2B3EAAF200C4B477 /* SizeLiterals.swift in Sources */,
 				09B2537A2B4E4E14005E7032 /* AddHappyRoutineView.swift in Sources */,
 				A42C32C52B3EAB2B00C4B477 /* UIButton+.swift in Sources */,
@@ -1411,6 +1425,7 @@
 				A49BFE282B4E856600035EB6 /* DollNameViewController.swift in Sources */,
 				A42C32F42B3EADDD00C4B477 /* OnboardingEntity.swift in Sources */,
 				A42C32E92B3EAC9C00C4B477 /* BaseService.swift in Sources */,
+				098DFCA72B57EA770099063D /* RoutinesDailyService.swift in Sources */,
 				A49BFDE32B4D7A6000035EB6 /* DollChoiceView.swift in Sources */,
 				A49BFDEE2B4DA42600035EB6 /* ThemeSelectViewController.swift in Sources */,
 				A42C32D72B3EAC1300C4B477 /* MakeVibrate.swift in Sources */,
@@ -1436,6 +1451,7 @@
 				A42C32BF2B3EAB0E00C4B477 /* UIImage+.swift in Sources */,
 				098DFCA52B568A010099063D /* HappinessRoutineIdEntity.swift in Sources */,
 				A42C33002B3EAE3E00C4B477 /* HomeService.swift in Sources */,
+				098DFCAB2B580A1A0099063D /* DailyRoutinesEntity.swift in Sources */,
 				A42C32E52B3EAC8B00C4B477 /* GenericResponse.swift in Sources */,
 				098DFCA12B5662F00099063D /* HappinessRoutineEntity.swift in Sources */,
 				04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */,
