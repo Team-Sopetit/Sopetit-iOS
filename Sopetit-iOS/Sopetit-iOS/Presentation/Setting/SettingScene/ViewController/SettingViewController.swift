@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 final class SettingViewController: UIViewController {
     
     // MARK: - Properties
@@ -20,11 +22,6 @@ final class SettingViewController: UIViewController {
     private let logoutBottom = BottomSheetViewController(bottomStyle: .logoutBottom)
     
     // MARK: - Life Cycles
-    
-    override func loadView() {
-        super.loadView()
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

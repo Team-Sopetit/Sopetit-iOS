@@ -12,9 +12,12 @@ final class RoutineChoiceViewController: UIViewController {
     // MARK: - Properties
     
     var selectedTheme: [Int] = []
+    var userDollType: String = ""
+    var userDollName: String = ""
     private var selectedCount: Int = 0
     private var selectedRoutine: [Int] = []
     private var routineEntity: [Routine] = []
+    private var dollEntity = DollImageEntity(faceImageURL: "")
     
     // MARK: - UI Components
     
@@ -36,6 +39,7 @@ final class RoutineChoiceViewController: UIViewController {
         setDelegate()
         setAddTarget()
         getRoutineAPI()
+        getDollAPI()
     }
 }
 
@@ -64,6 +68,8 @@ extension RoutineChoiceViewController {
             self.navigationController?.popViewController(animated: true)
         case routineChoiceView.nextButton:
             let nav = TabBarController()
+            postMemberAPI()
+            UserManager.shared.hasPostMember()
             self.navigationController?.pushViewController(nav, animated: true)
         default:
             break
@@ -80,6 +86,7 @@ extension RoutineChoiceViewController {
                 switch networkResult {
                 case .success(let data):
                     if let data = data as? GenericResponse<RoutineChoiceEntity> {
+                        dump(data)
                         if let listData = data.data {
                             self.routineEntity.append(contentsOf: listData.routines)
                         }
@@ -90,6 +97,37 @@ extension RoutineChoiceViewController {
                 default:
                     break
                 }
+            }
+        }
+    }
+    
+    func getDollAPI() {
+        OnBoardingService.shared.getOnboardingDollAPI(dollType: self.userDollType) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<DollImageEntity> {
+                    if let listData = data.data {
+                        self.dollEntity = listData
+                    }
+                    self.routineChoiceView.setDataBind(model: self.dollEntity)
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func postMemberAPI() {
+        OnBoardingService.shared.postOnboardingMemeberAPI(dollType: self.userDollType, dollName: self.userDollName, routineArray: selectedRoutine) { networkResult in
+            switch networkResult {
+            case .success:
+                print("success")
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
             }
         }
     }

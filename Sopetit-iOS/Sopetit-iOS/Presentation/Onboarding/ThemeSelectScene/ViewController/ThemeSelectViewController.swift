@@ -47,7 +47,7 @@ final class ThemeSelectViewController: UIViewController {
 extension ThemeSelectViewController {
 
     func setUI() {
-        themeSelectView.bubbleLabel.text = "안녕 난 \(doll)야!\n나와 함께 루틴을 만들어볼까?"
+        themeSelectView.bubbleLabel.text = "안녕 난 \(doll)!\n나와 함께 루틴을 만들어볼까?"
         themeSelectView.bubbleLabel.partColorChange(targetString: doll, textColor: .SoftieBrown)
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -65,6 +65,8 @@ extension ThemeSelectViewController {
     func buttonTapped() {
         let nav = RoutineChoiceViewController()
         nav.selectedTheme = selectedCategory
+        nav.userDollName = doll
+        nav.userDollType = dollType
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }
@@ -75,6 +77,7 @@ extension ThemeSelectViewController: UICollectionViewDelegate {
         if let selectedCell = collectionView.cellForItem(at: indexPath) as? ThemeSelectCollectionViewCell {
             if !selectedCell.isSelected {
                 if selectedCount < 3 {
+                    makeVibrate()
                     selectedCount += 1
                     selectedCategory.append(themeEntity.themes[indexPath.item].themeID)
                     selectedCell.isSelected = true

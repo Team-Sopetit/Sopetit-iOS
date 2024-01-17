@@ -176,7 +176,7 @@ extension DollNameView {
         case 1:
             animationName = "gray_hello"
         case 2:
-            animationName = "panda_hello"
+            animationName = "white_hello"
         case 3:
             animationName = "red_hello"
         default:

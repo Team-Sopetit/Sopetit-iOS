@@ -52,7 +52,7 @@ final class RoutineChoiceView: UIView {
         collectionView.isScrollEnabled = true
         collectionView.allowsMultipleSelection = true
         collectionView.backgroundColor = .SoftieBack
-        collectionView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 30, left: 22, bottom: 30, right: 22)
         return collectionView
     }()
     
@@ -79,14 +79,12 @@ final class RoutineChoiceView: UIView {
     private lazy var topLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.SoftieBack.withAlphaComponent(1).cgColor, UIColor.SoftieBack.withAlphaComponent(0.9).cgColor, UIColor.SoftieBack.withAlphaComponent(0).cgColor]
-        gradient.frame = CGRect(x: SizeLiterals.Screen.screenWidth * 20 / 375, y: SizeLiterals.Screen.screenHeight * 179 / 812, width: SizeLiterals.Screen.screenWidth * 335 / 375, height: 30)
         return gradient
     }()
     
     private lazy var bottomLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.SoftieBack.withAlphaComponent(0).cgColor, UIColor.SoftieBack.withAlphaComponent(0.9).cgColor, UIColor.SoftieBack.withAlphaComponent(1).cgColor]
-        gradient.frame = CGRect(x: SizeLiterals.Screen.screenWidth * 20 / 375, y: SizeLiterals.Screen.screenHeight * 610 / 812, width: SizeLiterals.Screen.screenWidth * 335 / 375, height: 30)
         return gradient
     }()
     
@@ -112,8 +110,17 @@ final class RoutineChoiceView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
+        topLayer.frame = CGRect(x: SizeLiterals.Screen.screenWidth * 20 / 375,
+                                    y: collectionView.frame.origin.y,
+                                    width: SizeLiterals.Screen.screenWidth * 335 / 375,
+                                    height: 30)
         self.layer.addSublayer(topLayer)
+        let collectionViewBottomY = collectionView.frame.origin.y + collectionView.frame.size.height
+        bottomLayer.frame = CGRect(x: SizeLiterals.Screen.screenWidth * 20 / 375,
+                                   y: collectionViewBottomY - 30,
+                                   width: SizeLiterals.Screen.screenWidth * 335 / 375,
+                                   height: 30)
         self.layer.addSublayer(bottomLayer)
     }
     
@@ -191,5 +198,9 @@ extension RoutineChoiceView {
     
     func setRegisterCell() {
         RoutineChoiceCollectionViewCell.register(target: collectionView)
+    }
+    
+    func setDataBind(model: DollImageEntity) {
+        bearImage.kfSetImage(url: model.faceImageURL)
     }
 }

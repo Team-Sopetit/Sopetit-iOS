@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0014568D2B56D1C10044782C /* brown_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = 0014568C2B56D1C10044782C /* brown_eating_daily.json */; };
 		004029062B4EDCF6002127BC /* ActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004029052B4EDCF6002127BC /* ActionCollectionViewCell.swift */; };
 		0084F19B2B4A895700F87860 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19A2B4A895700F87860 /* LoginView.swift */; };
 		0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19C2B4A896500F87860 /* LoginViewController.swift */; };
@@ -95,7 +96,7 @@
 		A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F12B3EADCD00C4B477 /* LoginEntity.swift */; };
 		A42C32F42B3EADDD00C4B477 /* OnboardingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F32B3EADDD00C4B477 /* OnboardingEntity.swift */; };
 		A42C32F62B3EADE300C4B477 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F52B3EADE300C4B477 /* HomeEntity.swift */; };
-		A42C32FA2B3EADF900C4B477 /* DailyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F92B3EADF900C4B477 /* DailyEntity.swift */; };
+		A42C32FA2B3EADF900C4B477 /* DailyRoutineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F92B3EADF900C4B477 /* DailyRoutineEntity.swift */; };
 		A42C32FC2B3EAE0000C4B477 /* HappinessEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32FB2B3EAE0000C4B477 /* HappinessEntity.swift */; };
 		A42C33002B3EAE3E00C4B477 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32FF2B3EAE3E00C4B477 /* HomeService.swift */; };
 		A42C33022B3EAE4900C4B477 /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33012B3EAE4900C4B477 /* OnboardingService.swift */; };
@@ -124,12 +125,11 @@
 		A49BFDF22B4DA53A00035EB6 /* ThemeSelectEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */; };
 		A49BFDF52B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFDF42B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift */; };
 		A49BFE022B4DC54400035EB6 /* brown_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */; };
-		A49BFE032B4DC54400035EB6 /* panda_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */; };
+		A49BFE032B4DC54400035EB6 /* white_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFDFF2B4DC54400035EB6 /* white_eating_happy.json */; };
 		A49BFE042B4DC54400035EB6 /* red_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE002B4DC54400035EB6 /* red_eating_happy.json */; };
 		A49BFE052B4DC54400035EB6 /* gray_eating_happy.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE012B4DC54400035EB6 /* gray_eating_happy.json */; };
 		A49BFE0A2B4DC54F00035EB6 /* red_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE062B4DC54E00035EB6 /* red_eating_daily.json */; };
-		A49BFE0B2B4DC54F00035EB6 /* panda_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE072B4DC54E00035EB6 /* panda_eating_daily.json */; };
-		A49BFE0C2B4DC54F00035EB6 /* brown_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE082B4DC54E00035EB6 /* brown_eating_daily.json */; };
+		A49BFE0B2B4DC54F00035EB6 /* white_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE072B4DC54E00035EB6 /* white_eating_daily.json */; };
 		A49BFE0D2B4DC54F00035EB6 /* gray_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */; };
 		A49BFE1D2B4E541C00035EB6 /* RoutineChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE1C2B4E541C00035EB6 /* RoutineChoiceViewController.swift */; };
 		A49BFE1F2B4E542B00035EB6 /* RoutineChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE1E2B4E542B00035EB6 /* RoutineChoiceView.swift */; };
@@ -139,7 +139,7 @@
 		A49BFE2A2B4E857300035EB6 /* DollNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE292B4E857300035EB6 /* DollNameView.swift */; };
 		A49BFE372B4E938700035EB6 /* gray_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE332B4E938600035EB6 /* gray_hello.json */; };
 		A49BFE382B4E938700035EB6 /* red_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE342B4E938600035EB6 /* red_hello.json */; };
-		A49BFE392B4E938700035EB6 /* panda_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE352B4E938600035EB6 /* panda_hello.json */; };
+		A49BFE392B4E938700035EB6 /* white_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE352B4E938600035EB6 /* white_hello.json */; };
 		A49BFE3A2B4E938700035EB6 /* brown_hello.json in Resources */ = {isa = PBXBuildFile; fileRef = A49BFE362B4E938600035EB6 /* brown_hello.json */; };
 		A49BFE412B5065DE00035EB6 /* AlertMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE402B5065DE00035EB6 /* AlertMessageView.swift */; };
 		A49BFE492B50FC7A00035EB6 /* DailyRoutineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE482B50FC7A00035EB6 /* DailyRoutineService.swift */; };
@@ -147,10 +147,13 @@
 		A49BFE4D2B51275C00035EB6 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE4C2B51275C00035EB6 /* UIImageView+.swift */; };
 		A49BFE4F2B53CE7700035EB6 /* DollImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE4E2B53CE7700035EB6 /* DollImageEntity.swift */; };
 		A49BFE5A2B54273E00035EB6 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = A49BFE592B54273E00035EB6 /* SVGKit */; };
+		A49BFE622B558B2E00035EB6 /* MemberEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE612B558B2E00035EB6 /* MemberEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0014568C2B56D1C10044782C /* brown_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_eating_daily.json; sourceTree = "<group>"; };
 		004029052B4EDCF6002127BC /* ActionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCollectionViewCell.swift; sourceTree = "<group>"; };
+		0046E1EC2B5514EE00C9565E /* Sopetit-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sopetit-iOS.entitlements"; sourceTree = "<group>"; };
 		0084F19A2B4A895700F87860 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0084F19C2B4A896500F87860 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		00A8E3992B4D8B0D001461CE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -235,7 +238,7 @@
 		A42C32F12B3EADCD00C4B477 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
 		A42C32F32B3EADDD00C4B477 /* OnboardingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEntity.swift; sourceTree = "<group>"; };
 		A42C32F52B3EADE300C4B477 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
-		A42C32F92B3EADF900C4B477 /* DailyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyEntity.swift; sourceTree = "<group>"; };
+		A42C32F92B3EADF900C4B477 /* DailyRoutineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineEntity.swift; sourceTree = "<group>"; };
 		A42C32FB2B3EAE0000C4B477 /* HappinessEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessEntity.swift; sourceTree = "<group>"; };
 		A42C32FF2B3EAE3E00C4B477 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		A42C33012B3EAE4900C4B477 /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
@@ -264,12 +267,11 @@
 		A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectEntity.swift; sourceTree = "<group>"; };
 		A49BFDF42B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_eating_happy.json; sourceTree = "<group>"; };
-		A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_eating_happy.json; sourceTree = "<group>"; };
+		A49BFDFF2B4DC54400035EB6 /* white_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = white_eating_happy.json; sourceTree = "<group>"; };
 		A49BFE002B4DC54400035EB6 /* red_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_eating_happy.json; sourceTree = "<group>"; };
 		A49BFE012B4DC54400035EB6 /* gray_eating_happy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_eating_happy.json; sourceTree = "<group>"; };
 		A49BFE062B4DC54E00035EB6 /* red_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_eating_daily.json; sourceTree = "<group>"; };
-		A49BFE072B4DC54E00035EB6 /* panda_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_eating_daily.json; sourceTree = "<group>"; };
-		A49BFE082B4DC54E00035EB6 /* brown_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_eating_daily.json; sourceTree = "<group>"; };
+		A49BFE072B4DC54E00035EB6 /* white_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = white_eating_daily.json; sourceTree = "<group>"; };
 		A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_eating_daily.json; sourceTree = "<group>"; };
 		A49BFE1C2B4E541C00035EB6 /* RoutineChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceViewController.swift; sourceTree = "<group>"; };
 		A49BFE1E2B4E542B00035EB6 /* RoutineChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineChoiceView.swift; sourceTree = "<group>"; };
@@ -279,13 +281,14 @@
 		A49BFE292B4E857300035EB6 /* DollNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollNameView.swift; sourceTree = "<group>"; };
 		A49BFE332B4E938600035EB6 /* gray_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gray_hello.json; sourceTree = "<group>"; };
 		A49BFE342B4E938600035EB6 /* red_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = red_hello.json; sourceTree = "<group>"; };
-		A49BFE352B4E938600035EB6 /* panda_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = panda_hello.json; sourceTree = "<group>"; };
+		A49BFE352B4E938600035EB6 /* white_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = white_hello.json; sourceTree = "<group>"; };
 		A49BFE362B4E938600035EB6 /* brown_hello.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_hello.json; sourceTree = "<group>"; };
 		A49BFE402B5065DE00035EB6 /* AlertMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessageView.swift; sourceTree = "<group>"; };
 		A49BFE482B50FC7A00035EB6 /* DailyRoutineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineService.swift; sourceTree = "<group>"; };
 		A49BFE4A2B50FC8300035EB6 /* HappyRoutineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineService.swift; sourceTree = "<group>"; };
 		A49BFE4C2B51275C00035EB6 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		A49BFE4E2B53CE7700035EB6 /* DollImageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollImageEntity.swift; sourceTree = "<group>"; };
+		A49BFE612B558B2E00035EB6 /* MemberEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,6 +353,14 @@
 			sourceTree = "<group>";
 		};
 		045DFE7C2B50F141005D69EA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				045DFE7D2B50F14C005D69EA /* SettingTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		092AE2B92B540B3400E9A20D /* CompleteHappyRoutineScene */ = {
 			isa = PBXGroup;
 			children = (
 				045DFE7D2B50F14C005D69EA /* SettingTableViewCell.swift */,
@@ -581,6 +592,7 @@
 		A42C327A2B3DB8F400C4B477 /* Sopetit-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				0046E1EC2B5514EE00C9565E /* Sopetit-iOS.entitlements */,
 				A42C32A12B3EA98400C4B477 /* Application */,
 				A42C32A02B3EA98000C4B477 /* Global */,
 				A42C329F2B3EA97900C4B477 /* Network */,
@@ -739,17 +751,17 @@
 			children = (
 				095903A92B5458F100D0AF39 /* daily_complete_som.json */,
 				095903A82B5458F100D0AF39 /* happy_complete_som.json */,
-				A49BFE082B4DC54E00035EB6 /* brown_eating_daily.json */,
 				A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */,
-				A49BFE072B4DC54E00035EB6 /* panda_eating_daily.json */,
+				0014568C2B56D1C10044782C /* brown_eating_daily.json */,
+				A49BFE072B4DC54E00035EB6 /* white_eating_daily.json */,
 				A49BFE062B4DC54E00035EB6 /* red_eating_daily.json */,
 				A49BFDFE2B4DC54400035EB6 /* brown_eating_happy.json */,
 				A49BFE012B4DC54400035EB6 /* gray_eating_happy.json */,
-				A49BFDFF2B4DC54400035EB6 /* panda_eating_happy.json */,
+				A49BFDFF2B4DC54400035EB6 /* white_eating_happy.json */,
 				A49BFE002B4DC54400035EB6 /* red_eating_happy.json */,
 				A49BFE362B4E938600035EB6 /* brown_hello.json */,
 				A49BFE332B4E938600035EB6 /* gray_hello.json */,
-				A49BFE352B4E938600035EB6 /* panda_hello.json */,
+				A49BFE352B4E938600035EB6 /* white_hello.json */,
 				A49BFE342B4E938600035EB6 /* red_hello.json */,
 			);
 			path = Lottie;
@@ -822,6 +834,7 @@
 				A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */,
 				A49BFE222B4E565D00035EB6 /* RoutineChoiceEntity.swift */,
 				A49BFE4E2B53CE7700035EB6 /* DollImageEntity.swift */,
+				A49BFE612B558B2E00035EB6 /* MemberEntity.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -857,7 +870,7 @@
 		A42C32F82B3EADF000C4B477 /* Daily */ = {
 			isa = PBXGroup;
 			children = (
-				A42C32F92B3EADF900C4B477 /* DailyEntity.swift */,
+				A42C32F92B3EADF900C4B477 /* DailyRoutineEntity.swift */,
 			);
 			path = Daily;
 			sourceTree = "<group>";
@@ -865,11 +878,11 @@
 		A42C33072B3EAE8900C4B477 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				A49BFE252B4E853A00035EB6 /* DollNameScene */,
-				A49BFE182B4E53CE00035EB6 /* RoutineChoiceScene */,
-				A49BFDEA2B4DA3E000035EB6 /* ThemeSelectScene */,
-				A49BFDDD2B4D7A1E00035EB6 /* DollChoiceScene */,
 				A49BFDD12B4D5EE800035EB6 /* StroyTellingScene */,
+				A49BFDDD2B4D7A1E00035EB6 /* DollChoiceScene */,
+				A49BFE252B4E853A00035EB6 /* DollNameScene */,
+				A49BFDEA2B4DA3E000035EB6 /* ThemeSelectScene */,
+				A49BFE182B4E53CE00035EB6 /* RoutineChoiceScene */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -885,7 +898,6 @@
 		A42C33092B3EAEC000C4B477 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				045DFE822B53034D005D69EA /* LogoutScene */,
 				A42C33302B3EAFDB00C4B477 /* LoginScene */,
 			);
 			path = Auth;
@@ -1339,7 +1351,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0414F3C02B554BB300EBBFED /* Config.xcconfig in Resources */,
-				A49BFE0C2B4DC54F00035EB6 /* brown_eating_daily.json in Resources */,
 				A4832BAB2B4ACF09007879FF /* omyu-pretty.ttf in Resources */,
 				A42C336C2B41EF2F00C4B477 /* .swiftlint.yml in Resources */,
 				A42C33642B413F2100C4B477 /* Pretendard-SemiBold.otf in Resources */,
@@ -1347,17 +1358,18 @@
 				A49BFE3A2B4E938700035EB6 /* brown_hello.json in Resources */,
 				A42C32882B3DB8F500C4B477 /* LaunchScreen.storyboard in Resources */,
 				095903AB2B5458F100D0AF39 /* daily_complete_som.json in Resources */,
+				0014568D2B56D1C10044782C /* brown_eating_daily.json in Resources */,
 				A49BFE042B4DC54400035EB6 /* red_eating_happy.json in Resources */,
 				A42C32852B3DB8F500C4B477 /* Assets.xcassets in Resources */,
 				A49BFE022B4DC54400035EB6 /* brown_eating_happy.json in Resources */,
 				A49BFE372B4E938700035EB6 /* gray_hello.json in Resources */,
 				095903AA2B5458F100D0AF39 /* happy_complete_som.json in Resources */,
 				A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */,
-				A49BFE392B4E938700035EB6 /* panda_hello.json in Resources */,
-				A49BFE0B2B4DC54F00035EB6 /* panda_eating_daily.json in Resources */,
+				A49BFE392B4E938700035EB6 /* white_hello.json in Resources */,
+				A49BFE0B2B4DC54F00035EB6 /* white_eating_daily.json in Resources */,
 				A49BFE0D2B4DC54F00035EB6 /* gray_eating_daily.json in Resources */,
 				A49BFE0A2B4DC54F00035EB6 /* red_eating_daily.json in Resources */,
-				A49BFE032B4DC54400035EB6 /* panda_eating_happy.json in Resources */,
+				A49BFE032B4DC54400035EB6 /* white_eating_happy.json in Resources */,
 				A49BFE052B4DC54400035EB6 /* gray_eating_happy.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1465,7 +1477,7 @@
 				00CCDCC42B51B5BD007DD0E6 /* SplashTwoView.swift in Sources */,
 				093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */,
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,
-				A42C32FA2B3EADF900C4B477 /* DailyEntity.swift in Sources */,
+				A42C32FA2B3EADF900C4B477 /* DailyRoutineEntity.swift in Sources */,
 				A49BFE232B4E565D00035EB6 /* RoutineChoiceEntity.swift in Sources */,
 				A49BFDF52B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift in Sources */,
 				0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */,
@@ -1502,6 +1514,8 @@
 				A42C32D12B3EAB7F00C4B477 /* String+.swift in Sources */,
 				A49BFDF02B4DA48200035EB6 /* ThemeSelectView.swift in Sources */,
 				092AE2BF2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift in Sources */,
+				A49BFE622B558B2E00035EB6 /* MemberEntity.swift in Sources */,
+				09B253782B4E4BC6005E7032 /* HappyRoutine.swift in Sources */,
 				A49BFDD52B4D5F0800035EB6 /* StroyTellingViewController.swift in Sources */,
 				A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */,
 			);
@@ -1642,6 +1656,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Sopetit-iOS/Sopetit-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -1674,6 +1689,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Sopetit-iOS/Sopetit-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
