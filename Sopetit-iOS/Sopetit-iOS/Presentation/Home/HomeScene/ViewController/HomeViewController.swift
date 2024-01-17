@@ -43,6 +43,8 @@ final class HomeViewController: UIViewController {
 extension HomeViewController {
     
     func setUI() {
+        print("⭐️⭐️⭐️")
+        print(UserManager.shared.getAccessToken)
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -56,8 +58,9 @@ extension HomeViewController {
         let string = model.name
         let nameWidth = string.size(withAttributes: [NSAttributedString.Key.font: UIFont.fontGuide(.bubble16)]).width
         homeView.dollNameLabel.snp.updateConstraints {
-                $0.width.equalTo(nameWidth + 26)
+            $0.width.equalTo(nameWidth + 26)
         }
+        homeView.setDoll(dollType: model.dollType)
         homeView.layoutIfNeeded()
     }
     
@@ -70,13 +73,11 @@ extension HomeViewController {
     func buttonTapped(_ sender: UIButton) {
         switch sender {
         case homeView.moneyButton:
-            print("sss")
             if let url = URL(string: I18N.Home.moneyNotion) {
                 let safariViewController = SFSafariViewController(url: url)
                 present(safariViewController, animated: true, completion: nil)
             }
         case homeView.settingButton:
-            print("sss")
             let nav = SettingViewController()
             self.navigationController?.pushViewController(nav, animated: true)
         default:
@@ -90,25 +91,25 @@ extension HomeViewController {
 extension HomeViewController {
     
     func getHomeAPI(socialAccessToken: String) {
-            HomeService.shared.getHomeAPI(socialAccessToken: socialAccessToken) { networkResult in
-                switch networkResult {
-                case .success(let data):
-                    if let data = data as? GenericResponse<HomeEntity> {
-                        if let listData = data.data {
-                            self.homeEntity = listData
-                        }
-                        self.collectionView.reloadData()
-                        self.setDataBind(model: self.homeEntity)
-                        self.homeView.setDoll(dollType: self.homeEntity.dollType)
-                        self.collectionView.reloadData()
+        HomeService.shared.getHomeAPI(socialAccessToken: socialAccessToken) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<HomeEntity> {
+                    if let listData = data.data {
+                        self.homeEntity = listData
                     }
-                case .requestErr, .serverErr:
-                    break
-                default:
-                    break
+                    self.collectionView.reloadData()
+                    self.setDataBind(model: self.homeEntity)
+                    self.collectionView.reloadData()
+                    self.homeView.setNeedsDisplay()
                 }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
             }
         }
+    }
 }
 
 // MARK: - CollectionView
