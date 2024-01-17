@@ -38,33 +38,7 @@ extension DailyRoutineService {
             }
         }
     }
-}
-
-extension DailyRoutineService {
-    func deleteRoutineListAPI(routineId: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
-        let url = URLConstant.deleteURL + "\(routineId)"
-        let header: HTTPHeaders = NetworkConstant.hasTokenHeader
-        let dataRequest = AF.request(url,
-                                     method: .delete,
-                                     encoding: JSONEncoding.default,
-                                     headers: header)
-        dataRequest.responseData { response in
-            switch response.result {
-            case .success:
-                guard let statusCode = response.response?.statusCode else { return }
-                guard let data = response.data else { return }
-                let networkResult = self.judgeStatus(by: statusCode,
-                                                     data,
-                                                     DailyRoutineEntity.self)
-                completion(networkResult)
-            case .failure:
-                completion(.networkFail)
-            }
-        }
-    }
-}
-
-extension DailyRoutineService {
+    
     func patchRoutineAPI(
         routineId: Int,
         completion: @escaping (NetworkResult<Any>) -> Void) {
@@ -89,4 +63,26 @@ extension DailyRoutineService {
                 }
             }
         }
+    
+    func deleteRoutineListAPI(routineId: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+        let url = URLConstant.deleteURL + "\(routineId)"
+        let header: HTTPHeaders = NetworkConstant.hasTokenHeader
+        let dataRequest = AF.request(url,
+                                     method: .delete,
+                                     encoding: JSONEncoding.default,
+                                     headers: header)
+        dataRequest.responseData { response in
+            switch response.result {
+            case .success:
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let data = response.data else { return }
+                let networkResult = self.judgeStatus(by: statusCode,
+                                                     data,
+                                                     DailyRoutineEntity.self)
+                completion(networkResult)
+            case .failure:
+                completion(.networkFail)
+            }
+        }
+    }
 }
