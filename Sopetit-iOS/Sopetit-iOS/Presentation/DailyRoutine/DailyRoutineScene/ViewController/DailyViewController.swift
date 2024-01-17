@@ -389,10 +389,16 @@ extension DailyViewController: UICollectionViewDelegateFlowLayout {
         cell.routineLabel.preferredMaxLayoutWidth = collectionView.bounds.width - 164
         cell.layoutIfNeeded()
         
+//        let paragraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.lineSpacing = 4
+//        let attributedString = NSAttributedString(string: data, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+//        cell.routineLabel.attributedText = attributedString
+        
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 4
-        let attributedString = NSAttributedString(string: data , attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        paragraphStyle.lineHeightMultiple = 1.5
+        let attributedString = NSAttributedString(string: data, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
         cell.routineLabel.attributedText = attributedString
+        cell.routineLabel.sizeToFit()
 
         let cellHeight = cell.routineLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         let itemSizeWidth = collectionView.bounds.width - 40

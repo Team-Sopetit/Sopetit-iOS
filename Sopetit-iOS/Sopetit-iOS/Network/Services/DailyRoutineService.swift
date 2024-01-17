@@ -16,6 +16,8 @@ final class DailyRoutineService: BaseService {
     private override init() {}
 }
 
+// MARK: - Extension
+
 extension DailyRoutineService {
     func getRoutineListAPI(completion: @escaping (NetworkResult<Any>) -> Void) {
         let url = URLConstant.dailyURL
@@ -24,6 +26,7 @@ extension DailyRoutineService {
                                      method: .get,
                                      encoding: JSONEncoding.default,
                                      headers: header)
+        
         dataRequest.responseData { response in
             switch response.result {
             case .success:
@@ -71,6 +74,7 @@ extension DailyRoutineService {
                                      method: .delete,
                                      encoding: JSONEncoding.default,
                                      headers: header)
+        
         dataRequest.responseData { response in
             switch response.result {
             case .success:
