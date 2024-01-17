@@ -16,6 +16,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Properties
     
     var homeEntity = HomeEntity(name: "", dollType: "", frameImageURL: "", dailyCottonCount: 0, happinessCottonCount: 0, conversations: [])
+    private var homeCottonEntity = HomeCottonEntity(cottonCount: 0)
     
     // MARK: - UI Components
     
@@ -98,10 +99,33 @@ extension HomeViewController {
                     if let listData = data.data {
                         self.homeEntity = listData
                     }
-                    self.collectionView.reloadData()
                     self.setDataBind(model: self.homeEntity)
                     self.collectionView.reloadData()
                     self.homeView.setNeedsDisplay()
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func patchCottonAPI(cottonType: String, indexPath: IndexPath) {
+        HomeService.shared.patchCottonAPI(cottonType: cottonType) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<HomeCottonEntity> {
+                    if let listData = data.data {
+                        self.homeCottonEntity = listData
+                    }
+                    DispatchQueue.main.async {
+                        if let cell = self.collectionView.cellForItem(at: indexPath) as? ActionCollectionViewCell {
+                            cell.numberLabel.text = "\(self.homeCottonEntity.cottonCount)개"
+                            cell.setNeedsLayout()
+                        }
+                    }
+                    self.collectionView.reloadData()
                 }
             case .requestErr, .serverErr:
                 break
@@ -120,6 +144,7 @@ extension HomeViewController: UICollectionViewDelegate {
         case 0:
             if !(homeView.isAnimate) {
                 self.homeView.isAnimate = true
+                patchCottonAPI(cottonType: "DAILY", indexPath: indexPath)
                 homeView.lottieEatingDaily.isHidden = false
                 homeView.lottieHello.isHidden = true
                 homeView.lottieEatingHappy.isHidden = true
@@ -130,12 +155,13 @@ extension HomeViewController: UICollectionViewDelegate {
                     self.homeView.lottieEatingDaily.isHidden = true
                     self.homeView.lottieHello.isHidden = false
                     self.homeView.isAnimate = false
-                    self.homeView.refreshBubbleLabel()
+//                    self.homeView.refreshBubbleLabel()
                 }
             }
         case 1:
             if !(homeView.isAnimate) {
                 self.homeView.isAnimate = true
+                patchCottonAPI(cottonType: "HAPPY", indexPath: indexPath)
                 homeView.lottieEatingHappy.isHidden = false
                 homeView.lottieHello.isHidden = true
                 homeView.lottieEatingDaily.isHidden = true
@@ -146,7 +172,7 @@ extension HomeViewController: UICollectionViewDelegate {
                     self.homeView.lottieEatingDaily.isHidden = true
                     self.homeView.lottieHello.isHidden = false
                     self.homeView.isAnimate = false
-                    self.homeView.refreshBubbleLabel()
+//                    self.homeView.refreshBubbleLabel()
                 }
             }
         default:
