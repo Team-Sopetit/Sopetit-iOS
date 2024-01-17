@@ -79,7 +79,6 @@ extension SelectHappyCategoryViewController: UICollectionViewDataSource {
             if indexPath.item == 0 {
                 cell.setDataBind(text: I18N.HappyRoutineCategory.all)
             } else {
-                print(happinessThemesEntity.themes.count)
                 cell.setDataBind(text: happinessThemesEntity.themes[indexPath.item - 1].name)
             }
             return cell
@@ -128,7 +127,7 @@ extension SelectHappyCategoryViewController: UICollectionViewDelegateFlowLayout 
         } else if collectionView == selectHappyCategoryView.categoryCollectionView {
             let vc = AddHappyRoutineViewController()
             let routineId = happinessEntity.routines[indexPath.item].routineId
-            vc.routineId = routineId
+            vc.subRoutineId = routineId
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

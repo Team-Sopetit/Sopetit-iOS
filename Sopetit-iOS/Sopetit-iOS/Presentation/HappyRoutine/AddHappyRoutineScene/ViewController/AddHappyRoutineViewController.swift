@@ -13,7 +13,7 @@ final class AddHappyRoutineViewController: UIViewController {
 
     // MARK: - Properties
     
-    var routineId: Int = 0
+    var subRoutineId: Int = 0
     private var happinessRoutineEntity = HappinessRoutineEntity(title: "", name: "", nameColor: "", iconImageUrl: "", contentImageUrl: "", subRoutines: [])
     
     private enum Const {
@@ -46,6 +46,7 @@ final class AddHappyRoutineViewController: UIViewController {
         setUI()
         setDelegate()
         setRegister()
+        getHappinessRoutineAPI(routineId: subRoutineId)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,19 +113,14 @@ private extension AddHappyRoutineViewController {
 
 extension AddHappyRoutineViewController: BottomSheetButtonDelegate {
     
-    func completeButtonTapped() {
-        
-    }
+    func completeButtonTapped() { }
     
-    func deleteButtonTapped() {
-        
-    }
+    func deleteButtonTapped() { }
     
     func addButtonTapped() {
         let index = addHappyRoutineView.pageControl.currentPage
-        routineId = happinessRoutineEntity.subRoutines[index].subRoutineId
-        postHappinessRoutineAPI(routineId: routineId)
-        
+        subRoutineId = happinessRoutineEntity.subRoutines[index + 2].subRoutineId
+        postHappinessRoutineAPI(subRoutineId: subRoutineId)
     }
 }
 
@@ -206,9 +202,8 @@ private extension AddHappyRoutineViewController {
         }
     }
     
-    func postHappinessRoutineAPI(routineId: Int) {
-        print(routineId)
-        HappyRoutineService.shared.postHappinessMemberAPI(routineId: routineId) { networkResult in
+    func postHappinessRoutineAPI(subRoutineId: Int) {
+        HappyRoutineService.shared.postHappinessMemberAPI(subRoutineId: subRoutineId) { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<HappinessRoutineIdEntity> {

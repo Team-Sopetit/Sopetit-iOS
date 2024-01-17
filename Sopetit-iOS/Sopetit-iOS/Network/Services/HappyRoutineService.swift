@@ -110,10 +110,10 @@ extension HappyRoutineService {
         }
     }
     
-    func postHappinessMemberAPI(routineId: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+    func postHappinessMemberAPI(subRoutineId: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
         let url = URLConstant.happinessMemberURL
         let header: HTTPHeaders = NetworkConstant.hasTokenHeader
-        let body: Parameters = [ "routineId": routineId ]
+        let body: Parameters = [ "subRoutineId": subRoutineId ]
         let dataRequest = AF.request(url,
                                      method: .post,
                                      parameters: body,
@@ -123,6 +123,7 @@ extension HappyRoutineService {
             switch response.result {
             case .success:
                 guard let statusCode = response.response?.statusCode else { return }
+                print(statusCode)
                 guard let data = response.data else { return }
                 let networkResult = self.judgeStatus(by: statusCode,
                                                      data,

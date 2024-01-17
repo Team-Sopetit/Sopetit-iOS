@@ -48,17 +48,16 @@ final class HappyRoutineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getHappinessMemberAPI()
         setUI()
         setTapGesture()
         setDelegate()
         setAddTarget()
-        //        setNavigationBar()
         setAlertView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getHappinessMemberAPI()
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = false
         setNavigationBar()
@@ -164,9 +163,7 @@ extension HappyRoutineViewController: BottomSheetButtonDelegate {
         self.dismiss(animated: false)
     }
     
-    func addButtonTapped() {
-        
-    }
+    func addButtonTapped() { }
 }
 
 // MARK: - Network
