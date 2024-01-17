@@ -210,7 +210,6 @@ extension SettingViewController {
                 }
             case .requestErr, .serverErr:
                 print("Error 발생")
-                print("⭐️")
             default:
                 break
             }

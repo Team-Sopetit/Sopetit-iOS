@@ -37,6 +37,11 @@ extension UserManager {
         self.refreshToken = nil
     }
     
+    func resign() {
+        self.accessToken = nil
+        self.refreshToken = nil
+    }
+    
     func clearAll() {
         self.accessToken = nil
         self.refreshToken = nil
