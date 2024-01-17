@@ -110,9 +110,7 @@ extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
     
     func addButtonTapped() {
         let index = addDailyRoutineView.pageControl.currentPage
-        print(index, "🚨🚨🚨🚨🚨🚨🚨🚨")
         routineId = dailyRoutinesEntity.routines[index + 2].routineId
-        print(routineId, "😱😱😱😱😱😱")
         postDailyMember(routineId: routineId)
         self.dismiss(animated: false)
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -173,11 +171,9 @@ extension AddDailyRoutineViewController: UICollectionViewDelegateFlowLayout {
         if collectionView == addDailyRoutineView.dailyRoutineThemeView.collectionView {
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             selectedIndex = indexPath.item
-            themeId = selectedIndex + 1
+            themeId = dailyThemesEntity.themes[selectedIndex].themeId
             getDailyRoutinesAPI()
-        } else if collectionView == addDailyRoutineView.collectionView {
-            print(indexPath.row)
-        }
+        } else if collectionView == addDailyRoutineView.collectionView { }
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>
@@ -239,7 +235,6 @@ extension AddDailyRoutineViewController {
     }
     
     func getDailyRoutinesAPI() {
-        print("getDailyRoutinesAPI🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎🍎\(themeId)")
         RoutinesDailyService.shared.getDailyRoutinesAPI(themes: self.themeId) { networkResult in
             switch networkResult {
             case .success(let data):
@@ -264,7 +259,9 @@ extension AddDailyRoutineViewController {
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyRoutineIdEntity> {
-                    print(data, "성공 🍀🍀🍀🍀🍀🍀🍀")
+                    if let result = data.data {
+                        print(result)
+                    }
                 }
             case .requestErr, .serverErr:
                 break
