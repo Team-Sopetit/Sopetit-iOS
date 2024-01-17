@@ -8,5 +8,5 @@
 import Foundation
 
 struct HappinessRoutineIdEntity: Codable {
-    let routineId: String
+    let routineId: Int
 }

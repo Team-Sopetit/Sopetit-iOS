@@ -363,37 +363,6 @@
 		092AE2B92B540B3400E9A20D /* CompleteHappyRoutineScene */ = {
 			isa = PBXGroup;
 			children = (
-				045DFE7D2B50F14C005D69EA /* SettingTableViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		045DFE822B53034D005D69EA /* LogoutScene */ = {
-			isa = PBXGroup;
-			children = (
-				045DFE842B53035D005D69EA /* ViewController */,
-				045DFE832B530359005D69EA /* View */,
-			);
-			path = LogoutScene;
-			sourceTree = "<group>";
-		};
-		045DFE832B530359005D69EA /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		045DFE842B53035D005D69EA /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		092AE2B92B540B3400E9A20D /* CompleteHappyRoutineScene */ = {
-			isa = PBXGroup;
-			children = (
 				092AE2BD2B540B6000E9A20D /* ViewController */,
 				092AE2BC2B540B5C00E9A20D /* View */,
 			);
@@ -1515,7 +1484,6 @@
 				A49BFDF02B4DA48200035EB6 /* ThemeSelectView.swift in Sources */,
 				092AE2BF2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift in Sources */,
 				A49BFE622B558B2E00035EB6 /* MemberEntity.swift in Sources */,
-				09B253782B4E4BC6005E7032 /* HappyRoutine.swift in Sources */,
 				A49BFDD52B4D5F0800035EB6 /* StroyTellingViewController.swift in Sources */,
 				A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */,
 			);

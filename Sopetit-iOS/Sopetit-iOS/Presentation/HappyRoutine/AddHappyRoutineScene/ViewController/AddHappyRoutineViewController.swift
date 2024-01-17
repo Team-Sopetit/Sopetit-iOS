@@ -46,7 +46,6 @@ final class AddHappyRoutineViewController: UIViewController {
         setUI()
         setDelegate()
         setRegister()
-        getHappinessRoutineAPI(routineId: self.routineId)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +93,21 @@ private extension AddHappyRoutineViewController {
         let color = UIColor(hex: happinessRoutineEntity.nameColor)
         addHappyRoutineView.setDataBind(title: title, imageUrl: image, subTitle: subTitle, color: color)
     }
+    
+    func dismissVC() {
+        self.dismiss(animated: false)
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        let nav = TabBarController()
+        nav.selectedIndex = 2
+        if let navController = nav.viewControllers?[2] as? UINavigationController,
+           let happyRoutineViewController = navController.viewControllers.last as? HappyRoutineViewController {
+            happyRoutineViewController.isFromAddHappyBottom = true
+        }
+        keyWindow.rootViewController = UINavigationController(rootViewController: nav)
+    }
 }
 
 extension AddHappyRoutineViewController: BottomSheetButtonDelegate {
@@ -110,18 +124,7 @@ extension AddHappyRoutineViewController: BottomSheetButtonDelegate {
         let index = addHappyRoutineView.pageControl.currentPage
         routineId = happinessRoutineEntity.subRoutines[index].subRoutineId
         postHappinessRoutineAPI(routineId: routineId)
-        self.dismiss(animated: false)
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let keyWindow = windowScene.windows.first else {
-            return
-        }
-        let nav = TabBarController()
-        nav.selectedIndex = 2
-        if let navController = nav.viewControllers?[2] as? UINavigationController,
-           let happyRoutineViewController = navController.viewControllers.last as? HappyRoutineViewController {
-            happyRoutineViewController.isFromAddHappyBottom = true
-        }
-        keyWindow.rootViewController = UINavigationController(rootViewController: nav)
+        
     }
 }
 
@@ -187,7 +190,6 @@ private extension AddHappyRoutineViewController {
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<HappinessRoutineEntity> {
-                    print(data)
                     if let listData = data.data {
                         self.happinessRoutineEntity = listData
                     }
@@ -205,13 +207,14 @@ private extension AddHappyRoutineViewController {
     }
     
     func postHappinessRoutineAPI(routineId: Int) {
+        print(routineId)
         HappyRoutineService.shared.postHappinessMemberAPI(routineId: routineId) { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<HappinessRoutineIdEntity> {
-                    print(data)
                     if let result = data.data {
                         print(result)
+                        self.dismissVC()
                     }
                 }
             case .requestErr, .serverErr:

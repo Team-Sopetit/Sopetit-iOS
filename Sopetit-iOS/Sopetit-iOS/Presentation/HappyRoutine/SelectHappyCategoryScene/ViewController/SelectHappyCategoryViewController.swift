@@ -147,9 +147,7 @@ private extension SelectHappyCategoryViewController {
         HappyRoutineService.shared.getHappinessThemesAPI { networkResult in
             switch networkResult {
             case .success(let data):
-                print(data)
                 if let data = data as? GenericResponse<HappinessThemesEntity> {
-                    
                     if let listData = data.data {
                         self.happinessThemesEntity = listData
                     }
@@ -169,7 +167,6 @@ private extension SelectHappyCategoryViewController {
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<HappinessEntity> {
-                    print(data)
                     if let listData = data.data {
                         self.happinessEntity = listData
                     }

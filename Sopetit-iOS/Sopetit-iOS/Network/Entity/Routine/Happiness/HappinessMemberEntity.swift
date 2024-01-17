@@ -8,7 +8,7 @@
 import Foundation
 
 struct HappinessMemberEntity: Codable {
-    let routineId: String
+    let routineId: Int
     let iconImageUrl: String
     let contentImageUrl: String
     let themeName: String
