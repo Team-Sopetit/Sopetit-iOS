@@ -64,37 +64,6 @@ extension DailyRoutineService {
     }
 }
 
-//extension DailyRoutineService {
-//    func postRoutineAPI(
-//        routineId: Int,
-//        completion: @escaping (NetworkResult<Any>) -> Void) {
-//            let url = URLConstant.postRoutineURL
-//            let header: HTTPHeaders = NetworkConstant.hasTokenHeader
-//            let body: Parameters = [
-//                "routineId": routineId
-//            ]
-//            let dataRequest = AF.request(url,
-//                                         method: .post,
-//                                         parameters: body,
-//                                         encoding: JSONEncoding.default,
-//                                         headers: header)
-//            
-//            dataRequest.responseData { response in
-//                switch response.result {
-//                case .success:
-//                    guard let statusCode = response.response?.statusCode else { return }
-//                    guard let data = response.data else { return }
-//                    let networkResult = self.judgeStatus(by: statusCode,
-//                                                         data,
-//                                                         DailyRoutineEntity.self)
-//                    completion(networkResult)
-//                case .failure:
-//                    completion(.networkFail)
-//                }
-//            }
-//        }
-//}
-
 extension DailyRoutineService {
     func patchRoutineAPI(
         routineId: Int,
@@ -117,7 +86,7 @@ extension DailyRoutineService {
                     guard let data = response.data else { return }
                     let networkResult = self.judgeStatus(by: statusCode,
                                                          data,
-                                                         DailyRoutineEntity.self)
+                                                         DailyPatchEntity.self)
                     completion(networkResult)
                 case .failure:
                     completion(.networkFail)

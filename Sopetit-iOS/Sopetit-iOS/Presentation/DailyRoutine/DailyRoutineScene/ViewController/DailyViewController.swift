@@ -19,7 +19,7 @@ final class DailyViewController: UIViewController {
     var status: Int = 0
     var isFromAddDailyBottom: Bool = false
     private var shouldShowFooterView: Bool = true
-    var routineList: DailyRoutineEntity = .init(routines: [.init(routineID: 0, content: "", iconImageURL: "", achieveCount: 0, isAchieve: true)])
+    var routineList: DailyRoutineEntity = .init(routines: [])
     
     override var isEditing: Bool {
         didSet {
@@ -227,6 +227,10 @@ extension DailyViewController: BottomSheetButtonDelegate {
     func completeButtonTapped() {
         let cell = collectionview.cellForItem(at: [0, status]) as? DailyRoutineCollectionViewCell
         cell?.achieveButton.isEnabled = false
+        
+//        let tag = Int(cell.tag)
+//        patchRoutineAPI(routineId: tag)
+        
         self.dismiss(animated: false)
         let vc = CompleteDailyRoutineViewController()
         vc.modalPresentationStyle = .fullScreen
@@ -357,23 +361,22 @@ extension DailyViewController {
     }
 }
 
-//extension DailyViewController {
-//    func patchRoutineAPI(routineId: Int) {
-//        DailyRoutineService.shared.patchRoutineAPI(routineId: routineId) { _ in
-//            for cell in self.collectionview.visibleCells {
-//                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
-//                    if dailyCell.checkBox.isSelected {
-//                        self.routineList.routines = self.routineList.routines.filter { $0.routineID != dailyCell.tag }
-//                    }
-//                    if dailyCell.tag == routineId {
-//                        dailyCell.
-//                    }
-//                }
-//                self.collectionview.reloadData()
-//            }
-//        }
-//    }
-//}
+extension DailyViewController {
+    func patchRoutineAPI(routineId: Int) {
+        DailyRoutineService.shared.patchRoutineAPI(routineId: routineId) { _ in
+            for cell in self.collectionview.visibleCells {
+                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                    if dailyCell.tag == routineId {
+                        if let index = self.routineList.routines.firstIndex(where: { $0.routineID == routineId }) {
+                            self.routineList.routines[index].isAchieve = true
+                        }
+                    }
+                }
+            }
+            self.collectionview.reloadData()
+        }
+    }
+}
 
 // MARK: - Extension
 

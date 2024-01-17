@@ -14,7 +14,7 @@ struct DailyRoutines: Codable {
     let content: String
     let iconImageURL: String
     let achieveCount: Int
-    let isAchieve: Bool
+    var isAchieve: Bool
 
     enum CodingKeys: String, CodingKey {
         case routineID = "routineId"
