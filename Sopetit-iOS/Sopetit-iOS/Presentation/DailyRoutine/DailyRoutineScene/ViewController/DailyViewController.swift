@@ -228,8 +228,9 @@ extension DailyViewController: BottomSheetButtonDelegate {
         let cell = collectionview.cellForItem(at: [0, status]) as? DailyRoutineCollectionViewCell
         cell?.achieveButton.isEnabled = false
         
-//        let tag = Int(cell.tag)
-//        patchRoutineAPI(routineId: tag)
+        if let routineCell = cell {
+            patchRoutineAPI(routineId: routineCell.tag)
+        }
         
         self.dismiss(animated: false)
         let vc = CompleteDailyRoutineViewController()
@@ -349,9 +350,7 @@ extension DailyViewController {
         DailyRoutineService.shared.deleteRoutineListAPI(routineId: routineId) { networkResult in
             switch networkResult {
             case .success(let data):
-                if let data = data as? GenericResponse<DailyRoutineEntity> {
-                    self.collectionview.reloadData()
-                }
+                self.collectionview.reloadData()
             case .requestErr, .serverErr:
                 break
             default:
