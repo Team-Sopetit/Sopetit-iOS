@@ -225,11 +225,14 @@ extension DailyViewController: UICollectionViewDataSource {
 extension DailyViewController: BottomSheetButtonDelegate {
     
     func completeButtonTapped() {
-        let cell = collectionview.cellForItem(at: [0, status]) as? DailyRoutineCollectionViewCell
-        cell?.achieveButton.isEnabled = false
         
-        if let routineCell = cell {
-            patchRoutineAPI(routineId: routineCell.tag)
+        for cell in self.collectionview.visibleCells {
+            if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                if dailyCell.achieveButton.isEnabled {
+                    patchRoutineAPI(routineId: dailyCell.tag)
+                }
+            }
+            self.collectionview.reloadData()
         }
         
         self.dismiss(animated: false)
@@ -278,7 +281,7 @@ extension DailyViewController: BottomSheetButtonDelegate {
 
 extension DailyViewController: PresentDelegate {
     func buttonTapped(in cell: UICollectionViewCell) {
-        self.status = cell.tag
+//        self.status = cell.tag
         self.present(dailyCompleteBottom, animated: false)
     }
 }
