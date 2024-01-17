@@ -16,7 +16,6 @@ final class DailyViewController: UIViewController {
     
     // MARK: - Properties
     
-    var status: Int = 0
     var isFromAddDailyBottom: Bool = false
     private var shouldShowFooterView: Bool = true
     var routineList: DailyRoutineEntity = .init(routines: [])
@@ -281,7 +280,6 @@ extension DailyViewController: BottomSheetButtonDelegate {
 
 extension DailyViewController: PresentDelegate {
     func buttonTapped(in cell: UICollectionViewCell) {
-//        self.status = cell.tag
         self.present(dailyCompleteBottom, animated: false)
     }
 }
