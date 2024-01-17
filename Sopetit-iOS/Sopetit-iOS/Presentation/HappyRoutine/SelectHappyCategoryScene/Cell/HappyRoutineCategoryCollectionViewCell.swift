@@ -94,7 +94,7 @@ private extension HappyRoutineCategoryCollectionViewCell {
         contentLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(8)
             $0.leading.equalTo(imageView.snp.trailing).offset(13)
-            $0.trailing.equalTo(nextImageView.snp.leading).offset(13)
+            $0.trailing.equalTo(nextImageView.snp.leading).offset(-13)
         }
         
         nextImageView.snp.makeConstraints {
@@ -107,10 +107,10 @@ private extension HappyRoutineCategoryCollectionViewCell {
 
 extension HappyRoutineCategoryCollectionViewCell {
     
-    func setDataBind(model: HappyRoutineCategory) {
-        imageView.image = model.image
-        titleLabel.text = model.title
-        titleLabel.textColor = UIColor(hex: model.color)
-        contentLabel.text = model.content
+    func setDataBind(model: Happiness) {
+        imageView.kfSetImage(url: model.iconImageUrl)
+        titleLabel.text = model.name
+        titleLabel.textColor = UIColor(hex: model.nameColor)
+        contentLabel.text = model.title
     }
 }

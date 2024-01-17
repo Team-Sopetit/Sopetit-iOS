@@ -36,19 +36,19 @@
 		095903AB2B5458F100D0AF39 /* daily_complete_som.json in Resources */ = {isa = PBXBuildFile; fileRef = 095903A92B5458F100D0AF39 /* daily_complete_som.json */; };
 		095903B02B54739000D0AF39 /* CompleteDailyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095903AF2B54739000D0AF39 /* CompleteDailyRoutineViewController.swift */; };
 		095903B22B54739D00D0AF39 /* CompleteDailyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095903B12B54739D00D0AF39 /* CompleteDailyRoutineView.swift */; };
+		095903B62B5487E600D0AF39 /* HappinessThemesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095903B52B5487E600D0AF39 /* HappinessThemesEntity.swift */; };
 		097224832B4F782D00CB7893 /* HappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224822B4F782D00CB7893 /* HappyRoutineView.swift */; };
 		097224852B4F7CE500CB7893 /* HappyRoutineCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224842B4F7CE500CB7893 /* HappyRoutineCardView.swift */; };
-		097224882B4F7E4900CB7893 /* HappyRoutineCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097224872B4F7E4900CB7893 /* HappyRoutineCard.swift */; };
 		0972248B2B4F83B800CB7893 /* BottomCTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972248A2B4F83B800CB7893 /* BottomCTAButton.swift */; };
+		098DFCA12B5662F00099063D /* HappinessRoutineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DFCA02B5662F00099063D /* HappinessRoutineEntity.swift */; };
+		098DFCA32B567E500099063D /* HappinessMemberEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DFCA22B567E500099063D /* HappinessMemberEntity.swift */; };
+		098DFCA52B568A010099063D /* HappinessRoutineIdEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098DFCA42B568A010099063D /* HappinessRoutineIdEntity.swift */; };
 		09B2535C2B4D538E005E7032 /* SelectHappyCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2535B2B4D538E005E7032 /* SelectHappyCategoryViewController.swift */; };
 		09B253612B4D53E7005E7032 /* SelectHappyCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253602B4D53E7005E7032 /* SelectHappyCategoryView.swift */; };
 		09B253632B4D561C005E7032 /* HappyRoutineTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253622B4D561C005E7032 /* HappyRoutineTagView.swift */; };
 		09B253662B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253652B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift */; };
-		09B2536B2B4E2FDC005E7032 /* HappyRoutineCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2536A2B4E2FDC005E7032 /* HappyRoutineCategory.swift */; };
-		09B2536D2B4E3529005E7032 /* HappyRoutineTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2536C2B4E3529005E7032 /* HappyRoutineTag.swift */; };
 		09B2536F2B4E3640005E7032 /* HappyRoutineCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2536E2B4E3640005E7032 /* HappyRoutineCategoryCollectionViewCell.swift */; };
 		09B253742B4E4B05005E7032 /* AddHappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253732B4E4B05005E7032 /* AddHappyRoutineViewController.swift */; };
-		09B253782B4E4BC6005E7032 /* HappyRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253772B4E4BC6005E7032 /* HappyRoutine.swift */; };
 		09B2537A2B4E4E14005E7032 /* AddHappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B253792B4E4E14005E7032 /* AddHappyRoutineView.swift */; };
 		09B2537D2B4E5279005E7032 /* HappyRoutineCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B2537C2B4E5279005E7032 /* HappyRoutineCardCollectionViewCell.swift */; };
 		09C1A6502B5291CC00C1A57D /* AddDailyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C1A64F2B5291CC00C1A57D /* AddDailyRoutineViewController.swift */; };
@@ -181,19 +181,19 @@
 		095903A92B5458F100D0AF39 /* daily_complete_som.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = daily_complete_som.json; sourceTree = "<group>"; };
 		095903AF2B54739000D0AF39 /* CompleteDailyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDailyRoutineViewController.swift; sourceTree = "<group>"; };
 		095903B12B54739D00D0AF39 /* CompleteDailyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDailyRoutineView.swift; sourceTree = "<group>"; };
+		095903B52B5487E600D0AF39 /* HappinessThemesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessThemesEntity.swift; sourceTree = "<group>"; };
 		097224822B4F782D00CB7893 /* HappyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineView.swift; sourceTree = "<group>"; };
 		097224842B4F7CE500CB7893 /* HappyRoutineCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCardView.swift; sourceTree = "<group>"; };
-		097224872B4F7E4900CB7893 /* HappyRoutineCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCard.swift; sourceTree = "<group>"; };
 		0972248A2B4F83B800CB7893 /* BottomCTAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCTAButton.swift; sourceTree = "<group>"; };
+		098DFCA02B5662F00099063D /* HappinessRoutineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessRoutineEntity.swift; sourceTree = "<group>"; };
+		098DFCA22B567E500099063D /* HappinessMemberEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessMemberEntity.swift; sourceTree = "<group>"; };
+		098DFCA42B568A010099063D /* HappinessRoutineIdEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessRoutineIdEntity.swift; sourceTree = "<group>"; };
 		09B2535B2B4D538E005E7032 /* SelectHappyCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHappyCategoryViewController.swift; sourceTree = "<group>"; };
 		09B253602B4D53E7005E7032 /* SelectHappyCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHappyCategoryView.swift; sourceTree = "<group>"; };
 		09B253622B4D561C005E7032 /* HappyRoutineTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineTagView.swift; sourceTree = "<group>"; };
 		09B253652B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineTagCollectionViewCell.swift; sourceTree = "<group>"; };
-		09B2536A2B4E2FDC005E7032 /* HappyRoutineCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCategory.swift; sourceTree = "<group>"; };
-		09B2536C2B4E3529005E7032 /* HappyRoutineTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineTag.swift; sourceTree = "<group>"; };
 		09B2536E2B4E3640005E7032 /* HappyRoutineCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		09B253732B4E4B05005E7032 /* AddHappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHappyRoutineViewController.swift; sourceTree = "<group>"; };
-		09B253772B4E4BC6005E7032 /* HappyRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutine.swift; sourceTree = "<group>"; };
 		09B253792B4E4E14005E7032 /* AddHappyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHappyRoutineView.swift; sourceTree = "<group>"; };
 		09B2537C2B4E5279005E7032 /* HappyRoutineCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyRoutineCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		09C1A64F2B5291CC00C1A57D /* AddDailyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDailyRoutineViewController.swift; sourceTree = "<group>"; };
@@ -418,14 +418,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		097224862B4F7E3D00CB7893 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				097224872B4F7E4900CB7893 /* HappyRoutineCard.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		097224892B4F837C00CB7893 /* BottomCTAButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,7 +429,6 @@
 		09B2535D2B4D539A005E7032 /* SelectHappyCategoryScene */ = {
 			isa = PBXGroup;
 			children = (
-				09B253692B4E2F7B005E7032 /* Model */,
 				09B253642B4D5B09005E7032 /* Cell */,
 				09B2535F2B4D53C5005E7032 /* View */,
 				09B2535E2B4D53BA005E7032 /* ViewController */,
@@ -471,20 +462,10 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		09B253692B4E2F7B005E7032 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				09B2536A2B4E2FDC005E7032 /* HappyRoutineCategory.swift */,
-				09B2536C2B4E3529005E7032 /* HappyRoutineTag.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		09B253712B4E4AE7005E7032 /* AddHappyRoutineScene */ = {
 			isa = PBXGroup;
 			children = (
 				09B2537B2B4E5263005E7032 /* Cell */,
-				09B253762B4E4BBC005E7032 /* Model */,
 				09B253752B4E4B76005E7032 /* View */,
 				09B253722B4E4AF4005E7032 /* ViewController */,
 			);
@@ -505,14 +486,6 @@
 				09B253792B4E4E14005E7032 /* AddHappyRoutineView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		09B253762B4E4BBC005E7032 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				09B253772B4E4BC6005E7032 /* HappyRoutine.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		09B2537B2B4E5263005E7032 /* Cell */ = {
@@ -855,6 +828,10 @@
 			isa = PBXGroup;
 			children = (
 				A42C32FB2B3EAE0000C4B477 /* HappinessEntity.swift */,
+				095903B52B5487E600D0AF39 /* HappinessThemesEntity.swift */,
+				098DFCA02B5662F00099063D /* HappinessRoutineEntity.swift */,
+				098DFCA22B567E500099063D /* HappinessMemberEntity.swift */,
+				098DFCA42B568A010099063D /* HappinessRoutineIdEntity.swift */,
 			);
 			path = Happiness;
 			sourceTree = "<group>";
@@ -910,7 +887,6 @@
 		A42C330B2B3EAED700C4B477 /* HappyRoutineScene */ = {
 			isa = PBXGroup;
 			children = (
-				097224862B4F7E3D00CB7893 /* Model */,
 				A42C33252B3EAF9000C4B477 /* View */,
 				A42C33242B3EAF8A00C4B477 /* ViewController */,
 			);
@@ -1397,7 +1373,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00CCDCD22B53CB40007DD0E6 /* SplashViewController.swift in Sources */,
-				09B2536B2B4E2FDC005E7032 /* HappyRoutineCategory.swift in Sources */,
 				09B253632B4D561C005E7032 /* HappyRoutineTagView.swift in Sources */,
 				09B253742B4E4B05005E7032 /* AddHappyRoutineViewController.swift in Sources */,
 				A42C333A2B3EB02A00C4B477 /* TabBarController.swift in Sources */,
@@ -1443,6 +1418,7 @@
 				A42C32A72B3EA9BF00C4B477 /* UserDefaultWrapper.swift in Sources */,
 				A42C32CB2B3EAB4B00C4B477 /* NSObject+.swift in Sources */,
 				A42C32CF2B3EAB7700C4B477 /* UIColor+.swift in Sources */,
+				098DFCA32B567E500099063D /* HappinessMemberEntity.swift in Sources */,
 				A49BFDDA2B4D5F4600035EB6 /* StoryTellingSecondView.swift in Sources */,
 				097224832B4F782D00CB7893 /* HappyRoutineView.swift in Sources */,
 				A42C32F62B3EADE300C4B477 /* HomeEntity.swift in Sources */,
@@ -1458,8 +1434,10 @@
 				A4832BAD2B4AF081007879FF /* BottomSheetType.swift in Sources */,
 				A42C32C32B3EAB2400C4B477 /* UITextField+.swift in Sources */,
 				A42C32BF2B3EAB0E00C4B477 /* UIImage+.swift in Sources */,
+				098DFCA52B568A010099063D /* HappinessRoutineIdEntity.swift in Sources */,
 				A42C33002B3EAE3E00C4B477 /* HomeService.swift in Sources */,
 				A42C32E52B3EAC8B00C4B477 /* GenericResponse.swift in Sources */,
+				098DFCA12B5662F00099063D /* HappinessRoutineEntity.swift in Sources */,
 				04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */,
 				A49BFE4F2B53CE7700035EB6 /* DollImageEntity.swift in Sources */,
 				A49BFE412B5065DE00035EB6 /* AlertMessageView.swift in Sources */,
@@ -1488,10 +1466,9 @@
 				045DFE862B539BC3005D69EA /* WithdrawView.swift in Sources */,
 				A49BFE492B50FC7A00035EB6 /* DailyRoutineService.swift in Sources */,
 				A42C32C12B3EAB1A00C4B477 /* UIView+.swift in Sources */,
-				09B2536D2B4E3529005E7032 /* HappyRoutineTag.swift in Sources */,
 				A42C32E72B3EAC9500C4B477 /* NetworkConstant.swift in Sources */,
-				097224882B4F7E4900CB7893 /* HappyRoutineCard.swift in Sources */,
 				0084F19B2B4A895700F87860 /* LoginView.swift in Sources */,
+				095903B62B5487E600D0AF39 /* HappinessThemesEntity.swift in Sources */,
 				095903B02B54739000D0AF39 /* CompleteDailyRoutineViewController.swift in Sources */,
 				09C1A6522B5291DE00C1A57D /* AddDailyRoutineView.swift in Sources */,
 				A49BFE4D2B51275C00035EB6 /* UIImageView+.swift in Sources */,
@@ -1507,7 +1484,6 @@
 				A49BFDF02B4DA48200035EB6 /* ThemeSelectView.swift in Sources */,
 				092AE2BF2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift in Sources */,
 				A49BFE622B558B2E00035EB6 /* MemberEntity.swift in Sources */,
-				09B253782B4E4BC6005E7032 /* HappyRoutine.swift in Sources */,
 				A49BFDD52B4D5F0800035EB6 /* StroyTellingViewController.swift in Sources */,
 				A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */,
 			);
