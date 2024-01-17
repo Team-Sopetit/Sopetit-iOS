@@ -13,15 +13,20 @@ final class UserManager {
     @UserDefaultWrapper<String>(key: "accessToken") private(set) var accessToken
     @UserDefaultWrapper<String>(key: "refreshToken") private(set) var refreshToken
     @UserDefaultWrapper<String>(key: "userIdentifier") private(set) var appleUserIdentifier
+    @UserDefaultWrapper<Bool>(key: "postMember") private(set) var postMember
     
     var hasAccessToken: Bool { return self.accessToken != nil }
-    
     var getAccessToken: String { return self.accessToken ?? "" }
+    var isPostMemeber: Bool { return self.postMember ?? false }
     
     private init() {}
 }
 
 extension UserManager {
+    
+    func hasPostMember() {
+        self.postMember = true
+    }
     
     func updateToken(_ accessToken: String, _ refreshToken: String) {
         self.accessToken = accessToken

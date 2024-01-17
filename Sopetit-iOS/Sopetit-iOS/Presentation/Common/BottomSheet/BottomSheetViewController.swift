@@ -256,7 +256,7 @@ extension BottomSheetViewController {
                 self.view.layoutIfNeeded()
             }, completion: { _ in
                 if self.presentingViewController != nil {
-                    self.dismiss(animated: false, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }
             })
         }

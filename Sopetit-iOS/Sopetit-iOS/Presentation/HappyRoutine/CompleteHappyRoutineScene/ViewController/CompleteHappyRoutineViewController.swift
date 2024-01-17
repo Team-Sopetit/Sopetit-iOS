@@ -25,10 +25,6 @@ final class CompleteHappyRoutineViewController: UIViewController {
         completeHappyRoutineView.cottonLottieView.play()
         setAnimation()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
 }
 
 // MARK: - Extensions

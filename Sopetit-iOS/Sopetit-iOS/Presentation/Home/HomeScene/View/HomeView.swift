@@ -236,8 +236,6 @@ extension HomeView {
     
     @objc
     func dollTapped() {
-        print("인형을 탭함.")
-        
         if !(isAnimate) {
             isAnimate = true
             lottieHello.isHidden = false
@@ -270,8 +268,7 @@ extension HomeView {
             switch result {
             case .success(let image):
                 self.backgroundImageView.image = image.image
-            case .failure(let error):
-                print(error.errorDescription)
+            case .failure:
                 return
             }
         }

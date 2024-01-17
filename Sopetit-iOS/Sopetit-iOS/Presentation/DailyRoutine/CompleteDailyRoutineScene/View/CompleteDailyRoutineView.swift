@@ -16,39 +16,39 @@ enum BearType {
     var dailyCompleteBear: UIImage {
         switch self {
         case .brown:
-            ImageLiterals.DailyRoutineComplete.imgBearDailyCompleteBrown
+            return ImageLiterals.DailyRoutineComplete.imgBearDailyCompleteBrown
         case .red:
-            ImageLiterals.DailyRoutineComplete.imgBearDailyCompleteRed
+            return ImageLiterals.DailyRoutineComplete.imgBearDailyCompleteRed
         case .panda:
-            ImageLiterals.DailyRoutineComplete.imgBearDailyCompletePanda
+            return ImageLiterals.DailyRoutineComplete.imgBearDailyCompletePanda
         case .gray:
-            ImageLiterals.DailyRoutineComplete.imgBearDailyCompleteGray
+            return ImageLiterals.DailyRoutineComplete.imgBearDailyCompleteGray
         }
     }
     
     var happyCompleteBear: UIImage {
         switch self {
         case .brown:
-            ImageLiterals.HappyRoutineComplete.imgHappyBearBrown
+            return ImageLiterals.HappyRoutineComplete.imgHappyBearBrown
         case .red:
-            ImageLiterals.HappyRoutineComplete.imgHappyBearRed
+            return ImageLiterals.HappyRoutineComplete.imgHappyBearRed
         case .panda:
-            ImageLiterals.HappyRoutineComplete.imgHappyBearPanda
+            return ImageLiterals.HappyRoutineComplete.imgHappyBearPanda
         case .gray:
-            ImageLiterals.HappyRoutineComplete.imgHappyBearGray
+            return ImageLiterals.HappyRoutineComplete.imgHappyBearGray
         }
     }
     
     var homeBear: String {
         switch self {
         case .brown:
-            "brown"
+            return "brown"
         case .red:
-            "red"
+            return "red"
         case .panda:
-            "panda"
+            return "panda"
         case .gray:
-            "gray"
+            return "gray"
         }
     }
 }
