@@ -69,6 +69,8 @@ extension HomeViewController {
                         self.collectionView.reloadData()
                         self.setDataBind(model: self.homeEntity)
                         self.homeView.setDoll(dollType: self.homeEntity.dollType)
+                        self.homeView.refreshBubbleLabel()
+                        self.homeView.bubbleLabel.bringSubviewToFront(self.homeView)
                         self.collectionView.reloadData()
                     }
                 case .requestErr, .serverErr:
