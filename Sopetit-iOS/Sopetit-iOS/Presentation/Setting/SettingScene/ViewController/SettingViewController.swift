@@ -108,7 +108,7 @@ extension SettingViewController: UITableViewDelegate {
     }
 
     private func presentLogoutBottom() {
-        present(logoutBottom, animated: true, completion: nil)
+        present(logoutBottom, animated: false, completion: nil)
     }
     
     private func pushDropoutView() {
@@ -194,15 +194,39 @@ extension SettingViewController {
         customNaviBar.isTitleLabelIncluded = "설정"
         customNaviBar.backgroundColor = .clear
     }
+    
+    func postLogoutAPI() {
+        AuthService.shared.postLogoutAPI() { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<LogoutEntity> {
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                          let keyWindow = windowScene.windows.first else {
+                        return
+                    }
+                    UserManager.shared.logout()
+                    let nav = SplashViewController()
+                    keyWindow.rootViewController = UINavigationController(rootViewController: nav)
+                }
+            case .requestErr, .serverErr:
+                print("Error 발생")
+                print("⭐️")
+            default:
+                break
+            }
+        }
+    }
 }
 
 extension SettingViewController: BottomSheetButtonDelegate {
+    
     func addButtonTapped() {
         self.dismiss(animated: false)
     }
     
     func deleteButtonTapped() {
         self.dismiss(animated: false)
+        postLogoutAPI()
     }
     
     func bakcButtonTapped() {

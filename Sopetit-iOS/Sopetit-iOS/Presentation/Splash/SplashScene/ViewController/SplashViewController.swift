@@ -25,7 +25,6 @@ final class SplashViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
             self.showNextPage()
         }
