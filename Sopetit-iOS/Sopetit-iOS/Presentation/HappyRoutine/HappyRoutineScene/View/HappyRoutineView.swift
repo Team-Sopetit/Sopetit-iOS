@@ -43,7 +43,7 @@ final class HappyRoutineView: UIView {
         return label
     }()
     
-    private let happyRoutineCardView = HappyRoutineCardView()
+    let happyRoutineCardView = HappyRoutineCardView()
     let doneButton = BottomCTAButton(title: I18N.HappyRoutine.done)
     var addAlertView = AlertMessageView(title: I18N.HappyRoutine.addHappyBottomTitle)
     
@@ -143,8 +143,8 @@ private extension HappyRoutineView {
 
 extension HappyRoutineView {
     
-    func setDataBind(model: HappyRoutineCard) {
-        subTitleLabel.text = model.title
+    func setDataBind(model: HappinessMemberEntity) {
+        subTitleLabel.text = model.themeName
         subTitleLabel.textAlignment = .center
         happyRoutineCardView.setDataBind(model: model)
     }

@@ -27,6 +27,7 @@ final class WithdrawViewController: UIViewController {
         setHierarchy()
         setLayout()
         setBarConfiguration()
+        setAddTarget()
     }
 }
 
@@ -52,6 +53,36 @@ extension WithdrawViewController {
         withdrawView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalTo(customNaviBar.snp.bottom)
+        }
+    }
+    
+    func setAddTarget() {
+        withdrawView.rightButton.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    func rightButtonTapped() {
+        deleteResignAPI()
+    }
+    
+    func deleteResignAPI() {
+        AuthService.shared.deleteResignAPI() { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<ResignEntity> {
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                          let keyWindow = windowScene.windows.first else {
+                        return
+                    }
+                    UserManager.shared.resign()
+                    let nav = SplashViewController()
+                    keyWindow.rootViewController = UINavigationController(rootViewController: nav)
+                }
+            case .requestErr, .serverErr:
+                print("Error 발생")
+            default:
+                break
+            }
         }
     }
     

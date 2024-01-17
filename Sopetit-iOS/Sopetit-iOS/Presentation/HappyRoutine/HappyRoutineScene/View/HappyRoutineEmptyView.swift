@@ -30,7 +30,7 @@ final class HappyRoutineEmptyView: UIView {
         return navigationBar
     }()
     
-    private let bearDescriptionView = BearDescriptionView()
+    let bearDescriptionView = BearDescriptionView()
     lazy var emptyHappyRoutineView: UIView = {
         let view = UIView()
         view.backgroundColor = .SoftieWhite
