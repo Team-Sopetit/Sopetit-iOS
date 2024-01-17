@@ -43,6 +43,8 @@ final class HappyRoutineViewController: UIViewController {
     
     override func loadView() {
         self.view = happyRoutineEmptyView
+        self.happyRoutineEmptyView.emptyHappyRoutineView.fadeIn()
+        self.happyRoutineEmptyView.bearDescriptionView.fadeIn()
     }
     
     override func viewDidLoad() {
@@ -58,6 +60,7 @@ final class HappyRoutineViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getHappinessMemberAPI()
+        self.happyRoutineView.happyRoutineCardView.fadeIn()
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = false
         setNavigationBar()
@@ -181,6 +184,7 @@ private extension HappyRoutineViewController {
                     if self.happinessMemberEntity != nil {
                         self.view = self.happyRoutineView
                         self.view.layoutSubviews()
+                        self.happyRoutineView.happyRoutineCardView.fadeIn()
                         self.setUserCardData()
                     }
                 }

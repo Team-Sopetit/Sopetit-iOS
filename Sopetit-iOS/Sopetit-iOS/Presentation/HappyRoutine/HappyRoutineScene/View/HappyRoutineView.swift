@@ -43,7 +43,7 @@ final class HappyRoutineView: UIView {
         return label
     }()
     
-    private let happyRoutineCardView = HappyRoutineCardView()
+    let happyRoutineCardView = HappyRoutineCardView()
     let doneButton = BottomCTAButton(title: I18N.HappyRoutine.done)
     var addAlertView = AlertMessageView(title: I18N.HappyRoutine.addHappyBottomTitle)
     
