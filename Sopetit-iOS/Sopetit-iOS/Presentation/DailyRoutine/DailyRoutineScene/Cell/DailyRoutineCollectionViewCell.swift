@@ -162,6 +162,7 @@ extension DailyRoutineCollectionViewCell {
             self.imageView.downloadedsvg(from: iconURL)
             print(model.iconImageURL)
         }
+        self.achieveButton.isEnabled = !model.isAchieve
     }
     
     func setAddTarget() {

@@ -25,6 +25,8 @@
 		045DFE812B515FAE005D69EA /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE802B515FAE005D69EA /* WithdrawViewController.swift */; };
 		045DFE862B539BC3005D69EA /* WithdrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DFE852B539BC3005D69EA /* WithdrawView.swift */; };
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
+		0470C2532B57F03100CE43D6 /* DailyDeleteEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470C2522B57F03100CE43D6 /* DailyDeleteEntity.swift */; };
+		0470C2552B57F9B900CE43D6 /* DailyPatchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470C2542B57F9B900CE43D6 /* DailyPatchEntity.swift */; };
 		04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */; };
 		092AE2BF2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */; };
 		092AE2C12B540DC200E9A20D /* CompleteHappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AE2C02B540DC200E9A20D /* CompleteHappyRoutineView.swift */; };
@@ -169,6 +171,8 @@
 		045DFE802B515FAE005D69EA /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
 		045DFE852B539BC3005D69EA /* WithdrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawView.swift; sourceTree = "<group>"; };
 		0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		0470C2522B57F03100CE43D6 /* DailyDeleteEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDeleteEntity.swift; sourceTree = "<group>"; };
+		0470C2542B57F9B900CE43D6 /* DailyPatchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPatchEntity.swift; sourceTree = "<group>"; };
 		04D6CDF52B4EE04D009E5D96 /* DailyFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFooterView.swift; sourceTree = "<group>"; };
 		092AE2B72B53F25E00E9A20D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteHappyRoutineViewController.swift; sourceTree = "<group>"; };
@@ -840,6 +844,8 @@
 			isa = PBXGroup;
 			children = (
 				A42C32F92B3EADF900C4B477 /* DailyRoutineEntity.swift */,
+				0470C2522B57F03100CE43D6 /* DailyDeleteEntity.swift */,
+				0470C2542B57F9B900CE43D6 /* DailyPatchEntity.swift */,
 			);
 			path = Daily;
 			sourceTree = "<group>";
@@ -1400,6 +1406,7 @@
 				00CCDCC82B51B5D8007DD0E6 /* SplashFourView.swift in Sources */,
 				A49BFE2A2B4E857300035EB6 /* DollNameView.swift in Sources */,
 				A42C32B72B3EAAD800C4B477 /* ImageLiterals.swift in Sources */,
+				0470C2552B57F9B900CE43D6 /* DailyPatchEntity.swift in Sources */,
 				045DFE7B2B504E38005D69EA /* SettingViewController.swift in Sources */,
 				A42C32BD2B3EAAF200C4B477 /* SizeLiterals.swift in Sources */,
 				09B2537A2B4E4E14005E7032 /* AddHappyRoutineView.swift in Sources */,
@@ -1424,6 +1431,7 @@
 				A42C32F62B3EADE300C4B477 /* HomeEntity.swift in Sources */,
 				09B2537D2B4E5279005E7032 /* HappyRoutineCardCollectionViewCell.swift in Sources */,
 				A42C327C2B3DB8F400C4B477 /* AppDelegate.swift in Sources */,
+				0470C2532B57F03100CE43D6 /* DailyDeleteEntity.swift in Sources */,
 				A42C32D32B3EABA300C4B477 /* UITableViewRegisterable.swift in Sources */,
 				00A8E39A2B4D8B0D001461CE /* HomeView.swift in Sources */,
 				A42C32A52B3EA9A000C4B477 /* UserManager.swift in Sources */,

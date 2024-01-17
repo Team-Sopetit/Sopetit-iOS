@@ -33,6 +33,9 @@ enum URLConstant {
     // MARK: - DailyRoutine URL
     
     static let dailyURL = baseURL + "/api/v1/routines/daily/member"
+    static let deleteURL = baseURL + "/api/v1/routines/daily/member/routine/"
+    static let postRoutineURL = baseURL + "/api/v1/routines/daily/member/"
+    static let patchRoutineURL = baseURL + "/api/v1/routines/daily/member/routine/"
     
     static let happinessThemesURL = baseURL + "/api/v1/routines/happiness/themes"
     static let happinessURL = baseURL + "/api/v1/routines/happiness"
