@@ -29,7 +29,7 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(UserManager.shared.getAccessToken)
         setDelegate()
         getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
     }
@@ -58,7 +58,6 @@ extension HomeViewController {
 // MARK: - Network
 
 extension HomeViewController {
-    
     func getHomeAPI(socialAccessToken: String) {
             HomeService.shared.getHomeAPI(socialAccessToken: socialAccessToken) { networkResult in
                 switch networkResult {

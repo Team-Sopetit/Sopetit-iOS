@@ -69,6 +69,9 @@ extension LoginViewController {
                     case "APPLE":
                         if let appleData = data.data {
                             self.appleEntity = appleData
+                            self.checkAppleUser()
+                            let nav = StoryTellingViewController()
+                            self.navigationController?.pushViewController(nav, animated: true)
                         }
                     default:
                         break
@@ -131,6 +134,11 @@ extension LoginViewController: LoginDelegate {
         
         authorizationController.performRequests()
     }
+    
+    func checkAppleUser() {
+        guard let appleEntity = appleEntity else { return }
+        UserManager.shared.updateToken(appleEntity.accessToken, appleEntity.refreshToken)
+    }
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
@@ -140,8 +148,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             
             let userIdentifier = appleIDCredential.user
             let identityToken = appleIDCredential.identityToken
-            let tokenString = String(data: identityToken!, encoding: .utf8)
-            postLoginAPI(socialAccessToken: userIdentifier, socialType: "APPLE")
+            if let tokenString = String(data: identityToken!, encoding: .utf8) {
+                postLoginAPI(socialAccessToken: tokenString, socialType: "APPLE")
+            }
         }
     }
     
