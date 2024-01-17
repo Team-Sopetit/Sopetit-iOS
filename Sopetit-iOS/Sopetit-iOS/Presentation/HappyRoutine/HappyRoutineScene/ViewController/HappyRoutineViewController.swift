@@ -93,7 +93,6 @@ private extension HappyRoutineViewController {
         case .red:
             self.present(happyDeleteBottom, animated: false)
         }
-        
     }
     
     func setNavigationBar() {
@@ -168,8 +167,10 @@ private extension HappyRoutineViewController {
                     if let listData = data.data {
                         self.happinessMemberEntity = listData
                     }
+                    print("성공함용")
                     if self.happinessMemberEntity != nil {
                         self.view = self.happyRoutineView
+                        self.view.layoutSubviews()
                         self.setUserCardData()
                     }
                 }

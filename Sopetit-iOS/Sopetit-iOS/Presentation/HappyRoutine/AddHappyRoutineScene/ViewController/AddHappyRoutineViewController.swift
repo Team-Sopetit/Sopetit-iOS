@@ -107,6 +107,9 @@ extension AddHappyRoutineViewController: BottomSheetButtonDelegate {
     }
     
     func addButtonTapped() {
+        let index = addHappyRoutineView.pageControl.currentPage
+        routineId = happinessRoutineEntity.subRoutines[index].subRoutineId
+        postHappinessRoutineAPI(routineId: routineId)
         self.dismiss(animated: false)
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let keyWindow = windowScene.windows.first else {
@@ -192,6 +195,24 @@ private extension AddHappyRoutineViewController {
                     self.setCarousel()
                     self.setDataBind()
                     self.addHappyRoutineView.collectionView.reloadData()
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func postHappinessRoutineAPI(routineId: Int) {
+        HappyRoutineService.shared.postHappinessMemberAPI(routineId: routineId) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<HappinessRoutineIdEntity> {
+                    print(data)
+                    if let result = data.data {
+                        print(result)
+                    }
                 }
             case .requestErr, .serverErr:
                 break
