@@ -75,8 +75,6 @@ extension LoginViewController {
                         if let appleData = data.data {
                             self.appleEntity = appleData
                             self.checkAppleUser()
-                            let nav = StoryTellingViewController()
-                            self.navigationController?.pushViewController(nav, animated: true)
                             if appleData.isMemberDollExist {
                                 let nav = TabBarController()
                                 self.navigationController?.pushViewController(nav, animated: true)
