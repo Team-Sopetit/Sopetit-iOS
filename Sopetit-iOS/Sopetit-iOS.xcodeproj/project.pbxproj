@@ -154,6 +154,7 @@
 		A49BFE4F2B53CE7700035EB6 /* DollImageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE4E2B53CE7700035EB6 /* DollImageEntity.swift */; };
 		A49BFE5A2B54273E00035EB6 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = A49BFE592B54273E00035EB6 /* SVGKit */; };
 		A49BFE622B558B2E00035EB6 /* MemberEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49BFE612B558B2E00035EB6 /* MemberEntity.swift */; };
+		A4D2EB092B57D07A00493D8C /* HomeCottonEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D2EB082B57D07A00493D8C /* HomeCottonEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -301,6 +302,7 @@
 		A49BFE4C2B51275C00035EB6 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		A49BFE4E2B53CE7700035EB6 /* DollImageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollImageEntity.swift; sourceTree = "<group>"; };
 		A49BFE612B558B2E00035EB6 /* MemberEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberEntity.swift; sourceTree = "<group>"; };
+		A4D2EB082B57D07A00493D8C /* HomeCottonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCottonEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -805,6 +807,7 @@
 			isa = PBXGroup;
 			children = (
 				A42C32F52B3EADE300C4B477 /* HomeEntity.swift */,
+				A4D2EB082B57D07A00493D8C /* HomeCottonEntity.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1485,6 +1488,7 @@
 				09C1A6502B5291CC00C1A57D /* AddDailyRoutineViewController.swift in Sources */,
 				0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */,
 				A42C32EB2B3EACAC00C4B477 /* URLConstant.swift in Sources */,
+				A4D2EB092B57D07A00493D8C /* HomeCottonEntity.swift in Sources */,
 				045DFE792B504E26005D69EA /* SettingView.swift in Sources */,
 				A49BFE1D2B4E541C00035EB6 /* RoutineChoiceViewController.swift in Sources */,
 				045DFE862B539BC3005D69EA /* WithdrawView.swift in Sources */,
