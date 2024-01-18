@@ -59,14 +59,16 @@ extension WithdrawViewController {
 
 extension WithdrawViewController {
     func setBarConfiguration() {
-        self.customNaviBar.isBackButtonIncluded = true
-        self.customNaviBar.isTitleViewIncluded = true
-        self.customNaviBar.isTitleLabelIncluded = "회원탈퇴"
-        self.customNaviBar.backButton.addTarget(self, action: #selector(backbuttonTapped), for: .touchUpInside)
+        customNaviBar.isBackButtonIncluded = true
+        customNaviBar.isTitleViewIncluded = true
+        customNaviBar.isTitleLabelIncluded = "회원탈퇴"
+        customNaviBar.delegate = self
     }
+}
+
+extension WithdrawViewController: BackButtonProtocol {
     
-    @objc
-    func backbuttonTapped() {
+    func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
 }
