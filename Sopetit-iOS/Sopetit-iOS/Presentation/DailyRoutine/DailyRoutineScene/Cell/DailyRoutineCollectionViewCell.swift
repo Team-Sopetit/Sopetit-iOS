@@ -113,7 +113,7 @@ extension DailyRoutineCollectionViewCell {
     
     func setLayout() {
         labelBox.snp.makeConstraints {
-            $0.leading.equalTo(imageView.snp.trailing).offset(12)
+            $0.leading.equalToSuperview().inset(72)
             $0.top.equalToSuperview().inset(23)
             $0.bottom.equalTo(achieveButton.snp.top).offset(-20)
             $0.trailing.equalToSuperview().inset(52)
@@ -152,7 +152,6 @@ extension DailyRoutineCollectionViewCell {
             $0.trailing.top.equalToSuperview().inset(20)
             $0.size.equalTo(20)
         }
-                
     }
     
     func setDatabind(model: DailyRoutines) {

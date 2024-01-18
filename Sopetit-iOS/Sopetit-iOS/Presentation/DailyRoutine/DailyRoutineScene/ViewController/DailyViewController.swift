@@ -164,7 +164,6 @@ extension DailyViewController {
     
     func setAlertView() {
         if isFromAddDailyBottom {
-            getRoutineListAPI()
             addAlertView.isHidden = false
             UIView.animate(withDuration: 2.5, delay: 0.0, options: .curveEaseOut, animations: {
                 self.addAlertView.alpha = 0.0
@@ -174,6 +173,7 @@ extension DailyViewController {
 }
 
 extension DailyViewController: DailyAddDelegate {
+    
     func addTapped() {
         let nav = AddDailyRoutineViewController()
         self.tabBarController?.tabBar.isHidden = true
@@ -226,16 +226,13 @@ extension DailyViewController: UICollectionViewDataSource {
 extension DailyViewController: BottomSheetButtonDelegate {
     
     func completeButtonTapped() {
-        
         for cell in self.collectionview.visibleCells {
             if let dailyCell = cell as? DailyRoutineCollectionViewCell {
                 if dailyCell.index == achieveIndex {
                     patchRoutineAPI(routineId: dailyCell.tag)
                 }
             }
-            self.collectionview.reloadData()
         }
-        
         self.dismiss(animated: false)
         let vc = CompleteDailyRoutineViewController()
         vc.modalPresentationStyle = .fullScreen
@@ -266,11 +263,9 @@ extension DailyViewController: BottomSheetButtonDelegate {
                     }
                 }
             }
-            
         }
         
         self.deleteRoutineListAPI(routineIdList: routineIdList)
-        self.collectionview.reloadData()
         let count = DailyRoutineCollectionViewCell.sharedVariable
         let title = "데일리 루틴을 \(count)개 삭제했어요"
         deleteAlertView.titleLabel.text = title
@@ -344,6 +339,17 @@ extension DailyViewController {
     }
 }
 
+extension DailyViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if routineList.routines.isEmpty {
+            return .zero
+        }
+        let cell = self.collectionView(collectionView, cellForItemAt: indexPath)
+        return cell.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width - 40, height: UIView.layoutFittingExpandedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
+    }
+}
+
 // MARK: - Network
 
 extension DailyViewController {
@@ -370,7 +376,6 @@ extension DailyViewController {
         DailyRoutineService.shared.deleteRoutineListAPI(routineIdList: routineIdList) { networkResult in
             switch networkResult {
             case .success:
-                self.getRoutineListAPI()
                 self.collectionview.reloadData()
             case .requestErr, .serverErr:
                 break
@@ -393,16 +398,5 @@ extension DailyViewController {
             }
             self.collectionview.reloadData()
         }
-    }
-}
-
-extension DailyViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if routineList.routines.isEmpty {
-            return .zero
-        }
-        let cell = self.collectionView(collectionView, cellForItemAt: indexPath)
-        return cell.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width - 40, height: UIView.layoutFittingExpandedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
     }
 }

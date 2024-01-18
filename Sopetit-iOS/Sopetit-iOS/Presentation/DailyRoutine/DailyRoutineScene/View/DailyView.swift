@@ -15,15 +15,11 @@ final class DailyView: UIView {
     lazy var collectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
-        layout.footerReferenceSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
-        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
-
         layout.minimumLineSpacing = 12
-        view.contentInsetAdjustmentBehavior = .always
-        view.backgroundColor = .SoftieBack
-        return view
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .SoftieBack
+        return collectionView
     }()
     
     // MARK: - Life Cycles
