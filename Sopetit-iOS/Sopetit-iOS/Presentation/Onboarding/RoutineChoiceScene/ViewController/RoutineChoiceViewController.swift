@@ -154,6 +154,7 @@ extension RoutineChoiceViewController: UICollectionViewDelegate {
                 }
             }
         }
+        updateButton()
         return true
     }
     
@@ -172,9 +173,14 @@ extension RoutineChoiceViewController: UICollectionViewDelegate {
                 selectedCell.routineLabel.layer.borderColor = UIColor.Gray100.cgColor
                 selectedCell.routineLabel.layer.borderWidth = 1
             }
+            updateButton()
             return true
         }
         return true
+    }
+    
+    func updateButton() {
+        routineChoiceView.nextButton.isEnabled = selectedCount > 0
     }
 }
 

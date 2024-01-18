@@ -81,6 +81,7 @@ final class RoutineChoiceView: UIView {
         button.setBackgroundColor(.SoftieMain1, for: .normal)
         button.titleLabel?.font = .fontGuide(.body1)
         button.layer.cornerRadius = 12
+        button.isEnabled = false
         return button
     }()
     
