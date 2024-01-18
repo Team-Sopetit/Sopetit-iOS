@@ -31,6 +31,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         print(UserManager.shared.getAccessToken)
         setDelegate()
+        sleep(1)
         getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
     }
 }
@@ -51,7 +52,6 @@ extension HomeViewController {
         homeView.dollNameLabel.snp.updateConstraints {
                 $0.width.equalTo(nameWidth + 26)
         }
-        homeView.layoutIfNeeded()
     }
 }
 
@@ -69,6 +69,8 @@ extension HomeViewController {
                         self.collectionView.reloadData()
                         self.setDataBind(model: self.homeEntity)
                         self.homeView.setDoll(dollType: self.homeEntity.dollType)
+                        self.homeView.refreshBubbleLabel()
+                        self.homeView.bubbleLabel.bringSubviewToFront(self.homeView)
                         self.collectionView.reloadData()
                     }
                 case .requestErr, .serverErr:
