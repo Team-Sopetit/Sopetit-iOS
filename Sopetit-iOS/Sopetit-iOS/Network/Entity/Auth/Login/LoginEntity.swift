@@ -7,6 +7,7 @@
 
 struct LoginEntity: Codable {
     let accessToken, refreshToken: String
+    let isMemberDollExist: Bool
 }
 
 struct LogoutEntity: Codable {}
