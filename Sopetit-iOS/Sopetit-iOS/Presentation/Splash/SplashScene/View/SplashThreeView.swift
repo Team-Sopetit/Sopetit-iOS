@@ -31,7 +31,6 @@ final class SplashThreeView: UIView {
     private let dollImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.Splash.imgSplashManybearCut
-        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
