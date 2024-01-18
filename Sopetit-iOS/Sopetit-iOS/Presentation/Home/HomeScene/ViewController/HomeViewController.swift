@@ -123,6 +123,9 @@ extension HomeViewController {
                     DispatchQueue.main.async {
                         if let cell = self.collectionView.cellForItem(at: indexPath) as? ActionCollectionViewCell {
                             cell.numberLabel.text = "\(self.homeCottonEntity.cottonCount)개"
+                            if self.homeCottonEntity.cottonCount == 0 {
+                                cell.isUserInteractionEnabled = false
+                            }
                             cell.setNeedsLayout()
                         }
                     }
