@@ -57,7 +57,7 @@ final class CompleteDailyRoutineView: UIView {
 
     // MARK: - UI Components
     
-    let cottonLottieView = LottieAnimationView(name: "daily_complete_som")
+    let cottonLottieView = LottieAnimationView(name: "daily_complete_ios")
     private let bearImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = BearType.brown.dailyCompleteBear

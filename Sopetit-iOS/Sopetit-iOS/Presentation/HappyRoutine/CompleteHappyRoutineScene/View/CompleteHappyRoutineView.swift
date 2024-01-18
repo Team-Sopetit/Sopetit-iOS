@@ -14,7 +14,7 @@ final class CompleteHappyRoutineView: UIView {
 
     // MARK: - UI Components
     
-    let cottonLottieView = LottieAnimationView(name: "happy_complete_som")
+    let cottonLottieView = LottieAnimationView(name: "happy_complete_ios")
     private let bearImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = BearType.brown.happyCompleteBear
