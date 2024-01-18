@@ -16,6 +16,8 @@ final class HomeViewController: UIViewController {
     // MARK: - Properties
     
     var homeEntity = HomeEntity(name: "", dollType: "", frameImageURL: "", dailyCottonCount: 0, happinessCottonCount: 0, conversations: [])
+    var cottonDailyNum: Int = 0
+    var cottonHappyyNum: Int = 0
     private var homeCottonEntity = HomeCottonEntity(cottonCount: 0)
     
     // MARK: - UI Components
@@ -29,14 +31,19 @@ final class HomeViewController: UIViewController {
         self.view = homeView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
+        sleep(1)
+        getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
         setDelegate()
         setAddTarget()
-        sleep(1)
-        getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
     }
 }
 
@@ -99,6 +106,8 @@ extension HomeViewController {
                     if let listData = data.data {
                         self.homeEntity = listData
                     }
+                    self.cottonDailyNum = self.homeEntity.dailyCottonCount
+                    self.cottonHappyyNum = self.homeEntity.happinessCottonCount
                     self.setDataBind(model: self.homeEntity)
                     self.collectionView.reloadData()
                     self.homeView.setNeedsDisplay()
@@ -124,6 +133,14 @@ extension HomeViewController {
                     DispatchQueue.main.async {
                         if let cell = self.collectionView.cellForItem(at: indexPath) as? ActionCollectionViewCell {
                             cell.numberLabel.text = "\(self.homeCottonEntity.cottonCount)개"
+                            switch indexPath.item {
+                            case 0:
+                                self.cottonDailyNum = self.homeCottonEntity.cottonCount
+                            case 1:
+                                self.cottonHappyyNum = self.homeCottonEntity.cottonCount
+                            default:
+                                break
+                            }
                             cell.setNeedsLayout()
                         }
                     }
@@ -145,7 +162,7 @@ extension HomeViewController: UICollectionViewDelegate {
         switch indexPath.item {
         case 0:
             if !(homeView.isAnimate) {
-                if homeEntity.dailyCottonCount > 0 {
+                if self.cottonDailyNum > 0 {
                     self.homeView.isAnimate = true
                     patchCottonAPI(cottonType: "DAILY", indexPath: indexPath)
                     homeView.lottieEatingDaily.isHidden = false
@@ -164,8 +181,9 @@ extension HomeViewController: UICollectionViewDelegate {
             }
         case 1:
             if !(homeView.isAnimate) {
-                if homeEntity.happinessCottonCount > 0 {
+                if self.cottonHappyyNum > 0 {
                     self.homeView.isAnimate = true
+                    getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
                     patchCottonAPI(cottonType: "HAPPINESS", indexPath: indexPath)
                     homeView.lottieEatingHappy.isHidden = false
                     homeView.lottieHello.isHidden = true
