@@ -77,7 +77,7 @@ extension WithdrawViewController {
         AuthService.shared.deleteResignAPI { networkResult in
             switch networkResult {
             case .success(let data):
-                if let data = data as? GenericResponse<ResignEntity> {
+                if data is GenericResponse<ResignEntity> {
                     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                           let keyWindow = windowScene.windows.first else {
                         return
