@@ -12,7 +12,6 @@ final class RoutineChoiceViewController: UIViewController {
     // MARK: - Properties
     
     var selectedTheme: [Int] = []
-    var userDollType: String = ""
     var userDollName: String = ""
     private var selectedCount: Int = 0
     private var selectedRoutine: [Int] = []
@@ -102,7 +101,7 @@ extension RoutineChoiceViewController {
     }
     
     func getDollAPI() {
-        OnBoardingService.shared.getOnboardingDollAPI(dollType: self.userDollType) { networkResult in
+        OnBoardingService.shared.getOnboardingDollAPI(dollType: UserManager.shared.getDollType) { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DollImageEntity> {
@@ -120,7 +119,7 @@ extension RoutineChoiceViewController {
     }
     
     func postMemberAPI() {
-        OnBoardingService.shared.postOnboardingMemeberAPI(dollType: self.userDollType, dollName: self.userDollName, routineArray: selectedRoutine) { networkResult in
+        OnBoardingService.shared.postOnboardingMemeberAPI(dollType: UserManager.shared.getDollType, dollName: self.userDollName, routineArray: selectedRoutine) { networkResult in
             switch networkResult {
             case .success:
                 print("success")

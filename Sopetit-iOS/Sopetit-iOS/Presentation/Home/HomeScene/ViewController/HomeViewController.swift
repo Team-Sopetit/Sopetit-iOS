@@ -54,6 +54,7 @@ extension HomeViewController {
     func setUI() {
         print("⭐️⭐️⭐️")
         print(UserManager.shared.getAccessToken)
+        homeView.setDoll(dollType: UserManager.shared.getDollType)
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -69,7 +70,6 @@ extension HomeViewController {
         homeView.dollNameLabel.snp.updateConstraints {
             $0.width.equalTo(nameWidth + 26)
         }
-        homeView.setDoll(dollType: model.dollType)
         homeView.layoutIfNeeded()
     }
     
@@ -122,8 +122,6 @@ extension HomeViewController {
     
     func patchCottonAPI(cottonType: String, indexPath: IndexPath) {
         HomeService.shared.patchCottonAPI(cottonType: cottonType) { networkResult in
-            print("❤️❤️❤️❤️")
-            print(networkResult)
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<HomeCottonEntity> {
