@@ -13,6 +13,8 @@
 		0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19C2B4A896500F87860 /* LoginViewController.swift */; };
 		00A8E39A2B4D8B0D001461CE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A8E3992B4D8B0D001461CE /* HomeView.swift */; };
 		00A8E39C2B4D8B20001461CE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A8E39B2B4D8B20001461CE /* HomeViewController.swift */; };
+		00B68F392B5935A300ED8CF6 /* happy_complete_ios.json in Resources */ = {isa = PBXBuildFile; fileRef = 00B68F382B5935A300ED8CF6 /* happy_complete_ios.json */; };
+		00B68F3B2B5935AC00ED8CF6 /* daily_complete_ios.json in Resources */ = {isa = PBXBuildFile; fileRef = 00B68F3A2B5935AC00ED8CF6 /* daily_complete_ios.json */; };
 		00CCDCC22B51B5AF007DD0E6 /* SplashOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CCDCC12B51B5AF007DD0E6 /* SplashOneView.swift */; };
 		00CCDCC42B51B5BD007DD0E6 /* SplashTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CCDCC32B51B5BD007DD0E6 /* SplashTwoView.swift */; };
 		00CCDCC62B51B5C8007DD0E6 /* SplashThreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CCDCC52B51B5C8007DD0E6 /* SplashThreeView.swift */; };
@@ -161,6 +163,8 @@
 		0084F19C2B4A896500F87860 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		00A8E3992B4D8B0D001461CE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		00A8E39B2B4D8B20001461CE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		00B68F382B5935A300ED8CF6 /* happy_complete_ios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = happy_complete_ios.json; sourceTree = "<group>"; };
+		00B68F3A2B5935AC00ED8CF6 /* daily_complete_ios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = daily_complete_ios.json; sourceTree = "<group>"; };
 		00CCDCC12B51B5AF007DD0E6 /* SplashOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashOneView.swift; sourceTree = "<group>"; };
 		00CCDCC32B51B5BD007DD0E6 /* SplashTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashTwoView.swift; sourceTree = "<group>"; };
 		00CCDCC52B51B5C8007DD0E6 /* SplashThreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashThreeView.swift; sourceTree = "<group>"; };
@@ -724,6 +728,8 @@
 		A42C32AF2B3EAA5300C4B477 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				00B68F3A2B5935AC00ED8CF6 /* daily_complete_ios.json */,
+				00B68F382B5935A300ED8CF6 /* happy_complete_ios.json */,
 				095903A92B5458F100D0AF39 /* daily_complete_som.json */,
 				095903A82B5458F100D0AF39 /* happy_complete_som.json */,
 				A49BFE092B4DC54F00035EB6 /* gray_eating_daily.json */,
@@ -1334,6 +1340,7 @@
 				A42C33642B413F2100C4B477 /* Pretendard-SemiBold.otf in Resources */,
 				A49BFE382B4E938700035EB6 /* red_hello.json in Resources */,
 				A49BFE3A2B4E938700035EB6 /* brown_hello.json in Resources */,
+				00B68F3B2B5935AC00ED8CF6 /* daily_complete_ios.json in Resources */,
 				A42C32882B3DB8F500C4B477 /* LaunchScreen.storyboard in Resources */,
 				095903AB2B5458F100D0AF39 /* daily_complete_som.json in Resources */,
 				0014568D2B56D1C10044782C /* brown_eating_daily.json in Resources */,
@@ -1341,6 +1348,7 @@
 				A42C32852B3DB8F500C4B477 /* Assets.xcassets in Resources */,
 				A49BFE022B4DC54400035EB6 /* brown_eating_happy.json in Resources */,
 				A49BFE372B4E938700035EB6 /* gray_hello.json in Resources */,
+				00B68F392B5935A300ED8CF6 /* happy_complete_ios.json in Resources */,
 				095903AA2B5458F100D0AF39 /* happy_complete_som.json in Resources */,
 				A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */,
 				A49BFE392B4E938700035EB6 /* white_hello.json in Resources */,
