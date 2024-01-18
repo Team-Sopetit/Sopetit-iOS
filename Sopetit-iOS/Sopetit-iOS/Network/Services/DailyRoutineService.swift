@@ -20,7 +20,7 @@ final class DailyRoutineService: BaseService {
 
 extension DailyRoutineService {
     func getRoutineListAPI(completion: @escaping (NetworkResult<Any>) -> Void) {
-        let url = URLConstant.dailyURL
+        let url = URLConstant.dailyMemberURL
         let header: HTTPHeaders = NetworkConstant.hasTokenHeader
         let dataRequest = AF.request(url,
                                      method: .get,
@@ -67,8 +67,8 @@ extension DailyRoutineService {
             }
         }
     
-    func deleteRoutineListAPI(routineId: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
-        let url = URLConstant.deleteURL + "\(routineId)"
+    func deleteRoutineListAPI(routineIdList: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        let url = URLConstant.dailyMemberURL + "?routines=\(routineIdList)"
         let header: HTTPHeaders = NetworkConstant.hasTokenHeader
         let dataRequest = AF.request(url,
                                      method: .delete,

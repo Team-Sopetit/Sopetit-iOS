@@ -13,14 +13,13 @@ final class DailyView: UIView {
     // MARK: - UI Components
 
     lazy var collectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
-        flowLayout.footerReferenceSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
-        flowLayout.minimumLineSpacing = 12
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
-        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        view.backgroundColor = .SoftieBack
-        return view
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
+        layout.minimumLineSpacing = 12
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .SoftieBack
+        return collectionView
     }()
     
     // MARK: - Life Cycles

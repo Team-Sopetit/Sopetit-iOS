@@ -76,11 +76,11 @@ private extension AddHappyRoutineViewController {
     }
     
     func setCarousel() {
+        addHappyRoutineView.pageControl.numberOfPages = happinessRoutineEntity.subRoutines.count
         happinessRoutineEntity.subRoutines.insert(happinessRoutineEntity.subRoutines[happinessRoutineEntity.subRoutines.count-1], at: 0)
         happinessRoutineEntity.subRoutines.insert(happinessRoutineEntity.subRoutines[happinessRoutineEntity.subRoutines.count-2], at: 0)
         happinessRoutineEntity.subRoutines.append(happinessRoutineEntity.subRoutines[2])
         happinessRoutineEntity.subRoutines.append(happinessRoutineEntity.subRoutines[3])
-         
     }
     
     func setRegister() {

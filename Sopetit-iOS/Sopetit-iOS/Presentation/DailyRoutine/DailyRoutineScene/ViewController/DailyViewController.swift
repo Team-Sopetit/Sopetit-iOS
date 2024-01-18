@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol PresentDelegate: AnyObject {
-    func buttonTapped(in cell: UICollectionViewCell)
+    func buttonTapped(in cell: DailyRoutineCollectionViewCell)
 }
 
 final class DailyViewController: UIViewController {
@@ -19,6 +19,7 @@ final class DailyViewController: UIViewController {
     var isFromAddDailyBottom: Bool = false
     private var shouldShowFooterView: Bool = true
     var routineList: DailyRoutineEntity = .init(routines: [])
+    private var achieveIndex: Int = -1
     
     override var isEditing: Bool {
         didSet {
@@ -55,7 +56,6 @@ final class DailyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getRoutineListAPI()
         setHierarchy()
         setLayout()
         setUI()
@@ -68,7 +68,7 @@ final class DailyViewController: UIViewController {
         super.viewWillAppear(animated)
         setupCustomNavigationBar()
         self.tabBarController?.tabBar.isHidden = false
-        
+        getRoutineListAPI()
         self.deleteButton.isHidden = true
     }
 }
@@ -132,7 +132,6 @@ extension DailyViewController {
     }
     
     func setAddTarget() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateDeleteLabel), name: Notification.Name("SharedVariableDidChange"), object: nil)
         self.deleteButton.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
     }
     
@@ -174,6 +173,7 @@ extension DailyViewController {
 }
 
 extension DailyViewController: DailyAddDelegate {
+    
     func addTapped() {
         let nav = AddDailyRoutineViewController()
         self.tabBarController?.tabBar.isHidden = true
@@ -182,6 +182,7 @@ extension DailyViewController: DailyAddDelegate {
 }
 
 extension DailyViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return shouldShowFooterView ? CGSize(width: collectionView.bounds.width, height: 136) : CGSize.zero
     }
@@ -200,6 +201,7 @@ extension DailyViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
         let routine = routineList.routines[indexPath.item]
+        cell.index = indexPath.item
         cell.setDatabind(model: routine)
         cell.delegate = self
         cell.tag = routine.routineID
@@ -224,16 +226,13 @@ extension DailyViewController: UICollectionViewDataSource {
 extension DailyViewController: BottomSheetButtonDelegate {
     
     func completeButtonTapped() {
-        
         for cell in self.collectionview.visibleCells {
             if let dailyCell = cell as? DailyRoutineCollectionViewCell {
-                if dailyCell.achieveButton.isEnabled {
+                if dailyCell.index == achieveIndex {
                     patchRoutineAPI(routineId: dailyCell.tag)
                 }
             }
-            self.collectionview.reloadData()
         }
-        
         self.dismiss(animated: false)
         let vc = CompleteDailyRoutineViewController()
         vc.modalPresentationStyle = .fullScreen
@@ -252,22 +251,29 @@ extension DailyViewController: BottomSheetButtonDelegate {
         }
         self.deleteAlertView.isHidden = false
         
+        var routineIdList = ""
         for cell in self.collectionview.visibleCells {
             if let dailyCell = cell as? DailyRoutineCollectionViewCell {
                 if dailyCell.checkBox.isSelected {
                     routineList.routines = routineList.routines.filter { $0.routineID != dailyCell.tag }
-                    deleteRoutineListAPI(routineId: dailyCell.tag)
+                    if routineIdList == "" {
+                        routineIdList = "\(dailyCell.tag)"
+                    } else {
+                        routineIdList = "\(routineIdList),\(dailyCell.tag)"
+                    }
                 }
             }
-            self.collectionview.reloadData()
         }
         
+        self.deleteRoutineListAPI(routineIdList: routineIdList)
         let count = DailyRoutineCollectionViewCell.sharedVariable
         let title = "데일리 루틴을 \(count)개 삭제했어요"
         deleteAlertView.titleLabel.text = title
         UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
             self.deleteAlertView.alpha = 0.0
         })
+        DailyRoutineCollectionViewCell.sharedVariable = 0
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("SharedVariableDidChange"), object: nil)
         
         self.dismiss(animated: false)
     }
@@ -279,8 +285,10 @@ extension DailyViewController: BottomSheetButtonDelegate {
 }
 
 extension DailyViewController: PresentDelegate {
-    func buttonTapped(in cell: UICollectionViewCell) {
+    func buttonTapped(in cell: DailyRoutineCollectionViewCell) {
         self.present(dailyCompleteBottom, animated: false)
+        achieveIndex = cell.index
+        
     }
 }
 
@@ -307,26 +315,45 @@ extension DailyViewController {
                 }
             }
             DailyRoutineCollectionViewCell.sharedVariable = 0
+            
+            NotificationCenter.default.removeObserver(self, name: Notification.Name("SharedVariableDidChange"), object: nil)
         }
         
         customNavigationBar.isEditButtonIncluded = true
         customNavigationBar.editButtonAction = {
-            self.isEditing.toggle()
-            self.deleteButton.isHidden = false
-            self.customNavigationBar.cancelButton.isHidden = false
-            self.customNavigationBar.editButton.isHidden = true
-            for cell in self.collectionview.visibleCells {
-                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
-                    dailyCell.achieveButton.isUserInteractionEnabled = false
+            if self.routineList.routines.isEmpty {
+                return
+            } else {
+                NotificationCenter.default.addObserver(self, selector: #selector(self.updateDeleteLabel), name: Notification.Name("SharedVariableDidChange"), object: nil)
+                self.isEditing.toggle()
+                self.deleteButton.isHidden = false
+                self.customNavigationBar.cancelButton.isHidden = false
+                self.customNavigationBar.editButton.isHidden = true
+                for cell in self.collectionview.visibleCells {
+                    if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                        dailyCell.achieveButton.isUserInteractionEnabled = false
+                    }
                 }
             }
         }
     }
 }
 
+extension DailyViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if routineList.routines.isEmpty {
+            return .zero
+        }
+        let cell = self.collectionView(collectionView, cellForItemAt: indexPath)
+        return cell.systemLayoutSizeFitting(CGSize(width: collectionView.frame.width - 40, height: UIView.layoutFittingExpandedSize.height), withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
+    }
+}
+
 // MARK: - Network
 
 extension DailyViewController {
+    
     func getRoutineListAPI() {
         DailyRoutineService.shared.getRoutineListAPI { networkResult in
             switch networkResult {
@@ -344,11 +371,9 @@ extension DailyViewController {
             }
         }
     }
-}
-
-extension DailyViewController {
-    func deleteRoutineListAPI(routineId: Int) {
-        DailyRoutineService.shared.deleteRoutineListAPI(routineId: routineId) { networkResult in
+    
+    func deleteRoutineListAPI(routineIdList: String) {
+        DailyRoutineService.shared.deleteRoutineListAPI(routineIdList: routineIdList) { networkResult in
             switch networkResult {
             case .success:
                 self.collectionview.reloadData()
@@ -359,9 +384,7 @@ extension DailyViewController {
             }
         }
     }
-}
-
-extension DailyViewController {
+    
     func patchRoutineAPI(routineId: Int) {
         DailyRoutineService.shared.patchRoutineAPI(routineId: routineId) { _ in
             for cell in self.collectionview.visibleCells {
@@ -375,35 +398,5 @@ extension DailyViewController {
             }
             self.collectionview.reloadData()
         }
-    }
-}
-
-// MARK: - Extension
-
-extension DailyViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
-
-        let data = routineList.routines[indexPath.item].content
-        cell.routineLabel.text = data
-        cell.routineLabel.preferredMaxLayoutWidth = collectionView.bounds.width - 164
-        cell.layoutIfNeeded()
-        
-//        let paragraphStyle = NSMutableParagraphStyle()
-//        paragraphStyle.lineSpacing = 4
-//        let attributedString = NSAttributedString(string: data, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
-//        cell.routineLabel.attributedText = attributedString
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1.5
-        let attributedString = NSAttributedString(string: data, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
-        cell.routineLabel.attributedText = attributedString
-        cell.routineLabel.sizeToFit()
-
-        let cellHeight = cell.routineLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-        let itemSizeWidth = collectionView.bounds.width - 40
-        let itemSizeHeight = cellHeight + 126
-
-        return CGSize(width: itemSizeWidth, height: itemSizeHeight)
     }
 }

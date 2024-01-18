@@ -11,9 +11,11 @@ final class AddDailyRoutineViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let dailyRoutineTheme = DailyRoutineTheme.dummy()
-    private var dailyRoutineCard = DailyRoutineCard.dummy()
+    private var dailyThemesEntity = DailyThemesEntity(themes: [])
+    private var themeId = 0
+    private var dailyRoutinesEntity = DailyRoutinesEntity(backgroundImageUrl: "", routines: [])
     private var selectedIndex = 0
+    private var routineId: Int = 0
     
     private enum Const {
         static let itemSize = CGSize(width: 280, height: 398)
@@ -42,11 +44,11 @@ final class AddDailyRoutineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getDailyThemes()
         setUI()
         setDelegate()
         setRegister()
         setAddTarget()
-        setCarousel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,23 +95,14 @@ private extension AddDailyRoutineViewController {
     }
     
     func setCarousel() {
-        dailyRoutineCard.insert(dailyRoutineCard[dailyRoutineCard.count-1], at: 0)
-        dailyRoutineCard.insert(dailyRoutineCard[dailyRoutineCard.count-2], at: 0)
-        dailyRoutineCard.append(dailyRoutineCard[2])
-        dailyRoutineCard.append(dailyRoutineCard[3])
-    }
-}
-
-extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
-    func completeButtonTapped() {
-        
+        addDailyRoutineView.pageControl.numberOfPages = dailyRoutinesEntity.routines.count
+        dailyRoutinesEntity.routines.insert(dailyRoutinesEntity.routines[dailyRoutinesEntity.routines.count-1], at: 0)
+        dailyRoutinesEntity.routines.insert(dailyRoutinesEntity.routines[dailyRoutinesEntity.routines.count-2], at: 0)
+        dailyRoutinesEntity.routines.append(dailyRoutinesEntity.routines[2])
+        dailyRoutinesEntity.routines.append(dailyRoutinesEntity.routines[3])
     }
     
-    func deleteButtonTapped() {
-        
-    }
-    
-    func addButtonTapped() {
+    func setDismiss() {
         self.dismiss(animated: false)
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let keyWindow = windowScene.windows.first else {
@@ -125,13 +118,28 @@ extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
     }
 }
 
+extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
+    func completeButtonTapped() { }
+    
+    func deleteButtonTapped() { }
+    
+    func addButtonTapped() {
+        let index = addDailyRoutineView.pageControl.currentPage
+        if dailyRoutinesEntity.routines.count == 0 {
+            return
+        }
+        routineId = dailyRoutinesEntity.routines[index + 2].routineId
+        postDailyMember(routineId: routineId)
+    }
+}
+
 extension AddDailyRoutineViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == addDailyRoutineView.dailyRoutineThemeView.collectionView {
-            return dailyRoutineTheme.count
+            return dailyThemesEntity.themes.count
         } else if collectionView == addDailyRoutineView.collectionView {
-            return dailyRoutineCard.count
+            return dailyRoutinesEntity.routines.count
         }
         return 0
     }
@@ -143,11 +151,11 @@ extension AddDailyRoutineViewController: UICollectionViewDataSource {
                 collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
                 cell.isSelected = true
             }
-            cell.setDataBind(model: dailyRoutineTheme[indexPath.row])
+            cell.setDataBind(model: dailyThemesEntity.themes[indexPath.item])
             return cell
         } else if collectionView == addDailyRoutineView.collectionView {
             let cell = DailyRoutineCardCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
-            cell.setDataBind(model: dailyRoutineCard[indexPath.row], image: dailyRoutineTheme[selectedIndex].cardImage)
+            cell.setDataBind(model: dailyRoutinesEntity.routines[indexPath.row], imageURL: dailyThemesEntity.themes[selectedIndex].backgroundImageUrl)
             return cell
         }
         return UICollectionViewCell()
@@ -168,11 +176,10 @@ extension AddDailyRoutineViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == addDailyRoutineView.dailyRoutineThemeView.collectionView {
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
-            selectedIndex = indexPath.row
-            addDailyRoutineView.collectionView.reloadData()
-        } else if collectionView == addDailyRoutineView.collectionView {
-            print(indexPath.row)
-        }
+            selectedIndex = indexPath.item
+            themeId = dailyThemesEntity.themes[selectedIndex].themeId
+            getDailyRoutinesAPI()
+        } else if collectionView == addDailyRoutineView.collectionView { }
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>
@@ -191,7 +198,7 @@ extension AddDailyRoutineViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == addDailyRoutineView.collectionView {
             addDailyRoutineView.pageControl.currentPage = Int((scrollView.contentOffset.x - Const.insetX) / (Const.itemSize.width + Const.itemSpacing)) - 1
-            let count = dailyRoutineCard.count
+            let count = dailyRoutinesEntity.routines.count
             if scrollView.contentOffset.x-2 <= Const.itemSize.width + Const.itemSpacing - Const.insetX {
                 scrollView.setContentOffset(.init(x: (Const.itemSize.width + Const.itemSpacing) * Double(count-3) - Const.insetX, y: scrollView.contentOffset.y), animated: false)
             }
@@ -207,5 +214,69 @@ extension AddDailyRoutineViewController: BackButtonProtocol {
     
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - Network
+
+extension AddDailyRoutineViewController {
+    
+    func getDailyThemes() {
+        AddDailyRoutineService.shared.getDailyThemesAPI { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<DailyThemesEntity> {
+                    if let listData = data.data {
+                        self.dailyThemesEntity = listData
+                    }
+                    self.dailyThemesEntity.themes = self.dailyThemesEntity.themes.sorted(by: { $0.themeId < $1.themeId })
+                    self.themeId = 1
+                    self.addDailyRoutineView.dailyRoutineThemeView.collectionView.reloadData()
+                    self.getDailyRoutinesAPI()
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func getDailyRoutinesAPI() {
+        AddDailyRoutineService.shared.getDailyRoutinesAPI(themes: self.themeId) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<DailyRoutinesEntity> {
+                    if let listData = data.data {
+                        self.dailyRoutinesEntity = listData
+                    }
+                    self.dailyRoutinesEntity.routines = self.dailyRoutinesEntity.routines.sorted(by: { $0.routineId < $1.routineId })
+                    self.addDailyRoutineView.collectionView.reloadData()
+                    self.setCarousel()
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func postDailyMember(routineId: Int) {
+        AddDailyRoutineService.shared.postDailyMember(routineId: routineId) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<DailyRoutineIdEntity> {
+                    if let result = data.data {
+                        print(result)
+                    }
+                }
+                self.setDismiss()
+            case .requestErr, .serverErr:
+                self.dismiss(animated: true)
+            default:
+                break
+            }
+        }
     }
 }

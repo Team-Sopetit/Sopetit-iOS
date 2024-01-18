@@ -107,9 +107,12 @@ extension DailyRoutineThemeCollectionViewCell {
 
 extension DailyRoutineThemeCollectionViewCell {
     
-    func setDataBind(model: DailyRoutineTheme) {
-        iconImageView.image = model.iconImage
+    func setDataBind(model: DailyTheme) {
+        if let iconURL = URL(string: model.iconImageUrl) {
+            iconImageView.downloadedsvg(from: iconURL)
+        }
         titleLabel.text = model.name
         titleLabel.textAlignment = .center
+            
     }
 }
