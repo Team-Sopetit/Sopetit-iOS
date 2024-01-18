@@ -146,10 +146,11 @@ extension HomeView {
     
     func setHierarchy() {
         self.addSubviews(backgroundImageView, softieImageView, moneyButton, settingButton, bubbleImageView, shadowImageView, dollNameLabel, actionCollectionView)
-        
+                
         bubbleImageView.addSubview(bubbleLabel)
         
         addSubviews(lottieEatingDaily, lottieEatingHappy, lottieHello)
+        self.bringSubviewToFront(actionCollectionView)
     }
     
     func setLayout() {
@@ -220,7 +221,7 @@ extension HomeView {
         
         actionCollectionView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(106)
+            $0.bottom.equalToSuperview().inset(SizeLiterals.Screen.screenHeight * 90 / 812)
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 331 / 375)
             $0.height.equalTo(100)
         }
