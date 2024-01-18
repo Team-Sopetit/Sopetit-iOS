@@ -22,6 +22,14 @@ final class RoutineChoiceView: UIView {
         return image
     }()
     
+    private let stackview: UIStackView = {
+        let stackview = UIStackView()
+        stackview.axis = .horizontal
+        stackview.spacing = 14
+        stackview.alignment = .center
+        return stackview
+    }()
+    
     private let bubbleImage: UIImageView = {
         let image = UIImageView()
         image.image = ImageLiterals.Onboarding.svgSpeechLong
@@ -139,8 +147,9 @@ extension RoutineChoiceView {
     }
     
     func setHierarchy() {
+        stackview.addArrangedSubviews(bearImage, bubbleImage)
         bubbleImage.addSubview(bubbleLabel)
-        addSubviews(progressView, bearImage, bubbleImage, collectionView, backButton, nextButton, infoLabel)
+        addSubviews(progressView, stackview, collectionView, backButton, nextButton, infoLabel)
     }
     
     func setLayout() {
@@ -151,22 +160,23 @@ extension RoutineChoiceView {
         }
         
         bearImage.snp.makeConstraints {
-            $0.top.equalTo(progressView.snp.bottom).offset(28)
-            $0.leading.equalToSuperview().inset(30)
             $0.width.equalTo(53)
             $0.height.equalTo(50)
         }
         
         bubbleImage.snp.makeConstraints {
-            $0.top.equalTo(progressView.snp.bottom).offset(23)
-            $0.trailing.equalToSuperview().inset(30)
             $0.width.equalTo(248)
             $0.height.equalTo(60)
         }
         
         bubbleLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
+        stackview.snp.makeConstraints {
+            $0.top.equalTo(progressView.snp.bottom).offset(28)
             $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview()
+            $0.height.equalTo(60)
         }
         
         collectionView.snp.makeConstraints {
