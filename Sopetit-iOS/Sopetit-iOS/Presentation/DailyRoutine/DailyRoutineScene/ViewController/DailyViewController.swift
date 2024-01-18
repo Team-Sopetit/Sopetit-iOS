@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol PresentDelegate: AnyObject {
-    func buttonTapped(in cell: UICollectionViewCell)
+    func buttonTapped(in cell: DailyRoutineCollectionViewCell)
 }
 
 final class DailyViewController: UIViewController {
@@ -19,6 +19,7 @@ final class DailyViewController: UIViewController {
     var isFromAddDailyBottom: Bool = false
     private var shouldShowFooterView: Bool = true
     var routineList: DailyRoutineEntity = .init(routines: [])
+    private var achieveIndex: Int = -1
     
     override var isEditing: Bool {
         didSet {
@@ -200,6 +201,7 @@ extension DailyViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
         let routine = routineList.routines[indexPath.item]
+        cell.index = indexPath.item
         cell.setDatabind(model: routine)
         cell.delegate = self
         cell.tag = routine.routineID
@@ -227,11 +229,9 @@ extension DailyViewController: BottomSheetButtonDelegate {
         
         for cell in self.collectionview.visibleCells {
             if let dailyCell = cell as? DailyRoutineCollectionViewCell {
-                if dailyCell.achieveButton.isEnabled {
-                    print(dailyCell.tag, "🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨")
+                if dailyCell.index == achieveIndex {
+                    patchRoutineAPI(routineId: dailyCell.tag)
                 }
-                
-                patchRoutineAPI(routineId: dailyCell.tag)
             }
             self.collectionview.reloadData()
         }
@@ -259,7 +259,6 @@ extension DailyViewController: BottomSheetButtonDelegate {
             if let dailyCell = cell as? DailyRoutineCollectionViewCell {
                 if dailyCell.checkBox.isSelected {
                     routineList.routines = routineList.routines.filter { $0.routineID != dailyCell.tag }
-                    print(dailyCell.tag, "😜😜😜😜😜😜😜")
                     if routineIdList == "" {
                         routineIdList = "\(dailyCell.tag)"
                     } else {
@@ -278,6 +277,8 @@ extension DailyViewController: BottomSheetButtonDelegate {
         UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
             self.deleteAlertView.alpha = 0.0
         })
+        DailyRoutineCollectionViewCell.sharedVariable = 0
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("SharedVariableDidChange"), object: nil)
         
         self.dismiss(animated: false)
     }
@@ -289,8 +290,10 @@ extension DailyViewController: BottomSheetButtonDelegate {
 }
 
 extension DailyViewController: PresentDelegate {
-    func buttonTapped(in cell: UICollectionViewCell) {
+    func buttonTapped(in cell: DailyRoutineCollectionViewCell) {
         self.present(dailyCompleteBottom, animated: false)
+        achieveIndex = cell.index
+        
     }
 }
 
@@ -326,7 +329,6 @@ extension DailyViewController {
             if self.routineList.routines.isEmpty {
                 return
             } else {
-                
                 NotificationCenter.default.addObserver(self, selector: #selector(self.updateDeleteLabel), name: Notification.Name("SharedVariableDidChange"), object: nil)
                 self.isEditing.toggle()
                 self.deleteButton.isHidden = false
@@ -353,7 +355,6 @@ extension DailyViewController {
                 if let data = data as? GenericResponse<DailyRoutineEntity> {
                     if let listData = data.data {
                         self.routineList = listData
-                        print(listData)
                     }
                     self.collectionview.reloadData()
                 }
@@ -369,7 +370,6 @@ extension DailyViewController {
         DailyRoutineService.shared.deleteRoutineListAPI(routineIdList: routineIdList) { networkResult in
             switch networkResult {
             case .success:
-                print(networkResult, "💚💚💚💚💚💚💚💚💚💚💚💚💚💚")
                 self.getRoutineListAPI()
                 self.collectionview.reloadData()
             case .requestErr, .serverErr:
@@ -400,7 +400,6 @@ extension DailyViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if routineList.routines.isEmpty {
-            print("???????????????????000000000")
             return .zero
         }
         let cell = self.collectionView(collectionView, cellForItemAt: indexPath)

@@ -20,6 +20,7 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
             NotificationCenter.default.post(name: Notification.Name("SharedVariableDidChange"), object: nil)
         }
     }
+    var index: Int = 0
 
     // MARK: - UI Components
     
