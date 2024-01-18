@@ -273,9 +273,7 @@ extension AddDailyRoutineViewController {
                 }
                 self.setDismiss()
             case .requestErr, .serverErr:
-                print("????")
                 self.dismiss(animated: true)
-                break
             default:
                 break
             }
