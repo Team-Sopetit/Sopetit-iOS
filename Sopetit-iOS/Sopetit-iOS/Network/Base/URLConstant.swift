@@ -16,8 +16,8 @@ enum URLConstant {
     // MARK: - Auth URL
     
     static let loginURL = baseURL + "/api/v1/auth"
-    static let logoutURL = baseURL + "/api/v1/members/logout"
-    static let resignURL = baseURL + "/api/v1/members"
+    static let logoutURL = baseURL + "/api/v1/auth/logout"
+    static let resignURL = baseURL + "/api/v1/auth"
     
     // MARK: - OnBoarding URL
     
@@ -34,4 +34,13 @@ enum URLConstant {
     // MARK: - DailyRoutine URL
     
     static let dailyURL = baseURL + "/api/v1/routines/daily/member"
+    static let deleteURL = baseURL + "/api/v1/routines/daily/member/routine/"
+    static let postRoutineURL = baseURL + "/api/v1/routines/daily/member/"
+    static let patchRoutineURL = baseURL + "/api/v1/routines/daily/member/routine/"
+    
+    static let happinessThemesURL = baseURL + "/api/v1/routines/happiness/themes"
+    static let happinessURL = baseURL + "/api/v1/routines/happiness"
+    static let happinessRoutineURL = baseURL + "/api/v1/routines/happiness/routine/"
+    static let happinessMemberURL = baseURL + "/api/v1/routines/happiness/member"
+    static let happinessMemberRoutineURL = baseURL + "/api/v1/routines/happiness/member/routine/"
 }

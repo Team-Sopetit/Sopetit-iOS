@@ -41,7 +41,6 @@ final class DailyFooterView: UICollectionReusableView, UICollectionFooterViewReg
         setLayout()
         layoutSubviews()
         setAddTarget()
-        
     }
     
     required init?(coder: NSCoder) {

@@ -13,7 +13,8 @@ final class AddHappyRoutineViewController: UIViewController {
 
     // MARK: - Properties
     
-    private var happyRoutineList = HappyRoutine.dummy()
+    var subRoutineId: Int = 0
+    private var happinessRoutineEntity = HappinessRoutineEntity(title: "", name: "", nameColor: "", iconImageUrl: "", contentImageUrl: "", subRoutines: [])
     
     private enum Const {
         static let itemSize = CGSize(width: 280, height: 398)
@@ -44,9 +45,8 @@ final class AddHappyRoutineViewController: UIViewController {
         
         setUI()
         setDelegate()
-        setCarousel()
         setRegister()
-        setDataBind()
+        getHappinessRoutineAPI(routineId: subRoutineId)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,10 +76,10 @@ private extension AddHappyRoutineViewController {
     }
     
     func setCarousel() {
-        happyRoutineList.routines.insert(happyRoutineList.routines[happyRoutineList.routines.count-1], at: 0)
-        happyRoutineList.routines.insert(happyRoutineList.routines[happyRoutineList.routines.count-2], at: 0)
-        happyRoutineList.routines.append(happyRoutineList.routines[2])
-        happyRoutineList.routines.append(happyRoutineList.routines[3])
+        happinessRoutineEntity.subRoutines.insert(happinessRoutineEntity.subRoutines[happinessRoutineEntity.subRoutines.count-1], at: 0)
+        happinessRoutineEntity.subRoutines.insert(happinessRoutineEntity.subRoutines[happinessRoutineEntity.subRoutines.count-2], at: 0)
+        happinessRoutineEntity.subRoutines.append(happinessRoutineEntity.subRoutines[2])
+        happinessRoutineEntity.subRoutines.append(happinessRoutineEntity.subRoutines[3])
          
     }
     
@@ -88,25 +88,14 @@ private extension AddHappyRoutineViewController {
     }
     
     func setDataBind() {
-        let title = happyRoutineList.title
-        let image = happyRoutineList.iconImage
-        let subTitle = happyRoutineList.subTitle
-        let color = UIColor(hex: happyRoutineList.color)
-        addHappyRoutineView.setDataBind(title: title, image: image, subTitle: subTitle, color: color)
-    }
-}
-
-extension AddHappyRoutineViewController: BottomSheetButtonDelegate {
-    
-    func completeButtonTapped() {
-        
+        let title = happinessRoutineEntity.name
+        let image = happinessRoutineEntity.iconImageUrl
+        let subTitle = happinessRoutineEntity.title
+        let color = UIColor(hex: happinessRoutineEntity.nameColor)
+        addHappyRoutineView.setDataBind(title: title, imageUrl: image, subTitle: subTitle, color: color)
     }
     
-    func deleteButtonTapped() {
-        
-    }
-    
-    func addButtonTapped() {
+    func dismissVC() {
         self.dismiss(animated: false)
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let keyWindow = windowScene.windows.first else {
@@ -122,15 +111,28 @@ extension AddHappyRoutineViewController: BottomSheetButtonDelegate {
     }
 }
 
+extension AddHappyRoutineViewController: BottomSheetButtonDelegate {
+    
+    func completeButtonTapped() { }
+    
+    func deleteButtonTapped() { }
+    
+    func addButtonTapped() {
+        let index = addHappyRoutineView.pageControl.currentPage
+        subRoutineId = happinessRoutineEntity.subRoutines[index + 2].subRoutineId
+        postHappinessRoutineAPI(subRoutineId: subRoutineId)
+    }
+}
+
 extension AddHappyRoutineViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.happyRoutineList.routines.count
+        self.happinessRoutineEntity.subRoutines.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = HappyRoutineCardCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
-        cell.setDataBind(model: happyRoutineList.routines[indexPath.row])
+        cell.setDataBind(model: happinessRoutineEntity.subRoutines[indexPath.item], cardURL: happinessRoutineEntity.contentImageUrl)
         return cell
     }
 }
@@ -150,7 +152,7 @@ extension AddHappyRoutineViewController: UICollectionViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         addHappyRoutineView.pageControl.currentPage = Int((scrollView.contentOffset.x - Const.insetX) / (Const.itemSize.width + Const.itemSpacing)) - 1
-        let count = happyRoutineList.routines.count
+        let count = happinessRoutineEntity.subRoutines.count
         if scrollView.contentOffset.x-2 <= Const.itemSize.width + Const.itemSpacing - Const.insetX {
             scrollView.setContentOffset(.init(x: (Const.itemSize.width + Const.itemSpacing) * Double(count-3) - Const.insetX, y: scrollView.contentOffset.y), animated: false)
         }
@@ -172,5 +174,49 @@ extension AddHappyRoutineViewController: BackButtonProtocol {
     
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - Network
+
+private extension AddHappyRoutineViewController {
+    
+    func getHappinessRoutineAPI(routineId: Int) {
+        HappyRoutineService.shared.getHappinessRoutineAPI(routineId: routineId) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<HappinessRoutineEntity> {
+                    if let listData = data.data {
+                        self.happinessRoutineEntity = listData
+                    }
+                    self.happinessRoutineEntity.subRoutines = self.happinessRoutineEntity.subRoutines.sorted(by: { $0.subRoutineId < $1.subRoutineId })
+                    self.setCarousel()
+                    self.setDataBind()
+                    self.addHappyRoutineView.collectionView.reloadData()
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func postHappinessRoutineAPI(subRoutineId: Int) {
+        HappyRoutineService.shared.postHappinessMemberAPI(subRoutineId: subRoutineId) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<HappinessRoutineIdEntity> {
+                    if let result = data.data {
+                        print(result)
+                        self.dismissVC()
+                    }
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
     }
 }

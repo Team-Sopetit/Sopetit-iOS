@@ -91,7 +91,6 @@ extension HomeViewController {
 // MARK: - Network
 
 extension HomeViewController {
-    
     func getHomeAPI(socialAccessToken: String) {
         HomeService.shared.getHomeAPI(socialAccessToken: socialAccessToken) { networkResult in
             switch networkResult {

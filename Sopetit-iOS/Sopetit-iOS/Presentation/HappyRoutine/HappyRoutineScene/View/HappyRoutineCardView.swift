@@ -234,17 +234,17 @@ private extension HappyRoutineCardView {
 
 extension HappyRoutineCardView {
 
-    func setDataBind(model: HappyRoutineCard) {
-        self.cardImageView.image = model.cardImage
-        self.detailTitleLabel.text = model.detailTitle
+    func setDataBind(model: HappinessMemberEntity) {
+        self.cardImageView.kfSetImage(url: model.contentImageUrl)
+        self.detailTitleLabel.text = model.content
         self.detailTitleLabel.setLineSpacing(lineSpacing: 4)
         self.detailTitleLabel.textAlignment = .center
-        self.subtitleLabel.text = model.detailTitle
+        self.subtitleLabel.text = model.content
         self.subtitleLabel.setLineSpacing(lineSpacing: 4)
         self.subtitleLabel.textAlignment = .center
         self.detailContentLabel.text = model.detailContent
         self.detailContentLabel.setTextWithLineHeight(text: detailContentLabel.text, lineHeight: 14 * 1.5)
-        self.timeLabel.text = model.detailTime
-        self.placeLabel.text = model.detailPlace
+        self.timeLabel.text = model.timeTaken
+        self.placeLabel.text = model.place
     }
 }

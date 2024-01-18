@@ -49,12 +49,9 @@ extension AuthService {
         }
     
     func postLogoutAPI(
-        socialAccessToken: String,
         completion: @escaping (NetworkResult<Any>) -> Void) {
             let url = URLConstant.logoutURL
-            let header: HTTPHeaders = [
-                "Content-Type": "application/json",
-                "Authorization": "Bearer \(socialAccessToken)"]
+            let header: HTTPHeaders = NetworkConstant.hasTokenHeader
             let dataRequest = AF.request(url, method: .post, encoding: JSONEncoding.default, headers: header)
             dataRequest.responseData { response in
                 switch response.result {
@@ -72,12 +69,9 @@ extension AuthService {
         }
     
     func deleteResignAPI(
-        socialAccessToken: String,
         completion: @escaping (NetworkResult<Any>) -> Void) {
             let url = URLConstant.resignURL
-            let header: HTTPHeaders = [
-                "Content-Type": "application/json",
-                "Authorization": "Bearer \(socialAccessToken)"]
+            let header: HTTPHeaders = NetworkConstant.hasTokenHeader
             let dataRequest = AF.request(url, method: .delete, encoding: JSONEncoding.default, headers: header)
             
             dataRequest.responseData { response

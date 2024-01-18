@@ -31,7 +31,6 @@ final class SplashOneView: UIView {
     private let dollImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.Splash.splashBrownSleeping
-        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     

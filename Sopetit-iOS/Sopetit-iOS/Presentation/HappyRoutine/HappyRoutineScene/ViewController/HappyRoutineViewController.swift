@@ -13,8 +13,23 @@ final class HappyRoutineViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let happyRoutineData = HappyRoutineCard.dummy()
+    private var happinessMemberEntity: HappinessMemberEntity? = nil
     var isFromAddHappyBottom: Bool = false
+    
+    override var isEditing: Bool {
+        didSet {
+            switch isEditing {
+            case true:
+                self.happyRoutineNavigationBar.cancelButton.isHidden = false
+                self.happyRoutineNavigationBar.editButton.isHidden = true
+                self.happyRoutineView.doneButton.setRedDeleteButton(title: I18N.HappyRoutine.deleteRoutine)
+            case false:
+                    self.happyRoutineNavigationBar.cancelButton.isHidden = true
+                    self.happyRoutineNavigationBar.editButton.isHidden = false
+                    self.happyRoutineView.doneButton.setNormalButton()
+            }
+        }
+    }
     
     // MARK: - UI Components
     
@@ -23,29 +38,32 @@ final class HappyRoutineViewController: UIViewController {
     private let happyRoutineEmptyView = HappyRoutineEmptyView()
     private let happyCompleteBottom = BottomSheetViewController(bottomStyle: .happyCompleteBottom)
     private let happyDeleteBottom = BottomSheetViewController(bottomStyle: .happyDeleteBottom)
-    private let completeHappyRoutineView = CompleteHappyRoutineView()
     
     // MARK: - Life Cycles
     
     override func loadView() {
-        self.view = happyRoutineView
+        self.view = happyRoutineEmptyView
+        self.happyRoutineEmptyView.emptyHappyRoutineView.fadeIn()
+        self.happyRoutineEmptyView.bearDescriptionView.fadeIn()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUI()
         setTapGesture()
-        setUserCardData()
         setDelegate()
         setAddTarget()
-        setNavigationBar()
         setAlertView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getHappinessMemberAPI()
+        self.happyRoutineView.happyRoutineCardView.fadeIn()
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = false
+        setNavigationBar()
     }
 }
 
@@ -71,7 +89,9 @@ private extension HappyRoutineViewController {
     }
     
     func setUserCardData() {
-        happyRoutineView.setDataBind(model: happyRoutineData)
+        if let happinessMemberEntity = self.happinessMemberEntity {
+            happyRoutineView.setDataBind(model: happinessMemberEntity)
+        }
     }
     
     func setDelegate() {
@@ -91,24 +111,18 @@ private extension HappyRoutineViewController {
         case .red:
             self.present(happyDeleteBottom, animated: false)
         }
-        
     }
     
     func setNavigationBar() {
+        self.isEditing = false
         happyRoutineNavigationBar.cancelButton.isHidden = true
         happyRoutineNavigationBar.cancelButtonAction = {
-            self.happyRoutineNavigationBar.cancelButton.isHidden = true
-            self.happyRoutineNavigationBar.editButton.isHidden = false
-            self.isEditing.toggle()
-            self.happyRoutineView.doneButton.setNormalButton()
+            self.isEditing = false
         }
         
         happyRoutineNavigationBar.isEditButtonIncluded = true
         happyRoutineNavigationBar.editButtonAction = {
-            self.happyRoutineNavigationBar.cancelButton.isHidden = false
-            self.happyRoutineNavigationBar.editButton.isHidden = true
-            self.isEditing.toggle()
-            self.happyRoutineView.doneButton.setRedDeleteButton(title: I18N.HappyRoutine.deleteRoutine)
+            self.isEditing = true
         }
     }
     
@@ -125,6 +139,8 @@ private extension HappyRoutineViewController {
 extension HappyRoutineViewController: BottomSheetButtonDelegate {
     
     func completeButtonTapped() {
+        guard let routineId = happinessMemberEntity?.routineId else { return }
+        patchHappinessMemberRoutine(routineId: routineId)
         self.viewWillLayoutSubviews()
         self.dismiss(animated: false)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
@@ -142,13 +158,69 @@ extension HappyRoutineViewController: BottomSheetButtonDelegate {
     }
     
     func deleteButtonTapped() {
+        guard let routineId = happinessMemberEntity?.routineId else { return }
+        deleteHappinessMemberRoutine(routineId: routineId)
         view = happyRoutineEmptyView
         happyRoutineEmptyView.fromRoutineView = true
         self.viewWillLayoutSubviews()
         self.dismiss(animated: false)
     }
     
-    func addButtonTapped() {
-        
+    func addButtonTapped() { }
+}
+
+// MARK: - Network
+
+private extension HappyRoutineViewController {
+    
+    func getHappinessMemberAPI() {
+        HappyRoutineService.shared.getHappinessMemberAPI { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<HappinessMemberEntity> {
+                    if let listData = data.data {
+                        self.happinessMemberEntity = listData
+                    }
+                    if self.happinessMemberEntity != nil {
+                        self.view = self.happyRoutineView
+                        self.view.layoutSubviews()
+                        self.happyRoutineView.happyRoutineCardView.fadeIn()
+                        self.setUserCardData()
+                    }
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func patchHappinessMemberRoutine(routineId: Int) {
+        HappyRoutineService.shared.patchHappinessMemberRoutineAPI(routineId: routineId) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                print(data)
+                self.happinessMemberEntity = nil
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func deleteHappinessMemberRoutine(routineId: Int) {
+        HappyRoutineService.shared.deleteHappinessMemberRoutineAPI(routineId: routineId) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                print(data)
+                self.happinessMemberEntity = nil
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
     }
 }

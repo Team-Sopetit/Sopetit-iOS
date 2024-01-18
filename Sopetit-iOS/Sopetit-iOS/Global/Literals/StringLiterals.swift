@@ -57,7 +57,7 @@ enum I18N {
     
     enum HappyRoutine {
         static let happyRoutineTitle = "행복 루틴"
-        static let bearBubble = "행복루틴은 매일 조금씩 너에 대해\n알아갈 수 있는 특별한 루틴이야!"
+        static let bearBubble = "행복 루틴은 행복한 나를 매일\n조금씩 만들어 가는 특별한 루틴이야"
         static let addRoutine = "진행 중인 행복루틴이 없어요.\n루틴을 추가할까요?"
         static let addHappyRoutineTitle = "행복 루틴 추가"
         static let addHappyRoutineButton = "이 루틴을 추가할래"

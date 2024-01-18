@@ -16,10 +16,9 @@ final class DailyViewController: UIViewController {
     
     // MARK: - Properties
     
-    var status: Int = 0
     var isFromAddDailyBottom: Bool = false
     private var shouldShowFooterView: Bool = true
-    var routineList: DailyRoutineEntity = .init(routines: [.init(routineID: 0, content: "", iconImageURL: "", achieveCount: 0, isAchieve: true)])
+    var routineList: DailyRoutineEntity = .init(routines: [])
     
     override var isEditing: Bool {
         didSet {
@@ -69,6 +68,8 @@ final class DailyViewController: UIViewController {
         super.viewWillAppear(animated)
         setupCustomNavigationBar()
         self.tabBarController?.tabBar.isHidden = false
+        
+        self.deleteButton.isHidden = true
     }
 }
 
@@ -182,7 +183,7 @@ extension DailyViewController: DailyAddDelegate {
 
 extension DailyViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return shouldShowFooterView ? CGSize(width: collectionView.bounds.width, height: 51) : CGSize.zero
+        return shouldShowFooterView ? CGSize(width: collectionView.bounds.width, height: 136) : CGSize.zero
     }
 }
 
@@ -201,7 +202,7 @@ extension DailyViewController: UICollectionViewDataSource {
         let routine = routineList.routines[indexPath.item]
         cell.setDatabind(model: routine)
         cell.delegate = self
-        cell.tag = indexPath.item
+        cell.tag = routine.routineID
         return cell
     }
     
@@ -223,8 +224,16 @@ extension DailyViewController: UICollectionViewDataSource {
 extension DailyViewController: BottomSheetButtonDelegate {
     
     func completeButtonTapped() {
-        let cell = collectionview.cellForItem(at: [0, status]) as? DailyRoutineCollectionViewCell
-        cell?.achieveButton.isEnabled = false
+        
+        for cell in self.collectionview.visibleCells {
+            if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                if dailyCell.achieveButton.isEnabled {
+                    patchRoutineAPI(routineId: dailyCell.tag)
+                }
+            }
+            self.collectionview.reloadData()
+        }
+        
         self.dismiss(animated: false)
         let vc = CompleteDailyRoutineViewController()
         vc.modalPresentationStyle = .fullScreen
@@ -242,6 +251,16 @@ extension DailyViewController: BottomSheetButtonDelegate {
             }
         }
         self.deleteAlertView.isHidden = false
+        
+        for cell in self.collectionview.visibleCells {
+            if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                if dailyCell.checkBox.isSelected {
+                    routineList.routines = routineList.routines.filter { $0.routineID != dailyCell.tag }
+                    deleteRoutineListAPI(routineId: dailyCell.tag)
+                }
+            }
+            self.collectionview.reloadData()
+        }
         
         let count = DailyRoutineCollectionViewCell.sharedVariable
         let title = "데일리 루틴을 \(count)개 삭제했어요"
@@ -261,7 +280,6 @@ extension DailyViewController: BottomSheetButtonDelegate {
 
 extension DailyViewController: PresentDelegate {
     func buttonTapped(in cell: UICollectionViewCell) {
-        self.status = cell.tag
         self.present(dailyCompleteBottom, animated: false)
     }
 }
@@ -328,6 +346,40 @@ extension DailyViewController {
     }
 }
 
+extension DailyViewController {
+    func deleteRoutineListAPI(routineId: Int) {
+        DailyRoutineService.shared.deleteRoutineListAPI(routineId: routineId) { networkResult in
+            switch networkResult {
+            case .success:
+                self.collectionview.reloadData()
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+}
+
+extension DailyViewController {
+    func patchRoutineAPI(routineId: Int) {
+        DailyRoutineService.shared.patchRoutineAPI(routineId: routineId) { _ in
+            for cell in self.collectionview.visibleCells {
+                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                    if dailyCell.tag == routineId {
+                        if let index = self.routineList.routines.firstIndex(where: { $0.routineID == routineId }) {
+                            self.routineList.routines[index].isAchieve = true
+                        }
+                    }
+                }
+            }
+            self.collectionview.reloadData()
+        }
+    }
+}
+
+// MARK: - Extension
+
 extension DailyViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
@@ -336,6 +388,17 @@ extension DailyViewController: UICollectionViewDelegateFlowLayout {
         cell.routineLabel.text = data
         cell.routineLabel.preferredMaxLayoutWidth = collectionView.bounds.width - 164
         cell.layoutIfNeeded()
+        
+//        let paragraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.lineSpacing = 4
+//        let attributedString = NSAttributedString(string: data, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+//        cell.routineLabel.attributedText = attributedString
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.5
+        let attributedString = NSAttributedString(string: data, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        cell.routineLabel.attributedText = attributedString
+        cell.routineLabel.sizeToFit()
 
         let cellHeight = cell.routineLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         let itemSizeWidth = collectionView.bounds.width - 40

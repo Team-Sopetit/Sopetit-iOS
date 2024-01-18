@@ -37,6 +37,11 @@ extension UserManager {
         self.appleUserIdentifier = userId
     }
     
+    func logout() {
+        self.accessToken = nil
+        self.refreshToken = nil
+    }
+    
     func clearAll() {
         self.accessToken = nil
         self.refreshToken = nil

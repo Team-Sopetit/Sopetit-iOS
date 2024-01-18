@@ -32,7 +32,6 @@ final class DailyView: UIView {
         setHierarchy()
         setLayout()
         setRegisterCell()
-        
     }
     
     @available(*, unavailable)

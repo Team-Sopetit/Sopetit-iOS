@@ -169,7 +169,6 @@ extension AddDailyRoutineViewController: UICollectionViewDelegateFlowLayout {
         if collectionView == addDailyRoutineView.dailyRoutineThemeView.collectionView {
             collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             selectedIndex = indexPath.row
-            print(selectedIndex)
             addDailyRoutineView.collectionView.reloadData()
         } else if collectionView == addDailyRoutineView.collectionView {
             print(indexPath.row)

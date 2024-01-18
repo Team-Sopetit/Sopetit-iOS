@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIView {
+    
     func addSubviews(_ views: UIView...) {
         views.forEach { self.addSubview($0) }
     }
@@ -16,5 +17,12 @@ extension UIView {
         clipsToBounds = true
         layer.cornerRadius = cornerRadius
         layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
+    }
+    
+    func fadeIn(duration: TimeInterval = 0.3) {
+        self.alpha = 0
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 1.0
+        })
     }
 }

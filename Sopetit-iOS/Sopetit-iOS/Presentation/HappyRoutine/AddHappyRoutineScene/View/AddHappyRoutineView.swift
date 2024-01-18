@@ -95,7 +95,7 @@ final class AddHappyRoutineView: UIView {
         return pageControl
     }()
     
-    private let addButton: UIButton = {
+    let addButton: UIButton = {
         let button = UIButton()
         button.setTitle(I18N.HappyRoutine.addHappyRoutineButton, for: .normal)
         button.setTitleColor(.Gray000, for: .normal)
@@ -200,9 +200,9 @@ private extension AddHappyRoutineView {
 
 extension AddHappyRoutineView {
     
-    func setDataBind(title: String, image: UIImage, subTitle: String, color: UIColor) {
+    func setDataBind(title: String, imageUrl: String, subTitle: String, color: UIColor) {
         titleLabel.text = title
-        blingImageView.image = image
+        blingImageView.kfSetImage(url: imageUrl)
         subTitleLabel.text = subTitle
         titleLabel.textColor = color
     }
