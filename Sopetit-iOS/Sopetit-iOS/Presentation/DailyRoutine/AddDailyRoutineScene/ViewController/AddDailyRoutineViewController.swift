@@ -85,6 +85,10 @@ private extension AddDailyRoutineViewController {
     
     @objc
     func buttonTapped() {
+        if let iconURL = URL(string: self.dailyThemesEntity.themes[selectedIndex].iconImageUrl) {
+            self.dailyAddBottom.imageView.downloadedsvg(from: iconURL)
+        }
+        self.dailyAddBottom.subTitleLabel.text = "'\(dailyRoutinesEntity.routines[addDailyRoutineView.pageControl.currentPage + 2].content)'"
         self.present(dailyAddBottom, animated: false)
     }
     

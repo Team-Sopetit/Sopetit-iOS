@@ -14,6 +14,7 @@ final class AddHappyRoutineViewController: UIViewController {
     // MARK: - Properties
     
     var subRoutineId: Int = 0
+    var imageURL: String = ""
     private var happinessRoutineEntity = HappinessRoutineEntity(title: "", name: "", nameColor: "", iconImageUrl: "", contentImageUrl: "", subRoutines: [])
     
     private enum Const {
@@ -166,6 +167,7 @@ extension AddHappyRoutineViewController: UICollectionViewDelegate {
 extension AddHappyRoutineViewController: HappyRoutineProtocol {
     
     func tapAddButton() {
+        self.happyAddBottom.imageView.kfSetImage(url: self.imageURL)
         self.present(happyAddBottom, animated: false)
     }
 }

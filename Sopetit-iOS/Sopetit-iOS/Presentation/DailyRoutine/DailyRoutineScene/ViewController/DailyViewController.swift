@@ -285,10 +285,13 @@ extension DailyViewController: BottomSheetButtonDelegate {
 }
 
 extension DailyViewController: PresentDelegate {
+    
     func buttonTapped(in cell: DailyRoutineCollectionViewCell) {
+        if let iconURL = URL(string: routineList.routines[cell.index].iconImageURL) {
+            self.dailyCompleteBottom.imageView.downloadedsvg(from: iconURL)
+        }
         self.present(dailyCompleteBottom, animated: false)
         achieveIndex = cell.index
-        
     }
 }
 

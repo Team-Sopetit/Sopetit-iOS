@@ -127,6 +127,7 @@ extension SelectHappyCategoryViewController: UICollectionViewDelegateFlowLayout 
         } else if collectionView == selectHappyCategoryView.categoryCollectionView {
             let vc = AddHappyRoutineViewController()
             let routineId = happinessEntity.routines[indexPath.item].routineId
+            vc.imageURL = happinessEntity.routines[indexPath.item].iconImageUrl
             vc.subRoutineId = routineId
             self.navigationController?.pushViewController(vc, animated: true)
         }
