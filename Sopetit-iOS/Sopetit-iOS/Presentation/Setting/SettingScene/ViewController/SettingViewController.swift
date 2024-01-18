@@ -101,18 +101,20 @@ extension SettingViewController: UITableViewDelegate {
         case [3, 0]:
             presentLogoutBottom()
         case [3, 1]:
-            pushDropoutView()
+            pushWithdrawView()
         default:
             break
         }
     }
 
     private func presentLogoutBottom() {
-        present(logoutBottom, animated: false, completion: nil)
+        self.present(logoutBottom, animated: true, completion: nil)
     }
     
-    private func pushDropoutView() {
-        self.navigationController?.pushViewController(WithdrawViewController(), animated: true)
+    private func pushWithdrawView() {
+        let nav = WithdrawViewController()
+        nav.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(nav, animated: true)
     }
 }
 
@@ -193,6 +195,7 @@ extension SettingViewController {
         customNaviBar.isTitleViewIncluded = true
         customNaviBar.isTitleLabelIncluded = "설정"
         customNaviBar.backgroundColor = .clear
+        customNaviBar.delegate = self
     }
     
     func postLogoutAPI() {
@@ -214,6 +217,13 @@ extension SettingViewController {
                 break
             }
         }
+    }
+}
+
+extension SettingViewController: BackButtonProtocol {
+    
+    func tapBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

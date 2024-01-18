@@ -9,12 +9,14 @@ import UIKit
 
 import SnapKit
 import Lottie
+import SafariServices
 
 final class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
     var homeEntity = HomeEntity(name: "", dollType: "", frameImageURL: "", dailyCottonCount: 0, happinessCottonCount: 0, conversations: [])
+    private var homeCottonEntity = HomeCottonEntity(cottonCount: 0)
     
     // MARK: - UI Components
     
@@ -29,8 +31,10 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(UserManager.shared.getAccessToken)
+        
+        setUI()
         setDelegate()
+        setAddTarget()
         sleep(1)
         getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
     }
@@ -39,6 +43,12 @@ final class HomeViewController: UIViewController {
 // MARK: - Extensions
 
 extension HomeViewController {
+    
+    func setUI() {
+        print("⭐️⭐️⭐️")
+        print(UserManager.shared.getAccessToken)
+        self.navigationController?.navigationBar.isHidden = true
+    }
     
     func setDelegate() {
         collectionView.delegate = self
@@ -50,7 +60,30 @@ extension HomeViewController {
         let string = model.name
         let nameWidth = string.size(withAttributes: [NSAttributedString.Key.font: UIFont.fontGuide(.bubble16)]).width
         homeView.dollNameLabel.snp.updateConstraints {
-                $0.width.equalTo(nameWidth + 26)
+            $0.width.equalTo(nameWidth + 26)
+        }
+        homeView.setDoll(dollType: model.dollType)
+        homeView.layoutIfNeeded()
+    }
+    
+    func setAddTarget() {
+        homeView.moneyButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        homeView.settingButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    func buttonTapped(_ sender: UIButton) {
+        switch sender {
+        case homeView.moneyButton:
+            if let url = URL(string: I18N.Home.moneyNotion) {
+                let safariViewController = SFSafariViewController(url: url)
+                present(safariViewController, animated: true, completion: nil)
+            }
+        case homeView.settingButton:
+            let nav = SettingViewController()
+            self.navigationController?.pushViewController(nav, animated: true)
+        default:
+            break
         }
     }
 }
@@ -59,27 +92,50 @@ extension HomeViewController {
 
 extension HomeViewController {
     func getHomeAPI(socialAccessToken: String) {
-            HomeService.shared.getHomeAPI(socialAccessToken: socialAccessToken) { networkResult in
-                switch networkResult {
-                case .success(let data):
-                    if let data = data as? GenericResponse<HomeEntity> {
-                        if let listData = data.data {
-                            self.homeEntity = listData
-                        }
-                        self.collectionView.reloadData()
-                        self.setDataBind(model: self.homeEntity)
-                        self.homeView.setDoll(dollType: self.homeEntity.dollType)
-                        self.homeView.refreshBubbleLabel()
-                        self.homeView.bubbleLabel.bringSubviewToFront(self.homeView)
-                        self.collectionView.reloadData()
+        HomeService.shared.getHomeAPI(socialAccessToken: socialAccessToken) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<HomeEntity> {
+                    if let listData = data.data {
+                        self.homeEntity = listData
                     }
-                case .requestErr, .serverErr:
-                    break
-                default:
-                    break
+                    self.setDataBind(model: self.homeEntity)
+                    self.collectionView.reloadData()
+                    self.homeView.setNeedsDisplay()
                 }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
             }
         }
+    }
+    
+    func patchCottonAPI(cottonType: String, indexPath: IndexPath) {
+        HomeService.shared.patchCottonAPI(cottonType: cottonType) { networkResult in
+            print("❤️❤️❤️❤️")
+            print(networkResult)
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<HomeCottonEntity> {
+                    if let listData = data.data {
+                        self.homeCottonEntity = listData
+                    }
+                    DispatchQueue.main.async {
+                        if let cell = self.collectionView.cellForItem(at: indexPath) as? ActionCollectionViewCell {
+                            cell.numberLabel.text = "\(self.homeCottonEntity.cottonCount)개"
+                            cell.setNeedsLayout()
+                        }
+                    }
+                    self.collectionView.reloadData()
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
 }
 
 // MARK: - CollectionView
@@ -89,34 +145,40 @@ extension HomeViewController: UICollectionViewDelegate {
         switch indexPath.item {
         case 0:
             if !(homeView.isAnimate) {
-                self.homeView.isAnimate = true
-                homeView.lottieEatingDaily.isHidden = false
-                homeView.lottieHello.isHidden = true
-                homeView.lottieEatingHappy.isHidden = true
-                homeView.lottieEatingDaily.loopMode = .playOnce
-                homeView.lottieEatingDaily.play()
-                homeView.bubbleLabel.text = "냠냠~"
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
-                    self.homeView.lottieEatingDaily.isHidden = true
-                    self.homeView.lottieHello.isHidden = false
-                    self.homeView.isAnimate = false
-                    self.homeView.refreshBubbleLabel()
+                if homeEntity.dailyCottonCount > 0 {
+                    self.homeView.isAnimate = true
+                    patchCottonAPI(cottonType: "DAILY", indexPath: indexPath)
+                    homeView.lottieEatingDaily.isHidden = false
+                    homeView.lottieHello.isHidden = true
+                    homeView.lottieEatingHappy.isHidden = true
+                    homeView.lottieEatingDaily.loopMode = .playOnce
+                    homeView.lottieEatingDaily.play()
+                    homeView.bubbleLabel.text = "냠냠~"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+                        self.homeView.lottieEatingDaily.isHidden = true
+                        self.homeView.lottieHello.isHidden = false
+                        self.homeView.isAnimate = false
+                        self.homeView.refreshBubbleLabel()
+                    }
                 }
             }
         case 1:
             if !(homeView.isAnimate) {
-                self.homeView.isAnimate = true
-                homeView.lottieEatingHappy.isHidden = false
-                homeView.lottieHello.isHidden = true
-                homeView.lottieEatingDaily.isHidden = true
-                homeView.lottieEatingHappy.loopMode = .playOnce
-                homeView.lottieEatingHappy.play()
-                homeView.bubbleLabel.text = "냠냠~ 맛 개깔@롱지네"
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
-                    self.homeView.lottieEatingDaily.isHidden = true
-                    self.homeView.lottieHello.isHidden = false
-                    self.homeView.isAnimate = false
-                    self.homeView.refreshBubbleLabel()
+                if homeEntity.happinessCottonCount > 0 {
+                    self.homeView.isAnimate = true
+                    patchCottonAPI(cottonType: "HAPPINESS", indexPath: indexPath)
+                    homeView.lottieEatingHappy.isHidden = false
+                    homeView.lottieHello.isHidden = true
+                    homeView.lottieEatingDaily.isHidden = true
+                    homeView.lottieEatingHappy.loopMode = .playOnce
+                    homeView.lottieEatingHappy.play()
+                    homeView.bubbleLabel.text = "냠냠~ 맛 개깔@롱지네"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+                        self.homeView.lottieEatingDaily.isHidden = true
+                        self.homeView.lottieHello.isHidden = false
+                        self.homeView.isAnimate = false
+                        self.homeView.refreshBubbleLabel()
+                    }
                 }
             }
         default:
@@ -134,6 +196,7 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = ActionCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
         cell.tag = indexPath.item
+        cell.isUserInteractionEnabled = true
         cell.setDataBind(model: homeEntity)
         return cell
     }

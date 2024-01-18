@@ -52,7 +52,7 @@ final class RoutineChoiceView: UIView {
         collectionView.isScrollEnabled = true
         collectionView.allowsMultipleSelection = true
         collectionView.backgroundColor = .SoftieBack
-        collectionView.contentInset = UIEdgeInsets(top: 30, left: 22, bottom: 30, right: 22)
+        collectionView.contentInset = UIEdgeInsets(top: 30, left: 20, bottom: 30, right: 20)
         return collectionView
     }()
     

@@ -94,6 +94,7 @@ enum I18N {
     enum Home {
         static let actionTitle1 = "솜뭉치 주기"
         static let actionTitle2 = "행복 솜뭉치 주기"
+        static let moneyNotion = "https://harvest-colby-9d6.notion.site/9e28254bca2b469d84ee5fc95b7469cb"
     }
     
     enum TabBar {

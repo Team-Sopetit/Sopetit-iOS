@@ -34,13 +34,13 @@ final class HomeView: UIView {
         return imageView
     }()
     
-    private lazy var moneyButton: UIButton = {
+    lazy var moneyButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiterals.Home.icHomeMoney, for: .normal)
         return button
     }()
     
-    private lazy var settingButton: UIButton = {
+    lazy var settingButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiterals.Home.icHomeSettings, for: .normal)
         return button
