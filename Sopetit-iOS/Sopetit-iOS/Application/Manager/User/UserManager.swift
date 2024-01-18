@@ -46,5 +46,6 @@ extension UserManager {
         self.accessToken = nil
         self.refreshToken = nil
         self.appleUserIdentifier = nil
+        self.postMember = false
     }
 }
