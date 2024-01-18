@@ -57,16 +57,24 @@ extension WithdrawViewController {
     }
     
     func setAddTarget() {
-        withdrawView.rightButton.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
+        withdrawView.leftButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        withdrawView.rightButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     @objc
-    func rightButtonTapped() {
-        deleteResignAPI()
+    func buttonTapped(_ sender: UIButton) {
+        switch sender {
+        case withdrawView.leftButton:
+            self.navigationController?.popViewController(animated: true)
+        case withdrawView.rightButton:
+            deleteResignAPI()
+        default:
+            break
+        }
     }
     
     func deleteResignAPI() {
-        AuthService.shared.deleteResignAPI() { networkResult in
+        AuthService.shared.deleteResignAPI { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<ResignEntity> {
@@ -79,7 +87,7 @@ extension WithdrawViewController {
                     keyWindow.rootViewController = UINavigationController(rootViewController: nav)
                 }
             case .requestErr, .serverErr:
-                print("Error 발생")
+                break
             default:
                 break
             }

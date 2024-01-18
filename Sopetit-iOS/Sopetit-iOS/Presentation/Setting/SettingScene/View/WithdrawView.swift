@@ -10,8 +10,6 @@ import UIKit
 import SnapKit
 
 final class WithdrawView: UIView {
-
-    // MARK: - Properties
     
     // MARK: - UI Components
     let headLabel: UILabel = {
@@ -31,7 +29,7 @@ final class WithdrawView: UIView {
         return label
     }()
     
-    let leftButton: UIButton = {
+    lazy var leftButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .Gray100
         button.setTitle("더 써볼래", for: .normal)
@@ -42,7 +40,7 @@ final class WithdrawView: UIView {
         return button
     }()
     
-    let rightButton: UIButton = {
+    lazy var rightButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .SoftieRed
         button.setTitle("탈퇴할래", for: .normal)
