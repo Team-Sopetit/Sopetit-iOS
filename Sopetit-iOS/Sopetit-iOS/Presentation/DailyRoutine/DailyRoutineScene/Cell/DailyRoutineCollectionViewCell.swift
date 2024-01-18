@@ -75,7 +75,6 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
     
     let labelBox: UIView = {
         let view = UIView()
-        view.backgroundColor = .clear
         return view
     }()
     
@@ -112,7 +111,6 @@ extension DailyRoutineCollectionViewCell {
     }
     
     func setLayout() {
-        
         labelBox.snp.makeConstraints {
             $0.leading.equalTo(imageView.snp.trailing).offset(12)
             $0.top.equalToSuperview().inset(23)
@@ -128,18 +126,19 @@ extension DailyRoutineCollectionViewCell {
         
         flagImg.snp.makeConstraints {
             $0.leading.equalToSuperview()
-            $0.top.equalTo(routineLabel.snp.bottom).offset(8)
+            $0.centerY.equalTo(dateLabel.snp.centerY)
         }
         
         dateLabel.snp.makeConstraints {
             $0.leading.equalTo(flagImg.snp.trailing).offset(4)
-            $0.top.equalTo(routineLabel.snp.bottom).offset(8)
+            $0.bottom.equalToSuperview()
         }
         
         routineLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalTo(flagImg)
             $0.trailing.equalToSuperview()
+            $0.bottom.equalTo(flagImg.snp.top).offset(-5)
         }
         
         achieveButton.snp.makeConstraints {
@@ -156,7 +155,7 @@ extension DailyRoutineCollectionViewCell {
     }
     
     func setDatabind(model: DailyRoutines) {
-        self.dateLabel.text = "\(model.achieveCount)일 달성 중"
+        self.dateLabel.text = "\(model.achieveCount)번째 달성 중"
         self.routineLabel.text = model.content
         if let iconURL = URL(string: model.iconImageURL) {
             self.imageView.downloadedsvg(from: iconURL)

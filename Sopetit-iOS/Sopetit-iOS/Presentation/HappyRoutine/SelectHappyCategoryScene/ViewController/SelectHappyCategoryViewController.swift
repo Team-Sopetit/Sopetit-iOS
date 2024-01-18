@@ -140,6 +140,8 @@ extension SelectHappyCategoryViewController: BackButtonProtocol {
     }
 }
 
+// MARK: - Network
+
 private extension SelectHappyCategoryViewController {
     
     func gethappinessThemesAPI() {

@@ -67,8 +67,8 @@ extension DailyRoutineService {
             }
         }
     
-    func deleteRoutineListAPI(routineId: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
-        let url = URLConstant.deleteURL + "\(routineId)"
+    func deleteRoutineListAPI(routineIdList: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        let url = URLConstant.deleteURL + "?routines=\(routineIdList)"
         let header: HTTPHeaders = NetworkConstant.hasTokenHeader
         let dataRequest = AF.request(url,
                                      method: .delete,

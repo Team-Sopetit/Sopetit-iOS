@@ -11,9 +11,9 @@ final class AddDailyRoutineViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var dailyThemesEntity = DailyThemesEntity(themes: [DailyTheme(themeId: 0, name: "", iconImageUrl: "", backgroundImageUrl: "")])
+    private var dailyThemesEntity = DailyThemesEntity(themes: [])
     private var themeId = 0
-    private var dailyRoutinesEntity = DailyRoutinesEntity(routines: [DailyRoutine(routineId: 0, content: "")])
+    private var dailyRoutinesEntity = DailyRoutinesEntity(routines: [])
     private var selectedIndex = 0
     private var routineId: Int = 0
     
@@ -101,17 +101,8 @@ private extension AddDailyRoutineViewController {
         dailyRoutinesEntity.routines.append(dailyRoutinesEntity.routines[2])
         dailyRoutinesEntity.routines.append(dailyRoutinesEntity.routines[3])
     }
-}
-
-extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
-    func completeButtonTapped() { }
     
-    func deleteButtonTapped() { }
-    
-    func addButtonTapped() {
-        let index = addDailyRoutineView.pageControl.currentPage
-        routineId = dailyRoutinesEntity.routines[index + 2].routineId
-        postDailyMember(routineId: routineId)
+    func setDismiss() {
         self.dismiss(animated: false)
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let keyWindow = windowScene.windows.first else {
@@ -124,6 +115,21 @@ extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
             dailyViewController.isFromAddDailyBottom = true
         }
         keyWindow.rootViewController = UINavigationController(rootViewController: nav)
+    }
+}
+
+extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
+    func completeButtonTapped() { }
+    
+    func deleteButtonTapped() { }
+    
+    func addButtonTapped() {
+        let index = addDailyRoutineView.pageControl.currentPage
+        if dailyRoutinesEntity.routines.count == 0 {
+            return
+        }
+        routineId = dailyRoutinesEntity.routines[index + 2].routineId
+        postDailyMember(routineId: routineId)
     }
 }
 
@@ -265,7 +271,10 @@ extension AddDailyRoutineViewController {
                         print(result)
                     }
                 }
+                self.setDismiss()
             case .requestErr, .serverErr:
+                print("????")
+                self.dismiss(animated: true)
                 break
             default:
                 break

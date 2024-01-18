@@ -13,12 +13,21 @@ final class DailyView: UIView {
     // MARK: - UI Components
 
     lazy var collectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
-        flowLayout.footerReferenceSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
-        flowLayout.minimumLineSpacing = 12
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
-        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        
+        let layout = UICollectionViewFlowLayout()
+//        let flowLayout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
+        layout.footerReferenceSize = CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
+//        flowLayout.minimumLineSpacing = 12
+        //        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
+        //        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        layout.estimatedItemSize =  CGSize(width: (SizeLiterals.Screen.screenWidth - 40), height: 136)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
+
+//        layout.minimumInteritemSpacing = 12
+        layout.minimumLineSpacing = 12
+        view.contentInsetAdjustmentBehavior = .always
         view.backgroundColor = .SoftieBack
         return view
     }()
