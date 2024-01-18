@@ -42,6 +42,13 @@ extension StoryTellingViewController {
         firstView.nextButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         secondView.nextButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         thirdView.nextButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        let tapGestureOne = UITapGestureRecognizer(target: self, action: #selector(firstViewTapped))
+        let tapGestureTwo = UITapGestureRecognizer(target: self, action: #selector(secondViewTapped))
+        let tapGestureThird = UITapGestureRecognizer(target: self, action: #selector(thirdViewTapped))
+        firstView.addGestureRecognizer(tapGestureOne)
+        secondView.addGestureRecognizer(tapGestureTwo)
+        thirdView.addGestureRecognizer(tapGestureThird)
     }
     
     @objc
@@ -59,5 +66,23 @@ extension StoryTellingViewController {
         default:
             break
         }
+    }
+    
+    @objc
+    func firstViewTapped() {
+        self.view = secondView
+        self.viewWillLayoutSubviews()
+    }
+
+    @objc
+    func secondViewTapped() {
+        self.view = thirdView
+        self.viewWillLayoutSubviews()
+    }
+    
+    @objc
+    func thirdViewTapped() {
+        let nav = DollChoiceViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
     }
 }
