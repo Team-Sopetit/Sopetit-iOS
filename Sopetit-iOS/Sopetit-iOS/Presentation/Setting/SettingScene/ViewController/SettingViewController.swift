@@ -228,7 +228,7 @@ extension SettingViewController {
                         return
                     }
                     UserManager.shared.logout()
-                    let nav = SplashViewController()
+                    let nav = LoginViewController()
                     keyWindow.rootViewController = UINavigationController(rootViewController: nav)
                 }
             case .requestErr, .serverErr:

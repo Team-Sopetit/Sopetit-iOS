@@ -83,7 +83,7 @@ extension WithdrawViewController {
                         return
                     }
                     UserManager.shared.clearAll()
-                    let nav = SplashViewController()
+                    let nav = LoginViewController()
                     keyWindow.rootViewController = UINavigationController(rootViewController: nav)
                 }
             case .requestErr, .serverErr:
