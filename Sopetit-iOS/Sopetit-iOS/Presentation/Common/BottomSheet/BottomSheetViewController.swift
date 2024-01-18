@@ -55,7 +55,7 @@ final class BottomSheetViewController: UIViewController {
         return label
     }()
     
-    private let subTitleLabel: UILabel = {
+    let subTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .fontGuide(.body4)
         label.textColor = .Gray700

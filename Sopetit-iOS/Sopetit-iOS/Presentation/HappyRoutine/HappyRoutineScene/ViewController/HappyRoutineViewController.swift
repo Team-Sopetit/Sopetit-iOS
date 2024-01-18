@@ -108,6 +108,7 @@ private extension HappyRoutineViewController {
     func tapDoneButton() {
         switch happyRoutineView.doneButton.type {
         case .normal:
+            self.happyCompleteBottom.imageView.kfSetImage(url: self.happinessMemberEntity?.iconImageUrl)
             self.present(happyCompleteBottom, animated: false)
         case .red:
             self.present(happyDeleteBottom, animated: false)
