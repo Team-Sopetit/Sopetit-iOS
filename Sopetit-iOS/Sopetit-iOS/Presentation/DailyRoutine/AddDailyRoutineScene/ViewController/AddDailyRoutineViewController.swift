@@ -13,7 +13,7 @@ final class AddDailyRoutineViewController: UIViewController {
     
     private var dailyThemesEntity = DailyThemesEntity(themes: [])
     private var themeId = 0
-    private var dailyRoutinesEntity = DailyRoutinesEntity(routines: [])
+    private var dailyRoutinesEntity = DailyRoutinesEntity(backgroundImageUrl: "", routines: [])
     private var selectedIndex = 0
     private var routineId: Int = 0
     

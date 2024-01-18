@@ -8,6 +8,7 @@
 import Foundation
 
 struct DailyRoutinesEntity: Codable {
+    let backgroundImageUrl: String
     var routines: [DailyRoutine]
 }
 

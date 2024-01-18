@@ -42,7 +42,7 @@ extension AddDailyRoutineService {
     }
     
     func getDailyRoutinesAPI(themes: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
-        let url = URLConstant.routinesDailyURL + "?themes=\(themes)"
+        let url = URLConstant.dailyThemeRoutineURL + "\(themes)"
         let header: HTTPHeaders = NetworkConstant.hasTokenHeader
         let dataRequest = AF.request(url,
                                      method: .get,
@@ -65,7 +65,7 @@ extension AddDailyRoutineService {
     }
     
     func postDailyMember(routineId: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
-        let url = URLConstant.routinesDailyMemberURL
+        let url = URLConstant.dailyMemberURL
         let header: HTTPHeaders = NetworkConstant.hasTokenHeader
         let body: Parameters = [ "routineId": routineId ]
         let dataRequest = AF.request(url,
