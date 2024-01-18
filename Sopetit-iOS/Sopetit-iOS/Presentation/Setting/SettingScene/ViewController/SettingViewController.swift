@@ -8,6 +8,7 @@
 import UIKit
 
 import SnapKit
+import SafariServices
 
 final class SettingViewController: UIViewController {
     
@@ -37,7 +38,7 @@ final class SettingViewController: UIViewController {
 // MARK: - Extensions
 
 extension SettingViewController {
-
+    
     func setUI() {
         self.view.backgroundColor = .SoftieWhite
         self.navigationController?.navigationBar.isHidden = true
@@ -78,7 +79,7 @@ extension SettingViewController: UITableViewDelegate {
         separatorView.backgroundColor = .SoftieBack
         return separatorView
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
@@ -97,7 +98,17 @@ extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        var url: URL?
+        
         switch indexPath {
+        case [0, 0]:
+            url = URL(string: I18N.Setting.personalNotion)
+        case [0, 1]:
+            url = URL(string: I18N.Setting.serviceNotion)
+        case [0, 2]:
+            url = URL(string: I18N.Setting.guideNotion)
+        case [1, 0]:
+            url = URL(string: I18N.Setting.feedbackFoam)
         case [3, 0]:
             presentLogoutBottom()
         case [3, 1]:
@@ -105,10 +116,15 @@ extension SettingViewController: UITableViewDelegate {
         default:
             break
         }
+        
+        if let url = url {
+            let safariViewController = SFSafariViewController(url: url)
+            self.present(safariViewController, animated: true, completion: nil)
+        }
     }
-
+    
     private func presentLogoutBottom() {
-        self.present(logoutBottom, animated: true, completion: nil)
+        self.present(logoutBottom, animated: false, completion: nil)
     }
     
     private func pushWithdrawView() {
@@ -127,36 +143,40 @@ extension SettingViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell", for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
+        let cell = SettingTableViewCell.dequeueReusableCell(tableView: tableView, indexPath: indexPath)
+        cell.selectionStyle = .none
+        
         switch indexPath[0] {
         case 2...3:
             cell.nextButton.isHidden = true
         default:
             break
         }
+        
         switch indexPath {
         case [0, 0]:
             cell.iconImage.image = ImageLiterals.Setting.icUserSecurity
-            cell.settingLabel.text = "개인정보 처리방침"
+            cell.settingLabel.text = I18N.Setting.personalTitle
         case [0, 1]:
             cell.iconImage.image = ImageLiterals.Setting.icDocument
-            cell.settingLabel.text = "서비스 이용 약관"
+            cell.settingLabel.text = I18N.Setting.serviceTitle
         case [0, 2]:
             cell.iconImage.image = ImageLiterals.Setting.icGuide
-            cell.settingLabel.text = "서비스 이용 가이드"
+            cell.settingLabel.text = I18N.Setting.guideTitle
         case [1, 0]:
             cell.iconImage.image = ImageLiterals.Setting.icFeedback
-            cell.settingLabel.text = "피드백"
+            cell.settingLabel.text = I18N.Setting.feedbackTitle
         case [2, 0]:
-            cell.settingLabel.text = "현재 버전 1.0.0"
+            cell.settingLabel.text = I18N.Setting.versionTitle
             cell.iconImage.snp.updateConstraints {
                 $0.size.equalTo(0)
             }
             cell.settingLabel.snp.updateConstraints {
                 $0.leading.equalTo(cell.iconImage.snp.trailing)
             }
+            cell.isUserInteractionEnabled = false
         case [3, 0]:
-            cell.settingLabel.text = "로그아웃"
+            cell.settingLabel.text = I18N.Setting.logoutTItle
             cell.settingLabel.textColor = .Gray300
             cell.settingLabel.font = .fontGuide(.body4)
             cell.iconImage.snp.updateConstraints {
@@ -166,9 +186,9 @@ extension SettingViewController: UITableViewDataSource {
                 $0.leading.equalTo(cell.iconImage.snp.trailing)
             }
         case [3, 1]:
-            cell.settingLabel.text = "회원 탈퇴"
+            cell.settingLabel.text = I18N.Setting.withdrawTitle
             cell.settingLabel.textColor = .Gray300
-            cell.settingLabel.setUnderlinePartFontChange(targetString: "회원 탈퇴", font: .fontGuide(.body4))
+            cell.settingLabel.setUnderlinePartFontChange(targetString: I18N.Setting.withdrawTitle, font: .fontGuide(.body4))
             cell.iconImage.snp.updateConstraints {
                 $0.size.equalTo(0)
             }
@@ -193,13 +213,13 @@ extension SettingViewController {
     func setBarConfiguration() {
         customNaviBar.isBackButtonIncluded = true
         customNaviBar.isTitleViewIncluded = true
-        customNaviBar.isTitleLabelIncluded = "설정"
+        customNaviBar.isTitleLabelIncluded = I18N.Setting.settingTitle
         customNaviBar.backgroundColor = .clear
         customNaviBar.delegate = self
     }
     
     func postLogoutAPI() {
-        AuthService.shared.postLogoutAPI() { networkResult in
+        AuthService.shared.postLogoutAPI { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<LogoutEntity> {
@@ -212,7 +232,7 @@ extension SettingViewController {
                     keyWindow.rootViewController = UINavigationController(rootViewController: nav)
                 }
             case .requestErr, .serverErr:
-                print("Error 발생")
+                break
             default:
                 break
             }
@@ -229,21 +249,12 @@ extension SettingViewController: BackButtonProtocol {
 
 extension SettingViewController: BottomSheetButtonDelegate {
     
-    func addButtonTapped() {
-        self.dismiss(animated: false)
-    }
+    func addButtonTapped() { }
     
     func deleteButtonTapped() {
         self.dismiss(animated: false)
         postLogoutAPI()
     }
     
-    func bakcButtonTapped() {
-        self.dismiss(animated: false)
-    }
-    
-    func completeButtonTapped() {
-        self.dismiss(animated: false)
-    }
-    
+    func completeButtonTapped() { }
 }

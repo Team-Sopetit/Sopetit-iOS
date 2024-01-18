@@ -94,7 +94,7 @@ enum I18N {
     enum Home {
         static let actionTitle1 = "솜뭉치 주기"
         static let actionTitle2 = "행복 솜뭉치 주기"
-        static let moneyNotion = "https://harvest-colby-9d6.notion.site/9e28254bca2b469d84ee5fc95b7469cb"
+        static let moneyNotion = "https://softie-link.notion.site/92fc58e36cf448eca66ee47e1c50bee8?pvs=4"
     }
     
     enum TabBar {
@@ -113,7 +113,19 @@ enum I18N {
     }
     
     enum Setting {
+        static let settingTitle = "설정"
         static let withdraw = "정말 가는거야..? 나는 영영 사라져..."
         static let withdraw_head = "탈퇴하면 계정이 삭제되고 모든 데이터가 사라집니다."
+        static let personalTitle = "개인정보 처리방침"
+        static let serviceTitle = "서비스 이용 약관"
+        static let guideTitle = "서비스 이용 가이드"
+        static let feedbackTitle = "피드백"
+        static let versionTitle = "현재 버전 1.0.0"
+        static let logoutTItle = "로그아웃"
+        static let withdrawTitle = "회원 탈퇴"
+        static let personalNotion = "https://softie-link.notion.site/c2435b30cfdb45db82f91cae6d1cc789?pvs=4"
+        static let serviceNotion = "https://softie-link.notion.site/b8b8c02805924f2ababd4de7b2306d64?pvs=4"
+        static let guideNotion = "https://softie-link.notion.site/6a65faa32923410a84ff6a63c47cf752?pvs=4"
+        static let feedbackFoam = "https://docs.google.com/forms/d/e/1FAIpQLSfEtF_qWDu9mI1IcEBPTWsoBVCwPa0wunQK600EcjOMbz8upQ/viewform?usp=sf_link"
     }
 }
