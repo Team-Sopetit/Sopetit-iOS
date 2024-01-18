@@ -63,15 +63,13 @@ extension LoginViewController {
                         if let kakaoData = data.data {
                             self.kakaoEntity = kakaoData
                             self.checkKakaoUser()
-                            let nav = StoryTellingViewController()
-                            self.navigationController?.pushViewController(nav, animated: true)
-//                            if kakaoData.isMemeber {
-//                                let nav = TabBarController()
-//                                self.navigationController?.pushViewController(nav, animated: true)
-//                            } else {
-//                                let nav = StoryTellingViewController()
-//                                self.navigationController?.pushViewController(nav, animated: true)
-//                            }
+                            if kakaoData.isMemberDollExist {
+                                let nav = TabBarController()
+                                self.navigationController?.pushViewController(nav, animated: true)
+                            } else {
+                                let nav = StoryTellingViewController()
+                                self.navigationController?.pushViewController(nav, animated: true)
+                            }
                         }
                     case "APPLE":
                         if let appleData = data.data {
@@ -79,6 +77,13 @@ extension LoginViewController {
                             self.checkAppleUser()
                             let nav = StoryTellingViewController()
                             self.navigationController?.pushViewController(nav, animated: true)
+                            if appleData.isMemberDollExist {
+                                let nav = TabBarController()
+                                self.navigationController?.pushViewController(nav, animated: true)
+                            } else {
+                                let nav = StoryTellingViewController()
+                                self.navigationController?.pushViewController(nav, animated: true)
+                            }
                         }
                     default:
                         break
@@ -102,8 +107,6 @@ extension LoginViewController: LoginDelegate {
                     self.showKakaoLoginFailMessage()
                 } else {
                     if let accessToken = oauthToken?.accessToken {
-                        print("🍎🍎🍎")
-                        print(accessToken)
                         self.postLoginAPI(socialAccessToken: accessToken, socialType: "KAKAO")
                     }
                 }
