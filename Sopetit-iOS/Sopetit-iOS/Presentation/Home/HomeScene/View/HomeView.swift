@@ -161,7 +161,7 @@ extension HomeView {
         }
         
         softieImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(55)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(11)
             $0.leading.equalToSuperview().inset(20)
         }
         
@@ -173,7 +173,7 @@ extension HomeView {
         
         settingButton.snp.makeConstraints {
             $0.size.equalTo(38)
-            $0.top.equalToSuperview().inset(52)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(1)
             $0.trailing.equalToSuperview().inset(13)
         }
         
