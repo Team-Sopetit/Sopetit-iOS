@@ -36,10 +36,10 @@ final class HappyRoutineCardCollectionViewCell: UICollectionViewCell, UICollecti
         return label
     }()
     
-    private let magnifyButton: UIButton = {
-        let button = UIButton()
-        button.setImage(ImageLiterals.HappyRoutine.icMagnify, for: .normal)
-        return button
+    private let magnifyImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.HappyRoutine.icMagnify
+        return imageView
     }()
     
     private let detailCardView: UIView = {
@@ -102,10 +102,10 @@ final class HappyRoutineCardCollectionViewCell: UICollectionViewCell, UICollecti
         return label
     }()
     
-    private let switchButton: UIButton = {
-        let button = UIButton()
-        button.setImage(ImageLiterals.HappyRoutine.icTransfer, for: .normal)
-        return button
+    private let switchImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.HappyRoutine.icTransfer
+        return imageView
     }()
     
     // MARK: - Life Cycles
@@ -116,7 +116,6 @@ final class HappyRoutineCardCollectionViewCell: UICollectionViewCell, UICollecti
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
         setupGestureRecognizers()
     }
     
@@ -141,8 +140,8 @@ private extension HappyRoutineCardCollectionViewCell {
     
     func setHierarchy() {
         self.contentView.addSubviews(cardView, detailCardView)
-        self.cardView.addSubviews(cardImageView, detailTitleLabel, magnifyButton)
-        self.detailCardView.addSubviews(subtitleLabel, dividerView, detailContentLabel, timeImageView, timeLabel, placeImageView, placeLabel, switchButton)
+        self.cardView.addSubviews(cardImageView, detailTitleLabel, magnifyImageView)
+        self.detailCardView.addSubviews(subtitleLabel, dividerView, detailContentLabel, timeImageView, timeLabel, placeImageView, placeLabel, switchImageView)
     }
     
     func setLayout() {
@@ -159,7 +158,7 @@ private extension HappyRoutineCardCollectionViewCell {
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         
-        magnifyButton.snp.makeConstraints {
+        magnifyImageView.snp.makeConstraints {
             $0.trailing.bottom.equalToSuperview().inset(22)
             $0.size.equalTo(24)
         }
@@ -206,7 +205,7 @@ private extension HappyRoutineCardCollectionViewCell {
             $0.centerY.equalTo(placeImageView.snp.centerY)
         }
         
-        switchButton.snp.makeConstraints {
+        switchImageView.snp.makeConstraints {
             $0.trailing.bottom.equalToSuperview().inset(22)
             $0.size.equalTo(24)
         }
@@ -226,16 +225,11 @@ private extension HappyRoutineCardCollectionViewCell {
         }
     }
     
-    func setAddTarget() {
-        magnifyButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        switchButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-    }
-    
     @objc func buttonTapped(sender: UIButton) {
         switch sender {
-        case magnifyButton:
+        case magnifyImageView:
             cardToDetailCard()
-        case switchButton:
+        case switchImageView:
             detailCardToCard()
         default:
             break
