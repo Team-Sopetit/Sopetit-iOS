@@ -95,6 +95,7 @@ enum I18N {
         static let actionTitle1 = "솜뭉치 주기"
         static let actionTitle2 = "행복 솜뭉치 주기"
         static let moneyNotion = "https://softie-link.notion.site/92fc58e36cf448eca66ee47e1c50bee8?pvs=4"
+        static let cottonTitle = "냠냠"
     }
     
     enum TabBar {

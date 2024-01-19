@@ -204,7 +204,7 @@ private extension HappyRoutineViewController {
     func patchHappinessMemberRoutine(routineId: Int) {
         HappyRoutineService.shared.patchHappinessMemberRoutineAPI(routineId: routineId) { networkResult in
             switch networkResult {
-            case .success(_):
+            case .success:
                 self.happinessMemberEntity = nil
             case .requestErr, .serverErr:
                 break
@@ -217,7 +217,7 @@ private extension HappyRoutineViewController {
     func deleteHappinessMemberRoutine(routineId: Int) {
         HappyRoutineService.shared.deleteHappinessMemberRoutineAPI(routineId: routineId) { networkResult in
             switch networkResult {
-            case .success(_):
+            case .success:
                 self.happinessMemberEntity = nil
             case .requestErr, .serverErr:
                 break

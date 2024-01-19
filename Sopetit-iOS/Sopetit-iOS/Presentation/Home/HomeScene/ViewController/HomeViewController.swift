@@ -128,20 +128,18 @@ extension HomeViewController {
                     if let listData = data.data {
                         self.homeCottonEntity = listData
                     }
-                    DispatchQueue.main.async {
-                        if let cell = self.collectionView.cellForItem(at: indexPath) as? ActionCollectionViewCell {
-                            switch indexPath.item {
-                            case 0:
-                                self.cottonDailyNum = self.homeCottonEntity.cottonCount
-                                cell.numberLabel.text = "\(self.cottonDailyNum)개"
-                            case 1:
-                                self.cottonHappyyNum = self.homeCottonEntity.cottonCount
-                                cell.numberLabel.text = "\(self.cottonHappyyNum)개"
-                            default:
-                                break
-                            }
-                            cell.setNeedsLayout()
+                    if let cell = self.collectionView.cellForItem(at: indexPath) as? ActionCollectionViewCell {
+                        switch indexPath.item {
+                        case 0:
+                            self.cottonDailyNum = self.homeCottonEntity.cottonCount
+                            cell.numberLabel.text = "\(self.cottonDailyNum)개"
+                        case 1:
+                            self.cottonHappyyNum = self.homeCottonEntity.cottonCount
+                            cell.numberLabel.text = "\(self.cottonHappyyNum)개"
+                        default:
+                            break
                         }
+                        cell.setNeedsLayout()
                     }
                 }
             case .requestErr, .serverErr:
@@ -168,7 +166,7 @@ extension HomeViewController: UICollectionViewDelegate {
                     homeView.lottieEatingHappy.isHidden = true
                     homeView.lottieEatingDaily.loopMode = .playOnce
                     homeView.lottieEatingDaily.play()
-                    homeView.bubbleLabel.text = "냠냠~"
+                    homeView.bubbleLabel.text = I18N.Home.cottonTitle
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
                         self.homeView.lottieEatingDaily.isHidden = true
                         self.homeView.lottieHello.isHidden = false
@@ -182,13 +180,12 @@ extension HomeViewController: UICollectionViewDelegate {
                 patchCottonAPI(cottonType: "HAPPINESS", indexPath: indexPath)
                 if self.cottonHappyyNum > 0 {
                     self.homeView.isAnimate = true
-                    getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
                     homeView.lottieEatingHappy.isHidden = false
                     homeView.lottieHello.isHidden = true
                     homeView.lottieEatingDaily.isHidden = true
                     homeView.lottieEatingHappy.loopMode = .playOnce
                     homeView.lottieEatingHappy.play()
-                    homeView.bubbleLabel.text = "냠냠~ 맛 개깔@롱지네"
+                    homeView.bubbleLabel.text = I18N.Home.cottonTitle
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
                         self.homeView.lottieEatingDaily.isHidden = true
                         self.homeView.lottieHello.isHidden = false
