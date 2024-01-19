@@ -133,16 +133,16 @@ extension HomeViewController {
                             switch indexPath.item {
                             case 0:
                                 self.cottonDailyNum = self.homeCottonEntity.cottonCount
+                                cell.numberLabel.text = "\(self.cottonDailyNum)개"
                             case 1:
                                 self.cottonHappyyNum = self.homeCottonEntity.cottonCount
+                                cell.numberLabel.text = "\(self.cottonHappyyNum)개"
                             default:
                                 break
                             }
-                            cell.numberLabel.text = "\(self.homeCottonEntity.cottonCount)개"
                             cell.setNeedsLayout()
                         }
                     }
-                    self.collectionView.reloadData()
                 }
             case .requestErr, .serverErr:
                 break
@@ -160,9 +160,9 @@ extension HomeViewController: UICollectionViewDelegate {
         switch indexPath.item {
         case 0:
             if !(homeView.isAnimate) {
+                patchCottonAPI(cottonType: "DAILY", indexPath: indexPath)
                 if self.cottonDailyNum > 0 {
                     self.homeView.isAnimate = true
-                    patchCottonAPI(cottonType: "DAILY", indexPath: indexPath)
                     homeView.lottieEatingDaily.isHidden = false
                     homeView.lottieHello.isHidden = true
                     homeView.lottieEatingHappy.isHidden = true
@@ -179,10 +179,10 @@ extension HomeViewController: UICollectionViewDelegate {
             }
         case 1:
             if !(homeView.isAnimate) {
+                patchCottonAPI(cottonType: "HAPPINESS", indexPath: indexPath)
                 if self.cottonHappyyNum > 0 {
                     self.homeView.isAnimate = true
                     getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
-                    patchCottonAPI(cottonType: "HAPPINESS", indexPath: indexPath)
                     homeView.lottieEatingHappy.isHidden = false
                     homeView.lottieHello.isHidden = true
                     homeView.lottieEatingDaily.isHidden = true
