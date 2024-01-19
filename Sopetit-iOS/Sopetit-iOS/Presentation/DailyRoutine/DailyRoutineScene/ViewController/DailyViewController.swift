@@ -250,7 +250,7 @@ extension DailyViewController: BottomSheetButtonDelegate {
     }
     
     func deleteButtonTapped() {
-        self.isEditing.toggle()
+        self.isEditing = false
         self.deleteButton.isHidden = true
         customNavigationBar.cancelButton.isHidden = true
         customNavigationBar.editButton.isHidden = false
@@ -317,7 +317,7 @@ extension DailyViewController {
             self.customNavigationBar.cancelButton.isHidden = true
             self.customNavigationBar.editButton.isHidden = false
             self.deleteButton.isHidden = true
-            self.isEditing.toggle()
+            self.isEditing = false
             for cell in self.collectionview.visibleCells {
                 if let dailyCell = cell as? DailyRoutineCollectionViewCell {
                     dailyCell.achieveButton.isUserInteractionEnabled = true
@@ -341,8 +341,9 @@ extension DailyViewController {
             if self.routineList.routines.isEmpty {
                 return
             } else {
+                DailyRoutineCollectionViewCell.sharedVariable = 0
                 NotificationCenter.default.addObserver(self, selector: #selector(self.updateDeleteLabel), name: Notification.Name("SharedVariableDidChange"), object: nil)
-                self.isEditing.toggle()
+                self.isEditing = true
                 self.deleteButton.isHidden = false
                 self.customNavigationBar.cancelButton.isHidden = false
                 self.customNavigationBar.editButton.isHidden = true

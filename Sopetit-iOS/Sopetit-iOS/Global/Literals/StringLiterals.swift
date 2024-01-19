@@ -30,7 +30,7 @@ enum I18N {
     }
     
     enum Splash {
-        static let mentTitle = "친구와 함께 하는 일상 속 작은 습관"
+        static let mentTitle = "사소한 루틴으로 만드는 마음습관"
     }
     
     enum Onboarding {
