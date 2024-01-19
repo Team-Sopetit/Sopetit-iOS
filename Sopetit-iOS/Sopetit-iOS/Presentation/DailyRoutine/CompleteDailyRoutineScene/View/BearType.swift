@@ -36,26 +36,13 @@ enum BearType {
         }
     }
     
-    var homeBear: String {
-        switch self {
-        case .BROWN:
-            return "brown"
-        case .RED:
-            return "red"
-        case .WHITE:
-            return "panda"
-        case .GRAY:
-            return "gray"
-        }
-    }
-    
     init?(rawValue: String) {
         switch rawValue.lowercased() {
         case "brown":
             self = .BROWN
         case "red":
             self = .RED
-        case "panda":
+        case "white":
             self = .WHITE
         case "gray":
             self = .GRAY
