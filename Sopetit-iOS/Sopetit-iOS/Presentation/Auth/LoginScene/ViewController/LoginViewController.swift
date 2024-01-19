@@ -64,6 +64,7 @@ extension LoginViewController {
                             self.kakaoEntity = kakaoData
                             self.checkKakaoUser()
                             if kakaoData.isMemberDollExist {
+                                UserManager.shared.hasPostMember()
                                 let nav = TabBarController()
                                 self.navigationController?.pushViewController(nav, animated: true)
                             } else {
@@ -76,6 +77,7 @@ extension LoginViewController {
                             self.appleEntity = appleData
                             self.checkAppleUser()
                             if appleData.isMemberDollExist {
+                                UserManager.shared.hasPostMember()
                                 let nav = TabBarController()
                                 self.navigationController?.pushViewController(nav, animated: true)
                             } else {
