@@ -272,7 +272,6 @@ extension AddDailyRoutineViewController {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyRoutineIdEntity> {
                     if let result = data.data {
-                        print(result)
                     }
                 }
                 self.setDismiss()

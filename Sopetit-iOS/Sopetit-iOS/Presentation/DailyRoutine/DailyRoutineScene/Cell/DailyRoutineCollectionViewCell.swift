@@ -159,7 +159,6 @@ extension DailyRoutineCollectionViewCell {
         self.routineLabel.text = model.content
         if let iconURL = URL(string: model.iconImageURL) {
             self.imageView.downloadedsvg(from: iconURL)
-            print(model.iconImageURL)
         }
         self.achieveButton.isEnabled = !model.isAchieve
     }
