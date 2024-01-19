@@ -130,7 +130,6 @@ extension HomeViewController {
                     }
                     DispatchQueue.main.async {
                         if let cell = self.collectionView.cellForItem(at: indexPath) as? ActionCollectionViewCell {
-                            cell.numberLabel.text = "\(self.homeCottonEntity.cottonCount)개"
                             switch indexPath.item {
                             case 0:
                                 self.cottonDailyNum = self.homeCottonEntity.cottonCount
@@ -139,6 +138,7 @@ extension HomeViewController {
                             default:
                                 break
                             }
+                            cell.numberLabel.text = "\(self.homeCottonEntity.cottonCount)개"
                             cell.setNeedsLayout()
                         }
                     }
