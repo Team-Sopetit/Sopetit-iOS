@@ -24,6 +24,8 @@ final class DailyViewController: UIViewController {
     override var isEditing: Bool {
         didSet {
             updateCellsForEditing()
+            updateRoutineViewLayout()
+
         }
     }
     
@@ -100,13 +102,14 @@ extension DailyViewController {
         
         routineView.snp.makeConstraints {
             $0.top.equalTo(customNavigationBar.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
         deleteButton.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(17)
-            $0.height.equalTo(56)
+            $0.height.equalTo(56 * SizeLiterals.Screen.screenHeight / 812)
         }
         
         deleteAlertView.snp.makeConstraints {
@@ -199,13 +202,17 @@ extension DailyViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
-        let routine = routineList.routines[indexPath.item]
-        cell.index = indexPath.item
-        cell.setDatabind(model: routine)
-        cell.delegate = self
-        cell.tag = routine.routineID
-        return cell
+        if routineList.routines.isEmpty {
+            return UICollectionViewCell()
+        } else {
+            let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
+            let routine = routineList.routines[indexPath.item]
+            cell.index = indexPath.item
+            cell.setDatabind(model: routine)
+            cell.delegate = self
+            cell.tag = routine.routineID
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -293,6 +300,7 @@ extension DailyViewController: PresentDelegate {
 }
 
 extension DailyViewController {
+    
     func setupCustomNavigationBar() {
         customNavigationBar.isLeftTitleLabelIncluded = I18N.TabBar.daily
         customNavigationBar.isLeftTitleViewIncluded = true
@@ -314,6 +322,7 @@ extension DailyViewController {
                     dailyCell.checkBox.isSelected = false
                 }
             }
+            
             DailyRoutineCollectionViewCell.sharedVariable = 0
             
             NotificationCenter.default.removeObserver(self, name: Notification.Name("SharedVariableDidChange"), object: nil)
@@ -334,6 +343,18 @@ extension DailyViewController {
                         dailyCell.achieveButton.isUserInteractionEnabled = false
                     }
                 }
+            }
+        }
+    }
+    
+    func updateRoutineViewLayout() {
+        if self.isEditing == true {
+            self.routineView.snp.updateConstraints {
+                $0.bottom.equalTo(view.safeAreaLayoutGuide).offset((-56 * SizeLiterals.Screen.screenHeight / 812) - 20)
+            }
+        } else {
+            self.routineView.snp.updateConstraints {
+                $0.bottom.equalTo(view.safeAreaLayoutGuide)
             }
         }
     }
