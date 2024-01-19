@@ -79,6 +79,7 @@ extension DollNameViewController: UITextFieldDelegate {
         let forbiddenCharacters = CharacterSet(charactersIn: I18N.Onboarding.dollSpecialText).subtracting(.decimalDigits)
         let currentText = textField.text ?? ""
         let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        
         if (string.rangeOfCharacter(from: forbiddenCharacters) != nil) || string.containsEmoji {
             dollNameView.infoLabel.isHidden = false
             dollNameView.infoLabel.text = I18N.Onboarding.dollNameInfoTitle
@@ -96,8 +97,17 @@ extension DollNameViewController: UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        let currentText = textField.text ?? ""
+        dollNameView.nextButton.isEnabled = !currentText.isEmpty
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.becomeFirstResponder()
     }
 }
