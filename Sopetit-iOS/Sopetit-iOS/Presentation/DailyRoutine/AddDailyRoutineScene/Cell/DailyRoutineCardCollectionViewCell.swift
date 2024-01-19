@@ -61,7 +61,8 @@ private extension DailyRoutineCardCollectionViewCell {
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(85)
-            $0.horizontalEdges.equalToSuperview().inset(50)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(192)
         }
     }
 }
