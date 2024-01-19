@@ -113,9 +113,11 @@ final class HappyRoutineCardCollectionViewCell: UICollectionViewCell, UICollecti
     override init(frame: CGRect) {
         super.init(frame: frame)
     
+        setUI()
         setHierarchy()
         setLayout()
         setAddTarget()
+        setupGestureRecognizers()
     }
     
     required init?(coder: NSCoder) {
@@ -132,6 +134,10 @@ final class HappyRoutineCardCollectionViewCell: UICollectionViewCell, UICollecti
 // MARK: - Extensions
 
 private extension HappyRoutineCardCollectionViewCell {
+    
+    func setUI() {
+        self.isUserInteractionEnabled = true
+    }
     
     func setHierarchy() {
         self.contentView.addSubviews(cardView, detailCardView)
@@ -203,6 +209,20 @@ private extension HappyRoutineCardCollectionViewCell {
         switchButton.snp.makeConstraints {
             $0.trailing.bottom.equalToSuperview().inset(22)
             $0.size.equalTo(24)
+        }
+    }
+    
+    private func setupGestureRecognizers() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func handleTap(_ sender: UITapGestureRecognizer) {
+        if detailCardView.isHidden {
+            cardToDetailCard()
+        } else {
+            detailCardToCard()
         }
     }
     

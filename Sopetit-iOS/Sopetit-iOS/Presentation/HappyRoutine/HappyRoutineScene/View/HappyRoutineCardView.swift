@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 final class HappyRoutineCardView: UIView {
-
+    
     // MARK: - UI Components
     
     private let cardView: UIView = {
@@ -109,9 +109,10 @@ final class HappyRoutineCardView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
+        setupGestureRecognizers()
     }
     
     @available(*, unavailable)
@@ -123,6 +124,10 @@ final class HappyRoutineCardView: UIView {
 // MARK: - Extensions
 
 private extension HappyRoutineCardView {
+    
+    func setUI() {
+        self.isUserInteractionEnabled = true
+    }
     
     func setHierarchy() {
         self.addSubviews(cardView, detailCardView)
@@ -197,26 +202,10 @@ private extension HappyRoutineCardView {
         }
     }
     
-    func setAddTarget() {
-        magnifyButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        switchButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-    }
-    
-    @objc func buttonTapped(sender: UIButton) {
-        switch sender {
-        case magnifyButton:
-            cardToDetailCard()
-        case switchButton:
-            detailCardToCard()
-        default:
-            break
-        }
-    }
-    
     func cardToDetailCard() {
         self.detailCardView.isHidden.toggle()
         UIView.transition(with: self.detailCardView, duration: 0.6, options: .transitionFlipFromRight, animations: nil)
-
+        
         UIView.transition(with: self.cardView, duration: 0.6, options: .transitionFlipFromRight, animations: nil, completion: {_ in
             self.cardView.isHidden.toggle()
         })
@@ -230,10 +219,24 @@ private extension HappyRoutineCardView {
             self.detailCardView.isHidden.toggle()
         }
     }
+    
+    private func setupGestureRecognizers() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    private func handleTap(_ sender: UITapGestureRecognizer) {
+        if detailCardView.isHidden {
+            cardToDetailCard()
+        } else {
+            detailCardToCard()
+        }
+    }
 }
 
 extension HappyRoutineCardView {
-
+    
     func setDataBind(model: HappinessMemberEntity) {
         self.cardImageView.kfSetImage(url: model.contentImageUrl)
         self.detailTitleLabel.text = model.content
