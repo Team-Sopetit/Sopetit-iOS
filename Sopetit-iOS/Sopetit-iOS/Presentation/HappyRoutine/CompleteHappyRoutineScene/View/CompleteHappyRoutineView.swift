@@ -17,7 +17,6 @@ final class CompleteHappyRoutineView: UIView {
     let cottonLottieView = LottieAnimationView(name: "happy_complete_ios")
     private let bearImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = BearType.brown.happyCompleteBear
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -100,6 +99,14 @@ private extension CompleteHappyRoutineView {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(150)
             $0.height.equalTo(39)
+        }
+    }
+}
+
+extension CompleteHappyRoutineView {
+    func setBearImage(bear: String) {
+        if let bearType = BearType(rawValue: bear) {
+            bearImageView.image = bearType.happyCompleteBear
         }
     }
 }

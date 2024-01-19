@@ -23,6 +23,7 @@ final class CompleteDailyRoutineViewController: UIViewController {
         super.viewWillAppear(animated)
         
         completeDailyRoutineView.cottonLottieView.play()
+        completeDailyRoutineView.setBearImage(bear: UserManager.shared.getDollType)
         setAnimation()
     }
 }
