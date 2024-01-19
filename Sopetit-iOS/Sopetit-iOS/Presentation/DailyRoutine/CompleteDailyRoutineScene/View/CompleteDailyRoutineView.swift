@@ -10,49 +10,6 @@ import UIKit
 import Lottie
 import SnapKit
 
-enum BearType {
-    case brown, red, panda, gray
-    
-    var dailyCompleteBear: UIImage {
-        switch self {
-        case .brown:
-            return ImageLiterals.DailyRoutineComplete.imgBearDailyCompleteBrown
-        case .red:
-            return ImageLiterals.DailyRoutineComplete.imgBearDailyCompleteRed
-        case .panda:
-            return ImageLiterals.DailyRoutineComplete.imgBearDailyCompletePanda
-        case .gray:
-            return ImageLiterals.DailyRoutineComplete.imgBearDailyCompleteGray
-        }
-    }
-    
-    var happyCompleteBear: UIImage {
-        switch self {
-        case .brown:
-            return ImageLiterals.HappyRoutineComplete.imgHappyBearBrown
-        case .red:
-            return ImageLiterals.HappyRoutineComplete.imgHappyBearRed
-        case .panda:
-            return ImageLiterals.HappyRoutineComplete.imgHappyBearPanda
-        case .gray:
-            return ImageLiterals.HappyRoutineComplete.imgHappyBearGray
-        }
-    }
-    
-    var homeBear: String {
-        switch self {
-        case .brown:
-            return "brown"
-        case .red:
-            return "red"
-        case .panda:
-            return "panda"
-        case .gray:
-            return "gray"
-        }
-    }
-}
-
 final class CompleteDailyRoutineView: UIView {
 
     // MARK: - UI Components
@@ -60,7 +17,6 @@ final class CompleteDailyRoutineView: UIView {
     let cottonLottieView = LottieAnimationView(name: "daily_complete_ios")
     private let bearImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = BearType.brown.dailyCompleteBear
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -143,6 +99,14 @@ private extension CompleteDailyRoutineView {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(118)
             $0.height.equalTo(39)
+        }
+    }
+}
+
+extension CompleteDailyRoutineView {
+    func setBearImage(bear: String) {
+        if let bearType = BearType(rawValue: bear) {
+            bearImageView.image = bearType.dailyCompleteBear
         }
     }
 }

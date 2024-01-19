@@ -23,6 +23,7 @@ final class CompleteHappyRoutineViewController: UIViewController {
         super.viewWillAppear(animated)
         
         completeHappyRoutineView.cottonLottieView.play()
+        completeHappyRoutineView.setBearImage(bear: UserManager.shared.getDollType)
         setAnimation()
     }
 }

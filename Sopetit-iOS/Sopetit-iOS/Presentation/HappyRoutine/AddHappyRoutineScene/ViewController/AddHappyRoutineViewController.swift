@@ -210,7 +210,6 @@ private extension AddHappyRoutineViewController {
             case .success(let data):
                 if let data = data as? GenericResponse<HappinessRoutineIdEntity> {
                     if let result = data.data {
-                        print(result)
                         self.dismissVC()
                     }
                 }

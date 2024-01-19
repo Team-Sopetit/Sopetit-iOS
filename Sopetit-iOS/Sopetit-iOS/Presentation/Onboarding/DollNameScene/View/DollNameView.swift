@@ -167,17 +167,17 @@ extension DollNameView {
         }
     }
     
-    func setDoll(num: Int) {
+    func setDoll(doll: String) {
         var animationName = ""
         
-        switch num {
-        case 0:
+        switch doll {
+        case "BROWN":
             animationName = "brown_hello"
-        case 1:
+        case "GRAY":
             animationName = "gray_hello"
-        case 2:
+        case "WHITE":
             animationName = "white_hello"
-        case 3:
+        case "RED":
             animationName = "red_hello"
         default:
             break

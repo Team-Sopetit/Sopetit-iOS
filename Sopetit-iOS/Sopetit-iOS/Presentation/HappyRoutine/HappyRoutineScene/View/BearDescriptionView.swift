@@ -13,9 +13,8 @@ final class BearDescriptionView: UIView {
     
     // MARK: - UI Components
     
-    private let faceImageView: UIImageView = {
+    let faceImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = ImageLiterals.Onboarding.imgFaceBrown
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -62,6 +61,8 @@ private extension BearDescriptionView {
     func setLayout() {
         faceImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(21)
+            $0.width.equalTo(53)
+            $0.height.equalTo(50)
         }
         
         speechImageView.snp.makeConstraints {
@@ -73,5 +74,11 @@ private extension BearDescriptionView {
             $0.centerY.equalTo(speechImageView.snp.centerY)
             $0.trailing.equalTo(speechImageView.snp.trailing).offset(-28)
         }
+    }
+}
+
+extension BearDescriptionView {
+    func setDollImage(url: String) {
+        faceImageView.kfSetImage(url: url)
     }
 }

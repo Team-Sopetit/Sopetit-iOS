@@ -14,6 +14,7 @@ final class HappyRoutineViewController: UIViewController {
     // MARK: - Properties
     
     private var happinessMemberEntity: HappinessMemberEntity? = nil
+    private var dollImageEntity = DollImageEntity(faceImageURL: "")
     var isFromAddHappyBottom: Bool = false
     
     override var isEditing: Bool {
@@ -34,6 +35,7 @@ final class HappyRoutineViewController: UIViewController {
     // MARK: - UI Components
     
     private let happyRoutineView = HappyRoutineView()
+    private let bearDescriptionView = BearDescriptionView()
     private lazy var happyRoutineNavigationBar = happyRoutineView.navigationBar
     private let happyRoutineEmptyView = HappyRoutineEmptyView()
     private let happyCompleteBottom = BottomSheetViewController(bottomStyle: .happyCompleteBottom)
@@ -55,6 +57,7 @@ final class HappyRoutineViewController: UIViewController {
         setDelegate()
         setAddTarget()
         setAlertView()
+        getDollAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -201,8 +204,7 @@ private extension HappyRoutineViewController {
     func patchHappinessMemberRoutine(routineId: Int) {
         HappyRoutineService.shared.patchHappinessMemberRoutineAPI(routineId: routineId) { networkResult in
             switch networkResult {
-            case .success(let data):
-                print(data)
+            case .success(_):
                 self.happinessMemberEntity = nil
             case .requestErr, .serverErr:
                 break
@@ -215,9 +217,26 @@ private extension HappyRoutineViewController {
     func deleteHappinessMemberRoutine(routineId: Int) {
         HappyRoutineService.shared.deleteHappinessMemberRoutineAPI(routineId: routineId) { networkResult in
             switch networkResult {
-            case .success(let data):
-                print(data)
+            case .success(_):
                 self.happinessMemberEntity = nil
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func getDollAPI() {
+        OnBoardingService.shared.getOnboardingDollAPI(dollType: UserManager.shared.getDollType) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<DollImageEntity> {
+                    if let listData = data.data {
+                        self.dollImageEntity = listData
+                        self.happyRoutineEmptyView.bearDescriptionView.setDollImage(url: listData.faceImageURL)
+                    }
+                }
             case .requestErr, .serverErr:
                 break
             default:

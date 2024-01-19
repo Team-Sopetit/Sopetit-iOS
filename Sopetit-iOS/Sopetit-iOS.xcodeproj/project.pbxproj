@@ -100,7 +100,6 @@
 		A42C32E92B3EAC9C00C4B477 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32E82B3EAC9C00C4B477 /* BaseService.swift */; };
 		A42C32EB2B3EACAC00C4B477 /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32EA2B3EACAC00C4B477 /* URLConstant.swift */; };
 		A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F12B3EADCD00C4B477 /* LoginEntity.swift */; };
-		A42C32F42B3EADDD00C4B477 /* OnboardingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F32B3EADDD00C4B477 /* OnboardingEntity.swift */; };
 		A42C32F62B3EADE300C4B477 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F52B3EADE300C4B477 /* HomeEntity.swift */; };
 		A42C32FA2B3EADF900C4B477 /* DailyRoutineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32F92B3EADF900C4B477 /* DailyRoutineEntity.swift */; };
 		A42C32FC2B3EAE0000C4B477 /* HappinessEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32FB2B3EAE0000C4B477 /* HappinessEntity.swift */; };
@@ -115,6 +114,7 @@
 		A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */; };
 		A42C336C2B41EF2F00C4B477 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */; };
 		A42C33702B42DAAB00C4B477 /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C336F2B42DAAB00C4B477 /* StringLiterals.swift */; };
+		A4530CFF2B59B06500BCEC51 /* BearType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4530CFE2B59B06500BCEC51 /* BearType.swift */; };
 		A4832BA42B4A5C37007879FF /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BA32B4A5C37007879FF /* BottomSheetViewController.swift */; };
 		A4832BAB2B4ACF09007879FF /* omyu-pretty.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4832BAA2B4ACF09007879FF /* omyu-pretty.ttf */; };
 		A4832BAD2B4AF081007879FF /* BottomSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4832BAC2B4AF081007879FF /* BottomSheetType.swift */; };
@@ -249,7 +249,6 @@
 		A42C32E82B3EAC9C00C4B477 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		A42C32EA2B3EACAC00C4B477 /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
 		A42C32F12B3EADCD00C4B477 /* LoginEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEntity.swift; sourceTree = "<group>"; };
-		A42C32F32B3EADDD00C4B477 /* OnboardingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEntity.swift; sourceTree = "<group>"; };
 		A42C32F52B3EADE300C4B477 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
 		A42C32F92B3EADF900C4B477 /* DailyRoutineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRoutineEntity.swift; sourceTree = "<group>"; };
 		A42C32FB2B3EAE0000C4B477 /* HappinessEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappinessEntity.swift; sourceTree = "<group>"; };
@@ -264,6 +263,7 @@
 		A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A42C336F2B42DAAB00C4B477 /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
+		A4530CFE2B59B06500BCEC51 /* BearType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearType.swift; sourceTree = "<group>"; };
 		A4832BA32B4A5C37007879FF /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		A4832BAA2B4ACF09007879FF /* omyu-pretty.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "omyu-pretty.ttf"; sourceTree = "<group>"; };
 		A4832BAC2B4AF081007879FF /* BottomSheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetType.swift; sourceTree = "<group>"; };
@@ -427,6 +427,7 @@
 		095903AE2B54737500D0AF39 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A4530CFE2B59B06500BCEC51 /* BearType.swift */,
 				095903B12B54739D00D0AF39 /* CompleteDailyRoutineView.swift */,
 			);
 			path = View;
@@ -815,7 +816,6 @@
 		A42C32EE2B3EADA900C4B477 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				A42C32F32B3EADDD00C4B477 /* OnboardingEntity.swift */,
 				A49BFDF12B4DA53A00035EB6 /* ThemeSelectEntity.swift */,
 				A49BFE222B4E565D00035EB6 /* RoutineChoiceEntity.swift */,
 				A49BFE4E2B53CE7700035EB6 /* DollImageEntity.swift */,
@@ -1433,7 +1433,6 @@
 				A42C32CD2B3EAB5600C4B477 /* UILabel+.swift in Sources */,
 				09C1A65A2B5297BC00C1A57D /* DailyRoutineCard.swift in Sources */,
 				A49BFE282B4E856600035EB6 /* DollNameViewController.swift in Sources */,
-				A42C32F42B3EADDD00C4B477 /* OnboardingEntity.swift in Sources */,
 				A42C32E92B3EAC9C00C4B477 /* BaseService.swift in Sources */,
 				098DFCA72B57EA770099063D /* AddDailyRoutineService.swift in Sources */,
 				A49BFDE32B4D7A6000035EB6 /* DollChoiceView.swift in Sources */,
@@ -1508,6 +1507,7 @@
 				09B2535C2B4D538E005E7032 /* SelectHappyCategoryViewController.swift in Sources */,
 				045DFE812B515FAE005D69EA /* WithdrawViewController.swift in Sources */,
 				09B253612B4D53E7005E7032 /* SelectHappyCategoryView.swift in Sources */,
+				A4530CFF2B59B06500BCEC51 /* BearType.swift in Sources */,
 				A42C32D12B3EAB7F00C4B477 /* String+.swift in Sources */,
 				A49BFDF02B4DA48200035EB6 /* ThemeSelectView.swift in Sources */,
 				092AE2BF2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift in Sources */,

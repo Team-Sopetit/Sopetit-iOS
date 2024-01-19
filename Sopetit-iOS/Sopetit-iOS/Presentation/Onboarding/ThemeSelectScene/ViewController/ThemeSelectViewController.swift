@@ -16,7 +16,6 @@ final class ThemeSelectViewController: UIViewController {
     var selectedCount = 0
     var selectedCategory: [Int] = []
     var doll: String = ""
-    var dollType: String = ""
     
     // MARK: - UI Components
     
@@ -50,6 +49,7 @@ extension ThemeSelectViewController {
         themeSelectView.bubbleLabel.text = "안녕 난 \(doll)!\n나와 함께 루틴을 만들어볼까?"
         themeSelectView.bubbleLabel.partColorChange(targetString: doll, textColor: .SoftieBrown)
         self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     func setDelegate() {
@@ -66,7 +66,6 @@ extension ThemeSelectViewController {
         let nav = RoutineChoiceViewController()
         nav.selectedTheme = selectedCategory
         nav.userDollName = doll
-        nav.userDollType = dollType
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }
@@ -150,7 +149,7 @@ private extension ThemeSelectViewController {
     }
     
     func getDollAPI() {
-        OnBoardingService.shared.getOnboardingDollAPI(dollType: self.dollType) { networkResult in
+        OnBoardingService.shared.getOnboardingDollAPI(dollType: UserManager.shared.getDollType) { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DollImageEntity> {

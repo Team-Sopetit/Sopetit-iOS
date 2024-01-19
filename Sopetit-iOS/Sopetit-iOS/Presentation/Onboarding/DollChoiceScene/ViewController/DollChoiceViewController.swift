@@ -42,6 +42,7 @@ final class DollChoiceViewController: UIViewController {
 extension DollChoiceViewController {
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     func setDelegate() {
@@ -56,7 +57,18 @@ extension DollChoiceViewController {
     @objc
     func buttonTapped() {
         let nav = DollNameViewController()
-        nav.dollNum = selectDollNum
+        switch selectDollNum {
+        case 0:
+            UserManager.shared.updateDoll("BROWN")
+        case 1:
+            UserManager.shared.updateDoll("GRAY")
+        case 2:
+            UserManager.shared.updateDoll("WHITE")
+        case 3:
+            UserManager.shared.updateDoll("RED")
+        default:
+            break
+        }
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }

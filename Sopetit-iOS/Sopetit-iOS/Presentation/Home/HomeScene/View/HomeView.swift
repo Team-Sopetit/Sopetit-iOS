@@ -37,12 +37,14 @@ final class HomeView: UIView {
     lazy var moneyButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiterals.Home.icHomeMoney, for: .normal)
+        button.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 7, leading: 7, bottom: 7, trailing: 7)
         return button
     }()
     
     lazy var settingButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiterals.Home.icHomeSettings, for: .normal)
+        button.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 7, leading: 7, bottom: 7, trailing: 7)
         return button
     }()
     
@@ -164,15 +166,15 @@ extension HomeView {
         }
         
         moneyButton.snp.makeConstraints {
-            $0.size.equalTo(24)
+            $0.size.equalTo(38)
             $0.top.equalTo(settingButton)
-            $0.trailing.equalTo(settingButton.snp.leading).offset(-20)
+            $0.trailing.equalTo(settingButton.snp.leading).offset(-6)
         }
         
         settingButton.snp.makeConstraints {
-            $0.size.equalTo(24)
+            $0.size.equalTo(38)
             $0.top.equalToSuperview().inset(52)
-            $0.trailing.equalToSuperview().inset(20)
+            $0.trailing.equalToSuperview().inset(13)
         }
         
         bubbleImageView.snp.makeConstraints {

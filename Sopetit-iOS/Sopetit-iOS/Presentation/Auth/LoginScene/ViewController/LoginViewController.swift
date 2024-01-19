@@ -88,7 +88,7 @@ extension LoginViewController {
                     }
                 }
             case .requestErr, .serverErr:
-                print("Error 발생")
+                break
             default:
                 break
             }
@@ -132,7 +132,6 @@ extension LoginViewController: LoginDelegate {
     }
     
     func appleLogin() {
-        print("애플 로그인 버튼 탭함.")
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
