@@ -178,9 +178,11 @@ extension DailyViewController {
 extension DailyViewController: DailyAddDelegate {
     
     func addTapped() {
-        let nav = AddDailyRoutineViewController()
-        self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.pushViewController(nav, animated: true)
+        if self.dailyFooterView.isUserInteractionEnabled {
+            let nav = AddDailyRoutineViewController()
+            nav.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(nav, animated: true)
+        }
     }
 }
 
@@ -228,6 +230,7 @@ extension DailyViewController: UICollectionViewDataSource {
         }
         return UICollectionReusableView()
     }
+
 }
 
 extension DailyViewController: BottomSheetButtonDelegate {
@@ -329,6 +332,8 @@ extension DailyViewController {
             DailyRoutineCollectionViewCell.sharedVariable = 0
             
             NotificationCenter.default.removeObserver(self, name: Notification.Name("SharedVariableDidChange"), object: nil)
+            
+            self.dailyFooterView.isUserInteractionEnabled = true
         }
         
         customNavigationBar.isEditButtonIncluded = true
@@ -347,6 +352,8 @@ extension DailyViewController {
                     }
                 }
             }
+            
+            self.dailyFooterView.isUserInteractionEnabled = false
         }
     }
     
@@ -400,6 +407,7 @@ extension DailyViewController {
         DailyRoutineService.shared.deleteRoutineListAPI(routineIdList: routineIdList) { networkResult in
             switch networkResult {
             case .success:
+                self.dailyFooterView.isUserInteractionEnabled = true
                 self.collectionview.reloadData()
             case .requestErr, .serverErr:
                 break

@@ -52,7 +52,7 @@ enum I18N {
         static let dollNameInfoTitle = "*특수문자는 사용할 수 없어요"
         static let dollNameInfoTitle2 = "*10글자 이내로 작성해 주세요."
         static let dollNameButtonTitle = "이 이름이 좋겠어"
-        static let dollSpecialText = "-!@#$%^&*()_+={}[]₩|\\n;:'\",.<>?/~`£¥•"
+        static let dollSpecialText = "-!@#$%^&*()_+={}[]₩|\\n;:'\",.<>?/~`£¥• "
     }
     
     enum HappyRoutine {
