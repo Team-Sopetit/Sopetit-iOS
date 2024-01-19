@@ -92,6 +92,7 @@ final class CustomNavigationBarView: UIView {
         let button = UIButton()
         button.setImage(ImageLiterals.Navi.icChevronBack, for: .normal)
         button.isHidden = true
+        button.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 7, leading: 7, bottom: 7, trailing: 7)
         return button
     }()
     
@@ -172,7 +173,7 @@ private extension CustomNavigationBarView {
         backButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(14)
             $0.centerY.equalToSuperview()
-            $0.size.equalTo(28)
+            $0.size.equalTo(38)
         }
         
         cancelButton.snp.makeConstraints {

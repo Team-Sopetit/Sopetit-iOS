@@ -149,8 +149,8 @@ extension DailyRoutineCollectionViewCell {
         }
         
         checkBox.snp.makeConstraints {
-            $0.trailing.top.equalToSuperview().inset(20)
-            $0.size.equalTo(20)
+            $0.top.trailing.equalToSuperview().inset(11)
+            $0.size.equalTo(38)
         }
     }
     
