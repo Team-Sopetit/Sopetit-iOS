@@ -1,13 +1,13 @@
 ## 🙌 Team Sopetit-iOS
 ### 🧸 About Softie  
-> **작은 친구와 함께 하는 일상의 소소한 습관**
+> **사소한 루틴으로 만드는 마음습관**
 
 
 ### 👩‍💻 About Developers
 
 | 👑 [고아라](https://github.com/ahra1221) | [김태경](https://github.com/timotheekim10) | [이우제](https://github.com/leewoojye) | [김민주](https://github.com/frohsch) |
 | --- | --- | --- | --- |
-| <img src = "https://github.com/ahra1221/Sopetit-iOS/assets/79412889/dd547032-4cee-438d-8ad4-f87fb4a5fff0" width = "300">| <img src = "https://github.com/ahra1221/Sopetit-iOS/assets/79412889/07bd4854-50c2-4f00-afa1-776ea27919ec" width = "300"> | <img src = "https://github.com/ahra1221/Sopetit-iOS/assets/79412889/2ed838cf-436a-43ac-835b-36754cb484dc" width = "300"> | <img src = "https://github.com/ahra1221/Sopetit-iOS/assets/79412889/004fb178-d7a4-41b4-a502-407678d29f04" width = "300"> |
+| <img src = "https://github.com/Team-Sopetit/Sopetit-iOS/assets/79412889/2caf0869-d6e1-4a22-ab35-f2ddf2cac04c" width = "300">| <img src = "https://github.com/Team-Sopetit/Sopetit-iOS/assets/79412889/bfbe8a68-54d2-46d3-b463-e1df08371f09" width = "300"> | <img src = "https://github.com/Team-Sopetit/Sopetit-iOS/assets/79412889/c0235ba4-c5d4-4b95-b990-087b95ed67a0" width = "300"> | <img src = "https://github.com/Team-Sopetit/Sopetit-iOS/assets/79412889/33e9bfad-abec-4960-8545-6faf41bd5bd2" width = "300"> |
 |<p align = "center">`온보딩` `바텀시트뷰`|<p align = "center">`소셜로그인` `메인뷰` |<p align = "center">`데일리루틴뷰` `설정뷰`|<p align = "center">`행복루틴뷰` `데일리루틴추가뷰`|
 
 ### 📒 Library
