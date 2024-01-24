@@ -18,6 +18,7 @@ enum URLConstant {
     static let loginURL = baseURL + "/api/v1/auth"
     static let logoutURL = baseURL + "/api/v1/auth/logout"
     static let resignURL = baseURL + "/api/v1/auth"
+    static let reissueURL = baseURL + "/api/v1/auth/token"
     
     // MARK: - OnBoarding URL
     

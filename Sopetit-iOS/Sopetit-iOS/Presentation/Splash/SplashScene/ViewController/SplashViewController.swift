@@ -32,10 +32,42 @@ final class SplashViewController: UIViewController {
 }
 
 private extension SplashViewController {
+    func postLoginAPI(socialAccessToken: String, socialType: String) {
+        AuthService.shared.postLoginAPI(socialAccessToken: socialAccessToken, socialType: socialType) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                self.presentToHomeView()
+            case .requestErr:
+                self.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken)
+            case .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    func postReissueAPI(refreshToken: String) {
+        AuthService.shared.postReissueAPI(refreshToken: refreshToken) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                self.presentToHomeView()
+            case .requestErr:
+                self.presentToLoginView()
+            case .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
+}
+
+private extension SplashViewController {
     func showNextPage() {
         if UserManager.shared.hasAccessToken {
             if UserManager.shared.isPostMemeber {
-                presentToHomeView()
+                postLoginAPI(socialAccessToken: UserManager.shared.getAccessToken, socialType: UserManager.shared.getSocialType)
             } else {
                 presentToOnboardingView()
             }

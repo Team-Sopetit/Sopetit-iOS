@@ -13,3 +13,7 @@ struct LoginEntity: Codable {
 struct LogoutEntity: Codable {}
 
 struct ResignEntity: Codable {}
+
+struct ReisuueEntity: Codable {
+    let accessToken: String
+}
