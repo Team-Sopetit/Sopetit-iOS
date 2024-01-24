@@ -35,7 +35,7 @@ private extension SplashViewController {
     func postLoginAPI(socialAccessToken: String, socialType: String) {
         AuthService.shared.postLoginAPI(socialAccessToken: socialAccessToken, socialType: socialType) { networkResult in
             switch networkResult {
-            case .success(let data):
+            case .success:
                 self.presentToHomeView()
             case .requestErr:
                 self.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken)
@@ -50,7 +50,7 @@ private extension SplashViewController {
     func postReissueAPI(refreshToken: String) {
         AuthService.shared.postReissueAPI(refreshToken: refreshToken) { networkResult in
             switch networkResult {
-            case .success(let data):
+            case .success:
                 self.presentToHomeView()
             case .requestErr:
                 self.presentToLoginView()
