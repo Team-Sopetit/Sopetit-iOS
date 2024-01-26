@@ -61,6 +61,7 @@ extension LoginViewController {
                     switch socialType {
                     case "KAKAO":
                         if let kakaoData = data.data {
+                            UserManager.shared.updateSocialType(socialType)
                             self.kakaoEntity = kakaoData
                             self.checkKakaoUser()
                             if kakaoData.isMemberDollExist {
@@ -74,6 +75,7 @@ extension LoginViewController {
                         }
                     case "APPLE":
                         if let appleData = data.data {
+                            UserManager.shared.updateSocialType(socialType)
                             self.appleEntity = appleData
                             self.checkAppleUser()
                             if appleData.isMemberDollExist {
