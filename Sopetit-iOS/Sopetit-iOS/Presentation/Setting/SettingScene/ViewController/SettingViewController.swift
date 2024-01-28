@@ -227,7 +227,7 @@ extension SettingViewController {
                           let keyWindow = windowScene.windows.first else {
                         return
                     }
-                    UserManager.shared.logout()
+                    UserManager.shared.clearAll()
                     let nav = LoginViewController()
                     keyWindow.rootViewController = UINavigationController(rootViewController: nav)
                 }

@@ -21,16 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KakaoSDK.initSDK(appKey: apiKey!)
         
         let appleIDProvider = ASAuthorizationAppleIDProvider()
-        appleIDProvider.getCredentialState(forUserID: "00000.abcabcabcabc.0000(로그인에 사용한 UserIdentifier)") { (credentialState, error) in
+        appleIDProvider.getCredentialState(forUserID: UserManager.shared.appleUserIdentifier ?? "00000.abcabcabcabc.0000(로그인에 사용한 UserIdentifier)") { (credentialState, error) in
             switch credentialState {
             case .authorized:
                 print("authorized")
             case .revoked:
                 print("revoked")
-            case .notFound:
-                print("notFound")
+                UserManager.shared.clearAll()
             default:
-                break
+                print("notFound")
             }
         }
         return true
@@ -51,19 +50,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        print("백그라운드 갔다옴")
         if #available(iOS 13.0, *) {
                 let appleIDProvider = ASAuthorizationAppleIDProvider()
-            appleIDProvider.getCredentialState(forUserID: "00000.abcabcabcabc.0000(로그인에 사용한 UserIdentifier)") { (credentialState, error) in
+            appleIDProvider.getCredentialState(forUserID: UserManager.shared.appleUserIdentifier ?? "00000.abcabcabcabc.0000(로그인에 사용한 UserIdentifier)") { (credentialState, error) in
                     switch credentialState {
                     case .authorized:
-                        //인증성공 상태
-                        print("인증성공")
+                        print("authorized⭐️")
                     case .revoked:
-                        //인증만료 상태
-                        print("인증만료")
+                        print("revoked⭐️")
+                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                              let keyWindow = windowScene.windows.first else {
+                            return
+                        }
+                        UserManager.shared.clearAll()
+                        let nav = LoginViewController()
+                        keyWindow.rootViewController = UINavigationController(rootViewController: nav)
                     default:
-                        //.notFound 등 이외 상태
-                        print(".notFound")
+                        print("notFound⭐️")
                     }
                 }
         }
