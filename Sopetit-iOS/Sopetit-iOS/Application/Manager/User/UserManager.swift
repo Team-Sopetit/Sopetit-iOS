@@ -46,6 +46,10 @@ extension UserManager {
         self.refreshToken = refreshToken
     }
     
+    func reissueToken(_ accessToken: String) {
+        self.accessToken = accessToken
+    }
+    
     func setUserIdForApple(userId: String) {
         self.appleUserIdentifier = userId
     }
