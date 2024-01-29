@@ -56,9 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             appleIDProvider.getCredentialState(forUserID: UserManager.shared.appleUserIdentifier ?? "00000.abcabcabcabc.0000(로그인에 사용한 UserIdentifier)") { (credentialState, error) in
                     switch credentialState {
                     case .authorized:
-                        print("authorized⭐️")
+                        print("authorized")
                     case .revoked:
-                        print("revoked⭐️")
+                        print("revoked")
                         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                               let keyWindow = windowScene.windows.first else {
                             return
@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         let nav = LoginViewController()
                         keyWindow.rootViewController = UINavigationController(rootViewController: nav)
                     default:
-                        print("notFound⭐️")
+                        print("notFound")
                     }
                 }
         }
