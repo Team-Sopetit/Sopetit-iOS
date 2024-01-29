@@ -28,6 +28,7 @@ final class WithdrawViewController: UIViewController {
         setLayout()
         setBarConfiguration()
         setAddTarget()
+        setDelegate()
     }
 }
 
@@ -37,6 +38,10 @@ extension WithdrawViewController {
 
     func setUI() {
         self.view.backgroundColor = .SoftieBack
+    }
+    
+    func setDelegate() {
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     func setHierarchy() {
@@ -107,7 +112,16 @@ extension WithdrawViewController {
 
 extension WithdrawViewController: BackButtonProtocol {
     
+    @objc
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension WithdrawViewController: UIGestureRecognizerDelegate {
+    
+    func setGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackButton))
+        view.addGestureRecognizer(tapGesture)
     }
 }
