@@ -38,7 +38,7 @@ extension UILabel {
             return
         }
         let firstRange = (existingText as NSString).range(of: targetString)
-        var searchRange = NSRange(location: firstRange.location + 1, length: existingText.utf16.count - firstRange.location - 1)
+        let searchRange = NSRange(location: firstRange.location + 1, length: existingText.utf16.count - firstRange.location - 1)
         let secondRange = (existingText as NSString).range(of: targetString, options: .caseInsensitive, range: searchRange)
         let attributedStr = NSMutableAttributedString(string: existingText)
         attributedStr.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: secondRange)
