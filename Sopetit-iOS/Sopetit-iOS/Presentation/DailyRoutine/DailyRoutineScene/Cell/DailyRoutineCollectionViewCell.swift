@@ -1,7 +1,8 @@
 //
-//  RoutineCollectionViewCell.swift
+//  DailyRoutineCollectionViewCell.swift
+//  Sopetit-iOS
 //
-//  Created by Woo Jye Lee on 1/2/24.
+//  Created by Minjoo Kim on 1/29/24.
 //
 
 import UIKit
@@ -13,70 +14,50 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
     // MARK: - Properties
 
     static let isFromNib: Bool = false
-    weak var delegate: PresentDelegate?
-    var status = 0
-    static var sharedVariable: Int = 0 {
-        didSet {
-            NotificationCenter.default.post(name: Notification.Name("SharedVariableDidChange"), object: nil)
-        }
-    }
     var index: Int = 0
-
+    
     // MARK: - UI Components
     
-    let imageView: UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        return image
+    private let iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
-    let flagImg: UIImageView = {
-        let image = UIImageView()
-        image.image = ImageLiterals.DailyRoutine.icFlag
-        image.contentMode = .scaleAspectFit
-        return image
-    }()
-    
-    let dateLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .fontGuide(.caption1)
+        label.font = .fontGuide(.body1)
+        label.textColor = .Gray700
+        return label
+    }()
+    
+    private let flagImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.DailyRoutine.icFlag
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private let achieveLabel: UILabel = {
+        let label = UILabel()
+        label.font = .fontGuide(.caption2)
         label.textColor = .Gray300
         return label
     }()
     
-    let routineLabel: UILabel = {
-        let label = UILabel()
-        label.font = .fontGuide(.body1)
-        label.textColor = .Gray700
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    lazy var achieveButton: UIButton = {
+    private let radioButton: UIButton = {
         let button = UIButton()
-        button.setTitle(I18N.DailyRoutine.complete, for: .normal)
-        button.setTitleColor(.SoftieWhite, for: .normal)
-        button.titleLabel?.font = .fontGuide(.body4)
-        button.setBackgroundColor(.SoftieMain1, for: .normal)
-        button.layer.cornerRadius = 10
-        button.clipsToBounds = true
-        button.setTitle(I18N.DailyRoutine.completed, for: .disabled)
-        button.setTitleColor(.Gray300, for: .disabled)
-        button.setBackgroundColor(.Gray100, for: .disabled)
+        button.setImage(ImageLiterals.DailyRoutine.btnRadiobtnNone, for: .normal)
         return button
     }()
     
-    lazy var checkBox: UIButton = {
-        let view = UIButton()
-        view.setImage(ImageLiterals.DailyRoutine.btnRadiobtnNone, for: .normal)
-        view.setImage(ImageLiterals.DailyRoutine.btnRadiobtnSelected, for: .selected)
-        view.isHidden = true
-        return view
-    }()
-    
-    let labelBox: UIView = {
-        let view = UIView()
-        return view
+    private let completeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("완료하기", for: .normal)
+        button.setTitleColor(.SoftieWhite, for: .normal)
+        button.backgroundColor = .SoftieMain1
+        button.layer.cornerRadius = 10
+        return button
     }()
     
     // MARK: - Life Cycles
@@ -87,18 +68,10 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        checkBox.setImage(ImageLiterals.DailyRoutine.btnRadiobtnNone, for: .normal)
-        checkBox.isHidden = true
     }
 }
 
@@ -107,96 +80,24 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
 extension DailyRoutineCollectionViewCell {
 
     func setUI() {
-        self.layer.cornerRadius = 20
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.Gray100.cgColor
-        self.backgroundColor = .white
+        
     }
     
     func setHierarchy() {
-        self.addSubviews(imageView, achieveButton, checkBox, labelBox)
-        labelBox.addSubviews(flagImg, dateLabel, routineLabel)
+        
     }
     
     func setLayout() {
-        labelBox.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(72)
-            $0.top.equalToSuperview().inset(23)
-            $0.bottom.equalTo(achieveButton.snp.top).offset(-20)
-            $0.trailing.equalToSuperview().inset(52)
-        }
         
-        imageView.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(20)
-            $0.size.equalTo(40)
-            $0.centerY.equalTo(labelBox.snp.centerY)
-        }
-        
-        flagImg.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.centerY.equalTo(dateLabel.snp.centerY)
-        }
-        
-        dateLabel.snp.makeConstraints {
-            $0.leading.equalTo(flagImg.snp.trailing).offset(4)
-            $0.bottom.equalToSuperview()
-        }
-        
-        routineLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalTo(flagImg)
-            $0.trailing.equalToSuperview()
-            $0.bottom.equalTo(flagImg.snp.top).offset(-5)
-        }
-        
-        achieveButton.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(23)
-            $0.height.equalTo(38)
-        }
-        
-        checkBox.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview().inset(11)
-            $0.size.equalTo(38)
-        }
     }
+}
+
+extension DailyRoutineCollectionViewCell {
     
-    func setDatabind(model: DailyRoutines) {
-        self.dateLabel.text = "\(model.achieveCount)번째 달성 중"
-        self.routineLabel.text = model.content
-        if let iconURL = URL(string: model.iconImageURL) {
-            self.imageView.downloadedsvg(from: iconURL)
-        }
-        self.achieveButton.isEnabled = !model.isAchieve
+    func setDataBind(model: DailyRoutines) {
+        let imageUrl = model.iconImageURL
+        iconImageView.kfSetImage(url: imageUrl)
+        titleLabel.text = model.content
+        achieveLabel.text = "\(model.achieveCount)번째 달성 중"
     }
-    
-    func setAddTarget() {
-        self.achieveButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        self.checkBox.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-    }
-    
-    @objc
-    func buttonTapped(_ sender: UIButton) {
-        switch sender {
-        case achieveButton:
-            if sender.isSelected {
-                sender.isSelected = false
-            } else {
-                delegate?.buttonTapped(in: self)
-                if status == 1 {
-                    sender.isSelected = true
-                }
-            }
-        case checkBox:
-            if sender.isSelected {
-                DailyRoutineCollectionViewCell.sharedVariable-=1
-            } else {
-                DailyRoutineCollectionViewCell.sharedVariable+=1
-            }
-            sender.isSelected = !sender.isSelected
-        default:
-            break
-        }
-    }
-    
 }

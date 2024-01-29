@@ -1,33 +1,27 @@
 //
-//  DailyFooterView.swift
+//  DailyRoutineEmptyView.swift
 //  Sopetit-iOS
 //
-//  Created by Woo Jye Lee on 1/10/24.
+//  Created by Minjoo Kim on 1/29/24.
 //
 
 import UIKit
 
 import SnapKit
 
-protocol DailyAddDelegate: AnyObject {
-    func addTapped()
-}
-
-final class DailyFooterView: UICollectionReusableView, UICollectionFooterViewRegisterable {
+final class DailyRoutineEmptyView: UICollectionReusableView, UICollectionFooterViewRegisterable {
     
     // MARK: - Properties
     
     static var isFromNib: Bool = false
-    weak var addDelegate: DailyAddDelegate?
     
     // MARK: - UI Componenets
     
-    private let plusImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "ic_add")
-        image.tintColor = .Gray200
-        image.contentMode = .scaleAspectFit
-        return image
+    private let plusImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.DailyRoutine.icAdd
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
     private let borderLayer = CAShapeLayer()
@@ -40,7 +34,6 @@ final class DailyFooterView: UICollectionReusableView, UICollectionFooterViewReg
         setUI()
         setLayout()
         layoutSubviews()
-        setAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -60,10 +53,10 @@ final class DailyFooterView: UICollectionReusableView, UICollectionFooterViewReg
     }
 }
 
-extension DailyFooterView {
+extension DailyRoutineEmptyView {
     
     func setUI() {
-        self.addSubview(plusImage)
+        self.addSubview(plusImageView)
         borderLayer.strokeColor = UIColor.Gray300.cgColor
         borderLayer.lineDashPattern = [3, 3]
         borderLayer.backgroundColor = UIColor.clear.cgColor
@@ -76,20 +69,9 @@ extension DailyFooterView {
             $0.height.equalTo(136)
         }
         
-        plusImage.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
+        plusImageView.snp.makeConstraints {
+            $0.center.equalToSuperview()
             $0.size.equalTo(24)
         }
-    }
-    
-    func setAddTarget() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleFooterTap))
-        self.addGestureRecognizer(tapGesture)
-        self.isUserInteractionEnabled = true
-    }
-    
-    @objc
-    func handleFooterTap() {
-        addDelegate?.addTapped()
     }
 }

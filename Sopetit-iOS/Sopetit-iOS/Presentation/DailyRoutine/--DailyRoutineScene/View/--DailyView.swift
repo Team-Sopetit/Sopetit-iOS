@@ -8,7 +8,7 @@ import UIKit
 
 import SnapKit
 
-final class DailyView: UIView {
+final class ExDailyView: UIView {
     
     // MARK: - UI Components
 
@@ -41,7 +41,7 @@ final class DailyView: UIView {
 
 // MARK: - Extensions
 
-extension DailyView {
+extension ExDailyView {
 
     func setUI() {
         self.backgroundColor = .SoftieBack
@@ -59,7 +59,7 @@ extension DailyView {
     }
     
     func setRegisterCell() {
-        DailyRoutineCollectionViewCell.register(target: collectionView)
-        DailyFooterView.register(target: collectionView)
+        ExDailyRoutineCollectionViewCell.register(target: collectionView)
+        ExDailyFooterView.register(target: collectionView)
     }
 }

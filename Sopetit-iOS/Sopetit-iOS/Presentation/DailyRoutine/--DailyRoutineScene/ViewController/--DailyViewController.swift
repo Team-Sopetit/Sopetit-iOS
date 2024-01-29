@@ -9,10 +9,10 @@ import UIKit
 import SnapKit
 
 protocol PresentDelegate: AnyObject {
-    func buttonTapped(in cell: DailyRoutineCollectionViewCell)
+    func buttonTapped(in cell: ExDailyRoutineCollectionViewCell)
 }
 
-final class DailyViewController: UIViewController {
+final class ExDailyViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -31,9 +31,9 @@ final class DailyViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let routineView = DailyView()
+    private let routineView = ExDailyView()
     private lazy var collectionview = routineView.collectionView
-    private let dailyFooterView = DailyFooterView()
+    private let dailyFooterView = ExDailyFooterView()
     private let customNavigationBar = CustomNavigationBarView()
     private let dailyCompleteBottom = BottomSheetViewController(bottomStyle: .dailyCompleteBottom)
     private let dailyDeleteBottom = BottomSheetViewController(bottomStyle: .dailyDeleteBottom)
@@ -77,7 +77,7 @@ final class DailyViewController: UIViewController {
 
 // MARK: - Extensions
 
-extension DailyViewController {
+extension ExDailyViewController {
     
     func setUI() {
         self.view.backgroundColor = .SoftieBack
@@ -145,18 +145,18 @@ extension DailyViewController {
     
     private func updateCellsForEditing() {
         for cell in collectionview.visibleCells {
-            if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+            if let dailyCell = cell as? ExDailyRoutineCollectionViewCell {
                 dailyCell.checkBox.isHidden = !isEditing
             }
         }
     }
     
     @objc func updateDeleteLabel() {
-        let count = DailyRoutineCollectionViewCell.sharedVariable
+        let count = ExDailyRoutineCollectionViewCell.sharedVariable
         let title = "\(count)개 삭제"
         deleteButton.setTitle(title, for: .normal)
         
-        if DailyRoutineCollectionViewCell.sharedVariable == 0 {
+        if ExDailyRoutineCollectionViewCell.sharedVariable == 0 {
             self.deleteButton.backgroundColor = .Gray200
             self.deleteButton.isUserInteractionEnabled = false
         } else {
@@ -175,7 +175,7 @@ extension DailyViewController {
     }
 }
 
-extension DailyViewController: DailyAddDelegate {
+extension ExDailyViewController: DailyAddDelegate {
     
     func addTapped() {
         if self.dailyFooterView.isUserInteractionEnabled {
@@ -186,14 +186,14 @@ extension DailyViewController: DailyAddDelegate {
     }
 }
 
-extension DailyViewController: UICollectionViewDelegate {
+extension ExDailyViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return shouldShowFooterView ? CGSize(width: collectionView.bounds.width, height: 136) : CGSize.zero
     }
 }
 
-extension DailyViewController: UICollectionViewDataSource {
+extension ExDailyViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numberOfItems = routineList.routines.count
@@ -207,7 +207,7 @@ extension DailyViewController: UICollectionViewDataSource {
         if routineList.routines.isEmpty {
             return UICollectionViewCell()
         } else {
-            let cell = DailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
+            let cell = ExDailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
             let routine = routineList.routines[indexPath.item]
             cell.index = indexPath.item
             cell.setDatabind(model: routine)
@@ -219,7 +219,7 @@ extension DailyViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionFooter {
-            let footerView = DailyFooterView.dequeueReusableFooterView(collectionView: collectionView, indexPath: indexPath)
+            let footerView = ExDailyFooterView.dequeueReusableFooterView(collectionView: collectionView, indexPath: indexPath)
             footerView.addDelegate = self
             if shouldShowFooterView == false {
                 footerView.isHidden = true
@@ -233,11 +233,11 @@ extension DailyViewController: UICollectionViewDataSource {
 
 }
 
-extension DailyViewController: BottomSheetButtonDelegate {
+extension ExDailyViewController: BottomSheetButtonDelegate {
     
     func completeButtonTapped() {
         for cell in self.collectionview.visibleCells {
-            if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+            if let dailyCell = cell as? ExDailyRoutineCollectionViewCell {
                 if dailyCell.index == achieveIndex {
                     patchRoutineAPI(routineId: dailyCell.tag)
                 }
@@ -255,7 +255,7 @@ extension DailyViewController: BottomSheetButtonDelegate {
         customNavigationBar.cancelButton.isHidden = true
         customNavigationBar.editButton.isHidden = false
         for cell in self.collectionview.visibleCells {
-            if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+            if let dailyCell = cell as? ExDailyRoutineCollectionViewCell {
                 dailyCell.achieveButton.isUserInteractionEnabled = true
             }
         }
@@ -263,7 +263,7 @@ extension DailyViewController: BottomSheetButtonDelegate {
         
         var routineIdList = ""
         for cell in self.collectionview.visibleCells {
-            if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+            if let dailyCell = cell as? ExDailyRoutineCollectionViewCell {
                 if dailyCell.checkBox.isSelected {
                     routineList.routines = routineList.routines.filter { $0.routineID != dailyCell.tag }
                     if routineIdList == "" {
@@ -276,13 +276,13 @@ extension DailyViewController: BottomSheetButtonDelegate {
         }
         
         self.deleteRoutineListAPI(routineIdList: routineIdList)
-        let count = DailyRoutineCollectionViewCell.sharedVariable
+        let count = ExDailyRoutineCollectionViewCell.sharedVariable
         let title = "데일리 루틴을 \(count)개 삭제했어요"
         deleteAlertView.titleLabel.text = title
         UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
             self.deleteAlertView.alpha = 0.0
         })
-        DailyRoutineCollectionViewCell.sharedVariable = 0
+        ExDailyRoutineCollectionViewCell.sharedVariable = 0
         NotificationCenter.default.removeObserver(self, name: Notification.Name("SharedVariableDidChange"), object: nil)
         
         self.dismiss(animated: false)
@@ -294,9 +294,9 @@ extension DailyViewController: BottomSheetButtonDelegate {
     }
 }
 
-extension DailyViewController: PresentDelegate {
+extension ExDailyViewController: PresentDelegate {
     
-    func buttonTapped(in cell: DailyRoutineCollectionViewCell) {
+    func buttonTapped(in cell: ExDailyRoutineCollectionViewCell) {
         if let iconURL = URL(string: routineList.routines[cell.index].iconImageURL) {
             self.dailyCompleteBottom.imageView.downloadedsvg(from: iconURL)
         }
@@ -305,7 +305,7 @@ extension DailyViewController: PresentDelegate {
     }
 }
 
-extension DailyViewController {
+extension ExDailyViewController {
     
     func setupCustomNavigationBar() {
         customNavigationBar.isLeftTitleLabelIncluded = I18N.TabBar.daily
@@ -319,17 +319,17 @@ extension DailyViewController {
             self.deleteButton.isHidden = true
             self.isEditing = false
             for cell in self.collectionview.visibleCells {
-                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                if let dailyCell = cell as? ExDailyRoutineCollectionViewCell {
                     dailyCell.achieveButton.isUserInteractionEnabled = true
                 }
             }
             for cell in self.collectionview.visibleCells {
-                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                if let dailyCell = cell as? ExDailyRoutineCollectionViewCell {
                     dailyCell.checkBox.isSelected = false
                 }
             }
             
-            DailyRoutineCollectionViewCell.sharedVariable = 0
+            ExDailyRoutineCollectionViewCell.sharedVariable = 0
             
             NotificationCenter.default.removeObserver(self, name: Notification.Name("SharedVariableDidChange"), object: nil)
             
@@ -341,14 +341,14 @@ extension DailyViewController {
             if self.routineList.routines.isEmpty {
                 return
             } else {
-                DailyRoutineCollectionViewCell.sharedVariable = 0
+                ExDailyRoutineCollectionViewCell.sharedVariable = 0
                 NotificationCenter.default.addObserver(self, selector: #selector(self.updateDeleteLabel), name: Notification.Name("SharedVariableDidChange"), object: nil)
                 self.isEditing = true
                 self.deleteButton.isHidden = false
                 self.customNavigationBar.cancelButton.isHidden = false
                 self.customNavigationBar.editButton.isHidden = true
                 for cell in self.collectionview.visibleCells {
-                    if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                    if let dailyCell = cell as? ExDailyRoutineCollectionViewCell {
                         dailyCell.achieveButton.isUserInteractionEnabled = false
                     }
                 }
@@ -371,7 +371,7 @@ extension DailyViewController {
     }
 }
 
-extension DailyViewController: UICollectionViewDelegateFlowLayout {
+extension ExDailyViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if routineList.routines.isEmpty {
@@ -384,7 +384,7 @@ extension DailyViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Network
 
-extension DailyViewController {
+extension ExDailyViewController {
     
     func getRoutineListAPI() {
         DailyRoutineService.shared.getRoutineListAPI { networkResult in
@@ -421,7 +421,7 @@ extension DailyViewController {
     func patchRoutineAPI(routineId: Int) {
         DailyRoutineService.shared.patchRoutineAPI(routineId: routineId) { _ in
             for cell in self.collectionview.visibleCells {
-                if let dailyCell = cell as? DailyRoutineCollectionViewCell {
+                if let dailyCell = cell as? ExDailyRoutineCollectionViewCell {
                     if dailyCell.tag == routineId {
                         if let index = self.routineList.routines.firstIndex(where: { $0.routineID == routineId }) {
                             self.routineList.routines[index].isAchieve = true
