@@ -49,7 +49,7 @@ enum I18N {
         static let dollNameTitle = "좋은 선택이에요!\n친구 이름도 지어볼까요?"
         static let dollNameSubTitle = "한 번 지은 이름은 평생 가요"
         static let textfieldPlaceholder = "소프티"
-        static let dollNameInfoTitle = "*특수문자는 사용할 수 없어요"
+        static let dollNameInfoTitle = "*숫자와 특수문자는 사용할 수 없어요"
         static let dollNameInfoTitle2 = "*10글자 이내로 작성해 주세요."
         static let dollNameButtonTitle = "이 이름이 좋겠어"
         static let dollSpecialText = "-!@#$%^&*()_+={}[]₩|\\n;:'\",.<>?/~`£¥• "
