@@ -33,6 +33,18 @@ extension UILabel {
         self.attributedText = attributedStr
     }
     
+    func secondColorChange(targetString: String, textColor: UIColor) {
+        guard let existingText = self.text else {
+            return
+        }
+        let firstRange = (existingText as NSString).range(of: targetString)
+        let searchRange = NSRange(location: firstRange.location + 1, length: existingText.utf16.count - firstRange.location - 1)
+        let secondRange = (existingText as NSString).range(of: targetString, options: .caseInsensitive, range: searchRange)
+        let attributedStr = NSMutableAttributedString(string: existingText)
+        attributedStr.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: secondRange)
+        self.attributedText = attributedStr
+    }
+    
     func setLineSpacing(lineSpacing: CGFloat) {
         if let text = self.text {
             let attributedStr = NSMutableAttributedString(string: text)

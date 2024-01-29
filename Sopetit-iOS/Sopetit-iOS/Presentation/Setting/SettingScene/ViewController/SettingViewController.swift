@@ -66,6 +66,15 @@ extension SettingViewController {
         settingView.tableView.delegate = self
         settingView.tableView.dataSource = self
         logoutBottom.buttonDelegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+}
+
+extension SettingViewController: UIGestureRecognizerDelegate {
+    
+    func setGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackButton))
+        view.addGestureRecognizer(tapGesture)
     }
 }
 
@@ -222,7 +231,7 @@ extension SettingViewController {
         AuthService.shared.postLogoutAPI { networkResult in
             switch networkResult {
             case .success(let data):
-                if let data = data as? GenericResponse<LogoutEntity> {
+                if data is GenericResponse<LogoutEntity> {
                     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                           let keyWindow = windowScene.windows.first else {
                         return
@@ -242,6 +251,7 @@ extension SettingViewController {
 
 extension SettingViewController: BackButtonProtocol {
     
+    @objc
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
