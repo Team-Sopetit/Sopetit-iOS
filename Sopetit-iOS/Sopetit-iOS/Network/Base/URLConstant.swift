@@ -30,7 +30,7 @@ enum URLConstant {
     // MARK: - Home URL
     
     static let homeURL = baseURL + "/api/v1/members"
-    static let cottonURL = baseURL + "/api/v1/members/"
+    static let cottonURL = baseURL + "/api/v1/members/cotton/"
     
     // MARK: - DailyRoutine URL
     
