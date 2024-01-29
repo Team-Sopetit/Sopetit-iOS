@@ -49,11 +49,20 @@ extension SelectHappyCategoryViewController {
         selectHappyCategoryView.categoryCollectionView.delegate = self
         selectHappyCategoryView.categoryCollectionView.dataSource = self
         selectHappyCategoryView.customNavigationBar.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     func setRegister() {
         HappyRoutineTagCollectionViewCell.register(target: selectHappyCategoryView.tagview.collectionView)
         HappyRoutineCategoryCollectionViewCell.register(target: selectHappyCategoryView.categoryCollectionView)
+    }
+}
+
+extension SelectHappyCategoryViewController: UIGestureRecognizerDelegate {
+    
+    func setGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackButton))
+        view.addGestureRecognizer(tapGesture)
     }
 }
 
@@ -135,7 +144,7 @@ extension SelectHappyCategoryViewController: UICollectionViewDelegateFlowLayout 
 }
 
 extension SelectHappyCategoryViewController: BackButtonProtocol {
-    
+    @objc
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
     }

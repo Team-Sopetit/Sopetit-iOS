@@ -74,6 +74,7 @@ private extension AddHappyRoutineViewController {
         self.addHappyRoutineView.delegate = self
         self.happyAddBottom.buttonDelegate = self
         self.addHappyRoutineView.customNavigationBar.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     func setCarousel() {
@@ -109,6 +110,14 @@ private extension AddHappyRoutineViewController {
             happyRoutineViewController.isFromAddHappyBottom = true
         }
         keyWindow.rootViewController = UINavigationController(rootViewController: nav)
+    }
+}
+
+extension AddHappyRoutineViewController: UIGestureRecognizerDelegate {
+    
+    func setGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackButton))
+        view.addGestureRecognizer(tapGesture)
     }
 }
 
@@ -174,6 +183,7 @@ extension AddHappyRoutineViewController: HappyRoutineProtocol {
 
 extension AddHappyRoutineViewController: BackButtonProtocol {
     
+    @objc
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
