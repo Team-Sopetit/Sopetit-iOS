@@ -50,8 +50,13 @@ private extension SplashViewController {
     func postReissueAPI(refreshToken: String) {
         AuthService.shared.postReissueAPI(refreshToken: refreshToken) { networkResult in
             switch networkResult {
-            case .success:
-                self.presentToHomeView()
+            case .success(let data):
+                if let data = data as? GenericResponse<ReisuueEntity> {
+                    if let accessToken = data.data?.accessToken {
+                        UserManager.shared.reissueToken(accessToken)
+                        self.presentToHomeView()
+                    }
+                }
             case .requestErr:
                 self.presentToLoginView()
             case .serverErr:

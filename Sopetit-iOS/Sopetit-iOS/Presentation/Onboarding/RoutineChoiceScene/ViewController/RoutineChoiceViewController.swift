@@ -66,10 +66,14 @@ extension RoutineChoiceViewController {
         case routineChoiceView.backButton:
             self.navigationController?.popViewController(animated: true)
         case routineChoiceView.nextButton:
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                  let keyWindow = windowScene.windows.first else {
+                return
+            }
             let nav = TabBarController()
             postMemberAPI()
             UserManager.shared.hasPostMember()
-            self.navigationController?.pushViewController(nav, animated: true)
+            keyWindow.rootViewController = UINavigationController(rootViewController: nav)
         default:
             break
         }

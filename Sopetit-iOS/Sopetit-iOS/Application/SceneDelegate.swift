@@ -8,6 +8,7 @@
 import UIKit
 
 import KakaoSDKAuth
+import AuthenticationServices
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -42,6 +43,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        print("백그라운드 갔다옴")
+        if #available(iOS 13.0, *) {
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            appleIDProvider.getCredentialState(forUserID: UserManager.shared.appleUserIdentifier ?? "00000.abcabcabcabc.0000(로그인에 사용한 UserIdentifier)") { (credentialState, error) in
+                DispatchQueue.main.async {
+                    switch credentialState {
+                    case .authorized:
+                        print("authorized")
+                    case .revoked:
+                        print("revoked")
+                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                              let keyWindow = windowScene.windows.first else {
+                            return
+                        }
+                        UserManager.shared.clearAll()
+                        let nav = LoginViewController()
+                        keyWindow.rootViewController = UINavigationController(rootViewController: nav)
+                    default:
+                        print("notFound")
+                    }
+                }
+            }
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

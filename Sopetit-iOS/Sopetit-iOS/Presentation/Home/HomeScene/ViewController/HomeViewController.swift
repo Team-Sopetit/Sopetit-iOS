@@ -52,8 +52,6 @@ final class HomeViewController: UIViewController {
 extension HomeViewController {
     
     func setUI() {
-        print("⭐️⭐️⭐️")
-        print(UserManager.shared.getAccessToken)
         homeView.setDoll(dollType: UserManager.shared.getDollType)
         self.navigationController?.navigationBar.isHidden = true
     }
