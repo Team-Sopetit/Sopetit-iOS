@@ -58,7 +58,6 @@ final class HomeViewController: UIViewController {
 extension HomeViewController {
     
     func setUI() {
-        homeView.setDoll(dollType: UserManager.shared.getDollType)
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -113,6 +112,7 @@ extension HomeViewController {
                     self.cottonDailyNum = self.homeEntity.dailyCottonCount
                     self.cottonHappyyNum = self.homeEntity.happinessCottonCount
                     self.setDataBind(model: self.homeEntity)
+                    self.homeView.setDoll(dollType: UserManager.shared.getDollType)
                     self.collectionView.reloadData()
                     self.homeView.setNeedsDisplay()
                 }
