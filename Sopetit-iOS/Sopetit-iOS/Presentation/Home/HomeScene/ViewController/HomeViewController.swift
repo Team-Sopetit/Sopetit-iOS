@@ -24,6 +24,7 @@ final class HomeViewController: UIViewController {
     
     private var homeView = HomeView()
     private lazy var collectionView = homeView.actionCollectionView
+    private var activityIndicator = UIActivityIndicatorView(style: .medium)
     
     // MARK: - Life Cycles
     
@@ -34,8 +35,11 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         
-        sleep(1)
-        getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
+        startLoadingIndicator()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
+        }
     }
     
     override func viewDidLoad() {
@@ -52,7 +56,6 @@ final class HomeViewController: UIViewController {
 extension HomeViewController {
     
     func setUI() {
-        homeView.setDoll(dollType: UserManager.shared.getDollType)
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -115,6 +118,9 @@ extension HomeViewController {
             default:
                 break
             }
+            DispatchQueue.main.async {
+                self.stopLoadingIndicator()
+            }
         }
     }
     
@@ -146,6 +152,17 @@ extension HomeViewController {
                 break
             }
         }
+    }
+    
+    private func startLoadingIndicator() {
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+    }
+    
+    private func stopLoadingIndicator() {
+        activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
     }
 }
 
