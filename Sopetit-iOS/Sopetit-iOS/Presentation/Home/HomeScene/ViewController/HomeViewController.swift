@@ -24,7 +24,6 @@ final class HomeViewController: UIViewController {
     
     private var homeView = HomeView()
     private lazy var collectionView = homeView.actionCollectionView
-    private var blurEffectView: UIVisualEffectView!
     private var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Life Cycles
