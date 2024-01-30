@@ -263,6 +263,7 @@ extension HomeView {
     
     func setDataBind(model: HomeEntity) {
         UserManager.shared.updateDoll(model.dollType)
+        setDoll(dollType: UserManager.shared.getDollType)
         bubbleLabelList = model.conversations
         refreshBubbleLabel()
         dollNameLabel.text = model.name

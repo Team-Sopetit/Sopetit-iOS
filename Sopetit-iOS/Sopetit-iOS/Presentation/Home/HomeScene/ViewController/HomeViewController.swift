@@ -24,7 +24,7 @@ final class HomeViewController: UIViewController {
     
     private var homeView = HomeView()
     private lazy var collectionView = homeView.actionCollectionView
-    private var activityIndicator: UIActivityIndicatorView!
+    private var activityIndicator = UIActivityIndicatorView(style: .medium)
     
     // MARK: - Life Cycles
     
@@ -110,7 +110,6 @@ extension HomeViewController {
                     self.cottonDailyNum = self.homeEntity.dailyCottonCount
                     self.cottonHappyyNum = self.homeEntity.happinessCottonCount
                     self.setDataBind(model: self.homeEntity)
-                    self.homeView.setDoll(dollType: UserManager.shared.getDollType)
                     self.collectionView.reloadData()
                     self.homeView.setNeedsDisplay()
                 }
@@ -156,7 +155,6 @@ extension HomeViewController {
     }
     
     private func startLoadingIndicator() {
-        activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.center = view.center
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
