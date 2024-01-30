@@ -24,6 +24,8 @@ final class HomeViewController: UIViewController {
     
     private var homeView = HomeView()
     private lazy var collectionView = homeView.actionCollectionView
+    private var blurEffectView: UIVisualEffectView!
+    private var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Life Cycles
     
@@ -34,8 +36,11 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         
-        sleep(1)
-        getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
+        startLoadingIndicator()
+        
+        DispatchQueue.main.async {
+            self.getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
+        }
     }
     
     override func viewDidLoad() {
@@ -44,6 +49,13 @@ final class HomeViewController: UIViewController {
         setUI()
         setDelegate()
         setAddTarget()
+        
+        showBlurredBackground()
+        startLoadingIndicator()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
+        }
     }
 }
 
@@ -115,6 +127,8 @@ extension HomeViewController {
             default:
                 break
             }
+            self.hideBlurredBackground()
+            self.stopLoadingIndicator()
         }
     }
     
@@ -146,6 +160,29 @@ extension HomeViewController {
                 break
             }
         }
+    }
+    
+    private func showBlurredBackground() {
+        blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)
+    }
+    
+    private func hideBlurredBackground() {
+        blurEffectView.removeFromSuperview()
+    }
+    
+    private func startLoadingIndicator() {
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+    }
+    
+    private func stopLoadingIndicator() {
+        activityIndicator.stopAnimating()
+        activityIndicator.removeFromSuperview()
     }
 }
 
