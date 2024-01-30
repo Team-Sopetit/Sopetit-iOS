@@ -50,7 +50,6 @@ final class HomeViewController: UIViewController {
         setDelegate()
         setAddTarget()
         
-        showBlurredBackground()
         startLoadingIndicator()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -127,7 +126,6 @@ extension HomeViewController {
             default:
                 break
             }
-            self.hideBlurredBackground()
             self.stopLoadingIndicator()
         }
     }
@@ -160,17 +158,6 @@ extension HomeViewController {
                 break
             }
         }
-    }
-    
-    private func showBlurredBackground() {
-        blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(blurEffectView)
-    }
-    
-    private func hideBlurredBackground() {
-        blurEffectView.removeFromSuperview()
     }
     
     private func startLoadingIndicator() {
