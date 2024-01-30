@@ -34,11 +34,12 @@ final class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("⭐️")
         super.viewWillAppear(false)
         
         startLoadingIndicator()
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
         }
     }
@@ -49,12 +50,6 @@ final class HomeViewController: UIViewController {
         setUI()
         setDelegate()
         setAddTarget()
-        
-        startLoadingIndicator()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
-        }
     }
 }
 
