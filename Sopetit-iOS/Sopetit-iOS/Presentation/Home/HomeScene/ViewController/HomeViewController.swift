@@ -34,7 +34,6 @@ final class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("⭐️")
         super.viewWillAppear(false)
         
         startLoadingIndicator()
@@ -121,7 +120,9 @@ extension HomeViewController {
             default:
                 break
             }
-            self.stopLoadingIndicator()
+            DispatchQueue.main.async {
+                self.stopLoadingIndicator()
+            }
         }
     }
     
