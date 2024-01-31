@@ -284,11 +284,9 @@ extension DailyRoutineViewController: RadioButtonDelegate {
     }
     
     func unselectRadioButton(index: Int) {
-        for i in 0 ..< selectedList.count {
-            if dailyRoutineEntity.routines[index].routineID == selectedList[i] {
-                selectedList.remove(at: i)
-                break
-            }
+        for i in 0 ..< selectedList.count where dailyRoutineEntity.routines[index].routineID == selectedList[i] {
+            selectedList.remove(at: i)
+            break
         }
         updateDeleteCount()
     }
