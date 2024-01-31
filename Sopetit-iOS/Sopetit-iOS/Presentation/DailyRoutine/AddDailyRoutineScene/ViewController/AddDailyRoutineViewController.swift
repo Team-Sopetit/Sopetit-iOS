@@ -270,7 +270,7 @@ extension AddDailyRoutineViewController {
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyRoutineIdEntity> {
-                    if let result = data.data {
+                    if data.data != nil {
                     }
                 }
                 self.setDismiss()

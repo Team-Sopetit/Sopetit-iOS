@@ -161,6 +161,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             
             let userIdentifier = appleIDCredential.user
             let identityToken = appleIDCredential.identityToken
+            
+            UserManager.shared.setUserIdForApple(userId: userIdentifier)
+            
             if let tokenString = String(data: identityToken!, encoding: .utf8) {
                 postLoginAPI(socialAccessToken: tokenString, socialType: "APPLE")
             }

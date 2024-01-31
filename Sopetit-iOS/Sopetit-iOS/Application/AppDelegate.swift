@@ -21,16 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KakaoSDK.initSDK(appKey: apiKey!)
         
         let appleIDProvider = ASAuthorizationAppleIDProvider()
-        appleIDProvider.getCredentialState(forUserID: "00000.abcabcabcabc.0000(로그인에 사용한 UserIdentifier)") { (credentialState, error) in
+        appleIDProvider.getCredentialState(forUserID: UserManager.shared.appleUserIdentifier ?? "") { (credentialState, error) in
             switch credentialState {
             case .authorized:
                 print("authorized")
             case .revoked:
                 print("revoked")
-            case .notFound:
-                print("notFound")
+                UserManager.shared.clearAll()
             default:
-                break
+                print("notFound")
             }
         }
         return true
@@ -48,5 +47,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        if #available(iOS 13.0, *) {
+                let appleIDProvider = ASAuthorizationAppleIDProvider()
+            appleIDProvider.getCredentialState(forUserID: UserManager.shared.appleUserIdentifier ?? "") { (credentialState, error) in
+                    switch credentialState {
+                    case .authorized:
+                        print("authorized")
+                    case .revoked:
+                        print("revoked")
+                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                              let keyWindow = windowScene.windows.first else {
+                            return
+                        }
+                        UserManager.shared.clearAll()
+                        let nav = LoginViewController()
+                        keyWindow.rootViewController = UINavigationController(rootViewController: nav)
+                    default:
+                        print("notFound")
+                    }
+                }
+        }
     }
 }

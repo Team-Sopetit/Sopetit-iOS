@@ -239,17 +239,17 @@ private extension HappyRoutineCardCollectionViewCell {
     
     func cardToDetailCard() {
         self.detailCardView.isHidden.toggle()
-        UIView.transition(with: self.detailCardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil)
+        UIView.transition(with: self.detailCardView, duration: 0.6, options: .transitionFlipFromRight, animations: nil)
 
-        UIView.transition(with: self.cardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: {_ in
+        UIView.transition(with: self.cardView, duration: 0.6, options: .transitionFlipFromRight, animations: nil, completion: {_ in
             self.cardView.isHidden.toggle()
         })
     }
     
     func detailCardToCard() {
         self.cardView.isHidden.toggle()
-        UIView.transition(with: self.cardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil)
-        UIView.transition(with: self.detailCardView, duration: 0.6, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        UIView.transition(with: self.cardView, duration: 0.6, options: .transitionFlipFromRight, animations: nil)
+        UIView.transition(with: self.detailCardView, duration: 0.6, options: .transitionFlipFromRight, animations: nil, completion: nil)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
             self.detailCardView.isHidden.toggle()
         }
