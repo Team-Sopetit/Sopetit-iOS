@@ -248,6 +248,10 @@ extension DailyRoutineViewController: BottomSheetButtonDelegate {
     
     func completeButtonTapped() {
         patchRoutineAPI(routineId: completeRoutineId)
+        self.dismiss(animated: false)
+        let vc = CompleteDailyRoutineViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     func deleteButtonTapped() {
