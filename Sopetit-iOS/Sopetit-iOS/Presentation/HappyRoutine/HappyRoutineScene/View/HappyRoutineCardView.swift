@@ -246,7 +246,7 @@ extension HappyRoutineCardView {
         self.subtitleLabel.setLineSpacing(lineSpacing: 4)
         self.subtitleLabel.textAlignment = .center
         self.detailContentLabel.text = model.detailContent
-        self.detailContentLabel.setTextWithLineHeight(text: detailContentLabel.text, lineHeight: 14 * 1.5)
+        self.detailContentLabel.setTextWithLineHeight(text: detailContentLabel.text, lineHeight: 19.1)
         self.timeLabel.text = model.timeTaken
         self.placeLabel.text = model.place
     }

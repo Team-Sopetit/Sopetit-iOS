@@ -19,7 +19,7 @@ final class DailyRoutineService: BaseService {
 // MARK: - Extension
 
 extension DailyRoutineService {
-    func getRoutineListAPI(completion: @escaping (NetworkResult<Any>) -> Void) {
+    func getDailyRoutine(completion: @escaping (NetworkResult<Any>) -> Void) {
         let url = URLConstant.dailyMemberURL
         let header: HTTPHeaders = NetworkConstant.hasTokenHeader
         let dataRequest = AF.request(url,
