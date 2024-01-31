@@ -25,7 +25,6 @@ final class ExDailyViewController: UIViewController {
         didSet {
             updateCellsForEditing()
             updateRoutineViewLayout()
-
         }
     }
     
@@ -387,7 +386,7 @@ extension ExDailyViewController: UICollectionViewDelegateFlowLayout {
 extension ExDailyViewController {
     
     func getRoutineListAPI() {
-        DailyRoutineService.shared.getRoutineListAPI { networkResult in
+        DailyRoutineService.shared.getDailyRoutine { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyRoutineEntity> {

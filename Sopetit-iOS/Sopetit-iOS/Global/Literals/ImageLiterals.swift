@@ -111,6 +111,9 @@ enum ImageLiterals {
         static var btnRadiobtnNone: UIImage { .load(name: "btn_radiobtn_none") }
         static var btnRadiobtnSelected: UIImage { .load(name: "btn_radiobtn_selected") }
         static var icAdd: UIImage { .load(name: "ic_add") }
+        static var imgDailycardEmpty: UIImage { .load(name: "img_dailycard_empty") }
+        static var imgLoadingbear: UIImage { .load(name: "img_loadingbear") }
+        static var variant6: UIImage { .load(name: "Variant6") }
     }
     
     enum HappyRoutine {
@@ -128,6 +131,7 @@ enum ImageLiterals {
         static var icPlace: UIImage { .load(name: "ic_place") }
         static var icNext: UIImage { .load(name: "ic_next") }
         static var imgSpeechHappy: UIImage { .load(name: "img_speech_happy") }
+        static var imgHappycardEmpty: UIImage { .load(name: "img_happycard_empty") }
     }
     
     enum HappyRoutineComplete {

@@ -19,6 +19,7 @@ final class HappyRoutineCategoryCollectionViewCell: UICollectionViewCell, UIColl
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = ImageLiterals.DailyRoutine.variant6
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()

@@ -115,8 +115,8 @@ private extension AddDailyRoutineViewController {
         let nav = TabBarController()
         nav.selectedIndex = 0
         if let navController = nav.viewControllers?[0] as? UINavigationController,
-           let dailyViewController = navController.viewControllers.first as? DailyViewController {
-            dailyViewController.isFromAddDailyBottom = true
+           let dailyViewController = navController.viewControllers.first as? DailyRoutineViewController {
+//            dailyViewController.isFromAddDailyBottom = true
         }
         keyWindow.rootViewController = UINavigationController(rootViewController: nav)
     }

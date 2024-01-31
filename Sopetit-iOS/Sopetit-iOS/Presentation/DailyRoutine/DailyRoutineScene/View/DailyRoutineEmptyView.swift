@@ -9,11 +9,16 @@ import UIKit
 
 import SnapKit
 
+protocol AddDailyRoutineDelegate: AnyObject {
+    func addDaily()
+}
+
 final class DailyRoutineEmptyView: UICollectionReusableView, UICollectionFooterViewRegisterable {
     
     // MARK: - Properties
     
     static var isFromNib: Bool = false
+    weak var delegate: AddDailyRoutineDelegate?
     
     // MARK: - UI Componenets
     
@@ -34,6 +39,7 @@ final class DailyRoutineEmptyView: UICollectionReusableView, UICollectionFooterV
         setUI()
         setLayout()
         layoutSubviews()
+        setAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -53,7 +59,7 @@ final class DailyRoutineEmptyView: UICollectionReusableView, UICollectionFooterV
     }
 }
 
-extension DailyRoutineEmptyView {
+private extension DailyRoutineEmptyView {
     
     func setUI() {
         self.addSubview(plusImageView)
@@ -73,5 +79,16 @@ extension DailyRoutineEmptyView {
             $0.center.equalToSuperview()
             $0.size.equalTo(24)
         }
+    }
+    
+    func setAddTarget() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleFooterTap))
+        self.addGestureRecognizer(tapGesture)
+        self.isUserInteractionEnabled = true
+    }
+    
+    @objc
+    func handleFooterTap() {
+        delegate?.addDaily()
     }
 }

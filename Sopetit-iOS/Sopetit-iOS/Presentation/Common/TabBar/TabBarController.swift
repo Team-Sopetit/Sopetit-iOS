@@ -33,7 +33,7 @@ final class TabBarController: UITabBarController {
 private extension TabBarController {
     
     func setTabBarItems() {
-        let dailyVC = UINavigationController(rootViewController: DailyViewController())
+        let dailyVC = UINavigationController(rootViewController: DailyRoutineViewController())
         let homeVC = UINavigationController(rootViewController: HomeViewController())
         let happyVC = UINavigationController(rootViewController: HappyRoutineViewController())
         
