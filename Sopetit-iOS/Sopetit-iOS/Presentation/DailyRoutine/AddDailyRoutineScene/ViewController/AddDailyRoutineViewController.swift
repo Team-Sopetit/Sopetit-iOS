@@ -235,14 +235,14 @@ extension AddDailyRoutineViewController {
     
     func getDailyThemes() {
         AddDailyRoutineService.shared.getDailyThemesAPI { networkResult in
+            print(networkResult)
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyThemesEntity> {
                     if let listData = data.data {
                         self.dailyThemesEntity = listData
                     }
-                    self.dailyThemesEntity.themes = self.dailyThemesEntity.themes.sorted(by: { $0.themeId < $1.themeId })
-                    self.themeId = 1
+                    self.themeId = self.dailyThemesEntity.themes[0].themeId
                     self.addDailyRoutineView.dailyRoutineThemeView.collectionView.reloadData()
                     self.getDailyRoutinesAPI()
                 }
@@ -255,7 +255,7 @@ extension AddDailyRoutineViewController {
     }
     
     func getDailyRoutinesAPI() {
-        AddDailyRoutineService.shared.getDailyRoutinesAPI(themes: self.themeId) { networkResult in
+        AddDailyRoutineService.shared.getDailyRoutinesAPI(themeId: self.themeId) { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyRoutinesEntity> {
