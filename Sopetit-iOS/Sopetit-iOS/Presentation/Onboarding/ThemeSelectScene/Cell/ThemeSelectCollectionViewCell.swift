@@ -28,6 +28,7 @@ final class ThemeSelectCollectionViewCell: UICollectionViewCell, UICollectionVie
     
     var themeIcon: UIImageView = {
         var icon = UIImageView()
+        icon.image = UIImage(resource: .variant6)
         icon.backgroundColor = .SoftieWhite
         icon.clipsToBounds = true
         icon.layer.cornerRadius = 35
