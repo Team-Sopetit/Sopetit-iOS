@@ -50,6 +50,7 @@ final class AddHappyRoutineView: UIView {
     
     private let blingImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = ImageLiterals.DailyRoutine.variant6
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()

@@ -64,7 +64,8 @@ extension UILabel {
             style.minimumLineHeight = lineHeight
             
             let attributes: [NSAttributedString.Key: Any] = [
-                .paragraphStyle: style
+                .paragraphStyle: style,
+                .baselineOffset: (lineHeight - font.lineHeight)
             ]
             
             let attrString = NSAttributedString(string: text,
