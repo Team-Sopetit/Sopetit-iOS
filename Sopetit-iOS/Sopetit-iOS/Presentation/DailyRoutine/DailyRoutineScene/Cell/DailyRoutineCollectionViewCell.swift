@@ -30,12 +30,12 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
             switch isEnabled {
             case true:
                 completeButton.isEnabled = true
-                completeButton.setTitle("완료하기", for: .normal)
+                completeButton.setTitle(I18N.DailyRoutine.complete, for: .normal)
                 completeButton.backgroundColor = .SoftieMain1
                 completeButton.setTitleColor(.SoftieWhite, for: .normal)
             case false:
                 completeButton.isEnabled = false
-                completeButton.setTitle("달성 완료", for: .normal)
+                completeButton.setTitle(I18N.DailyRoutine.completed, for: .normal)
                 completeButton.backgroundColor = .Gray100
                 completeButton.setTitleColor(.Gray300, for: .normal)
             }
