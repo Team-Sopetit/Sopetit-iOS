@@ -8,6 +8,7 @@
 import UIKit
 
 import SnapKit
+import FirebaseAnalytics
 
 enum AppstoreOpenError: Error {
     case invalidAppStoreURL
@@ -51,6 +52,8 @@ final class SplashViewController: UIViewController {
 private extension SplashViewController {
     
     func setUI() {
+        Analytics.logEvent("view_splash", parameters: nil)
+        
         self.updateAlertView.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
     }

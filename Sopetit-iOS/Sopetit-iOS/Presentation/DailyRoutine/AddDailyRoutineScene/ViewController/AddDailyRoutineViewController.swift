@@ -7,6 +7,8 @@
 
 import UIKit
 
+import FirebaseAnalytics
+
 final class AddDailyRoutineViewController: UIViewController {
     
     // MARK: - Properties
@@ -128,6 +130,8 @@ extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
     func deleteButtonTapped() { }
     
     func addButtonTapped() {
+        Analytics.logEvent("add_dailyroutine", parameters: nil)
+        
         let index = addDailyRoutineView.pageControl.currentPage
         if dailyRoutinesEntity.routines.count == 0 {
             return

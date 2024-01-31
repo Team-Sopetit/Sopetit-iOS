@@ -8,6 +8,7 @@
 import UIKit
 
 import SnapKit
+import FirebaseAnalytics
 
 final class AddHappyRoutineViewController: UIViewController {
 
@@ -128,6 +129,8 @@ extension AddHappyRoutineViewController: BottomSheetButtonDelegate {
     func deleteButtonTapped() { }
     
     func addButtonTapped() {
+        Analytics.logEvent("add_happyroutine", parameters: nil)
+        
         let index = addHappyRoutineView.pageControl.currentPage
         subRoutineId = happinessRoutineEntity.subRoutines[index + 2].subRoutineId
         postHappinessRoutineAPI(subRoutineId: subRoutineId)
