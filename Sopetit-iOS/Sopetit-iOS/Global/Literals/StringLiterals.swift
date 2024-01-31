@@ -29,6 +29,12 @@ enum I18N {
         static let addRightTitle = "추가할래"
     }
     
+    enum UpdateAlert {
+        static let forceUpdateButtonTitle = "업데이트 하러가기"
+        static let recommendUpdateButtonTitle = "업데이트"
+        static let recommendBackButtonTitle = "다음에 할래요"
+    }
+    
     enum Splash {
         static let mentTitle = "하루를 바꾸는 가장 사소한 루틴"
     }

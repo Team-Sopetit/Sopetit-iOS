@@ -55,7 +55,7 @@ final class UpdateAlertView: UIView {
     
     lazy var forceUpdateButton: UIButton = {
         let button = UIButton()
-        button.setTitle("업데이트 하러가기", for: .normal)
+        button.setTitle(I18N.UpdateAlert.forceUpdateButtonTitle, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fontGuide(.body1)
         button.setBackgroundColor(.SoftieBlue, for: .normal)
@@ -65,7 +65,7 @@ final class UpdateAlertView: UIView {
     
     lazy var recommendUpdateButton: UIButton = {
         let button = UIButton()
-        button.setTitle("업데이트", for: .normal)
+        button.setTitle(I18N.UpdateAlert.recommendUpdateButtonTitle, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fontGuide(.body1)
         button.setBackgroundColor(.SoftieBlue, for: .normal)
@@ -75,7 +75,7 @@ final class UpdateAlertView: UIView {
     
     lazy var recommendBackButton: UIButton = {
         let button = UIButton()
-        button.setTitle("다음에 할래요", for: .normal)
+        button.setTitle(I18N.UpdateAlert.recommendBackButtonTitle, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .fontGuide(.body1)
         button.setBackgroundColor(.Gray100, for: .normal)
