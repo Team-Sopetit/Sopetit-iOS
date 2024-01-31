@@ -86,7 +86,7 @@ private extension SplashViewController {
         if forceResult < 0 {
             updateAlertView.isHidden = false
             updateAlertView.setDataBind(updateCase: "force", model: self.versionEntity)
-        } else if recommendResult <= 0 {
+        } else if recommendResult < 0 {
             updateAlertView.isHidden = false
             updateAlertView.setDataBind(updateCase: "recommend", model: self.versionEntity)
         } else {
@@ -160,6 +160,7 @@ extension SplashViewController: AlertDelgate {
 // MARK: - Network
 
 private extension SplashViewController {
+    
     func postLoginAPI(socialAccessToken: String, socialType: String) {
         AuthService.shared.postLoginAPI(socialAccessToken: socialAccessToken, socialType: socialType) { networkResult in
             switch networkResult {
@@ -204,7 +205,7 @@ private extension SplashViewController {
                         self.versionEntity = listData
                     }
                     if let comparisonResult = self.appVersion?.compare(self.versionEntity.iosVersion.forceUpdateVersion, options: .numeric).rawValue as? Int, let comparisonResult2 = self.appVersion?.compare(self.versionEntity.iosVersion.appVersion, options: .numeric).rawValue as? Int {
-                        self.showUpdateAlert(forceResult: comparisonResult, recommendResult: 0)
+                        self.showUpdateAlert(forceResult: comparisonResult, recommendResult: comparisonResult2)
                     }
                 }
             case .requestErr, .serverErr:
