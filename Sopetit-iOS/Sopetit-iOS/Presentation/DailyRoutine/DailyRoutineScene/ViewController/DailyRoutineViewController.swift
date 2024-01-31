@@ -26,6 +26,7 @@ final class DailyRoutineViewController: UIViewController {
             }
         }
     }
+    var isFromAddDailyBottom: Bool = false
     
     // MARK: - UI Components
     
@@ -45,11 +46,13 @@ final class DailyRoutineViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        setLayout()
         setDelegate()
         getDailyRoutine()
         setRegister()
         setupCustomNavigationBar()
         setAddTarget()
+        setAddToastView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +69,26 @@ private extension DailyRoutineViewController {
     func setUI() {
         dailyCompleteBottomSheet.modalPresentationStyle = .overFullScreen
         dailyDeleteBottomSheet.modalPresentationStyle = .overFullScreen
+        deleteToastView.isHidden = true
+        addToastView.isHidden = true
+    }
+    
+    func setLayout() {
+        self.view.addSubviews(deleteToastView, addToastView)
+        
+        deleteToastView.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
+            $0.height.equalTo(51)
+        }
+        
+        addToastView.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-12)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 335 / 375)
+            $0.height.equalTo(51)
+        }
     }
     
     func setDelegate() {
@@ -146,6 +169,33 @@ private extension DailyRoutineViewController {
             }
         }
         self.selectedList = []
+    }
+}
+
+extension DailyRoutineViewController {
+    
+    func setAddToastView() {
+        if isFromAddDailyBottom {
+            addToastView.isHidden = false
+            UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+                self.addToastView.alpha = 0.0
+            }, completion: {_ in
+                self.addToastView.isHidden = true
+                self.addToastView.alpha = 1.0
+            })
+        }
+    }
+    
+    func setDeleteToastView(count: Int) {
+        self.deleteToastView.isHidden = false
+        let title = "데일리 루틴을 \(count)개 삭제했어요"
+        self.deleteToastView.titleLabel.text = title
+        UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+            self.deleteToastView.alpha = 0.0
+        }, completion: {_ in
+            self.deleteToastView.isHidden = true
+            self.deleteToastView.alpha = 1.0
+        })
     }
 }
 
@@ -248,10 +298,6 @@ extension DailyRoutineViewController: BottomSheetButtonDelegate {
     
     func completeButtonTapped() {
         patchRoutineAPI(routineId: completeRoutineId)
-        self.dismiss(animated: false)
-        let vc = CompleteDailyRoutineViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
     }
     
     func deleteButtonTapped() {
@@ -266,13 +312,7 @@ extension DailyRoutineViewController: BottomSheetButtonDelegate {
                 routineIdList = "\(routineIdList),\(routine)"
             }
         }
-        self.deleteRoutineListAPI(routineIdList: routineIdList)
-        let title = "데일리 루틴을 \(selectedList.count)개 삭제했어요"
-        deleteToastView.titleLabel.text = title
-        UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
-            self.deleteToastView.alpha = 0.0
-        })
-        self.dismiss(animated: false)
+        self.deleteRoutineListAPI(routineIdList: routineIdList, count: routineList.count)
     }
     
     func addButtonTapped() {
@@ -302,10 +342,12 @@ extension DailyRoutineViewController {
         }
     }
     
-    func deleteRoutineListAPI(routineIdList: String) {
+    func deleteRoutineListAPI(routineIdList: String, count: Int) {
         DailyRoutineService.shared.deleteRoutineListAPI(routineIdList: routineIdList) { networkResult in
             switch networkResult {
             case .success:
+                self.setDeleteToastView(count: count)
+                self.dailyDeleteBottomSheet.dismiss(animated: false)
                 self.getDailyRoutine()
             case .requestErr, .serverErr:
                 break
@@ -319,8 +361,11 @@ extension DailyRoutineViewController {
         DailyRoutineService.shared.patchRoutineAPI(routineId: routineId) { networkResult in
             switch networkResult {
             case .success:
+                self.dailyCompleteBottomSheet.dismiss(animated: false)
+                let vc = CompleteDailyRoutineViewController()
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
                 self.getDailyRoutine()
-                self.dismiss(animated: false)
             case .requestErr, .serverErr:
                 break
             default:
