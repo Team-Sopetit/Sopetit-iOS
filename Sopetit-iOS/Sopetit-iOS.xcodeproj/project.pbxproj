@@ -35,7 +35,6 @@
 		0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */; };
 		0470C2532B57F03100CE43D6 /* DailyDeleteEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470C2522B57F03100CE43D6 /* DailyDeleteEntity.swift */; };
 		0470C2552B57F9B900CE43D6 /* DailyPatchEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470C2542B57F9B900CE43D6 /* DailyPatchEntity.swift */; };
-		04D6CDF62B4EE04D009E5D96 /* --DailyFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D6CDF52B4EE04D009E5D96 /* --DailyFooterView.swift */; };
 		092AE2BF2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */; };
 		092AE2C12B540DC200E9A20D /* CompleteHappyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092AE2C02B540DC200E9A20D /* CompleteHappyRoutineView.swift */; };
 		093C1E022B4CFD8100EF84AB /* HappyRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093C1E012B4CFD8100EF84AB /* HappyRoutineViewController.swift */; };
@@ -116,9 +115,6 @@
 		A42C33002B3EAE3E00C4B477 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C32FF2B3EAE3E00C4B477 /* HomeService.swift */; };
 		A42C33022B3EAE4900C4B477 /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33012B3EAE4900C4B477 /* OnboardingService.swift */; };
 		A42C33042B3EAE4F00C4B477 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33032B3EAE4F00C4B477 /* AuthService.swift */; };
-		A42C331F2B3EAF7400C4B477 /* --DailyRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C331E2B3EAF7400C4B477 /* --DailyRoutineCollectionViewCell.swift */; };
-		A42C33212B3EAF7B00C4B477 /* --DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33202B3EAF7B00C4B477 /* --DailyView.swift */; };
-		A42C33232B3EAF8400C4B477 /* --DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33222B3EAF8400C4B477 /* --DailyViewController.swift */; };
 		A42C333A2B3EB02A00C4B477 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C33392B3EB02A00C4B477 /* TabBarController.swift */; };
 		A42C33642B413F2100C4B477 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A42C33622B413F2100C4B477 /* Pretendard-SemiBold.otf */; };
 		A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */; };
@@ -190,7 +186,6 @@
 		0463F89A2B4ADE4A0089B526 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		0470C2522B57F03100CE43D6 /* DailyDeleteEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDeleteEntity.swift; sourceTree = "<group>"; };
 		0470C2542B57F9B900CE43D6 /* DailyPatchEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPatchEntity.swift; sourceTree = "<group>"; };
-		04D6CDF52B4EE04D009E5D96 /* --DailyFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "--DailyFooterView.swift"; sourceTree = "<group>"; };
 		092AE2B72B53F25E00E9A20D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		092AE2BE2B540B7B00E9A20D /* CompleteHappyRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteHappyRoutineViewController.swift; sourceTree = "<group>"; };
 		092AE2C02B540DC200E9A20D /* CompleteHappyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteHappyRoutineView.swift; sourceTree = "<group>"; };
@@ -269,9 +264,6 @@
 		A42C32FF2B3EAE3E00C4B477 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		A42C33012B3EAE4900C4B477 /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
 		A42C33032B3EAE4F00C4B477 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		A42C331E2B3EAF7400C4B477 /* --DailyRoutineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "--DailyRoutineCollectionViewCell.swift"; sourceTree = "<group>"; };
-		A42C33202B3EAF7B00C4B477 /* --DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "--DailyView.swift"; sourceTree = "<group>"; };
-		A42C33222B3EAF8400C4B477 /* --DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "--DailyViewController.swift"; sourceTree = "<group>"; };
 		A42C33392B3EB02A00C4B477 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A42C33622B413F2100C4B477 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
@@ -957,16 +949,6 @@
 			path = HappyRoutineScene;
 			sourceTree = "<group>";
 		};
-		A42C330C2B3EAEE800C4B477 /* --DailyRoutineScene */ = {
-			isa = PBXGroup;
-			children = (
-				A42C331D2B3EAF6100C4B477 /* Cell */,
-				A42C331C2B3EAF5D00C4B477 /* View */,
-				A42C331B2B3EAF5900C4B477 /* ViewController */,
-			);
-			path = "--DailyRoutineScene";
-			sourceTree = "<group>";
-		};
 		A42C330D2B3EAEF900C4B477 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1017,31 +999,6 @@
 				045DFE852B539BC3005D69EA /* WithdrawView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		A42C331B2B3EAF5900C4B477 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				A42C33222B3EAF8400C4B477 /* --DailyViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		A42C331C2B3EAF5D00C4B477 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A42C33202B3EAF7B00C4B477 /* --DailyView.swift */,
-				04D6CDF52B4EE04D009E5D96 /* --DailyFooterView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		A42C331D2B3EAF6100C4B477 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				A42C331E2B3EAF7400C4B477 /* --DailyRoutineCollectionViewCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		A42C33242B3EAF8A00C4B477 /* ViewController */ = {
@@ -1113,7 +1070,6 @@
 				0947CF062B673CFE007D0763 /* DailyRoutineScene */,
 				095903AC2B54736400D0AF39 /* CompleteDailyRoutineScene */,
 				09C1A64A2B52919200C1A57D /* AddDailyRoutineScene */,
-				A42C330C2B3EAEE800C4B477 /* --DailyRoutineScene */,
 			);
 			path = DailyRoutine;
 			sourceTree = "<group>";
@@ -1441,7 +1397,6 @@
 				09B253632B4D561C005E7032 /* HappyRoutineTagView.swift in Sources */,
 				09B253742B4E4B05005E7032 /* AddHappyRoutineViewController.swift in Sources */,
 				A42C333A2B3EB02A00C4B477 /* TabBarController.swift in Sources */,
-				A42C33212B3EAF7B00C4B477 /* --DailyView.swift in Sources */,
 				A42C32FC2B3EAE0000C4B477 /* HappinessEntity.swift in Sources */,
 				A42C32D52B3EABAF00C4B477 /* UICollectionViewRegisterable.swift in Sources */,
 				09B2536F2B4E3640005E7032 /* HappyRoutineCategoryCollectionViewCell.swift in Sources */,
@@ -1454,7 +1409,6 @@
 				0947CF0D2B6782D8007D0763 /* DailyRoutineViewController.swift in Sources */,
 				A42C32E32B3EAC8200C4B477 /* NetworkResult.swift in Sources */,
 				A49BFDD72B4D5F2800035EB6 /* StroyTellingFirstView.swift in Sources */,
-				A42C33232B3EAF8400C4B477 /* --DailyViewController.swift in Sources */,
 				A49BFDE52B4D7EDF00035EB6 /* CustomProgressView.swift in Sources */,
 				092AE2C12B540DC200E9A20D /* CompleteHappyRoutineView.swift in Sources */,
 				0972248B2B4F83B800CB7893 /* BottomCTAButton.swift in Sources */,
@@ -1510,7 +1464,6 @@
 				098DFCAB2B580A1A0099063D /* DailyRoutinesEntity.swift in Sources */,
 				A42C32E52B3EAC8B00C4B477 /* GenericResponse.swift in Sources */,
 				098DFCA12B5662F00099063D /* HappinessRoutineEntity.swift in Sources */,
-				04D6CDF62B4EE04D009E5D96 /* --DailyFooterView.swift in Sources */,
 				A49BFE4F2B53CE7700035EB6 /* DollImageEntity.swift in Sources */,
 				A49BFE412B5065DE00035EB6 /* AlertMessageView.swift in Sources */,
 				09C1A6542B52935C00C1A57D /* DailyRoutineThemeView.swift in Sources */,
@@ -1530,7 +1483,6 @@
 				09C1A6582B5297B200C1A57D /* DailyRoutineTheme.swift in Sources */,
 				0947CF0F2B6782E7007D0763 /* DailyRoutineView.swift in Sources */,
 				09B253662B4D5B21005E7032 /* HappyRoutineTagCollectionViewCell.swift in Sources */,
-				A42C331F2B3EAF7400C4B477 /* --DailyRoutineCollectionViewCell.swift in Sources */,
 				09C1A6502B5291CC00C1A57D /* AddDailyRoutineViewController.swift in Sources */,
 				0463F89B2B4ADE4A0089B526 /* TabBarItem.swift in Sources */,
 				A42C32EB2B3EACAC00C4B477 /* URLConstant.swift in Sources */,

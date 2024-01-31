@@ -44,6 +44,7 @@ final class BottomSheetViewController: UIViewController {
     
     let imageView: UIImageView = {
         let image = UIImageView()
+        image.image = ImageLiterals.DailyRoutine.variant6
         image.contentMode = .scaleAspectFit
         return image
     }()

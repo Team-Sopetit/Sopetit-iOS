@@ -251,7 +251,7 @@ extension DailyRoutineViewController: BottomSheetButtonDelegate {
     }
     
     func deleteButtonTapped() {
-        var routineList = selectedList
+        let routineList = selectedList
         self.isEditing = false
         self.deleteToastView.isHidden = false
         var routineIdList = ""
@@ -262,7 +262,6 @@ extension DailyRoutineViewController: BottomSheetButtonDelegate {
                 routineIdList = "\(routineIdList),\(routine)"
             }
         }
-        print(routineIdList, "routineIdList")
         self.deleteRoutineListAPI(routineIdList: routineIdList)
         let title = "데일리 루틴을 \(selectedList.count)개 삭제했어요"
         deleteToastView.titleLabel.text = title
@@ -314,7 +313,6 @@ extension DailyRoutineViewController {
     
     func patchRoutineAPI(routineId: Int) {
         DailyRoutineService.shared.patchRoutineAPI(routineId: routineId) { networkResult in
-            print(networkResult)
             switch networkResult {
             case .success:
                 self.getDailyRoutine()

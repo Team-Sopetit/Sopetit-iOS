@@ -76,6 +76,7 @@ private extension AddDailyRoutineViewController {
         addDailyRoutineView.collectionView.delegate = self
         addDailyRoutineView.collectionView.dataSource = self
         dailyAddBottom.buttonDelegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     func setAddTarget() {
@@ -95,7 +96,6 @@ private extension AddDailyRoutineViewController {
     func setRegister() {
         DailyRoutineThemeCollectionViewCell.register(target: addDailyRoutineView.dailyRoutineThemeView.collectionView)
         DailyRoutineCardCollectionViewCell.register(target: addDailyRoutineView.collectionView)
-        
     }
     
     func setCarousel() {
@@ -136,6 +136,13 @@ extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
     }
 }
 
+extension AddDailyRoutineViewController: UIGestureRecognizerDelegate {
+    
+    func setGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackButton))
+        view.addGestureRecognizer(tapGesture)
+    }
+}
 extension AddDailyRoutineViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -215,6 +222,7 @@ extension AddDailyRoutineViewController: UICollectionViewDelegate {
 
 extension AddDailyRoutineViewController: BackButtonProtocol {
     
+    @objc
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
