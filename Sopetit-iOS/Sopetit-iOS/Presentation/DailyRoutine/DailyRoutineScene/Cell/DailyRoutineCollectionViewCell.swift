@@ -162,7 +162,7 @@ private extension DailyRoutineCollectionViewCell {
     func setLayout() {
         routineView.snp.makeConstraints {
             $0.top.leading.equalToSuperview().inset(23)
-            $0.trailing.equalToSuperview().inset(60)
+            $0.trailing.equalToSuperview().inset(57)
             $0.height.greaterThanOrEqualTo(40)
         }
         
