@@ -161,11 +161,12 @@ private extension DailyRoutineCollectionViewCell {
     
     func setLayout() {
         routineView.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(23)
+            $0.top.equalToSuperview().inset(23)
+            $0.leading.equalToSuperview().inset(20)
             $0.trailing.equalToSuperview().inset(57)
             $0.height.greaterThanOrEqualTo(40)
         }
-        
+            
         iconImageView.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.centerY.equalToSuperview()
