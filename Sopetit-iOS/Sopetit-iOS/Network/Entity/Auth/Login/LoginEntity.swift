@@ -14,6 +14,6 @@ struct LogoutEntity: Codable {}
 
 struct ResignEntity: Codable {}
 
-struct ReisuueEntity: Codable {
+struct ReissueEntity: Codable {
     let accessToken: String
 }

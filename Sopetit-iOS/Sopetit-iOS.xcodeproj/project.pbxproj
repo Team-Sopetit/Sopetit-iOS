@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0014568D2B56D1C10044782C /* brown_eating_daily.json in Resources */ = {isa = PBXBuildFile; fileRef = 0014568C2B56D1C10044782C /* brown_eating_daily.json */; };
 		004029062B4EDCF6002127BC /* ActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004029052B4EDCF6002127BC /* ActionCollectionViewCell.swift */; };
+		006AD5BA2B6AAAD100070178 /* ReissueService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006AD5B92B6AAAD100070178 /* ReissueService.swift */; };
 		0084F19B2B4A895700F87860 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19A2B4A895700F87860 /* LoginView.swift */; };
 		0084F19D2B4A896500F87860 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0084F19C2B4A896500F87860 /* LoginViewController.swift */; };
 		00A8E39A2B4D8B0D001461CE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A8E3992B4D8B0D001461CE /* HomeView.swift */; };
@@ -161,6 +162,7 @@
 		0014568C2B56D1C10044782C /* brown_eating_daily.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brown_eating_daily.json; sourceTree = "<group>"; };
 		004029052B4EDCF6002127BC /* ActionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCollectionViewCell.swift; sourceTree = "<group>"; };
 		0046E1EC2B5514EE00C9565E /* Sopetit-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Sopetit-iOS.entitlements"; sourceTree = "<group>"; };
+		006AD5B92B6AAAD100070178 /* ReissueService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReissueService.swift; sourceTree = "<group>"; };
 		0084F19A2B4A895700F87860 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		0084F19C2B4A896500F87860 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		00A8E3992B4D8B0D001461CE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -754,6 +756,7 @@
 		A42C32DC2B3EAC4500C4B477 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				006AD5B92B6AAAD100070178 /* ReissueService.swift */,
 				A42C33032B3EAE4F00C4B477 /* AuthService.swift */,
 				A42C33012B3EAE4900C4B477 /* OnboardingService.swift */,
 				A42C32FF2B3EAE3E00C4B477 /* HomeService.swift */,
@@ -1467,6 +1470,7 @@
 				04D6CDF62B4EE04D009E5D96 /* DailyFooterView.swift in Sources */,
 				A49BFE4F2B53CE7700035EB6 /* DollImageEntity.swift in Sources */,
 				A49BFE412B5065DE00035EB6 /* AlertMessageView.swift in Sources */,
+				006AD5BA2B6AAAD100070178 /* ReissueService.swift in Sources */,
 				09C1A6542B52935C00C1A57D /* DailyRoutineThemeView.swift in Sources */,
 				093C1E092B4D2C8200EF84AB /* BearDescriptionView.swift in Sources */,
 				00CCDCC42B51B5BD007DD0E6 /* SplashTwoView.swift in Sources */,
