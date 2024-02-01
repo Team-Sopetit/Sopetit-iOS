@@ -56,6 +56,14 @@ extension SelectHappyCategoryViewController {
         HappyRoutineTagCollectionViewCell.register(target: selectHappyCategoryView.tagview.collectionView)
         HappyRoutineCategoryCollectionViewCell.register(target: selectHappyCategoryView.categoryCollectionView)
     }
+    
+    func presentToLoginView() {
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                  let keyWindow = windowScene.windows.first else {
+                return
+            }
+            keyWindow.rootViewController = LoginViewController()
+        }
 }
 
 extension SelectHappyCategoryViewController: UIGestureRecognizerDelegate {
@@ -165,6 +173,14 @@ private extension SelectHappyCategoryViewController {
                     self.happinessThemesEntity.themes = self.happinessThemesEntity.themes.sorted(by: { $0.themeId < $1.themeId })
                     self.selectHappyCategoryView.tagview.collectionView.reloadData()
                 }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.gethappinessThemesAPI()
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
             case .requestErr, .serverErr:
                 break
             default:
@@ -183,6 +199,14 @@ private extension SelectHappyCategoryViewController {
                     }
                     self.happinessEntity.routines = self.happinessEntity.routines.sorted(by: { $0.routineId < $1.routineId })
                     self.selectHappyCategoryView.categoryCollectionView.reloadData()
+                }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.getRoutinesHappinessAPI(themeId: themeId)
+                    } else {
+                        self.presentToLoginView()
+                    }
                 }
             case .requestErr, .serverErr:
                 break

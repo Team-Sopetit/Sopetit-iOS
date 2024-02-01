@@ -164,39 +164,35 @@ extension SplashViewController: AlertDelgate {
 
 private extension SplashViewController {
     
-    func postLoginAPI(socialAccessToken: String, socialType: String) {
-        AuthService.shared.postLoginAPI(socialAccessToken: socialAccessToken, socialType: socialType) { networkResult in
-            switch networkResult {
-            case .success:
-                self.presentToHomeView()
-            case .requestErr:
-                self.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken)
-            case .serverErr:
-                break
-            default:
-                break
-            }
-        }
-    }
-    
-    func postReissueAPI(refreshToken: String) {
-        AuthService.shared.postReissueAPI(refreshToken: refreshToken) { networkResult in
-            switch networkResult {
-            case .success(let data):
-                if let data = data as? GenericResponse<ReisuueEntity> {
-                    if let accessToken = data.data?.accessToken {
-                        UserManager.shared.reissueToken(accessToken)
-                        self.presentToHomeView()
+    func tokenCheck(socialAccessToken: String, socialType: String) {
+            AuthService.shared.postLogoutAPI { networkResult in
+                switch networkResult {
+                case .success:
+                    self.presentToHomeView()
+                case .reissue:
+                    ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                        if success {
+                            self.presentToHomeView()
+                        } else {
+                            self.presentToLoginView()
+                        }
                     }
+                case .requestErr, .serverErr:
+                    break
+                default:
+                    break
                 }
-            case .requestErr:
-                self.presentToLoginView()
-            case .serverErr:
-                break
-            default:
-                break
             }
         }
+}
+
+private extension SplashViewController {
+    func showNextPage() {
+        if UserManager.shared.hasAccessToken {
+            if UserManager.shared.isPostMemeber {
+                tokenCheck(socialAccessToken: UserManager.shared.getAccessToken, socialType: UserManager.shared.getSocialType)
+            } else {
+                presentToOnboardingView()
     }
     
     func getVersionAPI() {
@@ -217,5 +213,26 @@ private extension SplashViewController {
                 break
             }
         }
+    }
+    
+    func presentToOnboardingView() {
+        let nav = StoryTellingViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
+    func presentToLoginView() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        keyWindow.rootViewController = LoginViewController()
+    }
+    
+    func presentToHomeView() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        keyWindow.rootViewController = TabBarController()
     }
 }

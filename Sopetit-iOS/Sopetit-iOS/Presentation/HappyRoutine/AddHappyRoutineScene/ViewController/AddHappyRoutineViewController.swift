@@ -112,6 +112,14 @@ private extension AddHappyRoutineViewController {
         }
         keyWindow.rootViewController = UINavigationController(rootViewController: nav)
     }
+    
+    func presentToLoginView() {
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                  let keyWindow = windowScene.windows.first else {
+                return
+            }
+            keyWindow.rootViewController = LoginViewController()
+        }
 }
 
 extension AddHappyRoutineViewController: UIGestureRecognizerDelegate {
@@ -209,6 +217,14 @@ private extension AddHappyRoutineViewController {
                     self.setDataBind()
                     self.addHappyRoutineView.collectionView.reloadData()
                 }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.getHappinessRoutineAPI(routineId: routineId)
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
             case .requestErr, .serverErr:
                 break
             default:
@@ -224,6 +240,14 @@ private extension AddHappyRoutineViewController {
                 if let data = data as? GenericResponse<HappinessRoutineIdEntity> {
                     if data.data != nil {
                         self.dismissVC()
+                    }
+                }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.postHappinessRoutineAPI(subRoutineId: subRoutineId)
+                    } else {
+                        self.presentToLoginView()
                     }
                 }
             case .requestErr, .serverErr:

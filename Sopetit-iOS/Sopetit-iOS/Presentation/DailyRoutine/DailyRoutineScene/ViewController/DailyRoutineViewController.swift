@@ -170,6 +170,14 @@ private extension DailyRoutineViewController {
         }
         self.selectedList = []
     }
+    
+    func presentToLoginView() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        keyWindow.rootViewController = LoginViewController()
+    }
 }
 
 extension DailyRoutineViewController {
@@ -334,6 +342,14 @@ extension DailyRoutineViewController {
                     }
                     self.dailyRoutineView.collectionView.reloadData()
                 }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.getDailyRoutine()
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
             case .requestErr, .serverErr:
                 break
             default:
@@ -349,6 +365,14 @@ extension DailyRoutineViewController {
                 self.setDeleteToastView(count: count)
                 self.dailyDeleteBottomSheet.dismiss(animated: false)
                 self.getDailyRoutine()
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.deleteRoutineListAPI(routineIdList: routineIdList, count: count)
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
             case .requestErr, .serverErr:
                 break
             default:
@@ -366,6 +390,14 @@ extension DailyRoutineViewController {
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true)
                 self.getDailyRoutine()
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.patchRoutineAPI(routineId: routineId)
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
             case .requestErr, .serverErr:
                 break
             default:
