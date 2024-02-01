@@ -94,14 +94,6 @@ extension HomeViewController {
             break
         }
     }
-    
-    func presentToLoginView() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let keyWindow = windowScene.windows.first else {
-            return
-        }
-        keyWindow.rootViewController = LoginViewController()
-    }
 }
 
 // MARK: - Network
@@ -126,7 +118,7 @@ extension HomeViewController {
                     if success {
                         self.getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -167,7 +159,7 @@ extension HomeViewController {
                     if success {
                         self.patchCottonAPI(cottonType: cottonType, indexPath: indexPath)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:

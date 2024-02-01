@@ -112,14 +112,6 @@ private extension AddHappyRoutineViewController {
         }
         keyWindow.rootViewController = UINavigationController(rootViewController: nav)
     }
-    
-    func presentToLoginView() {
-            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                  let keyWindow = windowScene.windows.first else {
-                return
-            }
-            keyWindow.rootViewController = LoginViewController()
-        }
 }
 
 extension AddHappyRoutineViewController: UIGestureRecognizerDelegate {
@@ -222,7 +214,7 @@ private extension AddHappyRoutineViewController {
                     if success {
                         self.getHappinessRoutineAPI(routineId: routineId)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -247,7 +239,7 @@ private extension AddHappyRoutineViewController {
                     if success {
                         self.postHappinessRoutineAPI(subRoutineId: subRoutineId)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:

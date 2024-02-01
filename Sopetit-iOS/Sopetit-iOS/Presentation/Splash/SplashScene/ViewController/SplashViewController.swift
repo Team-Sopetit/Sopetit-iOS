@@ -34,6 +34,10 @@ final class SplashViewController: UIViewController {
     override func loadView() {
         
         self.view = splashViews[randomNumber]
+        print("✅✅✅✅")
+        print(UserManager.shared.getAccessToken)
+        print(UserManager.shared.getRefreshToken)
+        print("✅✅✅✅")
     }
     
     override func viewDidLoad() {
@@ -52,7 +56,6 @@ final class SplashViewController: UIViewController {
 private extension SplashViewController {
     
     func setUI() {
-        print(URLConstant.baseURL)
         Analytics.logEvent("view_splash", parameters: nil)
         
         self.updateAlertView.isHidden = true
@@ -114,14 +117,6 @@ private extension SplashViewController {
         self.navigationController?.pushViewController(nav, animated: true)
     }
     
-    func presentToLoginView() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let keyWindow = windowScene.windows.first else {
-            return
-        }
-        keyWindow.rootViewController = LoginViewController()
-    }
-    
     func presentToHomeView() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let keyWindow = windowScene.windows.first else {
@@ -176,7 +171,7 @@ private extension SplashViewController {
                     if success {
                         self.presentToHomeView()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:

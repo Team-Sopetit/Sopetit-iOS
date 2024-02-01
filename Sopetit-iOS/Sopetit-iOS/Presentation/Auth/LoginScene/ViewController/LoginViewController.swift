@@ -27,6 +27,10 @@ final class LoginViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view = loginView
+        print("✅✅✅")
+        print(UserManager.shared.getAccessToken)
+        print(UserManager.shared.getRefreshToken)
+        print("✅✅✅")
     }
     
     override func viewDidLoad() {

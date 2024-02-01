@@ -141,14 +141,6 @@ extension SettingViewController: UITableViewDelegate {
         nav.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(nav, animated: true)
     }
-    
-    func presentToLoginView() {
-            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                  let keyWindow = windowScene.windows.first else {
-                return
-            }
-            keyWindow.rootViewController = LoginViewController()
-        }
 }
 
 extension SettingViewController: UITableViewDataSource {
@@ -253,7 +245,7 @@ extension SettingViewController {
                     if success {
                         self.postLogoutAPI()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:

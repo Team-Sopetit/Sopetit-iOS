@@ -122,14 +122,6 @@ private extension AddDailyRoutineViewController {
         }
         keyWindow.rootViewController = UINavigationController(rootViewController: nav)
     }
-    
-    func presentToLoginView() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let keyWindow = windowScene.windows.first else {
-            return
-        }
-        keyWindow.rootViewController = LoginViewController()
-    }
 }
 
 extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
@@ -263,7 +255,7 @@ extension AddDailyRoutineViewController {
                     if success {
                         self.getDailyThemes()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -291,7 +283,7 @@ extension AddDailyRoutineViewController {
                     if success {
                         self.getDailyRoutinesAPI()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -316,7 +308,7 @@ extension AddDailyRoutineViewController {
                     if success {
                         self.postDailyMember(routineId: routineId)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:

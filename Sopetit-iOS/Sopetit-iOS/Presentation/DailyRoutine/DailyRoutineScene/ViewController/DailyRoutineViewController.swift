@@ -170,14 +170,6 @@ private extension DailyRoutineViewController {
         }
         self.selectedList = []
     }
-    
-    func presentToLoginView() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let keyWindow = windowScene.windows.first else {
-            return
-        }
-        keyWindow.rootViewController = LoginViewController()
-    }
 }
 
 extension DailyRoutineViewController {
@@ -347,7 +339,7 @@ extension DailyRoutineViewController {
                     if success {
                         self.getDailyRoutine()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -370,7 +362,7 @@ extension DailyRoutineViewController {
                     if success {
                         self.deleteRoutineListAPI(routineIdList: routineIdList, count: count)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -395,7 +387,7 @@ extension DailyRoutineViewController {
                     if success {
                         self.patchRoutineAPI(routineId: routineId)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:

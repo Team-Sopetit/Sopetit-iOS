@@ -78,14 +78,6 @@ extension WithdrawViewController {
         }
     }
     
-    func presentToLoginView() {
-            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                  let keyWindow = windowScene.windows.first else {
-                return
-            }
-            keyWindow.rootViewController = LoginViewController()
-        }
-    
     func deleteResignAPI() {
         AuthService.shared.deleteResignAPI { networkResult in
             switch networkResult {
@@ -104,7 +96,7 @@ extension WithdrawViewController {
                     if success {
                         self.deleteResignAPI()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:

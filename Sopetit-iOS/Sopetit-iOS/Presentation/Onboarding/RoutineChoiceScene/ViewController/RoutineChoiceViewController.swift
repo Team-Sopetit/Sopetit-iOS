@@ -78,14 +78,6 @@ extension RoutineChoiceViewController {
             break
         }
     }
-    
-    func presentToLoginView() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let keyWindow = windowScene.windows.first else {
-            return
-        }
-        keyWindow.rootViewController = LoginViewController()
-    }
 }
 
 // MARK: - Network
@@ -103,6 +95,14 @@ extension RoutineChoiceViewController {
                         }
                     }
                     self.collectionView.reloadData()
+                case .reissue:
+                    ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                        if success {
+                            self.getRoutineAPI()
+                        } else {
+                            self.makeSessionExpiredAlert()
+                        }
+                    }
                 case .requestErr, .serverErr:
                     break
                 default:
@@ -140,7 +140,7 @@ extension RoutineChoiceViewController {
                     if success {
                         self.postMemberAPI()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
