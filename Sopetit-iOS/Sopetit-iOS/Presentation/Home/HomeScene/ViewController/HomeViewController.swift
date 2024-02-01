@@ -94,6 +94,14 @@ extension HomeViewController {
             break
         }
     }
+    
+    func presentToLoginView() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        keyWindow.rootViewController = LoginViewController()
+    }
 }
 
 // MARK: - Network
@@ -112,6 +120,14 @@ extension HomeViewController {
                     self.setDataBind(model: self.homeEntity)
                     self.collectionView.reloadData()
                     self.homeView.setNeedsDisplay()
+                }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
+                    } else {
+                        self.presentToLoginView()
+                    }
                 }
             case .requestErr, .serverErr:
                 break
@@ -144,6 +160,14 @@ extension HomeViewController {
                             break
                         }
                         cell.setNeedsLayout()
+                    }
+                }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.patchCottonAPI(cottonType: cottonType, indexPath: indexPath)
+                    } else {
+                        self.presentToLoginView()
                     }
                 }
             case .requestErr, .serverErr:

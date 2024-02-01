@@ -78,6 +78,14 @@ extension RoutineChoiceViewController {
             break
         }
     }
+    
+    func presentToLoginView() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        keyWindow.rootViewController = LoginViewController()
+    }
 }
 
 // MARK: - Network
@@ -127,6 +135,14 @@ extension RoutineChoiceViewController {
             switch networkResult {
             case .success:
                 print("success")
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.postMemberAPI()
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
             case .requestErr, .serverErr:
                 break
             default:

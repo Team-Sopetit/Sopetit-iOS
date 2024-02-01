@@ -74,8 +74,11 @@ private extension SplashViewController {
     }
     
     func presentToLoginView() {
-        let nav = LoginViewController()
-        self.navigationController?.pushViewController(nav, animated: true)
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        keyWindow.rootViewController = LoginViewController()
     }
     
     func presentToHomeView() {
