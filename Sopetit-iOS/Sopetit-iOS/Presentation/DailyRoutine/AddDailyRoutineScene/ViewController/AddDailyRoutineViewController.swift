@@ -239,7 +239,6 @@ extension AddDailyRoutineViewController {
     
     func getDailyThemes() {
         AddDailyRoutineService.shared.getDailyThemesAPI { networkResult in
-            print(networkResult)
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyThemesEntity> {

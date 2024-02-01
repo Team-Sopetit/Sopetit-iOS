@@ -86,7 +86,7 @@ extension HomeViewController {
         case homeView.moneyButton:
             if let url = URL(string: I18N.Home.moneyNotion) {
                 let safariViewController = SFSafariViewController(url: url)
-                present(safariViewController, animated: true, completion: nil)
+                self.present(safariViewController, animated: true, completion: nil)
             }
         case homeView.settingButton:
             let nav = SettingViewController()
