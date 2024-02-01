@@ -14,7 +14,7 @@ final class SettingViewController: UIViewController {
     
     // MARK: - Properties
     
-    let sectionCellCounts = [3, 1, 1, 2]
+    let sectionCellCounts = [2, 1, 1, 2]
     
     // MARK: - UI Components
     
@@ -114,8 +114,6 @@ extension SettingViewController: UITableViewDelegate {
             url = URL(string: I18N.Setting.personalNotion)
         case [0, 1]:
             url = URL(string: I18N.Setting.serviceNotion)
-        case [0, 2]:
-            url = URL(string: I18N.Setting.guideNotion)
         case [1, 0]:
             url = URL(string: I18N.Setting.feedbackFoam)
         case [3, 0]:
@@ -169,9 +167,6 @@ extension SettingViewController: UITableViewDataSource {
         case [0, 1]:
             cell.iconImage.image = ImageLiterals.Setting.icDocument
             cell.settingLabel.text = I18N.Setting.serviceTitle
-        case [0, 2]:
-            cell.iconImage.image = ImageLiterals.Setting.icGuide
-            cell.settingLabel.text = I18N.Setting.guideTitle
         case [1, 0]:
             cell.iconImage.image = ImageLiterals.Setting.icFeedback
             cell.settingLabel.text = I18N.Setting.feedbackTitle
@@ -211,7 +206,7 @@ extension SettingViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath == [3, 0] || indexPath == [3, 1] || indexPath == [0, 2] || indexPath == [1, 0] || indexPath == [2, 0] {
+        if indexPath == [3, 0] || indexPath == [3, 1] || indexPath == [1, 0] || indexPath == [2, 0] {
             if let settingCell = cell as? SettingTableViewCell {
                 settingCell.separateLine.isHidden = true
             }
@@ -239,14 +234,6 @@ extension SettingViewController {
                     UserManager.shared.clearAll()
                     let nav = LoginViewController()
                     keyWindow.rootViewController = UINavigationController(rootViewController: nav)
-                }
-            case .reissue:
-                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
-                    if success {
-                        self.postLogoutAPI()
-                    } else {
-                        self.makeSessionExpiredAlert()
-                    }
                 }
             case .requestErr, .serverErr:
                 break
