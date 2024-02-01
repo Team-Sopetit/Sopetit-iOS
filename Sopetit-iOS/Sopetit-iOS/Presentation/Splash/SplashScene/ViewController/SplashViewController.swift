@@ -109,6 +109,8 @@ private extension SplashViewController {
             } else {
                 presentToOnboardingView()
             }
+        } else {
+            presentToLoginView()
         }
     }
     
@@ -122,7 +124,15 @@ private extension SplashViewController {
               let keyWindow = windowScene.windows.first else {
             return
         }
-        keyWindow.rootViewController = TabBarController()
+        keyWindow.rootViewController = UINavigationController(rootViewController: TabBarController())
+    }
+
+    func presentToLoginView() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        keyWindow.rootViewController = UINavigationController(rootViewController: LoginViewController())
     }
 }
 
