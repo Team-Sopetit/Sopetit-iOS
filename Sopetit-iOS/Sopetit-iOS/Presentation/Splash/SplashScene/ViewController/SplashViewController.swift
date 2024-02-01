@@ -35,7 +35,7 @@ final class SplashViewController: UIViewController {
         
         self.view = splashViews[randomNumber]
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,6 +52,7 @@ final class SplashViewController: UIViewController {
 private extension SplashViewController {
     
     func setUI() {
+        print(URLConstant.baseURL)
         Analytics.logEvent("view_splash", parameters: nil)
         
         self.updateAlertView.isHidden = true
@@ -101,12 +102,10 @@ private extension SplashViewController {
     func showNextPage() {
         if UserManager.shared.hasAccessToken {
             if UserManager.shared.isPostMemeber {
-                postLoginAPI(socialAccessToken: UserManager.shared.getAccessToken, socialType: UserManager.shared.getSocialType)
+                tokenCheck(socialAccessToken: UserManager.shared.getAccessToken, socialType: UserManager.shared.getSocialType)
             } else {
                 presentToOnboardingView()
             }
-        } else {
-            presentToLoginView()
         }
     }
     
@@ -116,8 +115,11 @@ private extension SplashViewController {
     }
     
     func presentToLoginView() {
-        let nav = LoginViewController()
-        self.navigationController?.pushViewController(nav, animated: true)
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        keyWindow.rootViewController = LoginViewController()
     }
     
     func presentToHomeView() {
@@ -165,34 +167,24 @@ extension SplashViewController: AlertDelgate {
 private extension SplashViewController {
     
     func tokenCheck(socialAccessToken: String, socialType: String) {
-            AuthService.shared.postLogoutAPI { networkResult in
-                switch networkResult {
-                case .success:
-                    self.presentToHomeView()
-                case .reissue:
-                    ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
-                        if success {
-                            self.presentToHomeView()
-                        } else {
-                            self.presentToLoginView()
-                        }
+        AuthService.shared.postLogoutAPI { networkResult in
+            switch networkResult {
+            case .success:
+                self.presentToHomeView()
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.presentToHomeView()
+                    } else {
+                        self.presentToLoginView()
                     }
-                case .requestErr, .serverErr:
-                    break
-                default:
-                    break
                 }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
             }
         }
-}
-
-private extension SplashViewController {
-    func showNextPage() {
-        if UserManager.shared.hasAccessToken {
-            if UserManager.shared.isPostMemeber {
-                tokenCheck(socialAccessToken: UserManager.shared.getAccessToken, socialType: UserManager.shared.getSocialType)
-            } else {
-                presentToOnboardingView()
     }
     
     func getVersionAPI() {
@@ -213,26 +205,5 @@ private extension SplashViewController {
                 break
             }
         }
-    }
-    
-    func presentToOnboardingView() {
-        let nav = StoryTellingViewController()
-        self.navigationController?.pushViewController(nav, animated: true)
-    }
-    
-    func presentToLoginView() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let keyWindow = windowScene.windows.first else {
-            return
-        }
-        keyWindow.rootViewController = LoginViewController()
-    }
-    
-    func presentToHomeView() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let keyWindow = windowScene.windows.first else {
-            return
-        }
-        keyWindow.rootViewController = TabBarController()
     }
 }
