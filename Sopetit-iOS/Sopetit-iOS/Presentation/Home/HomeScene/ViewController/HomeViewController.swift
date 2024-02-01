@@ -19,6 +19,7 @@ final class HomeViewController: UIViewController {
     var cottonDailyNum: Int = 0
     var cottonHappyyNum: Int = 0
     private var homeCottonEntity = HomeCottonEntity(cottonCount: 0)
+    private var isSelectionEnabled: Bool = true
     
     // MARK: - UI Components
     
@@ -174,11 +175,13 @@ extension HomeViewController {
         activityIndicator.center = view.center
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
+        self.isSelectionEnabled = false
     }
     
     private func stopLoadingIndicator() {
         activityIndicator.stopAnimating()
         activityIndicator.removeFromSuperview()
+        self.isSelectionEnabled = true
     }
 }
 
@@ -186,6 +189,10 @@ extension HomeViewController {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard isSelectionEnabled else {
+            return
+        }
+        
         switch indexPath.item {
         case 0:
             if !(homeView.isAnimate) {
