@@ -135,4 +135,9 @@ enum I18N {
         static let guideNotion = "https://softie-link.notion.site/6a65faa32923410a84ff6a63c47cf752?pvs=4"
         static let feedbackFoam = "https://docs.google.com/forms/d/e/1FAIpQLSfEtF_qWDu9mI1IcEBPTWsoBVCwPa0wunQK600EcjOMbz8upQ/viewform?usp=sf_link"
     }
+    
+    enum SessionExpiredAlert {
+        static let title = "인증 세션이 만료되었습니다."
+        static let message = "원활한 앱 사용을 위해\n다시 로그인 해주세요."
+    }
 }

@@ -7,31 +7,28 @@
 
 import UIKit
 
-/**
-
-  - Description:
- 
-            요청하는(OK,취소)버튼만 있는 UIAlertController를 간편하게 만들기 위한 extension입니다.
-
-  - parameters:
-    - title: 알림창에 뜨는 타이틀 부분입니다.
-    - message: 타이틀 밑에 뜨는 메세지 부분입니다.
-    - okAction: 확인버튼을 눌렀을 때 동작하는 부분입니다.
-    - cancelAction: 취소버튼을 눌렀을 때 동작하는 부분입니다.
-    - completion: 해당 UIAlertController가 띄워졌을 때, 동작하는 부분입니다.
-
- */
-
 extension UIViewController {
-    func makeAlert(title: String,
-                   message: String,
-                   okAction: ((UIAlertAction) -> Void)? = nil,
-                   completion: (() -> Void)? = nil) {
+    
+    func makeSessionExpiredAlert() {
         makeVibrate()
-        let alertViewController = UIAlertController(title: title, message: message,
-                                                    preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .default, handler: okAction)
+        let alertViewController = UIAlertController(
+            title: I18N.SessionExpiredAlert.title,
+            message: I18N.SessionExpiredAlert.message,
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) { _ in
+            self.moveToLoginView()
+        }
         alertViewController.addAction(okAction)
-        self.present(alertViewController, animated: true, completion: completion)
+        self.present(alertViewController, animated: true, completion: nil)
+    }
+    
+    private func moveToLoginView() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        
+        let nav = UINavigationController(rootViewController: LoginViewController())
+        keyWindow.rootViewController = nav
     }
 }
