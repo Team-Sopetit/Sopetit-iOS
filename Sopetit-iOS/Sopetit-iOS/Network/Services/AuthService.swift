@@ -89,30 +89,4 @@ extension AuthService {
                 }
             }
         }
-    
-    func postReissueAPI(
-        refreshToken: String,
-        completion: @escaping (NetworkResult<Any>) -> Void) {
-            let url = URLConstant.reissueURL
-            let header: HTTPHeaders = [
-                "Content-Type": "application/json",
-                "Authorization": "Bearer \(refreshToken)"]
-            let dataRequest = AF.request(url,
-                                         method: .post,
-                                         encoding: JSONEncoding.default,
-                                         headers: header)
-            dataRequest.responseData { response in
-                switch response.result {
-                case .success:
-                    guard let statusCode = response.response?.statusCode else { return }
-                    guard let data = response.data else { return }
-                    let networkResult = self.judgeStatus(by: statusCode,
-                                                         data,
-                                                         ReisuueEntity.self)
-                    completion(networkResult)
-                case .failure:
-                    completion(.networkFail)
-                }
-            }
-        }
 }

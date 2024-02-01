@@ -120,6 +120,14 @@ private extension AddDailyRoutineViewController {
         }
         keyWindow.rootViewController = UINavigationController(rootViewController: nav)
     }
+    
+    func presentToLoginView() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let keyWindow = windowScene.windows.first else {
+            return
+        }
+        keyWindow.rootViewController = LoginViewController()
+    }
 }
 
 extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
@@ -246,6 +254,14 @@ extension AddDailyRoutineViewController {
                     self.addDailyRoutineView.dailyRoutineThemeView.collectionView.reloadData()
                     self.getDailyRoutinesAPI()
                 }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.getDailyThemes()
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
             case .requestErr, .serverErr:
                 break
             default:
@@ -266,6 +282,14 @@ extension AddDailyRoutineViewController {
                     self.addDailyRoutineView.collectionView.reloadData()
                     self.setCarousel()
                 }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.getDailyRoutinesAPI()
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
             case .requestErr, .serverErr:
                 break
             default:
@@ -283,6 +307,14 @@ extension AddDailyRoutineViewController {
                     }
                 }
                 self.setDismiss()
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.postDailyMember(routineId: routineId)
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
             case .requestErr, .serverErr:
                 self.dismiss(animated: true)
             default:

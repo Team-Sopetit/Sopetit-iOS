@@ -78,6 +78,14 @@ extension WithdrawViewController {
         }
     }
     
+    func presentToLoginView() {
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                  let keyWindow = windowScene.windows.first else {
+                return
+            }
+            keyWindow.rootViewController = LoginViewController()
+        }
+    
     func deleteResignAPI() {
         AuthService.shared.deleteResignAPI { networkResult in
             switch networkResult {
@@ -90,6 +98,14 @@ extension WithdrawViewController {
                     UserManager.shared.clearAll()
                     let nav = LoginViewController()
                     keyWindow.rootViewController = UINavigationController(rootViewController: nav)
+                }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.deleteResignAPI()
+                    } else {
+                        self.presentToLoginView()
+                    }
                 }
             case .requestErr, .serverErr:
                 break

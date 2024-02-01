@@ -171,7 +171,15 @@ extension HappyRoutineViewController: BottomSheetButtonDelegate {
         self.dismiss(animated: false)
     }
     
-    func addButtonTapped() { }
+    func addButtonTapped() {}
+    
+    func presentToLoginView() {
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                  let keyWindow = windowScene.windows.first else {
+                return
+            }
+            keyWindow.rootViewController = LoginViewController()
+        }
 }
 
 // MARK: - Network
@@ -193,6 +201,14 @@ private extension HappyRoutineViewController {
                         self.setUserCardData()
                     }
                 }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.getHappinessMemberAPI()
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
             case .requestErr, .serverErr:
                 break
             default:
@@ -206,6 +222,14 @@ private extension HappyRoutineViewController {
             switch networkResult {
             case .success:
                 self.happinessMemberEntity = nil
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.patchHappinessMemberRoutine(routineId: routineId)
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
             case .requestErr, .serverErr:
                 break
             default:
@@ -219,6 +243,14 @@ private extension HappyRoutineViewController {
             switch networkResult {
             case .success:
                 self.happinessMemberEntity = nil
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.deleteHappinessMemberRoutine(routineId: routineId)
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
             case .requestErr, .serverErr:
                 break
             default:
@@ -237,6 +269,15 @@ private extension HappyRoutineViewController {
                         self.happyRoutineEmptyView.bearDescriptionView.setDollImage(url: listData.faceImageURL)
                     }
                 }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.getDollAPI()
+                    } else {
+                        self.presentToLoginView()
+                    }
+                }
+
             case .requestErr, .serverErr:
                 break
             default:
