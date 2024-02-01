@@ -238,7 +238,7 @@ extension DailyRoutineViewController: UICollectionViewDelegateFlowLayout {
             return label
         }()
         label.sizeThatFits(CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: 19))
-        let height = heightForView(text: label.text ?? "", font: label.font, width: SizeLiterals.Screen.screenWidth - 146) + 117
+        let height = heightForView(text: label.text ?? "", font: label.font, width: SizeLiterals.Screen.screenWidth - 172) + 117
         return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: height)
     }
     
@@ -257,11 +257,13 @@ extension DailyRoutineViewController: UICollectionViewDelegateFlowLayout {
 extension DailyRoutineViewController: ConfirmDelegate {
     
     func tapButton(index: Int) {
-        completeRoutineId = dailyRoutineEntity.routines[index].routineID
-        if let iconURL = URL(string: dailyRoutineEntity.routines[index].iconImageURL) {
-            self.dailyCompleteBottomSheet.imageView.downloadedsvg(from: iconURL)
+        if isEditing == false {
+            completeRoutineId = dailyRoutineEntity.routines[index].routineID
+            if let iconURL = URL(string: dailyRoutineEntity.routines[index].iconImageURL) {
+                self.dailyCompleteBottomSheet.imageView.downloadedsvg(from: iconURL)
+            }
+            self.present(dailyCompleteBottomSheet, animated: false)
         }
-        self.present(dailyCompleteBottomSheet, animated: false)
     }
 }
 
