@@ -170,14 +170,6 @@ private extension DailyRoutineViewController {
         }
         self.selectedList = []
     }
-    
-    func presentToLoginView() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let keyWindow = windowScene.windows.first else {
-            return
-        }
-        keyWindow.rootViewController = LoginViewController()
-    }
 }
 
 extension DailyRoutineViewController {
@@ -246,7 +238,7 @@ extension DailyRoutineViewController: UICollectionViewDelegateFlowLayout {
             return label
         }()
         label.sizeThatFits(CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: 19))
-        let height = heightForView(text: label.text ?? "", font: label.font, width: SizeLiterals.Screen.screenWidth - 172) + 117
+        let height = heightForView(text: label.text ?? "", font: label.font, width: SizeLiterals.Screen.screenWidth - 169) + 117
         return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: height)
     }
     
@@ -294,11 +286,9 @@ extension DailyRoutineViewController: RadioButtonDelegate {
     }
     
     func unselectRadioButton(index: Int) {
-        for i in 0 ..< selectedList.count {
-            if dailyRoutineEntity.routines[index].routineID == selectedList[i] {
-                selectedList.remove(at: i)
-                break
-            }
+        for i in 0 ..< selectedList.count where dailyRoutineEntity.routines[index].routineID == selectedList[i] {
+            selectedList.remove(at: i)
+            break
         }
         updateDeleteCount()
     }
@@ -349,7 +339,7 @@ extension DailyRoutineViewController {
                     if success {
                         self.getDailyRoutine()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -372,7 +362,7 @@ extension DailyRoutineViewController {
                     if success {
                         self.deleteRoutineListAPI(routineIdList: routineIdList, count: count)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -397,7 +387,7 @@ extension DailyRoutineViewController {
                     if success {
                         self.patchRoutineAPI(routineId: routineId)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:

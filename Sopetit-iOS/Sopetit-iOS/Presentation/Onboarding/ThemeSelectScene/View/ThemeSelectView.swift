@@ -33,7 +33,7 @@ final class ThemeSelectView: UIView {
     
     private let bearImage: UIImageView = {
         let image = UIImageView()
-        image.image = ImageLiterals.Onboarding.imgFaceBrown
+        image.image = UIImage(resource: .variant6)
         image.contentMode = .scaleAspectFit
         return image
     }()

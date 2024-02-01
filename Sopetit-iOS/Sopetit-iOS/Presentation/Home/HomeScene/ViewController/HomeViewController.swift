@@ -19,6 +19,7 @@ final class HomeViewController: UIViewController {
     var cottonDailyNum: Int = 0
     var cottonHappyyNum: Int = 0
     private var homeCottonEntity = HomeCottonEntity(cottonCount: 0)
+    private var isSelectionEnabled: Bool = true
     
     // MARK: - UI Components
     
@@ -85,7 +86,7 @@ extension HomeViewController {
         case homeView.moneyButton:
             if let url = URL(string: I18N.Home.moneyNotion) {
                 let safariViewController = SFSafariViewController(url: url)
-                present(safariViewController, animated: true, completion: nil)
+                self.present(safariViewController, animated: true, completion: nil)
             }
         case homeView.settingButton:
             let nav = SettingViewController()
@@ -93,14 +94,6 @@ extension HomeViewController {
         default:
             break
         }
-    }
-    
-    func presentToLoginView() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let keyWindow = windowScene.windows.first else {
-            return
-        }
-        keyWindow.rootViewController = LoginViewController()
     }
 }
 
@@ -126,7 +119,7 @@ extension HomeViewController {
                     if success {
                         self.getHomeAPI(socialAccessToken: UserManager.shared.getAccessToken)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -167,7 +160,7 @@ extension HomeViewController {
                     if success {
                         self.patchCottonAPI(cottonType: cottonType, indexPath: indexPath)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -182,11 +175,13 @@ extension HomeViewController {
         activityIndicator.center = view.center
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
+        self.isSelectionEnabled = false
     }
     
     private func stopLoadingIndicator() {
         activityIndicator.stopAnimating()
         activityIndicator.removeFromSuperview()
+        self.isSelectionEnabled = true
     }
 }
 
@@ -194,6 +189,10 @@ extension HomeViewController {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard isSelectionEnabled else {
+            return
+        }
+        
         switch indexPath.item {
         case 0:
             if !(homeView.isAnimate) {

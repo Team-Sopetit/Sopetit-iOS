@@ -9,6 +9,7 @@ import UIKit
 
 import KakaoSDKCommon
 import AuthenticationServices
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("notFound")
             }
         }
+        FirebaseApp.configure()
         return true
     }
 

@@ -7,6 +7,8 @@
 
 import UIKit
 
+import FirebaseAnalytics
+
 final class AddDailyRoutineViewController: UIViewController {
     
     // MARK: - Properties
@@ -120,14 +122,6 @@ private extension AddDailyRoutineViewController {
         }
         keyWindow.rootViewController = UINavigationController(rootViewController: nav)
     }
-    
-    func presentToLoginView() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let keyWindow = windowScene.windows.first else {
-            return
-        }
-        keyWindow.rootViewController = LoginViewController()
-    }
 }
 
 extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
@@ -136,6 +130,8 @@ extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
     func deleteButtonTapped() { }
     
     func addButtonTapped() {
+        Analytics.logEvent("add_dailyroutine", parameters: nil)
+        
         let index = addDailyRoutineView.pageControl.currentPage
         if dailyRoutinesEntity.routines.count == 0 {
             return
@@ -243,7 +239,6 @@ extension AddDailyRoutineViewController {
     
     func getDailyThemes() {
         AddDailyRoutineService.shared.getDailyThemesAPI { networkResult in
-            print(networkResult)
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyThemesEntity> {
@@ -259,7 +254,7 @@ extension AddDailyRoutineViewController {
                     if success {
                         self.getDailyThemes()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -287,7 +282,7 @@ extension AddDailyRoutineViewController {
                     if success {
                         self.getDailyRoutinesAPI()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -312,7 +307,7 @@ extension AddDailyRoutineViewController {
                     if success {
                         self.postDailyMember(routineId: routineId)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:

@@ -28,6 +28,10 @@ extension UIColor {
         return UIColor(hex: "#FEE500")
     }
     
+    static var SoftieBlue: UIColor {
+        return UIColor(hex: "#7B89D1")
+    }
+    
     static var SoftieBackHome: UIColor {
         return UIColor(hex: "#FBF9F1")
     }

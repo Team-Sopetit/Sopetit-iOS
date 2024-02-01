@@ -56,14 +56,6 @@ extension SelectHappyCategoryViewController {
         HappyRoutineTagCollectionViewCell.register(target: selectHappyCategoryView.tagview.collectionView)
         HappyRoutineCategoryCollectionViewCell.register(target: selectHappyCategoryView.categoryCollectionView)
     }
-    
-    func presentToLoginView() {
-            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                  let keyWindow = windowScene.windows.first else {
-                return
-            }
-            keyWindow.rootViewController = LoginViewController()
-        }
 }
 
 extension SelectHappyCategoryViewController: UIGestureRecognizerDelegate {
@@ -178,7 +170,7 @@ private extension SelectHappyCategoryViewController {
                     if success {
                         self.gethappinessThemesAPI()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -205,7 +197,7 @@ private extension SelectHappyCategoryViewController {
                     if success {
                         self.getRoutinesHappinessAPI(themeId: themeId)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:

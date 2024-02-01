@@ -172,14 +172,6 @@ extension HappyRoutineViewController: BottomSheetButtonDelegate {
     }
     
     func addButtonTapped() {}
-    
-    func presentToLoginView() {
-            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                  let keyWindow = windowScene.windows.first else {
-                return
-            }
-            keyWindow.rootViewController = LoginViewController()
-        }
 }
 
 // MARK: - Network
@@ -206,7 +198,7 @@ private extension HappyRoutineViewController {
                     if success {
                         self.getHappinessMemberAPI()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -227,7 +219,7 @@ private extension HappyRoutineViewController {
                     if success {
                         self.patchHappinessMemberRoutine(routineId: routineId)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -248,7 +240,7 @@ private extension HappyRoutineViewController {
                     if success {
                         self.deleteHappinessMemberRoutine(routineId: routineId)
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
@@ -274,7 +266,7 @@ private extension HappyRoutineViewController {
                     if success {
                         self.getDollAPI()
                     } else {
-                        self.presentToLoginView()
+                        self.makeSessionExpiredAlert()
                     }
                 }
 
