@@ -19,6 +19,7 @@ final class DailyRoutineCardCollectionViewCell: UICollectionViewCell, UICollecti
     
     private let cardImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = ImageLiterals.DailyRoutine.imgDailycardEmpty
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()

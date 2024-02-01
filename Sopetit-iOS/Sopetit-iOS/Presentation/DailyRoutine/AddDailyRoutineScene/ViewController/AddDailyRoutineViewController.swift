@@ -76,6 +76,7 @@ private extension AddDailyRoutineViewController {
         addDailyRoutineView.collectionView.delegate = self
         addDailyRoutineView.collectionView.dataSource = self
         dailyAddBottom.buttonDelegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     func setAddTarget() {
@@ -95,7 +96,6 @@ private extension AddDailyRoutineViewController {
     func setRegister() {
         DailyRoutineThemeCollectionViewCell.register(target: addDailyRoutineView.dailyRoutineThemeView.collectionView)
         DailyRoutineCardCollectionViewCell.register(target: addDailyRoutineView.collectionView)
-        
     }
     
     func setCarousel() {
@@ -115,7 +115,7 @@ private extension AddDailyRoutineViewController {
         let nav = TabBarController()
         nav.selectedIndex = 0
         if let navController = nav.viewControllers?[0] as? UINavigationController,
-           let dailyViewController = navController.viewControllers.first as? DailyViewController {
+           let dailyViewController = navController.viewControllers.first as? DailyRoutineViewController {
             dailyViewController.isFromAddDailyBottom = true
         }
         keyWindow.rootViewController = UINavigationController(rootViewController: nav)
@@ -137,6 +137,13 @@ extension AddDailyRoutineViewController: BottomSheetButtonDelegate {
     }
 }
 
+extension AddDailyRoutineViewController: UIGestureRecognizerDelegate {
+    
+    func setGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackButton))
+        view.addGestureRecognizer(tapGesture)
+    }
+}
 extension AddDailyRoutineViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -216,6 +223,7 @@ extension AddDailyRoutineViewController: UICollectionViewDelegate {
 
 extension AddDailyRoutineViewController: BackButtonProtocol {
     
+    @objc
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -227,14 +235,14 @@ extension AddDailyRoutineViewController {
     
     func getDailyThemes() {
         AddDailyRoutineService.shared.getDailyThemesAPI { networkResult in
+            print(networkResult)
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyThemesEntity> {
                     if let listData = data.data {
                         self.dailyThemesEntity = listData
                     }
-                    self.dailyThemesEntity.themes = self.dailyThemesEntity.themes.sorted(by: { $0.themeId < $1.themeId })
-                    self.themeId = 1
+                    self.themeId = self.dailyThemesEntity.themes[0].themeId
                     self.addDailyRoutineView.dailyRoutineThemeView.collectionView.reloadData()
                     self.getDailyRoutinesAPI()
                 }
@@ -247,7 +255,7 @@ extension AddDailyRoutineViewController {
     }
     
     func getDailyRoutinesAPI() {
-        AddDailyRoutineService.shared.getDailyRoutinesAPI(themes: self.themeId) { networkResult in
+        AddDailyRoutineService.shared.getDailyRoutinesAPI(themeId: self.themeId) { networkResult in
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<DailyRoutinesEntity> {

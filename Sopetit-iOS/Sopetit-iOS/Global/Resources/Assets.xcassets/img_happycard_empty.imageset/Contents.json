@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "img_happycard_empty.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "img_happycard_empty@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "img_dailycard_12@3x.png",
+      "filename" : "img_happycard_empty@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

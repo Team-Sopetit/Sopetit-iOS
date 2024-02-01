@@ -1,82 +1,124 @@
 //
-//  RoutineCollectionViewCell.swift
+//  DailyRoutineCollectionViewCell.swift
+//  Sopetit-iOS
 //
-//  Created by Woo Jye Lee on 1/2/24.
+//  Created by Minjoo Kim on 1/29/24.
 //
 
 import UIKit
 
 import SnapKit
 
+protocol ConfirmDelegate: AnyObject {
+    func tapButton(index: Int)
+}
+
+protocol RadioButtonDelegate: AnyObject {
+    
+    func selectRadioButton(index: Int)
+    func unselectRadioButton(index: Int)
+}
+
 final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionViewRegisterable {
     
     // MARK: - Properties
 
     static let isFromNib: Bool = false
-    weak var delegate: PresentDelegate?
-    var status = 0
-    static var sharedVariable: Int = 0 {
+    private var index: Int = 0
+    private var isEnabled: Bool = true {
         didSet {
-            NotificationCenter.default.post(name: Notification.Name("SharedVariableDidChange"), object: nil)
+            switch isEnabled {
+            case true:
+                completeButton.isEnabled = true
+                completeButton.setTitle(I18N.DailyRoutine.complete, for: .normal)
+                completeButton.backgroundColor = .SoftieMain1
+                completeButton.setTitleColor(.SoftieWhite, for: .normal)
+            case false:
+                completeButton.isEnabled = false
+                completeButton.setTitle(I18N.DailyRoutine.completed, for: .normal)
+                completeButton.backgroundColor = .Gray100
+                completeButton.setTitleColor(.Gray300, for: .normal)
+            }
         }
     }
-    var index: Int = 0
+    
+    var radioStatus: Bool = false {
+        didSet {
+            switch radioStatus {
+            case true:
+                radioButton.setImage(ImageLiterals.DailyRoutine.btnRadiobtnSelected, for: .normal)
+                radioDelegate?.selectRadioButton(index: self.index)
+            case false:
+                radioButton.setImage(ImageLiterals.DailyRoutine.btnRadiobtnNone, for: .normal)
+                radioDelegate?.unselectRadioButton(index: self.index)
 
+            }
+        }
+    }
+    
+    var isEditing: Bool = false {
+        didSet {
+            switch isEditing {
+            case true:
+                radioButton.isHidden = false
+                radioButton.setImage(ImageLiterals.DailyRoutine.btnRadiobtnNone, for: .normal)
+
+            case false:
+                radioButton.isHidden = true
+            }
+        }
+    }
+    
+    weak var delegate: ConfirmDelegate?
+    weak var radioDelegate: RadioButtonDelegate?
+    
     // MARK: - UI Components
     
-    let imageView: UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        return image
+    private let iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.DailyRoutine.variant6
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
-    let flagImg: UIImageView = {
-        let image = UIImageView()
-        image.image = ImageLiterals.DailyRoutine.icFlag
-        image.contentMode = .scaleAspectFit
-        return image
+    private let routineView: UIView = {
+        let view = UIView()
+        return view
     }()
     
-    let dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .fontGuide(.caption1)
-        label.textColor = .Gray300
-        return label
-    }()
-    
-    let routineLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .fontGuide(.body1)
         label.textColor = .Gray700
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.numberOfLines = 0
         return label
     }()
     
-    lazy var achieveButton: UIButton = {
+    private let flagImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageLiterals.DailyRoutine.icFlag
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private let achieveLabel: UILabel = {
+        let label = UILabel()
+        label.font = .fontGuide(.caption2)
+        label.textColor = .Gray300
+        return label
+    }()
+    
+    private lazy var radioButton: UIButton = {
         let button = UIButton()
-        button.setTitle(I18N.DailyRoutine.complete, for: .normal)
-        button.setTitleColor(.SoftieWhite, for: .normal)
-        button.titleLabel?.font = .fontGuide(.body4)
-        button.setBackgroundColor(.SoftieMain1, for: .normal)
-        button.layer.cornerRadius = 10
-        button.clipsToBounds = true
-        button.setTitle(I18N.DailyRoutine.completed, for: .disabled)
-        button.setTitleColor(.Gray300, for: .disabled)
-        button.setBackgroundColor(.Gray100, for: .disabled)
         return button
     }()
     
-    lazy var checkBox: UIButton = {
-        let view = UIButton()
-        view.setImage(ImageLiterals.DailyRoutine.btnRadiobtnNone, for: .normal)
-        view.setImage(ImageLiterals.DailyRoutine.btnRadiobtnSelected, for: .selected)
-        view.isHidden = true
-        return view
-    }()
-    
-    let labelBox: UIView = {
-        let view = UIView()
-        return view
+    private let completeButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = .fontGuide(.body4)
+        button.layer.cornerRadius = 10
+        return button
     }()
     
     // MARK: - Life Cycles
@@ -96,107 +138,107 @@ final class DailyRoutineCollectionViewCell: UICollectionViewCell, UICollectionVi
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
-        checkBox.setImage(ImageLiterals.DailyRoutine.btnRadiobtnNone, for: .normal)
-        checkBox.isHidden = true
+        radioButton.isHidden = true
+        radioButton.setImage(ImageLiterals.DailyRoutine.btnRadiobtnNone, for: .normal)
     }
 }
 
 // MARK: - Extensions
 
-extension DailyRoutineCollectionViewCell {
+private extension DailyRoutineCollectionViewCell {
 
     func setUI() {
-        self.layer.cornerRadius = 20
-        self.layer.borderWidth = 1
+        self.backgroundColor = .SoftieWhite
+        self.roundCorners(cornerRadius: 20, maskedCorners: [.layerMaxXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMaxYCorner])
         self.layer.borderColor = UIColor.Gray100.cgColor
-        self.backgroundColor = .white
+        self.layer.borderWidth = 1
     }
     
     func setHierarchy() {
-        self.addSubviews(imageView, achieveButton, checkBox, labelBox)
-        labelBox.addSubviews(flagImg, dateLabel, routineLabel)
+        self.addSubviews(routineView, radioButton, completeButton)
+        routineView.addSubviews(iconImageView, titleLabel, flagImageView, achieveLabel)
     }
     
     func setLayout() {
-        labelBox.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(72)
-            $0.top.equalToSuperview().inset(23)
-            $0.bottom.equalTo(achieveButton.snp.top).offset(-20)
-            $0.trailing.equalToSuperview().inset(52)
+        routineView.snp.makeConstraints {
+            $0.top.leading.equalToSuperview().inset(23)
+            $0.trailing.equalToSuperview().inset(60)
+            $0.height.greaterThanOrEqualTo(40)
         }
         
-        imageView.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(20)
-            $0.size.equalTo(40)
-            $0.centerY.equalTo(labelBox.snp.centerY)
-        }
-        
-        flagImg.snp.makeConstraints {
+        iconImageView.snp.makeConstraints {
             $0.leading.equalToSuperview()
-            $0.centerY.equalTo(dateLabel.snp.centerY)
+            $0.centerY.equalToSuperview()
+            $0.size.equalTo(40)
         }
         
-        dateLabel.snp.makeConstraints {
-            $0.leading.equalTo(flagImg.snp.trailing).offset(4)
-            $0.bottom.equalToSuperview()
+        titleLabel.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview()
+            $0.leading.equalTo(iconImageView.snp.trailing).offset(12)
+            $0.height.greaterThanOrEqualTo(19)
+        }
+    
+        flagImageView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(9)
+            $0.leading.equalTo(iconImageView.snp.trailing).offset(12)
+            $0.size.equalTo(12)
         }
         
-        routineLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalTo(flagImg)
+        achieveLabel.snp.makeConstraints {
+            $0.leading.equalTo(flagImageView.snp.trailing).offset(4)
             $0.trailing.equalToSuperview()
-            $0.bottom.equalTo(flagImg.snp.top).offset(-5)
+            $0.centerY.equalTo(flagImageView.snp.centerY)
         }
         
-        achieveButton.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().inset(23)
-            $0.height.equalTo(38)
-        }
-        
-        checkBox.snp.makeConstraints {
+        radioButton.snp.makeConstraints {
             $0.top.trailing.equalToSuperview().inset(11)
             $0.size.equalTo(38)
         }
-    }
-    
-    func setDatabind(model: DailyRoutines) {
-        self.dateLabel.text = "\(model.achieveCount)번째 달성 중"
-        self.routineLabel.text = model.content
-        if let iconURL = URL(string: model.iconImageURL) {
-            self.imageView.downloadedsvg(from: iconURL)
+        
+        completeButton.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.bottom.equalToSuperview().inset(16)
+            $0.height.equalTo(38)
         }
-        self.achieveButton.isEnabled = !model.isAchieve
     }
-    
+
     func setAddTarget() {
-        self.achieveButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        self.checkBox.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        completeButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+        radioButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
     }
     
     @objc
-    func buttonTapped(_ sender: UIButton) {
+    func tapButton(_ sender: UIButton) {
         switch sender {
-        case achieveButton:
-            if sender.isSelected {
-                sender.isSelected = false
-            } else {
-                delegate?.buttonTapped(in: self)
-                if status == 1 {
-                    sender.isSelected = true
-                }
-            }
-        case checkBox:
-            if sender.isSelected {
-                DailyRoutineCollectionViewCell.sharedVariable-=1
-            } else {
-                DailyRoutineCollectionViewCell.sharedVariable+=1
-            }
-            sender.isSelected = !sender.isSelected
+        case completeButton:
+            delegate?.tapButton(index: self.index)
+        case radioButton:
+            radioStatus.toggle()
         default:
             break
         }
     }
+}
+
+extension DailyRoutineCollectionViewCell {
     
+    func setDataBind(model: DailyRoutines, index: Int) {
+        if let iconURL = URL(string: model.iconImageURL) {
+            iconImageView.downloadedsvg(from: iconURL)
+        }
+        titleLabel.text = model.content
+        titleLabel.setTextWithLineHeight(text: titleLabel.text, lineHeight: 24)
+        achieveLabel.text = "\(model.achieveCount)번째 달성 중"
+        self.layoutIfNeeded()
+        self.index = index
+        self.isEnabled = !model.isAchieve
+    }
+    
+    func setEdit() {
+        self.radioButton.isHidden = false
+    }
+    
+    func setEndEdit() {
+        self.radioButton.isHidden = true
+    }
 }

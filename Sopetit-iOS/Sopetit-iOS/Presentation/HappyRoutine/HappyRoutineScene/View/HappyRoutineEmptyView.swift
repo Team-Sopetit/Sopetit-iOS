@@ -132,6 +132,9 @@ private extension HappyRoutineEmptyView {
         deleteAlertView.isHidden = false
         UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
             self.deleteAlertView.alpha = 0.0
+        }, completion:  {_ in 
+            self.deleteAlertView.isHidden = true
+            self.deleteAlertView.alpha = 1.0
         })
     }
 }
