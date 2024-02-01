@@ -238,7 +238,7 @@ extension DailyRoutineViewController: UICollectionViewDelegateFlowLayout {
             return label
         }()
         label.sizeThatFits(CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: 19))
-        let height = heightForView(text: label.text ?? "", font: label.font, width: SizeLiterals.Screen.screenWidth - 146) + 117
+        let height = heightForView(text: label.text ?? "", font: label.font, width: SizeLiterals.Screen.screenWidth - 172) + 117
         return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: height)
     }
     
