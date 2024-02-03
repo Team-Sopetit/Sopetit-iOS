@@ -89,7 +89,6 @@ extension ThemeSelectViewController: UICollectionViewDelegate {
                     selectedCell.themeIcon.layer.borderWidth = 2
                     if selectedCount == 3 {
                         themeSelectView.nextButton.isEnabled = true
-                        print(selectedCategory)
                     }
                 } else {
                     return false

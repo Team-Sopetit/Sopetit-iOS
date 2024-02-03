@@ -164,7 +164,6 @@ extension RoutineChoiceViewController: UICollectionViewDelegate {
                     selectedCell.routineLabel.layer.borderColor = UIColor.Gray400.cgColor
                     selectedCell.routineLabel.layer.borderWidth = 2
                     routineChoiceView.infoLabel.isHidden = true
-                    print(selectedRoutine)
                     makeVibrate()
                 } else {
                     routineChoiceView.infoLabel.isHidden = false
