@@ -113,7 +113,6 @@ extension OnBoardingService {
                 switch response.result {
                 case .success:
                     guard let statusCode = response.response?.statusCode else { return }
-                    print(statusCode)
                     guard let data = response.data else { return }
                     let networkResult = self.judgeStatus(by: statusCode,
                                                          data,

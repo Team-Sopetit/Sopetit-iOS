@@ -77,8 +77,8 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Debug"
-      customArchiveName = "Sopetit-iOS"
+      buildConfiguration = "Release"
+      customArchiveName = "&#xc18c;&#xd504;&#xd2f0;"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

@@ -22,7 +22,7 @@ final class SplashViewController: UIViewController {
     lazy var randomNumber: Int = Int.random(in: (0 ..< splashViews.count))
     private var versionEntity = VersionEntity(iosVersion: Version(appVersion: "", forceUpdateVersion: ""), androidVersion: Version(appVersion: "", forceUpdateVersion: ""), notificationTitle: "", notificationContent: "")
     private let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-    private let appStoreOpenUrlString = "itms-apps://itunes.apple.com/app/apple-store/6476357728"
+    private let appStoreOpenUrlString = "itms-apps://itunes.apple.com/app/id6476357728"
     
     // MARK: - UI Components
     
@@ -34,10 +34,6 @@ final class SplashViewController: UIViewController {
     override func loadView() {
         
         self.view = splashViews[randomNumber]
-        print("✅✅✅✅")
-        print(UserManager.shared.getAccessToken)
-        print(UserManager.shared.getRefreshToken)
-        print("✅✅✅✅")
     }
     
     override func viewDidLoad() {
