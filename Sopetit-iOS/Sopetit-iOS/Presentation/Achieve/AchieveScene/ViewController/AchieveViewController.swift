@@ -371,6 +371,7 @@ extension AchieveViewController: StatsRoutineDelegate {
     func selectedCell(_ cellInfo: StatsRoutineInfo) {
         let nav = AchieveDetailViewController()
         nav.cellInfo = cellInfo
+        nav.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }

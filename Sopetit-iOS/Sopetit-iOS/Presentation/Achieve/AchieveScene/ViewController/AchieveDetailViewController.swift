@@ -144,11 +144,11 @@ extension AchieveDetailViewController {
             switch networkResult {
             case .success(let data):
                 if let data = data as? GenericResponse<AchieveThemeRoutineEntity> {
-                    if let achieveThemeRoutineData = data.data {
-                        self.dailyRoutines = achieveThemeRoutineData.routines
-                        self.challengeRoutines = achieveThemeRoutineData.challenges
-                        self.achieveDetailView.bindTotalDetail(total: self.dailyRoutines.count, height: self.heightForContentView(texts: self.dailyRoutines), isChallenge: false)
-                        self.achieveDetailView.bindTotalDetail(total: self.challengeRoutines.count, height: self.heightForContentView(texts: self.challengeRoutines), isChallenge: true)
+                    if let themeData = data.data {
+                        self.dailyRoutines = themeData.routines
+                        self.challengeRoutines = themeData.challenges
+                        self.achieveDetailView.bindTotalDetail(total: themeData.routineTotalCount, height: self.heightForContentView(texts: self.dailyRoutines), isChallenge: false)
+                        self.achieveDetailView.bindTotalDetail(total: themeData.challengeTotalCount, height: self.heightForContentView(texts: self.challengeRoutines), isChallenge: true)
                         self.detailDailyCV.reloadData()
                         self.detailChallengeCV.reloadData()
                     }

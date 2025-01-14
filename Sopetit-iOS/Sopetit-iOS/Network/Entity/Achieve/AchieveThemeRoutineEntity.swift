@@ -8,7 +8,10 @@
 struct AchieveThemeRoutineEntity: Codable {
     let id: Int
     let name: String
-    let routines, challenges: [ThemeChallenge]
+    let routineTotalCount: Int
+    let routines: [ThemeChallenge]
+    let challengeTotalCount: Int
+    let challenges: [ThemeChallenge]
 }
 
 // MARK: - ThemeChallenge
