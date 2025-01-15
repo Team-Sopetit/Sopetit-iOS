@@ -78,6 +78,23 @@ final class AchieveStatsDetailView: UIView {
         return collectionView
     }()
     
+    private let challengeEmptyView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    private let challengeEmptyImageView = UIImageView(image: UIImage(resource: .icInfo))
+    
+    private let challengeEmptyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "달성한 챌린지 루틴이 없어요"
+        label.textColor = .Gray500
+        label.font = .fontGuide(.body2)
+        label.asLineHeight(.body2)
+        return label
+    }()
+    
     // daily cv
     
     private let dailyTitleLabel: UILabel = {
@@ -106,6 +123,23 @@ final class AchieveStatsDetailView: UIView {
         return collectionView
     }()
     
+    private let dailyEmptyView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    private let dailyEmptyImageView = UIImageView(image: UIImage(resource: .icInfo))
+    
+    private let dailyEmptyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "달성한 데일리 루틴이 없어요"
+        label.textColor = .Gray500
+        label.font = .fontGuide(.body2)
+        label.asLineHeight(.body2)
+        return label
+    }()
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -127,6 +161,8 @@ private extension AchieveStatsDetailView {
     
     func setUI() {
         backgroundColor = .Gray50
+        challengeEmptyView.isHidden = true
+        dailyEmptyView.isHidden = true
     }
     
     func setHierarchy() {
@@ -140,9 +176,15 @@ private extension AchieveStatsDetailView {
                                 challengeTitleLabel,
                                 challengeCountLabel,
                                 challengeCollectionView,
+                                challengeEmptyView,
                                 dailyTitleLabel,
                                 dailyCountLabel,
-                                dailyCollectionView)
+                                dailyCollectionView,
+                                dailyEmptyView)
+        challengeEmptyView.addSubviews(challengeEmptyImageView,
+                                       challengeEmptyLabel)
+        dailyEmptyView.addSubviews(dailyEmptyImageView,
+                                   dailyEmptyLabel)
     }
     
     func setLayout() {
@@ -202,6 +244,23 @@ private extension AchieveStatsDetailView {
             $0.height.equalTo(100)
         }
         
+        challengeEmptyView.snp.makeConstraints {
+            $0.top.equalTo(challengeTitleLabel.snp.bottom).offset(4)
+            $0.width.equalToSuperview()
+            $0.height.equalTo(116)
+        }
+        
+        challengeEmptyImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(32)
+            $0.centerX.equalToSuperview()
+            $0.size.equalTo(24)
+        }
+        
+        challengeEmptyLabel.snp.makeConstraints {
+            $0.top.equalTo(challengeEmptyImageView.snp.bottom).offset(8)
+            $0.centerX.equalToSuperview()
+        }
+        
         dailyTitleLabel.snp.makeConstraints {
             $0.top.equalTo(challengeCollectionView.snp.bottom).offset(16)
             $0.leading.equalTo(challengeTitleLabel.snp.leading)
@@ -219,6 +278,22 @@ private extension AchieveStatsDetailView {
             $0.height.equalTo(100)
         }
         
+        dailyEmptyView.snp.makeConstraints {
+            $0.top.equalTo(dailyTitleLabel.snp.bottom).offset(4)
+            $0.width.equalToSuperview()
+            $0.height.equalTo(116)
+        }
+        
+        dailyEmptyImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(32)
+            $0.centerX.equalToSuperview()
+            $0.size.equalTo(24)
+        }
+        
+        dailyEmptyLabel.snp.makeConstraints {
+            $0.top.equalTo(dailyEmptyImageView.snp.bottom).offset(8)
+            $0.centerX.equalToSuperview()
+        }
     }
     
     func setRegisterCell() {
@@ -244,14 +319,29 @@ extension AchieveStatsDetailView {
         if isChallenge {
             challengeCountLabel.text = "\(total)번"
             challengeCountLabel.asLineHeight(.body2)
-            challengeCollectionView.snp.updateConstraints {
-                $0.height.equalTo(height)
+            if total == 0 {
+                challengeEmptyView.isHidden = false
+                dailyTitleLabel.snp.updateConstraints {
+                    $0.top.equalTo(challengeEmptyView.snp.bottom).offset(16)
+                }
+            } else {
+                challengeCollectionView.snp.updateConstraints {
+                    $0.height.equalTo(height)
+                }
+                
+                dailyTitleLabel.snp.updateConstraints {
+                    $0.top.equalTo(challengeCollectionView.snp.bottom).offset(16)
+                }
             }
         } else {
             dailyCountLabel.text = "\(total)번"
             dailyCountLabel.asLineHeight(.body2)
-            dailyCollectionView.snp.updateConstraints {
-                $0.height.equalTo(height)
+            if total == 0 {
+                dailyEmptyView.isHidden = false
+            } else {
+                dailyCollectionView.snp.updateConstraints {
+                    $0.height.equalTo(height)
+                }
             }
         }
     }
