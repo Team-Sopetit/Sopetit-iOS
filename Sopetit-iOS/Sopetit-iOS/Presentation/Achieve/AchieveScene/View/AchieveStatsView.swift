@@ -278,4 +278,10 @@ extension AchieveStatsView {
             $0.centerX.equalToSuperview()
         }
     }
+    
+    func setCollectionViewHeight(height: CGFloat) {
+        chartRankCollectionView.snp.updateConstraints {
+            $0.height.equalTo(height)
+        }
+    }
 }

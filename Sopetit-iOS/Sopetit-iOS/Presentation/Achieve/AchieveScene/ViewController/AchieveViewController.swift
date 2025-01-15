@@ -347,6 +347,9 @@ extension AchieveViewController {
     }
     
     func setRankData(for entity: AchieveThemeEntity) -> [AchieveRankEntity] {
+        let rankHeight = CGFloat(28) * CGFloat(entity.themes.count) - 8
+        achieveStatsView.setCollectionViewHeight(height: rankHeight)
+        
         let total = entity.achievedCount
         var rankWithPercent: [AchieveRankEntity] = []
         for i in entity.themes {
