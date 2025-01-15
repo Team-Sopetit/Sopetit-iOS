@@ -35,7 +35,7 @@ class OngoingView: UIView {
         return label
     }()
     
-    let routineEmptyView = RoutineEmptyView()
+    let routineEmptyView = RoutineEmptyView(fromAchieve: false)
     
     let challengeRoutineEmptyView = ChallengeRoutineEmptyView()
     let challengeRoutineView = ChallengeRoutineView()

@@ -9,9 +9,9 @@ import UIKit
 
 import SnapKit
 
-class RoutineEmptyView: UIView {
+final class RoutineEmptyView: UIView {
     
-    let bearImageView: UIImageView = {
+    private let bearImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.ActiveRoutine.emptyroutine
         return imageView
@@ -38,8 +38,9 @@ class RoutineEmptyView: UIView {
     
     // MARK: - Life Cycles
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(fromAchieve: Bool = false) {
+        titleLabel.text = fromAchieve ? "달성한 루틴이 없어요" : I18N.ActiveRoutine.emptyRoutine
+        super.init(frame: CGRect.zero)
         
         setHierarchy()
         setLayout()
