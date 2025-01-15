@@ -44,6 +44,7 @@ final class AchieveStatsView: UIView {
         label.text = "애착이는 다정다감하고 활기차요"
         label.textColor = .Gray500
         label.font = .fontGuide(.body2)
+        label.numberOfLines = 0
         label.asLineHeight(.body2)
         return label
     }()
@@ -75,6 +76,8 @@ final class AchieveStatsView: UIView {
         label.asLineHeight(.body2)
         return label
     }()
+    
+    private let chartEmptyView = UIImageView(image: UIImage(resource: .imgChartEmpty))
     
     lazy var chartView = StatsChartView(entity: AchieveThemeEntity.initalEntity())
     
@@ -148,6 +151,7 @@ private extension AchieveStatsView {
                                    statsSubLabel)
         chartBackView.addSubviews(chartTitleLabel,
                                   chartSubLabel,
+                                  chartEmptyView,
                                   chartView,
                                   chartRankCollectionView)
     }
@@ -197,6 +201,13 @@ private extension AchieveStatsView {
             $0.leading.equalTo(chartTitleLabel.snp.leading)
         }
         
+        chartEmptyView.snp.makeConstraints {
+            $0.top.equalTo(chartSubLabel.snp.bottom).offset(24)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(274)
+            $0.height.equalTo(142)
+        }
+        
         chartView.snp.makeConstraints {
             $0.top.equalTo(chartSubLabel.snp.bottom).offset(24)
             $0.leading.equalToSuperview().inset(29)
@@ -233,6 +244,12 @@ private extension AchieveStatsView {
 extension AchieveStatsView {
     
     func bindStatsImage(entity: AchieveCharacterEntity) {
+        statsTitleLabel.isHidden = false
+        chartEmptyView.isHidden = true
+        statsSubLabel.snp.updateConstraints {
+            $0.top.equalTo(statsTitleLabel.snp.bottom)
+        }
+        
         statsImageView.image = entity.characterImage
         statsTitleLabel.text = entity.characterTitle
         statsSubLabel.text = "\(UserManager.shared.getDollName)는" + entity.characterSub
@@ -240,5 +257,19 @@ extension AchieveStatsView {
         statsTitleLabel.asLineHeight(.head2)
         statsSubLabel.asLineHeight(.body2)
         chartSubLabel.asLineHeight(.body2)
+    }
+    
+    func bindEmptyView() {
+        chartEmptyView.isHidden = false
+        statsImageView.image = UIImage(resource: .imgStats0)
+        statsTitleLabel.isHidden = true
+        statsSubLabel.text = "애착이의 성격이 만들어지기 전이에요\n루틴을 달성하면 성격이 정해져요"
+        chartSubLabel.text = "루틴을 더 달성해 애착이의 성격을 만들어봐요"
+        statsSubLabel.asLineHeight(.body2)
+        chartSubLabel.asLineHeight(.body2)
+        
+        statsSubLabel.snp.updateConstraints {
+            $0.top.equalToSuperview().inset(34)
+        }
     }
 }
