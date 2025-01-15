@@ -11,6 +11,8 @@ import SnapKit
 
 final class AchieveStatsDetailView: UIView {
     
+    var totalNum: Int = 0
+    
     // MARK: - UI Components
     
     private let scrollView: UIScrollView = {
@@ -81,6 +83,7 @@ final class AchieveStatsDetailView: UIView {
     private let challengeEmptyView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
+        view.isHidden = true
         return view
     }()
     
@@ -126,6 +129,7 @@ final class AchieveStatsDetailView: UIView {
     private let dailyEmptyView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
+        view.isHidden = true
         return view
     }()
     
@@ -140,14 +144,16 @@ final class AchieveStatsDetailView: UIView {
         return label
     }()
     
+    let routineEmptyView = RoutineEmptyView(fromAchieve: true)
+    
     // MARK: - Life Cycles
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(totalCount: Int) {
+        super.init(frame: CGRect.zero)
+        
+        self.totalNum = totalCount
         
         setUI()
-        setHierarchy()
-        setLayout()
         setRegisterCell()
     }
     
@@ -161,10 +167,21 @@ private extension AchieveStatsDetailView {
     
     func setUI() {
         backgroundColor = .Gray50
-        challengeEmptyView.isHidden = true
-        dailyEmptyView.isHidden = true
+        if totalNum > 0 {
+            setHierarchy()
+            setLayout()
+        } else { // 엠티뷰
+            setEmptyHierarchy()
+            setEmptyLayout()
+        }
     }
     
+    func setEmptyHierarchy() {
+        addSubviews(navigationBar,
+                    divideView,
+                    routineEmptyView)
+    }
+
     func setHierarchy() {
         addSubviews(navigationBar,
                     divideView,
@@ -185,6 +202,25 @@ private extension AchieveStatsDetailView {
                                        challengeEmptyLabel)
         dailyEmptyView.addSubviews(dailyEmptyImageView,
                                    dailyEmptyLabel)
+    }
+    
+    func setEmptyLayout() {
+        navigationBar.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(56)
+        }
+        
+        divideView.snp.makeConstraints {
+            $0.top.equalTo(navigationBar.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(2)
+        }
+        
+        routineEmptyView.snp.makeConstraints {
+            $0.top.equalTo(divideView.snp.bottom)
+            $0.centerX.equalToSuperview()
+        }
     }
     
     func setLayout() {
@@ -321,16 +357,18 @@ extension AchieveStatsDetailView {
             challengeCountLabel.asLineHeight(.body2)
             if total == 0 {
                 challengeEmptyView.isHidden = false
-                dailyTitleLabel.snp.updateConstraints {
+                dailyTitleLabel.snp.remakeConstraints{
                     $0.top.equalTo(challengeEmptyView.snp.bottom).offset(16)
+                    $0.leading.equalTo(challengeTitleLabel.snp.leading)
                 }
             } else {
                 challengeCollectionView.snp.updateConstraints {
                     $0.height.equalTo(height)
                 }
                 
-                dailyTitleLabel.snp.updateConstraints {
+                dailyTitleLabel.snp.remakeConstraints {
                     $0.top.equalTo(challengeCollectionView.snp.bottom).offset(16)
+                    $0.leading.equalTo(challengeTitleLabel.snp.leading)
                 }
             }
         } else {

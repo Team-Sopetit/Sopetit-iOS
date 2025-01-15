@@ -11,6 +11,8 @@ import SnapKit
 
 final class RoutineEmptyView: UIView {
     
+    private var fromAchieve: Bool = false
+    
     private let bearImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageLiterals.ActiveRoutine.emptyroutine
@@ -39,9 +41,10 @@ final class RoutineEmptyView: UIView {
     // MARK: - Life Cycles
     
     init(fromAchieve: Bool = false) {
-        titleLabel.text = fromAchieve ? "달성한 루틴이 없어요" : I18N.ActiveRoutine.emptyRoutine
+        self.fromAchieve = fromAchieve
         super.init(frame: CGRect.zero)
         
+        setUI()
         setHierarchy()
         setLayout()
     }
@@ -54,13 +57,17 @@ final class RoutineEmptyView: UIView {
 
 extension RoutineEmptyView {
     
+    func setUI() {
+        titleLabel.text = fromAchieve ? "달성한 루틴이 없어요" : I18N.ActiveRoutine.emptyRoutine
+    }
+    
     func setHierarchy() {
         self.addSubviews(bearImageView, titleLabel, addRoutineButton)
     }
     
     func setLayout() {
         bearImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(260)
+            $0.top.equalToSuperview().inset(fromAchieve ? SizeLiterals.Screen.screenHeight * 148 / 812 : 260)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(100)
             $0.height.equalTo(120)

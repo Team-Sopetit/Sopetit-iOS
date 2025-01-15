@@ -19,7 +19,7 @@ final class AchieveDetailViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let achieveDetailView = AchieveStatsDetailView()
+    private lazy var achieveDetailView = AchieveStatsDetailView(totalCount: cellInfo.totalCount)
     private lazy var detailChallengeCV = achieveDetailView.challengeCollectionView
     private lazy var detailDailyCV = achieveDetailView.dailyCollectionView
     
@@ -32,7 +32,6 @@ final class AchieveDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAchievementThemesAPI()
         setUI()
         setDelegate()
     }
@@ -44,7 +43,10 @@ extension AchieveDetailViewController {
     
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
-        achieveDetailView.bindAchieveDetail(model: self.cellInfo)
+        if cellInfo.totalCount > 0 {
+            achieveDetailView.bindAchieveDetail(model: self.cellInfo)
+            getAchievementThemesAPI()
+        }
     }
     
     func setDelegate() {

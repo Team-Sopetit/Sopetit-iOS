@@ -215,7 +215,7 @@ private extension AchieveStatsView {
         }
         
         chartRankCollectionView.snp.makeConstraints {
-            $0.centerY.equalTo(chartView)
+            $0.centerY.equalTo(chartView.snp.centerY)
             $0.trailing.equalToSuperview().inset(29)
             $0.width.equalTo(118)
             $0.height.equalTo(104)
@@ -246,13 +246,16 @@ extension AchieveStatsView {
     func bindStatsImage(entity: AchieveCharacterEntity) {
         statsTitleLabel.isHidden = false
         chartEmptyView.isHidden = true
-        statsSubLabel.snp.updateConstraints {
+        chartView.isHidden = false
+        chartRankCollectionView.isHidden = false
+        statsSubLabel.snp.remakeConstraints {
             $0.top.equalTo(statsTitleLabel.snp.bottom)
+            $0.centerX.equalToSuperview()
         }
         
         statsImageView.image = entity.characterImage
         statsTitleLabel.text = entity.characterTitle
-        statsSubLabel.text = "\(UserManager.shared.getDollName)는" + entity.characterSub
+        statsSubLabel.text = "\(UserManager.shared.getDollName)는 " + entity.characterSub
         chartSubLabel.text =  "\(UserManager.shared.getDollName)와 '\(ThemeDetailEntity.getFullTheme(id: entity.themeId).themeTitle)'하며 가장 많은 시간을 보냈어요"
         statsTitleLabel.asLineHeight(.head2)
         statsSubLabel.asLineHeight(.body2)
@@ -261,6 +264,8 @@ extension AchieveStatsView {
     
     func bindEmptyView() {
         chartEmptyView.isHidden = false
+        chartView.isHidden = true
+        chartRankCollectionView.isHidden = true
         statsImageView.image = UIImage(resource: .imgStats0)
         statsTitleLabel.isHidden = true
         statsSubLabel.text = "애착이의 성격이 만들어지기 전이에요\n루틴을 달성하면 성격이 정해져요"
@@ -268,8 +273,9 @@ extension AchieveStatsView {
         statsSubLabel.asLineHeight(.body2)
         chartSubLabel.asLineHeight(.body2)
         
-        statsSubLabel.snp.updateConstraints {
+        statsSubLabel.snp.remakeConstraints {
             $0.top.equalToSuperview().inset(34)
+            $0.centerX.equalToSuperview()
         }
     }
 }

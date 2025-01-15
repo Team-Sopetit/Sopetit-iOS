@@ -811,11 +811,11 @@ extension AchieveViewController {
                     if let achieveThemeData = data.data {
                         self.chartView.achieveTheme = self.setChartData(achieveThemeData: achieveThemeData)
                         self.achieveThemeEntity = self.setThemeData(for: achieveThemeData)
-                        self.ahcieveRankEntity = self.setRankData(for: self.setChartData(achieveThemeData: achieveThemeData))
                         self.themeStatsCV.reloadData()
-                        self.chartRankCV.reloadData()
-                        if achieveThemeData.themes.count > 0 {
+                        if achieveThemeData.achievedCount > 0 {
+                            self.ahcieveRankEntity = self.setRankData(for: self.setChartData(achieveThemeData: achieveThemeData))
                             self.achieveStatsView.bindStatsImage(entity: AchieveCharacterEntity(themeId: achieveThemeData.themes[0].id))
+                            self.chartRankCV.reloadData()
                         } else {
                             self.achieveStatsView.bindEmptyView()
                         }
