@@ -49,6 +49,12 @@ final class AchieveViewController: UIViewController {
         self.view = achieveView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        isStats ? getAchievementThemesAPI() : getCalendarAPI(entity: requestEntity)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -810,6 +816,8 @@ extension AchieveViewController {
                         self.chartRankCV.reloadData()
                         if achieveThemeData.themes.count > 0 {
                             self.achieveStatsView.bindStatsImage(entity: AchieveCharacterEntity(themeId: achieveThemeData.themes[0].id))
+                        } else {
+                            self.achieveStatsView.bindEmptyView()
                         }
                     }
                 }
