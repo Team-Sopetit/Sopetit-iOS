@@ -34,6 +34,7 @@ final class AchieveDetailViewController: UIViewController {
         
         setUI()
         setDelegate()
+        setAddTarget()
     }
 }
 
@@ -55,6 +56,19 @@ extension AchieveDetailViewController {
         detailChallengeCV.dataSource = self
         detailDailyCV.delegate = self
         detailDailyCV.dataSource = self
+    }
+    
+    func setAddTarget() {
+        achieveDetailView.routineEmptyView.addRoutineButton.addTarget(self,
+                                                                      action: #selector(addRoutineTapped),
+                                                                      for: .touchUpInside)
+    }
+    
+    @objc
+    func addRoutineTapped() {
+        print("😳😳😳😳😳")
+        let nav = AddRoutineViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
     }
     
     func heightForContentView(texts: [ThemeChallenge]) -> Double {
