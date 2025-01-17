@@ -759,7 +759,7 @@ extension AchieveViewController {
                     if let memberProfilData = data.data {
                         let date = memberProfilData.createdAt.split(separator: "T").first ?? ""
                         self.registerDate = String(date)
-                        self.calendarView.reloadData()
+                        self.updateCalendarHeaderButton()
                     }
                 }
             case .reissue:
