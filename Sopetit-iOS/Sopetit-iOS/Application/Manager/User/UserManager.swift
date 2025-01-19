@@ -19,6 +19,7 @@ final class UserManager {
     @UserDefaultWrapper<String>(key: "dollType") private(set) var dollType
     @UserDefaultWrapper<Bool>(key: "showTutorial") private(set) var showTutorial
     @UserDefaultWrapper<Bool>(key: "allowAlarm") private(set) var allowAlarm
+    @UserDefaultWrapper<String>(key: "dollName") private(set) var dollName
     
     var hasAccessToken: Bool { return self.accessToken != nil }
     var getAccessToken: String { return self.accessToken ?? "" }
@@ -29,6 +30,7 @@ final class UserManager {
     var getDollType: String { return self.dollType ?? "BROWN" }
     var isShowTutorial: Bool { return self.showTutorial ?? false }
     var hasAllowAlarm: Bool { return self.allowAlarm ?? false }
+    var getDollName: String { return self.dollName ?? "" }
     
     private init() {}
 }
@@ -45,6 +47,10 @@ extension UserManager {
     
     func updateDoll(_ dollType: String) {
         self.dollType = dollType
+    }
+    
+    func updateDollName(_ dollNamee: String) {
+        self.dollName = dollNamee
     }
     
     func updateToken(_ accessToken: String, _ refreshToken: String) {

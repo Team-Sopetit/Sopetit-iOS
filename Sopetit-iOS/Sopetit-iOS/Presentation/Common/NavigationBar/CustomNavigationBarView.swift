@@ -116,7 +116,7 @@ private extension CustomNavigationBarView {
     
     func setLayout() {
         self.snp.makeConstraints {
-            $0.height.equalTo(44)
+            $0.height.equalTo(56)
         }
         
         leftTitleView.snp.makeConstraints {

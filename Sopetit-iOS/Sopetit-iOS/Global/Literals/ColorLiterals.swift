@@ -104,35 +104,4 @@ extension UIColor {
         return UIColor(hex: "#000000").withAlphaComponent(0.7)
     }
     
-    static var ThemeBack1: UIColor {
-        return UIColor(hex: "#F9EAEC")
-    }
-    
-    static var ThemeBack2: UIColor {
-        return UIColor(hex: "#FFAAB2")
-    }
-    
-    static var ThemeBack3: UIColor {
-        return UIColor(hex: "#FFEED4")
-    }
-    
-    static var ThemeBack4: UIColor {
-        return UIColor(hex: "#FFF7D5")
-    }
-    
-    static var ThemeBack5: UIColor {
-        return UIColor(hex: "#DAF3DE")
-    }
-    
-    static var ThemeBack6: UIColor {
-        return UIColor(hex: "#E0F2FF")
-    }
-    
-    static var ThemeBack7: UIColor {
-        return UIColor(hex: "#E1EAFF")
-    }
-    
-    static var ThemeBack8: UIColor {
-        return UIColor(hex: "#E5E1FF")
-    }
 }

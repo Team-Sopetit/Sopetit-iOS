@@ -195,4 +195,49 @@ extension AchieveService {
             }
         }
     }
+    
+    func getAchievementThemesAPI(completion: @escaping (NetworkResult<Any>) -> Void) {
+        let url = URLConstant.achievementThemesURL
+        let header: HTTPHeaders = NetworkConstant.hasTokenHeader
+        let dataRequest = AF.request(url,
+                                     method: .get,
+                                     encoding: JSONEncoding.default,
+                                     headers: header)
+        dataRequest.responseData { response in
+            switch response.result {
+            case .success:
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let data = response.data else { return }
+                let networkResult = self.judgeStatus(by: statusCode,
+                                                     data,
+                                                     AchieveThemeEntity.self)
+                completion(networkResult)
+            case .failure:
+                completion(.networkFail)
+            }
+        }
+    }
+    
+    func getAchievementThemesRoutineAPI(themeId: Int,
+                                        completion: @escaping (NetworkResult<Any>) -> Void) {
+        let url = URLConstant.achievementThemesRoutinesURL + "\(themeId)/routines"
+        let header: HTTPHeaders = NetworkConstant.hasTokenHeader
+        let dataRequest = AF.request(url,
+                                     method: .get,
+                                     encoding: JSONEncoding.default,
+                                     headers: header)
+        dataRequest.responseData { response in
+            switch response.result {
+            case .success:
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let data = response.data else { return }
+                let networkResult = self.judgeStatus(by: statusCode,
+                                                     data,
+                                                     AchieveThemeRoutineEntity.self)
+                completion(networkResult)
+            case .failure:
+                completion(.networkFail)
+            }
+        }
+    }
 }

@@ -155,15 +155,9 @@ extension ChangeChallengeBSViewController {
     }
     
     func setCardTitle(id: Int) -> (String, UIImage, UIImage) {
-        if id < 8 {
-            return (ThemeDetailEntity.getTheme(id: id).themeTitle,
-                    ThemeDetailEntity.getTheme(id: id).themeImage,
-                    UIImage(named: "add_challenge\(id)") ?? UIImage())
-        } else {
-            return ("루틴메이커",
-                    UIImage(resource: .theme8),
-                    UIImage(resource: .addChallenge8))
-        }
+        return (ThemeDetailEntity.getTheme(id: id).themeTitle,
+                ThemeDetailEntity.getTheme(id: id).themeImage,
+                UIImage(named: "add_challenge\(id)") ?? UIImage())
     }
     
     func setHierarchy() {

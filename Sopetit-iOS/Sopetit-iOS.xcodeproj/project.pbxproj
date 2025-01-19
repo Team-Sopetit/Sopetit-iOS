@@ -58,6 +58,16 @@
 		09CC26C82C8A836000C3BD3B /* NewDailyRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC26C72C8A836000C3BD3B /* NewDailyRoutineView.swift */; };
 		09CC26CA2C8A839100C3BD3B /* ChallengeRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CC26C92C8A839100C3BD3B /* ChallengeRoutineView.swift */; };
 		A40C7A592D2E396B00427BAA /* AchieveStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C7A582D2E396200427BAA /* AchieveStatsView.swift */; };
+		A40C7A5B2D2E4B2500427BAA /* StatsRoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C7A5A2D2E4B1B00427BAA /* StatsRoutineCell.swift */; };
+		A40C7A5F2D30A38900427BAA /* StatsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C7A5E2D30A38300427BAA /* StatsChartView.swift */; };
+		A40C7A612D30A6B300427BAA /* AchieveThemeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C7A602D30A6A200427BAA /* AchieveThemeEntity.swift */; };
+		A40C7A652D30B82200427BAA /* AchieveCharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C7A642D30B81900427BAA /* AchieveCharacterEntity.swift */; };
+		A40C7A672D30D6B100427BAA /* ChartRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C7A662D30D6AB00427BAA /* ChartRankCell.swift */; };
+		A40C7A692D30D9F600427BAA /* AchieveRankEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C7A682D30D9F200427BAA /* AchieveRankEntity.swift */; };
+		A40C7A6B2D34915900427BAA /* AchieveDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C7A6A2D34914000427BAA /* AchieveDetailViewController.swift */; };
+		A40C7A6D2D3491A200427BAA /* AchieveStatsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C7A6C2D34919D00427BAA /* AchieveStatsDetailView.swift */; };
+		A40C7A6F2D3494AA00427BAA /* StatsDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C7A6E2D3494A200427BAA /* StatsDetailCell.swift */; };
+		A40C7A712D34AE4500427BAA /* AchieveThemeRoutineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C7A702D34AE3D00427BAA /* AchieveThemeRoutineEntity.swift */; };
 		A40F9EFD2C6798A5004DD1A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A40F9EFC2C6798A5004DD1A1 /* GoogleService-Info.plist */; };
 		A40F9F082C69A06E004DD1A1 /* TotalRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F9F072C69A06E004DD1A1 /* TotalRoutineCollectionViewCell.swift */; };
 		A40F9F102C69D08D004DD1A1 /* AddChallengeRoutineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40F9F0F2C69D08D004DD1A1 /* AddChallengeRoutineCollectionViewCell.swift */; };
@@ -232,6 +242,16 @@
 		09CC26C72C8A836000C3BD3B /* NewDailyRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDailyRoutineView.swift; sourceTree = "<group>"; };
 		09CC26C92C8A839100C3BD3B /* ChallengeRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRoutineView.swift; sourceTree = "<group>"; };
 		A40C7A582D2E396200427BAA /* AchieveStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveStatsView.swift; sourceTree = "<group>"; };
+		A40C7A5A2D2E4B1B00427BAA /* StatsRoutineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsRoutineCell.swift; sourceTree = "<group>"; };
+		A40C7A5E2D30A38300427BAA /* StatsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsChartView.swift; sourceTree = "<group>"; };
+		A40C7A602D30A6A200427BAA /* AchieveThemeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveThemeEntity.swift; sourceTree = "<group>"; };
+		A40C7A642D30B81900427BAA /* AchieveCharacterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveCharacterEntity.swift; sourceTree = "<group>"; };
+		A40C7A662D30D6AB00427BAA /* ChartRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartRankCell.swift; sourceTree = "<group>"; };
+		A40C7A682D30D9F200427BAA /* AchieveRankEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveRankEntity.swift; sourceTree = "<group>"; };
+		A40C7A6A2D34914000427BAA /* AchieveDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveDetailViewController.swift; sourceTree = "<group>"; };
+		A40C7A6C2D34919D00427BAA /* AchieveStatsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveStatsDetailView.swift; sourceTree = "<group>"; };
+		A40C7A6E2D3494A200427BAA /* StatsDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsDetailCell.swift; sourceTree = "<group>"; };
+		A40C7A702D34AE3D00427BAA /* AchieveThemeRoutineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveThemeRoutineEntity.swift; sourceTree = "<group>"; };
 		A40F9EF92C679827004DD1A1 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A40F9EFB2C67985C004DD1A1 /* ReleaseConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ReleaseConfig.xcconfig; sourceTree = "<group>"; };
 		A40F9EFC2C6798A5004DD1A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -982,6 +1002,7 @@
 		A4648B912C043322001EB031 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A40C7A6A2D34914000427BAA /* AchieveDetailViewController.swift */,
 				A4648B9B2C043387001EB031 /* AchieveViewController.swift */,
 				A475D5242CFE8C1300B5DDC5 /* EditMemoBSViewController.swift */,
 				A475D52A2CFEABA700B5DDC5 /* AddMemoBSViewController.swift */,
@@ -993,6 +1014,8 @@
 		A4648B922C043327001EB031 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A40C7A6C2D34919D00427BAA /* AchieveStatsDetailView.swift */,
+				A40C7A5E2D30A38300427BAA /* StatsChartView.swift */,
 				A40C7A582D2E396200427BAA /* AchieveStatsView.swift */,
 				A49CB10E2D1D0A5E007D13D0 /* AchieveCalendarView.swift */,
 				A46CA1692CE70A2100AB4DCA /* AchieveMenuView.swift */,
@@ -1072,6 +1095,9 @@
 		A46CA16D2CE70FEB00AB4DCA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				A40C7A6E2D3494A200427BAA /* StatsDetailCell.swift */,
+				A40C7A662D30D6AB00427BAA /* ChartRankCell.swift */,
+				A40C7A5A2D2E4B1B00427BAA /* StatsRoutineCell.swift */,
 				A46CA16E2CE7102100AB4DCA /* CalendarDateCell.swift */,
 				A49E0AF82D01558B00588087 /* CalendarHistoryCell.swift */,
 			);
@@ -1268,6 +1294,10 @@
 		A49E0AEB2CFEC61C00588087 /* Achieve */ = {
 			isa = PBXGroup;
 			children = (
+				A40C7A702D34AE3D00427BAA /* AchieveThemeRoutineEntity.swift */,
+				A40C7A682D30D9F200427BAA /* AchieveRankEntity.swift */,
+				A40C7A642D30B81900427BAA /* AchieveCharacterEntity.swift */,
+				A40C7A602D30A6A200427BAA /* AchieveThemeEntity.swift */,
 				A49E0AEC2CFEC62600588087 /* MemberProfileEntity.swift */,
 				A49E0AF02CFECAE500588087 /* MemosRequestEntity.swift */,
 				A49E0AF22CFECB2A00588087 /* MemosResponseEntity.swift */,
@@ -1456,6 +1486,8 @@
 				A42C32BB2B3EAAEA00C4B477 /* FontLiterals.swift in Sources */,
 				A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */,
 				00CCDCC62B51B5C8007DD0E6 /* SplashThreeView.swift in Sources */,
+				A40C7A672D30D6B100427BAA /* ChartRankCell.swift in Sources */,
+				A40C7A6B2D34915900427BAA /* AchieveDetailViewController.swift in Sources */,
 				09BCA9FA2C2A7773006E876D /* ChallengeRoutineCardView.swift in Sources */,
 				A4D9F6E92C5D2F8600A9F719 /* TutorialViewController.swift in Sources */,
 				A40F9F412C6EEC4D004DD1A1 /* ChangeChallengeBSViewController.swift in Sources */,
@@ -1465,6 +1497,7 @@
 				A49BFE1F2B4E542B00035EB6 /* RoutineChoiceView.swift in Sources */,
 				A49BFDE12B4D7A5400035EB6 /* DollChoiceViewController.swift in Sources */,
 				A49E0AF52D0123BC00588087 /* CalendarEntity.swift in Sources */,
+				A40C7A692D30D9F600427BAA /* AchieveRankEntity.swift in Sources */,
 				A40F9F1A2C6AD944004DD1A1 /* AddRoutineInfoEntity.swift in Sources */,
 				A42C33042B3EAE4F00C4B477 /* AuthService.swift in Sources */,
 				A4648BA02C043417001EB031 /* AddRoutineView.swift in Sources */,
@@ -1472,6 +1505,7 @@
 				A49BFE2A2B4E857300035EB6 /* DollNameView.swift in Sources */,
 				A49CB10B2D1A4426007D13D0 /* AddChallengeEntity.swift in Sources */,
 				A42C32B72B3EAAD800C4B477 /* ImageLiterals.swift in Sources */,
+				A40C7A652D30B82200427BAA /* AchieveCharacterEntity.swift in Sources */,
 				A49E0AEF2CFEC66800588087 /* AchieveService.swift in Sources */,
 				045DFE7B2B504E38005D69EA /* SettingViewController.swift in Sources */,
 				09BCAA022C2A7C79006E876D /* GetCottonViewController.swift in Sources */,
@@ -1484,6 +1518,7 @@
 				09BCAA042C2A7D6F006E876D /* GetCottonView.swift in Sources */,
 				A49BFDDC2B4D5F5E00035EB6 /* StoryTellingThirdView.swift in Sources */,
 				A42C32CD2B3EAB5600C4B477 /* UILabel+.swift in Sources */,
+				A40C7A612D30A6B300427BAA /* AchieveThemeEntity.swift in Sources */,
 				A49BFE282B4E856600035EB6 /* DollNameViewController.swift in Sources */,
 				A4648B9A2C04337B001EB031 /* AchieveView.swift in Sources */,
 				A42C32E92B3EAC9C00C4B477 /* BaseService.swift in Sources */,
@@ -1503,6 +1538,7 @@
 				A42C32CF2B3EAB7700C4B477 /* UIColor+.swift in Sources */,
 				A49E0B002D02E30000588087 /* DelRoutineBSViewController.swift in Sources */,
 				A49BFDDA2B4D5F4600035EB6 /* StoryTellingSecondView.swift in Sources */,
+				A40C7A6F2D3494AA00427BAA /* StatsDetailCell.swift in Sources */,
 				A497063D2C81E1D1008D2D57 /* LogoutBSViewController.swift in Sources */,
 				A42C32F62B3EADE300C4B477 /* HomeEntity.swift in Sources */,
 				09BCA9F82C2A7761006E876D /* NewDailyRoutineHeaderView.swift in Sources */,
@@ -1530,6 +1566,7 @@
 				A4648BA22C04348E001EB031 /* OngoingViewController.swift in Sources */,
 				A488FE8B2B697BB7000B4809 /* UpdateAlertView.swift in Sources */,
 				A49BFE4F2B53CE7700035EB6 /* DollImageEntity.swift in Sources */,
+				A40C7A5B2D2E4B2500427BAA /* StatsRoutineCell.swift in Sources */,
 				006AD5BA2B6AAAD100070178 /* ReissueService.swift in Sources */,
 				00CCDCC42B51B5BD007DD0E6 /* SplashTwoView.swift in Sources */,
 				093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */,
@@ -1544,6 +1581,7 @@
 				A49E0AF72D01302900588087 /* CalendarRequestEntity.swift in Sources */,
 				09A9F91F2C804E3500FE5836 /* GetRainbowCottonViewController.swift in Sources */,
 				A49BFDF22B4DA53A00035EB6 /* ThemeSelectEntity.swift in Sources */,
+				A40C7A712D34AE4500427BAA /* AchieveThemeRoutineEntity.swift in Sources */,
 				A49BFDE92B4D873400035EB6 /* DollChoiceCollectionViewCell.swift in Sources */,
 				00CCDCC22B51B5AF007DD0E6 /* SplashOneView.swift in Sources */,
 				097E04872C6F24D700A350E8 /* PatchRoutineEntity.swift in Sources */,
@@ -1581,9 +1619,11 @@
 				A40C7A592D2E396B00427BAA /* AchieveStatsView.swift in Sources */,
 				A49BFDF02B4DA48200035EB6 /* ThemeSelectView.swift in Sources */,
 				A49BFE622B558B2E00035EB6 /* MemberEntity.swift in Sources */,
+				A40C7A6D2D3491A200427BAA /* AchieveStatsDetailView.swift in Sources */,
 				A46CA16F2CE7102D00AB4DCA /* CalendarDateCell.swift in Sources */,
 				A4A516D12C36C46E00ED9CC1 /* RoutineThemeCollectionViewCell.swift in Sources */,
 				A49BFDD52B4D5F0800035EB6 /* StroyTellingViewController.swift in Sources */,
+				A40C7A5F2D30A38900427BAA /* StatsChartView.swift in Sources */,
 				A4648B9E2C043406001EB031 /* OngoingView.swift in Sources */,
 				A40F9F182C69F35C004DD1A1 /* DailyThemeEntity.swift in Sources */,
 				A42C327E2B3DB8F400C4B477 /* SceneDelegate.swift in Sources */,
@@ -1742,6 +1782,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1780,6 +1821,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

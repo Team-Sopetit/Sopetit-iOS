@@ -84,6 +84,7 @@ extension HomeViewController {
     
     func setDataBind(model: HomeEntity) {
         homeView.setDataBind(model: model)
+        UserManager.shared.updateDollName(model.name)
         let string = model.name
         let nameWidth = string.size(withAttributes: [NSAttributedString.Key.font: UIFont.fontGuide(.bubble2)]).width
         homeView.dollNameLabel.snp.updateConstraints {

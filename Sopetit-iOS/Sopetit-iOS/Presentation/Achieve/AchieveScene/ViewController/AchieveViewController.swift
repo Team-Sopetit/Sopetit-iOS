@@ -9,10 +9,13 @@ import UIKit
 
 import SnapKit
 import FSCalendar
+import Foundation
 
 final class AchieveViewController: UIViewController {
     
     // MARK: - Properties
+    
+    private var isStats: Bool = true
     
     private var selectedDate: Date?
     private var selectedMonth: Int?
@@ -20,6 +23,8 @@ final class AchieveViewController: UIViewController {
     private var registerDate: String = ""
     private lazy var requestEntity: CalendarRequestEntity = CalendarRequestEntity(year: self.getDayComponents(date: "").year, month: self.getDayComponents(date: "").month)
     private var calendarEntity: CalendarEntity = CalendarEntity(success: false, message: "", data: ["": CalendarDate(memoID: 0, memoContent: "", histories: [])])
+    private var achieveThemeEntity = AchieveThemeEntity.initalEntity()
+    private var ahcieveRankEntity: [AchieveRankEntity] = AchieveRankEntity.initalEntity()
     private var selectedDateMemo: String = ""
     private var selectedDateMemoId: Int = 0
     private var fromDidChange: Bool = false
@@ -34,6 +39,9 @@ final class AchieveViewController: UIViewController {
     private lazy var calendarHeaderView = achieveCalendarView.calendarHeaderView
     private lazy var goTodayButton = achieveCalendarView.calendarHeaderView.goTodayButton
     private lazy var achieveCV = achieveCalendarView.achieveCollectionView
+    private lazy var themeStatsCV = achieveStatsView.themeStatsCollectionView
+    private lazy var chartRankCV = achieveStatsView.chartRankCollectionView
+    private lazy var chartView = achieveStatsView.chartView
     
     // MARK: - Life Cycles
     
@@ -44,14 +52,13 @@ final class AchieveViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getCalendarAPI(entity: requestEntity)
+        isStats ? getAchievementThemesAPI() : getCalendarAPI(entity: requestEntity)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getMemberProfileAPI()
-        getCalendarAPI(entity: requestEntity)
+        getAchievementThemesAPI()
         setUI()
         setAddGesture()
         setRegisterCell()
@@ -114,6 +121,10 @@ extension AchieveViewController {
         calendarHeaderView.delegate = self
         achieveCV.delegate = self
         achieveCV.dataSource = self
+        themeStatsCV.delegate = self
+        themeStatsCV.dataSource = self
+        chartRankCV.delegate = self
+        chartRankCV.dataSource = self
     }
     
     @objc
@@ -121,6 +132,8 @@ extension AchieveViewController {
         achieveView.achieveMenuView.setAchieveMenuTapped(statsTapped: true)
         achieveStatsView.isHidden = false
         achieveCalendarView.isHidden = true
+        isStats = true
+        getAchievementThemesAPI()
     }
     
     @objc
@@ -128,6 +141,9 @@ extension AchieveViewController {
         achieveView.achieveMenuView.setAchieveMenuTapped(statsTapped: false)
         achieveStatsView.isHidden = true
         achieveCalendarView.isHidden = false
+        isStats = false
+        getMemberProfileAPI()
+        getCalendarAPI(entity: requestEntity)
     }
     
     @objc
@@ -296,6 +312,52 @@ extension AchieveViewController {
             self.achieveView.delChallengeHistoryToast.alpha = 1.0
         })
     }
+    
+    func setChartData(achieveThemeData: AchieveThemeEntity) -> AchieveThemeEntity {
+        var adjustedThemes = achieveThemeData.themes
+        if adjustedThemes.count > 3 {
+            // 기타항목
+            let otherThemeCount = adjustedThemes.dropFirst(3).reduce(0) { $0 + $1.achievedCount }
+            let otherTheme = AchieveTheme(id: 0,
+                                          name: "기타",
+                                          achievedCount: otherThemeCount)
+            adjustedThemes = Array(adjustedThemes.prefix(3)) + [otherTheme]
+        }
+        return AchieveThemeEntity(achievedCount: achieveThemeData.achievedCount,
+                                  themes: adjustedThemes)
+    }
+    
+    func setThemeData(for entity: AchieveThemeEntity) -> AchieveThemeEntity {
+
+        let sortedThemes = entity.themes.sorted { $0.id < $1.id }
+        var adjustedThemes = [AchieveTheme]()
+        
+        let themesDict = Dictionary(uniqueKeysWithValues: sortedThemes.map { ($0.id, $0) })
+        
+        for i in 1...7 {
+            if let theme = themesDict[i] {
+                adjustedThemes.append(theme)
+            } else {
+                adjustedThemes.append(AchieveTheme(id: i, name: ThemeDetailEntity.getFullTheme(id: i).themeTitle, achievedCount: 0))
+            }
+        }
+        print(adjustedThemes)
+        return AchieveThemeEntity(achievedCount: entity.achievedCount,
+                                  themes: adjustedThemes)
+    }
+    
+    func setRankData(for entity: AchieveThemeEntity) -> [AchieveRankEntity] {
+        let rankHeight = CGFloat(28) * CGFloat(entity.themes.count) - 8
+        achieveStatsView.setCollectionViewHeight(height: rankHeight)
+        
+        let total = entity.achievedCount
+        var rankWithPercent: [AchieveRankEntity] = []
+        for i in entity.themes {
+            let entity = AchieveRankEntity(themeId: i.id, percent: Int(Double(i.achievedCount) / Double(total) * 100))
+            rankWithPercent.append(entity)
+        }
+        return rankWithPercent
+    }
 }
 
 // MARK: - CollectionView
@@ -313,46 +375,98 @@ extension AchieveViewController: CalendarHistoryCellDelegate {
     }
 }
 
+extension AchieveViewController: StatsRoutineDelegate {
+    
+    func selectedCell(_ cellInfo: StatsRoutineInfo) {
+        let nav = AchieveDetailViewController()
+        nav.cellInfo = cellInfo
+        nav.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+}
+
 extension AchieveViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if hasDateKey(for: formatDateToString(selectedDate ?? Date())) {
-            let value = findValue(for: formatDateToString(selectedDate ?? Date()))
-            return value.histories.count
-        } else {
-            print("emptyview")
-            achieveCalendarView.bindIsEmptyView(isEmpty: true)
+        switch collectionView {
+        case achieveCV:
+            if hasDateKey(for: formatDateToString(selectedDate ?? Date())) {
+                let value = findValue(for: formatDateToString(selectedDate ?? Date()))
+                return value.histories.count
+            } else {
+                print("emptyview")
+                achieveCalendarView.bindIsEmptyView(isEmpty: true)
+            }
+        default:
+            return 1
         }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let value = findValue(for: formatDateToString(selectedDate ?? Date()))
-        return value.histories[section].histories.count
+        switch collectionView {
+        case achieveCV:
+            let value = findValue(for: formatDateToString(selectedDate ?? Date()))
+            return value.histories[section].histories.count
+        case themeStatsCV:
+            return 7
+        case chartRankCV:
+            return ahcieveRankEntity.count
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = CalendarHistoryCell.dequeueReusableCell(collectionView: achieveCV, indexPath: indexPath)
-        let value = findValue(for: formatDateToString(selectedDate ?? Date()))
-        cell.bindHistoryCell(content: value.histories[indexPath.section].histories[indexPath.item].content,
-                             isChallenge: value.histories[indexPath.section].histories[indexPath.item].isChallenge,
-                             themeId: value.histories[indexPath.section].themeID)
-        cell.cellInfo = value.histories[indexPath.section].histories[indexPath.item]
-        cell.delegate = self
-        return cell
+        switch collectionView {
+        case achieveCV:
+            let cell = CalendarHistoryCell.dequeueReusableCell(collectionView: achieveCV, indexPath: indexPath)
+            let value = findValue(for: formatDateToString(selectedDate ?? Date()))
+            cell.bindHistoryCell(content: value.histories[indexPath.section].histories[indexPath.item].content,
+                                 isChallenge: value.histories[indexPath.section].histories[indexPath.item].isChallenge,
+                                 themeId: value.histories[indexPath.section].themeID)
+            cell.cellInfo = value.histories[indexPath.section].histories[indexPath.item]
+            cell.delegate = self
+            return cell
+        case themeStatsCV:
+            let cell = StatsRoutineCell.dequeueReusableCell(collectionView: themeStatsCV, indexPath: indexPath)
+            if achieveThemeEntity.themes.count > 6 {
+                cell.bindStatsRoutine(entity: self.achieveThemeEntity.themes[indexPath.item])
+            }
+            cell.delegate = self
+            return cell
+        case chartRankCV:
+            let cell = ChartRankCell.dequeueReusableCell(collectionView: chartRankCV, indexPath: indexPath)
+            if ahcieveRankEntity.count > 0 {
+                cell.bindChartRankCell(entity: self.ahcieveRankEntity[indexPath.item])
+            }
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: 22)
+        switch collectionView {
+        case achieveCV:
+            return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: 22)
+        default:
+            return CGSize()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader {
-            let headerView = NewDailyRoutineHeaderView.dequeueReusableHeaderView(collectionView: achieveCV, indexPath: indexPath)
-            let value = findValue(for: formatDateToString(selectedDate ?? Date()))
-            headerView.setDataBind(text: value.histories[indexPath.section].themeName,
-                                   image: value.histories[indexPath.section].themeID)
-            return headerView
+        switch collectionView {
+        case achieveCV:
+            if kind == UICollectionView.elementKindSectionHeader {
+                let headerView = NewDailyRoutineHeaderView.dequeueReusableHeaderView(collectionView: achieveCV, indexPath: indexPath)
+                let value = findValue(for: formatDateToString(selectedDate ?? Date()))
+                headerView.setDataBind(text: value.histories[indexPath.section].themeName,
+                                       image: value.histories[indexPath.section].themeID)
+                return headerView
+            }
+        default:
+            return UICollectionReusableView()
         }
         return UICollectionReusableView()
     }
@@ -361,28 +475,26 @@ extension AchieveViewController: UICollectionViewDataSource {
 extension AchieveViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let label: UILabel = {
-            let label = UILabel()
-            let value = findValue(for: formatDateToString(selectedDate ?? Date()))
-            label.text = value.histories[indexPath.section].histories[indexPath.item].content.replacingOccurrences(of: "\n", with: " ")
-            label.font = .fontGuide(.body2)
-            return label
-        }()
-        
-        let height = max(heightForView(text: label.text ?? "", font: label.font, width: SizeLiterals.Screen.screenWidth - 119), 24) + 32
-        
-        return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: height)
-    }
-    
-    func heightForView(text: String, font: UIFont, width: CGFloat) -> CGFloat {
-        let label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
-        label.numberOfLines = 0
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.font = font
-        label.text = text
-        label.setTextWithLineHeight(text: label.text, lineHeight: 20)
-        label.sizeToFit()
-        return label.frame.height
+        switch collectionView {
+        case achieveCV:
+            let label: UILabel = {
+                let label = UILabel()
+                let value = findValue(for: formatDateToString(selectedDate ?? Date()))
+                label.text = value.histories[indexPath.section].histories[indexPath.item].content.replacingOccurrences(of: "\n", with: " ")
+                label.font = .fontGuide(.body2)
+                return label
+            }()
+            
+            let height = max(heightForView(text: label.text ?? "", font: label.font, width: SizeLiterals.Screen.screenWidth - 119), 24) + 32
+            
+            return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: height)
+        case themeStatsCV:
+            return CGSize(width: (SizeLiterals.Screen.screenWidth - 45) / 2, height: 79)
+        case chartRankCV:
+            return CGSize(width: 117, height: 20)
+        default:
+            return CGSize()
+        }
     }
     
     func heightForContentView(numberOfSection: Int, texts: [CalendarHistory]) -> Double {
@@ -647,7 +759,7 @@ extension AchieveViewController {
                     if let memberProfilData = data.data {
                         let date = memberProfilData.createdAt.split(separator: "T").first ?? ""
                         self.registerDate = String(date)
-                        self.calendarView.reloadData()
+                        self.updateCalendarHeaderButton()
                     }
                 }
             case .reissue:
@@ -682,6 +794,40 @@ extension AchieveViewController {
                 ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
                     if success {
                         self.getCalendarAPI(entity: entity)
+                    } else {
+                        self.makeSessionExpiredAlert()
+                    }
+                }
+            case .requestErr, .serverErr:
+                self.makeServerErrorAlert()
+            default:
+                break
+            }
+        }
+    }
+    
+    func getAchievementThemesAPI() {
+        AchieveService.shared.getAchievementThemesAPI { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data = data as? GenericResponse<AchieveThemeEntity> {
+                    if let achieveThemeData = data.data {
+                        self.chartView.achieveTheme = self.setChartData(achieveThemeData: achieveThemeData)
+                        self.achieveThemeEntity = self.setThemeData(for: achieveThemeData)
+                        self.themeStatsCV.reloadData()
+                        if achieveThemeData.achievedCount > 0 {
+                            self.ahcieveRankEntity = self.setRankData(for: self.setChartData(achieveThemeData: achieveThemeData))
+                            self.achieveStatsView.bindStatsImage(entity: AchieveCharacterEntity(themeId: achieveThemeData.themes[0].id))
+                            self.chartRankCV.reloadData()
+                        } else {
+                            self.achieveStatsView.bindEmptyView()
+                        }
+                    }
+                }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.getAchievementThemesAPI()
                     } else {
                         self.makeSessionExpiredAlert()
                     }
