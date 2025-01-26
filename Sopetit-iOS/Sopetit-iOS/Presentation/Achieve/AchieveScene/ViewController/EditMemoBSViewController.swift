@@ -226,6 +226,9 @@ extension EditMemoBSViewController {
         delButton.addTarget(self,
                             action: #selector(tapDelButton),
                             for: .touchUpInside)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapEditButton))
+        self.memoBackgroundView.addGestureRecognizer(tapGesture)
     }
     
     @objc
@@ -250,7 +253,7 @@ extension EditMemoBSViewController {
         AchieveService.shared.deleteRoutineListAPI(memoId: self.memoId ?? 0) { networkResult in
             switch networkResult {
             case .success(let data):
-                if let data = data as? GenericResponse<EmptyEntity> {
+                if let _ = data as? GenericResponse<EmptyEntity> {
                     NotificationCenter.default.post(name: Notification.Name("delMemo"), object: nil)
                     self.hideBottomSheet()
                 }

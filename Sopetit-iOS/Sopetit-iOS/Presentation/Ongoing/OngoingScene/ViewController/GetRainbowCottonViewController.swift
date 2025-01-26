@@ -19,6 +19,7 @@ class GetRainbowCottonViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        setGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,5 +47,15 @@ private extension GetRainbowCottonViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             self.dismiss(animated: false)
         }
+    }
+    
+    func setGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCotton))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc
+    func tapCotton() {
+        self.dismiss(animated: false)
     }
 }

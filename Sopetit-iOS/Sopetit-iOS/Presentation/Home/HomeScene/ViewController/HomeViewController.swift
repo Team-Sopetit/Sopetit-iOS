@@ -125,6 +125,7 @@ extension HomeViewController {
                 if let data = data as? GenericResponse<HomeEntity> {
                     if let listData = data.data {
                         self.homeEntity = listData
+                        UserManager.shared.updateDoll(listData.dollType)
                     }
                     self.homeView.bubbleLabelList = self.homeEntity.conversations
                     self.cottonDailyNum = self.homeEntity.dailyCottonCount

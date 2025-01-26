@@ -25,14 +25,14 @@ final class AchieveStatsView: UIView {
     
     private let statsImageView: UIImageView = {
         let imageview = UIImageView()
-        imageview.image = UIImage(resource: .imgStats1)
+        imageview.image = UIImage(resource: .imgStats0)
         imageview.contentMode = .scaleAspectFit
         return imageview
     }()
     
     private let statsTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "따뜻한 동반자"
+        label.text = ""
         label.textColor = .Gray700
         label.font = .fontGuide(.head2)
         label.asLineHeight(.head2)
@@ -41,7 +41,7 @@ final class AchieveStatsView: UIView {
     
     private let statsSubLabel: UILabel = {
         let label = UILabel()
-        label.text = "애착이는 다정다감하고 활기차요"
+        label.text = ""
         label.textColor = .Gray500
         label.font = .fontGuide(.body2)
         label.numberOfLines = 0

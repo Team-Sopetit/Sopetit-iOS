@@ -70,6 +70,7 @@ extension AlarmViewController {
     
     func setDelegate() {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        customNaviBar.delegate = self
     }
     
     func setHierarchy() {
@@ -102,5 +103,13 @@ extension AlarmViewController {
             $0.width.equalTo(51)
             $0.height.equalTo(31)
         }
+    }
+}
+
+extension AlarmViewController: BackButtonProtocol {
+    
+    @objc
+    func tapBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
