@@ -193,4 +193,14 @@ extension UpdateAlertView {
             break
         }
     }
+    
+    func setNetworkDataBind() {
+        titleLabel.text = "새로운 버전이 업데이트 되었어요!"
+        subTitleLabel.text = "안정적인 서비스를 위해\n최신버전으로 업데이트해주세요."
+        subTitleLabel.setLineSpacing(lineSpacing: 2)
+        subTitleLabel.textAlignment = .center
+        forceUpdateButton.isHidden = false
+        recommendBackButton.isHidden = true
+        recommendUpdateButton.isHidden = true
+    }
 }
