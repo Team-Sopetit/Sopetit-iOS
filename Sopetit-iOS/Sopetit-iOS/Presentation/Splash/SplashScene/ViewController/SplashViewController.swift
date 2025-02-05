@@ -103,6 +103,11 @@ private extension SplashViewController {
         }
     }
     
+    func showNoHostAlert() {
+        updateAlertView.isHidden = false
+        updateAlertView.setNetworkDataBind()
+    }
+    
     func showNextPage() {
         if UserManager.shared.hasAccessToken {
             if UserManager.shared.isPostMemeber {
@@ -206,7 +211,9 @@ private extension SplashViewController {
                     }
                 }
             case .requestErr, .serverErr:
-                break
+                self.showUpdateAlert(forceResult: -1, recommendResult: 0)
+            case .networkNoHost, .networkTimeOut:
+                self.showNoHostAlert()
             default:
                 break
             }
