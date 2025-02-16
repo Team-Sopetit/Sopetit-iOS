@@ -106,8 +106,22 @@ extension AuthService {
                                                      data,
                                                      VersionEntity.self)
                 completion(networkResult)
-            case .failure:
-                completion(.networkFail)
+            case .failure(let error):
+                if let urlError = error.asAFError?.underlyingError as? URLError {
+                    switch urlError.code {
+                    case .timedOut:
+                        print("⏳ 요청이 타임아웃되었습니다.")
+                        completion(.networkTimeOut)
+                    case .cannotFindHost, .cannotConnectToHost:
+                        print("🌍 서버에 연결할 수 없습니다. URL이 변경되었을 가능성이 있습니다.")
+                        completion(.networkNoHost)
+                    default:
+                        print("❌ 기타 네트워크 오류: \(urlError.localizedDescription)")
+                        completion(.networkFail)
+                    }
+                } else {
+                    completion(.networkFail)
+                }
             }
         }
     }
