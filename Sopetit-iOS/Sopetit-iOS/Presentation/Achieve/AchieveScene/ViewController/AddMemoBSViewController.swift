@@ -8,6 +8,7 @@
 import UIKit
 
 import SnapKit
+import FirebaseAnalytics
 
 final class AddMemoBSViewController: UIViewController {
     
@@ -389,6 +390,7 @@ extension AddMemoBSViewController {
                 if let data = data as? GenericResponse<MemosResponseEntity> {
                     print("➡️➡️➡️")
                     dump(data)
+                    Analytics.logEvent("add_memo", parameters: nil)
                     NotificationCenter.default.post(name: Notification.Name("addMemo"), object: nil)
                     self.hideBottomSheet()
                 }
