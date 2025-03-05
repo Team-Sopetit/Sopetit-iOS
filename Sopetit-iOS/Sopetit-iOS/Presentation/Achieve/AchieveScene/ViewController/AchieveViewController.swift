@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import FSCalendar
 import Foundation
+import FirebaseAnalytics
 
 final class AchieveViewController: UIViewController {
     
@@ -76,6 +77,7 @@ final class AchieveViewController: UIViewController {
 extension AchieveViewController {
     
     func setUI() {
+        Analytics.logEvent("view_achieve", parameters: nil)
         self.navigationController?.navigationBar.isHidden = true
         
         let today = Date()
@@ -138,6 +140,7 @@ extension AchieveViewController {
     
     @objc
     func calendarMenuTapped() {
+        Analytics.logEvent("tap_calendar", parameters: nil)
         achieveView.achieveMenuView.setAchieveMenuTapped(statsTapped: false)
         achieveStatsView.isHidden = true
         achieveCalendarView.isHidden = false

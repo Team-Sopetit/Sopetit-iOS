@@ -217,7 +217,7 @@ extension HomeViewController: UICollectionViewDelegate {
         case 0:
             if !(homeView.isAnimate) {
                 patchCottonAPI(cottonType: "DAILY", indexPath: indexPath)
-                Analytics.logEvent("give_cottonball", parameters: ["kind": "daily"])
+                Analytics.logEvent("give_cottonball", parameters: nil)
                 if self.cottonDailyNum > 0 {
                     self.homeView.isAnimate = true
                     homeView.animationView.play(fromFrame: AnimationKeyFrames.eatDaily.rawValue,
@@ -233,7 +233,7 @@ extension HomeViewController: UICollectionViewDelegate {
         case 1:
             if !(homeView.isAnimate) {
                 patchCottonAPI(cottonType: "HAPPINESS", indexPath: indexPath)
-                Analytics.logEvent("give_cottonball", parameters: ["kind": "rainbow"])
+                Analytics.logEvent("give_rainbow_cottonball", parameters: nil)
                 if self.cottonHappyyNum > 0 {
                     self.homeView.isAnimate = true
                     homeView.animationView.play(fromFrame: AnimationKeyFrames.eatHappy.rawValue,
