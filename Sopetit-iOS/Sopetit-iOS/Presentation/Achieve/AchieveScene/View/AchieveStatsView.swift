@@ -96,7 +96,7 @@ final class AchieveStatsView: UIView {
     
     private let routineStatsTitle: UILabel = {
         let label = UILabel()
-        label.text = "달성한루틴"
+        label.text = "달성한 루틴"
         label.textColor = .Gray700
         label.font = .fontGuide(.head2)
         label.asLineHeight(.head2)
