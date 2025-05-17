@@ -270,6 +270,13 @@ extension AchieveViewController {
     
     @objc func addMemo() {
         getCalendarAPI(entity: requestEntity)
+        achieveView.addMemoToast.isHidden = false
+        UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+            self.achieveView.addMemoToast.alpha = 0.0
+        }, completion: {_ in
+            self.achieveView.addMemoToast.isHidden = true
+            self.achieveView.addMemoToast.alpha = 1.0
+        })
     }
     
     @objc func delMemo() {
