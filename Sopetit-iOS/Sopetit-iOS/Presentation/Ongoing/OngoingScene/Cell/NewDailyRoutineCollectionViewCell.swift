@@ -154,6 +154,7 @@ private extension NewDailyRoutineCollectionViewCell {
             isRadioButton.toggle()
             if let delegate = delegate {
                 delegate.selectedRadioButton(self.index)
+                makeVibrate()
             }
         case ellipsisButton:
             print("ellipsisButton tapped")
