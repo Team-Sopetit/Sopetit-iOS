@@ -19,6 +19,7 @@ final class UserManager {
     @UserDefaultWrapper<String>(key: "dollType") private(set) var dollType
     @UserDefaultWrapper<Bool>(key: "showTutorial") private(set) var showTutorial
     @UserDefaultWrapper<Bool>(key: "allowAlarm") private(set) var allowAlarm
+    @UserDefaultWrapper<Bool>(key: "writeMemo") private(set) var writeMemo
     @UserDefaultWrapper<String>(key: "dollName") private(set) var dollName
     
     var hasAccessToken: Bool { return self.accessToken != nil }
@@ -31,6 +32,7 @@ final class UserManager {
     var isShowTutorial: Bool { return self.showTutorial ?? false }
     var hasAllowAlarm: Bool { return self.allowAlarm ?? false }
     var getDollName: String { return self.dollName ?? "" }
+    var getWriteMemo: Bool { return self.writeMemo ?? false }
     
     private init() {}
 }
@@ -74,6 +76,10 @@ extension UserManager {
         self.appleUserIdentifier = userId
     }
     
+    func setWriteMemo() {
+        self.writeMemo = true
+    }
+    
     func logout() {
         self.accessToken = nil
         self.refreshToken = nil
@@ -85,6 +91,7 @@ extension UserManager {
         self.appleUserIdentifier = nil
         self.postMember = false
         self.showTutorial = false
+        self.writeMemo = false
     }
     
     func setShowTutorial() {
