@@ -196,6 +196,7 @@
 		C7E2EC502DE968C400A69D84 /* AddCustomRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC4F2DE968B900A69D84 /* AddCustomRoutineViewController.swift */; };
 		C7E2EC522DE968CD00A69D84 /* AddCustomRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC512DE968C800A69D84 /* AddCustomRoutineView.swift */; };
 		C7E2EC542DE9855E00A69D84 /* UICollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */; };
+		C7E2EC562DE9989C00A69D84 /* RoutineCustomEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC552DE9989200A69D84 /* RoutineCustomEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -380,6 +381,7 @@
 		C7E2EC4F2DE968B900A69D84 /* AddCustomRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomRoutineViewController.swift; sourceTree = "<group>"; };
 		C7E2EC512DE968C800A69D84 /* AddCustomRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomRoutineView.swift; sourceTree = "<group>"; };
 		C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		C7E2EC552DE9989200A69D84 /* RoutineCustomEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCustomEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -505,6 +507,7 @@
 		A40F9EFF2C67C09B004DD1A1 /* AddRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				C7E2EC552DE9989200A69D84 /* RoutineCustomEntity.swift */,
 				A49CB10A2D1A4421007D13D0 /* AddChallengeEntity.swift */,
 				A40F9F172C69F35C004DD1A1 /* DailyThemeEntity.swift */,
 				A40F9F192C6AD943004DD1A1 /* AddRoutineInfoEntity.swift */,
@@ -1590,6 +1593,7 @@
 				00A8E39A2B4D8B0D001461CE /* HomeView.swift in Sources */,
 				A46CA16A2CE70A2A00AB4DCA /* AchieveMenuView.swift in Sources */,
 				A42C32A52B3EA9A000C4B477 /* UserManager.swift in Sources */,
+				C7E2EC562DE9989C00A69D84 /* RoutineCustomEntity.swift in Sources */,
 				00A8E39C2B4D8B20001461CE /* HomeViewController.swift in Sources */,
 				A42C33702B42DAAB00C4B477 /* StringLiterals.swift in Sources */,
 				004029062B4EDCF6002127BC /* ActionCollectionViewCell.swift in Sources */,

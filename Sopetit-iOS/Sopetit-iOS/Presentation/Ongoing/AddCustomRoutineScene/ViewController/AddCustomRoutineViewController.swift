@@ -65,6 +65,11 @@ extension AddCustomRoutineViewController {
             action: #selector(switchChanged(_:)),
             for: .valueChanged
         )
+        addCustomRoutineView.navigationView.rightButton.addTarget(
+            self,
+            action: #selector(addCustomRoutineTapped),
+            for: .touchUpInside)
+        
         let swipeGesture = UISwipeGestureRecognizer(
             target: self,
             action: #selector(handleSwipeGesture)
@@ -86,6 +91,15 @@ extension AddCustomRoutineViewController {
         UIView.animate(withDuration: 0.2) {
             self.addCustomRoutineView.layoutIfNeeded()
         }
+    }
+    
+    @objc func addCustomRoutineTapped() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:00"
+        let selectedDate = addCustomRoutineView.alarmDatePicker.date
+        let timeString = formatter.string(from: selectedDate)
+        
+        postRoutineCustomAPI(alarmTime: timeString)
     }
     
     @objc func switchChanged(_ sender: UISwitch) {
@@ -110,6 +124,38 @@ extension AddCustomRoutineViewController: BackButtonProtocol {
     
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension AddCustomRoutineViewController {
+    
+    func postRoutineCustomAPI(
+        alarmTime: String
+    ) {
+        AddDailyRoutineService.shared.postRoutineCustom(
+            content: currentText,
+            themeId: selectThemeId,
+            alarmTime: alarmTime
+        ) { networkResult in
+            switch networkResult {
+            case .success:
+                self.navigationController?.popToRootViewController(animated: true)
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.postRoutineCustomAPI(
+                            alarmTime: alarmTime
+                        )
+                    } else {
+                        self.makeSessionExpiredAlert()
+                    }
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
     }
 }
 
