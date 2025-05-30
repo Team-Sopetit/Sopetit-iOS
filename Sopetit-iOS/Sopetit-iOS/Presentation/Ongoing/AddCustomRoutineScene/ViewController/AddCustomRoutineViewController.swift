@@ -16,7 +16,14 @@ final class AddCustomRoutineViewController: UIViewController {
     private var addCustomRoutineView = AddCustomRoutineView()
     private lazy var collectionView = addCustomRoutineView.themeCollectionView
     var routineEntity = ThemeSelectEntity(themes: [])
-    private var selectedThemeId: Int = -1
+    
+    private var selectThemeId: Int = -1 {
+       didSet { updateNextButtonState() }
+     }
+     private var currentText: String = "" {
+       didSet { updateNextButtonState() }
+     }
+
     
     // MARK: - Life Cycles
     
@@ -36,7 +43,9 @@ final class AddCustomRoutineViewController: UIViewController {
 extension AddCustomRoutineViewController {
     
     func setUI() {
-        
+        addCustomRoutineView.onTextChanged = { [weak self] text in
+            self?.currentText = text
+        }
     }
     
     func setDelegate() {
@@ -51,10 +60,22 @@ extension AddCustomRoutineViewController {
             action: #selector(tapClearButton),
             for: .touchUpInside
         )
+        addCustomRoutineView.alarmToggle.addTarget(
+            self,
+            action: #selector(switchChanged(_:)),
+            for: .valueChanged
+        )
+        let swipeGesture = UISwipeGestureRecognizer(
+            target: self,
+            action: #selector(handleSwipeGesture)
+        )
+        swipeGesture.direction = .down
+        view.addGestureRecognizer(swipeGesture)
     }
     
     @objc func tapClearButton() {
         let textView = addCustomRoutineView.customRoutineTextView
+        currentText = ""
         textView.text = ""
         textView.resignFirstResponder()
         textView.constraints.forEach { constraint in
@@ -65,6 +86,23 @@ extension AddCustomRoutineViewController {
         UIView.animate(withDuration: 0.2) {
             self.addCustomRoutineView.layoutIfNeeded()
         }
+    }
+    
+    @objc func switchChanged(_ sender: UISwitch) {
+        addCustomRoutineView.alarmDatePicker.isHidden = !sender.isOn
+        
+        UIView.animate(withDuration: 0.25) {
+            self.addCustomRoutineView.alarmStackView.layoutIfNeeded()
+        }
+    }
+    
+    @objc func handleSwipeGesture() {
+        view.endEditing(true)
+    }
+    
+    func updateNextButtonState() {
+        let shouldEnable = (selectThemeId > 0) && !currentText.isEmpty
+        addCustomRoutineView.navigationView.rightButton.isEnabled = shouldEnable
     }
 }
 
@@ -120,7 +158,7 @@ extension AddCustomRoutineViewController: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         makeVibrate()
-        selectedThemeId = routineEntity.themes[indexPath.item].themeID
+        selectThemeId = routineEntity.themes[indexPath.item].themeID
         if let cell = collectionView.cellForItem(at: indexPath) as? ThemeSelectCollectionViewCell {
             cell.isSelected = true
             cell.backgroundColor = .Gray200
@@ -132,7 +170,7 @@ extension AddCustomRoutineViewController: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didDeselectItemAt indexPath: IndexPath
     ) {
-        selectedThemeId = -1
+        selectThemeId = -1
         if let cell = collectionView.cellForItem(at: indexPath) as? ThemeSelectCollectionViewCell {
             cell.isSelected = false
             cell.backgroundColor = .SoftieWhite

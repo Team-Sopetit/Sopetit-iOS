@@ -107,6 +107,52 @@ final class AddCustomRoutineView: UIView {
         return collectionView
     }()
     
+    let alarmStackView: UIStackView = {
+        let stackview = UIStackView()
+        stackview.axis = .vertical
+        stackview.spacing = 10
+        stackview.alignment = .center
+        stackview.backgroundColor = .SoftieWhite
+        stackview.isLayoutMarginsRelativeArrangement = true
+        stackview.layoutMargins = UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)
+        stackview.layer.cornerRadius = 8
+        return stackview
+    }()
+    
+    private let alarmTitleStackView: UIStackView = {
+        let stackview = UIStackView()
+        stackview.axis = .horizontal
+        stackview.alignment = .center
+        stackview.distribution = .equalSpacing
+        return stackview
+    }()
+    
+    private let alarmTitle: UILabel = {
+        let label = UILabel()
+        label.text = "알림"
+        label.font = .fontGuide(.body2)
+        label.asLineHeight(.body2)
+        label.textColor = .Gray700
+        return label
+    }()
+    
+    let alarmToggle: UISwitch = {
+        let toggle = UISwitch()
+        toggle.isOn = false
+        toggle.onTintColor = .Gray650
+        return toggle
+    }()
+    
+    let alarmDatePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .time
+        picker.preferredDatePickerStyle = .wheels
+        picker.isHidden = true
+        return picker
+    }()
+    
+    var onTextChanged: ((String) -> Void)?
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -130,7 +176,7 @@ final class AddCustomRoutineView: UIView {
 private extension AddCustomRoutineView {
     
     func setUI() {
-        self.backgroundColor = .Gray50
+        backgroundColor = .Gray50
     }
     
     func setHierarchy() {
@@ -145,7 +191,16 @@ private extension AddCustomRoutineView {
             customRoutineTextView,
             textClearButton,
             themeTitle,
-            themeCollectionView
+            themeCollectionView,
+            alarmStackView
+        )
+        alarmTitleStackView.addArrangedSubviews(
+            alarmTitle,
+            alarmToggle
+        )
+        alarmStackView.addArrangedSubviews(
+            alarmTitleStackView,
+            alarmDatePicker
         )
     }
     
@@ -203,6 +258,28 @@ private extension AddCustomRoutineView {
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(124)
         }
+        
+        alarmToggle.snp.makeConstraints {
+            $0.width.equalTo(51)
+            $0.height.equalTo(31)
+        }
+        
+        alarmDatePicker.snp.makeConstraints {
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth - 72)
+            $0.height.equalTo(214)
+        }
+        
+        alarmTitleStackView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(31)
+        }
+        
+        alarmStackView.snp.makeConstraints {
+            $0.top.equalTo(themeCollectionView.snp.bottom).offset(19)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth - 40)
+        }
     }
     
     func setRegisterCell() {
@@ -244,6 +321,7 @@ extension AddCustomRoutineView: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
+        onTextChanged?(textView.text)
         let count = textView.text.count
         errorLabel.isHidden = (count <= 50)
         textClearButton.isHidden = !(count > 0)
