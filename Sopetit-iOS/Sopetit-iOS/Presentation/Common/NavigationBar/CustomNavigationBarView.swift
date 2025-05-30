@@ -45,6 +45,11 @@ final class CustomNavigationBarView: UIView {
         set { backButton.isHidden = !newValue }
     }
     
+    var isRightButtonIncluded: Bool {
+        get { !rightButton.isHidden }
+        set { rightButton.isHidden = !newValue }
+    }
+    
     var backButtonAction: (() -> Void)?
     
     // MARK: - UI Components
@@ -84,6 +89,20 @@ final class CustomNavigationBarView: UIView {
         return button
     }()
     
+    lazy var rightButton: UIButton = {
+        let button = UIButton()
+        button.isHidden = true
+        button.setTitle("완료", for: .normal)
+        button.setBackgroundColor(.Gray200, for: .disabled)
+        button.setBackgroundColor(.Gray650, for: .normal)
+        button.setTitleColor(.Gray400, for: .disabled)
+        button.setTitleColor(.SoftieWhite, for: .normal)
+        button.layer.cornerRadius = 14
+        button.titleLabel?.font = .fontGuide(.body2)
+        button.titleLabel?.asLineHeight(.body2)
+        return button
+    }()
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -106,10 +125,16 @@ private extension CustomNavigationBarView {
 
     func setUI() {
         self.backgroundColor = .Gray50
+        rightButton.isEnabled = false
     }
     
     func setHierarchy() {
-        self.addSubviews(backButton, titleView, leftTitleView)
+        self.addSubviews(
+            backButton,
+            titleView,
+            leftTitleView,
+            rightButton
+        )
         titleView.addSubview(titleLabel)
         leftTitleView.addSubview(leftTitleLabel)
     }
@@ -144,6 +169,13 @@ private extension CustomNavigationBarView {
             $0.leading.equalToSuperview().inset(14)
             $0.centerY.equalToSuperview()
             $0.size.equalTo(38)
+        }
+        
+        rightButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(20)
+            $0.width.equalTo(49)
+            $0.height.equalTo(28)
         }
     }
     
