@@ -139,6 +139,7 @@ extension AddCustomRoutineViewController {
         ) { networkResult in
             switch networkResult {
             case .success:
+                NotificationCenter.default.post(name: Notification.Name("addCutomRoutine"), object: nil)
                 self.navigationController?.popToRootViewController(animated: true)
             case .reissue:
                 ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in

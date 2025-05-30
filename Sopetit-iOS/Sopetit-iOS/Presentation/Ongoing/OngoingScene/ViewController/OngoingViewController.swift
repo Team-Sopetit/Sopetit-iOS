@@ -40,6 +40,12 @@ private extension OngoingViewController {
     
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(setAddCustomRoutineToastView),
+            name: Notification.Name("addCutomRoutine"),
+            object: nil
+        )
     }
     
     @objc
@@ -342,6 +348,28 @@ extension OngoingViewController {
         
         UIView.animate(withDuration: 0.5, delay: 1, animations: {self.ongoingView.cancelToastImageView.alpha = 0}, completion: {_ in self.ongoingView.cancelToastImageView.removeFromSuperview()
             self.ongoingView.cancelToastImageView.alpha = 1})
+    }
+    
+    @objc
+    func setAddCustomRoutineToastView() {
+        ongoingView.addSubview(ongoingView.addCustomRoutineToastView)
+        ongoingView.bringSubviewToFront(ongoingView.addCustomRoutineToastView)
+        ongoingView.addCustomRoutineToastView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(self.ongoingView.safeAreaLayoutGuide).inset(24)
+        }
+        
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 1,
+            animations: {
+                self.ongoingView.addCustomRoutineToastView.alpha = 0
+            },
+            completion: { _ in
+                self.ongoingView.addCustomRoutineToastView.removeFromSuperview()
+                self.ongoingView.addCustomRoutineToastView.alpha = 1
+            }
+        )
     }
     
     func setNotCottonToastView() {
