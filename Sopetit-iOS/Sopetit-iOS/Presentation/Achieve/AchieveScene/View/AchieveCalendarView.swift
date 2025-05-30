@@ -66,6 +66,12 @@ final class AchieveCalendarView: UIView {
     private let selectDateMemoTopDotView = UIImageView(image: UIImage(resource: .imgDot))
     private let selectDateMemoBottomDotView = UIImageView(image: UIImage(resource: .imgDot))
     
+    let memoGuideImage: UIImageView = {
+        let imageview = UIImageView()
+        imageview.image = UIImage(resource: .imgMemoGuide)
+        return imageview
+    }()
+    
     let addMemoButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(resource: .btnAddMemo), for: .normal)
@@ -147,6 +153,7 @@ private extension AchieveCalendarView {
                                 achieveCalendarView,
                                 divideView,
                                 addMemoButton,
+                                memoGuideImage,
                                 selectDateLabel,
                                 selectDateCountLabel)
     }
@@ -191,6 +198,13 @@ private extension AchieveCalendarView {
             $0.size.equalTo(32)
         }
         
+        memoGuideImage.snp.makeConstraints {
+            $0.bottom.equalTo(addMemoButton.snp.top).offset(-4)
+            $0.trailing.equalToSuperview().inset(12)
+            $0.width.equalTo(85)
+            $0.height.equalTo(33)
+        }
+        
         selectDateLabel.snp.makeConstraints {
             $0.top.equalTo(divideView.snp.bottom).offset(20)
             $0.leading.equalToSuperview().inset(20)
@@ -228,6 +242,7 @@ extension AchieveCalendarView {
         }
         
         addMemoButton.isHidden = true
+        memoGuideImage.isHidden = true
         contentView.addSubviews(emptyBearImage, emptyLabel)
         emptyBearImage.snp.makeConstraints {
             $0.top.equalTo(selectDateLabel.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 36 / 812)
@@ -302,5 +317,6 @@ extension AchieveCalendarView {
         }
         
         addMemoButton.isHidden = isRecord
+        memoGuideImage.isHidden = isRecord || UserManager.shared.getWriteMemo
     }
 }

@@ -392,6 +392,7 @@ extension AddMemoBSViewController {
                     dump(data)
                     Analytics.logEvent("add_memo", parameters: nil)
                     NotificationCenter.default.post(name: Notification.Name("addMemo"), object: nil)
+                    UserManager.shared.setWriteMemo()
                     self.hideBottomSheet()
                 }
             case .reissue:

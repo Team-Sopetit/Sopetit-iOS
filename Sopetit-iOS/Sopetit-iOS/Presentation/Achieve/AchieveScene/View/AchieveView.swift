@@ -21,6 +21,7 @@ final class AchieveView: UIView {
     let editMemoToast = ToastWithCheckView(toastContent: "메모를 수정했어요")
     let delDailyHistoryToast = ToastWithCheckView(toastContent: "데일리루틴 기록을 삭제했어요")
     let delChallengeHistoryToast = ToastWithCheckView(toastContent: "도전루틴 기록을 삭제했어요")
+    let addMemoToast = ToastWithCottonView(toastContent: "하루를 메모했어요")
     
     // MARK: - Life Cycles
     
@@ -44,7 +45,7 @@ private extension AchieveView {
     
     func setUI() {
         self.backgroundColor = .Gray50
-        [delMemoToast, editMemoToast, delDailyHistoryToast, delChallengeHistoryToast, achieveCalendarView].forEach {
+        [delMemoToast, editMemoToast, delDailyHistoryToast, delChallengeHistoryToast, achieveCalendarView, addMemoToast].forEach {
             $0.isHidden = true
         }
     }
@@ -56,7 +57,8 @@ private extension AchieveView {
                     delMemoToast,
                     editMemoToast,
                     delDailyHistoryToast,
-                    delChallengeHistoryToast)
+                    delChallengeHistoryToast,
+                    addMemoToast)
     }
     
     func setLayout() {
@@ -91,6 +93,11 @@ private extension AchieveView {
         }
         
         delChallengeHistoryToast.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-24)
+        }
+        
+        addMemoToast.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(safeAreaLayoutGuide).offset(-24)
         }

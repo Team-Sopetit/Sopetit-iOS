@@ -128,6 +128,7 @@
 		A42C33652B413F2100C4B477 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */; };
 		A42C336C2B41EF2F00C4B477 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */; };
 		A42C33702B42DAAB00C4B477 /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42C336F2B42DAAB00C4B477 /* StringLiterals.swift */; };
+		A43A6F822DD83D2A00E0A3DC /* ToastWithCottonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43A6F812DD83D2300E0A3DC /* ToastWithCottonView.swift */; };
 		A4648B9A2C04337B001EB031 /* AchieveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4648B992C04337B001EB031 /* AchieveView.swift */; };
 		A4648B9C2C043387001EB031 /* AchieveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4648B9B2C043387001EB031 /* AchieveViewController.swift */; };
 		A4648B9E2C043406001EB031 /* OngoingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4648B9D2C043406001EB031 /* OngoingView.swift */; };
@@ -311,6 +312,7 @@
 		A42C33632B413F2100C4B477 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		A42C336B2B41EF2F00C4B477 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A42C336F2B42DAAB00C4B477 /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
+		A43A6F812DD83D2300E0A3DC /* ToastWithCottonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastWithCottonView.swift; sourceTree = "<group>"; };
 		A4648B992C04337B001EB031 /* AchieveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveView.swift; sourceTree = "<group>"; };
 		A4648B9B2C043387001EB031 /* AchieveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveViewController.swift; sourceTree = "<group>"; };
 		A4648B9D2C043406001EB031 /* OngoingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OngoingView.swift; sourceTree = "<group>"; };
@@ -1015,6 +1017,7 @@
 		A4648B922C043327001EB031 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A43A6F812DD83D2300E0A3DC /* ToastWithCottonView.swift */,
 				A40C7A6C2D34919D00427BAA /* AchieveStatsDetailView.swift */,
 				A40C7A5E2D30A38300427BAA /* StatsChartView.swift */,
 				A40C7A582D2E396200427BAA /* AchieveStatsView.swift */,
@@ -1511,6 +1514,7 @@
 				045DFE7B2B504E38005D69EA /* SettingViewController.swift in Sources */,
 				09BCAA022C2A7C79006E876D /* GetCottonViewController.swift in Sources */,
 				09BCA9F42C2A7741006E876D /* RoutineEmptyView.swift in Sources */,
+				A43A6F822DD83D2A00E0A3DC /* ToastWithCottonView.swift in Sources */,
 				A42C32BD2B3EAAF200C4B477 /* SizeLiterals.swift in Sources */,
 				A42C32C52B3EAB2B00C4B477 /* UIButton+.swift in Sources */,
 				A40F9F102C69D08D004DD1A1 /* AddChallengeRoutineCollectionViewCell.swift in Sources */,
@@ -1773,11 +1777,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sopetit-iOS/Sopetit-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XGXWL95BMU;
+				DEVELOPMENT_TEAM = XGXWL95BMU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sopetit-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "소프티";
@@ -1791,11 +1793,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.3;
+				MARKETING_VERSION = 2.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.softie.Softie-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Softie Release";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1812,11 +1813,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sopetit-iOS/Sopetit-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XGXWL95BMU;
+				DEVELOPMENT_TEAM = XGXWL95BMU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sopetit-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "소프티";
@@ -1830,11 +1829,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.3;
+				MARKETING_VERSION = 2.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.softie.Softie-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Softie Release";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
