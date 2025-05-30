@@ -30,6 +30,7 @@ final class AddRoutineViewController: UIViewController {
         setUI()
         setDelegate()
         getThemeAPI()
+        setGesture()
     }
 }
 
@@ -45,6 +46,18 @@ extension AddRoutineViewController {
         routineCollectionView.delegate = self
         routineCollectionView.dataSource = self
         addRoutineView.navigationView.delegate = self
+    }
+    
+    func setGesture() {
+        let tapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didTapView)
+        )
+        self.addRoutineView.addCustomRoutineView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func didTapView() {
+        
     }
 }
 

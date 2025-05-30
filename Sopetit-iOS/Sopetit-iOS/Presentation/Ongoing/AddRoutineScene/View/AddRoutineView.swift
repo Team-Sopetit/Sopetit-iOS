@@ -28,6 +28,56 @@ final class AddRoutineView: UIView {
     }()
     private let contentView = UIView()
     
+    // addCustomRoutine
+    
+    let addCustomRoutineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    private let gradientLayer: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.Gray650.cgColor,
+                           UIColor.Gray700.cgColor]
+        gradient.locations = [0.0, 0.46]
+        return gradient
+    }()
+    
+    private let customSubLabel: UILabel = {
+        let label = UILabel()
+        label.text = "원하는 루틴이 없다면?"
+        label.textColor = .Gray300
+        label.font = .fontGuide(.caption1)
+        label.asLineHeight(.caption1)
+        return label
+    }()
+    
+    private let customTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "나만의 루틴 만들기"
+        label.textColor = .SoftieWhite
+        label.font = .fontGuide(.head3)
+        label.asLineHeight(.head3)
+        return label
+    }()
+    
+    private let customBearImage: UIImageView = UIImageView(
+        image: UIImage(
+            resource: .imgCustomBear
+        )
+    )
+    
+    private let customRoutineButton: UIImageView = UIImageView(
+        image: UIImage(
+            resource: .icNext
+        )
+    )
+    
+    // addRoutine
+    
     private let totalRoutineTitle: UILabel = {
         let label = UILabel()
         label.text = "전체 루틴 테마"
@@ -63,6 +113,12 @@ final class AddRoutineView: UIView {
         setRegisterCell()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        setGradient()
+    }
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -77,12 +133,27 @@ private extension AddRoutineView {
         self.backgroundColor = .Gray50
     }
     
+    func setGradient() {
+        gradientLayer.frame = addCustomRoutineView.bounds
+        gradientLayer.zPosition = -1
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        addCustomRoutineView.layer.addSublayer(gradientLayer)
+    }
+    
     func setHierarchy() {
         addSubviews(navigationView,
                     scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubviews(totalRoutineTitle,
+        contentView.addSubviews(addCustomRoutineView,
+                                totalRoutineTitle,
                                 totalRoutineCollectionView)
+        addCustomRoutineView.addSubviews(
+            customSubLabel,
+            customTitleLabel,
+            customRoutineButton,
+            customBearImage
+        )
     }
     
     func setLayout() {
@@ -102,8 +173,38 @@ private extension AddRoutineView {
             $0.height.equalTo(scrollView.snp.height).priority(.low)
         }
         
-        totalRoutineTitle.snp.makeConstraints {
+        addCustomRoutineView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(12)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth - 40)
+            $0.height.equalTo(76)
+        }
+        
+        customSubLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(16)
+            $0.leading.equalToSuperview().inset(20)
+        }
+        
+        customTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(customSubLabel.snp.bottom).offset(2)
+            $0.leading.equalTo(customSubLabel.snp.leading)
+        }
+        
+        customRoutineButton.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(16)
+            $0.trailing.equalToSuperview().inset(12)
+            $0.size.equalTo(24)
+        }
+        
+        customBearImage.snp.makeConstraints {
+            $0.trailing.equalTo(customRoutineButton.snp.leading).offset(-4)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(90)
+            $0.height.equalTo(76)
+        }
+        
+        totalRoutineTitle.snp.makeConstraints {
+            $0.top.equalTo(addCustomRoutineView.snp.bottom).offset(20)
             $0.leading.equalToSuperview().inset(20)
         }
         
