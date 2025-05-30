@@ -81,6 +81,32 @@ final class AddCustomRoutineView: UIView {
         return button
     }()
     
+    private let themeTitle: UILabel = {
+        let label = UILabel()
+        label.text = "테마"
+        label.font = .fontGuide(.body2)
+        label.asLineHeight(.body2)
+        label.textColor = .Gray700
+        return label
+    }()
+    
+    lazy var themeCollectionView: UICollectionView = {
+        let flowLayout = LeftAlignedFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        flowLayout.minimumInteritemSpacing = 4
+        flowLayout.minimumLineSpacing = 8
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.clipsToBounds = true
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.isUserInteractionEnabled = true
+        collectionView.allowsSelection = true
+        collectionView.allowsMultipleSelection = false
+        collectionView.backgroundColor = .clear
+        collectionView.isScrollEnabled = false
+        return collectionView
+    }()
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -117,7 +143,9 @@ private extension AddCustomRoutineView {
             customRoutineTitle,
             errorLabel,
             customRoutineTextView,
-            textClearButton
+            textClearButton,
+            themeTitle,
+            themeCollectionView
         )
     }
     
@@ -164,9 +192,21 @@ private extension AddCustomRoutineView {
             $0.trailing.equalTo(customRoutineTextView.snp.trailing).offset(-16)
             $0.size.equalTo(20)
         }
+        
+        themeTitle.snp.makeConstraints {
+            $0.top.equalTo(customRoutineTextView.snp.bottom).offset(19)
+            $0.leading.equalToSuperview().inset(20)
+        }
+        
+        themeCollectionView.snp.makeConstraints {
+            $0.top.equalTo(themeTitle.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(124)
+        }
     }
     
     func setRegisterCell() {
+        ThemeSelectCollectionViewCell.register(target: themeCollectionView)
     }
 }
 

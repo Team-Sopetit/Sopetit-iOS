@@ -78,6 +78,7 @@ extension ThemeSelectCollectionViewCell {
     
     func setLayout() {
         themeIcon.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
             $0.size.equalTo(18)
         }
         
@@ -86,8 +87,16 @@ extension ThemeSelectCollectionViewCell {
         }
     }
     
-    func setDataBind(model: Theme) {
+    func setDataBind(
+        model: Theme,
+        fromOnboarding: Bool = true
+    ) {
         themeTitle.text = model.title
         themeIcon.image = UIImage(named: "theme\(model.themeID)") ?? UIImage()
+        if !fromOnboarding {
+            themeTitle.font = .fontGuide(.body2)
+            themeTitle.asLineHeight(.body2)
+            self.layer.cornerRadius = 18
+        }
     }
 }

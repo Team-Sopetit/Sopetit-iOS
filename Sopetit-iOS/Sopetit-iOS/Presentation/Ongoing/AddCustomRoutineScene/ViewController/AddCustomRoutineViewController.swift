@@ -14,6 +14,9 @@ final class AddCustomRoutineViewController: UIViewController {
     // MARK: - UI Components
     
     private var addCustomRoutineView = AddCustomRoutineView()
+    private lazy var collectionView = addCustomRoutineView.themeCollectionView
+    var routineEntity = ThemeSelectEntity(themes: [])
+    private var selectedThemeId: Int = -1
     
     // MARK: - Life Cycles
     
@@ -38,6 +41,8 @@ extension AddCustomRoutineViewController {
     
     func setDelegate() {
         addCustomRoutineView.navigationView.delegate = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     func setAddTarget() {
@@ -67,5 +72,71 @@ extension AddCustomRoutineViewController: BackButtonProtocol {
     
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension AddCustomRoutineViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let string = routineEntity.themes[indexPath.item].title
+        let cellSize = CGSize(width: string.size(withAttributes: [NSAttributedString.Key.font: UIFont.fontGuide(.body2)]).width + 48, height: 36)
+        return cellSize
+    }
+}
+
+extension AddCustomRoutineViewController: UICollectionViewDataSource {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        return routineEntity.themes.count
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = ThemeSelectCollectionViewCell.dequeueReusableCell(
+            collectionView: collectionView,
+            indexPath: indexPath
+        )
+        cell.setDataBind(
+            model: routineEntity.themes[indexPath.item],
+            fromOnboarding: false
+        )
+        return cell
+    }
+}
+
+extension AddCustomRoutineViewController: UICollectionViewDelegate {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        makeVibrate()
+        selectedThemeId = routineEntity.themes[indexPath.item].themeID
+        if let cell = collectionView.cellForItem(at: indexPath) as? ThemeSelectCollectionViewCell {
+            cell.isSelected = true
+            cell.backgroundColor = .Gray200
+            cell.layer.borderColor = UIColor.Gray650.cgColor
+        }
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didDeselectItemAt indexPath: IndexPath
+    ) {
+        selectedThemeId = -1
+        if let cell = collectionView.cellForItem(at: indexPath) as? ThemeSelectCollectionViewCell {
+            cell.isSelected = false
+            cell.backgroundColor = .SoftieWhite
+            cell.layer.borderColor = UIColor.Gray200.cgColor
+        }
     }
 }

@@ -195,6 +195,7 @@
 		A4D9F6ED2C5D2F9900A9F719 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D9F6EC2C5D2F9900A9F719 /* TutorialCollectionViewCell.swift */; };
 		C7E2EC502DE968C400A69D84 /* AddCustomRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC4F2DE968B900A69D84 /* AddCustomRoutineViewController.swift */; };
 		C7E2EC522DE968CD00A69D84 /* AddCustomRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC512DE968C800A69D84 /* AddCustomRoutineView.swift */; };
+		C7E2EC542DE9855E00A69D84 /* UICollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -378,6 +379,7 @@
 		A4D9F6EC2C5D2F9900A9F719 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7E2EC4F2DE968B900A69D84 /* AddCustomRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomRoutineViewController.swift; sourceTree = "<group>"; };
 		C7E2EC512DE968C800A69D84 /* AddCustomRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomRoutineView.swift; sourceTree = "<group>"; };
+		C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -689,6 +691,7 @@
 		A42C32AB2B3EA9F900C4B477 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */,
 				A42C32BE2B3EAB0E00C4B477 /* UIImage+.swift */,
 				A42C32C02B3EAB1A00C4B477 /* UIView+.swift */,
 				A42C32C22B3EAB2400C4B477 /* UITextField+.swift */,
@@ -1518,6 +1521,7 @@
 				09CC26C82C8A836000C3BD3B /* NewDailyRoutineView.swift in Sources */,
 				A42C32D52B3EABAF00C4B477 /* UICollectionViewRegisterable.swift in Sources */,
 				A42C32BB2B3EAAEA00C4B477 /* FontLiterals.swift in Sources */,
+				C7E2EC542DE9855E00A69D84 /* UICollectionViewFlowLayout.swift in Sources */,
 				A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */,
 				00CCDCC62B51B5C8007DD0E6 /* SplashThreeView.swift in Sources */,
 				A40C7A672D30D6B100427BAA /* ChartRankCell.swift in Sources */,
