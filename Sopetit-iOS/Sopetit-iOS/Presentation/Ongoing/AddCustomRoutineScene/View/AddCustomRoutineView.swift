@@ -58,6 +58,8 @@ final class AddCustomRoutineView: UIView {
         textView.isScrollEnabled = false
         textView.textContainerInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 48)
         textView.layoutManager.allowsNonContiguousLayout = false
+        textView.returnKeyType = .done
+
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.minimumLineHeight = 20
         paragraphStyle.maximumLineHeight = 20
@@ -311,6 +313,11 @@ extension AddCustomRoutineView: UITextViewDelegate {
     func textView(_ textView: UITextView,
                   shouldChangeTextIn range: NSRange,
                   replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        
         let current = textView.text ?? ""
         guard let stringRange = Range(range, in: current) else { return false }
         let updated = current.replacingCharacters(in: stringRange, with: text)
