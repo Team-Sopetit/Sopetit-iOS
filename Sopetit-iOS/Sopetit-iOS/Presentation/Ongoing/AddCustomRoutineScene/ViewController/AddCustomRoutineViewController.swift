@@ -8,6 +8,7 @@ import UIKit
 
 import SnapKit
 import FirebaseAnalytics
+import UserNotifications
 
 final class AddCustomRoutineViewController: UIViewController {
     
@@ -68,7 +69,13 @@ extension AddCustomRoutineViewController {
         addCustomRoutineView.navigationView.rightButton.addTarget(
             self,
             action: #selector(addCustomRoutineTapped),
-            for: .touchUpInside)
+            for: .touchUpInside
+        )
+        addCustomRoutineView.alarmErrorButton.addTarget(
+            self,
+            action: #selector(alarmErrorTapped),
+            for: .touchUpInside
+        )
         
         let swipeGesture = UISwipeGestureRecognizer(
             target: self,
@@ -108,10 +115,28 @@ extension AddCustomRoutineViewController {
         UIView.animate(withDuration: 0.25) {
             self.addCustomRoutineView.alarmStackView.layoutIfNeeded()
         }
+        
+        guard sender.isOn else {
+            addCustomRoutineView.alarmErrorStackView.isHidden = true
+            return
+        }
+        
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            DispatchQueue.main.async {
+                self.addCustomRoutineView.alarmErrorStackView.isHidden = (settings.authorizationStatus == .authorized)
+            }
+        }
     }
     
     @objc func handleSwipeGesture() {
         view.endEditing(true)
+    }
+    
+    @objc func alarmErrorTapped() {
+        print("🥵🥵🥵🥵🥵")
+        if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(settingsURL)
+        }
     }
     
     func updateNextButtonState() {

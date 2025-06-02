@@ -153,6 +153,33 @@ final class AddCustomRoutineView: UIView {
         return picker
     }()
     
+    let alarmErrorStackView: UIStackView = {
+        let stackview = UIStackView()
+        stackview.axis = .horizontal
+        stackview.alignment = .center
+        stackview.spacing = 4
+        stackview.isHidden = true
+        return stackview
+    }()
+    
+    private let alarmErrorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "루틴 알림이 울리지 않아요."
+        label.font = .fontGuide(.caption1)
+        label.asLineHeight(.caption1)
+        label.textColor = .Red200
+        return label
+    }()
+    
+    let alarmErrorButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("알림 허용하기", for: .normal)
+        button.titleLabel?.font = .fontGuide(.caption1)
+        button.setTitleColor(.Red200, for: .normal)
+        button.setUnderline()
+        return button
+    }()
+    
     var onTextChanged: ((String) -> Void)?
     
     // MARK: - Life Cycles
@@ -194,7 +221,8 @@ private extension AddCustomRoutineView {
             textClearButton,
             themeTitle,
             themeCollectionView,
-            alarmStackView
+            alarmStackView,
+            alarmErrorStackView
         )
         alarmTitleStackView.addArrangedSubviews(
             alarmTitle,
@@ -203,6 +231,10 @@ private extension AddCustomRoutineView {
         alarmStackView.addArrangedSubviews(
             alarmTitleStackView,
             alarmDatePicker
+        )
+        alarmErrorStackView.addArrangedSubviews(
+            alarmErrorLabel,
+            alarmErrorButton
         )
     }
     
@@ -281,6 +313,17 @@ private extension AddCustomRoutineView {
             $0.centerX.equalToSuperview()
             $0.bottom.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 40)
+        }
+        
+        alarmErrorButton.snp.makeConstraints {
+            $0.width.equalTo(66)
+            $0.height.equalTo(18)
+        }
+        
+        alarmErrorStackView.snp.makeConstraints {
+            $0.top.equalTo(alarmStackView.snp.bottom).offset(6)
+            $0.leading.equalTo(alarmStackView.snp.leading)
+            $0.height.equalTo(18)
         }
     }
     
