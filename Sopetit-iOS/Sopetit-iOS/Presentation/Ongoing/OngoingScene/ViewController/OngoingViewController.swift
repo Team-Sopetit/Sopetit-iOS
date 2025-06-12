@@ -187,16 +187,24 @@ extension OngoingViewController: UICollectionViewDataSource {
 
 extension OngoingViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let label: UILabel = {
             let label = UILabel()
             label.text = dailyRoutineEntity.routines[indexPath.section].routines[indexPath.item].content
             label.font = .fontGuide(.body2)
             return label
         }()
+        var hasAlarm: Bool = false
+        if dailyRoutineEntity.routines[indexPath.section].routines[indexPath.item].alarmTime != nil {
+            hasAlarm = true
+        }
         let height = max(heightForView(text: label.text ?? "", font: label.font, width: SizeLiterals.Screen.screenWidth - 151), 24) + 50
         
-        return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: height)
+        return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: hasAlarm ? height + 2 : height)
     }
     
     func heightForView(text: String, font: UIFont, width: CGFloat) -> CGFloat {

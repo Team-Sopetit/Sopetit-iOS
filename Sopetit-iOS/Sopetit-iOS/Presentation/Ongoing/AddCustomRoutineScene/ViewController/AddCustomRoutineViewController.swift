@@ -106,7 +106,11 @@ extension AddCustomRoutineViewController {
         let selectedDate = addCustomRoutineView.alarmDatePicker.date
         let timeString = formatter.string(from: selectedDate)
         
-        postRoutineCustomAPI(alarmTime: timeString)
+        if addCustomRoutineView.alarmToggle.isOn {
+            postRoutineCustomAPI(alarmTime: timeString)
+        } else {
+            postRoutineCustomAPI()
+        }
     }
     
     @objc func switchChanged(_ sender: UISwitch) {
@@ -155,7 +159,7 @@ extension AddCustomRoutineViewController: BackButtonProtocol {
 extension AddCustomRoutineViewController {
     
     func postRoutineCustomAPI(
-        alarmTime: String
+        alarmTime: String? = nil
     ) {
         AddDailyRoutineService.shared.postRoutineCustom(
             content: currentText,

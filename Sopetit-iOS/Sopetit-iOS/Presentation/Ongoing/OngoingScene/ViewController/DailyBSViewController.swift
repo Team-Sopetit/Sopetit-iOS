@@ -21,7 +21,7 @@ final class DailyBSViewController: UIViewController {
     
     var bottomHeight: CGFloat = SizeLiterals.Screen.screenHeight * 412 / 812
     var height: CGFloat = 0
-    var entity = DailyRoutinev2(routineId: 0, content: "", achieveCount: 0, isAchieve: false)
+    var entity = DailyRoutinev2(routineId: 0, content: "", achieveCount: 0, isAchieve: false, alarmTime: nil)
     
     // MARK: - UI Components
     

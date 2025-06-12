@@ -167,7 +167,7 @@ extension AddDailyRoutineService {
     func postRoutineCustom(
         content: String,
         themeId: Int,
-        alarmTime: String,
+        alarmTime: String?,
         completion: @escaping (NetworkResult<Any>) -> Void
     ) {
         let url = URLConstant.routinesCustomURL
@@ -175,7 +175,7 @@ extension AddDailyRoutineService {
         let body: Parameters = [
             "content": content,
             "themeId": themeId,
-            "alarmTime": alarmTime
+            "alarmTime": alarmTime ?? NSNull()
         ]
         let dataRequest = AF.request(url,
                                      method: .post,

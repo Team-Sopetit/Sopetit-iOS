@@ -21,7 +21,7 @@ final class NewDailyRoutineCollectionViewCell: UICollectionViewCell, UICollectio
     var delegate: CVCellDelegate?
     
     private var index: Int = 0
-    private var routine = DailyRoutinev2(routineId: 0, content: "", achieveCount: 0, isAchieve: false)
+    private var routine = DailyRoutinev2(routineId: 0, content: "", achieveCount: 0, isAchieve: false, alarmTime: nil)
     
     var isEditing: Bool = false {
         didSet {
@@ -85,6 +85,31 @@ final class NewDailyRoutineCollectionViewCell: UICollectionViewCell, UICollectio
         return button
     }()
     
+    let contentStackView: UIStackView = {
+        let stackview = UIStackView ()
+        stackview.axis = .vertical
+        stackview.spacing = 2
+        stackview.alignment = .leading
+        return stackview
+    }()
+    
+    let alarmStackView: UIStackView = {
+        let stackview = UIStackView ()
+        stackview.axis = .horizontal
+        stackview.spacing = 4
+        stackview.alignment = .center
+        return stackview
+    }()
+    
+    private let alarmIcon = UIImageView(image: UIImage(resource: .icAlarm))
+    
+    private let alarmTime: UILabel = {
+        let label = UILabel()
+        label.font = .fontGuide(.caption1)
+        label.textColor = .Gray500
+        return label
+    }()
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -117,7 +142,20 @@ private extension NewDailyRoutineCollectionViewCell {
     }
     
     func setHierarchy() {
-        self.addSubviews(radioButton, routineLabel, ellipsisButton)
+        self.addSubviews(
+            radioButton,
+            contentStackView,
+            ellipsisButton,
+            alarmStackView
+        )
+        contentStackView.addArrangedSubviews(
+            routineLabel,
+            alarmStackView
+        )
+        alarmStackView.addArrangedSubviews(
+            alarmIcon,
+            alarmTime
+        )
     }
     
     func setLayout() {
@@ -127,7 +165,7 @@ private extension NewDailyRoutineCollectionViewCell {
             $0.size.equalTo(24)
         }
         
-        routineLabel.snp.makeConstraints {
+        contentStackView.snp.makeConstraints {
             $0.leading.equalTo(radioButton.snp.trailing).offset(8)
             $0.trailing.equalTo(ellipsisButton.snp.leading).offset(-23)
             $0.centerY.equalToSuperview()
@@ -137,6 +175,10 @@ private extension NewDailyRoutineCollectionViewCell {
             $0.trailing.equalToSuperview().inset(20)
             $0.centerY.equalToSuperview()
             $0.size.equalTo(24)
+        }
+        
+        alarmIcon.snp.makeConstraints {
+            $0.size.equalTo(14)
         }
         
     }
@@ -170,10 +212,37 @@ private extension NewDailyRoutineCollectionViewCell {
 extension NewDailyRoutineCollectionViewCell {
     
     func setDataBind(routine: DailyRoutinev2) {
+        print("🥵🥵🥵🥵")
+        print(routine)
         self.routine = routine
         self.index = routine.routineId
         routineLabel.text = routine.content
         routineLabel.setTextWithLineHeight(text: routine.content, lineHeight: 20)
         isRadioButton = routine.isAchieve
+        if let alarm = routine.alarmTime {
+            alarmStackView.isHidden = false
+            alarmTime.text = formatAlarmTime(alarm)
+            alarmTime.asLineHeight(.caption1)
+        } else {
+            alarmStackView.isHidden = true
+        }
+    }
+    
+    func formatAlarmTime(_ alarmTime: String) -> String {
+        let parts = alarmTime.split(separator: ":")
+        guard parts.count >= 2,
+              let hour = Int(parts[0]),
+              let minute = Int(parts[1]) else {
+            return alarmTime
+        }
+        
+        let period = hour < 12 ? "오전" : "오후"
+        var hour12 = hour % 12
+        if hour12 == 0 { hour12 = 12 }
+        let minuteStr = minute < 10
+               ? "0\(minute)"
+               : "\(minute)"
+        
+        return "\(period) \(hour12):\(minuteStr)"
     }
 }

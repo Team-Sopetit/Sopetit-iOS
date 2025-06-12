@@ -26,4 +26,5 @@ struct DailyRoutinev2: Codable {
     let content: String
     let achieveCount: Int
     let isAchieve: Bool
+    let alarmTime: String?
 }
