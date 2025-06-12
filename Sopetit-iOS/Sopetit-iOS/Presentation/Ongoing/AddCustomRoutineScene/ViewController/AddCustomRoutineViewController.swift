@@ -137,7 +137,6 @@ extension AddCustomRoutineViewController {
     }
     
     @objc func alarmErrorTapped() {
-        print("🥵🥵🥵🥵🥵")
         if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
             UIApplication.shared.open(settingsURL)
         }

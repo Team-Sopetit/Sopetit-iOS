@@ -160,6 +160,7 @@ final class AddCustomRoutineView: UIView {
         stackview.alignment = .center
         stackview.spacing = 4
         stackview.isHidden = true
+        stackview.isUserInteractionEnabled = true
         return stackview
     }()
     
@@ -178,6 +179,7 @@ final class AddCustomRoutineView: UIView {
         button.titleLabel?.font = .fontGuide(.caption1)
         button.setTitleColor(.Red200, for: .normal)
         button.setUnderline()
+        button.isUserInteractionEnabled = true
         return button
     }()
     
@@ -312,7 +314,6 @@ private extension AddCustomRoutineView {
         alarmStackView.snp.makeConstraints {
             $0.top.equalTo(themeCollectionView.snp.bottom).offset(19)
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 40)
         }
         
@@ -324,6 +325,7 @@ private extension AddCustomRoutineView {
         alarmErrorStackView.snp.makeConstraints {
             $0.top.equalTo(alarmStackView.snp.bottom).offset(6)
             $0.leading.equalTo(alarmStackView.snp.leading)
+            $0.bottom.equalToSuperview()
             $0.height.equalTo(18)
         }
     }
