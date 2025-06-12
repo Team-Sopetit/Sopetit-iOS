@@ -426,7 +426,7 @@ extension OngoingViewController: CVCellDelegate {
         let contentHeight = heightForView(text: model.content, font: .fontGuide(.body1), width: SizeLiterals.Screen.screenWidth - 80)
         let nav = DailyBSViewController()
         nav.delegate = self
-        nav.bottomHeight = contentHeight + 220
+        nav.bottomHeight = contentHeight + (model.alarmTime != nil ? 256 : 224)
         nav.height = contentHeight
         nav.entity = model
         nav.modalPresentationStyle = .overFullScreen
