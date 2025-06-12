@@ -150,6 +150,7 @@ final class AddCustomRoutineView: UIView {
         picker.datePickerMode = .time
         picker.preferredDatePickerStyle = .wheels
         picker.isHidden = true
+        picker.minuteInterval = 10
         return picker
     }()
     
