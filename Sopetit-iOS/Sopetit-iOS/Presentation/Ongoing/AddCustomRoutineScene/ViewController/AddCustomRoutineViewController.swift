@@ -26,6 +26,7 @@ final class AddCustomRoutineViewController: UIViewController {
         didSet { updateNextButtonState() }
     }
     
+    private var selectedIndexPath: IndexPath?
     var fromEdit: Bool = false
     var routineInfo: EditDailyRoutineInfo = EditDailyRoutineInfo.initInfo
     
@@ -55,7 +56,12 @@ extension AddCustomRoutineViewController {
     func setUI() {
         if fromEdit {
             addCustomRoutineView.customRoutineTextView.text = routineInfo.content
-            addCustomRoutineView.customRoutineTextView.textColor = .Gray700
+            addCustomRoutineView.customRoutineTextView.textColor = routineInfo.isSoftieRoutine ? .Gray400 : .Gray700
+            addCustomRoutineView.customRoutineTextView.isEditable = !routineInfo.isSoftieRoutine
+            addCustomRoutineView.isSoftieRoutineLabel.snp.updateConstraints {
+                $0.height.equalTo(routineInfo.isSoftieRoutine ? 18 : 0)
+            }
+            
             if let alarm = routineInfo.alarmTime {
                 addCustomRoutineView.alarmToggle.isOn = true
                 if let date = date(from: alarm) {
@@ -286,10 +292,15 @@ extension AddCustomRoutineViewController: UICollectionViewDataSource {
             fromOnboarding: false
         )
         if fromEdit {
-            if indexPath.item == routineInfo.themeId {
+            selectThemeId = routineInfo.themeId
+            if indexPath.item == selectThemeId {
                 cell.isSelected = true
                 cell.backgroundColor = .Gray200
-                cell.layer.borderColor = UIColor.Gray650.cgColor
+                if routineInfo.isSoftieRoutine {
+                    cell.layer.borderColor = UIColor.Gray400.cgColor
+                } else {
+                    cell.layer.borderColor = UIColor.Gray650.cgColor
+                }
             }
         }
         return cell
@@ -297,6 +308,26 @@ extension AddCustomRoutineViewController: UICollectionViewDataSource {
 }
 
 extension AddCustomRoutineViewController: UICollectionViewDelegate {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        shouldSelectItemAt indexPath: IndexPath
+    ) -> Bool {
+        if routineInfo.isSoftieRoutine {
+            return false
+        }
+        return true
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        shouldDeselectItemAt indexPath: IndexPath
+    ) -> Bool {
+        if routineInfo.isSoftieRoutine {
+            return false
+        }
+        return true
+    }
     
     func collectionView(
         _ collectionView: UICollectionView,

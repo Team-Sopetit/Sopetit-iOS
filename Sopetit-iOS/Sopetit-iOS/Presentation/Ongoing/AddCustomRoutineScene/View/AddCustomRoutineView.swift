@@ -76,6 +76,15 @@ final class AddCustomRoutineView: UIView {
         return textView
     }()
     
+    let isSoftieRoutineLabel: UILabel = {
+        let label = UILabel()
+        label.text = "소프티에서 제공하는 루틴은 수정할 수 없어요."
+        label.font = .fontGuide(.caption1)
+        label.asLineHeight(.caption1)
+        label.textColor = .Red200
+        return label
+    }()
+    
     let textClearButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(resource: .icTextClear), for: .normal)
@@ -222,6 +231,7 @@ private extension AddCustomRoutineView {
             errorLabel,
             customRoutineTextView,
             textClearButton,
+            isSoftieRoutineLabel,
             themeTitle,
             themeCollectionView,
             alarmStackView,
@@ -285,8 +295,14 @@ private extension AddCustomRoutineView {
             $0.size.equalTo(20)
         }
         
+        isSoftieRoutineLabel.snp.makeConstraints {
+            $0.top.equalTo(customRoutineTextView.snp.bottom).offset(6)
+            $0.leading.equalTo(customRoutineTextView.snp.leading)
+            $0.height.equalTo(0)
+        }
+        
         themeTitle.snp.makeConstraints {
-            $0.top.equalTo(customRoutineTextView.snp.bottom).offset(19)
+            $0.top.equalTo(isSoftieRoutineLabel.snp.bottom).offset(19)
             $0.leading.equalToSuperview().inset(20)
         }
         

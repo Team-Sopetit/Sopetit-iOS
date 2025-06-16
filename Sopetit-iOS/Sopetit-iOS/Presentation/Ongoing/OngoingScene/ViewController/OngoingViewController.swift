@@ -183,15 +183,6 @@ extension OngoingViewController: UICollectionViewDataSource {
     
     func collectionView(
         _ collectionView: UICollectionView,
-        didSelectItemAt indexPath: IndexPath
-    ) {
-        let themeId = dailyRoutineEntity.routines[indexPath.section].themeId
-        print("🥹🥹🥹🥹")
-        print(themeId)
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         referenceSizeForHeaderInSection section: Int
     ) -> CGSize {
