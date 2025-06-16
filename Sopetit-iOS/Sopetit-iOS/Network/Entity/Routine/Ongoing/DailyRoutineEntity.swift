@@ -23,6 +23,7 @@ struct DailyRoutines: Codable {
 
 struct DailyRoutinev2: Codable {
     let routineId: Int
+    let originRoutineId: Int?
     let content: String
     let achieveCount: Int
     let isAchieve: Bool

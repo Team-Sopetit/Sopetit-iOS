@@ -58,7 +58,6 @@ extension AddRoutineViewController {
     
     @objc func didTapView() {
         let nav = AddCustomRoutineViewController()
-        nav.routineEntity = routineEntity
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }

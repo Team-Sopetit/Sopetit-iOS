@@ -9,7 +9,8 @@ import UIKit
 
 import SnapKit
 
-protocol DeleteDailyProtocol: AnyObject {
+protocol DailyRoutineProtocol: AnyObject {
+    func editDailyRoutine()
     func deleteDailyRoutine()
 }
 
@@ -17,11 +18,11 @@ final class DailyBSViewController: UIViewController {
     
     // MARK: - Properties
     
-    weak var delegate: DeleteDailyProtocol?
+    weak var delegate: DailyRoutineProtocol?
     
     var bottomHeight: CGFloat = SizeLiterals.Screen.screenHeight * 412 / 812
     var height: CGFloat = 0
-    var entity = DailyRoutinev2(routineId: 0, content: "", achieveCount: 0, isAchieve: false, alarmTime: nil)
+    var entity = DailyRoutinev2(routineId: 0, originRoutineId: nil, content: "", achieveCount: 0, isAchieve: false, alarmTime: nil)
     
     // MARK: - UI Components
     
@@ -216,6 +217,7 @@ extension DailyBSViewController {
     }
     
     func setAddTarget() {
+        detailEditButton.addTarget(self, action: #selector(tapEditButton), for: .touchUpInside)
         detailDeleteButton.addTarget(self, action: #selector(tapDeleteButton), for: .touchUpInside)
     }
     
@@ -260,6 +262,12 @@ extension DailyBSViewController {
     @objc
     func hideBottomSheetAction() {
         hideBottomSheet()
+    }
+    
+    @objc
+    func tapEditButton() {
+        self.dismiss(animated: false)
+        self.delegate?.editDailyRoutine()
     }
     
     @objc

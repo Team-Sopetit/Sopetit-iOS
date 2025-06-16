@@ -193,6 +193,7 @@
 		A4D9F6E92C5D2F8600A9F719 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D9F6E82C5D2F8600A9F719 /* TutorialViewController.swift */; };
 		A4D9F6EB2C5D2F8C00A9F719 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D9F6EA2C5D2F8C00A9F719 /* TutorialView.swift */; };
 		A4D9F6ED2C5D2F9900A9F719 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D9F6EC2C5D2F9900A9F719 /* TutorialCollectionViewCell.swift */; };
+		C7469A382DFFDB1600F77BF4 /* EditDailyRoutineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7469A372DFFDB0D00F77BF4 /* EditDailyRoutineInfo.swift */; };
 		C7E2EC502DE968C400A69D84 /* AddCustomRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC4F2DE968B900A69D84 /* AddCustomRoutineViewController.swift */; };
 		C7E2EC522DE968CD00A69D84 /* AddCustomRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC512DE968C800A69D84 /* AddCustomRoutineView.swift */; };
 		C7E2EC542DE9855E00A69D84 /* UICollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */; };
@@ -378,6 +379,7 @@
 		A4D9F6E82C5D2F8600A9F719 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		A4D9F6EA2C5D2F8C00A9F719 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		A4D9F6EC2C5D2F9900A9F719 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
+		C7469A372DFFDB0D00F77BF4 /* EditDailyRoutineInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDailyRoutineInfo.swift; sourceTree = "<group>"; };
 		C7E2EC4F2DE968B900A69D84 /* AddCustomRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomRoutineViewController.swift; sourceTree = "<group>"; };
 		C7E2EC512DE968C800A69D84 /* AddCustomRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomRoutineView.swift; sourceTree = "<group>"; };
 		C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewFlowLayout.swift; sourceTree = "<group>"; };
@@ -1359,6 +1361,7 @@
 		C7E2EC4C2DE9689500A69D84 /* AddCustomRoutineScene */ = {
 			isa = PBXGroup;
 			children = (
+				C7469A372DFFDB0D00F77BF4 /* EditDailyRoutineInfo.swift */,
 				C7E2EC4E2DE968A500A69D84 /* View */,
 				C7E2EC4D2DE968A100A69D84 /* ViewController */,
 			);
@@ -1616,6 +1619,7 @@
 				093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */,
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,
 				A42C32FA2B3EADF900C4B477 /* DailyRoutineEntity.swift in Sources */,
+				C7469A382DFFDB1600F77BF4 /* EditDailyRoutineInfo.swift in Sources */,
 				A49BFE232B4E565D00035EB6 /* RoutineChoiceEntity.swift in Sources */,
 				A475D52D2CFEB18300B5DDC5 /* UITextView+.swift in Sources */,
 				A49BFDF52B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift in Sources */,

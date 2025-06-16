@@ -7,7 +7,10 @@
 
 protocol CVCellDelegate {
     func selectedRadioButton(_ index: Int)
-    func tapEllipsisButton(model: DailyRoutinev2)
+    func tapEllipsisButton(
+        themeId: Int,
+        model: DailyRoutinev2
+    )
 }
 
 import UIKit
@@ -21,7 +24,15 @@ final class NewDailyRoutineCollectionViewCell: UICollectionViewCell, UICollectio
     var delegate: CVCellDelegate?
     
     private var index: Int = 0
-    private var routine = DailyRoutinev2(routineId: 0, content: "", achieveCount: 0, isAchieve: false, alarmTime: nil)
+    private var routine = DailyRoutinev2(
+        routineId: 0,
+        originRoutineId: nil,
+        content: "",
+        achieveCount: 0,
+        isAchieve: false,
+        alarmTime: nil
+    )
+    private var themeId: Int = 0
     
     var isEditing: Bool = false {
         didSet {
@@ -201,7 +212,10 @@ private extension NewDailyRoutineCollectionViewCell {
         case ellipsisButton:
             print("ellipsisButton tapped")
             if let delegate = delegate {
-                delegate.tapEllipsisButton(model: routine)
+                delegate.tapEllipsisButton(
+                    themeId: themeId,
+                    model: routine
+                )
             }
         default:
             break
@@ -211,9 +225,11 @@ private extension NewDailyRoutineCollectionViewCell {
 
 extension NewDailyRoutineCollectionViewCell {
     
-    func setDataBind(routine: DailyRoutinev2) {
-        print("🥵🥵🥵🥵")
-        print(routine)
+    func setDataBind(
+        themeId: Int,
+        routine: DailyRoutinev2
+    ) {
+        self.themeId = themeId
         self.routine = routine
         self.index = routine.routineId
         routineLabel.text = routine.content
