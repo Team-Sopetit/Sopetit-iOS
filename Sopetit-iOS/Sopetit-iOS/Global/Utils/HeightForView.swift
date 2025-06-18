@@ -24,3 +24,10 @@ func formatDateToString(_ date: Date) -> String {
     dateFormatter.locale = Locale(identifier: "ko_KR")
     return dateFormatter.string(from: date)
 }
+
+func formatStringToDate(_ dateString: String) -> Date? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    dateFormatter.locale = Locale(identifier: "ko_KR")
+    return dateFormatter.date(from: dateString)
+}

@@ -60,6 +60,10 @@ private extension SplashViewController {
         
         print("🚨🚨🚨accesstoken🚨🚨🚨")
         print(UserManager.shared.getAccessToken)
+        
+        if hasVisit() {
+            putMemebersVisitAPI()
+        }
     }
     
     func setDelegate() {
@@ -118,6 +122,21 @@ private extension SplashViewController {
         } else {
             presentToLoginView()
         }
+    }
+    
+    func hasVisit() -> Bool {
+        let lastCallDate = UserManager.shared.getVisitDate
+        guard
+            !lastCallDate.isEmpty,
+            let lastDate = formatStringToDate(lastCallDate)
+        else {
+            print("😳❌ 방문 기록 없음")
+            return true
+        }
+        let lastMidnight = Calendar.current.startOfDay(for: lastDate)
+        let todayMidnight = Calendar.current.startOfDay(for: Date())
+        print("😳 자정 지남 여부:",  todayMidnight > lastMidnight)
+        return todayMidnight > lastMidnight
     }
     
     func presentToOnboardingView() {
@@ -214,6 +233,29 @@ private extension SplashViewController {
                 self.showUpdateAlert(forceResult: -1, recommendResult: 0)
             case .networkNoHost, .networkTimeOut:
                 self.showNoHostAlert()
+            default:
+                break
+            }
+        }
+    }
+    
+    func putMemebersVisitAPI() {
+        print("server")
+        print("putMemebersVisitAPI")
+        OnBoardingService.shared.putMemeberVisit { networkResult in
+            switch networkResult {
+            case .success:
+                let today = formatDateToString(Date())
+                UserManager.shared.updateVisitDate(today)
+                print(UserManager.shared.getVisitDate)
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.putMemebersVisitAPI()
+                    } else {
+                        self.makeSessionExpiredAlert()
+                    }
+                }
             default:
                 break
             }
