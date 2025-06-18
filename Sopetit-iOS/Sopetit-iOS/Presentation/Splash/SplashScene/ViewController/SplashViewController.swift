@@ -115,7 +115,10 @@ private extension SplashViewController {
     func showNextPage() {
         if UserManager.shared.hasAccessToken {
             if UserManager.shared.isPostMemeber {
-                tokenCheck(socialAccessToken: UserManager.shared.getAccessToken, socialType: UserManager.shared.getSocialType)
+                tokenCheck(
+                    socialAccessToken: UserManager.shared.getAccessToken,
+                    socialType: UserManager.shared.getSocialType
+                )
             } else {
                 presentToOnboardingView()
             }
@@ -227,6 +230,16 @@ private extension SplashViewController {
                     }
                     if let comparisonResult = self.appVersion?.compare(self.versionEntity.iosVersion.forceUpdateVersion, options: .numeric).rawValue as? Int, let comparisonResult2 = self.appVersion?.compare(self.versionEntity.iosVersion.appVersion, options: .numeric).rawValue as? Int {
                         self.showUpdateAlert(forceResult: comparisonResult, recommendResult: comparisonResult2)
+                    }
+                }
+            case .reissue:
+                ReissueService.shared.postReissueAPI(
+                    refreshToken: UserManager.shared.getRefreshToken
+                ) { success in
+                    if success {
+                        self.getVersionAPI()
+                    } else {
+                        self.makeSessionExpiredAlert()
                     }
                 }
             case .requestErr, .serverErr:
