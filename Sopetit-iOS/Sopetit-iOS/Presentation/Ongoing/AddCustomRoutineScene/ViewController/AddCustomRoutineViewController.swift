@@ -26,7 +26,6 @@ final class AddCustomRoutineViewController: UIViewController {
         didSet { updateNextButtonState() }
     }
     
-    private var selectedIndexPath: IndexPath?
     var fromEdit: Bool = false
     var routineInfo: EditDailyRoutineInfo = EditDailyRoutineInfo.initInfo
     
@@ -42,6 +41,7 @@ final class AddCustomRoutineViewController: UIViewController {
         getThemeAPI()
         setDelegate()
         setAddTarget()
+        setTextView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,13 +55,16 @@ extension AddCustomRoutineViewController {
     
     func setUI() {
         if fromEdit {
+            currentText = routineInfo.content
+            selectThemeId = routineInfo.themeId
             addCustomRoutineView.customRoutineTextView.text = routineInfo.content
             addCustomRoutineView.customRoutineTextView.textColor = routineInfo.isSoftieRoutine ? .Gray400 : .Gray700
             addCustomRoutineView.customRoutineTextView.isEditable = !routineInfo.isSoftieRoutine
             addCustomRoutineView.isSoftieRoutineLabel.snp.updateConstraints {
                 $0.height.equalTo(routineInfo.isSoftieRoutine ? 18 : 0)
             }
-            
+            collectionView.selectItem(at: IndexPath(item: routineInfo.themeId - 1, section: 0), animated: false, scrollPosition: [])
+            selectThemeId = routineInfo.themeId
             if let alarm = routineInfo.alarmTime {
                 addCustomRoutineView.alarmToggle.isOn = true
                 if let date = date(from: alarm) {
@@ -69,10 +72,14 @@ extension AddCustomRoutineViewController {
                 }
                 switchChanged(addCustomRoutineView.alarmToggle)
             }
-        } else {
-            addCustomRoutineView.onTextChanged = { [weak self] text in
-                self?.currentText = text
-            }
+            updateNextButtonState()
+        }
+    }
+    
+    func setTextView() {
+        addCustomRoutineView.onTextChanged = { text in
+            self.currentText = text
+            self.updateNextButtonState()
         }
     }
     
@@ -102,6 +109,11 @@ extension AddCustomRoutineViewController {
             self,
             action: #selector(alarmErrorTapped),
             for: .touchUpInside
+        )
+        addCustomRoutineView.alarmDatePicker.addTarget(
+            self,
+            action: #selector(pickerChanged(_:)),
+            for: .valueChanged
         )
         
         let swipeGesture = UISwipeGestureRecognizer(
@@ -134,13 +146,18 @@ extension AddCustomRoutineViewController {
         let timeString = formatter.string(from: selectedDate)
         
         if addCustomRoutineView.alarmToggle.isOn {
-            postRoutineCustomAPI(alarmTime: timeString)
+            if fromEdit {
+                putRoutineCustomAPI(alarmTime: timeString)
+            } else {
+                postRoutineCustomAPI(alarmTime: timeString)
+            }
         } else {
-            postRoutineCustomAPI()
+            fromEdit ? putRoutineCustomAPI() : postRoutineCustomAPI()
         }
     }
     
     @objc func switchChanged(_ sender: UISwitch) {
+        updateNextButtonState()
         addCustomRoutineView.alarmDatePicker.isHidden = !sender.isOn
         
         UIView.animate(withDuration: 0.25) {
@@ -159,6 +176,10 @@ extension AddCustomRoutineViewController {
         }
     }
     
+    @objc func pickerChanged(_ sender: UIDatePicker) {
+        updateNextButtonState()
+    }
+    
     @objc func handleSwipeGesture() {
         view.endEditing(true)
     }
@@ -170,8 +191,35 @@ extension AddCustomRoutineViewController {
     }
     
     func updateNextButtonState() {
-        let shouldEnable = (selectThemeId > 0) && !currentText.isEmpty
+        let mandatoryFilled = (selectThemeId > 0) && !currentText.isEmpty
+        
+        let shouldEnable: Bool
+        if fromEdit {
+            shouldEnable = mandatoryFilled && hasChange()
+        } else {
+            shouldEnable = mandatoryFilled
+        }
+        
         addCustomRoutineView.navigationView.rightButton.isEnabled = shouldEnable
+    }
+    
+    func hasChange() -> Bool {
+        guard fromEdit else { return true }
+        if currentText != routineInfo.content { return true }
+        if selectThemeId != routineInfo.themeId { return true }
+        let isAlarmOn = addCustomRoutineView.alarmToggle.isOn
+        let alarmEnabled = routineInfo.alarmTime != nil
+        if isAlarmOn != alarmEnabled { return true }
+        
+        if isAlarmOn {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm:00"
+            let newTime = formatter.string(from: addCustomRoutineView.alarmDatePicker.date)
+            if let originTime = routineInfo.alarmTime {
+                if newTime != originTime { return true }
+            }
+        }
+        return false
     }
     
     func date(from timeString: String) -> Date? {
@@ -255,6 +303,36 @@ extension AddCustomRoutineViewController {
             }
         }
     }
+    
+    func putRoutineCustomAPI(
+        alarmTime: String? = nil
+    ) {
+        AddDailyRoutineService.shared.putRoutineCustom(
+            routineId: routineInfo.routineId,
+            content: currentText,
+            themeId: selectThemeId,
+            alarmTime: alarmTime
+        ) { networkResult in
+            switch networkResult {
+            case .success:
+                self.navigationController?.popToRootViewController(animated: true)
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.putRoutineCustomAPI(
+                            alarmTime: alarmTime
+                        )
+                    } else {
+                        self.makeSessionExpiredAlert()
+                    }
+                }
+            case .requestErr, .serverErr:
+                break
+            default:
+                break
+            }
+        }
+    }
 }
 
 extension AddCustomRoutineViewController: UICollectionViewDelegateFlowLayout {
@@ -289,11 +367,12 @@ extension AddCustomRoutineViewController: UICollectionViewDataSource {
         )
         cell.setDataBind(
             model: routineEntity.themes[indexPath.item],
-            fromOnboarding: false
+            fromOnboarding: false,
+            isSoftieRoutine: fromEdit && routineInfo.isSoftieRoutine
         )
         if fromEdit {
             selectThemeId = routineInfo.themeId
-            if indexPath.item == selectThemeId {
+            if indexPath.item == selectThemeId - 1 {
                 cell.isSelected = true
                 cell.backgroundColor = .Gray200
                 if routineInfo.isSoftieRoutine {

@@ -464,7 +464,7 @@ extension OngoingViewController: CVCellDelegate {
         nav.modalPresentationStyle = .overFullScreen
         self.tapRoutine = EditDailyRoutineInfo(
             routineId: model.routineId,
-            themeId: themeId - 1 ,
+            themeId: themeId,
             content: model.content,
             alarmTime: model.alarmTime,
             isSoftieRoutine: model.originRoutineId != nil

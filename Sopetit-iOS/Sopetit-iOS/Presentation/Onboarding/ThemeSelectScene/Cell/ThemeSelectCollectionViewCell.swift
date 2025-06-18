@@ -89,7 +89,8 @@ extension ThemeSelectCollectionViewCell {
     
     func setDataBind(
         model: Theme,
-        fromOnboarding: Bool = true
+        fromOnboarding: Bool = true,
+        isSoftieRoutine: Bool = false
     ) {
         themeTitle.text = model.title
         themeIcon.image = UIImage(named: "theme\(model.themeID)") ?? UIImage()
@@ -98,5 +99,6 @@ extension ThemeSelectCollectionViewCell {
             themeTitle.asLineHeight(.body2)
             self.layer.cornerRadius = 18
         }
+        themeTitle.textColor = isSoftieRoutine ? .Gray400 : .Gray700
     }
 }
