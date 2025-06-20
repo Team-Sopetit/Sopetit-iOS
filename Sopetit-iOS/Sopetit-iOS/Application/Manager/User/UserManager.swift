@@ -18,6 +18,7 @@ final class UserManager {
     @UserDefaultWrapper<Bool>(key: "postMember") private(set) var postMember
     @UserDefaultWrapper<String>(key: "dollType") private(set) var dollType
     @UserDefaultWrapper<Bool>(key: "showTutorial") private(set) var showTutorial
+    @UserDefaultWrapper<Bool>(key: "sendFcm") private(set) var sendFcm
     @UserDefaultWrapper<Bool>(key: "allowAlarm") private(set) var allowAlarm
     @UserDefaultWrapper<Bool>(key: "writeMemo") private(set) var writeMemo
     @UserDefaultWrapper<String>(key: "dollName") private(set) var dollName
@@ -31,6 +32,7 @@ final class UserManager {
     var isPostMemeber: Bool { return self.postMember ?? false }
     var getDollType: String { return self.dollType ?? "BROWN" }
     var isShowTutorial: Bool { return self.showTutorial ?? false }
+    var isSendFcm: Bool { return self.sendFcm ?? false }
     var hasAllowAlarm: Bool { return self.allowAlarm ?? false }
     var getDollName: String { return self.dollName ?? "" }
     var getWriteMemo: Bool { return self.writeMemo ?? false }
@@ -89,6 +91,8 @@ extension UserManager {
     func logout() {
         self.accessToken = nil
         self.refreshToken = nil
+        self.fcmToken = nil
+        self.sendFcm = false
     }
     
     func clearAll() {
@@ -98,9 +102,15 @@ extension UserManager {
         self.postMember = false
         self.showTutorial = false
         self.writeMemo = false
+        self.fcmToken = nil
+        self.sendFcm = false
     }
     
     func setShowTutorial() {
         self.showTutorial = true
+    }
+    
+    func setSendFcm() {
+        self.sendFcm = true
     }
 }

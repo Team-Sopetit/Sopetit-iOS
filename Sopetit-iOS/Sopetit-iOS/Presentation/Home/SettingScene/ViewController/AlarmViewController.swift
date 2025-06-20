@@ -9,12 +9,9 @@ import UIKit
 
 import SnapKit
 import UserNotifications
+import FirebaseMessaging
 
 final class AlarmViewController: UIViewController, UIGestureRecognizerDelegate {
-    
-    // MARK: - Properties
-    
-    private var lastAuthStatus: UNAuthorizationStatus?
     
     // MARK: - UI Components
     
@@ -154,7 +151,22 @@ private extension AlarmViewController {
             )
             DispatchQueue.main.async {
                 self.alarmSwitch.setOn(shouldBeOn, animated: false)
-                self.lastAuthStatus = newStatus
+                
+                if shouldBeOn {
+                    UIApplication.shared.registerForRemoteNotifications()
+                    
+                    Messaging.messaging().token { token, error in
+                        if let error = error { return }
+                        guard let fcmToken = token else { return }
+                        print("FCM 토큰:", fcmToken)
+                        
+                        UserManager.shared.updateFcmToken(fcmToken)
+                        self.postMemberFcmAPI()
+                    }
+                } else {
+                    UserManager.shared.updateFcmToken("")
+                    self.postMemberFcmAPI()
+                }
             }
         }
     }
@@ -168,12 +180,25 @@ extension AlarmViewController: BackButtonProtocol {
     }
 }
 
-final class SettingAlarmSwitch: UISwitch {
-    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-        if let url = URL(string: UIApplication.openSettingsURLString),
-           UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+extension AlarmViewController {
+    
+    func postMemberFcmAPI() {
+        AuthService.shared.postMembersFCM() { networkResult in
+            switch networkResult {
+            case .success:
+                print("success")
+                UserManager.shared.setSendFcm()
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.postMemberFcmAPI()
+                    } else {
+                        self.makeSessionExpiredAlert()
+                    }
+                }
+            default:
+                break
+            }
         }
-        return false
     }
 }
