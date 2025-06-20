@@ -44,6 +44,7 @@ final class AlarmViewController: UIViewController, UIGestureRecognizerDelegate {
     private lazy var alarmSwitch: UISwitch = {
         let swicth: UISwitch = UISwitch()
         swicth.isOn = UserManager.shared.hasAllowAlarm
+        swicth.onTintColor = .Gray650
         return swicth
     }()
     
