@@ -185,7 +185,6 @@ extension ChangeChallengeBSViewController {
         
         bottomSheet.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(bottomHeight)
         }
         
         changeTitleLabel.snp.makeConstraints {
@@ -260,7 +259,7 @@ extension ChangeChallengeBSViewController {
         }
         
         changeButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(32)
+            $0.top.equalTo(choiceChallengeCard.snp.bottom).offset(32)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 40)
             $0.height.equalTo(56)

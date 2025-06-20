@@ -163,4 +163,71 @@ extension AddDailyRoutineService {
             }
         }
     }
+    
+    func postRoutineCustom(
+        content: String,
+        themeId: Int,
+        alarmTime: String?,
+        completion: @escaping (NetworkResult<Any>) -> Void
+    ) {
+        let url = URLConstant.routinesCustomURL
+        let header: HTTPHeaders = NetworkConstant.hasTokenHeader
+        let body: Parameters = [
+            "content": content,
+            "themeId": themeId,
+            "alarmTime": alarmTime ?? NSNull()
+        ]
+        let dataRequest = AF.request(url,
+                                     method: .post,
+                                     parameters: body,
+                                     encoding: JSONEncoding.default,
+                                     headers: header)
+        dataRequest.responseData { response in
+            switch response.result {
+            case .success:
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let data = response.data else { return }
+                let networkResult = self.judgeStatus(by: statusCode,
+                                                     data,
+                                                     RoutineCustomEntity.self)
+                completion(networkResult)
+            case .failure:
+                completion(.networkFail)
+            }
+        }
+    }
+    
+    func putRoutineCustom(
+        routineId: Int,
+        content: String,
+        themeId: Int,
+        alarmTime: String?,
+        completion: @escaping (NetworkResult<Any>) -> Void
+    ) {
+        let url = URLConstant.routinesCustomURL + "/\(routineId)"
+        let header: HTTPHeaders = NetworkConstant.hasTokenHeader
+        let body: Parameters = [
+            "content": content,
+            "themeId": themeId,
+            "alarmTime": alarmTime ?? NSNull()
+        ]
+        let dataRequest = AF.request(url,
+                                     method: .put,
+                                     parameters: body,
+                                     encoding: JSONEncoding.default,
+                                     headers: header)
+        dataRequest.responseData { response in
+            switch response.result {
+            case .success:
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let data = response.data else { return }
+                let networkResult = self.judgeStatus(by: statusCode,
+                                                     data,
+                                                     EmptyEntity.self)
+                completion(networkResult)
+            case .failure:
+                completion(.networkFail)
+            }
+        }
+    }
 }

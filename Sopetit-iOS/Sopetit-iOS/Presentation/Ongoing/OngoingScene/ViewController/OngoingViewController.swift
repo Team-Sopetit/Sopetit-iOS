@@ -15,6 +15,7 @@ class OngoingViewController: UIViewController {
     private var dailyRoutineEntity = NewDailyRoutineEntity(routines: [])
     private var patchRoutineEntity = PatchRoutineEntity(routineId: 0, isAchieve: false, achieveCount: 0, hasCotton: false)
     let ongoingView = OngoingView()
+    private var tapRoutine: EditDailyRoutineInfo = EditDailyRoutineInfo.initInfo
     
     override func loadView() {
         self.view = ongoingView
@@ -40,6 +41,12 @@ private extension OngoingViewController {
     
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(setAddCustomRoutineToastView),
+            name: Notification.Name("addCutomRoutine"),
+            object: nil
+        )
     }
     
     @objc
@@ -154,22 +161,39 @@ extension OngoingViewController: UICollectionViewDataSource {
         return dailyRoutineEntity.routines.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return dailyRoutineEntity.routines[section].routines.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell = NewDailyRoutineCollectionViewCell.dequeueReusableCell(collectionView: collectionView, indexPath: indexPath)
-        cell.setDataBind(routine: dailyRoutineEntity.routines[indexPath.section].routines[indexPath.item])
+        cell.setDataBind(
+            themeId: dailyRoutineEntity.routines[indexPath.section].themeId,
+            routine: dailyRoutineEntity.routines[indexPath.section].routines[indexPath.item]
+        )
         cell.delegate = self
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int
+    ) -> CGSize {
         return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: 22)
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView = NewDailyRoutineHeaderView.dequeueReusableHeaderView(collectionView: ongoingView.dailyRoutineView.dailyCollectionView, indexPath: indexPath)
             headerView.setDataBind(text: dailyRoutineEntity.routines[indexPath.section].themeName, image: dailyRoutineEntity.routines[indexPath.section].themeId)
@@ -181,19 +205,31 @@ extension OngoingViewController: UICollectionViewDataSource {
 
 extension OngoingViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         let label: UILabel = {
             let label = UILabel()
             label.text = dailyRoutineEntity.routines[indexPath.section].routines[indexPath.item].content
             label.font = .fontGuide(.body2)
             return label
         }()
+        var hasAlarm: Bool = false
+        if dailyRoutineEntity.routines[indexPath.section].routines[indexPath.item].alarmTime != nil {
+            hasAlarm = true
+        }
         let height = max(heightForView(text: label.text ?? "", font: label.font, width: SizeLiterals.Screen.screenWidth - 151), 24) + 50
         
-        return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: height)
+        return CGSize(width: SizeLiterals.Screen.screenWidth - 40, height: hasAlarm ? height + 2 : height)
     }
     
-    func heightForView(text: String, font: UIFont, width: CGFloat) -> CGFloat {
+    func heightForView(
+        text: String,
+        font: UIFont,
+        width: CGFloat
+    ) -> CGFloat {
         let label: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -204,7 +240,10 @@ extension OngoingViewController: UICollectionViewDelegateFlowLayout {
         return label.frame.height
     }
     
-    func heightForContentView(numberOfSection: Int, texts: NewDailyRoutineEntity) {
+    func heightForContentView(
+        numberOfSection: Int,
+        texts: NewDailyRoutineEntity
+    ) {
         var height = Double(numberOfSection) * 18.0
         
         for i in texts.routines {
@@ -344,6 +383,28 @@ extension OngoingViewController {
             self.ongoingView.cancelToastImageView.alpha = 1})
     }
     
+    @objc
+    func setAddCustomRoutineToastView() {
+        ongoingView.addSubview(ongoingView.addCustomRoutineToastView)
+        ongoingView.bringSubviewToFront(ongoingView.addCustomRoutineToastView)
+        ongoingView.addCustomRoutineToastView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(self.ongoingView.safeAreaLayoutGuide).inset(24)
+        }
+        
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 1,
+            animations: {
+                self.ongoingView.addCustomRoutineToastView.alpha = 0
+            },
+            completion: { _ in
+                self.ongoingView.addCustomRoutineToastView.removeFromSuperview()
+                self.ongoingView.addCustomRoutineToastView.alpha = 1
+            }
+        )
+    }
+    
     func setNotCottonToastView() {
         self.ongoingView.addSubviews(ongoingView.notCottonToastImageView)
         self.ongoingView.bringSubviewToFront(self.ongoingView.notCottonToastImageView)
@@ -386,19 +447,40 @@ extension OngoingViewController: CVCellDelegate {
         patchRoutineAPI(routineId: index)
     }
     
-    func tapEllipsisButton(model: DailyRoutinev2) {
-        let contentHeight = heightForView(text: model.content, font: .fontGuide(.body1), width: SizeLiterals.Screen.screenWidth - 80)
+    func tapEllipsisButton(
+        themeId: Int,
+        model: DailyRoutinev2
+    ) {
+        let contentHeight = heightForView(
+            text: model.content,
+            font: .fontGuide(.body1),
+            width: SizeLiterals.Screen.screenWidth - 80
+        )
         let nav = DailyBSViewController()
         nav.delegate = self
-        nav.bottomHeight = contentHeight + 220
+        nav.bottomHeight = contentHeight + (model.alarmTime != nil ? 256 : 224)
         nav.height = contentHeight
         nav.entity = model
         nav.modalPresentationStyle = .overFullScreen
+        self.tapRoutine = EditDailyRoutineInfo(
+            routineId: model.routineId,
+            themeId: themeId,
+            content: model.content,
+            alarmTime: model.alarmTime,
+            isSoftieRoutine: model.originRoutineId != nil
+        )
         self.present(nav, animated: false)
     }
 }
 
-extension OngoingViewController: DeleteDailyProtocol {
+extension OngoingViewController: DailyRoutineProtocol {
+    func editDailyRoutine() {
+        let nav = AddCustomRoutineViewController()
+        nav.fromEdit = true
+        nav.routineInfo = self.tapRoutine
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
     func deleteDailyRoutine() {
         getDailyRoutine(status: true)
     }

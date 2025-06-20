@@ -21,6 +21,7 @@ final class UserManager {
     @UserDefaultWrapper<Bool>(key: "allowAlarm") private(set) var allowAlarm
     @UserDefaultWrapper<Bool>(key: "writeMemo") private(set) var writeMemo
     @UserDefaultWrapper<String>(key: "dollName") private(set) var dollName
+    @UserDefaultWrapper<String>(key: "visitDate") private(set) var visitDate
     
     var hasAccessToken: Bool { return self.accessToken != nil }
     var getAccessToken: String { return self.accessToken ?? "" }
@@ -33,6 +34,7 @@ final class UserManager {
     var hasAllowAlarm: Bool { return self.allowAlarm ?? false }
     var getDollName: String { return self.dollName ?? "" }
     var getWriteMemo: Bool { return self.writeMemo ?? false }
+    var getVisitDate: String { return self.visitDate ?? "" }
     
     private init() {}
 }
@@ -62,6 +64,10 @@ extension UserManager {
     
     func updateFcmToken(_ fcmToken: String) {
         self.fcmToken = fcmToken
+    }
+    
+    func updateVisitDate(_ visitDate: String) {
+        self.visitDate = visitDate
     }
     
     func setAllowAlarm(_ hasAllow: Bool) {

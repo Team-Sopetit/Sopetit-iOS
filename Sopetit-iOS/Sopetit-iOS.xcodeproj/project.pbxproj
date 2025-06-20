@@ -193,6 +193,11 @@
 		A4D9F6E92C5D2F8600A9F719 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D9F6E82C5D2F8600A9F719 /* TutorialViewController.swift */; };
 		A4D9F6EB2C5D2F8C00A9F719 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D9F6EA2C5D2F8C00A9F719 /* TutorialView.swift */; };
 		A4D9F6ED2C5D2F9900A9F719 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D9F6EC2C5D2F9900A9F719 /* TutorialCollectionViewCell.swift */; };
+		C7469A382DFFDB1600F77BF4 /* EditDailyRoutineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7469A372DFFDB0D00F77BF4 /* EditDailyRoutineInfo.swift */; };
+		C7E2EC502DE968C400A69D84 /* AddCustomRoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC4F2DE968B900A69D84 /* AddCustomRoutineViewController.swift */; };
+		C7E2EC522DE968CD00A69D84 /* AddCustomRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC512DE968C800A69D84 /* AddCustomRoutineView.swift */; };
+		C7E2EC542DE9855E00A69D84 /* UICollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */; };
+		C7E2EC562DE9989C00A69D84 /* RoutineCustomEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC552DE9989200A69D84 /* RoutineCustomEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -374,6 +379,11 @@
 		A4D9F6E82C5D2F8600A9F719 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		A4D9F6EA2C5D2F8C00A9F719 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		A4D9F6EC2C5D2F9900A9F719 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
+		C7469A372DFFDB0D00F77BF4 /* EditDailyRoutineInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDailyRoutineInfo.swift; sourceTree = "<group>"; };
+		C7E2EC4F2DE968B900A69D84 /* AddCustomRoutineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomRoutineViewController.swift; sourceTree = "<group>"; };
+		C7E2EC512DE968C800A69D84 /* AddCustomRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomRoutineView.swift; sourceTree = "<group>"; };
+		C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		C7E2EC552DE9989200A69D84 /* RoutineCustomEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCustomEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -499,6 +509,7 @@
 		A40F9EFF2C67C09B004DD1A1 /* AddRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				C7E2EC552DE9989200A69D84 /* RoutineCustomEntity.swift */,
 				A49CB10A2D1A4421007D13D0 /* AddChallengeEntity.swift */,
 				A40F9F172C69F35C004DD1A1 /* DailyThemeEntity.swift */,
 				A40F9F192C6AD943004DD1A1 /* AddRoutineInfoEntity.swift */,
@@ -685,6 +696,7 @@
 		A42C32AB2B3EA9F900C4B477 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */,
 				A42C32BE2B3EAB0E00C4B477 /* UIImage+.swift */,
 				A42C32C02B3EAB1A00C4B477 /* UIView+.swift */,
 				A42C32C22B3EAB2400C4B477 /* UITextField+.swift */,
@@ -977,6 +989,7 @@
 		A4648B8E2C0432EA001EB031 /* Ongoing */ = {
 			isa = PBXGroup;
 			children = (
+				C7E2EC4C2DE9689500A69D84 /* AddCustomRoutineScene */,
 				A4648B942C043350001EB031 /* OngoingScene */,
 				A4648B932C04334A001EB031 /* AddRoutineScene */,
 				A40F9F092C69D020004DD1A1 /* AddRoutineDetailScene */,
@@ -1345,6 +1358,32 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C7E2EC4C2DE9689500A69D84 /* AddCustomRoutineScene */ = {
+			isa = PBXGroup;
+			children = (
+				C7469A372DFFDB0D00F77BF4 /* EditDailyRoutineInfo.swift */,
+				C7E2EC4E2DE968A500A69D84 /* View */,
+				C7E2EC4D2DE968A100A69D84 /* ViewController */,
+			);
+			path = AddCustomRoutineScene;
+			sourceTree = "<group>";
+		};
+		C7E2EC4D2DE968A100A69D84 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C7E2EC4F2DE968B900A69D84 /* AddCustomRoutineViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C7E2EC4E2DE968A500A69D84 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C7E2EC512DE968C800A69D84 /* AddCustomRoutineView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1488,6 +1527,7 @@
 				09CC26C82C8A836000C3BD3B /* NewDailyRoutineView.swift in Sources */,
 				A42C32D52B3EABAF00C4B477 /* UICollectionViewRegisterable.swift in Sources */,
 				A42C32BB2B3EAAEA00C4B477 /* FontLiterals.swift in Sources */,
+				C7E2EC542DE9855E00A69D84 /* UICollectionViewFlowLayout.swift in Sources */,
 				A42C32F22B3EADCD00C4B477 /* LoginEntity.swift in Sources */,
 				00CCDCC62B51B5C8007DD0E6 /* SplashThreeView.swift in Sources */,
 				A40C7A672D30D6B100427BAA /* ChartRankCell.swift in Sources */,
@@ -1496,6 +1536,7 @@
 				A4D9F6E92C5D2F8600A9F719 /* TutorialViewController.swift in Sources */,
 				A40F9F412C6EEC4D004DD1A1 /* ChangeChallengeBSViewController.swift in Sources */,
 				A42C32E32B3EAC8200C4B477 /* NetworkResult.swift in Sources */,
+				C7E2EC502DE968C400A69D84 /* AddCustomRoutineViewController.swift in Sources */,
 				A49BFDD72B4D5F2800035EB6 /* StroyTellingFirstView.swift in Sources */,
 				A49BFDE52B4D7EDF00035EB6 /* CustomProgressView.swift in Sources */,
 				A49BFE1F2B4E542B00035EB6 /* RoutineChoiceView.swift in Sources */,
@@ -1555,6 +1596,7 @@
 				00A8E39A2B4D8B0D001461CE /* HomeView.swift in Sources */,
 				A46CA16A2CE70A2A00AB4DCA /* AchieveMenuView.swift in Sources */,
 				A42C32A52B3EA9A000C4B477 /* UserManager.swift in Sources */,
+				C7E2EC562DE9989C00A69D84 /* RoutineCustomEntity.swift in Sources */,
 				00A8E39C2B4D8B20001461CE /* HomeViewController.swift in Sources */,
 				A42C33702B42DAAB00C4B477 /* StringLiterals.swift in Sources */,
 				004029062B4EDCF6002127BC /* ActionCollectionViewCell.swift in Sources */,
@@ -1577,6 +1619,7 @@
 				093C1E072B4CFDDF00EF84AB /* CustomNavigationBarView.swift in Sources */,
 				A42C32E12B3EAC7800C4B477 /* Config.swift in Sources */,
 				A42C32FA2B3EADF900C4B477 /* DailyRoutineEntity.swift in Sources */,
+				C7469A382DFFDB1600F77BF4 /* EditDailyRoutineInfo.swift in Sources */,
 				A49BFE232B4E565D00035EB6 /* RoutineChoiceEntity.swift in Sources */,
 				A475D52D2CFEB18300B5DDC5 /* UITextView+.swift in Sources */,
 				A49BFDF52B4DA85300035EB6 /* ThemeSelectCollectionViewCell.swift in Sources */,
@@ -1596,6 +1639,7 @@
 				A49E0AF92D01558B00588087 /* CalendarHistoryCell.swift in Sources */,
 				A475D5032CF553CE00B5DDC5 /* CalendarHeaderView.swift in Sources */,
 				045DFE792B504E26005D69EA /* SettingView.swift in Sources */,
+				C7E2EC522DE968CD00A69D84 /* AddCustomRoutineView.swift in Sources */,
 				A49BFE1D2B4E541C00035EB6 /* RoutineChoiceViewController.swift in Sources */,
 				045DFE862B539BC3005D69EA /* WithdrawView.swift in Sources */,
 				A40F9F3D2C6DEAAF004DD1A1 /* ChallengeMemberEntity.swift in Sources */,
@@ -1777,9 +1821,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sopetit-iOS/Sopetit-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XGXWL95BMU;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XGXWL95BMU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sopetit-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "소프티";
@@ -1793,10 +1839,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.4;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.softie.Softie-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Softie Debug";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1813,9 +1860,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Sopetit-iOS/Sopetit-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XGXWL95BMU;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = XGXWL95BMU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Sopetit-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "소프티";
@@ -1829,10 +1878,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.4;
+				MARKETING_VERSION = 2.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.softie.Softie-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Softie Debug";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;

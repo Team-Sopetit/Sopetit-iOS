@@ -126,6 +126,8 @@ class OngoingView: UIView {
         return imageView
     }()
     
+    let addCustomRoutineToastView = ToastWithCheckView(toastContent: "데일리 루틴을 추가했어요")
+    
     // MARK: - Life Cycles
     
     override init (frame: CGRect) {

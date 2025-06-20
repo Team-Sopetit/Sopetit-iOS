@@ -161,7 +161,6 @@ extension ChallengeBSViewController {
         
         bottomSheet.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(bottomHeight)
         }
         
         challengeTitleLabel.snp.makeConstraints {
@@ -210,7 +209,7 @@ extension ChallengeBSViewController {
         }
         
         deleteButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(32)
+            $0.top.equalTo(detailPlaceLabel.snp.bottom).offset(32)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 40)
             $0.height.equalTo(56)
