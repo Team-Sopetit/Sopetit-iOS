@@ -8,10 +8,13 @@
 import UIKit
 
 import SnapKit
+import UserNotifications
 
 final class AlarmViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - Properties
+    
+    private var lastAuthStatus: UNAuthorizationStatus?
     
     // MARK: - UI Components
     
@@ -41,9 +44,8 @@ final class AlarmViewController: UIViewController, UIGestureRecognizerDelegate {
         return label
     }()
     
-    private lazy var alarmSwitch: UISwitch = {
-        let swicth: UISwitch = UISwitch()
-        swicth.isOn = UserManager.shared.hasAllowAlarm
+    private lazy var alarmSwitch: SettingAlarmSwitch = {
+        let swicth = SettingAlarmSwitch()
         swicth.onTintColor = .Gray650
         return swicth
     }()
@@ -57,12 +59,18 @@ final class AlarmViewController: UIViewController, UIGestureRecognizerDelegate {
         setHierarchy()
         setLayout()
         setDelegate()
+        setAddTarget()
+        refreshStatus()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
 // MARK: - Extensions
 
-extension AlarmViewController {
+private extension AlarmViewController {
     
     func setUI() {
         view.backgroundColor = .SoftieWhite
@@ -75,10 +83,12 @@ extension AlarmViewController {
     }
     
     func setHierarchy() {
-        self.view.addSubviews(customNaviBar,
-                              alarmTitleLabel,
-                              alarmSubTitleLabel,
-                              alarmSwitch)
+        view.addSubviews(
+            customNaviBar,
+            alarmTitleLabel,
+            alarmSubTitleLabel,
+            alarmSwitch
+        )
     }
     
     func setLayout() {
@@ -105,6 +115,49 @@ extension AlarmViewController {
             $0.height.equalTo(31)
         }
     }
+    
+    func setAddTarget() {
+        alarmSwitch.addTarget(
+            self,
+            action: #selector(tapAlarmToggle(_:)),
+            for: .valueChanged
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(appWillForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
+    }
+    
+    @objc
+    func tapAlarmToggle(_ sender: UISwitch) {
+        guard let url = URL(string: UIApplication.openSettingsURLString),
+              UIApplication.shared.canOpenURL(url) else {
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    @objc
+    func appWillForeground() {
+        refreshStatus()
+    }
+    
+    func refreshStatus() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            let newStatus = settings.authorizationStatus
+            let shouldBeOn = (
+                newStatus == .authorized ||
+                newStatus == .provisional ||
+                newStatus == .ephemeral
+            )
+            DispatchQueue.main.async {
+                self.alarmSwitch.setOn(shouldBeOn, animated: false)
+                self.lastAuthStatus = newStatus
+            }
+        }
+    }
 }
 
 extension AlarmViewController: BackButtonProtocol {
@@ -112,5 +165,15 @@ extension AlarmViewController: BackButtonProtocol {
     @objc
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+final class SettingAlarmSwitch: UISwitch {
+    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        if let url = URL(string: UIApplication.openSettingsURLString),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+        return false
     }
 }
