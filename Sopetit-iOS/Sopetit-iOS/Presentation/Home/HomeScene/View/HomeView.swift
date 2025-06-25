@@ -107,6 +107,8 @@ final class HomeView: UIView {
         return collectionView
     }()
     
+    private let tooltipImageView = UIImageView(image: UIImage(resource: .imgTooltipSetting))
+    
     // MARK: - Life Cycles
     
     init() {
@@ -139,7 +141,16 @@ extension HomeView {
 extension HomeView {
     
     func setHierarchy() {
-        self.addSubviews(backgroundImageView, softieImageView, moneyButton, settingButton, bubbleImageView, shadowImageView, dollNameLabel, actionCollectionView)
+        self.addSubviews(
+            backgroundImageView,
+            softieImageView,
+            moneyButton,
+            settingButton,
+            bubbleImageView,
+            shadowImageView,
+            dollNameLabel,
+            actionCollectionView
+        )
                 
         bubbleImageView.addSubview(bubbleLabel)
         
@@ -206,6 +217,17 @@ extension HomeView {
             $0.bottom.equalToSuperview().inset(SizeLiterals.Screen.screenHeight * 90 / 812)
             $0.width.equalTo(SizeLiterals.Screen.screenWidth * 331 / 375)
             $0.height.equalTo(100)
+        }
+        
+        if UserManager.shared.getShowFeedBack {
+            self.addSubview(tooltipImageView)
+            
+            tooltipImageView.snp.makeConstraints {
+                $0.top.equalTo(settingButton.snp.bottom).offset(1)
+                $0.trailing.equalToSuperview().inset(16)
+                $0.width.equalTo(108)
+                $0.height.equalTo(33)
+            }
         }
     }
     

@@ -23,6 +23,8 @@ final class SettingView: UIView {
         return tableview
     }()
     
+    private let tooltipImageView = UIImageView(image: UIImage(resource: .imgTooltipFeedback))
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -57,6 +59,17 @@ extension SettingView {
             $0.top.equalToSuperview().inset(16)
             $0.leading.trailing.bottom.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth)
+        }
+        
+        if UserManager.shared.getShowFeedBack {
+            self.addSubview(tooltipImageView)
+            
+            tooltipImageView.snp.makeConstraints {
+                $0.top.equalToSuperview().inset(210)
+                $0.trailing.equalToSuperview().inset(16)
+                $0.width.equalTo(71)
+                $0.height.equalTo(33)
+            }
         }
     }
     
