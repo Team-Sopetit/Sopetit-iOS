@@ -108,6 +108,11 @@ final class HomeView: UIView {
     }()
     
     private let tooltipImageView = UIImageView(image: UIImage(resource: .imgTooltipSetting))
+    let feedbackAlertView: FeedbackAlertView = {
+        let view = FeedbackAlertView()
+        view.isHidden = !UserManager.shared.getShowFeedBack
+        return view
+    }()
     
     // MARK: - Life Cycles
     
@@ -156,6 +161,8 @@ extension HomeView {
         
         addSubviews(animationView)
         self.bringSubviewToFront(actionCollectionView)
+        addSubview(feedbackAlertView)
+        self.bringSubviewToFront(feedbackAlertView)
     }
     
     func setLayout() {
@@ -228,6 +235,10 @@ extension HomeView {
                 $0.width.equalTo(108)
                 $0.height.equalTo(33)
             }
+        }
+        
+        feedbackAlertView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
     

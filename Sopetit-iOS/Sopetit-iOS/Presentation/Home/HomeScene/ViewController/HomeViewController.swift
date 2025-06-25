@@ -80,6 +80,7 @@ extension HomeViewController {
     func setDelegate() {
         collectionView.delegate = self
         collectionView.dataSource = self
+        homeView.feedbackAlertView.delegate = self
     }
     
     func setDataBind(model: HomeEntity) {
@@ -111,6 +112,21 @@ extension HomeViewController {
             self.navigationController?.pushViewController(nav, animated: true)
         default:
             break
+        }
+    }
+}
+
+extension HomeViewController: FeedbackAlertDelegate {
+    
+    func backButtonTapped() {
+        homeView.feedbackAlertView.isHidden = true
+    }
+    
+    func feedbackButtonTapped() {
+        homeView.feedbackAlertView.isHidden = true
+        if let url = URL(string: I18N.Setting.feedbackFoam) {
+            let safariViewController = SFSafariViewController(url: url)
+            self.present(safariViewController, animated: true, completion: nil)
         }
     }
 }

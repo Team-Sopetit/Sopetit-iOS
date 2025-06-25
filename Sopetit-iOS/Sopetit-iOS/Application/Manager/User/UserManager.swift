@@ -38,7 +38,7 @@ final class UserManager {
     var getDollName: String { return self.dollName ?? "" }
     var getWriteMemo: Bool { return self.writeMemo ?? false }
     var getVisitDate: String { return self.visitDate ?? "" }
-    var getShowFeedBack: Bool { return self.showFeedBack ?? true }
+    var getShowFeedBack: Bool { return self.showFeedBack ?? false }
     
     private init() {}
 }
