@@ -125,4 +125,38 @@ extension AuthService {
             }
         }
     }
+    
+    func postMembersFCM (
+        completion: @escaping (NetworkResult<Any>) -> Void
+    ) {
+        let url = URLConstant.membersFCMURL
+        let header: HTTPHeaders = NetworkConstant.hasTokenHeader
+        let body: Parameters = [
+            "fcmToken": UserManager.shared.getFcmToken.isEmpty
+                ? NSNull()
+                : UserManager.shared.getFcmToken
+        ]
+        let dataRequest = AF.request(
+            url,
+            method: .post,
+            parameters: body,
+            encoding: JSONEncoding.default,
+            headers: header
+        )
+        dataRequest.responseData { response in
+            switch response.result {
+            case .success:
+                guard let statusCode = response.response?.statusCode else { return }
+                guard let data = response.data else { return }
+                let networkResult = self.judgeStatus(
+                    by: statusCode,
+                    data,
+                    EmptyEntity.self
+                )
+                completion(networkResult)
+            case .failure:
+                completion(.networkFail)
+            }
+        }
+    }
 }

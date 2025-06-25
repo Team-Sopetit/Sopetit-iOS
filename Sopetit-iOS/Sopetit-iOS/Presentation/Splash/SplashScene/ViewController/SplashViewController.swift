@@ -64,6 +64,17 @@ private extension SplashViewController {
         if hasVisit() {
             putMemebersVisitAPI()
         }
+        print(UserManager.shared.isSendFcm)
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            let isAllowed = (
+                settings.authorizationStatus == .authorized
+                || settings.authorizationStatus == .provisional
+                || settings.authorizationStatus == .ephemeral
+            )
+            if isAllowed && !UserManager.shared.isSendFcm {
+                self.postMemberFcmAPI()
+            }
+        }
     }
     
     func setDelegate() {
@@ -253,18 +264,34 @@ private extension SplashViewController {
     }
     
     func putMemebersVisitAPI() {
-        print("server")
-        print("putMemebersVisitAPI")
         OnBoardingService.shared.putMemeberVisit { networkResult in
             switch networkResult {
             case .success:
                 let today = formatDateToString(Date())
                 UserManager.shared.updateVisitDate(today)
-                print(UserManager.shared.getVisitDate)
             case .reissue:
                 ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
                     if success {
                         self.putMemebersVisitAPI()
+                    } else {
+                        self.makeSessionExpiredAlert()
+                    }
+                }
+            default:
+                break
+            }
+        }
+    }
+    
+    func postMemberFcmAPI() {
+        AuthService.shared.postMembersFCM() { networkResult in
+            switch networkResult {
+            case .success:
+                UserManager.shared.setSendFcm()
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.postMemberFcmAPI()
                     } else {
                         self.makeSessionExpiredAlert()
                     }

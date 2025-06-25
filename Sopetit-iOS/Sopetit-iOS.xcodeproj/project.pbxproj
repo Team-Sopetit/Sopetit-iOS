@@ -198,6 +198,7 @@
 		C7E2EC522DE968CD00A69D84 /* AddCustomRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC512DE968C800A69D84 /* AddCustomRoutineView.swift */; };
 		C7E2EC542DE9855E00A69D84 /* UICollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */; };
 		C7E2EC562DE9989C00A69D84 /* RoutineCustomEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC552DE9989200A69D84 /* RoutineCustomEntity.swift */; };
+		C7F6E3A82E04EC98005DF56E /* SettingAlarmSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F6E3A72E04EC95005DF56E /* SettingAlarmSwitch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -384,6 +385,7 @@
 		C7E2EC512DE968C800A69D84 /* AddCustomRoutineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomRoutineView.swift; sourceTree = "<group>"; };
 		C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		C7E2EC552DE9989200A69D84 /* RoutineCustomEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCustomEntity.swift; sourceTree = "<group>"; };
+		C7F6E3A72E04EC95005DF56E /* SettingAlarmSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmSwitch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -935,6 +937,7 @@
 		A42C33162B3EAF4300C4B477 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C7F6E3A72E04EC95005DF56E /* SettingAlarmSwitch.swift */,
 				045DFE782B504E26005D69EA /* SettingView.swift */,
 				045DFE852B539BC3005D69EA /* WithdrawView.swift */,
 			);
@@ -1564,6 +1567,7 @@
 				09BCAA042C2A7D6F006E876D /* GetCottonView.swift in Sources */,
 				A49BFDDC2B4D5F5E00035EB6 /* StoryTellingThirdView.swift in Sources */,
 				A42C32CD2B3EAB5600C4B477 /* UILabel+.swift in Sources */,
+				C7F6E3A82E04EC98005DF56E /* SettingAlarmSwitch.swift in Sources */,
 				A40C7A612D30A6B300427BAA /* AchieveThemeEntity.swift in Sources */,
 				A49BFE282B4E856600035EB6 /* DollNameViewController.swift in Sources */,
 				A4648B9A2C04337B001EB031 /* AchieveView.swift in Sources */,
