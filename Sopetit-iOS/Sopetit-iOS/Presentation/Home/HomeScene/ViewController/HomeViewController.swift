@@ -75,6 +75,10 @@ extension HomeViewController {
     
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
+        
+        if UserManager.shared.getShowFeedBack {
+            NotificationCenter.default.post(name: Notification.Name("showPopup"), object: nil)
+        }
     }
     
     func setDelegate() {
@@ -119,10 +123,12 @@ extension HomeViewController {
 extension HomeViewController: FeedbackAlertDelegate {
     
     func backButtonTapped() {
+        NotificationCenter.default.post(name: Notification.Name("hidePopup"), object: nil)
         homeView.feedbackAlertView.isHidden = true
     }
     
     func feedbackButtonTapped() {
+        NotificationCenter.default.post(name: Notification.Name("hidePopup"), object: nil)
         homeView.feedbackAlertView.isHidden = true
         if let url = URL(string: I18N.Setting.feedbackFoam) {
             let safariViewController = SFSafariViewController(url: url)

@@ -41,6 +41,7 @@ final class FeedbackAlertView: UIView {
         let label = UILabel()
         label.text = "솜뭉치,모아두기만 하고\n안쓰고 있나요?"
         label.font = .fontGuide(.head3)
+        label.asLineHeight(.head3)
         label.textColor = .Gray700
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -51,6 +52,7 @@ final class FeedbackAlertView: UIView {
         let label = UILabel()
         label.text = "여러분의 사용 습관을 듣고\n더 잘 쓰일 수 있도록 개선하려고 해요!"
         label.font = .fontGuide(.body2)
+        label.asLineHeight(.body2)
         label.textColor = .Gray500
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -125,7 +127,6 @@ extension FeedbackAlertView {
         
         subTitleLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(7)
-            $0.bottom.equalTo(cancelButton.snp.top).offset(-16)
             $0.centerX.equalToSuperview()
         }
         
