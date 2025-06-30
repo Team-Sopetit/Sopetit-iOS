@@ -20,7 +20,7 @@ final class SplashViewController: UIViewController {
     // MARK: - Properties
     
     lazy var randomNumber: Int = Int.random(in: (0 ..< splashViews.count))
-    private var versionEntity = VersionEntity(iosVersion: Version(appVersion: "", forceUpdateVersion: ""), androidVersion: Version(appVersion: "", forceUpdateVersion: ""), notificationTitle: "", notificationContent: "")
+    private var versionEntity = VersionEntity(iosVersion: Version(appVersion: "", forceUpdateVersion: ""), androidVersion: Version(appVersion: "", forceUpdateVersion: ""), notificationTitle: "", notificationContent: "", properties: [:])
     private let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     private let appStoreOpenUrlString = "itms-apps://itunes.apple.com/app/id6476357728"
     
@@ -149,7 +149,7 @@ private extension SplashViewController {
         }
         let lastMidnight = Calendar.current.startOfDay(for: lastDate)
         let todayMidnight = Calendar.current.startOfDay(for: Date())
-        print("😳 자정 지남 여부:",  todayMidnight > lastMidnight)
+        print("😳 자정 지남 여부:", todayMidnight > lastMidnight)
         return todayMidnight > lastMidnight
     }
     
@@ -238,6 +238,11 @@ private extension SplashViewController {
                 if let data = data as? GenericResponse<VersionEntity> {
                     if let listData = data.data {
                         self.versionEntity = listData
+                        if let statusString = listData.properties["SOFTIE_SURVEY_STATUS"],
+                           let status = Bool(statusString),
+                           status {
+                            UserManager.shared.setShowFeedback(status)
+                        }
                     }
                     if let comparisonResult = self.appVersion?.compare(self.versionEntity.iosVersion.forceUpdateVersion, options: .numeric).rawValue as? Int, let comparisonResult2 = self.appVersion?.compare(self.versionEntity.iosVersion.appVersion, options: .numeric).rawValue as? Int {
                         self.showUpdateAlert(forceResult: comparisonResult, recommendResult: comparisonResult2)

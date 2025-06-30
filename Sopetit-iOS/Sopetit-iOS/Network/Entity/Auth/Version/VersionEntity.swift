@@ -10,6 +10,7 @@ import Foundation
 struct VersionEntity: Codable {
     let iosVersion, androidVersion: Version
     let notificationTitle, notificationContent: String
+    let properties: [String: String]
 }
 
 // MARK: - Version
