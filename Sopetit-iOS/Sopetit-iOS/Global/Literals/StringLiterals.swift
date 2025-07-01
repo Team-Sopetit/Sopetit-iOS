@@ -116,13 +116,13 @@ enum I18N {
         static let withdraw_head = "탈퇴하면 계정이 삭제되고 모든 데이터가 사라집니다."
         static let personalTitle = "개인정보 처리방침"
         static let serviceTitle = "서비스 이용 약관"
-        static let feedbackTitle = "피드백"
+        static let feedbackTitle = "여러분의 의견이 필요해요!"
         static let versionTitle = "현재 버전 1.0.0"
         static let logoutTItle = "로그아웃"
         static let withdrawTitle = "회원 탈퇴"
         static let personalNotion = "https://softie-link.notion.site/c2435b30cfdb45db82f91cae6d1cc789?pvs=4"
         static let serviceNotion = "https://softie-link.notion.site/b8b8c02805924f2ababd4de7b2306d64?pvs=4"
-        static let feedbackFoam = "https://docs.google.com/forms/d/e/1FAIpQLSfEtF_qWDu9mI1IcEBPTWsoBVCwPa0wunQK600EcjOMbz8upQ/viewform?usp=sf_link"
+        static let feedbackFoam = "https://forms.gle/98DLaYEv3ABYv9FF7"
     }
     
     enum SessionExpiredAlert {
