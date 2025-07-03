@@ -159,6 +159,7 @@ extension AddCustomRoutineViewController {
     @objc func switchChanged(_ sender: UISwitch) {
         updateNextButtonState()
         addCustomRoutineView.alarmDatePicker.isHidden = !sender.isOn
+        view.endEditing(true)
         
         UIView.animate(withDuration: 0.25) {
             self.addCustomRoutineView.alarmStackView.layoutIfNeeded()
@@ -412,6 +413,7 @@ extension AddCustomRoutineViewController: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
+        view.endEditing(true)
         makeVibrate()
         selectThemeId = routineEntity.themes[indexPath.item].themeID
         if let cell = collectionView.cellForItem(at: indexPath) as? ThemeSelectCollectionViewCell {
