@@ -20,6 +20,7 @@ final class UserManager {
     @UserDefaultWrapper<Bool>(key: "showTutorial") private(set) var showTutorial
     @UserDefaultWrapper<Bool>(key: "sendFcm") private(set) var sendFcm
     @UserDefaultWrapper<Bool>(key: "showFeedBack") private(set) var showFeedBack
+    @UserDefaultWrapper<Bool>(key: "showFeedBackAlert") private(set) var showFeedBackAlert
     @UserDefaultWrapper<Bool>(key: "allowAlarm") private(set) var allowAlarm
     @UserDefaultWrapper<Bool>(key: "writeMemo") private(set) var writeMemo
     @UserDefaultWrapper<String>(key: "dollName") private(set) var dollName
@@ -39,6 +40,7 @@ final class UserManager {
     var getWriteMemo: Bool { return self.writeMemo ?? false }
     var getVisitDate: String { return self.visitDate ?? "" }
     var getShowFeedBack: Bool { return self.showFeedBack ?? false }
+    var getShowFeedBackAlert: Bool { return self.showFeedBackAlert ?? false }
     
     private init() {}
 }
@@ -92,6 +94,10 @@ extension UserManager {
     
     func setWriteMemo() {
         self.writeMemo = true
+    }
+    
+    func setShowFeedBackAlert() {
+        self.showFeedBackAlert = true
     }
     
     func logout() {
