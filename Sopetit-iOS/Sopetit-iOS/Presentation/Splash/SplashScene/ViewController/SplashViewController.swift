@@ -231,6 +231,9 @@ private extension SplashViewController {
                            let status = Bool(statusString),
                            status {
                             UserManager.shared.setShowFeedback(status)
+                            if !status {
+                                UserManager.shared.setFeedbackInitial()
+                            }
                         }
                     }
                     if let comparisonResult = self.appVersion?.compare(self.versionEntity.iosVersion.forceUpdateVersion, options: .numeric).rawValue as? Int, let comparisonResult2 = self.appVersion?.compare(self.versionEntity.iosVersion.appVersion, options: .numeric).rawValue as? Int {

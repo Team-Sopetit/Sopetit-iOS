@@ -100,6 +100,10 @@ extension UserManager {
         self.showFeedBackAlert = true
     }
     
+    func setFeedbackInitial() {
+        self.showFeedBackAlert = false
+    }
+    
     func logout() {
         self.accessToken = nil
         self.refreshToken = nil
