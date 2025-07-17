@@ -110,7 +110,7 @@ final class HomeView: UIView {
     private let tooltipImageView = UIImageView(image: UIImage(resource: .imgTooltipSetting))
     let feedbackAlertView: FeedbackAlertView = {
         let view = FeedbackAlertView()
-        view.isHidden = !(UserManager.shared.getShowFeedBack && UserManager.shared.getShowFeedBackAlert)
+        view.isHidden = !(UserManager.shared.getShowFeedBack && !UserManager.shared.getShowFeedBackAlert)
         return view
     }()
     
@@ -226,7 +226,7 @@ extension HomeView {
             $0.height.equalTo(100)
         }
         
-        if UserManager.shared.getShowFeedBack && !UserManager.shared.getShowFeedBackAlert {
+        if UserManager.shared.getShowFeedBack && UserManager.shared.getShowFeedBackAlert {
             self.addSubview(tooltipImageView)
             
             tooltipImageView.snp.makeConstraints {
