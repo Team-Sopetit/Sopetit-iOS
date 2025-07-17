@@ -125,4 +125,8 @@ extension UserManager {
     func setSendFcm() {
         self.sendFcm = true
     }
+    
+    func setSendFcmInitial() {
+        self.sendFcm = false
+    }
 }

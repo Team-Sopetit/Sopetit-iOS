@@ -76,9 +76,11 @@ extension HomeViewController {
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
         
-        if UserManager.shared.getShowFeedBack && UserManager.shared.getShowFeedBackAlert {
+        if UserManager.shared.getShowFeedBack && !UserManager.shared.getShowFeedBackAlert {
             NotificationCenter.default.post(name: Notification.Name("showPopup"), object: nil)
         }
+        
+        checkNotificationAuthorization()
     }
     
     func setDelegate() {
@@ -116,6 +118,21 @@ extension HomeViewController {
             self.navigationController?.pushViewController(nav, animated: true)
         default:
             break
+        }
+    }
+    
+    func checkNotificationAuthorization() {
+        let options: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(options: options) { [weak self] granted, error in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                if granted {
+                    UIApplication.shared.registerForRemoteNotifications()
+                    if !UserManager.shared.isSendFcm {
+                        self.postMemberFcmAPI()
+                    }
+                }
+            }
         }
     }
 }
@@ -209,6 +226,27 @@ extension HomeViewController {
                 }
             case .requestErr, .serverErr:
                 break
+            default:
+                break
+            }
+        }
+    }
+    
+    func postMemberFcmAPI() {
+        print("🥵🥵🥵🥵🥵")
+        print(UserManager.shared.getFcmToken)
+        AuthService.shared.postMembersFCM() { networkResult in
+            switch networkResult {
+            case .success:
+                UserManager.shared.setSendFcm()
+            case .reissue:
+                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
+                    if success {
+                        self.postMemberFcmAPI()
+                    } else {
+                        self.makeSessionExpiredAlert()
+                    }
+                }
             default:
                 break
             }

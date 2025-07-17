@@ -39,13 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         UNUserNotificationCenter.current().delegate = self
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { _, _ in }
         
         application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
-        checkNotificationAuthorization()
         return true
     }
     
@@ -54,23 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
         Messaging.messaging().apnsToken = deviceToken
-    }
-    
-    func checkNotificationAuthorization() {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            switch settings.authorizationStatus {
-            case .authorized:
-                print("알림이 허용되었습니다.")
-                UserManager.shared.setAllowAlarm(true)
-            case .denied:
-                print("알림이 거부되었습니다.")
-                UserManager.shared.setAllowAlarm(false)
-            case .notDetermined:
-                print("알림 권한 요청 전입니다.")
-            default:
-                print("알 수 없는 권한 상태입니다.")
-            }
-        }
     }
     
     // MARK: UISceneSession Lifecycle

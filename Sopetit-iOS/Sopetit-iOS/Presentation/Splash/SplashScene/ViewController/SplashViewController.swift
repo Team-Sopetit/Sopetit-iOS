@@ -64,17 +64,6 @@ private extension SplashViewController {
         if hasVisit() {
             putMemebersVisitAPI()
         }
-        print(UserManager.shared.isSendFcm)
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            let isAllowed = (
-                settings.authorizationStatus == .authorized
-                || settings.authorizationStatus == .provisional
-                || settings.authorizationStatus == .ephemeral
-            )
-            if isAllowed && !UserManager.shared.isSendFcm {
-                self.postMemberFcmAPI()
-            }
-        }
     }
     
     func setDelegate() {
@@ -278,25 +267,6 @@ private extension SplashViewController {
                 ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
                     if success {
                         self.putMemebersVisitAPI()
-                    } else {
-                        self.makeSessionExpiredAlert()
-                    }
-                }
-            default:
-                break
-            }
-        }
-    }
-    
-    func postMemberFcmAPI() {
-        AuthService.shared.postMembersFCM() { networkResult in
-            switch networkResult {
-            case .success:
-                UserManager.shared.setSendFcm()
-            case .reissue:
-                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
-                    if success {
-                        self.postMemberFcmAPI()
                     } else {
                         self.makeSessionExpiredAlert()
                     }
