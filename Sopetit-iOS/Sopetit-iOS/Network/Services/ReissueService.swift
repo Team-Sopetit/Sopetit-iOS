@@ -42,6 +42,7 @@ extension ReissueService {
                         if let data = data as? GenericResponse<ReissueEntity> {
                             if let accessToken = data.data?.accessToken {
                                 UserManager.shared.reissueToken(accessToken)
+                                UserManager.shared.setSendFcmInitial()
                                 completion(true)
                             }
                         }
