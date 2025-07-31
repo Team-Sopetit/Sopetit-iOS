@@ -198,6 +198,7 @@
 		C7E2EC522DE968CD00A69D84 /* AddCustomRoutineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC512DE968C800A69D84 /* AddCustomRoutineView.swift */; };
 		C7E2EC542DE9855E00A69D84 /* UICollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC532DE9855600A69D84 /* UICollectionViewFlowLayout.swift */; };
 		C7E2EC562DE9989C00A69D84 /* RoutineCustomEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E2EC552DE9989200A69D84 /* RoutineCustomEntity.swift */; };
+		C7E5F3692E3AEC9500FF3B34 /* AlamofireNetworkActivityLogger in Frameworks */ = {isa = PBXBuildFile; productRef = C7E5F3682E3AEC9500FF3B34 /* AlamofireNetworkActivityLogger */; };
 		C7F6E3A82E04EC98005DF56E /* SettingAlarmSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F6E3A72E04EC95005DF56E /* SettingAlarmSwitch.swift */; };
 		C7F6E6682E0BCA69005DF56E /* FeedbackAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F6E6672E0BCA63005DF56E /* FeedbackAlertView.swift */; };
 /* End PBXBuildFile section */
@@ -400,6 +401,7 @@
 				A46CA1672CE2DA0C00AB4DCA /* FirebaseMessaging in Frameworks */,
 				A49706352C80C4BE008D2D57 /* WebKit.framework in Frameworks */,
 				00A4AA132BFCD81400FB4D46 /* FirebaseAnalytics in Frameworks */,
+				C7E5F3692E3AEC9500FF3B34 /* AlamofireNetworkActivityLogger in Frameworks */,
 				A49BFE5A2B54273E00035EB6 /* SVGKit in Frameworks */,
 				A42C32972B3DBD8600C4B477 /* SnapKit in Frameworks */,
 				00A4AA1B2BFCD81400FB4D46 /* FirebaseCrashlytics in Frameworks */,
@@ -1430,6 +1432,7 @@
 				A46CA1642CE2DA0C00AB4DCA /* FirebaseDynamicLinks */,
 				A46CA1662CE2DA0C00AB4DCA /* FirebaseMessaging */,
 				A46CA1712CE7106C00AB4DCA /* FSCalendar */,
+				C7E5F3682E3AEC9500FF3B34 /* AlamofireNetworkActivityLogger */,
 			);
 			productName = "Sopetit-iOS";
 			productReference = A42C32782B3DB8F400C4B477 /* Sopetit-iOS.app */;
@@ -1468,6 +1471,7 @@
 				A49BFE582B54273E00035EB6 /* XCRemoteSwiftPackageReference "SVGKit" */,
 				00A4AA112BFCD81400FB4D46 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				A46CA1702CE7106C00AB4DCA /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				C7E5F3672E3AEC9500FF3B34 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */,
 			);
 			productRefGroup = A42C32792B3DB8F400C4B477 /* Products */;
 			projectDirPath = "";
@@ -1995,6 +1999,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		C7E5F3672E3AEC9500FF3B34 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/konkab/AlamofireNetworkActivityLogger.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2065,6 +2077,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A49BFE582B54273E00035EB6 /* XCRemoteSwiftPackageReference "SVGKit" */;
 			productName = SVGKit;
+		};
+		C7E5F3682E3AEC9500FF3B34 /* AlamofireNetworkActivityLogger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C7E5F3672E3AEC9500FF3B34 /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityLogger" */;
+			productName = AlamofireNetworkActivityLogger;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
