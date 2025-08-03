@@ -115,10 +115,7 @@ private extension SplashViewController {
     func showNextPage() {
         if UserManager.shared.hasAccessToken {
             if UserManager.shared.isPostMemeber {
-                tokenCheck(
-                    socialAccessToken: UserManager.shared.getAccessToken,
-                    socialType: UserManager.shared.getSocialType
-                )
+                presentToHomeView()
             } else {
                 presentToOnboardingView()
             }
@@ -198,27 +195,6 @@ extension SplashViewController: AlertDelgate {
 // MARK: - Network
 
 private extension SplashViewController {
-    
-    func tokenCheck(socialAccessToken: String, socialType: String) {
-        AuthService.shared.postLogoutAPI { networkResult in
-            switch networkResult {
-            case .success:
-                self.presentToHomeView()
-            case .reissue:
-                ReissueService.shared.postReissueAPI(refreshToken: UserManager.shared.getRefreshToken) { success in
-                    if success {
-                        self.presentToHomeView()
-                    } else {
-                        self.makeSessionExpiredAlert()
-                    }
-                }
-            case .requestErr, .serverErr:
-                break
-            default:
-                break
-            }
-        }
-    }
     
     func getVersionAPI() {
         AuthService.shared.getVersionAPI { networkResult in
